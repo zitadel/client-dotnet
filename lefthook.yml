@@ -1,0 +1,11 @@
+pre-commit:
+  parallel: true
+
+  commands:
+    format:
+      glob: "*.cs"
+      run: dotnet format
+
+    check:
+      glob: "*.cs"
+      run: dotnet build

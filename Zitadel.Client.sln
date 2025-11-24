@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CB96F840-B1B6-40D5-9C53-6F7338A3D48D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zitadel.Client", "src\Zitadel.Client\Zitadel.Client.csproj", "{D19DA009-BABF-426F-9038-A7AFE093073F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C971825D-AAC8-44A9-9375-7F1E1F33D7A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zitadel.Client.Test", "test\Zitadel.Client.Test\Zitadel.Client.Test.csproj", "{1F36E003-3049-40FC-86BD-3EE55EC6138D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D19DA009-BABF-426F-9038-A7AFE093073F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D19DA009-BABF-426F-9038-A7AFE093073F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D19DA009-BABF-426F-9038-A7AFE093073F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D19DA009-BABF-426F-9038-A7AFE093073F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F36E003-3049-40FC-86BD-3EE55EC6138D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F36E003-3049-40FC-86BD-3EE55EC6138D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F36E003-3049-40FC-86BD-3EE55EC6138D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F36E003-3049-40FC-86BD-3EE55EC6138D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D19DA009-BABF-426F-9038-A7AFE093073F} = {CB96F840-B1B6-40D5-9C53-6F7338A3D48D}
+		{1F36E003-3049-40FC-86BD-3EE55EC6138D} = {C971825D-AAC8-44A9-9375-7F1E1F33D7A4}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.10.7/.schema/devbox.schema.json",
+  "packages": [
+    "dotnet-sdk@latest",
+    "lefthook@latest",
+    "docfx@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "lefthook install",
+      "dotnet restore"
+    ],
+    "scripts": {
+      "format": [
+        "dotnet format"
+      ],
+      "test": [
+        "dotnet test"
+      ],
+      "check": [
+        "dotnet build"
+      ],
+      "replit": [
+        "docker build --tag csharp-repl --file Dockerfile .",
+        "docker run --rm --interactive --tty csharp-repl"
+      ],
+      "docgen": [
+        "docfx build"
+      ]
+    }
+  }
+}

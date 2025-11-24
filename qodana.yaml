@@ -1,0 +1,12 @@
+version: "1.0"
+
+profile:
+  name: qodana.recommended
+
+exclude:
+  - name: All
+    paths:
+      - src/Zitadel.Client/Api
+      - src/Zitadel.Client/Model
+
+linter: jetbrains/qodana-dotnet:latest

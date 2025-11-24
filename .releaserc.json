@@ -1,0 +1,59 @@
+{
+  "branches": [
+    "main",
+    {
+      "name": "beta",
+      "prerelease": "beta"
+    }
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    [
+      "@mridang/semantic-release-peer-version",
+      {
+        "repo": "zitadel/zitadel"
+      }
+    ],
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "sed -i 's/[0-9]\\+\\.[0-9]\\+\\.[0-9]\\+[-a-zA-Z0-9\\.]*/${nextRelease.version}/' src/Zitadel.Client/Version.cs && dotnet pack -c Release -p:PackageVersion=${nextRelease.version} -o nupkgs"
+      }
+    ],
+    [
+      "@codedependant/semantic-release-docker",
+      {
+        "dockerRegistry": "ghcr.io",
+        "dockerProject": "zitadel",
+        "dockerImage": "client-dotnet",
+        "dockerTags": [
+          "{{version}}"
+        ]
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "successComment": false,
+        "failComment": false,
+        "assets": [
+          {
+            "path": "nupkgs/*.nupkg",
+            "label": "NuGet Package"
+          }
+        ]
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+        "assets": [
+          "src/Zitadel.Client/Version.cs",
+          "src/Zitadel.Client/Zitadel.Client.csproj"
+        ]
+      }
+    ]
+  ]
+}
