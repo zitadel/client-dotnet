@@ -23,6 +23,16 @@ REPO := $(notdir $(CURDIR))
 GEN_DIR := src/Zitadel/Client
 PKG_DIR := src/Zitadel.Client
 
+# The generator emits its spec-independent unit tests in a flat layout at the
+# output root (Test/*.cs, xunit.runner.json, Zitadel.Client.Test.csproj). This
+# repo keeps a nested test project (test/Zitadel.Client.Test) that also hosts
+# the bespoke integration specs + transport test and a hand-maintained csproj.
+# After generation we relocate the generator-owned unit tests + runner config
+# into the nested project so the keep-listed csproj globs them, and drop the
+# generated root csproj (the hand-maintained one wins).
+TEST_GEN_DIR := Test
+TEST_PKG_DIR := test/Zitadel.Client.Test
+
 .PHONY: generate relocate prune build test lint format format-dotnet analyze docs clean
 
 generate:
@@ -52,14 +62,25 @@ relocate:
 	@# Drop the generated csproj (the hand-maintained one in $(PKG_DIR) wins).
 	@rm -f "$(GEN_DIR)"/*.csproj
 	@rm -rf src/Zitadel
+	@# Relocate the generator-owned unit tests + runner config into the nested
+	@# test project. NOTE: on a case-insensitive filesystem the generator's
+	@# "Test/" dir is the same as this repo's "test/", so the emitted unit tests
+	@# land directly under test/ alongside the nested Zitadel.Client.Test/ dir.
+	@for f in "$(TEST_GEN_DIR)"/*.cs; do [ -e "$$f" ] && mv -f "$$f" "$(TEST_PKG_DIR)/$$(basename "$$f")"; done; true
+	@if [ -f xunit.runner.json ]; then mv -f xunit.runner.json "$(TEST_PKG_DIR)/xunit.runner.json"; fi
+	@# Drop the generated root test csproj (the hand-maintained nested one wins).
+	@rm -f Zitadel.Client.Test.csproj
 	@# Rewrite the FILES manifest so prune matches the relocated layout.
 	@if [ -f .openapi-generator/FILES ]; then \
 	  sed -e 's#^src/Zitadel/Client/[^/]*\.csproj$$##' \
 	      -e 's#^src/Zitadel/Client/#src/Zitadel.Client/#' \
+	      -e 's#^Zitadel\.Client\.Test\.csproj$$##' \
+	      -e 's#^xunit\.runner\.json$$#$(TEST_PKG_DIR)/xunit.runner.json#' \
+	      -e 's#^Test/#$(TEST_PKG_DIR)/#' \
 	      .openapi-generator/FILES | sed '/^$$/d' > .openapi-generator/FILES.tmp; \
 	  mv .openapi-generator/FILES.tmp .openapi-generator/FILES; \
 	fi
-	@echo "relocate: moved generated tree into $(PKG_DIR)"
+	@echo "relocate: moved generated tree into $(PKG_DIR) and unit tests into $(TEST_PKG_DIR)"
 
 prune:
 	@test -f .openapi-generator/FILES || { echo "prune: no FILES manifest, skipping"; exit 0; }

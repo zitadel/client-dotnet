@@ -6,6 +6,7 @@
 src/Zitadel.Client/Auth/ClientCredentialsAuthenticator.cs
 src/Zitadel.Client/Auth/NoAuthAuthenticator.cs
 src/Zitadel.Client/Auth/OAuthAuthenticator.cs
+src/Zitadel.Client/Auth/OAuthAuthenticatorBuilder.cs
 src/Zitadel.Client/Auth/OpenId.cs
 src/Zitadel.Client/Auth/PersonalAccessTokenAuthenticator.cs
 src/Zitadel.Client/Auth/WebTokenAuthenticator.cs
@@ -13,9 +14,20 @@ src/Zitadel.Client/Auth/WebTokenAuthenticator.cs
 # --- scaffold smoke-test surface exercised by test/ (keep across regen) ---
 src/Zitadel.Client/Greeter.cs
 
-# --- bespoke integration tests + Zitadel server fixtures ---
-test/
+# --- bespoke integration specs + Zitadel server fixtures (keep across regen).
+#     The spec-independent unit tests (ValueSerializer, HeaderSelector,
+#     Configuration, TransportOptions, TraceContextUtil, DefaultApiClient) are
+#     now generator-owned and deliberately NOT keep-listed. ---
+test/Zitadel.Client.Test/Integration/
+test/Zitadel.Client.Test/Transport/
+test/Zitadel.Client.Test/fixtures/
+test/.editorconfig
 etc/
+
+# --- hand-maintained test project file: wires the integration specs +
+#     Testcontainers package references and globs in the generator-owned unit
+#     tests. The generated *.Test.csproj must not clobber it. ---
+test/Zitadel.Client.Test/Zitadel.Client.Test.csproj
 
 # --- project file: hand-maintained so PackageReferences survive regen
 #     (deps-persistence). The generated *.csproj must not clobber it. ---

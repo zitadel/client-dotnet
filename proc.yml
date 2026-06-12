@@ -1,5 +1,6 @@
 packageName: Zitadel.Client
 sourceFolder: src
 disallowAdditionalPropertiesIfNotPresent: false
+generateUnitTests: true
 repoName: git@github.com:zitadel/client-dotnet.git
 generatorName: csharp-plus
