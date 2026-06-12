@@ -1,3 +1,4 @@
+name: zitadel-net
 services:
   db:
     image: postgres:17-alpine
@@ -65,12 +66,11 @@ services:
         condition: 'service_completed_successfully'
         restart: true
     volumes:
-      - './certs:/etc/zitadel/certs:ro'
       - './example-zitadel-config.yaml:/example-zitadel-config.yaml:ro'
       - './example-zitadel-secrets.yaml:/example-zitadel-secrets.yaml:ro'
       - './zitadel_output:/var/zitadel_output:rw'
     ports:
-      - "8099:8080"
+      - "18104:8080"
     healthcheck:
       test: [
         "CMD", "/app/zitadel", "ready",

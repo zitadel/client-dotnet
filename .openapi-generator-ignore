@@ -1,0 +1,49 @@
+# Keep-list: files the generator must NOT overwrite, and the Makefile's
+# `prune` step must NOT delete. Everything else is generator-owned.
+
+# --- bespoke token-minting authenticators (ported onto the generated
+#     IAuthenticator / IHttpAwareAuthenticator interfaces) ---
+src/Zitadel.Client/Auth/ClientCredentialsAuthenticator.cs
+src/Zitadel.Client/Auth/NoAuthAuthenticator.cs
+src/Zitadel.Client/Auth/OAuthAuthenticator.cs
+src/Zitadel.Client/Auth/OpenId.cs
+src/Zitadel.Client/Auth/PersonalAccessTokenAuthenticator.cs
+src/Zitadel.Client/Auth/WebTokenAuthenticator.cs
+
+# --- scaffold smoke-test surface exercised by test/ (keep across regen) ---
+src/Zitadel.Client/Greeter.cs
+
+# --- bespoke integration tests + Zitadel server fixtures ---
+test/
+etc/
+
+# --- project file: hand-maintained so PackageReferences survive regen
+#     (deps-persistence). The generated *.csproj must not clobber it. ---
+src/Zitadel.Client/Zitadel.Client.csproj
+Zitadel.Client.sln
+
+# --- repo identity, docs, house tooling (team-owned, not generated) ---
+README.md
+LICENSE
+SECURITY.md
+VERSIONING.md
+Dockerfile
+.dockerignore
+qodana.yaml
+lefthook.yml
+devbox.json
+devbox.lock
+Folder.DotSettings.user
+.config/
+.github/
+.idea/
+.releaserc.json
+.commitlintrc.json
+.editorconfig
+.gitignore
+.env
+
+# --- generation tooling we added ---
+proc.yml
+Makefile
+.openapi-generator-ignore

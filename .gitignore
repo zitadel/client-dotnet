@@ -1,20 +1,17 @@
-# Build results
-[Bb]in/
-[Oo]bj/
+# Build output
+bin/
+obj/
 
-# User-specific files
-*.suo
+# IDE files
 *.user
-*.userosscache
-*.sln.docstates
+.vs/
 
-# VS Code
-.vscode/
+# Coverage and docs output
+.out/
 
-# Rider / IntelliJ
-.idea/
-*.sln.iml
+# DocFX generated API metadata (intermediate YAML)
+/api/
 
-# OS generated files
-.DS_Store
-Thumbs.db
+# Runtime credentials minted by the integration-test docker-compose stack
+etc/zitadel_output/
+.env
