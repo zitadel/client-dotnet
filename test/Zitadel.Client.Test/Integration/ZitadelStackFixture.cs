@@ -37,7 +37,7 @@ public sealed class ZitadelStackFixture : IAsyncLifetime
     private static string ComposeFileDir => Path.GetDirectoryName(ComposeFilePath)!;
 
     /// <inheritdoc/>
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         await RunComposeAsync(
             ["up", "--detach", "--no-color", "--quiet-pull", "--yes"],
@@ -64,7 +64,7 @@ public sealed class ZitadelStackFixture : IAsyncLifetime
     }
 
     /// <inheritdoc/>
-    public async Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         try
         {

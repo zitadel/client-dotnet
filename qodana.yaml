@@ -9,4 +9,4 @@ exclude:
       - src/Zitadel.Client/Api
       - src/Zitadel.Client/Model
 
-linter: jetbrains/qodana-dotnet:latest
+linter: jetbrains/qodana-dotnet:2026.1

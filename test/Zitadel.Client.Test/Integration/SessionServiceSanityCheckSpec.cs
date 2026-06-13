@@ -34,7 +34,7 @@ public sealed class SessionServiceSanityCheckSpec : IAsyncLifetime
     }
 
     /// <summary>Creates a fresh user and session before each test.</summary>
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         string username = Guid.NewGuid().ToString("N");
 
@@ -63,7 +63,7 @@ public sealed class SessionServiceSanityCheckSpec : IAsyncLifetime
     }
 
     /// <summary>Deletes the created session after each test.</summary>
-    public async Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         try
         {

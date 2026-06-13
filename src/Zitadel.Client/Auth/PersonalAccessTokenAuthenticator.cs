@@ -19,6 +19,8 @@ public class PersonalAccessTokenAuthenticator : BaseAuthenticator
     /// <param name="token">The personal access token.</param>
     public PersonalAccessTokenAuthenticator(string host, string token)
     {
+        ArgumentNullException.ThrowIfNull(host);
+        ArgumentNullException.ThrowIfNull(token);
         _host = OpenId.BuildHostname(host).ToString();
         _token = token;
     }

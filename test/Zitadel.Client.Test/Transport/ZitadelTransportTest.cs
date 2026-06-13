@@ -39,12 +39,11 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
     private ushort ProxyPort => _proxy.GetMappedPublicPort(3128);
 
     /// <inheritdoc/>
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         _network = new NetworkBuilder().Build();
 
-        _wiremock = new ContainerBuilder()
-            .WithImage("wiremock/wiremock:3.12.1")
+        _wiremock = new ContainerBuilder("wiremock/wiremock:3.12.1")
             .WithNetwork(_network)
             .WithNetworkAliases("wiremock")
             .WithPortBinding(8080, true)
@@ -74,15 +73,14 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
             )
             .Build();
 
-        _proxy = new ContainerBuilder()
-            .WithImage("ubuntu/squid:6.10-24.10_beta")
+        _proxy = new ContainerBuilder("ubuntu/squid:6.10-24.10_beta")
             .WithNetwork(_network)
             .WithPortBinding(3128, true)
             .WithResourceMapping(
                 new FileInfo(Path.Combine(FixturesDir, "squid.conf")),
                 new FileInfo("/etc/squid/squid.conf")
             )
-            .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(3128))
+            .WithWaitStrategy(Wait.ForUnixContainer().UntilInternalTcpPortIsAvailable(3128))
             .Build();
 
         await _wiremock.StartAsync();
@@ -90,7 +88,7 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
     }
 
     /// <inheritdoc/>
-    public async Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         await _proxy.DisposeAsync();
         await _wiremock.DisposeAsync();

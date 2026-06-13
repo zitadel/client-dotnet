@@ -17,6 +17,7 @@ public class NoAuthAuthenticator : BaseAuthenticator
     /// <param name="host">The base URL for authentication endpoints.</param>
     public NoAuthAuthenticator(string host)
     {
+        ArgumentNullException.ThrowIfNull(host);
         _host = OpenId.BuildHostname(host).ToString();
     }
 

@@ -108,7 +108,7 @@ public abstract class OAuthAuthenticator : BaseAuthenticator, IHttpAwareAuthenti
     /// </summary>
     private Token RefreshToken()
     {
-        IApiClient? client =
+        IApiClient client =
             _apiClient
             ?? throw new InvalidOperationException(
                 "ApiClient has not been injected; token exchange cannot run before SetApiClient()."
@@ -184,10 +184,9 @@ public abstract class OAuthAuthenticator : BaseAuthenticator, IHttpAwareAuthenti
     {
         return string.Join(
             '&',
-            form.Where(entry => entry.Value != null)
-                .Select(entry =>
-                    $"{Uri.EscapeDataString(entry.Key)}={Uri.EscapeDataString(entry.Value)}"
-                )
+            form.Select(entry =>
+                $"{Uri.EscapeDataString(entry.Key)}={Uri.EscapeDataString(entry.Value)}"
+            )
         );
     }
 

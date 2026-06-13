@@ -94,10 +94,8 @@ public sealed class UseClientCredentialsSpec
         using HttpRequestMessage secretRequest = new(
             HttpMethod.Put,
             new Uri($"http://localhost:18104/management/v1/users/{userId}/secret")
-        )
-        {
-            Content = new StringContent("{}", Encoding.UTF8, "application/json"),
-        };
+        );
+        secretRequest.Content = new StringContent("{}", Encoding.UTF8, "application/json");
         using HttpResponseMessage secret = await http.SendAsync(secretRequest);
         string secretBody = await secret.Content.ReadAsStringAsync();
         if (!secret.IsSuccessStatusCode)

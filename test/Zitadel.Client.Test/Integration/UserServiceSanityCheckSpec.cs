@@ -34,7 +34,7 @@ public sealed class UserServiceSanityCheckSpec : IAsyncLifetime
     }
 
     /// <summary>Creates a fresh human user before each test.</summary>
-    public async Task InitializeAsync()
+    public async ValueTask InitializeAsync()
     {
         UserServiceAddHumanUserRequest request = new()
         {
@@ -49,7 +49,7 @@ public sealed class UserServiceSanityCheckSpec : IAsyncLifetime
     }
 
     /// <summary>Deletes the created human user after each test.</summary>
-    public async Task DisposeAsync()
+    public async ValueTask DisposeAsync()
     {
         try
         {
