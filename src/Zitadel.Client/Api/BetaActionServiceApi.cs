@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class BetaActionServiceApi : BaseApi
 {
-
     private static readonly string[] CreateTargetAccepts = ["application/json"];
 
     private static readonly string[] DeleteTargetAccepts = ["application/json"];
@@ -50,7 +49,11 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public BetaActionServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public BetaActionServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -60,9 +63,13 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceCreateTargetRequest"></param>
     /// <returns><![CDATA[BetaActionServiceCreateTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceCreateTargetResponse> CreateTargetAsync(BetaActionServiceCreateTargetRequest betaActionServiceCreateTargetRequest)
+    public async Task<BetaActionServiceCreateTargetResponse> CreateTargetAsync(
+        BetaActionServiceCreateTargetRequest betaActionServiceCreateTargetRequest
+    )
     {
-        Task<ApiResult<BetaActionServiceCreateTargetResponse>> task = CreateTargetWithHttpInfoAsync(betaActionServiceCreateTargetRequest);
+        Task<ApiResult<BetaActionServiceCreateTargetResponse>> task = CreateTargetWithHttpInfoAsync(
+            betaActionServiceCreateTargetRequest
+        );
         ApiResult<BetaActionServiceCreateTargetResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -74,7 +81,8 @@ public class BetaActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -84,7 +92,11 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceCreateTargetRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceCreateTargetResponse>> CreateTargetWithHttpInfoAsync(BetaActionServiceCreateTargetRequest betaActionServiceCreateTargetRequest)
+    public async Task<
+        ApiResult<BetaActionServiceCreateTargetResponse>
+    > CreateTargetWithHttpInfoAsync(
+        BetaActionServiceCreateTargetRequest betaActionServiceCreateTargetRequest
+    )
     {
         string path = "/zitadel.action.v2beta.ActionService/CreateTarget";
 
@@ -111,9 +123,13 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceDeleteTargetRequest"></param>
     /// <returns><![CDATA[BetaActionServiceDeleteTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceDeleteTargetResponse> DeleteTargetAsync(BetaActionServiceDeleteTargetRequest betaActionServiceDeleteTargetRequest)
+    public async Task<BetaActionServiceDeleteTargetResponse> DeleteTargetAsync(
+        BetaActionServiceDeleteTargetRequest betaActionServiceDeleteTargetRequest
+    )
     {
-        Task<ApiResult<BetaActionServiceDeleteTargetResponse>> task = DeleteTargetWithHttpInfoAsync(betaActionServiceDeleteTargetRequest);
+        Task<ApiResult<BetaActionServiceDeleteTargetResponse>> task = DeleteTargetWithHttpInfoAsync(
+            betaActionServiceDeleteTargetRequest
+        );
         ApiResult<BetaActionServiceDeleteTargetResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -125,7 +141,8 @@ public class BetaActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -135,7 +152,11 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceDeleteTargetRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceDeleteTargetResponse>> DeleteTargetWithHttpInfoAsync(BetaActionServiceDeleteTargetRequest betaActionServiceDeleteTargetRequest)
+    public async Task<
+        ApiResult<BetaActionServiceDeleteTargetResponse>
+    > DeleteTargetWithHttpInfoAsync(
+        BetaActionServiceDeleteTargetRequest betaActionServiceDeleteTargetRequest
+    )
     {
         string path = "/zitadel.action.v2beta.ActionService/DeleteTarget";
 
@@ -162,9 +183,13 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceGetTargetRequest"></param>
     /// <returns><![CDATA[BetaActionServiceGetTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceGetTargetResponse> GetTargetAsync(BetaActionServiceGetTargetRequest betaActionServiceGetTargetRequest)
+    public async Task<BetaActionServiceGetTargetResponse> GetTargetAsync(
+        BetaActionServiceGetTargetRequest betaActionServiceGetTargetRequest
+    )
     {
-        Task<ApiResult<BetaActionServiceGetTargetResponse>> task = GetTargetWithHttpInfoAsync(betaActionServiceGetTargetRequest);
+        Task<ApiResult<BetaActionServiceGetTargetResponse>> task = GetTargetWithHttpInfoAsync(
+            betaActionServiceGetTargetRequest
+        );
         ApiResult<BetaActionServiceGetTargetResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -176,7 +201,8 @@ public class BetaActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -186,7 +212,9 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceGetTargetRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceGetTargetResponse>> GetTargetWithHttpInfoAsync(BetaActionServiceGetTargetRequest betaActionServiceGetTargetRequest)
+    public async Task<ApiResult<BetaActionServiceGetTargetResponse>> GetTargetWithHttpInfoAsync(
+        BetaActionServiceGetTargetRequest betaActionServiceGetTargetRequest
+    )
     {
         string path = "/zitadel.action.v2beta.ActionService/GetTarget";
 
@@ -213,10 +241,14 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns><![CDATA[BetaActionServiceListExecutionFunctionsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceListExecutionFunctionsResponse> ListExecutionFunctionsAsync(Object body)
+    public async Task<BetaActionServiceListExecutionFunctionsResponse> ListExecutionFunctionsAsync(
+        Object body
+    )
     {
-        Task<ApiResult<BetaActionServiceListExecutionFunctionsResponse>> task = ListExecutionFunctionsWithHttpInfoAsync(body);
-        ApiResult<BetaActionServiceListExecutionFunctionsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaActionServiceListExecutionFunctionsResponse>> task =
+            ListExecutionFunctionsWithHttpInfoAsync(body);
+        ApiResult<BetaActionServiceListExecutionFunctionsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -227,7 +259,8 @@ public class BetaActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -237,7 +270,9 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceListExecutionFunctionsResponse>> ListExecutionFunctionsWithHttpInfoAsync(Object body)
+    public async Task<
+        ApiResult<BetaActionServiceListExecutionFunctionsResponse>
+    > ListExecutionFunctionsWithHttpInfoAsync(Object body)
     {
         string path = "/zitadel.action.v2beta.ActionService/ListExecutionFunctions";
 
@@ -264,10 +299,15 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns><![CDATA[BetaActionServiceListExecutionMethodsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceListExecutionMethodsResponse> ListExecutionMethodsAsync(Object body)
+    public async Task<BetaActionServiceListExecutionMethodsResponse> ListExecutionMethodsAsync(
+        Object body
+    )
     {
-        Task<ApiResult<BetaActionServiceListExecutionMethodsResponse>> task = ListExecutionMethodsWithHttpInfoAsync(body);
-        ApiResult<BetaActionServiceListExecutionMethodsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaActionServiceListExecutionMethodsResponse>> task =
+            ListExecutionMethodsWithHttpInfoAsync(body);
+        ApiResult<BetaActionServiceListExecutionMethodsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -278,7 +318,8 @@ public class BetaActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -288,7 +329,9 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceListExecutionMethodsResponse>> ListExecutionMethodsWithHttpInfoAsync(Object body)
+    public async Task<
+        ApiResult<BetaActionServiceListExecutionMethodsResponse>
+    > ListExecutionMethodsWithHttpInfoAsync(Object body)
     {
         string path = "/zitadel.action.v2beta.ActionService/ListExecutionMethods";
 
@@ -315,10 +358,14 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns><![CDATA[BetaActionServiceListExecutionServicesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceListExecutionServicesResponse> ListExecutionServicesAsync(Object body)
+    public async Task<BetaActionServiceListExecutionServicesResponse> ListExecutionServicesAsync(
+        Object body
+    )
     {
-        Task<ApiResult<BetaActionServiceListExecutionServicesResponse>> task = ListExecutionServicesWithHttpInfoAsync(body);
-        ApiResult<BetaActionServiceListExecutionServicesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaActionServiceListExecutionServicesResponse>> task =
+            ListExecutionServicesWithHttpInfoAsync(body);
+        ApiResult<BetaActionServiceListExecutionServicesResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -329,7 +376,8 @@ public class BetaActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -339,7 +387,9 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceListExecutionServicesResponse>> ListExecutionServicesWithHttpInfoAsync(Object body)
+    public async Task<
+        ApiResult<BetaActionServiceListExecutionServicesResponse>
+    > ListExecutionServicesWithHttpInfoAsync(Object body)
     {
         string path = "/zitadel.action.v2beta.ActionService/ListExecutionServices";
 
@@ -366,10 +416,15 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceListExecutionsRequest"></param>
     /// <returns><![CDATA[BetaActionServiceListExecutionsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceListExecutionsResponse> ListExecutionsAsync(BetaActionServiceListExecutionsRequest betaActionServiceListExecutionsRequest)
+    public async Task<BetaActionServiceListExecutionsResponse> ListExecutionsAsync(
+        BetaActionServiceListExecutionsRequest betaActionServiceListExecutionsRequest
+    )
     {
-        Task<ApiResult<BetaActionServiceListExecutionsResponse>> task = ListExecutionsWithHttpInfoAsync(betaActionServiceListExecutionsRequest);
-        ApiResult<BetaActionServiceListExecutionsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaActionServiceListExecutionsResponse>> task =
+            ListExecutionsWithHttpInfoAsync(betaActionServiceListExecutionsRequest);
+        ApiResult<BetaActionServiceListExecutionsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -380,7 +435,8 @@ public class BetaActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -390,7 +446,11 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceListExecutionsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceListExecutionsResponse>> ListExecutionsWithHttpInfoAsync(BetaActionServiceListExecutionsRequest betaActionServiceListExecutionsRequest)
+    public async Task<
+        ApiResult<BetaActionServiceListExecutionsResponse>
+    > ListExecutionsWithHttpInfoAsync(
+        BetaActionServiceListExecutionsRequest betaActionServiceListExecutionsRequest
+    )
     {
         string path = "/zitadel.action.v2beta.ActionService/ListExecutions";
 
@@ -417,9 +477,13 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceListTargetsRequest"></param>
     /// <returns><![CDATA[BetaActionServiceListTargetsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceListTargetsResponse> ListTargetsAsync(BetaActionServiceListTargetsRequest betaActionServiceListTargetsRequest)
+    public async Task<BetaActionServiceListTargetsResponse> ListTargetsAsync(
+        BetaActionServiceListTargetsRequest betaActionServiceListTargetsRequest
+    )
     {
-        Task<ApiResult<BetaActionServiceListTargetsResponse>> task = ListTargetsWithHttpInfoAsync(betaActionServiceListTargetsRequest);
+        Task<ApiResult<BetaActionServiceListTargetsResponse>> task = ListTargetsWithHttpInfoAsync(
+            betaActionServiceListTargetsRequest
+        );
         ApiResult<BetaActionServiceListTargetsResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -431,7 +495,8 @@ public class BetaActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -441,7 +506,9 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceListTargetsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceListTargetsResponse>> ListTargetsWithHttpInfoAsync(BetaActionServiceListTargetsRequest betaActionServiceListTargetsRequest)
+    public async Task<ApiResult<BetaActionServiceListTargetsResponse>> ListTargetsWithHttpInfoAsync(
+        BetaActionServiceListTargetsRequest betaActionServiceListTargetsRequest
+    )
     {
         string path = "/zitadel.action.v2beta.ActionService/ListTargets";
 
@@ -468,9 +535,13 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceSetExecutionRequest"></param>
     /// <returns><![CDATA[BetaActionServiceSetExecutionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceSetExecutionResponse> SetExecutionAsync(BetaActionServiceSetExecutionRequest betaActionServiceSetExecutionRequest)
+    public async Task<BetaActionServiceSetExecutionResponse> SetExecutionAsync(
+        BetaActionServiceSetExecutionRequest betaActionServiceSetExecutionRequest
+    )
     {
-        Task<ApiResult<BetaActionServiceSetExecutionResponse>> task = SetExecutionWithHttpInfoAsync(betaActionServiceSetExecutionRequest);
+        Task<ApiResult<BetaActionServiceSetExecutionResponse>> task = SetExecutionWithHttpInfoAsync(
+            betaActionServiceSetExecutionRequest
+        );
         ApiResult<BetaActionServiceSetExecutionResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -482,7 +553,8 @@ public class BetaActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -492,7 +564,11 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceSetExecutionRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceSetExecutionResponse>> SetExecutionWithHttpInfoAsync(BetaActionServiceSetExecutionRequest betaActionServiceSetExecutionRequest)
+    public async Task<
+        ApiResult<BetaActionServiceSetExecutionResponse>
+    > SetExecutionWithHttpInfoAsync(
+        BetaActionServiceSetExecutionRequest betaActionServiceSetExecutionRequest
+    )
     {
         string path = "/zitadel.action.v2beta.ActionService/SetExecution";
 
@@ -519,9 +595,13 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceUpdateTargetRequest"></param>
     /// <returns><![CDATA[BetaActionServiceUpdateTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceUpdateTargetResponse> UpdateTargetAsync(BetaActionServiceUpdateTargetRequest betaActionServiceUpdateTargetRequest)
+    public async Task<BetaActionServiceUpdateTargetResponse> UpdateTargetAsync(
+        BetaActionServiceUpdateTargetRequest betaActionServiceUpdateTargetRequest
+    )
     {
-        Task<ApiResult<BetaActionServiceUpdateTargetResponse>> task = UpdateTargetWithHttpInfoAsync(betaActionServiceUpdateTargetRequest);
+        Task<ApiResult<BetaActionServiceUpdateTargetResponse>> task = UpdateTargetWithHttpInfoAsync(
+            betaActionServiceUpdateTargetRequest
+        );
         ApiResult<BetaActionServiceUpdateTargetResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -533,7 +613,8 @@ public class BetaActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -543,7 +624,11 @@ public class BetaActionServiceApi : BaseApi
     /// <param name="betaActionServiceUpdateTargetRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceUpdateTargetResponse>> UpdateTargetWithHttpInfoAsync(BetaActionServiceUpdateTargetRequest betaActionServiceUpdateTargetRequest)
+    public async Task<
+        ApiResult<BetaActionServiceUpdateTargetResponse>
+    > UpdateTargetWithHttpInfoAsync(
+        BetaActionServiceUpdateTargetRequest betaActionServiceUpdateTargetRequest
+    )
     {
         string path = "/zitadel.action.v2beta.ActionService/UpdateTarget";
 

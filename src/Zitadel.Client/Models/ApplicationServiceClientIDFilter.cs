@@ -22,8 +22,10 @@ public class ApplicationServiceClientIDFilter : IEquatable<ApplicationServiceCli
     public bool Equals(ApplicationServiceClientIDFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
+            );
     }
 
     public override bool Equals(object? obj)

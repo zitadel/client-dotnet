@@ -26,9 +26,14 @@ public class ProjectServiceProjectNameFilter : IEquatable<ProjectServiceProjectN
     public bool Equals(ProjectServiceProjectNameFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectName, other.ProjectName)
-                    && EqualityComparer<ProjectServiceTextFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<ProjectServiceTextFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

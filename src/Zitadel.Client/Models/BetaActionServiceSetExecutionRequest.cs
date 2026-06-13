@@ -26,9 +26,13 @@ public class BetaActionServiceSetExecutionRequest : IEquatable<BetaActionService
     public bool Equals(BetaActionServiceSetExecutionRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaActionServiceCondition?>.Default.Equals(this.Condition, other.Condition)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Targets, other.Targets));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaActionServiceCondition?>.Default.Equals(
+                    this.Condition,
+                    other.Condition
+                ) && EqualityComparer<List<string>?>.Default.Equals(this.Targets, other.Targets)
+            );
     }
 
     public override bool Equals(object? obj)

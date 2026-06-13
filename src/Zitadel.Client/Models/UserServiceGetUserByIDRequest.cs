@@ -19,8 +19,10 @@ public class UserServiceGetUserByIDRequest : IEquatable<UserServiceGetUserByIDRe
     public bool Equals(UserServiceGetUserByIDRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaFeatureServiceSetSystemFeaturesRequest : IEquatable<BetaFeatureServiceSetSystemFeaturesRequest>
+public class BetaFeatureServiceSetSystemFeaturesRequest
+    : IEquatable<BetaFeatureServiceSetSystemFeaturesRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("loginDefaultOrg")]
@@ -40,12 +41,26 @@ public class BetaFeatureServiceSetSystemFeaturesRequest : IEquatable<BetaFeature
     public bool Equals(BetaFeatureServiceSetSystemFeaturesRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<bool?>.Default.Equals(this.LoginDefaultOrg, other.LoginDefaultOrg)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<bool?>.Default.Equals(
+                    this.LoginDefaultOrg,
+                    other.LoginDefaultOrg
+                )
                     && EqualityComparer<bool?>.Default.Equals(this.UserSchema, other.UserSchema)
-                    && EqualityComparer<bool?>.Default.Equals(this.OidcTokenExchange, other.OidcTokenExchange)
-                    && EqualityComparer<List<BetaFeatureServiceImprovedPerformance>?>.Default.Equals(this.ImprovedPerformance, other.ImprovedPerformance)
-                    && EqualityComparer<bool?>.Default.Equals(this.OidcSingleV1SessionTermination, other.OidcSingleV1SessionTermination));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.OidcTokenExchange,
+                        other.OidcTokenExchange
+                    )
+                    && EqualityComparer<List<BetaFeatureServiceImprovedPerformance>?>.Default.Equals(
+                        this.ImprovedPerformance,
+                        other.ImprovedPerformance
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.OidcSingleV1SessionTermination,
+                        other.OidcSingleV1SessionTermination
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

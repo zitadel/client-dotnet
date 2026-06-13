@@ -26,9 +26,14 @@ public class InstanceServiceDomainFilter : IEquatable<InstanceServiceDomainFilte
     public bool Equals(InstanceServiceDomainFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain)
-                    && EqualityComparer<InstanceServiceTextQueryMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<InstanceServiceTextQueryMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

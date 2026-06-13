@@ -29,9 +29,11 @@ public class FeatureServiceLoginV2 : IEquatable<FeatureServiceLoginV2>
     public bool Equals(FeatureServiceLoginV2? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.Required, other.Required)
-                    && EqualityComparer<string?>.Default.Equals(this.BaseUri, other.BaseUri));
+                    && EqualityComparer<string?>.Default.Equals(this.BaseUri, other.BaseUri)
+            );
     }
 
     public override bool Equals(object? obj)

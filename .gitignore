@@ -2,6 +2,13 @@
 bin/
 obj/
 
+# Test runner output
+TestResults/
+
+# Project-root NuGet/dotnet caches (scoped here via devbox env)
+/.nuget/
+/.dotnet/
+
 # IDE files
 *.user
 .vs/

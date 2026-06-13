@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class BetaTelemetryServiceApi : BaseApi
 {
-
     private static readonly string[] ReportBaseInformationAccepts = ["application/json"];
 
     private static readonly string[] ReportResourceCountsAccepts = ["application/json"];
@@ -34,7 +33,11 @@ public class BetaTelemetryServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public BetaTelemetryServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public BetaTelemetryServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -44,10 +47,16 @@ public class BetaTelemetryServiceApi : BaseApi
     /// <param name="betaTelemetryServiceReportBaseInformationRequest"></param>
     /// <returns><![CDATA[BetaTelemetryServiceReportBaseInformationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaTelemetryServiceReportBaseInformationResponse> ReportBaseInformationAsync(BetaTelemetryServiceReportBaseInformationRequest betaTelemetryServiceReportBaseInformationRequest)
+    public async Task<BetaTelemetryServiceReportBaseInformationResponse> ReportBaseInformationAsync(
+        BetaTelemetryServiceReportBaseInformationRequest betaTelemetryServiceReportBaseInformationRequest
+    )
     {
-        Task<ApiResult<BetaTelemetryServiceReportBaseInformationResponse>> task = ReportBaseInformationWithHttpInfoAsync(betaTelemetryServiceReportBaseInformationRequest);
-        ApiResult<BetaTelemetryServiceReportBaseInformationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaTelemetryServiceReportBaseInformationResponse>> task =
+            ReportBaseInformationWithHttpInfoAsync(
+                betaTelemetryServiceReportBaseInformationRequest
+            );
+        ApiResult<BetaTelemetryServiceReportBaseInformationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -58,7 +67,8 @@ public class BetaTelemetryServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -68,7 +78,11 @@ public class BetaTelemetryServiceApi : BaseApi
     /// <param name="betaTelemetryServiceReportBaseInformationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaTelemetryServiceReportBaseInformationResponse>> ReportBaseInformationWithHttpInfoAsync(BetaTelemetryServiceReportBaseInformationRequest betaTelemetryServiceReportBaseInformationRequest)
+    public async Task<
+        ApiResult<BetaTelemetryServiceReportBaseInformationResponse>
+    > ReportBaseInformationWithHttpInfoAsync(
+        BetaTelemetryServiceReportBaseInformationRequest betaTelemetryServiceReportBaseInformationRequest
+    )
     {
         string path = "/zitadel.analytics.v2beta.TelemetryService/ReportBaseInformation";
 
@@ -95,10 +109,14 @@ public class BetaTelemetryServiceApi : BaseApi
     /// <param name="betaTelemetryServiceReportResourceCountsRequest"></param>
     /// <returns><![CDATA[BetaTelemetryServiceReportResourceCountsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaTelemetryServiceReportResourceCountsResponse> ReportResourceCountsAsync(BetaTelemetryServiceReportResourceCountsRequest betaTelemetryServiceReportResourceCountsRequest)
+    public async Task<BetaTelemetryServiceReportResourceCountsResponse> ReportResourceCountsAsync(
+        BetaTelemetryServiceReportResourceCountsRequest betaTelemetryServiceReportResourceCountsRequest
+    )
     {
-        Task<ApiResult<BetaTelemetryServiceReportResourceCountsResponse>> task = ReportResourceCountsWithHttpInfoAsync(betaTelemetryServiceReportResourceCountsRequest);
-        ApiResult<BetaTelemetryServiceReportResourceCountsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaTelemetryServiceReportResourceCountsResponse>> task =
+            ReportResourceCountsWithHttpInfoAsync(betaTelemetryServiceReportResourceCountsRequest);
+        ApiResult<BetaTelemetryServiceReportResourceCountsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -109,7 +127,8 @@ public class BetaTelemetryServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -119,7 +138,11 @@ public class BetaTelemetryServiceApi : BaseApi
     /// <param name="betaTelemetryServiceReportResourceCountsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaTelemetryServiceReportResourceCountsResponse>> ReportResourceCountsWithHttpInfoAsync(BetaTelemetryServiceReportResourceCountsRequest betaTelemetryServiceReportResourceCountsRequest)
+    public async Task<
+        ApiResult<BetaTelemetryServiceReportResourceCountsResponse>
+    > ReportResourceCountsWithHttpInfoAsync(
+        BetaTelemetryServiceReportResourceCountsRequest betaTelemetryServiceReportResourceCountsRequest
+    )
     {
         string path = "/zitadel.analytics.v2beta.TelemetryService/ReportResourceCounts";
 

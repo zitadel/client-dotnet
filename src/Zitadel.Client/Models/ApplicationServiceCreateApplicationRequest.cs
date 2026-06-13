@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceCreateApplicationRequest : IEquatable<ApplicationServiceCreateApplicationRequest>
+public class ApplicationServiceCreateApplicationRequest
+    : IEquatable<ApplicationServiceCreateApplicationRequest>
 {
     /// <summary>
     /// The ID of the project the application will be created in.
@@ -48,13 +49,27 @@ public class ApplicationServiceCreateApplicationRequest : IEquatable<Application
     public bool Equals(ApplicationServiceCreateApplicationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
-                    && EqualityComparer<string?>.Default.Equals(this.ApplicationId, other.ApplicationId)
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ApplicationId,
+                        other.ApplicationId
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<ApplicationServiceCreateAPIApplicationRequest?>.Default.Equals(this.ApiConfiguration, other.ApiConfiguration)
-                    && EqualityComparer<ApplicationServiceCreateOIDCApplicationRequest?>.Default.Equals(this.OidcConfiguration, other.OidcConfiguration)
-                    && EqualityComparer<ApplicationServiceCreateSAMLApplicationRequest?>.Default.Equals(this.SamlConfiguration, other.SamlConfiguration));
+                    && EqualityComparer<ApplicationServiceCreateAPIApplicationRequest?>.Default.Equals(
+                        this.ApiConfiguration,
+                        other.ApiConfiguration
+                    )
+                    && EqualityComparer<ApplicationServiceCreateOIDCApplicationRequest?>.Default.Equals(
+                        this.OidcConfiguration,
+                        other.OidcConfiguration
+                    )
+                    && EqualityComparer<ApplicationServiceCreateSAMLApplicationRequest?>.Default.Equals(
+                        this.SamlConfiguration,
+                        other.SamlConfiguration
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

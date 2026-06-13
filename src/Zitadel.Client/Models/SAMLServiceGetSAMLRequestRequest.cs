@@ -22,8 +22,10 @@ public class SAMLServiceGetSAMLRequestRequest : IEquatable<SAMLServiceGetSAMLReq
     public bool Equals(SAMLServiceGetSAMLRequestRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.SamlRequestId, other.SamlRequestId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.SamlRequestId, other.SamlRequestId)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -13,7 +13,7 @@ public class ActionServiceCondition : IEquatable<ActionServiceCondition>
 {
     /// <example>null</example>
     [JsonPropertyName("event")]
-    public ActionServiceEventExecution? _Event { get; set; }
+    public ActionServiceEventExecution? Event { get; set; }
 
     /// <example>null</example>
     [JsonPropertyName("function")]
@@ -31,11 +31,25 @@ public class ActionServiceCondition : IEquatable<ActionServiceCondition>
     public bool Equals(ActionServiceCondition? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ActionServiceEventExecution?>.Default.Equals(this._Event, other._Event)
-                    && EqualityComparer<ActionServiceFunctionExecution?>.Default.Equals(this.Function, other.Function)
-                    && EqualityComparer<ActionServiceRequestExecution?>.Default.Equals(this.Request, other.Request)
-                    && EqualityComparer<ActionServiceResponseExecution?>.Default.Equals(this.Response, other.Response));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ActionServiceEventExecution?>.Default.Equals(
+                    this.Event,
+                    other.Event
+                )
+                    && EqualityComparer<ActionServiceFunctionExecution?>.Default.Equals(
+                        this.Function,
+                        other.Function
+                    )
+                    && EqualityComparer<ActionServiceRequestExecution?>.Default.Equals(
+                        this.Request,
+                        other.Request
+                    )
+                    && EqualityComparer<ActionServiceResponseExecution?>.Default.Equals(
+                        this.Response,
+                        other.Response
+                    )
+            );
     }
 
     public override bool Equals(object? obj)
@@ -46,7 +60,7 @@ public class ActionServiceCondition : IEquatable<ActionServiceCondition>
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this._Event);
+        hash.Add(this.Event);
         hash.Add(this.Function);
         hash.Add(this.Request);
         hash.Add(this.Response);

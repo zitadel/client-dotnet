@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceAddOrganizationResponse : IEquatable<OrganizationServiceAddOrganizationResponse>
+public class OrganizationServiceAddOrganizationResponse
+    : IEquatable<OrganizationServiceAddOrganizationResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("details")]
@@ -27,10 +28,21 @@ public class OrganizationServiceAddOrganizationResponse : IEquatable<Organizatio
     public bool Equals(OrganizationServiceAddOrganizationResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<OrganizationServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<List<OrganizationServiceCreatedAdmin>?>.Default.Equals(this.CreatedAdmins, other.CreatedAdmins));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<OrganizationServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+                    && EqualityComparer<List<OrganizationServiceCreatedAdmin>?>.Default.Equals(
+                        this.CreatedAdmins,
+                        other.CreatedAdmins
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaOrganizationServiceMetadataKeyQuery : IEquatable<BetaOrganizationServiceMetadataKeyQuery>
+public class BetaOrganizationServiceMetadataKeyQuery
+    : IEquatable<BetaOrganizationServiceMetadataKeyQuery>
 {
     /// <example>null</example>
     [JsonPropertyName("key")]
@@ -23,9 +24,14 @@ public class BetaOrganizationServiceMetadataKeyQuery : IEquatable<BetaOrganizati
     public bool Equals(BetaOrganizationServiceMetadataKeyQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Key, other.Key)
-                    && EqualityComparer<BetaOrganizationServiceTextQueryMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<BetaOrganizationServiceTextQueryMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

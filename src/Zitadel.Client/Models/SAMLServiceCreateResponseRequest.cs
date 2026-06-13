@@ -30,10 +30,18 @@ public class SAMLServiceCreateResponseRequest : IEquatable<SAMLServiceCreateResp
     public bool Equals(SAMLServiceCreateResponseRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.SamlRequestId, other.SamlRequestId)
-                    && EqualityComparer<SAMLServiceAuthorizationError?>.Default.Equals(this.Error, other.Error)
-                    && EqualityComparer<SAMLServiceSession?>.Default.Equals(this.Session, other.Session));
+                    && EqualityComparer<SAMLServiceAuthorizationError?>.Default.Equals(
+                        this.Error,
+                        other.Error
+                    )
+                    && EqualityComparer<SAMLServiceSession?>.Default.Equals(
+                        this.Session,
+                        other.Session
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

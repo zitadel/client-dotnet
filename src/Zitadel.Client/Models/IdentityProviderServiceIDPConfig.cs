@@ -67,20 +67,61 @@ public class IdentityProviderServiceIDPConfig : IEquatable<IdentityProviderServi
     public bool Equals(IdentityProviderServiceIDPConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<IdentityProviderServiceOptions?>.Default.Equals(this.Options, other.Options)
-                    && EqualityComparer<IdentityProviderServiceAppleConfig?>.Default.Equals(this.Apple, other.Apple)
-                    && EqualityComparer<IdentityProviderServiceAzureADConfig?>.Default.Equals(this.AzureAd, other.AzureAd)
-                    && EqualityComparer<IdentityProviderServiceGitHubConfig?>.Default.Equals(this.Github, other.Github)
-                    && EqualityComparer<IdentityProviderServiceGitHubEnterpriseServerConfig?>.Default.Equals(this.GithubEs, other.GithubEs)
-                    && EqualityComparer<IdentityProviderServiceGitLabConfig?>.Default.Equals(this.Gitlab, other.Gitlab)
-                    && EqualityComparer<IdentityProviderServiceGitLabSelfHostedConfig?>.Default.Equals(this.GitlabSelfHosted, other.GitlabSelfHosted)
-                    && EqualityComparer<IdentityProviderServiceGoogleConfig?>.Default.Equals(this.Google, other.Google)
-                    && EqualityComparer<IdentityProviderServiceJWTConfig?>.Default.Equals(this.Jwt, other.Jwt)
-                    && EqualityComparer<IdentityProviderServiceLDAPConfig?>.Default.Equals(this.Ldap, other.Ldap)
-                    && EqualityComparer<IdentityProviderServiceOAuthConfig?>.Default.Equals(this.Oauth, other.Oauth)
-                    && EqualityComparer<IdentityProviderServiceGenericOIDCConfig?>.Default.Equals(this.Oidc, other.Oidc)
-                    && EqualityComparer<IdentityProviderServiceSAMLConfig?>.Default.Equals(this.Saml, other.Saml));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<IdentityProviderServiceOptions?>.Default.Equals(
+                    this.Options,
+                    other.Options
+                )
+                    && EqualityComparer<IdentityProviderServiceAppleConfig?>.Default.Equals(
+                        this.Apple,
+                        other.Apple
+                    )
+                    && EqualityComparer<IdentityProviderServiceAzureADConfig?>.Default.Equals(
+                        this.AzureAd,
+                        other.AzureAd
+                    )
+                    && EqualityComparer<IdentityProviderServiceGitHubConfig?>.Default.Equals(
+                        this.Github,
+                        other.Github
+                    )
+                    && EqualityComparer<IdentityProviderServiceGitHubEnterpriseServerConfig?>.Default.Equals(
+                        this.GithubEs,
+                        other.GithubEs
+                    )
+                    && EqualityComparer<IdentityProviderServiceGitLabConfig?>.Default.Equals(
+                        this.Gitlab,
+                        other.Gitlab
+                    )
+                    && EqualityComparer<IdentityProviderServiceGitLabSelfHostedConfig?>.Default.Equals(
+                        this.GitlabSelfHosted,
+                        other.GitlabSelfHosted
+                    )
+                    && EqualityComparer<IdentityProviderServiceGoogleConfig?>.Default.Equals(
+                        this.Google,
+                        other.Google
+                    )
+                    && EqualityComparer<IdentityProviderServiceJWTConfig?>.Default.Equals(
+                        this.Jwt,
+                        other.Jwt
+                    )
+                    && EqualityComparer<IdentityProviderServiceLDAPConfig?>.Default.Equals(
+                        this.Ldap,
+                        other.Ldap
+                    )
+                    && EqualityComparer<IdentityProviderServiceOAuthConfig?>.Default.Equals(
+                        this.Oauth,
+                        other.Oauth
+                    )
+                    && EqualityComparer<IdentityProviderServiceGenericOIDCConfig?>.Default.Equals(
+                        this.Oidc,
+                        other.Oidc
+                    )
+                    && EqualityComparer<IdentityProviderServiceSAMLConfig?>.Default.Equals(
+                        this.Saml,
+                        other.Saml
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

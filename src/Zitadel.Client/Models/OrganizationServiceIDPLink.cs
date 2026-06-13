@@ -27,10 +27,12 @@ public class OrganizationServiceIDPLink : IEquatable<OrganizationServiceIDPLink>
     public bool Equals(OrganizationServiceIDPLink? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.IdpId, other.IdpId)
                     && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<string?>.Default.Equals(this.UserName, other.UserName));
+                    && EqualityComparer<string?>.Default.Equals(this.UserName, other.UserName)
+            );
     }
 
     public override bool Equals(object? obj)

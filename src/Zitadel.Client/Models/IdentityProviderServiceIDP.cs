@@ -42,13 +42,27 @@ public class IdentityProviderServiceIDP : IEquatable<IdentityProviderServiceIDP>
     public bool Equals(IdentityProviderServiceIDP? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
-                    && EqualityComparer<IdentityProviderServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<IdentityProviderServiceIDPState?>.Default.Equals(this.State, other.State)
+                    && EqualityComparer<IdentityProviderServiceDetails?>.Default.Equals(
+                        this.Details,
+                        other.Details
+                    )
+                    && EqualityComparer<IdentityProviderServiceIDPState?>.Default.Equals(
+                        this.State,
+                        other.State
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<IdentityProviderServiceIDPType?>.Default.Equals(this.Type, other.Type)
-                    && EqualityComparer<IdentityProviderServiceIDPConfig?>.Default.Equals(this.Config, other.Config));
+                    && EqualityComparer<IdentityProviderServiceIDPType?>.Default.Equals(
+                        this.Type,
+                        other.Type
+                    )
+                    && EqualityComparer<IdentityProviderServiceIDPConfig?>.Default.Equals(
+                        this.Config,
+                        other.Config
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

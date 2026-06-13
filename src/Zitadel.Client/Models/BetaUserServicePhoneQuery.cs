@@ -26,9 +26,14 @@ public class BetaUserServicePhoneQuery : IEquatable<BetaUserServicePhoneQuery>
     public bool Equals(BetaUserServicePhoneQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Number, other.Number)
-                    && EqualityComparer<BetaUserServiceTextQueryMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<BetaUserServiceTextQueryMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInternalPermissionServiceDeleteAdministratorRequest : IEquatable<BetaInternalPermissionServiceDeleteAdministratorRequest>
+public class BetaInternalPermissionServiceDeleteAdministratorRequest
+    : IEquatable<BetaInternalPermissionServiceDeleteAdministratorRequest>
 {
     /// <summary>
     /// UserID is the ID of the user who should have his administrator roles removed.
@@ -26,9 +27,14 @@ public class BetaInternalPermissionServiceDeleteAdministratorRequest : IEquatabl
     public bool Equals(BetaInternalPermissionServiceDeleteAdministratorRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<BetaInternalPermissionServiceResourceType?>.Default.Equals(this.Resource, other.Resource));
+                    && EqualityComparer<BetaInternalPermissionServiceResourceType?>.Default.Equals(
+                        this.Resource,
+                        other.Resource
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

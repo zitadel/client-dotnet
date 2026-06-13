@@ -26,9 +26,11 @@ public class OIDCServiceCreateCallbackResponse : IEquatable<OIDCServiceCreateCal
     public bool Equals(OIDCServiceCreateCallbackResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<OIDCServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<string?>.Default.Equals(this.CallbackUrl, other.CallbackUrl));
+                    && EqualityComparer<string?>.Default.Equals(this.CallbackUrl, other.CallbackUrl)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -27,10 +27,21 @@ public class BetaSessionServiceSearchQuery : IEquatable<BetaSessionServiceSearch
     public bool Equals(BetaSessionServiceSearchQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaSessionServiceCreationDateQuery?>.Default.Equals(this.CreationDateQuery, other.CreationDateQuery)
-                    && EqualityComparer<BetaSessionServiceIDsQuery?>.Default.Equals(this.IdsQuery, other.IdsQuery)
-                    && EqualityComparer<BetaSessionServiceUserIDQuery?>.Default.Equals(this.UserIdQuery, other.UserIdQuery));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaSessionServiceCreationDateQuery?>.Default.Equals(
+                    this.CreationDateQuery,
+                    other.CreationDateQuery
+                )
+                    && EqualityComparer<BetaSessionServiceIDsQuery?>.Default.Equals(
+                        this.IdsQuery,
+                        other.IdsQuery
+                    )
+                    && EqualityComparer<BetaSessionServiceUserIDQuery?>.Default.Equals(
+                        this.UserIdQuery,
+                        other.UserIdQuery
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

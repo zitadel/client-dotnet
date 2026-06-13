@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaUserServiceCreatePasskeyRegistrationLinkRequest : IEquatable<BetaUserServiceCreatePasskeyRegistrationLinkRequest>
+public class BetaUserServiceCreatePasskeyRegistrationLinkRequest
+    : IEquatable<BetaUserServiceCreatePasskeyRegistrationLinkRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("userId")]
@@ -27,10 +28,15 @@ public class BetaUserServiceCreatePasskeyRegistrationLinkRequest : IEquatable<Be
     public bool Equals(BetaUserServiceCreatePasskeyRegistrationLinkRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<Object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
-                    && EqualityComparer<BetaUserServiceSendPasskeyRegistrationLink?>.Default.Equals(this.SendLink, other.SendLink));
+                    && EqualityComparer<BetaUserServiceSendPasskeyRegistrationLink?>.Default.Equals(
+                        this.SendLink,
+                        other.SendLink
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

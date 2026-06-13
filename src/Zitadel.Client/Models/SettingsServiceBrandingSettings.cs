@@ -52,14 +52,34 @@ public class SettingsServiceBrandingSettings : IEquatable<SettingsServiceBrandin
     public bool Equals(SettingsServiceBrandingSettings? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<SettingsServiceTheme?>.Default.Equals(this.LightTheme, other.LightTheme)
-                    && EqualityComparer<SettingsServiceTheme?>.Default.Equals(this.DarkTheme, other.DarkTheme)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<SettingsServiceTheme?>.Default.Equals(
+                    this.LightTheme,
+                    other.LightTheme
+                )
+                    && EqualityComparer<SettingsServiceTheme?>.Default.Equals(
+                        this.DarkTheme,
+                        other.DarkTheme
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.FontUrl, other.FontUrl)
-                    && EqualityComparer<bool?>.Default.Equals(this.HideLoginNameSuffix, other.HideLoginNameSuffix)
-                    && EqualityComparer<bool?>.Default.Equals(this.DisableWatermark, other.DisableWatermark)
-                    && EqualityComparer<SettingsServiceResourceOwnerType?>.Default.Equals(this.ResourceOwnerType, other.ResourceOwnerType)
-                    && EqualityComparer<SettingsServiceThemeMode?>.Default.Equals(this.ThemeMode, other.ThemeMode));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.HideLoginNameSuffix,
+                        other.HideLoginNameSuffix
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.DisableWatermark,
+                        other.DisableWatermark
+                    )
+                    && EqualityComparer<SettingsServiceResourceOwnerType?>.Default.Equals(
+                        this.ResourceOwnerType,
+                        other.ResourceOwnerType
+                    )
+                    && EqualityComparer<SettingsServiceThemeMode?>.Default.Equals(
+                        this.ThemeMode,
+                        other.ThemeMode
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

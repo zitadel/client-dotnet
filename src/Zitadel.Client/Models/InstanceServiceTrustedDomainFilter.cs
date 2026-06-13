@@ -19,8 +19,13 @@ public class InstanceServiceTrustedDomainFilter : IEquatable<InstanceServiceTrus
     public bool Equals(InstanceServiceTrustedDomainFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<InstanceServiceDomainFilter?>.Default.Equals(this.DomainFilter, other.DomainFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<InstanceServiceDomainFilter?>.Default.Equals(
+                    this.DomainFilter,
+                    other.DomainFilter
+                )
+            );
     }
 
     public override bool Equals(object? obj)

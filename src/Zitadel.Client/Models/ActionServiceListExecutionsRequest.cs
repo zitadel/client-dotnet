@@ -30,10 +30,21 @@ public class ActionServiceListExecutionsRequest : IEquatable<ActionServiceListEx
     public bool Equals(ActionServiceListExecutionsRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ActionServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<ActionServiceExecutionFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<ActionServiceExecutionSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ActionServicePaginationRequest?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<ActionServiceExecutionFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<List<ActionServiceExecutionSearchFilter>?>.Default.Equals(
+                        this.Filters,
+                        other.Filters
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAppServiceDeleteApplicationKeyRequest : IEquatable<BetaAppServiceDeleteApplicationKeyRequest>
+public class BetaAppServiceDeleteApplicationKeyRequest
+    : IEquatable<BetaAppServiceDeleteApplicationKeyRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("id")]
@@ -31,11 +32,19 @@ public class BetaAppServiceDeleteApplicationKeyRequest : IEquatable<BetaAppServi
     public bool Equals(BetaAppServiceDeleteApplicationKeyRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
                     && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
-                    && EqualityComparer<string?>.Default.Equals(this.ApplicationId, other.ApplicationId)
-                    && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ApplicationId,
+                        other.ApplicationId
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

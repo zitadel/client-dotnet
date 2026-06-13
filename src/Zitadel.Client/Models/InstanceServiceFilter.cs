@@ -23,9 +23,17 @@ public class InstanceServiceFilter : IEquatable<InstanceServiceFilter>
     public bool Equals(InstanceServiceFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<InstanceServiceCustomDomainsFilter?>.Default.Equals(this.CustomDomainsFilter, other.CustomDomainsFilter)
-                    && EqualityComparer<InstanceServiceInIDsFilter?>.Default.Equals(this.InIdsFilter, other.InIdsFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<InstanceServiceCustomDomainsFilter?>.Default.Equals(
+                    this.CustomDomainsFilter,
+                    other.CustomDomainsFilter
+                )
+                    && EqualityComparer<InstanceServiceInIDsFilter?>.Default.Equals(
+                        this.InIdsFilter,
+                        other.InIdsFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

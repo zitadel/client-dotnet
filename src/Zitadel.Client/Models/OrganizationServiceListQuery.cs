@@ -27,10 +27,12 @@ public class OrganizationServiceListQuery : IEquatable<OrganizationServiceListQu
     public bool Equals(OrganizationServiceListQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<Object?>.Default.Equals(this.Offset, other.Offset)
                     && EqualityComparer<int?>.Default.Equals(this.Limit, other.Limit)
-                    && EqualityComparer<bool?>.Default.Equals(this.Asc, other.Asc));
+                    && EqualityComparer<bool?>.Default.Equals(this.Asc, other.Asc)
+            );
     }
 
     public override bool Equals(object? obj)

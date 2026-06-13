@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInternalPermissionServiceResourceType : IEquatable<BetaInternalPermissionServiceResourceType>
+public class BetaInternalPermissionServiceResourceType
+    : IEquatable<BetaInternalPermissionServiceResourceType>
 {
     /// <summary>
     /// Instance is the resource type for granting administrator privileges on the instance level.
@@ -40,11 +41,19 @@ public class BetaInternalPermissionServiceResourceType : IEquatable<BetaInternal
     public bool Equals(BetaInternalPermissionServiceResourceType? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.Instance, other.Instance)
-                    && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<BetaInternalPermissionServiceProjectGrant?>.Default.Equals(this.ProjectGrant, other.ProjectGrant)
-                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+                    && EqualityComparer<BetaInternalPermissionServiceProjectGrant?>.Default.Equals(
+                        this.ProjectGrant,
+                        other.ProjectGrant
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
+            );
     }
 
     public override bool Equals(object? obj)

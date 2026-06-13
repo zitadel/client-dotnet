@@ -19,8 +19,13 @@ public class BetaWebKeyServiceECDSA : IEquatable<BetaWebKeyServiceECDSA>
     public bool Equals(BetaWebKeyServiceECDSA? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaWebKeyServiceECDSACurve?>.Default.Equals(this.Curve, other.Curve));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaWebKeyServiceECDSACurve?>.Default.Equals(
+                    this.Curve,
+                    other.Curve
+                )
+            );
     }
 
     public override bool Equals(object? obj)

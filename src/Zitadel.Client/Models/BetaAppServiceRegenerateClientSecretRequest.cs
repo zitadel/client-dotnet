@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAppServiceRegenerateClientSecretRequest : IEquatable<BetaAppServiceRegenerateClientSecretRequest>
+public class BetaAppServiceRegenerateClientSecretRequest
+    : IEquatable<BetaAppServiceRegenerateClientSecretRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("projectId")]
@@ -31,11 +32,16 @@ public class BetaAppServiceRegenerateClientSecretRequest : IEquatable<BetaAppSer
     public bool Equals(BetaAppServiceRegenerateClientSecretRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
-                    && EqualityComparer<string?>.Default.Equals(this.ApplicationId, other.ApplicationId)
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ApplicationId,
+                        other.ApplicationId
+                    )
                     && EqualityComparer<bool?>.Default.Equals(this.IsApi, other.IsApi)
-                    && EqualityComparer<bool?>.Default.Equals(this.IsOidc, other.IsOidc));
+                    && EqualityComparer<bool?>.Default.Equals(this.IsOidc, other.IsOidc)
+            );
     }
 
     public override bool Equals(object? obj)

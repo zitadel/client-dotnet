@@ -23,9 +23,14 @@ public class BetaAppServiceAPIConfig : IEquatable<BetaAppServiceAPIConfig>
     public bool Equals(BetaAppServiceAPIConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<BetaAppServiceAPIAuthMethodType?>.Default.Equals(this.AuthMethodType, other.AuthMethodType));
+                    && EqualityComparer<BetaAppServiceAPIAuthMethodType?>.Default.Equals(
+                        this.AuthMethodType,
+                        other.AuthMethodType
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceApplicationKeySearchFilter : IEquatable<ApplicationServiceApplicationKeySearchFilter>
+public class ApplicationServiceApplicationKeySearchFilter
+    : IEquatable<ApplicationServiceApplicationKeySearchFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("applicationIdFilter")]
@@ -27,10 +28,21 @@ public class ApplicationServiceApplicationKeySearchFilter : IEquatable<Applicati
     public bool Equals(ApplicationServiceApplicationKeySearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ApplicationServiceApplicationKeyApplicationIDFilter?>.Default.Equals(this.ApplicationIdFilter, other.ApplicationIdFilter)
-                    && EqualityComparer<ApplicationServiceApplicationKeyOrganizationIDFilter?>.Default.Equals(this.OrganizationIdFilter, other.OrganizationIdFilter)
-                    && EqualityComparer<ApplicationServiceApplicationKeyProjectIDFilter?>.Default.Equals(this.ProjectIdFilter, other.ProjectIdFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ApplicationServiceApplicationKeyApplicationIDFilter?>.Default.Equals(
+                    this.ApplicationIdFilter,
+                    other.ApplicationIdFilter
+                )
+                    && EqualityComparer<ApplicationServiceApplicationKeyOrganizationIDFilter?>.Default.Equals(
+                        this.OrganizationIdFilter,
+                        other.OrganizationIdFilter
+                    )
+                    && EqualityComparer<ApplicationServiceApplicationKeyProjectIDFilter?>.Default.Equals(
+                        this.ProjectIdFilter,
+                        other.ProjectIdFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

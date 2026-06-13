@@ -47,12 +47,20 @@ public class OrganizationServiceDomain : IEquatable<OrganizationServiceDomain>
     public bool Equals(OrganizationServiceDomain? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                )
                     && EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain)
                     && EqualityComparer<bool?>.Default.Equals(this.IsVerified, other.IsVerified)
                     && EqualityComparer<bool?>.Default.Equals(this.IsPrimary, other.IsPrimary)
-                    && EqualityComparer<OrganizationServiceDomainValidationType?>.Default.Equals(this.ValidationType, other.ValidationType));
+                    && EqualityComparer<OrganizationServiceDomainValidationType?>.Default.Equals(
+                        this.ValidationType,
+                        other.ValidationType
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

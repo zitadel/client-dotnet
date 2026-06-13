@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class UserServiceSendPasskeyRegistrationLink : IEquatable<UserServiceSendPasskeyRegistrationLink>
+public class UserServiceSendPasskeyRegistrationLink
+    : IEquatable<UserServiceSendPasskeyRegistrationLink>
 {
     /// <summary>
     /// Optionally set a url_template, which will be used in the mail sent by ZITADEL to guide the user to your passkey registration page.  If no template is set, the default ZITADEL url will be used.   The following placeholders can be used: UserID, OrgID, CodeID, Code
@@ -22,8 +23,10 @@ public class UserServiceSendPasskeyRegistrationLink : IEquatable<UserServiceSend
     public bool Equals(UserServiceSendPasskeyRegistrationLink? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.UrlTemplate, other.UrlTemplate));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.UrlTemplate, other.UrlTemplate)
+            );
     }
 
     public override bool Equals(object? obj)

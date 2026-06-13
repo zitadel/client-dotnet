@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInternalPermissionServicePaginationResponse : IEquatable<BetaInternalPermissionServicePaginationResponse>
+public class BetaInternalPermissionServicePaginationResponse
+    : IEquatable<BetaInternalPermissionServicePaginationResponse>
 {
     /// <summary>
     /// Absolute number of objects matching the query, regardless of applied limit.
@@ -29,9 +30,14 @@ public class BetaInternalPermissionServicePaginationResponse : IEquatable<BetaIn
     public bool Equals(BetaInternalPermissionServicePaginationResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<Object?>.Default.Equals(this.TotalResult, other.TotalResult)
-                    && EqualityComparer<Object?>.Default.Equals(this.AppliedLimit, other.AppliedLimit));
+                    && EqualityComparer<Object?>.Default.Equals(
+                        this.AppliedLimit,
+                        other.AppliedLimit
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

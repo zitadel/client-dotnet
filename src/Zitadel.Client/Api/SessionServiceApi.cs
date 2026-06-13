@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class SessionServiceApi : BaseApi
 {
-
     private static readonly string[] CreateSessionAccepts = ["application/json"];
 
     private static readonly string[] DeleteSessionAccepts = ["application/json"];
@@ -40,7 +39,11 @@ public class SessionServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public SessionServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public SessionServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -50,9 +53,13 @@ public class SessionServiceApi : BaseApi
     /// <param name="sessionServiceCreateSessionRequest"></param>
     /// <returns><![CDATA[SessionServiceCreateSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<SessionServiceCreateSessionResponse> CreateSessionAsync(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest)
+    public async Task<SessionServiceCreateSessionResponse> CreateSessionAsync(
+        SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest
+    )
     {
-        Task<ApiResult<SessionServiceCreateSessionResponse>> task = CreateSessionWithHttpInfoAsync(sessionServiceCreateSessionRequest);
+        Task<ApiResult<SessionServiceCreateSessionResponse>> task = CreateSessionWithHttpInfoAsync(
+            sessionServiceCreateSessionRequest
+        );
         ApiResult<SessionServiceCreateSessionResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -64,7 +71,8 @@ public class SessionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -74,7 +82,11 @@ public class SessionServiceApi : BaseApi
     /// <param name="sessionServiceCreateSessionRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<SessionServiceCreateSessionResponse>> CreateSessionWithHttpInfoAsync(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest)
+    public async Task<
+        ApiResult<SessionServiceCreateSessionResponse>
+    > CreateSessionWithHttpInfoAsync(
+        SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest
+    )
     {
         string path = "/zitadel.session.v2.SessionService/CreateSession";
 
@@ -101,9 +113,13 @@ public class SessionServiceApi : BaseApi
     /// <param name="sessionServiceDeleteSessionRequest"></param>
     /// <returns><![CDATA[SessionServiceDeleteSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<SessionServiceDeleteSessionResponse> DeleteSessionAsync(SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest)
+    public async Task<SessionServiceDeleteSessionResponse> DeleteSessionAsync(
+        SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest
+    )
     {
-        Task<ApiResult<SessionServiceDeleteSessionResponse>> task = DeleteSessionWithHttpInfoAsync(sessionServiceDeleteSessionRequest);
+        Task<ApiResult<SessionServiceDeleteSessionResponse>> task = DeleteSessionWithHttpInfoAsync(
+            sessionServiceDeleteSessionRequest
+        );
         ApiResult<SessionServiceDeleteSessionResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -115,7 +131,8 @@ public class SessionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -125,7 +142,11 @@ public class SessionServiceApi : BaseApi
     /// <param name="sessionServiceDeleteSessionRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<SessionServiceDeleteSessionResponse>> DeleteSessionWithHttpInfoAsync(SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest)
+    public async Task<
+        ApiResult<SessionServiceDeleteSessionResponse>
+    > DeleteSessionWithHttpInfoAsync(
+        SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest
+    )
     {
         string path = "/zitadel.session.v2.SessionService/DeleteSession";
 
@@ -152,9 +173,13 @@ public class SessionServiceApi : BaseApi
     /// <param name="sessionServiceGetSessionRequest"></param>
     /// <returns><![CDATA[SessionServiceGetSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<SessionServiceGetSessionResponse> GetSessionAsync(SessionServiceGetSessionRequest sessionServiceGetSessionRequest)
+    public async Task<SessionServiceGetSessionResponse> GetSessionAsync(
+        SessionServiceGetSessionRequest sessionServiceGetSessionRequest
+    )
     {
-        Task<ApiResult<SessionServiceGetSessionResponse>> task = GetSessionWithHttpInfoAsync(sessionServiceGetSessionRequest);
+        Task<ApiResult<SessionServiceGetSessionResponse>> task = GetSessionWithHttpInfoAsync(
+            sessionServiceGetSessionRequest
+        );
         ApiResult<SessionServiceGetSessionResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -166,7 +191,8 @@ public class SessionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -176,7 +202,9 @@ public class SessionServiceApi : BaseApi
     /// <param name="sessionServiceGetSessionRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<SessionServiceGetSessionResponse>> GetSessionWithHttpInfoAsync(SessionServiceGetSessionRequest sessionServiceGetSessionRequest)
+    public async Task<ApiResult<SessionServiceGetSessionResponse>> GetSessionWithHttpInfoAsync(
+        SessionServiceGetSessionRequest sessionServiceGetSessionRequest
+    )
     {
         string path = "/zitadel.session.v2.SessionService/GetSession";
 
@@ -203,9 +231,13 @@ public class SessionServiceApi : BaseApi
     /// <param name="sessionServiceListSessionsRequest"></param>
     /// <returns><![CDATA[SessionServiceListSessionsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<SessionServiceListSessionsResponse> ListSessionsAsync(SessionServiceListSessionsRequest sessionServiceListSessionsRequest)
+    public async Task<SessionServiceListSessionsResponse> ListSessionsAsync(
+        SessionServiceListSessionsRequest sessionServiceListSessionsRequest
+    )
     {
-        Task<ApiResult<SessionServiceListSessionsResponse>> task = ListSessionsWithHttpInfoAsync(sessionServiceListSessionsRequest);
+        Task<ApiResult<SessionServiceListSessionsResponse>> task = ListSessionsWithHttpInfoAsync(
+            sessionServiceListSessionsRequest
+        );
         ApiResult<SessionServiceListSessionsResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -217,7 +249,8 @@ public class SessionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -227,7 +260,9 @@ public class SessionServiceApi : BaseApi
     /// <param name="sessionServiceListSessionsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<SessionServiceListSessionsResponse>> ListSessionsWithHttpInfoAsync(SessionServiceListSessionsRequest sessionServiceListSessionsRequest)
+    public async Task<ApiResult<SessionServiceListSessionsResponse>> ListSessionsWithHttpInfoAsync(
+        SessionServiceListSessionsRequest sessionServiceListSessionsRequest
+    )
     {
         string path = "/zitadel.session.v2.SessionService/ListSessions";
 
@@ -254,9 +289,13 @@ public class SessionServiceApi : BaseApi
     /// <param name="sessionServiceSetSessionRequest"></param>
     /// <returns><![CDATA[SessionServiceSetSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<SessionServiceSetSessionResponse> SetSessionAsync(SessionServiceSetSessionRequest sessionServiceSetSessionRequest)
+    public async Task<SessionServiceSetSessionResponse> SetSessionAsync(
+        SessionServiceSetSessionRequest sessionServiceSetSessionRequest
+    )
     {
-        Task<ApiResult<SessionServiceSetSessionResponse>> task = SetSessionWithHttpInfoAsync(sessionServiceSetSessionRequest);
+        Task<ApiResult<SessionServiceSetSessionResponse>> task = SetSessionWithHttpInfoAsync(
+            sessionServiceSetSessionRequest
+        );
         ApiResult<SessionServiceSetSessionResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -268,7 +307,8 @@ public class SessionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -278,7 +318,9 @@ public class SessionServiceApi : BaseApi
     /// <param name="sessionServiceSetSessionRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<SessionServiceSetSessionResponse>> SetSessionWithHttpInfoAsync(SessionServiceSetSessionRequest sessionServiceSetSessionRequest)
+    public async Task<ApiResult<SessionServiceSetSessionResponse>> SetSessionWithHttpInfoAsync(
+        SessionServiceSetSessionRequest sessionServiceSetSessionRequest
+    )
     {
         string path = "/zitadel.session.v2.SessionService/SetSession";
 

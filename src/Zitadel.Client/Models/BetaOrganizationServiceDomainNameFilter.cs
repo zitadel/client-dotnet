@@ -12,7 +12,8 @@ namespace Zitadel.Client.Models;
 /// <summary>
 /// from proto/zitadel/org.proto
 /// </summary>
-public class BetaOrganizationServiceDomainNameFilter : IEquatable<BetaOrganizationServiceDomainNameFilter>
+public class BetaOrganizationServiceDomainNameFilter
+    : IEquatable<BetaOrganizationServiceDomainNameFilter>
 {
     /// <summary>
     /// The domain.
@@ -29,9 +30,14 @@ public class BetaOrganizationServiceDomainNameFilter : IEquatable<BetaOrganizati
     public bool Equals(BetaOrganizationServiceDomainNameFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<BetaOrganizationServiceTextQueryMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<BetaOrganizationServiceTextQueryMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -26,9 +26,17 @@ public class InstanceServiceListInstancesResponse : IEquatable<InstanceServiceLi
     public bool Equals(InstanceServiceListInstancesResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<InstanceServiceInstance>?>.Default.Equals(this.Instances, other.Instances)
-                    && EqualityComparer<InstanceServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<InstanceServiceInstance>?>.Default.Equals(
+                    this.Instances,
+                    other.Instances
+                )
+                    && EqualityComparer<InstanceServicePaginationResponse?>.Default.Equals(
+                        this.Pagination,
+                        other.Pagination
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

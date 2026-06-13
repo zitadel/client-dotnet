@@ -30,10 +30,18 @@ public class BetaUserServiceRegisterU2FResponse : IEquatable<BetaUserServiceRegi
     public bool Equals(BetaUserServiceRegisterU2FResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(this.Details, other.Details)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
                     && EqualityComparer<string?>.Default.Equals(this.U2fId, other.U2fId)
-                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.PublicKeyCredentialCreationOptions, other.PublicKeyCredentialCreationOptions));
+                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(
+                        this.PublicKeyCredentialCreationOptions,
+                        other.PublicKeyCredentialCreationOptions
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

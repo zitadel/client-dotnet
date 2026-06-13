@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaProjectServiceRemoveProjectRoleRequest : IEquatable<BetaProjectServiceRemoveProjectRoleRequest>
+public class BetaProjectServiceRemoveProjectRoleRequest
+    : IEquatable<BetaProjectServiceRemoveProjectRoleRequest>
 {
     /// <summary>
     /// ID of the project.
@@ -29,9 +30,11 @@ public class BetaProjectServiceRemoveProjectRoleRequest : IEquatable<BetaProject
     public bool Equals(BetaProjectServiceRemoveProjectRoleRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
-                    && EqualityComparer<string?>.Default.Equals(this.RoleKey, other.RoleKey));
+                    && EqualityComparer<string?>.Default.Equals(this.RoleKey, other.RoleKey)
+            );
     }
 
     public override bool Equals(object? obj)

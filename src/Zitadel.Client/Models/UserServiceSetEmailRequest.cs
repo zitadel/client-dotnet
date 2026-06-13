@@ -35,12 +35,17 @@ public class UserServiceSetEmailRequest : IEquatable<UserServiceSetEmailRequest>
     public bool Equals(UserServiceSetEmailRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.Email, other.Email)
                     && EqualityComparer<bool?>.Default.Equals(this.IsVerified, other.IsVerified)
                     && EqualityComparer<Object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
-                    && EqualityComparer<UserServiceSendEmailVerificationCode?>.Default.Equals(this.SendCode, other.SendCode));
+                    && EqualityComparer<UserServiceSendEmailVerificationCode?>.Default.Equals(
+                        this.SendCode,
+                        other.SendCode
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

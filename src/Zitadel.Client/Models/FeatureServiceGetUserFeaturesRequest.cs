@@ -23,9 +23,11 @@ public class FeatureServiceGetUserFeaturesRequest : IEquatable<FeatureServiceGet
     public bool Equals(FeatureServiceGetUserFeaturesRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<bool?>.Default.Equals(this.Inheritance, other.Inheritance));
+                    && EqualityComparer<bool?>.Default.Equals(this.Inheritance, other.Inheritance)
+            );
     }
 
     public override bool Equals(object? obj)

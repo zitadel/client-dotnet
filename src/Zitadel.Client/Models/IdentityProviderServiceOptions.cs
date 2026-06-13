@@ -47,12 +47,26 @@ public class IdentityProviderServiceOptions : IEquatable<IdentityProviderService
     public bool Equals(IdentityProviderServiceOptions? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<bool?>.Default.Equals(this.IsLinkingAllowed, other.IsLinkingAllowed)
-                    && EqualityComparer<bool?>.Default.Equals(this.IsCreationAllowed, other.IsCreationAllowed)
-                    && EqualityComparer<bool?>.Default.Equals(this.IsAutoCreation, other.IsAutoCreation)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<bool?>.Default.Equals(
+                    this.IsLinkingAllowed,
+                    other.IsLinkingAllowed
+                )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.IsCreationAllowed,
+                        other.IsCreationAllowed
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.IsAutoCreation,
+                        other.IsAutoCreation
+                    )
                     && EqualityComparer<bool?>.Default.Equals(this.IsAutoUpdate, other.IsAutoUpdate)
-                    && EqualityComparer<IdentityProviderServiceAutoLinkingOption?>.Default.Equals(this.AutoLinking, other.AutoLinking));
+                    && EqualityComparer<IdentityProviderServiceAutoLinkingOption?>.Default.Equals(
+                        this.AutoLinking,
+                        other.AutoLinking
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

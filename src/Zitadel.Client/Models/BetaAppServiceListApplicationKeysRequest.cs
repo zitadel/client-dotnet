@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAppServiceListApplicationKeysRequest : IEquatable<BetaAppServiceListApplicationKeysRequest>
+public class BetaAppServiceListApplicationKeysRequest
+    : IEquatable<BetaAppServiceListApplicationKeysRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("pagination")]
@@ -35,12 +36,26 @@ public class BetaAppServiceListApplicationKeysRequest : IEquatable<BetaAppServic
     public bool Equals(BetaAppServiceListApplicationKeysRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaAppServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<BetaAppServiceApplicationKeysSorting?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<string?>.Default.Equals(this.ApplicationId, other.ApplicationId)
-                    && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaAppServicePaginationRequest?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<BetaAppServiceApplicationKeysSorting?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ApplicationId,
+                        other.ApplicationId
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
+            );
     }
 
     public override bool Equals(object? obj)

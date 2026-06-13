@@ -26,9 +26,14 @@ public class BetaAuthorizationServiceRoleKeyQuery : IEquatable<BetaAuthorization
     public bool Equals(BetaAuthorizationServiceRoleKeyQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Key, other.Key)
-                    && EqualityComparer<BetaAuthorizationServiceTextFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<BetaAuthorizationServiceTextFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

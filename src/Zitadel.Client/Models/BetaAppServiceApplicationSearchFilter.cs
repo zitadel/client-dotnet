@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAppServiceApplicationSearchFilter : IEquatable<BetaAppServiceApplicationSearchFilter>
+public class BetaAppServiceApplicationSearchFilter
+    : IEquatable<BetaAppServiceApplicationSearchFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("apiAppOnly")]
@@ -35,12 +36,20 @@ public class BetaAppServiceApplicationSearchFilter : IEquatable<BetaAppServiceAp
     public bool Equals(BetaAppServiceApplicationSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.ApiAppOnly, other.ApiAppOnly)
-                    && EqualityComparer<BetaAppServiceApplicationNameQuery?>.Default.Equals(this.NameFilter, other.NameFilter)
+                    && EqualityComparer<BetaAppServiceApplicationNameQuery?>.Default.Equals(
+                        this.NameFilter,
+                        other.NameFilter
+                    )
                     && EqualityComparer<bool?>.Default.Equals(this.OidcAppOnly, other.OidcAppOnly)
                     && EqualityComparer<bool?>.Default.Equals(this.SamlAppOnly, other.SamlAppOnly)
-                    && EqualityComparer<BetaAppServiceAppState?>.Default.Equals(this.StateFilter, other.StateFilter));
+                    && EqualityComparer<BetaAppServiceAppState?>.Default.Equals(
+                        this.StateFilter,
+                        other.StateFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

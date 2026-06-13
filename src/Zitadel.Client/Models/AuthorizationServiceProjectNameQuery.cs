@@ -26,9 +26,14 @@ public class AuthorizationServiceProjectNameQuery : IEquatable<AuthorizationServ
     public bool Equals(AuthorizationServiceProjectNameQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<AuthorizationServiceTextFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<AuthorizationServiceTextFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

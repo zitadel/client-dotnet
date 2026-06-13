@@ -79,23 +79,73 @@ public class BetaUserServiceSearchQuery : IEquatable<BetaUserServiceSearchQuery>
     public bool Equals(BetaUserServiceSearchQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaUserServiceAndQuery?>.Default.Equals(this.AndQuery, other.AndQuery)
-                    && EqualityComparer<BetaUserServiceDisplayNameQuery?>.Default.Equals(this.DisplayNameQuery, other.DisplayNameQuery)
-                    && EqualityComparer<BetaUserServiceEmailQuery?>.Default.Equals(this.EmailQuery, other.EmailQuery)
-                    && EqualityComparer<BetaUserServiceFirstNameQuery?>.Default.Equals(this.FirstNameQuery, other.FirstNameQuery)
-                    && EqualityComparer<BetaUserServiceInUserEmailsQuery?>.Default.Equals(this.InUserEmailsQuery, other.InUserEmailsQuery)
-                    && EqualityComparer<BetaUserServiceInUserIDQuery?>.Default.Equals(this.InUserIdsQuery, other.InUserIdsQuery)
-                    && EqualityComparer<BetaUserServiceLastNameQuery?>.Default.Equals(this.LastNameQuery, other.LastNameQuery)
-                    && EqualityComparer<BetaUserServiceLoginNameQuery?>.Default.Equals(this.LoginNameQuery, other.LoginNameQuery)
-                    && EqualityComparer<BetaUserServiceNickNameQuery?>.Default.Equals(this.NickNameQuery, other.NickNameQuery)
-                    && EqualityComparer<BetaUserServiceNotQuery?>.Default.Equals(this.NotQuery, other.NotQuery)
-                    && EqualityComparer<BetaUserServiceOrQuery?>.Default.Equals(this.OrQuery, other.OrQuery)
-                    && EqualityComparer<BetaUserServiceOrganizationIdQuery?>.Default.Equals(this.OrganizationIdQuery, other.OrganizationIdQuery)
-                    && EqualityComparer<BetaUserServicePhoneQuery?>.Default.Equals(this.PhoneQuery, other.PhoneQuery)
-                    && EqualityComparer<BetaUserServiceStateQuery?>.Default.Equals(this.StateQuery, other.StateQuery)
-                    && EqualityComparer<BetaUserServiceTypeQuery?>.Default.Equals(this.TypeQuery, other.TypeQuery)
-                    && EqualityComparer<BetaUserServiceUserNameQuery?>.Default.Equals(this.UserNameQuery, other.UserNameQuery));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaUserServiceAndQuery?>.Default.Equals(
+                    this.AndQuery,
+                    other.AndQuery
+                )
+                    && EqualityComparer<BetaUserServiceDisplayNameQuery?>.Default.Equals(
+                        this.DisplayNameQuery,
+                        other.DisplayNameQuery
+                    )
+                    && EqualityComparer<BetaUserServiceEmailQuery?>.Default.Equals(
+                        this.EmailQuery,
+                        other.EmailQuery
+                    )
+                    && EqualityComparer<BetaUserServiceFirstNameQuery?>.Default.Equals(
+                        this.FirstNameQuery,
+                        other.FirstNameQuery
+                    )
+                    && EqualityComparer<BetaUserServiceInUserEmailsQuery?>.Default.Equals(
+                        this.InUserEmailsQuery,
+                        other.InUserEmailsQuery
+                    )
+                    && EqualityComparer<BetaUserServiceInUserIDQuery?>.Default.Equals(
+                        this.InUserIdsQuery,
+                        other.InUserIdsQuery
+                    )
+                    && EqualityComparer<BetaUserServiceLastNameQuery?>.Default.Equals(
+                        this.LastNameQuery,
+                        other.LastNameQuery
+                    )
+                    && EqualityComparer<BetaUserServiceLoginNameQuery?>.Default.Equals(
+                        this.LoginNameQuery,
+                        other.LoginNameQuery
+                    )
+                    && EqualityComparer<BetaUserServiceNickNameQuery?>.Default.Equals(
+                        this.NickNameQuery,
+                        other.NickNameQuery
+                    )
+                    && EqualityComparer<BetaUserServiceNotQuery?>.Default.Equals(
+                        this.NotQuery,
+                        other.NotQuery
+                    )
+                    && EqualityComparer<BetaUserServiceOrQuery?>.Default.Equals(
+                        this.OrQuery,
+                        other.OrQuery
+                    )
+                    && EqualityComparer<BetaUserServiceOrganizationIdQuery?>.Default.Equals(
+                        this.OrganizationIdQuery,
+                        other.OrganizationIdQuery
+                    )
+                    && EqualityComparer<BetaUserServicePhoneQuery?>.Default.Equals(
+                        this.PhoneQuery,
+                        other.PhoneQuery
+                    )
+                    && EqualityComparer<BetaUserServiceStateQuery?>.Default.Equals(
+                        this.StateQuery,
+                        other.StateQuery
+                    )
+                    && EqualityComparer<BetaUserServiceTypeQuery?>.Default.Equals(
+                        this.TypeQuery,
+                        other.TypeQuery
+                    )
+                    && EqualityComparer<BetaUserServiceUserNameQuery?>.Default.Equals(
+                        this.UserNameQuery,
+                        other.UserNameQuery
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

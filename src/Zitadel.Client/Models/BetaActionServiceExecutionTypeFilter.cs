@@ -19,8 +19,13 @@ public class BetaActionServiceExecutionTypeFilter : IEquatable<BetaActionService
     public bool Equals(BetaActionServiceExecutionTypeFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaActionServiceExecutionType?>.Default.Equals(this.ExecutionType, other.ExecutionType));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaActionServiceExecutionType?>.Default.Equals(
+                    this.ExecutionType,
+                    other.ExecutionType
+                )
+            );
     }
 
     public override bool Equals(object? obj)

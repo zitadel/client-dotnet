@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaUserServiceStartIdentityProviderIntentResponse : IEquatable<BetaUserServiceStartIdentityProviderIntentResponse>
+public class BetaUserServiceStartIdentityProviderIntentResponse
+    : IEquatable<BetaUserServiceStartIdentityProviderIntentResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("details")]
@@ -41,12 +42,23 @@ public class BetaUserServiceStartIdentityProviderIntentResponse : IEquatable<Bet
     public bool Equals(BetaUserServiceStartIdentityProviderIntentResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(this.Details, other.Details)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
                     && EqualityComparer<string?>.Default.Equals(this.AuthUrl, other.AuthUrl)
-                    && EqualityComparer<BetaUserServiceFormData?>.Default.Equals(this.FormData, other.FormData)
-                    && EqualityComparer<BetaUserServiceIDPIntent?>.Default.Equals(this.IdpIntent, other.IdpIntent)
-                    && EqualityComparer<byte[]?>.Default.Equals(this.PostForm, other.PostForm));
+                    && EqualityComparer<BetaUserServiceFormData?>.Default.Equals(
+                        this.FormData,
+                        other.FormData
+                    )
+                    && EqualityComparer<BetaUserServiceIDPIntent?>.Default.Equals(
+                        this.IdpIntent,
+                        other.IdpIntent
+                    )
+                    && EqualityComparer<byte[]?>.Default.Equals(this.PostForm, other.PostForm)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceApplicationKeyProjectIDFilter : IEquatable<ApplicationServiceApplicationKeyProjectIDFilter>
+public class ApplicationServiceApplicationKeyProjectIDFilter
+    : IEquatable<ApplicationServiceApplicationKeyProjectIDFilter>
 {
     /// <summary>
     /// Search for application keys belonging to applications in the project with this ID.
@@ -22,8 +23,10 @@ public class ApplicationServiceApplicationKeyProjectIDFilter : IEquatable<Applic
     public bool Equals(ApplicationServiceApplicationKeyProjectIDFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
+            );
     }
 
     public override bool Equals(object? obj)

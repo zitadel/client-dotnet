@@ -31,11 +31,16 @@ public class UserServiceMachineUser : IEquatable<UserServiceMachineUser>
     public bool Equals(UserServiceMachineUser? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
                     && EqualityComparer<string?>.Default.Equals(this.Description, other.Description)
                     && EqualityComparer<bool?>.Default.Equals(this.HasSecret, other.HasSecret)
-                    && EqualityComparer<UserServiceAccessTokenType?>.Default.Equals(this.AccessTokenType, other.AccessTokenType));
+                    && EqualityComparer<UserServiceAccessTokenType?>.Default.Equals(
+                        this.AccessTokenType,
+                        other.AccessTokenType
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

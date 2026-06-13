@@ -22,8 +22,10 @@ public class BetaAppServiceLoginV2 : IEquatable<BetaAppServiceLoginV2>
     public bool Equals(BetaAppServiceLoginV2? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.BaseUri, other.BaseUri));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.BaseUri, other.BaseUri)
+            );
     }
 
     public override bool Equals(object? obj)

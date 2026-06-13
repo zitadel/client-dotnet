@@ -22,8 +22,10 @@ public class BetaSessionServiceHeaderValues : IEquatable<BetaSessionServiceHeade
     public bool Equals(BetaSessionServiceHeaderValues? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<string>?>.Default.Equals(this.Values, other.Values));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<string>?>.Default.Equals(this.Values, other.Values)
+            );
     }
 
     public override bool Equals(object? obj)

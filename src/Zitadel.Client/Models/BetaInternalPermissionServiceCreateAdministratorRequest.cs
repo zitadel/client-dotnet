@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInternalPermissionServiceCreateAdministratorRequest : IEquatable<BetaInternalPermissionServiceCreateAdministratorRequest>
+public class BetaInternalPermissionServiceCreateAdministratorRequest
+    : IEquatable<BetaInternalPermissionServiceCreateAdministratorRequest>
 {
     /// <summary>
     /// UserID is the ID of the user who should be granted the administrator role.
@@ -33,10 +34,15 @@ public class BetaInternalPermissionServiceCreateAdministratorRequest : IEquatabl
     public bool Equals(BetaInternalPermissionServiceCreateAdministratorRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<BetaInternalPermissionServiceResourceType?>.Default.Equals(this.Resource, other.Resource)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Roles, other.Roles));
+                    && EqualityComparer<BetaInternalPermissionServiceResourceType?>.Default.Equals(
+                        this.Resource,
+                        other.Resource
+                    )
+                    && EqualityComparer<List<string>?>.Default.Equals(this.Roles, other.Roles)
+            );
     }
 
     public override bool Equals(object? obj)

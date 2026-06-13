@@ -23,9 +23,11 @@ public class BetaUserServiceRedirectURLs : IEquatable<BetaUserServiceRedirectURL
     public bool Equals(BetaUserServiceRedirectURLs? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.SuccessUrl, other.SuccessUrl)
-                    && EqualityComparer<string?>.Default.Equals(this.FailureUrl, other.FailureUrl));
+                    && EqualityComparer<string?>.Default.Equals(this.FailureUrl, other.FailureUrl)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -27,10 +27,12 @@ public class BetaOrganizationServiceCreatedAdmin : IEquatable<BetaOrganizationSe
     public bool Equals(BetaOrganizationServiceCreatedAdmin? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.EmailCode, other.EmailCode)
-                    && EqualityComparer<string?>.Default.Equals(this.PhoneCode, other.PhoneCode));
+                    && EqualityComparer<string?>.Default.Equals(this.PhoneCode, other.PhoneCode)
+            );
     }
 
     public override bool Equals(object? obj)

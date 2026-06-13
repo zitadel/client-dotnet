@@ -47,15 +47,35 @@ public class BetaUserServiceUser : IEquatable<BetaUserServiceUser>
     public bool Equals(BetaUserServiceUser? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<BetaUserServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<BetaUserServiceUserState?>.Default.Equals(this.State, other.State)
+                    && EqualityComparer<BetaUserServiceDetails?>.Default.Equals(
+                        this.Details,
+                        other.Details
+                    )
+                    && EqualityComparer<BetaUserServiceUserState?>.Default.Equals(
+                        this.State,
+                        other.State
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.Username, other.Username)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.LoginNames, other.LoginNames)
-                    && EqualityComparer<string?>.Default.Equals(this.PreferredLoginName, other.PreferredLoginName)
-                    && EqualityComparer<BetaUserServiceHumanUser?>.Default.Equals(this.Human, other.Human)
-                    && EqualityComparer<BetaUserServiceMachineUser?>.Default.Equals(this.Machine, other.Machine));
+                    && EqualityComparer<List<string>?>.Default.Equals(
+                        this.LoginNames,
+                        other.LoginNames
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.PreferredLoginName,
+                        other.PreferredLoginName
+                    )
+                    && EqualityComparer<BetaUserServiceHumanUser?>.Default.Equals(
+                        this.Human,
+                        other.Human
+                    )
+                    && EqualityComparer<BetaUserServiceMachineUser?>.Default.Equals(
+                        this.Machine,
+                        other.Machine
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

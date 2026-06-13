@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class InternalPermissionServiceProjectGrant : IEquatable<InternalPermissionServiceProjectGrant>
+public class InternalPermissionServiceProjectGrant
+    : IEquatable<InternalPermissionServiceProjectGrant>
 {
     /// <summary>
     /// ProjectID is the unique identifier of the project the project grant belongs to.
@@ -29,9 +30,14 @@ public class InternalPermissionServiceProjectGrant : IEquatable<InternalPermissi
     public bool Equals(InternalPermissionServiceProjectGrant? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
-                    && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

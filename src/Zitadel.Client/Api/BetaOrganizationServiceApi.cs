@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class BetaOrganizationServiceApi : BaseApi
 {
-
     private static readonly string[] ActivateOrganizationAccepts = ["application/json"];
 
     private static readonly string[] AddOrganizationDomainAccepts = ["application/json"];
@@ -30,7 +29,10 @@ public class BetaOrganizationServiceApi : BaseApi
 
     private static readonly string[] DeleteOrganizationMetadataAccepts = ["application/json"];
 
-    private static readonly string[] GenerateOrganizationDomainValidationAccepts = ["application/json"];
+    private static readonly string[] GenerateOrganizationDomainValidationAccepts =
+    [
+        "application/json",
+    ];
 
     private static readonly string[] ListOrganizationDomainsAccepts = ["application/json"];
 
@@ -58,7 +60,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public BetaOrganizationServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public BetaOrganizationServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -68,10 +74,16 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceActivateOrganizationRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceActivateOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceActivateOrganizationResponse> ActivateOrganizationAsync(BetaOrganizationServiceActivateOrganizationRequest betaOrganizationServiceActivateOrganizationRequest)
+    public async Task<BetaOrganizationServiceActivateOrganizationResponse> ActivateOrganizationAsync(
+        BetaOrganizationServiceActivateOrganizationRequest betaOrganizationServiceActivateOrganizationRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceActivateOrganizationResponse>> task = ActivateOrganizationWithHttpInfoAsync(betaOrganizationServiceActivateOrganizationRequest);
-        ApiResult<BetaOrganizationServiceActivateOrganizationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceActivateOrganizationResponse>> task =
+            ActivateOrganizationWithHttpInfoAsync(
+                betaOrganizationServiceActivateOrganizationRequest
+            );
+        ApiResult<BetaOrganizationServiceActivateOrganizationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -82,7 +94,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -92,7 +105,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceActivateOrganizationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceActivateOrganizationResponse>> ActivateOrganizationWithHttpInfoAsync(BetaOrganizationServiceActivateOrganizationRequest betaOrganizationServiceActivateOrganizationRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceActivateOrganizationResponse>
+    > ActivateOrganizationWithHttpInfoAsync(
+        BetaOrganizationServiceActivateOrganizationRequest betaOrganizationServiceActivateOrganizationRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/ActivateOrganization";
 
@@ -119,10 +136,16 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceAddOrganizationDomainRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceAddOrganizationDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceAddOrganizationDomainResponse> AddOrganizationDomainAsync(BetaOrganizationServiceAddOrganizationDomainRequest betaOrganizationServiceAddOrganizationDomainRequest)
+    public async Task<BetaOrganizationServiceAddOrganizationDomainResponse> AddOrganizationDomainAsync(
+        BetaOrganizationServiceAddOrganizationDomainRequest betaOrganizationServiceAddOrganizationDomainRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceAddOrganizationDomainResponse>> task = AddOrganizationDomainWithHttpInfoAsync(betaOrganizationServiceAddOrganizationDomainRequest);
-        ApiResult<BetaOrganizationServiceAddOrganizationDomainResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceAddOrganizationDomainResponse>> task =
+            AddOrganizationDomainWithHttpInfoAsync(
+                betaOrganizationServiceAddOrganizationDomainRequest
+            );
+        ApiResult<BetaOrganizationServiceAddOrganizationDomainResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -133,7 +156,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -143,7 +167,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceAddOrganizationDomainRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceAddOrganizationDomainResponse>> AddOrganizationDomainWithHttpInfoAsync(BetaOrganizationServiceAddOrganizationDomainRequest betaOrganizationServiceAddOrganizationDomainRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceAddOrganizationDomainResponse>
+    > AddOrganizationDomainWithHttpInfoAsync(
+        BetaOrganizationServiceAddOrganizationDomainRequest betaOrganizationServiceAddOrganizationDomainRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/AddOrganizationDomain";
 
@@ -170,10 +198,14 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceCreateOrganizationRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceCreateOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceCreateOrganizationResponse> CreateOrganizationAsync(BetaOrganizationServiceCreateOrganizationRequest betaOrganizationServiceCreateOrganizationRequest)
+    public async Task<BetaOrganizationServiceCreateOrganizationResponse> CreateOrganizationAsync(
+        BetaOrganizationServiceCreateOrganizationRequest betaOrganizationServiceCreateOrganizationRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceCreateOrganizationResponse>> task = CreateOrganizationWithHttpInfoAsync(betaOrganizationServiceCreateOrganizationRequest);
-        ApiResult<BetaOrganizationServiceCreateOrganizationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceCreateOrganizationResponse>> task =
+            CreateOrganizationWithHttpInfoAsync(betaOrganizationServiceCreateOrganizationRequest);
+        ApiResult<BetaOrganizationServiceCreateOrganizationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -184,7 +216,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -194,7 +227,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceCreateOrganizationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceCreateOrganizationResponse>> CreateOrganizationWithHttpInfoAsync(BetaOrganizationServiceCreateOrganizationRequest betaOrganizationServiceCreateOrganizationRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceCreateOrganizationResponse>
+    > CreateOrganizationWithHttpInfoAsync(
+        BetaOrganizationServiceCreateOrganizationRequest betaOrganizationServiceCreateOrganizationRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/CreateOrganization";
 
@@ -221,10 +258,16 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceDeactivateOrganizationRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceDeactivateOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceDeactivateOrganizationResponse> DeactivateOrganizationAsync(BetaOrganizationServiceDeactivateOrganizationRequest betaOrganizationServiceDeactivateOrganizationRequest)
+    public async Task<BetaOrganizationServiceDeactivateOrganizationResponse> DeactivateOrganizationAsync(
+        BetaOrganizationServiceDeactivateOrganizationRequest betaOrganizationServiceDeactivateOrganizationRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceDeactivateOrganizationResponse>> task = DeactivateOrganizationWithHttpInfoAsync(betaOrganizationServiceDeactivateOrganizationRequest);
-        ApiResult<BetaOrganizationServiceDeactivateOrganizationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceDeactivateOrganizationResponse>> task =
+            DeactivateOrganizationWithHttpInfoAsync(
+                betaOrganizationServiceDeactivateOrganizationRequest
+            );
+        ApiResult<BetaOrganizationServiceDeactivateOrganizationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -235,7 +278,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -245,7 +289,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceDeactivateOrganizationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceDeactivateOrganizationResponse>> DeactivateOrganizationWithHttpInfoAsync(BetaOrganizationServiceDeactivateOrganizationRequest betaOrganizationServiceDeactivateOrganizationRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceDeactivateOrganizationResponse>
+    > DeactivateOrganizationWithHttpInfoAsync(
+        BetaOrganizationServiceDeactivateOrganizationRequest betaOrganizationServiceDeactivateOrganizationRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/DeactivateOrganization";
 
@@ -272,10 +320,14 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceDeleteOrganizationRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceDeleteOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceDeleteOrganizationResponse> DeleteOrganizationAsync(BetaOrganizationServiceDeleteOrganizationRequest betaOrganizationServiceDeleteOrganizationRequest)
+    public async Task<BetaOrganizationServiceDeleteOrganizationResponse> DeleteOrganizationAsync(
+        BetaOrganizationServiceDeleteOrganizationRequest betaOrganizationServiceDeleteOrganizationRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceDeleteOrganizationResponse>> task = DeleteOrganizationWithHttpInfoAsync(betaOrganizationServiceDeleteOrganizationRequest);
-        ApiResult<BetaOrganizationServiceDeleteOrganizationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceDeleteOrganizationResponse>> task =
+            DeleteOrganizationWithHttpInfoAsync(betaOrganizationServiceDeleteOrganizationRequest);
+        ApiResult<BetaOrganizationServiceDeleteOrganizationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -286,7 +338,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -296,7 +349,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceDeleteOrganizationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceDeleteOrganizationResponse>> DeleteOrganizationWithHttpInfoAsync(BetaOrganizationServiceDeleteOrganizationRequest betaOrganizationServiceDeleteOrganizationRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceDeleteOrganizationResponse>
+    > DeleteOrganizationWithHttpInfoAsync(
+        BetaOrganizationServiceDeleteOrganizationRequest betaOrganizationServiceDeleteOrganizationRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/DeleteOrganization";
 
@@ -323,10 +380,16 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceDeleteOrganizationDomainRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceDeleteOrganizationDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceDeleteOrganizationDomainResponse> DeleteOrganizationDomainAsync(BetaOrganizationServiceDeleteOrganizationDomainRequest betaOrganizationServiceDeleteOrganizationDomainRequest)
+    public async Task<BetaOrganizationServiceDeleteOrganizationDomainResponse> DeleteOrganizationDomainAsync(
+        BetaOrganizationServiceDeleteOrganizationDomainRequest betaOrganizationServiceDeleteOrganizationDomainRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceDeleteOrganizationDomainResponse>> task = DeleteOrganizationDomainWithHttpInfoAsync(betaOrganizationServiceDeleteOrganizationDomainRequest);
-        ApiResult<BetaOrganizationServiceDeleteOrganizationDomainResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceDeleteOrganizationDomainResponse>> task =
+            DeleteOrganizationDomainWithHttpInfoAsync(
+                betaOrganizationServiceDeleteOrganizationDomainRequest
+            );
+        ApiResult<BetaOrganizationServiceDeleteOrganizationDomainResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -337,7 +400,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -347,7 +411,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceDeleteOrganizationDomainRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceDeleteOrganizationDomainResponse>> DeleteOrganizationDomainWithHttpInfoAsync(BetaOrganizationServiceDeleteOrganizationDomainRequest betaOrganizationServiceDeleteOrganizationDomainRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceDeleteOrganizationDomainResponse>
+    > DeleteOrganizationDomainWithHttpInfoAsync(
+        BetaOrganizationServiceDeleteOrganizationDomainRequest betaOrganizationServiceDeleteOrganizationDomainRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/DeleteOrganizationDomain";
 
@@ -374,10 +442,16 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceDeleteOrganizationMetadataRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceDeleteOrganizationMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceDeleteOrganizationMetadataResponse> DeleteOrganizationMetadataAsync(BetaOrganizationServiceDeleteOrganizationMetadataRequest betaOrganizationServiceDeleteOrganizationMetadataRequest)
+    public async Task<BetaOrganizationServiceDeleteOrganizationMetadataResponse> DeleteOrganizationMetadataAsync(
+        BetaOrganizationServiceDeleteOrganizationMetadataRequest betaOrganizationServiceDeleteOrganizationMetadataRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceDeleteOrganizationMetadataResponse>> task = DeleteOrganizationMetadataWithHttpInfoAsync(betaOrganizationServiceDeleteOrganizationMetadataRequest);
-        ApiResult<BetaOrganizationServiceDeleteOrganizationMetadataResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceDeleteOrganizationMetadataResponse>> task =
+            DeleteOrganizationMetadataWithHttpInfoAsync(
+                betaOrganizationServiceDeleteOrganizationMetadataRequest
+            );
+        ApiResult<BetaOrganizationServiceDeleteOrganizationMetadataResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -388,7 +462,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -398,7 +473,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceDeleteOrganizationMetadataRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceDeleteOrganizationMetadataResponse>> DeleteOrganizationMetadataWithHttpInfoAsync(BetaOrganizationServiceDeleteOrganizationMetadataRequest betaOrganizationServiceDeleteOrganizationMetadataRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceDeleteOrganizationMetadataResponse>
+    > DeleteOrganizationMetadataWithHttpInfoAsync(
+        BetaOrganizationServiceDeleteOrganizationMetadataRequest betaOrganizationServiceDeleteOrganizationMetadataRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/DeleteOrganizationMetadata";
 
@@ -425,10 +504,16 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceGenerateOrganizationDomainValidationRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceGenerateOrganizationDomainValidationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse> GenerateOrganizationDomainValidationAsync(BetaOrganizationServiceGenerateOrganizationDomainValidationRequest betaOrganizationServiceGenerateOrganizationDomainValidationRequest)
+    public async Task<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse> GenerateOrganizationDomainValidationAsync(
+        BetaOrganizationServiceGenerateOrganizationDomainValidationRequest betaOrganizationServiceGenerateOrganizationDomainValidationRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse>> task = GenerateOrganizationDomainValidationWithHttpInfoAsync(betaOrganizationServiceGenerateOrganizationDomainValidationRequest);
-        ApiResult<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse>> task =
+            GenerateOrganizationDomainValidationWithHttpInfoAsync(
+                betaOrganizationServiceGenerateOrganizationDomainValidationRequest
+            );
+        ApiResult<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -439,7 +524,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -449,9 +535,14 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceGenerateOrganizationDomainValidationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse>> GenerateOrganizationDomainValidationWithHttpInfoAsync(BetaOrganizationServiceGenerateOrganizationDomainValidationRequest betaOrganizationServiceGenerateOrganizationDomainValidationRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse>
+    > GenerateOrganizationDomainValidationWithHttpInfoAsync(
+        BetaOrganizationServiceGenerateOrganizationDomainValidationRequest betaOrganizationServiceGenerateOrganizationDomainValidationRequest
+    )
     {
-        string path = "/zitadel.org.v2beta.OrganizationService/GenerateOrganizationDomainValidation";
+        string path =
+            "/zitadel.org.v2beta.OrganizationService/GenerateOrganizationDomainValidation";
 
         Dictionary<string, object?> queryParams = [];
         Dictionary<string, string> headerParams = [];
@@ -476,10 +567,16 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceListOrganizationDomainsRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceListOrganizationDomainsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceListOrganizationDomainsResponse> ListOrganizationDomainsAsync(BetaOrganizationServiceListOrganizationDomainsRequest betaOrganizationServiceListOrganizationDomainsRequest)
+    public async Task<BetaOrganizationServiceListOrganizationDomainsResponse> ListOrganizationDomainsAsync(
+        BetaOrganizationServiceListOrganizationDomainsRequest betaOrganizationServiceListOrganizationDomainsRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceListOrganizationDomainsResponse>> task = ListOrganizationDomainsWithHttpInfoAsync(betaOrganizationServiceListOrganizationDomainsRequest);
-        ApiResult<BetaOrganizationServiceListOrganizationDomainsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceListOrganizationDomainsResponse>> task =
+            ListOrganizationDomainsWithHttpInfoAsync(
+                betaOrganizationServiceListOrganizationDomainsRequest
+            );
+        ApiResult<BetaOrganizationServiceListOrganizationDomainsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -490,7 +587,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -500,7 +598,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceListOrganizationDomainsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceListOrganizationDomainsResponse>> ListOrganizationDomainsWithHttpInfoAsync(BetaOrganizationServiceListOrganizationDomainsRequest betaOrganizationServiceListOrganizationDomainsRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceListOrganizationDomainsResponse>
+    > ListOrganizationDomainsWithHttpInfoAsync(
+        BetaOrganizationServiceListOrganizationDomainsRequest betaOrganizationServiceListOrganizationDomainsRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/ListOrganizationDomains";
 
@@ -527,10 +629,16 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceListOrganizationMetadataRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceListOrganizationMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceListOrganizationMetadataResponse> ListOrganizationMetadataAsync(BetaOrganizationServiceListOrganizationMetadataRequest betaOrganizationServiceListOrganizationMetadataRequest)
+    public async Task<BetaOrganizationServiceListOrganizationMetadataResponse> ListOrganizationMetadataAsync(
+        BetaOrganizationServiceListOrganizationMetadataRequest betaOrganizationServiceListOrganizationMetadataRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceListOrganizationMetadataResponse>> task = ListOrganizationMetadataWithHttpInfoAsync(betaOrganizationServiceListOrganizationMetadataRequest);
-        ApiResult<BetaOrganizationServiceListOrganizationMetadataResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceListOrganizationMetadataResponse>> task =
+            ListOrganizationMetadataWithHttpInfoAsync(
+                betaOrganizationServiceListOrganizationMetadataRequest
+            );
+        ApiResult<BetaOrganizationServiceListOrganizationMetadataResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -541,7 +649,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -551,7 +660,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceListOrganizationMetadataRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceListOrganizationMetadataResponse>> ListOrganizationMetadataWithHttpInfoAsync(BetaOrganizationServiceListOrganizationMetadataRequest betaOrganizationServiceListOrganizationMetadataRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceListOrganizationMetadataResponse>
+    > ListOrganizationMetadataWithHttpInfoAsync(
+        BetaOrganizationServiceListOrganizationMetadataRequest betaOrganizationServiceListOrganizationMetadataRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/ListOrganizationMetadata";
 
@@ -578,10 +691,14 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceListOrganizationsRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceListOrganizationsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceListOrganizationsResponse> ListOrganizationsAsync(BetaOrganizationServiceListOrganizationsRequest betaOrganizationServiceListOrganizationsRequest)
+    public async Task<BetaOrganizationServiceListOrganizationsResponse> ListOrganizationsAsync(
+        BetaOrganizationServiceListOrganizationsRequest betaOrganizationServiceListOrganizationsRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceListOrganizationsResponse>> task = ListOrganizationsWithHttpInfoAsync(betaOrganizationServiceListOrganizationsRequest);
-        ApiResult<BetaOrganizationServiceListOrganizationsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceListOrganizationsResponse>> task =
+            ListOrganizationsWithHttpInfoAsync(betaOrganizationServiceListOrganizationsRequest);
+        ApiResult<BetaOrganizationServiceListOrganizationsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -592,7 +709,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -602,7 +720,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceListOrganizationsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceListOrganizationsResponse>> ListOrganizationsWithHttpInfoAsync(BetaOrganizationServiceListOrganizationsRequest betaOrganizationServiceListOrganizationsRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceListOrganizationsResponse>
+    > ListOrganizationsWithHttpInfoAsync(
+        BetaOrganizationServiceListOrganizationsRequest betaOrganizationServiceListOrganizationsRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/ListOrganizations";
 
@@ -629,10 +751,16 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceSetOrganizationMetadataRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceSetOrganizationMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceSetOrganizationMetadataResponse> SetOrganizationMetadataAsync(BetaOrganizationServiceSetOrganizationMetadataRequest betaOrganizationServiceSetOrganizationMetadataRequest)
+    public async Task<BetaOrganizationServiceSetOrganizationMetadataResponse> SetOrganizationMetadataAsync(
+        BetaOrganizationServiceSetOrganizationMetadataRequest betaOrganizationServiceSetOrganizationMetadataRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceSetOrganizationMetadataResponse>> task = SetOrganizationMetadataWithHttpInfoAsync(betaOrganizationServiceSetOrganizationMetadataRequest);
-        ApiResult<BetaOrganizationServiceSetOrganizationMetadataResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceSetOrganizationMetadataResponse>> task =
+            SetOrganizationMetadataWithHttpInfoAsync(
+                betaOrganizationServiceSetOrganizationMetadataRequest
+            );
+        ApiResult<BetaOrganizationServiceSetOrganizationMetadataResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -643,7 +771,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -653,7 +782,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceSetOrganizationMetadataRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceSetOrganizationMetadataResponse>> SetOrganizationMetadataWithHttpInfoAsync(BetaOrganizationServiceSetOrganizationMetadataRequest betaOrganizationServiceSetOrganizationMetadataRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceSetOrganizationMetadataResponse>
+    > SetOrganizationMetadataWithHttpInfoAsync(
+        BetaOrganizationServiceSetOrganizationMetadataRequest betaOrganizationServiceSetOrganizationMetadataRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/SetOrganizationMetadata";
 
@@ -680,10 +813,14 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceUpdateOrganizationRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceUpdateOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceUpdateOrganizationResponse> UpdateOrganizationAsync(BetaOrganizationServiceUpdateOrganizationRequest betaOrganizationServiceUpdateOrganizationRequest)
+    public async Task<BetaOrganizationServiceUpdateOrganizationResponse> UpdateOrganizationAsync(
+        BetaOrganizationServiceUpdateOrganizationRequest betaOrganizationServiceUpdateOrganizationRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceUpdateOrganizationResponse>> task = UpdateOrganizationWithHttpInfoAsync(betaOrganizationServiceUpdateOrganizationRequest);
-        ApiResult<BetaOrganizationServiceUpdateOrganizationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceUpdateOrganizationResponse>> task =
+            UpdateOrganizationWithHttpInfoAsync(betaOrganizationServiceUpdateOrganizationRequest);
+        ApiResult<BetaOrganizationServiceUpdateOrganizationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -694,7 +831,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -704,7 +842,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceUpdateOrganizationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceUpdateOrganizationResponse>> UpdateOrganizationWithHttpInfoAsync(BetaOrganizationServiceUpdateOrganizationRequest betaOrganizationServiceUpdateOrganizationRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceUpdateOrganizationResponse>
+    > UpdateOrganizationWithHttpInfoAsync(
+        BetaOrganizationServiceUpdateOrganizationRequest betaOrganizationServiceUpdateOrganizationRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/UpdateOrganization";
 
@@ -731,10 +873,16 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceVerifyOrganizationDomainRequest"></param>
     /// <returns><![CDATA[BetaOrganizationServiceVerifyOrganizationDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOrganizationServiceVerifyOrganizationDomainResponse> VerifyOrganizationDomainAsync(BetaOrganizationServiceVerifyOrganizationDomainRequest betaOrganizationServiceVerifyOrganizationDomainRequest)
+    public async Task<BetaOrganizationServiceVerifyOrganizationDomainResponse> VerifyOrganizationDomainAsync(
+        BetaOrganizationServiceVerifyOrganizationDomainRequest betaOrganizationServiceVerifyOrganizationDomainRequest
+    )
     {
-        Task<ApiResult<BetaOrganizationServiceVerifyOrganizationDomainResponse>> task = VerifyOrganizationDomainWithHttpInfoAsync(betaOrganizationServiceVerifyOrganizationDomainRequest);
-        ApiResult<BetaOrganizationServiceVerifyOrganizationDomainResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaOrganizationServiceVerifyOrganizationDomainResponse>> task =
+            VerifyOrganizationDomainWithHttpInfoAsync(
+                betaOrganizationServiceVerifyOrganizationDomainRequest
+            );
+        ApiResult<BetaOrganizationServiceVerifyOrganizationDomainResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -745,7 +893,8 @@ public class BetaOrganizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -755,7 +904,11 @@ public class BetaOrganizationServiceApi : BaseApi
     /// <param name="betaOrganizationServiceVerifyOrganizationDomainRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOrganizationServiceVerifyOrganizationDomainResponse>> VerifyOrganizationDomainWithHttpInfoAsync(BetaOrganizationServiceVerifyOrganizationDomainRequest betaOrganizationServiceVerifyOrganizationDomainRequest)
+    public async Task<
+        ApiResult<BetaOrganizationServiceVerifyOrganizationDomainResponse>
+    > VerifyOrganizationDomainWithHttpInfoAsync(
+        BetaOrganizationServiceVerifyOrganizationDomainRequest betaOrganizationServiceVerifyOrganizationDomainRequest
+    )
     {
         string path = "/zitadel.org.v2beta.OrganizationService/VerifyOrganizationDomain";
 

@@ -31,11 +31,25 @@ public class BetaUserServiceSetPassword : IEquatable<BetaUserServiceSetPassword>
     public bool Equals(BetaUserServiceSetPassword? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaUserServiceHashedPassword?>.Default.Equals(this.HashedPassword, other.HashedPassword)
-                    && EqualityComparer<BetaUserServicePassword?>.Default.Equals(this.Password, other.Password)
-                    && EqualityComparer<string?>.Default.Equals(this.CurrentPassword, other.CurrentPassword)
-                    && EqualityComparer<string?>.Default.Equals(this.VerificationCode, other.VerificationCode));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaUserServiceHashedPassword?>.Default.Equals(
+                    this.HashedPassword,
+                    other.HashedPassword
+                )
+                    && EqualityComparer<BetaUserServicePassword?>.Default.Equals(
+                        this.Password,
+                        other.Password
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.CurrentPassword,
+                        other.CurrentPassword
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.VerificationCode,
+                        other.VerificationCode
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

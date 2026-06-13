@@ -55,14 +55,34 @@ public class IdentityProviderServiceSAMLConfig : IEquatable<IdentityProviderServ
     public bool Equals(IdentityProviderServiceSAMLConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<byte[]?>.Default.Equals(this.MetadataXml, other.MetadataXml)
-                    && EqualityComparer<IdentityProviderServiceSAMLBinding?>.Default.Equals(this.Binding, other.Binding)
-                    && EqualityComparer<bool?>.Default.Equals(this.WithSignedRequest, other.WithSignedRequest)
-                    && EqualityComparer<IdentityProviderServiceSAMLNameIDFormat?>.Default.Equals(this.NameIdFormat, other.NameIdFormat)
-                    && EqualityComparer<string?>.Default.Equals(this.TransientMappingAttributeName, other.TransientMappingAttributeName)
-                    && EqualityComparer<bool?>.Default.Equals(this.FederatedLogoutEnabled, other.FederatedLogoutEnabled)
-                    && EqualityComparer<IdentityProviderServiceSAMLSignatureAlgorithm?>.Default.Equals(this.SignatureAlgorithm, other.SignatureAlgorithm));
+                    && EqualityComparer<IdentityProviderServiceSAMLBinding?>.Default.Equals(
+                        this.Binding,
+                        other.Binding
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.WithSignedRequest,
+                        other.WithSignedRequest
+                    )
+                    && EqualityComparer<IdentityProviderServiceSAMLNameIDFormat?>.Default.Equals(
+                        this.NameIdFormat,
+                        other.NameIdFormat
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.TransientMappingAttributeName,
+                        other.TransientMappingAttributeName
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.FederatedLogoutEnabled,
+                        other.FederatedLogoutEnabled
+                    )
+                    && EqualityComparer<IdentityProviderServiceSAMLSignatureAlgorithm?>.Default.Equals(
+                        this.SignatureAlgorithm,
+                        other.SignatureAlgorithm
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

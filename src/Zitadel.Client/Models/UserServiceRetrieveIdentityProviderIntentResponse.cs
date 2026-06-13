@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class UserServiceRetrieveIdentityProviderIntentResponse : IEquatable<UserServiceRetrieveIdentityProviderIntentResponse>
+public class UserServiceRetrieveIdentityProviderIntentResponse
+    : IEquatable<UserServiceRetrieveIdentityProviderIntentResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("details")]
@@ -35,12 +36,23 @@ public class UserServiceRetrieveIdentityProviderIntentResponse : IEquatable<User
     public bool Equals(UserServiceRetrieveIdentityProviderIntentResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<UserServiceIDPInformation?>.Default.Equals(this.IdpInformation, other.IdpInformation)
+                    && EqualityComparer<UserServiceIDPInformation?>.Default.Equals(
+                        this.IdpInformation,
+                        other.IdpInformation
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<UserServiceAddHumanUserRequest?>.Default.Equals(this.AddHumanUser, other.AddHumanUser)
-                    && EqualityComparer<UserServiceUpdateHumanUserRequest?>.Default.Equals(this.UpdateHumanUser, other.UpdateHumanUser));
+                    && EqualityComparer<UserServiceAddHumanUserRequest?>.Default.Equals(
+                        this.AddHumanUser,
+                        other.AddHumanUser
+                    )
+                    && EqualityComparer<UserServiceUpdateHumanUserRequest?>.Default.Equals(
+                        this.UpdateHumanUser,
+                        other.UpdateHumanUser
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

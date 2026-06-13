@@ -27,10 +27,15 @@ public class BetaUserServiceRegisterTOTPResponse : IEquatable<BetaUserServiceReg
     public bool Equals(BetaUserServiceRegisterTOTPResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(this.Details, other.Details)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
                     && EqualityComparer<string?>.Default.Equals(this.Uri, other.Uri)
-                    && EqualityComparer<string?>.Default.Equals(this.Secret, other.Secret));
+                    && EqualityComparer<string?>.Default.Equals(this.Secret, other.Secret)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInternalPermissionServiceAdministratorSearchFilter : IEquatable<BetaInternalPermissionServiceAdministratorSearchFilter>
+public class BetaInternalPermissionServiceAdministratorSearchFilter
+    : IEquatable<BetaInternalPermissionServiceAdministratorSearchFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("and")]
@@ -59,18 +60,53 @@ public class BetaInternalPermissionServiceAdministratorSearchFilter : IEquatable
     public bool Equals(BetaInternalPermissionServiceAdministratorSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaInternalPermissionServiceAndFilter?>.Default.Equals(this.And, other.And)
-                    && EqualityComparer<BetaInternalPermissionServiceTimestampFilter?>.Default.Equals(this.ChangeDate, other.ChangeDate)
-                    && EqualityComparer<BetaInternalPermissionServiceTimestampFilter?>.Default.Equals(this.CreationDate, other.CreationDate)
-                    && EqualityComparer<BetaInternalPermissionServiceInIDsFilter?>.Default.Equals(this.InUserIdsFilter, other.InUserIdsFilter)
-                    && EqualityComparer<BetaInternalPermissionServiceNotFilter?>.Default.Equals(this.Not, other.Not)
-                    && EqualityComparer<BetaInternalPermissionServiceOrFilter?>.Default.Equals(this.Or, other.Or)
-                    && EqualityComparer<BetaInternalPermissionServiceResourceFilter?>.Default.Equals(this.Resource, other.Resource)
-                    && EqualityComparer<BetaInternalPermissionServiceRoleFilter?>.Default.Equals(this.Role, other.Role)
-                    && EqualityComparer<BetaInternalPermissionServiceUserDisplayNameFilter?>.Default.Equals(this.UserDisplayName, other.UserDisplayName)
-                    && EqualityComparer<BetaInternalPermissionServiceIDFilter?>.Default.Equals(this.UserOrganizationId, other.UserOrganizationId)
-                    && EqualityComparer<BetaInternalPermissionServiceUserPreferredLoginNameFilter?>.Default.Equals(this.UserPreferredLoginName, other.UserPreferredLoginName));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaInternalPermissionServiceAndFilter?>.Default.Equals(
+                    this.And,
+                    other.And
+                )
+                    && EqualityComparer<BetaInternalPermissionServiceTimestampFilter?>.Default.Equals(
+                        this.ChangeDate,
+                        other.ChangeDate
+                    )
+                    && EqualityComparer<BetaInternalPermissionServiceTimestampFilter?>.Default.Equals(
+                        this.CreationDate,
+                        other.CreationDate
+                    )
+                    && EqualityComparer<BetaInternalPermissionServiceInIDsFilter?>.Default.Equals(
+                        this.InUserIdsFilter,
+                        other.InUserIdsFilter
+                    )
+                    && EqualityComparer<BetaInternalPermissionServiceNotFilter?>.Default.Equals(
+                        this.Not,
+                        other.Not
+                    )
+                    && EqualityComparer<BetaInternalPermissionServiceOrFilter?>.Default.Equals(
+                        this.Or,
+                        other.Or
+                    )
+                    && EqualityComparer<BetaInternalPermissionServiceResourceFilter?>.Default.Equals(
+                        this.Resource,
+                        other.Resource
+                    )
+                    && EqualityComparer<BetaInternalPermissionServiceRoleFilter?>.Default.Equals(
+                        this.Role,
+                        other.Role
+                    )
+                    && EqualityComparer<BetaInternalPermissionServiceUserDisplayNameFilter?>.Default.Equals(
+                        this.UserDisplayName,
+                        other.UserDisplayName
+                    )
+                    && EqualityComparer<BetaInternalPermissionServiceIDFilter?>.Default.Equals(
+                        this.UserOrganizationId,
+                        other.UserOrganizationId
+                    )
+                    && EqualityComparer<BetaInternalPermissionServiceUserPreferredLoginNameFilter?>.Default.Equals(
+                        this.UserPreferredLoginName,
+                        other.UserPreferredLoginName
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

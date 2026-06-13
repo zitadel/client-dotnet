@@ -23,9 +23,11 @@ public class UserServiceLDAPCredentials : IEquatable<UserServiceLDAPCredentials>
     public bool Equals(UserServiceLDAPCredentials? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Username, other.Username)
-                    && EqualityComparer<string?>.Default.Equals(this.Password, other.Password));
+                    && EqualityComparer<string?>.Default.Equals(this.Password, other.Password)
+            );
     }
 
     public override bool Equals(object? obj)

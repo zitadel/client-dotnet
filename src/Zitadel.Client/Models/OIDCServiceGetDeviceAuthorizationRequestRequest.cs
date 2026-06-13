@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OIDCServiceGetDeviceAuthorizationRequestRequest : IEquatable<OIDCServiceGetDeviceAuthorizationRequestRequest>
+public class OIDCServiceGetDeviceAuthorizationRequestRequest
+    : IEquatable<OIDCServiceGetDeviceAuthorizationRequestRequest>
 {
     /// <summary>
     /// The user_code returned by the device authorization request and provided to the user by the device.
@@ -22,8 +23,10 @@ public class OIDCServiceGetDeviceAuthorizationRequestRequest : IEquatable<OIDCSe
     public bool Equals(OIDCServiceGetDeviceAuthorizationRequestRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.UserCode, other.UserCode));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.UserCode, other.UserCode)
+            );
     }
 
     public override bool Equals(object? obj)

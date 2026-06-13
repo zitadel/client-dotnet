@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaFeatureServiceGetSystemFeaturesResponse : IEquatable<BetaFeatureServiceGetSystemFeaturesResponse>
+public class BetaFeatureServiceGetSystemFeaturesResponse
+    : IEquatable<BetaFeatureServiceGetSystemFeaturesResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("details")]
@@ -39,13 +40,33 @@ public class BetaFeatureServiceGetSystemFeaturesResponse : IEquatable<BetaFeatur
     public bool Equals(BetaFeatureServiceGetSystemFeaturesResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaFeatureServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<BetaFeatureServiceFeatureFlag?>.Default.Equals(this.LoginDefaultOrg, other.LoginDefaultOrg)
-                    && EqualityComparer<BetaFeatureServiceFeatureFlag?>.Default.Equals(this.UserSchema, other.UserSchema)
-                    && EqualityComparer<BetaFeatureServiceFeatureFlag?>.Default.Equals(this.OidcTokenExchange, other.OidcTokenExchange)
-                    && EqualityComparer<BetaFeatureServiceImprovedPerformanceFeatureFlag?>.Default.Equals(this.ImprovedPerformance, other.ImprovedPerformance)
-                    && EqualityComparer<BetaFeatureServiceFeatureFlag?>.Default.Equals(this.OidcSingleV1SessionTermination, other.OidcSingleV1SessionTermination));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaFeatureServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
+                    && EqualityComparer<BetaFeatureServiceFeatureFlag?>.Default.Equals(
+                        this.LoginDefaultOrg,
+                        other.LoginDefaultOrg
+                    )
+                    && EqualityComparer<BetaFeatureServiceFeatureFlag?>.Default.Equals(
+                        this.UserSchema,
+                        other.UserSchema
+                    )
+                    && EqualityComparer<BetaFeatureServiceFeatureFlag?>.Default.Equals(
+                        this.OidcTokenExchange,
+                        other.OidcTokenExchange
+                    )
+                    && EqualityComparer<BetaFeatureServiceImprovedPerformanceFeatureFlag?>.Default.Equals(
+                        this.ImprovedPerformance,
+                        other.ImprovedPerformance
+                    )
+                    && EqualityComparer<BetaFeatureServiceFeatureFlag?>.Default.Equals(
+                        this.OidcSingleV1SessionTermination,
+                        other.OidcSingleV1SessionTermination
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

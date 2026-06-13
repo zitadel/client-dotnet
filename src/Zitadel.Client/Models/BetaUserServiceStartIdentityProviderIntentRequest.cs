@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaUserServiceStartIdentityProviderIntentRequest : IEquatable<BetaUserServiceStartIdentityProviderIntentRequest>
+public class BetaUserServiceStartIdentityProviderIntentRequest
+    : IEquatable<BetaUserServiceStartIdentityProviderIntentRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("idpId")]
@@ -27,10 +28,18 @@ public class BetaUserServiceStartIdentityProviderIntentRequest : IEquatable<Beta
     public bool Equals(BetaUserServiceStartIdentityProviderIntentRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.IdpId, other.IdpId)
-                    && EqualityComparer<BetaUserServiceLDAPCredentials?>.Default.Equals(this.Ldap, other.Ldap)
-                    && EqualityComparer<BetaUserServiceRedirectURLs?>.Default.Equals(this.Urls, other.Urls));
+                    && EqualityComparer<BetaUserServiceLDAPCredentials?>.Default.Equals(
+                        this.Ldap,
+                        other.Ldap
+                    )
+                    && EqualityComparer<BetaUserServiceRedirectURLs?>.Default.Equals(
+                        this.Urls,
+                        other.Urls
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

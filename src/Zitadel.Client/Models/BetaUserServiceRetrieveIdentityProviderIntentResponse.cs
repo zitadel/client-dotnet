@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaUserServiceRetrieveIdentityProviderIntentResponse : IEquatable<BetaUserServiceRetrieveIdentityProviderIntentResponse>
+public class BetaUserServiceRetrieveIdentityProviderIntentResponse
+    : IEquatable<BetaUserServiceRetrieveIdentityProviderIntentResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("details")]
@@ -27,10 +28,18 @@ public class BetaUserServiceRetrieveIdentityProviderIntentResponse : IEquatable<
     public bool Equals(BetaUserServiceRetrieveIdentityProviderIntentResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<BetaUserServiceIDPInformation?>.Default.Equals(this.IdpInformation, other.IdpInformation)
-                    && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
+                    && EqualityComparer<BetaUserServiceIDPInformation?>.Default.Equals(
+                        this.IdpInformation,
+                        other.IdpInformation
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
+            );
     }
 
     public override bool Equals(object? obj)

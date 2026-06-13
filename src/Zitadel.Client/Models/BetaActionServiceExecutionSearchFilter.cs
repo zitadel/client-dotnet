@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaActionServiceExecutionSearchFilter : IEquatable<BetaActionServiceExecutionSearchFilter>
+public class BetaActionServiceExecutionSearchFilter
+    : IEquatable<BetaActionServiceExecutionSearchFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("executionTypeFilter")]
@@ -27,10 +28,21 @@ public class BetaActionServiceExecutionSearchFilter : IEquatable<BetaActionServi
     public bool Equals(BetaActionServiceExecutionSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaActionServiceExecutionTypeFilter?>.Default.Equals(this.ExecutionTypeFilter, other.ExecutionTypeFilter)
-                    && EqualityComparer<BetaActionServiceInConditionsFilter?>.Default.Equals(this.InConditionsFilter, other.InConditionsFilter)
-                    && EqualityComparer<BetaActionServiceTargetFilter?>.Default.Equals(this.TargetFilter, other.TargetFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaActionServiceExecutionTypeFilter?>.Default.Equals(
+                    this.ExecutionTypeFilter,
+                    other.ExecutionTypeFilter
+                )
+                    && EqualityComparer<BetaActionServiceInConditionsFilter?>.Default.Equals(
+                        this.InConditionsFilter,
+                        other.InConditionsFilter
+                    )
+                    && EqualityComparer<BetaActionServiceTargetFilter?>.Default.Equals(
+                        this.TargetFilter,
+                        other.TargetFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

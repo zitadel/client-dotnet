@@ -26,9 +26,17 @@ public class BetaUserServicePasswordResetResponse : IEquatable<BetaUserServicePa
     public bool Equals(BetaUserServicePasswordResetResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<string?>.Default.Equals(this.VerificationCode, other.VerificationCode));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.VerificationCode,
+                        other.VerificationCode
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

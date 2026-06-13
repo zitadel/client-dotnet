@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class IdentityProviderServiceGitLabSelfHostedConfig : IEquatable<IdentityProviderServiceGitLabSelfHostedConfig>
+public class IdentityProviderServiceGitLabSelfHostedConfig
+    : IEquatable<IdentityProviderServiceGitLabSelfHostedConfig>
 {
     /// <example>null</example>
     [JsonPropertyName("issuer")]
@@ -33,10 +34,12 @@ public class IdentityProviderServiceGitLabSelfHostedConfig : IEquatable<Identity
     public bool Equals(IdentityProviderServiceGitLabSelfHostedConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Issuer, other.Issuer)
                     && EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes));
+                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes)
+            );
     }
 
     public override bool Equals(object? obj)

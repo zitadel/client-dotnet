@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class InternalPermissionServiceOrganization : IEquatable<InternalPermissionServiceOrganization>
+public class InternalPermissionServiceOrganization
+    : IEquatable<InternalPermissionServiceOrganization>
 {
     /// <summary>
     /// ID is the unique identifier of the organization the user was granted the administrator role for.
@@ -29,9 +30,11 @@ public class InternalPermissionServiceOrganization : IEquatable<InternalPermissi
     public bool Equals(InternalPermissionServiceOrganization? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
-                    && EqualityComparer<string?>.Default.Equals(this.Name, other.Name));
+                    && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
+            );
     }
 
     public override bool Equals(object? obj)

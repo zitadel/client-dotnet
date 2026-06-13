@@ -19,8 +19,13 @@ public class BetaOrganizationServiceMetadataQuery : IEquatable<BetaOrganizationS
     public bool Equals(BetaOrganizationServiceMetadataQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaOrganizationServiceMetadataKeyQuery?>.Default.Equals(this.KeyQuery, other.KeyQuery));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaOrganizationServiceMetadataKeyQuery?>.Default.Equals(
+                    this.KeyQuery,
+                    other.KeyQuery
+                )
+            );
     }
 
     public override bool Equals(object? obj)

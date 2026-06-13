@@ -26,9 +26,14 @@ public class UserServiceFirstNameQuery : IEquatable<UserServiceFirstNameQuery>
     public bool Equals(UserServiceFirstNameQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.FirstName, other.FirstName)
-                    && EqualityComparer<UserServiceTextQueryMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<UserServiceTextQueryMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

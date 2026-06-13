@@ -46,14 +46,28 @@ public class BetaUserServiceIDPInformation : IEquatable<BetaUserServiceIDPInform
     public bool Equals(BetaUserServiceIDPInformation? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.IdpId, other.IdpId)
                     && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.UserName, other.UserName)
-                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.RawInformation, other.RawInformation)
-                    && EqualityComparer<BetaUserServiceIDPLDAPAccessInformation?>.Default.Equals(this.Ldap, other.Ldap)
-                    && EqualityComparer<BetaUserServiceIDPOAuthAccessInformation?>.Default.Equals(this.Oauth, other.Oauth)
-                    && EqualityComparer<BetaUserServiceIDPSAMLAccessInformation?>.Default.Equals(this.Saml, other.Saml));
+                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(
+                        this.RawInformation,
+                        other.RawInformation
+                    )
+                    && EqualityComparer<BetaUserServiceIDPLDAPAccessInformation?>.Default.Equals(
+                        this.Ldap,
+                        other.Ldap
+                    )
+                    && EqualityComparer<BetaUserServiceIDPOAuthAccessInformation?>.Default.Equals(
+                        this.Oauth,
+                        other.Oauth
+                    )
+                    && EqualityComparer<BetaUserServiceIDPSAMLAccessInformation?>.Default.Equals(
+                        this.Saml,
+                        other.Saml
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

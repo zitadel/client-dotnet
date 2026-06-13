@@ -89,17 +89,11 @@ internal class ObjectSerializer
         }
         catch (JsonException e)
         {
-            throw new SerializationException(
-                $"Failed to deserialize JSON to {typeof(T)}",
-                e
-            );
+            throw new SerializationException($"Failed to deserialize JSON to {typeof(T)}", e);
         }
         catch (NotSupportedException e)
         {
-            throw new SerializationException(
-                $"Failed to deserialize JSON to {typeof(T)}",
-                e
-            );
+            throw new SerializationException($"Failed to deserialize JSON to {typeof(T)}", e);
         }
     }
 
@@ -116,11 +110,24 @@ internal class ObjectSerializer
         {
             null => "",
             bool b => b ? "true" : "false",
-            DateOnly d => d.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture),
+            DateOnly d => d.ToString(
+                "yyyy-MM-dd",
+                System.Globalization.CultureInfo.InvariantCulture
+            ),
             TimeOnly t => t.ToString("HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture),
             TimeSpan ts => ProtobufDurationConverter.Format(ts),
-            DateTimeOffset dto => dto.ToString("yyyy-MM-dd'T'HH:mm:sszzz", System.Globalization.CultureInfo.InvariantCulture),
-            DateTime dt => new DateTimeOffset(dt.Kind == DateTimeKind.Unspecified ? DateTime.SpecifyKind(dt, DateTimeKind.Utc) : dt).ToString("yyyy-MM-dd'T'HH:mm:sszzz", System.Globalization.CultureInfo.InvariantCulture),
+            DateTimeOffset dto => dto.ToString(
+                "yyyy-MM-dd'T'HH:mm:sszzz",
+                System.Globalization.CultureInfo.InvariantCulture
+            ),
+            DateTime dt => new DateTimeOffset(
+                dt.Kind == DateTimeKind.Unspecified
+                    ? DateTime.SpecifyKind(dt, DateTimeKind.Utc)
+                    : dt
+            ).ToString(
+                "yyyy-MM-dd'T'HH:mm:sszzz",
+                System.Globalization.CultureInfo.InvariantCulture
+            ),
             IFormattable f => f.ToString(null, System.Globalization.CultureInfo.InvariantCulture),
             _ => value.ToString() ?? "",
         };
@@ -213,7 +220,10 @@ internal class ObjectSerializer
     /// satisfies none of the declared variants is a contract violation and must
     /// fail loudly rather than be silently dropped to null.
     /// </summary>
-    internal static object ResolveOneOf(JsonElement json, params Func<JsonElement, object?>[] candidates)
+    internal static object ResolveOneOf(
+        JsonElement json,
+        params Func<JsonElement, object?>[] candidates
+    )
     {
         ArgumentNullException.ThrowIfNull(candidates);
 
@@ -227,12 +237,8 @@ internal class ObjectSerializer
                     return result;
                 }
             }
-            catch (JsonException)
-            {
-            }
-            catch (NotSupportedException)
-            {
-            }
+            catch (JsonException) { }
+            catch (NotSupportedException) { }
         }
 
         throw new JsonException("No oneOf/anyOf variant matched the JSON");
@@ -245,7 +251,10 @@ internal class ObjectSerializer
     /// Returns the first successful deserialization result, or throws a
     /// <see cref="JsonException"/> when no candidate matches.
     /// </summary>
-    internal static object ResolveAnyOf(JsonElement json, params Func<JsonElement, object?>[] candidates)
+    internal static object ResolveAnyOf(
+        JsonElement json,
+        params Func<JsonElement, object?>[] candidates
+    )
     {
         return ResolveOneOf(json, candidates);
     }
@@ -276,21 +285,34 @@ internal class ObjectSerializer
     /// precision (no subseconds), matching the format used by all other
     /// language generators: yyyy-MM-dd'T'HH:mm:sszzz.
     /// </summary>
-    private sealed class DateTimeOffsetJsonConverter : System.Text.Json.Serialization.JsonConverter<DateTimeOffset>
+    private sealed class DateTimeOffsetJsonConverter
+        : System.Text.Json.Serialization.JsonConverter<DateTimeOffset>
     {
         private const string Format = "yyyy-MM-dd'T'HH:mm:sszzz";
 
-        public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override DateTimeOffset Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
         {
-            return DateTimeOffset.Parse(reader.GetString()!, System.Globalization.CultureInfo.InvariantCulture);
+            return DateTimeOffset.Parse(
+                reader.GetString()!,
+                System.Globalization.CultureInfo.InvariantCulture
+            );
         }
 
-        public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options)
+        public override void Write(
+            Utf8JsonWriter writer,
+            DateTimeOffset value,
+            JsonSerializerOptions options
+        )
         {
-            writer.WriteStringValue(value.ToString(Format, System.Globalization.CultureInfo.InvariantCulture));
+            writer.WriteStringValue(
+                value.ToString(Format, System.Globalization.CultureInfo.InvariantCulture)
+            );
         }
     }
-
 }
 
 /// <summary>
@@ -350,7 +372,11 @@ internal sealed partial class ProtobufDurationConverter : JsonConverter<TimeSpan
     private const long TicksPerSecond = 10_000_000L;
     private const long NanosPerTick = 100L;
 
-    public override TimeSpan Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+    public override TimeSpan Read(
+        ref Utf8JsonReader reader,
+        Type typeToConvert,
+        JsonSerializerOptions options
+    )
     {
         string? s = reader.GetString();
         if (string.IsNullOrEmpty(s))
@@ -389,9 +415,10 @@ internal sealed partial class ProtobufDurationConverter : JsonConverter<TimeSpan
          * shortest representation that preserves every significant digit is
          * emitted (protobuf canonical form). */
         string frac = nanos.ToString("D9", System.Globalization.CultureInfo.InvariantCulture);
-        int width = frac.EndsWith("000000", StringComparison.Ordinal)
-            ? 3
-            : frac.EndsWith("000", StringComparison.Ordinal) ? 6 : 9;
+        int width =
+            frac.EndsWith("000000", StringComparison.Ordinal) ? 3
+            : frac.EndsWith("000", StringComparison.Ordinal) ? 6
+            : 9;
         frac = frac[..width];
         return $"{sign}{secs}.{frac}s";
     }

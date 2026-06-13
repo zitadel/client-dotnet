@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceGenerateClientSecretRequest : IEquatable<ApplicationServiceGenerateClientSecretRequest>
+public class ApplicationServiceGenerateClientSecretRequest
+    : IEquatable<ApplicationServiceGenerateClientSecretRequest>
 {
     /// <summary>
     /// The unique ID of the application to generate a new client secret for.
@@ -29,9 +30,11 @@ public class ApplicationServiceGenerateClientSecretRequest : IEquatable<Applicat
     public bool Equals(ApplicationServiceGenerateClientSecretRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ApplicationId, other.ApplicationId)
-                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId));
+                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
+            );
     }
 
     public override bool Equals(object? obj)

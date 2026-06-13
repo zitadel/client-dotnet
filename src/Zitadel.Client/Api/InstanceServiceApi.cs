@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class InstanceServiceApi : BaseApi
 {
-
     private static readonly string[] AddCustomDomainAccepts = ["application/json"];
 
     private static readonly string[] AddTrustedDomainAccepts = ["application/json"];
@@ -50,7 +49,11 @@ public class InstanceServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public InstanceServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public InstanceServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -60,9 +63,12 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceAddCustomDomainRequest"></param>
     /// <returns><![CDATA[InstanceServiceAddCustomDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<InstanceServiceAddCustomDomainResponse> AddCustomDomainAsync(InstanceServiceAddCustomDomainRequest instanceServiceAddCustomDomainRequest)
+    public async Task<InstanceServiceAddCustomDomainResponse> AddCustomDomainAsync(
+        InstanceServiceAddCustomDomainRequest instanceServiceAddCustomDomainRequest
+    )
     {
-        Task<ApiResult<InstanceServiceAddCustomDomainResponse>> task = AddCustomDomainWithHttpInfoAsync(instanceServiceAddCustomDomainRequest);
+        Task<ApiResult<InstanceServiceAddCustomDomainResponse>> task =
+            AddCustomDomainWithHttpInfoAsync(instanceServiceAddCustomDomainRequest);
         ApiResult<InstanceServiceAddCustomDomainResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -74,7 +80,8 @@ public class InstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -84,7 +91,11 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceAddCustomDomainRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<InstanceServiceAddCustomDomainResponse>> AddCustomDomainWithHttpInfoAsync(InstanceServiceAddCustomDomainRequest instanceServiceAddCustomDomainRequest)
+    public async Task<
+        ApiResult<InstanceServiceAddCustomDomainResponse>
+    > AddCustomDomainWithHttpInfoAsync(
+        InstanceServiceAddCustomDomainRequest instanceServiceAddCustomDomainRequest
+    )
     {
         string path = "/zitadel.instance.v2.InstanceService/AddCustomDomain";
 
@@ -111,10 +122,15 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceAddTrustedDomainRequest"></param>
     /// <returns><![CDATA[InstanceServiceAddTrustedDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<InstanceServiceAddTrustedDomainResponse> AddTrustedDomainAsync(InstanceServiceAddTrustedDomainRequest instanceServiceAddTrustedDomainRequest)
+    public async Task<InstanceServiceAddTrustedDomainResponse> AddTrustedDomainAsync(
+        InstanceServiceAddTrustedDomainRequest instanceServiceAddTrustedDomainRequest
+    )
     {
-        Task<ApiResult<InstanceServiceAddTrustedDomainResponse>> task = AddTrustedDomainWithHttpInfoAsync(instanceServiceAddTrustedDomainRequest);
-        ApiResult<InstanceServiceAddTrustedDomainResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<InstanceServiceAddTrustedDomainResponse>> task =
+            AddTrustedDomainWithHttpInfoAsync(instanceServiceAddTrustedDomainRequest);
+        ApiResult<InstanceServiceAddTrustedDomainResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -125,7 +141,8 @@ public class InstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -135,7 +152,11 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceAddTrustedDomainRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<InstanceServiceAddTrustedDomainResponse>> AddTrustedDomainWithHttpInfoAsync(InstanceServiceAddTrustedDomainRequest instanceServiceAddTrustedDomainRequest)
+    public async Task<
+        ApiResult<InstanceServiceAddTrustedDomainResponse>
+    > AddTrustedDomainWithHttpInfoAsync(
+        InstanceServiceAddTrustedDomainRequest instanceServiceAddTrustedDomainRequest
+    )
     {
         string path = "/zitadel.instance.v2.InstanceService/AddTrustedDomain";
 
@@ -162,9 +183,12 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceDeleteInstanceRequest"></param>
     /// <returns><![CDATA[InstanceServiceDeleteInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<InstanceServiceDeleteInstanceResponse> DeleteInstanceAsync(InstanceServiceDeleteInstanceRequest instanceServiceDeleteInstanceRequest)
+    public async Task<InstanceServiceDeleteInstanceResponse> DeleteInstanceAsync(
+        InstanceServiceDeleteInstanceRequest instanceServiceDeleteInstanceRequest
+    )
     {
-        Task<ApiResult<InstanceServiceDeleteInstanceResponse>> task = DeleteInstanceWithHttpInfoAsync(instanceServiceDeleteInstanceRequest);
+        Task<ApiResult<InstanceServiceDeleteInstanceResponse>> task =
+            DeleteInstanceWithHttpInfoAsync(instanceServiceDeleteInstanceRequest);
         ApiResult<InstanceServiceDeleteInstanceResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -176,7 +200,8 @@ public class InstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -186,7 +211,11 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceDeleteInstanceRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<InstanceServiceDeleteInstanceResponse>> DeleteInstanceWithHttpInfoAsync(InstanceServiceDeleteInstanceRequest instanceServiceDeleteInstanceRequest)
+    public async Task<
+        ApiResult<InstanceServiceDeleteInstanceResponse>
+    > DeleteInstanceWithHttpInfoAsync(
+        InstanceServiceDeleteInstanceRequest instanceServiceDeleteInstanceRequest
+    )
     {
         string path = "/zitadel.instance.v2.InstanceService/DeleteInstance";
 
@@ -213,9 +242,13 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceGetInstanceRequest"></param>
     /// <returns><![CDATA[InstanceServiceGetInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<InstanceServiceGetInstanceResponse> GetInstanceAsync(InstanceServiceGetInstanceRequest instanceServiceGetInstanceRequest)
+    public async Task<InstanceServiceGetInstanceResponse> GetInstanceAsync(
+        InstanceServiceGetInstanceRequest instanceServiceGetInstanceRequest
+    )
     {
-        Task<ApiResult<InstanceServiceGetInstanceResponse>> task = GetInstanceWithHttpInfoAsync(instanceServiceGetInstanceRequest);
+        Task<ApiResult<InstanceServiceGetInstanceResponse>> task = GetInstanceWithHttpInfoAsync(
+            instanceServiceGetInstanceRequest
+        );
         ApiResult<InstanceServiceGetInstanceResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -227,7 +260,8 @@ public class InstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -237,7 +271,9 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceGetInstanceRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<InstanceServiceGetInstanceResponse>> GetInstanceWithHttpInfoAsync(InstanceServiceGetInstanceRequest instanceServiceGetInstanceRequest)
+    public async Task<ApiResult<InstanceServiceGetInstanceResponse>> GetInstanceWithHttpInfoAsync(
+        InstanceServiceGetInstanceRequest instanceServiceGetInstanceRequest
+    )
     {
         string path = "/zitadel.instance.v2.InstanceService/GetInstance";
 
@@ -264,10 +300,15 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceListCustomDomainsRequest"></param>
     /// <returns><![CDATA[InstanceServiceListCustomDomainsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<InstanceServiceListCustomDomainsResponse> ListCustomDomainsAsync(InstanceServiceListCustomDomainsRequest instanceServiceListCustomDomainsRequest)
+    public async Task<InstanceServiceListCustomDomainsResponse> ListCustomDomainsAsync(
+        InstanceServiceListCustomDomainsRequest instanceServiceListCustomDomainsRequest
+    )
     {
-        Task<ApiResult<InstanceServiceListCustomDomainsResponse>> task = ListCustomDomainsWithHttpInfoAsync(instanceServiceListCustomDomainsRequest);
-        ApiResult<InstanceServiceListCustomDomainsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<InstanceServiceListCustomDomainsResponse>> task =
+            ListCustomDomainsWithHttpInfoAsync(instanceServiceListCustomDomainsRequest);
+        ApiResult<InstanceServiceListCustomDomainsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -278,7 +319,8 @@ public class InstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -288,7 +330,11 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceListCustomDomainsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<InstanceServiceListCustomDomainsResponse>> ListCustomDomainsWithHttpInfoAsync(InstanceServiceListCustomDomainsRequest instanceServiceListCustomDomainsRequest)
+    public async Task<
+        ApiResult<InstanceServiceListCustomDomainsResponse>
+    > ListCustomDomainsWithHttpInfoAsync(
+        InstanceServiceListCustomDomainsRequest instanceServiceListCustomDomainsRequest
+    )
     {
         string path = "/zitadel.instance.v2.InstanceService/ListCustomDomains";
 
@@ -315,9 +361,13 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceListInstancesRequest"></param>
     /// <returns><![CDATA[InstanceServiceListInstancesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<InstanceServiceListInstancesResponse> ListInstancesAsync(InstanceServiceListInstancesRequest instanceServiceListInstancesRequest)
+    public async Task<InstanceServiceListInstancesResponse> ListInstancesAsync(
+        InstanceServiceListInstancesRequest instanceServiceListInstancesRequest
+    )
     {
-        Task<ApiResult<InstanceServiceListInstancesResponse>> task = ListInstancesWithHttpInfoAsync(instanceServiceListInstancesRequest);
+        Task<ApiResult<InstanceServiceListInstancesResponse>> task = ListInstancesWithHttpInfoAsync(
+            instanceServiceListInstancesRequest
+        );
         ApiResult<InstanceServiceListInstancesResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -329,7 +379,8 @@ public class InstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -339,7 +390,11 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceListInstancesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<InstanceServiceListInstancesResponse>> ListInstancesWithHttpInfoAsync(InstanceServiceListInstancesRequest instanceServiceListInstancesRequest)
+    public async Task<
+        ApiResult<InstanceServiceListInstancesResponse>
+    > ListInstancesWithHttpInfoAsync(
+        InstanceServiceListInstancesRequest instanceServiceListInstancesRequest
+    )
     {
         string path = "/zitadel.instance.v2.InstanceService/ListInstances";
 
@@ -366,10 +421,15 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceListTrustedDomainsRequest"></param>
     /// <returns><![CDATA[InstanceServiceListTrustedDomainsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<InstanceServiceListTrustedDomainsResponse> ListTrustedDomainsAsync(InstanceServiceListTrustedDomainsRequest instanceServiceListTrustedDomainsRequest)
+    public async Task<InstanceServiceListTrustedDomainsResponse> ListTrustedDomainsAsync(
+        InstanceServiceListTrustedDomainsRequest instanceServiceListTrustedDomainsRequest
+    )
     {
-        Task<ApiResult<InstanceServiceListTrustedDomainsResponse>> task = ListTrustedDomainsWithHttpInfoAsync(instanceServiceListTrustedDomainsRequest);
-        ApiResult<InstanceServiceListTrustedDomainsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<InstanceServiceListTrustedDomainsResponse>> task =
+            ListTrustedDomainsWithHttpInfoAsync(instanceServiceListTrustedDomainsRequest);
+        ApiResult<InstanceServiceListTrustedDomainsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -380,7 +440,8 @@ public class InstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -390,7 +451,11 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceListTrustedDomainsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<InstanceServiceListTrustedDomainsResponse>> ListTrustedDomainsWithHttpInfoAsync(InstanceServiceListTrustedDomainsRequest instanceServiceListTrustedDomainsRequest)
+    public async Task<
+        ApiResult<InstanceServiceListTrustedDomainsResponse>
+    > ListTrustedDomainsWithHttpInfoAsync(
+        InstanceServiceListTrustedDomainsRequest instanceServiceListTrustedDomainsRequest
+    )
     {
         string path = "/zitadel.instance.v2.InstanceService/ListTrustedDomains";
 
@@ -417,10 +482,15 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceRemoveCustomDomainRequest"></param>
     /// <returns><![CDATA[InstanceServiceRemoveCustomDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<InstanceServiceRemoveCustomDomainResponse> RemoveCustomDomainAsync(InstanceServiceRemoveCustomDomainRequest instanceServiceRemoveCustomDomainRequest)
+    public async Task<InstanceServiceRemoveCustomDomainResponse> RemoveCustomDomainAsync(
+        InstanceServiceRemoveCustomDomainRequest instanceServiceRemoveCustomDomainRequest
+    )
     {
-        Task<ApiResult<InstanceServiceRemoveCustomDomainResponse>> task = RemoveCustomDomainWithHttpInfoAsync(instanceServiceRemoveCustomDomainRequest);
-        ApiResult<InstanceServiceRemoveCustomDomainResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<InstanceServiceRemoveCustomDomainResponse>> task =
+            RemoveCustomDomainWithHttpInfoAsync(instanceServiceRemoveCustomDomainRequest);
+        ApiResult<InstanceServiceRemoveCustomDomainResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -431,7 +501,8 @@ public class InstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -441,7 +512,11 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceRemoveCustomDomainRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<InstanceServiceRemoveCustomDomainResponse>> RemoveCustomDomainWithHttpInfoAsync(InstanceServiceRemoveCustomDomainRequest instanceServiceRemoveCustomDomainRequest)
+    public async Task<
+        ApiResult<InstanceServiceRemoveCustomDomainResponse>
+    > RemoveCustomDomainWithHttpInfoAsync(
+        InstanceServiceRemoveCustomDomainRequest instanceServiceRemoveCustomDomainRequest
+    )
     {
         string path = "/zitadel.instance.v2.InstanceService/RemoveCustomDomain";
 
@@ -468,10 +543,15 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceRemoveTrustedDomainRequest"></param>
     /// <returns><![CDATA[InstanceServiceRemoveTrustedDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<InstanceServiceRemoveTrustedDomainResponse> RemoveTrustedDomainAsync(InstanceServiceRemoveTrustedDomainRequest instanceServiceRemoveTrustedDomainRequest)
+    public async Task<InstanceServiceRemoveTrustedDomainResponse> RemoveTrustedDomainAsync(
+        InstanceServiceRemoveTrustedDomainRequest instanceServiceRemoveTrustedDomainRequest
+    )
     {
-        Task<ApiResult<InstanceServiceRemoveTrustedDomainResponse>> task = RemoveTrustedDomainWithHttpInfoAsync(instanceServiceRemoveTrustedDomainRequest);
-        ApiResult<InstanceServiceRemoveTrustedDomainResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<InstanceServiceRemoveTrustedDomainResponse>> task =
+            RemoveTrustedDomainWithHttpInfoAsync(instanceServiceRemoveTrustedDomainRequest);
+        ApiResult<InstanceServiceRemoveTrustedDomainResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -482,7 +562,8 @@ public class InstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -492,7 +573,11 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceRemoveTrustedDomainRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<InstanceServiceRemoveTrustedDomainResponse>> RemoveTrustedDomainWithHttpInfoAsync(InstanceServiceRemoveTrustedDomainRequest instanceServiceRemoveTrustedDomainRequest)
+    public async Task<
+        ApiResult<InstanceServiceRemoveTrustedDomainResponse>
+    > RemoveTrustedDomainWithHttpInfoAsync(
+        InstanceServiceRemoveTrustedDomainRequest instanceServiceRemoveTrustedDomainRequest
+    )
     {
         string path = "/zitadel.instance.v2.InstanceService/RemoveTrustedDomain";
 
@@ -519,9 +604,12 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceUpdateInstanceRequest"></param>
     /// <returns><![CDATA[InstanceServiceUpdateInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<InstanceServiceUpdateInstanceResponse> UpdateInstanceAsync(InstanceServiceUpdateInstanceRequest instanceServiceUpdateInstanceRequest)
+    public async Task<InstanceServiceUpdateInstanceResponse> UpdateInstanceAsync(
+        InstanceServiceUpdateInstanceRequest instanceServiceUpdateInstanceRequest
+    )
     {
-        Task<ApiResult<InstanceServiceUpdateInstanceResponse>> task = UpdateInstanceWithHttpInfoAsync(instanceServiceUpdateInstanceRequest);
+        Task<ApiResult<InstanceServiceUpdateInstanceResponse>> task =
+            UpdateInstanceWithHttpInfoAsync(instanceServiceUpdateInstanceRequest);
         ApiResult<InstanceServiceUpdateInstanceResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -533,7 +621,8 @@ public class InstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -543,7 +632,11 @@ public class InstanceServiceApi : BaseApi
     /// <param name="instanceServiceUpdateInstanceRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<InstanceServiceUpdateInstanceResponse>> UpdateInstanceWithHttpInfoAsync(InstanceServiceUpdateInstanceRequest instanceServiceUpdateInstanceRequest)
+    public async Task<
+        ApiResult<InstanceServiceUpdateInstanceResponse>
+    > UpdateInstanceWithHttpInfoAsync(
+        InstanceServiceUpdateInstanceRequest instanceServiceUpdateInstanceRequest
+    )
     {
         string path = "/zitadel.instance.v2.InstanceService/UpdateInstance";
 

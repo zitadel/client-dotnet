@@ -22,8 +22,13 @@ public class UserServiceAndQuery : IEquatable<UserServiceAndQuery>
     public bool Equals(UserServiceAndQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<UserServiceSearchQuery>?>.Default.Equals(this.Queries, other.Queries));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<UserServiceSearchQuery>?>.Default.Equals(
+                    this.Queries,
+                    other.Queries
+                )
+            );
     }
 
     public override bool Equals(object? obj)

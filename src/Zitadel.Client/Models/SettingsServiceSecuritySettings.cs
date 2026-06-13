@@ -26,9 +26,17 @@ public class SettingsServiceSecuritySettings : IEquatable<SettingsServiceSecurit
     public bool Equals(SettingsServiceSecuritySettings? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<SettingsServiceEmbeddedIframeSettings?>.Default.Equals(this.EmbeddedIframe, other.EmbeddedIframe)
-                    && EqualityComparer<bool?>.Default.Equals(this.EnableImpersonation, other.EnableImpersonation));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<SettingsServiceEmbeddedIframeSettings?>.Default.Equals(
+                    this.EmbeddedIframe,
+                    other.EmbeddedIframe
+                )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.EnableImpersonation,
+                        other.EnableImpersonation
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -19,8 +19,10 @@ public class BetaSessionServiceCheckPassword : IEquatable<BetaSessionServiceChec
     public bool Equals(BetaSessionServiceCheckPassword? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.Password, other.Password));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.Password, other.Password)
+            );
     }
 
     public override bool Equals(object? obj)

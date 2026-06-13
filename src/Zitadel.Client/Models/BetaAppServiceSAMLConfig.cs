@@ -27,10 +27,15 @@ public class BetaAppServiceSAMLConfig : IEquatable<BetaAppServiceSAMLConfig>
     public bool Equals(BetaAppServiceSAMLConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaAppServiceLoginVersion?>.Default.Equals(this.LoginVersion, other.LoginVersion)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaAppServiceLoginVersion?>.Default.Equals(
+                    this.LoginVersion,
+                    other.LoginVersion
+                )
                     && EqualityComparer<string?>.Default.Equals(this.MetadataUrl, other.MetadataUrl)
-                    && EqualityComparer<byte[]?>.Default.Equals(this.MetadataXml, other.MetadataXml));
+                    && EqualityComparer<byte[]?>.Default.Equals(this.MetadataXml, other.MetadataXml)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -22,8 +22,10 @@ public class SessionServiceSendCode : IEquatable<SessionServiceSendCode>
     public bool Equals(SessionServiceSendCode? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.UrlTemplate, other.UrlTemplate));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.UrlTemplate, other.UrlTemplate)
+            );
     }
 
     public override bool Equals(object? obj)

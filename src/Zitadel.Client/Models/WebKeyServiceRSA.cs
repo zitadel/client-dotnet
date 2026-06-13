@@ -23,9 +23,14 @@ public class WebKeyServiceRSA : IEquatable<WebKeyServiceRSA>
     public bool Equals(WebKeyServiceRSA? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<WebKeyServiceRSABits?>.Default.Equals(this.Bits, other.Bits)
-                    && EqualityComparer<WebKeyServiceRSAHasher?>.Default.Equals(this.Hasher, other.Hasher));
+                    && EqualityComparer<WebKeyServiceRSAHasher?>.Default.Equals(
+                        this.Hasher,
+                        other.Hasher
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

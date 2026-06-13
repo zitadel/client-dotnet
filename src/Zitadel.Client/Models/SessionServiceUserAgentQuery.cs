@@ -22,8 +22,10 @@ public class SessionServiceUserAgentQuery : IEquatable<SessionServiceUserAgentQu
     public bool Equals(SessionServiceUserAgentQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.FingerprintId, other.FingerprintId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.FingerprintId, other.FingerprintId)
+            );
     }
 
     public override bool Equals(object? obj)

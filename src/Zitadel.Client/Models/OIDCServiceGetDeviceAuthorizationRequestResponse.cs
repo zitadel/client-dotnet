@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OIDCServiceGetDeviceAuthorizationRequestResponse : IEquatable<OIDCServiceGetDeviceAuthorizationRequestResponse>
+public class OIDCServiceGetDeviceAuthorizationRequestResponse
+    : IEquatable<OIDCServiceGetDeviceAuthorizationRequestResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("deviceAuthorizationRequest")]
@@ -19,8 +20,13 @@ public class OIDCServiceGetDeviceAuthorizationRequestResponse : IEquatable<OIDCS
     public bool Equals(OIDCServiceGetDeviceAuthorizationRequestResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<OIDCServiceDeviceAuthorizationRequest?>.Default.Equals(this.DeviceAuthorizationRequest, other.DeviceAuthorizationRequest));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<OIDCServiceDeviceAuthorizationRequest?>.Default.Equals(
+                    this.DeviceAuthorizationRequest,
+                    other.DeviceAuthorizationRequest
+                )
+            );
     }
 
     public override bool Equals(object? obj)

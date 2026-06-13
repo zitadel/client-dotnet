@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ActionServiceActivatePublicKeyRequest : IEquatable<ActionServiceActivatePublicKeyRequest>
+public class ActionServiceActivatePublicKeyRequest
+    : IEquatable<ActionServiceActivatePublicKeyRequest>
 {
     /// <summary>
     /// TargetID is the unique identifier of the target to activate the public key for.
@@ -29,9 +30,11 @@ public class ActionServiceActivatePublicKeyRequest : IEquatable<ActionServiceAct
     public bool Equals(ActionServiceActivatePublicKeyRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.TargetId, other.TargetId)
-                    && EqualityComparer<string?>.Default.Equals(this.KeyId, other.KeyId));
+                    && EqualityComparer<string?>.Default.Equals(this.KeyId, other.KeyId)
+            );
     }
 
     public override bool Equals(object? obj)

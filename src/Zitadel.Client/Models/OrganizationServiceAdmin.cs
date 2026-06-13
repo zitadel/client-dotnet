@@ -30,10 +30,15 @@ public class OrganizationServiceAdmin : IEquatable<OrganizationServiceAdmin>
     public bool Equals(OrganizationServiceAdmin? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<List<string>?>.Default.Equals(this.Roles, other.Roles)
-                    && EqualityComparer<OrganizationServiceAddHumanUserRequest?>.Default.Equals(this.Human, other.Human)
-                    && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId));
+                    && EqualityComparer<OrganizationServiceAddHumanUserRequest?>.Default.Equals(
+                        this.Human,
+                        other.Human
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
+            );
     }
 
     public override bool Equals(object? obj)

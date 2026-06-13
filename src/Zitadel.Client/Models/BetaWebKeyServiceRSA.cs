@@ -23,9 +23,14 @@ public class BetaWebKeyServiceRSA : IEquatable<BetaWebKeyServiceRSA>
     public bool Equals(BetaWebKeyServiceRSA? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<BetaWebKeyServiceRSABits?>.Default.Equals(this.Bits, other.Bits)
-                    && EqualityComparer<BetaWebKeyServiceRSAHasher?>.Default.Equals(this.Hasher, other.Hasher));
+                    && EqualityComparer<BetaWebKeyServiceRSAHasher?>.Default.Equals(
+                        this.Hasher,
+                        other.Hasher
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

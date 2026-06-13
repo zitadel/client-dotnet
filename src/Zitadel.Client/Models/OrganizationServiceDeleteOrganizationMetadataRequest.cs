@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceDeleteOrganizationMetadataRequest : IEquatable<OrganizationServiceDeleteOrganizationMetadataRequest>
+public class OrganizationServiceDeleteOrganizationMetadataRequest
+    : IEquatable<OrganizationServiceDeleteOrganizationMetadataRequest>
 {
     /// <summary>
     /// Organization ID is the unique identifier of the organization whose metadata is to be deleted.
@@ -29,9 +30,13 @@ public class OrganizationServiceDeleteOrganizationMetadataRequest : IEquatable<O
     public bool Equals(OrganizationServiceDeleteOrganizationMetadataRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Keys, other.Keys));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                ) && EqualityComparer<List<string>?>.Default.Equals(this.Keys, other.Keys)
+            );
     }
 
     public override bool Equals(object? obj)

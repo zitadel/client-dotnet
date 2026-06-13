@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class BetaInternalPermissionServiceApi : BaseApi
 {
-
     private static readonly string[] CreateAdministratorAccepts = ["application/json"];
 
     private static readonly string[] DeleteAdministratorAccepts = ["application/json"];
@@ -38,7 +37,11 @@ public class BetaInternalPermissionServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public BetaInternalPermissionServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public BetaInternalPermissionServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -48,10 +51,16 @@ public class BetaInternalPermissionServiceApi : BaseApi
     /// <param name="betaInternalPermissionServiceCreateAdministratorRequest"></param>
     /// <returns><![CDATA[BetaInternalPermissionServiceCreateAdministratorResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInternalPermissionServiceCreateAdministratorResponse> CreateAdministratorAsync(BetaInternalPermissionServiceCreateAdministratorRequest betaInternalPermissionServiceCreateAdministratorRequest)
+    public async Task<BetaInternalPermissionServiceCreateAdministratorResponse> CreateAdministratorAsync(
+        BetaInternalPermissionServiceCreateAdministratorRequest betaInternalPermissionServiceCreateAdministratorRequest
+    )
     {
-        Task<ApiResult<BetaInternalPermissionServiceCreateAdministratorResponse>> task = CreateAdministratorWithHttpInfoAsync(betaInternalPermissionServiceCreateAdministratorRequest);
-        ApiResult<BetaInternalPermissionServiceCreateAdministratorResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInternalPermissionServiceCreateAdministratorResponse>> task =
+            CreateAdministratorWithHttpInfoAsync(
+                betaInternalPermissionServiceCreateAdministratorRequest
+            );
+        ApiResult<BetaInternalPermissionServiceCreateAdministratorResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -62,7 +71,8 @@ public class BetaInternalPermissionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -72,9 +82,14 @@ public class BetaInternalPermissionServiceApi : BaseApi
     /// <param name="betaInternalPermissionServiceCreateAdministratorRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInternalPermissionServiceCreateAdministratorResponse>> CreateAdministratorWithHttpInfoAsync(BetaInternalPermissionServiceCreateAdministratorRequest betaInternalPermissionServiceCreateAdministratorRequest)
+    public async Task<
+        ApiResult<BetaInternalPermissionServiceCreateAdministratorResponse>
+    > CreateAdministratorWithHttpInfoAsync(
+        BetaInternalPermissionServiceCreateAdministratorRequest betaInternalPermissionServiceCreateAdministratorRequest
+    )
     {
-        string path = "/zitadel.internal_permission.v2beta.InternalPermissionService/CreateAdministrator";
+        string path =
+            "/zitadel.internal_permission.v2beta.InternalPermissionService/CreateAdministrator";
 
         Dictionary<string, object?> queryParams = [];
         Dictionary<string, string> headerParams = [];
@@ -99,10 +114,16 @@ public class BetaInternalPermissionServiceApi : BaseApi
     /// <param name="betaInternalPermissionServiceDeleteAdministratorRequest"></param>
     /// <returns><![CDATA[BetaInternalPermissionServiceDeleteAdministratorResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInternalPermissionServiceDeleteAdministratorResponse> DeleteAdministratorAsync(BetaInternalPermissionServiceDeleteAdministratorRequest betaInternalPermissionServiceDeleteAdministratorRequest)
+    public async Task<BetaInternalPermissionServiceDeleteAdministratorResponse> DeleteAdministratorAsync(
+        BetaInternalPermissionServiceDeleteAdministratorRequest betaInternalPermissionServiceDeleteAdministratorRequest
+    )
     {
-        Task<ApiResult<BetaInternalPermissionServiceDeleteAdministratorResponse>> task = DeleteAdministratorWithHttpInfoAsync(betaInternalPermissionServiceDeleteAdministratorRequest);
-        ApiResult<BetaInternalPermissionServiceDeleteAdministratorResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInternalPermissionServiceDeleteAdministratorResponse>> task =
+            DeleteAdministratorWithHttpInfoAsync(
+                betaInternalPermissionServiceDeleteAdministratorRequest
+            );
+        ApiResult<BetaInternalPermissionServiceDeleteAdministratorResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -113,7 +134,8 @@ public class BetaInternalPermissionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -123,9 +145,14 @@ public class BetaInternalPermissionServiceApi : BaseApi
     /// <param name="betaInternalPermissionServiceDeleteAdministratorRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInternalPermissionServiceDeleteAdministratorResponse>> DeleteAdministratorWithHttpInfoAsync(BetaInternalPermissionServiceDeleteAdministratorRequest betaInternalPermissionServiceDeleteAdministratorRequest)
+    public async Task<
+        ApiResult<BetaInternalPermissionServiceDeleteAdministratorResponse>
+    > DeleteAdministratorWithHttpInfoAsync(
+        BetaInternalPermissionServiceDeleteAdministratorRequest betaInternalPermissionServiceDeleteAdministratorRequest
+    )
     {
-        string path = "/zitadel.internal_permission.v2beta.InternalPermissionService/DeleteAdministrator";
+        string path =
+            "/zitadel.internal_permission.v2beta.InternalPermissionService/DeleteAdministrator";
 
         Dictionary<string, object?> queryParams = [];
         Dictionary<string, string> headerParams = [];
@@ -150,10 +177,16 @@ public class BetaInternalPermissionServiceApi : BaseApi
     /// <param name="betaInternalPermissionServiceListAdministratorsRequest"></param>
     /// <returns><![CDATA[BetaInternalPermissionServiceListAdministratorsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInternalPermissionServiceListAdministratorsResponse> ListAdministratorsAsync(BetaInternalPermissionServiceListAdministratorsRequest betaInternalPermissionServiceListAdministratorsRequest)
+    public async Task<BetaInternalPermissionServiceListAdministratorsResponse> ListAdministratorsAsync(
+        BetaInternalPermissionServiceListAdministratorsRequest betaInternalPermissionServiceListAdministratorsRequest
+    )
     {
-        Task<ApiResult<BetaInternalPermissionServiceListAdministratorsResponse>> task = ListAdministratorsWithHttpInfoAsync(betaInternalPermissionServiceListAdministratorsRequest);
-        ApiResult<BetaInternalPermissionServiceListAdministratorsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInternalPermissionServiceListAdministratorsResponse>> task =
+            ListAdministratorsWithHttpInfoAsync(
+                betaInternalPermissionServiceListAdministratorsRequest
+            );
+        ApiResult<BetaInternalPermissionServiceListAdministratorsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -164,7 +197,8 @@ public class BetaInternalPermissionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -174,9 +208,14 @@ public class BetaInternalPermissionServiceApi : BaseApi
     /// <param name="betaInternalPermissionServiceListAdministratorsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInternalPermissionServiceListAdministratorsResponse>> ListAdministratorsWithHttpInfoAsync(BetaInternalPermissionServiceListAdministratorsRequest betaInternalPermissionServiceListAdministratorsRequest)
+    public async Task<
+        ApiResult<BetaInternalPermissionServiceListAdministratorsResponse>
+    > ListAdministratorsWithHttpInfoAsync(
+        BetaInternalPermissionServiceListAdministratorsRequest betaInternalPermissionServiceListAdministratorsRequest
+    )
     {
-        string path = "/zitadel.internal_permission.v2beta.InternalPermissionService/ListAdministrators";
+        string path =
+            "/zitadel.internal_permission.v2beta.InternalPermissionService/ListAdministrators";
 
         Dictionary<string, object?> queryParams = [];
         Dictionary<string, string> headerParams = [];
@@ -201,10 +240,16 @@ public class BetaInternalPermissionServiceApi : BaseApi
     /// <param name="betaInternalPermissionServiceUpdateAdministratorRequest"></param>
     /// <returns><![CDATA[BetaInternalPermissionServiceUpdateAdministratorResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInternalPermissionServiceUpdateAdministratorResponse> UpdateAdministratorAsync(BetaInternalPermissionServiceUpdateAdministratorRequest betaInternalPermissionServiceUpdateAdministratorRequest)
+    public async Task<BetaInternalPermissionServiceUpdateAdministratorResponse> UpdateAdministratorAsync(
+        BetaInternalPermissionServiceUpdateAdministratorRequest betaInternalPermissionServiceUpdateAdministratorRequest
+    )
     {
-        Task<ApiResult<BetaInternalPermissionServiceUpdateAdministratorResponse>> task = UpdateAdministratorWithHttpInfoAsync(betaInternalPermissionServiceUpdateAdministratorRequest);
-        ApiResult<BetaInternalPermissionServiceUpdateAdministratorResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInternalPermissionServiceUpdateAdministratorResponse>> task =
+            UpdateAdministratorWithHttpInfoAsync(
+                betaInternalPermissionServiceUpdateAdministratorRequest
+            );
+        ApiResult<BetaInternalPermissionServiceUpdateAdministratorResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -215,7 +260,8 @@ public class BetaInternalPermissionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -225,9 +271,14 @@ public class BetaInternalPermissionServiceApi : BaseApi
     /// <param name="betaInternalPermissionServiceUpdateAdministratorRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInternalPermissionServiceUpdateAdministratorResponse>> UpdateAdministratorWithHttpInfoAsync(BetaInternalPermissionServiceUpdateAdministratorRequest betaInternalPermissionServiceUpdateAdministratorRequest)
+    public async Task<
+        ApiResult<BetaInternalPermissionServiceUpdateAdministratorResponse>
+    > UpdateAdministratorWithHttpInfoAsync(
+        BetaInternalPermissionServiceUpdateAdministratorRequest betaInternalPermissionServiceUpdateAdministratorRequest
+    )
     {
-        string path = "/zitadel.internal_permission.v2beta.InternalPermissionService/UpdateAdministrator";
+        string path =
+            "/zitadel.internal_permission.v2beta.InternalPermissionService/UpdateAdministrator";
 
         Dictionary<string, object?> queryParams = [];
         Dictionary<string, string> headerParams = [];

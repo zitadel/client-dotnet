@@ -23,9 +23,14 @@ public class SessionServiceOTPEmail : IEquatable<SessionServiceOTPEmail>
     public bool Equals(SessionServiceOTPEmail? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<Object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
-                    && EqualityComparer<SessionServiceSendCode?>.Default.Equals(this.SendCode, other.SendCode));
+                    && EqualityComparer<SessionServiceSendCode?>.Default.Equals(
+                        this.SendCode,
+                        other.SendCode
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

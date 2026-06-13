@@ -23,9 +23,11 @@ public class UserServiceRedirectURLs : IEquatable<UserServiceRedirectURLs>
     public bool Equals(UserServiceRedirectURLs? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.SuccessUrl, other.SuccessUrl)
-                    && EqualityComparer<string?>.Default.Equals(this.FailureUrl, other.FailureUrl));
+                    && EqualityComparer<string?>.Default.Equals(this.FailureUrl, other.FailureUrl)
+            );
     }
 
     public override bool Equals(object? obj)

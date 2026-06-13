@@ -23,9 +23,17 @@ public class BetaSettingsServiceSecuritySettings : IEquatable<BetaSettingsServic
     public bool Equals(BetaSettingsServiceSecuritySettings? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaSettingsServiceEmbeddedIframeSettings?>.Default.Equals(this.EmbeddedIframe, other.EmbeddedIframe)
-                    && EqualityComparer<bool?>.Default.Equals(this.EnableImpersonation, other.EnableImpersonation));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaSettingsServiceEmbeddedIframeSettings?>.Default.Equals(
+                    this.EmbeddedIframe,
+                    other.EmbeddedIframe
+                )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.EnableImpersonation,
+                        other.EnableImpersonation
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

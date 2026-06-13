@@ -19,8 +19,13 @@ public class ProjectServiceGetProjectResponse : IEquatable<ProjectServiceGetProj
     public bool Equals(ProjectServiceGetProjectResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ProjectServiceProject?>.Default.Equals(this.Project, other.Project));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ProjectServiceProject?>.Default.Equals(
+                    this.Project,
+                    other.Project
+                )
+            );
     }
 
     public override bool Equals(object? obj)

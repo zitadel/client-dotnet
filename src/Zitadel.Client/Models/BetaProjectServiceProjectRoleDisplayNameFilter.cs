@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaProjectServiceProjectRoleDisplayNameFilter : IEquatable<BetaProjectServiceProjectRoleDisplayNameFilter>
+public class BetaProjectServiceProjectRoleDisplayNameFilter
+    : IEquatable<BetaProjectServiceProjectRoleDisplayNameFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("displayName")]
@@ -23,9 +24,14 @@ public class BetaProjectServiceProjectRoleDisplayNameFilter : IEquatable<BetaPro
     public bool Equals(BetaProjectServiceProjectRoleDisplayNameFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.DisplayName, other.DisplayName)
-                    && EqualityComparer<BetaProjectServiceTextFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<BetaProjectServiceTextFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

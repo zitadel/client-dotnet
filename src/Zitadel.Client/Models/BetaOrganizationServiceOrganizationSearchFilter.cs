@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaOrganizationServiceOrganizationSearchFilter : IEquatable<BetaOrganizationServiceOrganizationSearchFilter>
+public class BetaOrganizationServiceOrganizationSearchFilter
+    : IEquatable<BetaOrganizationServiceOrganizationSearchFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("domainFilter")]
@@ -31,11 +32,25 @@ public class BetaOrganizationServiceOrganizationSearchFilter : IEquatable<BetaOr
     public bool Equals(BetaOrganizationServiceOrganizationSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaOrganizationServiceOrgDomainFilter?>.Default.Equals(this.DomainFilter, other.DomainFilter)
-                    && EqualityComparer<BetaOrganizationServiceOrgIDFilter?>.Default.Equals(this.IdFilter, other.IdFilter)
-                    && EqualityComparer<BetaOrganizationServiceOrgNameFilter?>.Default.Equals(this.NameFilter, other.NameFilter)
-                    && EqualityComparer<BetaOrganizationServiceOrgStateFilter?>.Default.Equals(this.StateFilter, other.StateFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaOrganizationServiceOrgDomainFilter?>.Default.Equals(
+                    this.DomainFilter,
+                    other.DomainFilter
+                )
+                    && EqualityComparer<BetaOrganizationServiceOrgIDFilter?>.Default.Equals(
+                        this.IdFilter,
+                        other.IdFilter
+                    )
+                    && EqualityComparer<BetaOrganizationServiceOrgNameFilter?>.Default.Equals(
+                        this.NameFilter,
+                        other.NameFilter
+                    )
+                    && EqualityComparer<BetaOrganizationServiceOrgStateFilter?>.Default.Equals(
+                        this.StateFilter,
+                        other.StateFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

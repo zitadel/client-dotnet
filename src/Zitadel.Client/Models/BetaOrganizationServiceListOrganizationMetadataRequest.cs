@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaOrganizationServiceListOrganizationMetadataRequest : IEquatable<BetaOrganizationServiceListOrganizationMetadataRequest>
+public class BetaOrganizationServiceListOrganizationMetadataRequest
+    : IEquatable<BetaOrganizationServiceListOrganizationMetadataRequest>
 {
     /// <summary>
     /// Organization ID of Orgalization which metadata is to be listed.
@@ -33,10 +34,21 @@ public class BetaOrganizationServiceListOrganizationMetadataRequest : IEquatable
     public bool Equals(BetaOrganizationServiceListOrganizationMetadataRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<BetaOrganizationServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<BetaOrganizationServiceMetadataQuery>?>.Default.Equals(this.Filter, other.Filter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                )
+                    && EqualityComparer<BetaOrganizationServicePaginationRequest?>.Default.Equals(
+                        this.Pagination,
+                        other.Pagination
+                    )
+                    && EqualityComparer<List<BetaOrganizationServiceMetadataQuery>?>.Default.Equals(
+                        this.Filter,
+                        other.Filter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

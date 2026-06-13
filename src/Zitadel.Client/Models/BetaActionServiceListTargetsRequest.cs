@@ -30,10 +30,21 @@ public class BetaActionServiceListTargetsRequest : IEquatable<BetaActionServiceL
     public bool Equals(BetaActionServiceListTargetsRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaActionServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<BetaActionServiceTargetFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<BetaActionServiceTargetSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaActionServicePaginationRequest?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<BetaActionServiceTargetFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<List<BetaActionServiceTargetSearchFilter>?>.Default.Equals(
+                        this.Filters,
+                        other.Filters
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

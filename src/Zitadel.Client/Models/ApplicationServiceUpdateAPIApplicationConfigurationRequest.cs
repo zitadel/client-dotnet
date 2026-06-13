@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceUpdateAPIApplicationConfigurationRequest : IEquatable<ApplicationServiceUpdateAPIApplicationConfigurationRequest>
+public class ApplicationServiceUpdateAPIApplicationConfigurationRequest
+    : IEquatable<ApplicationServiceUpdateAPIApplicationConfigurationRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("authMethodType")]
@@ -19,8 +20,13 @@ public class ApplicationServiceUpdateAPIApplicationConfigurationRequest : IEquat
     public bool Equals(ApplicationServiceUpdateAPIApplicationConfigurationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ApplicationServiceAPIAuthMethodType?>.Default.Equals(this.AuthMethodType, other.AuthMethodType));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ApplicationServiceAPIAuthMethodType?>.Default.Equals(
+                    this.AuthMethodType,
+                    other.AuthMethodType
+                )
+            );
     }
 
     public override bool Equals(object? obj)

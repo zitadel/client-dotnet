@@ -31,11 +31,16 @@ public class BetaUserServiceAddHumanUserResponse : IEquatable<BetaUserServiceAdd
     public bool Equals(BetaUserServiceAddHumanUserResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<BetaUserServiceDetails?>.Default.Equals(this.Details, other.Details)
+                    && EqualityComparer<BetaUserServiceDetails?>.Default.Equals(
+                        this.Details,
+                        other.Details
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.EmailCode, other.EmailCode)
-                    && EqualityComparer<string?>.Default.Equals(this.PhoneCode, other.PhoneCode));
+                    && EqualityComparer<string?>.Default.Equals(this.PhoneCode, other.PhoneCode)
+            );
     }
 
     public override bool Equals(object? obj)

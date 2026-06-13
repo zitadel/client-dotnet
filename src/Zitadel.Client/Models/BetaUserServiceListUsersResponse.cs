@@ -27,10 +27,21 @@ public class BetaUserServiceListUsersResponse : IEquatable<BetaUserServiceListUs
     public bool Equals(BetaUserServiceListUsersResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaUserServiceListDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<BetaUserServiceUserFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<BetaUserServiceUser>?>.Default.Equals(this.Result, other.Result));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaUserServiceListDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
+                    && EqualityComparer<BetaUserServiceUserFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<List<BetaUserServiceUser>?>.Default.Equals(
+                        this.Result,
+                        other.Result
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class InstanceServiceRemoveTrustedDomainRequest : IEquatable<InstanceServiceRemoveTrustedDomainRequest>
+public class InstanceServiceRemoveTrustedDomainRequest
+    : IEquatable<InstanceServiceRemoveTrustedDomainRequest>
 {
     /// <summary>
     /// InstanceID is the unique ID of the instance from which the trusted domain will be removed.  If not set, the instance in the current context (e.g. identified by the host header) will be used.  If an ID is set, the caller must have additional permissions.
@@ -29,9 +30,14 @@ public class InstanceServiceRemoveTrustedDomainRequest : IEquatable<InstanceServ
     public bool Equals(InstanceServiceRemoveTrustedDomainRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
-                    && EqualityComparer<string?>.Default.Equals(this.TrustedDomain, other.TrustedDomain));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.TrustedDomain,
+                        other.TrustedDomain
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

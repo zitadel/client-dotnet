@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAuthorizationServiceListAuthorizationsRequest : IEquatable<BetaAuthorizationServiceListAuthorizationsRequest>
+public class BetaAuthorizationServiceListAuthorizationsRequest
+    : IEquatable<BetaAuthorizationServiceListAuthorizationsRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("pagination")]
@@ -30,10 +31,21 @@ public class BetaAuthorizationServiceListAuthorizationsRequest : IEquatable<Beta
     public bool Equals(BetaAuthorizationServiceListAuthorizationsRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaAuthorizationServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<BetaAuthorizationServiceAuthorizationFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<BetaAuthorizationServiceAuthorizationsSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaAuthorizationServicePaginationRequest?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<BetaAuthorizationServiceAuthorizationFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<List<BetaAuthorizationServiceAuthorizationsSearchFilter>?>.Default.Equals(
+                        this.Filters,
+                        other.Filters
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

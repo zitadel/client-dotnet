@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAuthorizationServiceAuthorizationsSearchFilter : IEquatable<BetaAuthorizationServiceAuthorizationsSearchFilter>
+public class BetaAuthorizationServiceAuthorizationsSearchFilter
+    : IEquatable<BetaAuthorizationServiceAuthorizationsSearchFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("authorizationIds")]
@@ -63,19 +64,57 @@ public class BetaAuthorizationServiceAuthorizationsSearchFilter : IEquatable<Bet
     public bool Equals(BetaAuthorizationServiceAuthorizationsSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaAuthorizationServiceInIDsFilter?>.Default.Equals(this.AuthorizationIds, other.AuthorizationIds)
-                    && EqualityComparer<BetaAuthorizationServiceInIDsFilter?>.Default.Equals(this.InUserIds, other.InUserIds)
-                    && EqualityComparer<BetaAuthorizationServiceIDFilter?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<BetaAuthorizationServiceIDFilter?>.Default.Equals(this.ProjectGrantId, other.ProjectGrantId)
-                    && EqualityComparer<BetaAuthorizationServiceIDFilter?>.Default.Equals(this.ProjectId, other.ProjectId)
-                    && EqualityComparer<BetaAuthorizationServiceProjectNameQuery?>.Default.Equals(this.ProjectName, other.ProjectName)
-                    && EqualityComparer<BetaAuthorizationServiceRoleKeyQuery?>.Default.Equals(this.RoleKey, other.RoleKey)
-                    && EqualityComparer<BetaAuthorizationServiceStateQuery?>.Default.Equals(this.State, other.State)
-                    && EqualityComparer<BetaAuthorizationServiceUserDisplayNameQuery?>.Default.Equals(this.UserDisplayName, other.UserDisplayName)
-                    && EqualityComparer<BetaAuthorizationServiceIDFilter?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<BetaAuthorizationServiceIDFilter?>.Default.Equals(this.UserOrganizationId, other.UserOrganizationId)
-                    && EqualityComparer<BetaAuthorizationServiceUserPreferredLoginNameQuery?>.Default.Equals(this.UserPreferredLoginName, other.UserPreferredLoginName));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaAuthorizationServiceInIDsFilter?>.Default.Equals(
+                    this.AuthorizationIds,
+                    other.AuthorizationIds
+                )
+                    && EqualityComparer<BetaAuthorizationServiceInIDsFilter?>.Default.Equals(
+                        this.InUserIds,
+                        other.InUserIds
+                    )
+                    && EqualityComparer<BetaAuthorizationServiceIDFilter?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+                    && EqualityComparer<BetaAuthorizationServiceIDFilter?>.Default.Equals(
+                        this.ProjectGrantId,
+                        other.ProjectGrantId
+                    )
+                    && EqualityComparer<BetaAuthorizationServiceIDFilter?>.Default.Equals(
+                        this.ProjectId,
+                        other.ProjectId
+                    )
+                    && EqualityComparer<BetaAuthorizationServiceProjectNameQuery?>.Default.Equals(
+                        this.ProjectName,
+                        other.ProjectName
+                    )
+                    && EqualityComparer<BetaAuthorizationServiceRoleKeyQuery?>.Default.Equals(
+                        this.RoleKey,
+                        other.RoleKey
+                    )
+                    && EqualityComparer<BetaAuthorizationServiceStateQuery?>.Default.Equals(
+                        this.State,
+                        other.State
+                    )
+                    && EqualityComparer<BetaAuthorizationServiceUserDisplayNameQuery?>.Default.Equals(
+                        this.UserDisplayName,
+                        other.UserDisplayName
+                    )
+                    && EqualityComparer<BetaAuthorizationServiceIDFilter?>.Default.Equals(
+                        this.UserId,
+                        other.UserId
+                    )
+                    && EqualityComparer<BetaAuthorizationServiceIDFilter?>.Default.Equals(
+                        this.UserOrganizationId,
+                        other.UserOrganizationId
+                    )
+                    && EqualityComparer<BetaAuthorizationServiceUserPreferredLoginNameQuery?>.Default.Equals(
+                        this.UserPreferredLoginName,
+                        other.UserPreferredLoginName
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

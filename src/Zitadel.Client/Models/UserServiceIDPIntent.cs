@@ -27,10 +27,15 @@ public class UserServiceIDPIntent : IEquatable<UserServiceIDPIntent>
     public bool Equals(UserServiceIDPIntent? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.IdpIntentId, other.IdpIntentId)
-                    && EqualityComparer<string?>.Default.Equals(this.IdpIntentToken, other.IdpIntentToken)
-                    && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.IdpIntentToken,
+                        other.IdpIntentToken
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
+            );
     }
 
     public override bool Equals(object? obj)

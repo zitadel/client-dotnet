@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaProjectServiceCreateProjectRequest : IEquatable<BetaProjectServiceCreateProjectRequest>
+public class BetaProjectServiceCreateProjectRequest
+    : IEquatable<BetaProjectServiceCreateProjectRequest>
 {
     /// <summary>
     /// The unique identifier of the organization the project belongs to.
@@ -68,15 +69,35 @@ public class BetaProjectServiceCreateProjectRequest : IEquatable<BetaProjectServ
     public bool Equals(BetaProjectServiceCreateProjectRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                )
                     && EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
                     && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<bool?>.Default.Equals(this.ProjectRoleAssertion, other.ProjectRoleAssertion)
-                    && EqualityComparer<bool?>.Default.Equals(this.AuthorizationRequired, other.AuthorizationRequired)
-                    && EqualityComparer<bool?>.Default.Equals(this.ProjectAccessRequired, other.ProjectAccessRequired)
-                    && EqualityComparer<BetaProjectServicePrivateLabelingSetting?>.Default.Equals(this.PrivateLabelingSetting, other.PrivateLabelingSetting)
-                    && EqualityComparer<List<BetaProjectServiceAdmin>?>.Default.Equals(this.Admins, other.Admins));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.ProjectRoleAssertion,
+                        other.ProjectRoleAssertion
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.AuthorizationRequired,
+                        other.AuthorizationRequired
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.ProjectAccessRequired,
+                        other.ProjectAccessRequired
+                    )
+                    && EqualityComparer<BetaProjectServicePrivateLabelingSetting?>.Default.Equals(
+                        this.PrivateLabelingSetting,
+                        other.PrivateLabelingSetting
+                    )
+                    && EqualityComparer<List<BetaProjectServiceAdmin>?>.Default.Equals(
+                        this.Admins,
+                        other.Admins
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -23,9 +23,11 @@ public class UserServiceAuthFactorU2F : IEquatable<UserServiceAuthFactorU2F>
     public bool Equals(UserServiceAuthFactorU2F? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
-                    && EqualityComparer<string?>.Default.Equals(this.Name, other.Name));
+                    && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
+            );
     }
 
     public override bool Equals(object? obj)

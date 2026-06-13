@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class BetaFeatureServiceApi : BaseApi
 {
-
     private static readonly string[] GetInstanceFeaturesAccepts = ["application/json"];
 
     private static readonly string[] GetOrganizationFeaturesAccepts = ["application/json"];
@@ -54,7 +53,11 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public BetaFeatureServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public BetaFeatureServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -63,10 +66,15 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceGetInstanceFeaturesRequest"></param>
     /// <returns><![CDATA[BetaFeatureServiceGetInstanceFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceGetInstanceFeaturesResponse> GetInstanceFeaturesAsync(BetaFeatureServiceGetInstanceFeaturesRequest betaFeatureServiceGetInstanceFeaturesRequest)
+    public async Task<BetaFeatureServiceGetInstanceFeaturesResponse> GetInstanceFeaturesAsync(
+        BetaFeatureServiceGetInstanceFeaturesRequest betaFeatureServiceGetInstanceFeaturesRequest
+    )
     {
-        Task<ApiResult<BetaFeatureServiceGetInstanceFeaturesResponse>> task = GetInstanceFeaturesWithHttpInfoAsync(betaFeatureServiceGetInstanceFeaturesRequest);
-        ApiResult<BetaFeatureServiceGetInstanceFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceGetInstanceFeaturesResponse>> task =
+            GetInstanceFeaturesWithHttpInfoAsync(betaFeatureServiceGetInstanceFeaturesRequest);
+        ApiResult<BetaFeatureServiceGetInstanceFeaturesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -77,7 +85,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -86,7 +95,11 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceGetInstanceFeaturesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceGetInstanceFeaturesResponse>> GetInstanceFeaturesWithHttpInfoAsync(BetaFeatureServiceGetInstanceFeaturesRequest betaFeatureServiceGetInstanceFeaturesRequest)
+    public async Task<
+        ApiResult<BetaFeatureServiceGetInstanceFeaturesResponse>
+    > GetInstanceFeaturesWithHttpInfoAsync(
+        BetaFeatureServiceGetInstanceFeaturesRequest betaFeatureServiceGetInstanceFeaturesRequest
+    )
     {
         string path = "/zitadel.feature.v2beta.FeatureService/GetInstanceFeatures";
 
@@ -112,10 +125,16 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceGetOrganizationFeaturesRequest"></param>
     /// <returns><![CDATA[BetaFeatureServiceGetOrganizationFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceGetOrganizationFeaturesResponse> GetOrganizationFeaturesAsync(BetaFeatureServiceGetOrganizationFeaturesRequest betaFeatureServiceGetOrganizationFeaturesRequest)
+    public async Task<BetaFeatureServiceGetOrganizationFeaturesResponse> GetOrganizationFeaturesAsync(
+        BetaFeatureServiceGetOrganizationFeaturesRequest betaFeatureServiceGetOrganizationFeaturesRequest
+    )
     {
-        Task<ApiResult<BetaFeatureServiceGetOrganizationFeaturesResponse>> task = GetOrganizationFeaturesWithHttpInfoAsync(betaFeatureServiceGetOrganizationFeaturesRequest);
-        ApiResult<BetaFeatureServiceGetOrganizationFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceGetOrganizationFeaturesResponse>> task =
+            GetOrganizationFeaturesWithHttpInfoAsync(
+                betaFeatureServiceGetOrganizationFeaturesRequest
+            );
+        ApiResult<BetaFeatureServiceGetOrganizationFeaturesResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -126,7 +145,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -135,7 +155,11 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceGetOrganizationFeaturesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceGetOrganizationFeaturesResponse>> GetOrganizationFeaturesWithHttpInfoAsync(BetaFeatureServiceGetOrganizationFeaturesRequest betaFeatureServiceGetOrganizationFeaturesRequest)
+    public async Task<
+        ApiResult<BetaFeatureServiceGetOrganizationFeaturesResponse>
+    > GetOrganizationFeaturesWithHttpInfoAsync(
+        BetaFeatureServiceGetOrganizationFeaturesRequest betaFeatureServiceGetOrganizationFeaturesRequest
+    )
     {
         string path = "/zitadel.feature.v2beta.FeatureService/GetOrganizationFeatures";
 
@@ -161,10 +185,15 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns><![CDATA[BetaFeatureServiceGetSystemFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceGetSystemFeaturesResponse> GetSystemFeaturesAsync(Object body)
+    public async Task<BetaFeatureServiceGetSystemFeaturesResponse> GetSystemFeaturesAsync(
+        Object body
+    )
     {
-        Task<ApiResult<BetaFeatureServiceGetSystemFeaturesResponse>> task = GetSystemFeaturesWithHttpInfoAsync(body);
-        ApiResult<BetaFeatureServiceGetSystemFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceGetSystemFeaturesResponse>> task =
+            GetSystemFeaturesWithHttpInfoAsync(body);
+        ApiResult<BetaFeatureServiceGetSystemFeaturesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -175,7 +204,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -184,7 +214,9 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceGetSystemFeaturesResponse>> GetSystemFeaturesWithHttpInfoAsync(Object body)
+    public async Task<
+        ApiResult<BetaFeatureServiceGetSystemFeaturesResponse>
+    > GetSystemFeaturesWithHttpInfoAsync(Object body)
     {
         string path = "/zitadel.feature.v2beta.FeatureService/GetSystemFeatures";
 
@@ -210,10 +242,15 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceGetUserFeaturesRequest"></param>
     /// <returns><![CDATA[BetaFeatureServiceGetUserFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceGetUserFeaturesResponse> GetUserFeaturesAsync(BetaFeatureServiceGetUserFeaturesRequest betaFeatureServiceGetUserFeaturesRequest)
+    public async Task<BetaFeatureServiceGetUserFeaturesResponse> GetUserFeaturesAsync(
+        BetaFeatureServiceGetUserFeaturesRequest betaFeatureServiceGetUserFeaturesRequest
+    )
     {
-        Task<ApiResult<BetaFeatureServiceGetUserFeaturesResponse>> task = GetUserFeaturesWithHttpInfoAsync(betaFeatureServiceGetUserFeaturesRequest);
-        ApiResult<BetaFeatureServiceGetUserFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceGetUserFeaturesResponse>> task =
+            GetUserFeaturesWithHttpInfoAsync(betaFeatureServiceGetUserFeaturesRequest);
+        ApiResult<BetaFeatureServiceGetUserFeaturesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -224,7 +261,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -233,7 +271,11 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceGetUserFeaturesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceGetUserFeaturesResponse>> GetUserFeaturesWithHttpInfoAsync(BetaFeatureServiceGetUserFeaturesRequest betaFeatureServiceGetUserFeaturesRequest)
+    public async Task<
+        ApiResult<BetaFeatureServiceGetUserFeaturesResponse>
+    > GetUserFeaturesWithHttpInfoAsync(
+        BetaFeatureServiceGetUserFeaturesRequest betaFeatureServiceGetUserFeaturesRequest
+    )
     {
         string path = "/zitadel.feature.v2beta.FeatureService/GetUserFeatures";
 
@@ -259,10 +301,14 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns><![CDATA[BetaFeatureServiceResetInstanceFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceResetInstanceFeaturesResponse> ResetInstanceFeaturesAsync(Object body)
+    public async Task<BetaFeatureServiceResetInstanceFeaturesResponse> ResetInstanceFeaturesAsync(
+        Object body
+    )
     {
-        Task<ApiResult<BetaFeatureServiceResetInstanceFeaturesResponse>> task = ResetInstanceFeaturesWithHttpInfoAsync(body);
-        ApiResult<BetaFeatureServiceResetInstanceFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceResetInstanceFeaturesResponse>> task =
+            ResetInstanceFeaturesWithHttpInfoAsync(body);
+        ApiResult<BetaFeatureServiceResetInstanceFeaturesResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -273,7 +319,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -282,7 +329,9 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceResetInstanceFeaturesResponse>> ResetInstanceFeaturesWithHttpInfoAsync(Object body)
+    public async Task<
+        ApiResult<BetaFeatureServiceResetInstanceFeaturesResponse>
+    > ResetInstanceFeaturesWithHttpInfoAsync(Object body)
     {
         string path = "/zitadel.feature.v2beta.FeatureService/ResetInstanceFeatures";
 
@@ -308,10 +357,16 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceResetOrganizationFeaturesRequest"></param>
     /// <returns><![CDATA[BetaFeatureServiceResetOrganizationFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceResetOrganizationFeaturesResponse> ResetOrganizationFeaturesAsync(BetaFeatureServiceResetOrganizationFeaturesRequest betaFeatureServiceResetOrganizationFeaturesRequest)
+    public async Task<BetaFeatureServiceResetOrganizationFeaturesResponse> ResetOrganizationFeaturesAsync(
+        BetaFeatureServiceResetOrganizationFeaturesRequest betaFeatureServiceResetOrganizationFeaturesRequest
+    )
     {
-        Task<ApiResult<BetaFeatureServiceResetOrganizationFeaturesResponse>> task = ResetOrganizationFeaturesWithHttpInfoAsync(betaFeatureServiceResetOrganizationFeaturesRequest);
-        ApiResult<BetaFeatureServiceResetOrganizationFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceResetOrganizationFeaturesResponse>> task =
+            ResetOrganizationFeaturesWithHttpInfoAsync(
+                betaFeatureServiceResetOrganizationFeaturesRequest
+            );
+        ApiResult<BetaFeatureServiceResetOrganizationFeaturesResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -322,7 +377,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -331,7 +387,11 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceResetOrganizationFeaturesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceResetOrganizationFeaturesResponse>> ResetOrganizationFeaturesWithHttpInfoAsync(BetaFeatureServiceResetOrganizationFeaturesRequest betaFeatureServiceResetOrganizationFeaturesRequest)
+    public async Task<
+        ApiResult<BetaFeatureServiceResetOrganizationFeaturesResponse>
+    > ResetOrganizationFeaturesWithHttpInfoAsync(
+        BetaFeatureServiceResetOrganizationFeaturesRequest betaFeatureServiceResetOrganizationFeaturesRequest
+    )
     {
         string path = "/zitadel.feature.v2beta.FeatureService/ResetOrganizationFeatures";
 
@@ -357,10 +417,15 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns><![CDATA[BetaFeatureServiceResetSystemFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceResetSystemFeaturesResponse> ResetSystemFeaturesAsync(Object body)
+    public async Task<BetaFeatureServiceResetSystemFeaturesResponse> ResetSystemFeaturesAsync(
+        Object body
+    )
     {
-        Task<ApiResult<BetaFeatureServiceResetSystemFeaturesResponse>> task = ResetSystemFeaturesWithHttpInfoAsync(body);
-        ApiResult<BetaFeatureServiceResetSystemFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceResetSystemFeaturesResponse>> task =
+            ResetSystemFeaturesWithHttpInfoAsync(body);
+        ApiResult<BetaFeatureServiceResetSystemFeaturesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -371,7 +436,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -380,7 +446,9 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceResetSystemFeaturesResponse>> ResetSystemFeaturesWithHttpInfoAsync(Object body)
+    public async Task<
+        ApiResult<BetaFeatureServiceResetSystemFeaturesResponse>
+    > ResetSystemFeaturesWithHttpInfoAsync(Object body)
     {
         string path = "/zitadel.feature.v2beta.FeatureService/ResetSystemFeatures";
 
@@ -406,10 +474,15 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceResetUserFeaturesRequest"></param>
     /// <returns><![CDATA[BetaFeatureServiceResetUserFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceResetUserFeaturesResponse> ResetUserFeaturesAsync(BetaFeatureServiceResetUserFeaturesRequest betaFeatureServiceResetUserFeaturesRequest)
+    public async Task<BetaFeatureServiceResetUserFeaturesResponse> ResetUserFeaturesAsync(
+        BetaFeatureServiceResetUserFeaturesRequest betaFeatureServiceResetUserFeaturesRequest
+    )
     {
-        Task<ApiResult<BetaFeatureServiceResetUserFeaturesResponse>> task = ResetUserFeaturesWithHttpInfoAsync(betaFeatureServiceResetUserFeaturesRequest);
-        ApiResult<BetaFeatureServiceResetUserFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceResetUserFeaturesResponse>> task =
+            ResetUserFeaturesWithHttpInfoAsync(betaFeatureServiceResetUserFeaturesRequest);
+        ApiResult<BetaFeatureServiceResetUserFeaturesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -420,7 +493,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -429,7 +503,11 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceResetUserFeaturesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceResetUserFeaturesResponse>> ResetUserFeaturesWithHttpInfoAsync(BetaFeatureServiceResetUserFeaturesRequest betaFeatureServiceResetUserFeaturesRequest)
+    public async Task<
+        ApiResult<BetaFeatureServiceResetUserFeaturesResponse>
+    > ResetUserFeaturesWithHttpInfoAsync(
+        BetaFeatureServiceResetUserFeaturesRequest betaFeatureServiceResetUserFeaturesRequest
+    )
     {
         string path = "/zitadel.feature.v2beta.FeatureService/ResetUserFeatures";
 
@@ -455,10 +533,15 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceSetInstanceFeaturesRequest"></param>
     /// <returns><![CDATA[BetaFeatureServiceSetInstanceFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceSetInstanceFeaturesResponse> SetInstanceFeaturesAsync(BetaFeatureServiceSetInstanceFeaturesRequest betaFeatureServiceSetInstanceFeaturesRequest)
+    public async Task<BetaFeatureServiceSetInstanceFeaturesResponse> SetInstanceFeaturesAsync(
+        BetaFeatureServiceSetInstanceFeaturesRequest betaFeatureServiceSetInstanceFeaturesRequest
+    )
     {
-        Task<ApiResult<BetaFeatureServiceSetInstanceFeaturesResponse>> task = SetInstanceFeaturesWithHttpInfoAsync(betaFeatureServiceSetInstanceFeaturesRequest);
-        ApiResult<BetaFeatureServiceSetInstanceFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceSetInstanceFeaturesResponse>> task =
+            SetInstanceFeaturesWithHttpInfoAsync(betaFeatureServiceSetInstanceFeaturesRequest);
+        ApiResult<BetaFeatureServiceSetInstanceFeaturesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -469,7 +552,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -478,7 +562,11 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceSetInstanceFeaturesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceSetInstanceFeaturesResponse>> SetInstanceFeaturesWithHttpInfoAsync(BetaFeatureServiceSetInstanceFeaturesRequest betaFeatureServiceSetInstanceFeaturesRequest)
+    public async Task<
+        ApiResult<BetaFeatureServiceSetInstanceFeaturesResponse>
+    > SetInstanceFeaturesWithHttpInfoAsync(
+        BetaFeatureServiceSetInstanceFeaturesRequest betaFeatureServiceSetInstanceFeaturesRequest
+    )
     {
         string path = "/zitadel.feature.v2beta.FeatureService/SetInstanceFeatures";
 
@@ -504,10 +592,16 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceSetOrganizationFeaturesRequest"></param>
     /// <returns><![CDATA[BetaFeatureServiceSetOrganizationFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceSetOrganizationFeaturesResponse> SetOrganizationFeaturesAsync(BetaFeatureServiceSetOrganizationFeaturesRequest betaFeatureServiceSetOrganizationFeaturesRequest)
+    public async Task<BetaFeatureServiceSetOrganizationFeaturesResponse> SetOrganizationFeaturesAsync(
+        BetaFeatureServiceSetOrganizationFeaturesRequest betaFeatureServiceSetOrganizationFeaturesRequest
+    )
     {
-        Task<ApiResult<BetaFeatureServiceSetOrganizationFeaturesResponse>> task = SetOrganizationFeaturesWithHttpInfoAsync(betaFeatureServiceSetOrganizationFeaturesRequest);
-        ApiResult<BetaFeatureServiceSetOrganizationFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceSetOrganizationFeaturesResponse>> task =
+            SetOrganizationFeaturesWithHttpInfoAsync(
+                betaFeatureServiceSetOrganizationFeaturesRequest
+            );
+        ApiResult<BetaFeatureServiceSetOrganizationFeaturesResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -518,7 +612,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -527,7 +622,11 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceSetOrganizationFeaturesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceSetOrganizationFeaturesResponse>> SetOrganizationFeaturesWithHttpInfoAsync(BetaFeatureServiceSetOrganizationFeaturesRequest betaFeatureServiceSetOrganizationFeaturesRequest)
+    public async Task<
+        ApiResult<BetaFeatureServiceSetOrganizationFeaturesResponse>
+    > SetOrganizationFeaturesWithHttpInfoAsync(
+        BetaFeatureServiceSetOrganizationFeaturesRequest betaFeatureServiceSetOrganizationFeaturesRequest
+    )
     {
         string path = "/zitadel.feature.v2beta.FeatureService/SetOrganizationFeatures";
 
@@ -553,10 +652,15 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceSetSystemFeaturesRequest"></param>
     /// <returns><![CDATA[BetaFeatureServiceSetSystemFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceSetSystemFeaturesResponse> SetSystemFeaturesAsync(BetaFeatureServiceSetSystemFeaturesRequest betaFeatureServiceSetSystemFeaturesRequest)
+    public async Task<BetaFeatureServiceSetSystemFeaturesResponse> SetSystemFeaturesAsync(
+        BetaFeatureServiceSetSystemFeaturesRequest betaFeatureServiceSetSystemFeaturesRequest
+    )
     {
-        Task<ApiResult<BetaFeatureServiceSetSystemFeaturesResponse>> task = SetSystemFeaturesWithHttpInfoAsync(betaFeatureServiceSetSystemFeaturesRequest);
-        ApiResult<BetaFeatureServiceSetSystemFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceSetSystemFeaturesResponse>> task =
+            SetSystemFeaturesWithHttpInfoAsync(betaFeatureServiceSetSystemFeaturesRequest);
+        ApiResult<BetaFeatureServiceSetSystemFeaturesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -567,7 +671,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -576,7 +681,11 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceSetSystemFeaturesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceSetSystemFeaturesResponse>> SetSystemFeaturesWithHttpInfoAsync(BetaFeatureServiceSetSystemFeaturesRequest betaFeatureServiceSetSystemFeaturesRequest)
+    public async Task<
+        ApiResult<BetaFeatureServiceSetSystemFeaturesResponse>
+    > SetSystemFeaturesWithHttpInfoAsync(
+        BetaFeatureServiceSetSystemFeaturesRequest betaFeatureServiceSetSystemFeaturesRequest
+    )
     {
         string path = "/zitadel.feature.v2beta.FeatureService/SetSystemFeatures";
 
@@ -602,10 +711,15 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceSetUserFeatureRequest"></param>
     /// <returns><![CDATA[BetaFeatureServiceSetUserFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaFeatureServiceSetUserFeaturesResponse> SetUserFeaturesAsync(BetaFeatureServiceSetUserFeatureRequest betaFeatureServiceSetUserFeatureRequest)
+    public async Task<BetaFeatureServiceSetUserFeaturesResponse> SetUserFeaturesAsync(
+        BetaFeatureServiceSetUserFeatureRequest betaFeatureServiceSetUserFeatureRequest
+    )
     {
-        Task<ApiResult<BetaFeatureServiceSetUserFeaturesResponse>> task = SetUserFeaturesWithHttpInfoAsync(betaFeatureServiceSetUserFeatureRequest);
-        ApiResult<BetaFeatureServiceSetUserFeaturesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaFeatureServiceSetUserFeaturesResponse>> task =
+            SetUserFeaturesWithHttpInfoAsync(betaFeatureServiceSetUserFeatureRequest);
+        ApiResult<BetaFeatureServiceSetUserFeaturesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -616,7 +730,8 @@ public class BetaFeatureServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -625,7 +740,11 @@ public class BetaFeatureServiceApi : BaseApi
     /// <param name="betaFeatureServiceSetUserFeatureRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaFeatureServiceSetUserFeaturesResponse>> SetUserFeaturesWithHttpInfoAsync(BetaFeatureServiceSetUserFeatureRequest betaFeatureServiceSetUserFeatureRequest)
+    public async Task<
+        ApiResult<BetaFeatureServiceSetUserFeaturesResponse>
+    > SetUserFeaturesWithHttpInfoAsync(
+        BetaFeatureServiceSetUserFeatureRequest betaFeatureServiceSetUserFeatureRequest
+    )
     {
         string path = "/zitadel.feature.v2beta.FeatureService/SetUserFeatures";
 

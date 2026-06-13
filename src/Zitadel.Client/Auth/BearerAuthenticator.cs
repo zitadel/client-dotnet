@@ -31,9 +31,7 @@ public class BearerAuthenticator : BaseAuthenticator
          * guard and the harmonised cross-SDK canonical. */
         if (string.IsNullOrWhiteSpace(token))
         {
-            throw new ArgumentException(
-                "Bearer token must not be empty",
-                nameof(token));
+            throw new ArgumentException("Bearer token must not be empty", nameof(token));
         }
         /* RFC 7230 §3.2.6 — field-value is HTAB / SP / VCHAR / obs-text.
          * Reject anything outside printable ASCII + TAB so callers see a
@@ -43,7 +41,8 @@ public class BearerAuthenticator : BaseAuthenticator
         {
             throw new ArgumentException(
                 "Bearer token must contain only printable ASCII characters (RFC 7230 §3.2.6)",
-                nameof(token));
+                nameof(token)
+            );
         }
         _host = host;
         _token = token;

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaTelemetryServiceReportBaseInformationResponse : IEquatable<BetaTelemetryServiceReportBaseInformationResponse>
+public class BetaTelemetryServiceReportBaseInformationResponse
+    : IEquatable<BetaTelemetryServiceReportBaseInformationResponse>
 {
     /// <summary>
     /// The report ID is a unique identifier for the report.  It is used to identify the report to be able to link it to the resource counts or other reports.  Note that the report ID is only valid for the same system ID.
@@ -22,8 +23,10 @@ public class BetaTelemetryServiceReportBaseInformationResponse : IEquatable<Beta
     public bool Equals(BetaTelemetryServiceReportBaseInformationResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.ReportId, other.ReportId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.ReportId, other.ReportId)
+            );
     }
 
     public override bool Equals(object? obj)

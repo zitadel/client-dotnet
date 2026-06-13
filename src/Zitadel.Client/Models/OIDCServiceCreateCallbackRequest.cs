@@ -30,10 +30,18 @@ public class OIDCServiceCreateCallbackRequest : IEquatable<OIDCServiceCreateCall
     public bool Equals(OIDCServiceCreateCallbackRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.AuthRequestId, other.AuthRequestId)
-                    && EqualityComparer<OIDCServiceAuthorizationError?>.Default.Equals(this.Error, other.Error)
-                    && EqualityComparer<OIDCServiceSession?>.Default.Equals(this.Session, other.Session));
+                    && EqualityComparer<OIDCServiceAuthorizationError?>.Default.Equals(
+                        this.Error,
+                        other.Error
+                    )
+                    && EqualityComparer<OIDCServiceSession?>.Default.Equals(
+                        this.Session,
+                        other.Session
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

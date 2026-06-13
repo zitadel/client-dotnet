@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaUserServiceUpdateHumanUserRequest : IEquatable<BetaUserServiceUpdateHumanUserRequest>
+public class BetaUserServiceUpdateHumanUserRequest
+    : IEquatable<BetaUserServiceUpdateHumanUserRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("userId")]
@@ -39,13 +40,27 @@ public class BetaUserServiceUpdateHumanUserRequest : IEquatable<BetaUserServiceU
     public bool Equals(BetaUserServiceUpdateHumanUserRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.Username, other.Username)
-                    && EqualityComparer<BetaUserServiceSetHumanProfile?>.Default.Equals(this.Profile, other.Profile)
-                    && EqualityComparer<BetaUserServiceSetHumanEmail?>.Default.Equals(this.Email, other.Email)
-                    && EqualityComparer<BetaUserServiceSetHumanPhone?>.Default.Equals(this.Phone, other.Phone)
-                    && EqualityComparer<BetaUserServiceSetPassword?>.Default.Equals(this.Password, other.Password));
+                    && EqualityComparer<BetaUserServiceSetHumanProfile?>.Default.Equals(
+                        this.Profile,
+                        other.Profile
+                    )
+                    && EqualityComparer<BetaUserServiceSetHumanEmail?>.Default.Equals(
+                        this.Email,
+                        other.Email
+                    )
+                    && EqualityComparer<BetaUserServiceSetHumanPhone?>.Default.Equals(
+                        this.Phone,
+                        other.Phone
+                    )
+                    && EqualityComparer<BetaUserServiceSetPassword?>.Default.Equals(
+                        this.Password,
+                        other.Password
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

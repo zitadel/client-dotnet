@@ -26,9 +26,13 @@ public class UserServiceSendPasswordResetLink : IEquatable<UserServiceSendPasswo
     public bool Equals(UserServiceSendPasswordResetLink? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<UserServiceNotificationType?>.Default.Equals(this.NotificationType, other.NotificationType)
-                    && EqualityComparer<string?>.Default.Equals(this.UrlTemplate, other.UrlTemplate));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<UserServiceNotificationType?>.Default.Equals(
+                    this.NotificationType,
+                    other.NotificationType
+                ) && EqualityComparer<string?>.Default.Equals(this.UrlTemplate, other.UrlTemplate)
+            );
     }
 
     public override bool Equals(object? obj)

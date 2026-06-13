@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceGenerateOrganizationDomainValidationResponse : IEquatable<OrganizationServiceGenerateOrganizationDomainValidationResponse>
+public class OrganizationServiceGenerateOrganizationDomainValidationResponse
+    : IEquatable<OrganizationServiceGenerateOrganizationDomainValidationResponse>
 {
     /// <summary>
     /// Token is a verification token that needs to be added to the DNS records or as a file to the webserver.  Zitadel will check for this token to verify the domain.
@@ -29,9 +30,11 @@ public class OrganizationServiceGenerateOrganizationDomainValidationResponse : I
     public bool Equals(OrganizationServiceGenerateOrganizationDomainValidationResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Token, other.Token)
-                    && EqualityComparer<string?>.Default.Equals(this.Url, other.Url));
+                    && EqualityComparer<string?>.Default.Equals(this.Url, other.Url)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -22,8 +22,10 @@ public class InternalPermissionServiceRoleFilter : IEquatable<InternalPermission
     public bool Equals(InternalPermissionServiceRoleFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.RoleKey, other.RoleKey));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.RoleKey, other.RoleKey)
+            );
     }
 
     public override bool Equals(object? obj)

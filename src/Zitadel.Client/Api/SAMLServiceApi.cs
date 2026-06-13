@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class SAMLServiceApi : BaseApi
 {
-
     private static readonly string[] CreateResponseAccepts = ["application/json"];
 
     private static readonly string[] GetSAMLRequestAccepts = ["application/json"];
@@ -44,9 +43,13 @@ public class SAMLServiceApi : BaseApi
     /// <param name="sAMLServiceCreateResponseRequest"></param>
     /// <returns><![CDATA[SAMLServiceCreateResponseResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<SAMLServiceCreateResponseResponse> CreateResponseAsync(SAMLServiceCreateResponseRequest sAMLServiceCreateResponseRequest)
+    public async Task<SAMLServiceCreateResponseResponse> CreateResponseAsync(
+        SAMLServiceCreateResponseRequest sAMLServiceCreateResponseRequest
+    )
     {
-        Task<ApiResult<SAMLServiceCreateResponseResponse>> task = CreateResponseWithHttpInfoAsync(sAMLServiceCreateResponseRequest);
+        Task<ApiResult<SAMLServiceCreateResponseResponse>> task = CreateResponseWithHttpInfoAsync(
+            sAMLServiceCreateResponseRequest
+        );
         ApiResult<SAMLServiceCreateResponseResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -58,7 +61,8 @@ public class SAMLServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -68,7 +72,9 @@ public class SAMLServiceApi : BaseApi
     /// <param name="sAMLServiceCreateResponseRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<SAMLServiceCreateResponseResponse>> CreateResponseWithHttpInfoAsync(SAMLServiceCreateResponseRequest sAMLServiceCreateResponseRequest)
+    public async Task<ApiResult<SAMLServiceCreateResponseResponse>> CreateResponseWithHttpInfoAsync(
+        SAMLServiceCreateResponseRequest sAMLServiceCreateResponseRequest
+    )
     {
         string path = "/zitadel.saml.v2.SAMLService/CreateResponse";
 
@@ -95,9 +101,13 @@ public class SAMLServiceApi : BaseApi
     /// <param name="sAMLServiceGetSAMLRequestRequest"></param>
     /// <returns><![CDATA[SAMLServiceGetSAMLRequestResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<SAMLServiceGetSAMLRequestResponse> GetSAMLRequestAsync(SAMLServiceGetSAMLRequestRequest sAMLServiceGetSAMLRequestRequest)
+    public async Task<SAMLServiceGetSAMLRequestResponse> GetSAMLRequestAsync(
+        SAMLServiceGetSAMLRequestRequest sAMLServiceGetSAMLRequestRequest
+    )
     {
-        Task<ApiResult<SAMLServiceGetSAMLRequestResponse>> task = GetSAMLRequestWithHttpInfoAsync(sAMLServiceGetSAMLRequestRequest);
+        Task<ApiResult<SAMLServiceGetSAMLRequestResponse>> task = GetSAMLRequestWithHttpInfoAsync(
+            sAMLServiceGetSAMLRequestRequest
+        );
         ApiResult<SAMLServiceGetSAMLRequestResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -109,7 +119,8 @@ public class SAMLServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -119,7 +130,9 @@ public class SAMLServiceApi : BaseApi
     /// <param name="sAMLServiceGetSAMLRequestRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<SAMLServiceGetSAMLRequestResponse>> GetSAMLRequestWithHttpInfoAsync(SAMLServiceGetSAMLRequestRequest sAMLServiceGetSAMLRequestRequest)
+    public async Task<ApiResult<SAMLServiceGetSAMLRequestResponse>> GetSAMLRequestWithHttpInfoAsync(
+        SAMLServiceGetSAMLRequestRequest sAMLServiceGetSAMLRequestRequest
+    )
     {
         string path = "/zitadel.saml.v2.SAMLService/GetSAMLRequest";
 

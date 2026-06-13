@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaOrganizationServiceOrgDomainFilter : IEquatable<BetaOrganizationServiceOrgDomainFilter>
+public class BetaOrganizationServiceOrgDomainFilter
+    : IEquatable<BetaOrganizationServiceOrgDomainFilter>
 {
     /// <summary>
     /// The domain.
@@ -26,9 +27,14 @@ public class BetaOrganizationServiceOrgDomainFilter : IEquatable<BetaOrganizatio
     public bool Equals(BetaOrganizationServiceOrgDomainFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain)
-                    && EqualityComparer<BetaOrganizationServiceTextQueryMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<BetaOrganizationServiceTextQueryMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

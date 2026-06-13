@@ -19,8 +19,13 @@ public class WebKeyServiceECDSA : IEquatable<WebKeyServiceECDSA>
     public bool Equals(WebKeyServiceECDSA? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<WebKeyServiceECDSACurve?>.Default.Equals(this.Curve, other.Curve));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<WebKeyServiceECDSACurve?>.Default.Equals(
+                    this.Curve,
+                    other.Curve
+                )
+            );
     }
 
     public override bool Equals(object? obj)

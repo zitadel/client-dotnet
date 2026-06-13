@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaOrganizationServiceGenerateOrganizationDomainValidationResponse : IEquatable<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse>
+public class BetaOrganizationServiceGenerateOrganizationDomainValidationResponse
+    : IEquatable<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse>
 {
     /// <summary>
     /// The token verify domain.
@@ -29,9 +30,11 @@ public class BetaOrganizationServiceGenerateOrganizationDomainValidationResponse
     public bool Equals(BetaOrganizationServiceGenerateOrganizationDomainValidationResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Token, other.Token)
-                    && EqualityComparer<string?>.Default.Equals(this.Url, other.Url));
+                    && EqualityComparer<string?>.Default.Equals(this.Url, other.Url)
+            );
     }
 
     public override bool Equals(object? obj)

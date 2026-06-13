@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class AuthorizationServiceAuthorizationsSearchFilter : IEquatable<AuthorizationServiceAuthorizationsSearchFilter>
+public class AuthorizationServiceAuthorizationsSearchFilter
+    : IEquatable<AuthorizationServiceAuthorizationsSearchFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("authorizationIds")]
@@ -59,18 +60,53 @@ public class AuthorizationServiceAuthorizationsSearchFilter : IEquatable<Authori
     public bool Equals(AuthorizationServiceAuthorizationsSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<AuthorizationServiceInIDsFilter?>.Default.Equals(this.AuthorizationIds, other.AuthorizationIds)
-                    && EqualityComparer<AuthorizationServiceInIDsFilter?>.Default.Equals(this.InUserIds, other.InUserIds)
-                    && EqualityComparer<AuthorizationServiceIDFilter?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<AuthorizationServiceIDFilter?>.Default.Equals(this.ProjectGrantId, other.ProjectGrantId)
-                    && EqualityComparer<AuthorizationServiceIDFilter?>.Default.Equals(this.ProjectId, other.ProjectId)
-                    && EqualityComparer<AuthorizationServiceProjectNameQuery?>.Default.Equals(this.ProjectName, other.ProjectName)
-                    && EqualityComparer<AuthorizationServiceRoleKeyQuery?>.Default.Equals(this.RoleKey, other.RoleKey)
-                    && EqualityComparer<AuthorizationServiceStateQuery?>.Default.Equals(this.State, other.State)
-                    && EqualityComparer<AuthorizationServiceUserDisplayNameQuery?>.Default.Equals(this.UserDisplayName, other.UserDisplayName)
-                    && EqualityComparer<AuthorizationServiceIDFilter?>.Default.Equals(this.UserOrganizationId, other.UserOrganizationId)
-                    && EqualityComparer<AuthorizationServiceUserPreferredLoginNameQuery?>.Default.Equals(this.UserPreferredLoginName, other.UserPreferredLoginName));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<AuthorizationServiceInIDsFilter?>.Default.Equals(
+                    this.AuthorizationIds,
+                    other.AuthorizationIds
+                )
+                    && EqualityComparer<AuthorizationServiceInIDsFilter?>.Default.Equals(
+                        this.InUserIds,
+                        other.InUserIds
+                    )
+                    && EqualityComparer<AuthorizationServiceIDFilter?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+                    && EqualityComparer<AuthorizationServiceIDFilter?>.Default.Equals(
+                        this.ProjectGrantId,
+                        other.ProjectGrantId
+                    )
+                    && EqualityComparer<AuthorizationServiceIDFilter?>.Default.Equals(
+                        this.ProjectId,
+                        other.ProjectId
+                    )
+                    && EqualityComparer<AuthorizationServiceProjectNameQuery?>.Default.Equals(
+                        this.ProjectName,
+                        other.ProjectName
+                    )
+                    && EqualityComparer<AuthorizationServiceRoleKeyQuery?>.Default.Equals(
+                        this.RoleKey,
+                        other.RoleKey
+                    )
+                    && EqualityComparer<AuthorizationServiceStateQuery?>.Default.Equals(
+                        this.State,
+                        other.State
+                    )
+                    && EqualityComparer<AuthorizationServiceUserDisplayNameQuery?>.Default.Equals(
+                        this.UserDisplayName,
+                        other.UserDisplayName
+                    )
+                    && EqualityComparer<AuthorizationServiceIDFilter?>.Default.Equals(
+                        this.UserOrganizationId,
+                        other.UserOrganizationId
+                    )
+                    && EqualityComparer<AuthorizationServiceUserPreferredLoginNameQuery?>.Default.Equals(
+                        this.UserPreferredLoginName,
+                        other.UserPreferredLoginName
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

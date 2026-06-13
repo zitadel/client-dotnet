@@ -22,8 +22,10 @@ public class InstanceServiceGetInstanceRequest : IEquatable<InstanceServiceGetIn
     public bool Equals(InstanceServiceGetInstanceRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
+            );
     }
 
     public override bool Equals(object? obj)

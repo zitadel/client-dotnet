@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OIDCServiceDeviceAuthorizationRequest : IEquatable<OIDCServiceDeviceAuthorizationRequest>
+public class OIDCServiceDeviceAuthorizationRequest
+    : IEquatable<OIDCServiceDeviceAuthorizationRequest>
 {
     /// <summary>
     /// The unique identifier of the device authorization request to be used for authorizing or denying the request.
@@ -50,12 +51,14 @@ public class OIDCServiceDeviceAuthorizationRequest : IEquatable<OIDCServiceDevic
     public bool Equals(OIDCServiceDeviceAuthorizationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
                     && EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
                     && EqualityComparer<List<string>?>.Default.Equals(this.Scope, other.Scope)
                     && EqualityComparer<string?>.Default.Equals(this.AppName, other.AppName)
-                    && EqualityComparer<string?>.Default.Equals(this.ProjectName, other.ProjectName));
+                    && EqualityComparer<string?>.Default.Equals(this.ProjectName, other.ProjectName)
+            );
     }
 
     public override bool Equals(object? obj)

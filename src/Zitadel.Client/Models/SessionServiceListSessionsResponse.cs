@@ -26,9 +26,17 @@ public class SessionServiceListSessionsResponse : IEquatable<SessionServiceListS
     public bool Equals(SessionServiceListSessionsResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<SessionServiceListDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<List<SessionServiceSession>?>.Default.Equals(this.Sessions, other.Sessions));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<SessionServiceListDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
+                    && EqualityComparer<List<SessionServiceSession>?>.Default.Equals(
+                        this.Sessions,
+                        other.Sessions
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

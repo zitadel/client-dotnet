@@ -43,14 +43,22 @@ public class UserServiceHumanProfile : IEquatable<UserServiceHumanProfile>
     public bool Equals(UserServiceHumanProfile? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.GivenName, other.GivenName)
                     && EqualityComparer<string?>.Default.Equals(this.FamilyName, other.FamilyName)
                     && EqualityComparer<string?>.Default.Equals(this.NickName, other.NickName)
                     && EqualityComparer<string?>.Default.Equals(this.DisplayName, other.DisplayName)
-                    && EqualityComparer<string?>.Default.Equals(this.PreferredLanguage, other.PreferredLanguage)
-                    && EqualityComparer<UserServiceGender?>.Default.Equals(this.Gender, other.Gender)
-                    && EqualityComparer<string?>.Default.Equals(this.AvatarUrl, other.AvatarUrl));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.PreferredLanguage,
+                        other.PreferredLanguage
+                    )
+                    && EqualityComparer<UserServiceGender?>.Default.Equals(
+                        this.Gender,
+                        other.Gender
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.AvatarUrl, other.AvatarUrl)
+            );
     }
 
     public override bool Equals(object? obj)

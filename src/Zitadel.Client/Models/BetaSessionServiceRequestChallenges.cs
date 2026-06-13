@@ -27,10 +27,21 @@ public class BetaSessionServiceRequestChallenges : IEquatable<BetaSessionService
     public bool Equals(BetaSessionServiceRequestChallenges? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaSessionServiceWebAuthN?>.Default.Equals(this.WebAuthN, other.WebAuthN)
-                    && EqualityComparer<BetaSessionServiceOTPSMS?>.Default.Equals(this.OtpSms, other.OtpSms)
-                    && EqualityComparer<BetaSessionServiceOTPEmail?>.Default.Equals(this.OtpEmail, other.OtpEmail));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaSessionServiceWebAuthN?>.Default.Equals(
+                    this.WebAuthN,
+                    other.WebAuthN
+                )
+                    && EqualityComparer<BetaSessionServiceOTPSMS?>.Default.Equals(
+                        this.OtpSms,
+                        other.OtpSms
+                    )
+                    && EqualityComparer<BetaSessionServiceOTPEmail?>.Default.Equals(
+                        this.OtpEmail,
+                        other.OtpEmail
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

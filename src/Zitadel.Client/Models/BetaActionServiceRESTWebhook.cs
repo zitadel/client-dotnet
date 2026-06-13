@@ -22,8 +22,13 @@ public class BetaActionServiceRESTWebhook : IEquatable<BetaActionServiceRESTWebh
     public bool Equals(BetaActionServiceRESTWebhook? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<bool?>.Default.Equals(this.InterruptOnError, other.InterruptOnError));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<bool?>.Default.Equals(
+                    this.InterruptOnError,
+                    other.InterruptOnError
+                )
+            );
     }
 
     public override bool Equals(object? obj)

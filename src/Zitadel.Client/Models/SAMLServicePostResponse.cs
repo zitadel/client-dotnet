@@ -29,9 +29,14 @@ public class SAMLServicePostResponse : IEquatable<SAMLServicePostResponse>
     public bool Equals(SAMLServicePostResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.RelayState, other.RelayState)
-                    && EqualityComparer<string?>.Default.Equals(this.SamlResponse, other.SamlResponse));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.SamlResponse,
+                        other.SamlResponse
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

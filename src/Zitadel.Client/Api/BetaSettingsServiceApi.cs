@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class BetaSettingsServiceApi : BaseApi
 {
-
     private static readonly string[] GetActiveIdentityProvidersAccepts = ["application/json"];
 
     private static readonly string[] GetBrandingSettingsAccepts = ["application/json"];
@@ -52,7 +51,11 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public BetaSettingsServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public BetaSettingsServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -62,10 +65,16 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetActiveIdentityProvidersRequest"></param>
     /// <returns><![CDATA[BetaSettingsServiceGetActiveIdentityProvidersResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetActiveIdentityProvidersResponse> GetActiveIdentityProvidersAsync(BetaSettingsServiceGetActiveIdentityProvidersRequest betaSettingsServiceGetActiveIdentityProvidersRequest)
+    public async Task<BetaSettingsServiceGetActiveIdentityProvidersResponse> GetActiveIdentityProvidersAsync(
+        BetaSettingsServiceGetActiveIdentityProvidersRequest betaSettingsServiceGetActiveIdentityProvidersRequest
+    )
     {
-        Task<ApiResult<BetaSettingsServiceGetActiveIdentityProvidersResponse>> task = GetActiveIdentityProvidersWithHttpInfoAsync(betaSettingsServiceGetActiveIdentityProvidersRequest);
-        ApiResult<BetaSettingsServiceGetActiveIdentityProvidersResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaSettingsServiceGetActiveIdentityProvidersResponse>> task =
+            GetActiveIdentityProvidersWithHttpInfoAsync(
+                betaSettingsServiceGetActiveIdentityProvidersRequest
+            );
+        ApiResult<BetaSettingsServiceGetActiveIdentityProvidersResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -76,7 +85,8 @@ public class BetaSettingsServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -86,7 +96,11 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetActiveIdentityProvidersRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetActiveIdentityProvidersResponse>> GetActiveIdentityProvidersWithHttpInfoAsync(BetaSettingsServiceGetActiveIdentityProvidersRequest betaSettingsServiceGetActiveIdentityProvidersRequest)
+    public async Task<
+        ApiResult<BetaSettingsServiceGetActiveIdentityProvidersResponse>
+    > GetActiveIdentityProvidersWithHttpInfoAsync(
+        BetaSettingsServiceGetActiveIdentityProvidersRequest betaSettingsServiceGetActiveIdentityProvidersRequest
+    )
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetActiveIdentityProviders";
 
@@ -113,10 +127,14 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetBrandingSettingsRequest"></param>
     /// <returns><![CDATA[BetaSettingsServiceGetBrandingSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetBrandingSettingsResponse> GetBrandingSettingsAsync(BetaSettingsServiceGetBrandingSettingsRequest betaSettingsServiceGetBrandingSettingsRequest)
+    public async Task<BetaSettingsServiceGetBrandingSettingsResponse> GetBrandingSettingsAsync(
+        BetaSettingsServiceGetBrandingSettingsRequest betaSettingsServiceGetBrandingSettingsRequest
+    )
     {
-        Task<ApiResult<BetaSettingsServiceGetBrandingSettingsResponse>> task = GetBrandingSettingsWithHttpInfoAsync(betaSettingsServiceGetBrandingSettingsRequest);
-        ApiResult<BetaSettingsServiceGetBrandingSettingsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaSettingsServiceGetBrandingSettingsResponse>> task =
+            GetBrandingSettingsWithHttpInfoAsync(betaSettingsServiceGetBrandingSettingsRequest);
+        ApiResult<BetaSettingsServiceGetBrandingSettingsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -127,7 +145,8 @@ public class BetaSettingsServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -137,7 +156,11 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetBrandingSettingsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetBrandingSettingsResponse>> GetBrandingSettingsWithHttpInfoAsync(BetaSettingsServiceGetBrandingSettingsRequest betaSettingsServiceGetBrandingSettingsRequest)
+    public async Task<
+        ApiResult<BetaSettingsServiceGetBrandingSettingsResponse>
+    > GetBrandingSettingsWithHttpInfoAsync(
+        BetaSettingsServiceGetBrandingSettingsRequest betaSettingsServiceGetBrandingSettingsRequest
+    )
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetBrandingSettings";
 
@@ -164,10 +187,15 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetDomainSettingsRequest"></param>
     /// <returns><![CDATA[BetaSettingsServiceGetDomainSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetDomainSettingsResponse> GetDomainSettingsAsync(BetaSettingsServiceGetDomainSettingsRequest betaSettingsServiceGetDomainSettingsRequest)
+    public async Task<BetaSettingsServiceGetDomainSettingsResponse> GetDomainSettingsAsync(
+        BetaSettingsServiceGetDomainSettingsRequest betaSettingsServiceGetDomainSettingsRequest
+    )
     {
-        Task<ApiResult<BetaSettingsServiceGetDomainSettingsResponse>> task = GetDomainSettingsWithHttpInfoAsync(betaSettingsServiceGetDomainSettingsRequest);
-        ApiResult<BetaSettingsServiceGetDomainSettingsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaSettingsServiceGetDomainSettingsResponse>> task =
+            GetDomainSettingsWithHttpInfoAsync(betaSettingsServiceGetDomainSettingsRequest);
+        ApiResult<BetaSettingsServiceGetDomainSettingsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -178,7 +206,8 @@ public class BetaSettingsServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -188,7 +217,11 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetDomainSettingsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetDomainSettingsResponse>> GetDomainSettingsWithHttpInfoAsync(BetaSettingsServiceGetDomainSettingsRequest betaSettingsServiceGetDomainSettingsRequest)
+    public async Task<
+        ApiResult<BetaSettingsServiceGetDomainSettingsResponse>
+    > GetDomainSettingsWithHttpInfoAsync(
+        BetaSettingsServiceGetDomainSettingsRequest betaSettingsServiceGetDomainSettingsRequest
+    )
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetDomainSettings";
 
@@ -215,10 +248,15 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns><![CDATA[BetaSettingsServiceGetGeneralSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetGeneralSettingsResponse> GetGeneralSettingsAsync(Object body)
+    public async Task<BetaSettingsServiceGetGeneralSettingsResponse> GetGeneralSettingsAsync(
+        Object body
+    )
     {
-        Task<ApiResult<BetaSettingsServiceGetGeneralSettingsResponse>> task = GetGeneralSettingsWithHttpInfoAsync(body);
-        ApiResult<BetaSettingsServiceGetGeneralSettingsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaSettingsServiceGetGeneralSettingsResponse>> task =
+            GetGeneralSettingsWithHttpInfoAsync(body);
+        ApiResult<BetaSettingsServiceGetGeneralSettingsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -229,7 +267,8 @@ public class BetaSettingsServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -239,7 +278,9 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetGeneralSettingsResponse>> GetGeneralSettingsWithHttpInfoAsync(Object body)
+    public async Task<
+        ApiResult<BetaSettingsServiceGetGeneralSettingsResponse>
+    > GetGeneralSettingsWithHttpInfoAsync(Object body)
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetGeneralSettings";
 
@@ -266,10 +307,16 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetLegalAndSupportSettingsRequest"></param>
     /// <returns><![CDATA[BetaSettingsServiceGetLegalAndSupportSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetLegalAndSupportSettingsResponse> GetLegalAndSupportSettingsAsync(BetaSettingsServiceGetLegalAndSupportSettingsRequest betaSettingsServiceGetLegalAndSupportSettingsRequest)
+    public async Task<BetaSettingsServiceGetLegalAndSupportSettingsResponse> GetLegalAndSupportSettingsAsync(
+        BetaSettingsServiceGetLegalAndSupportSettingsRequest betaSettingsServiceGetLegalAndSupportSettingsRequest
+    )
     {
-        Task<ApiResult<BetaSettingsServiceGetLegalAndSupportSettingsResponse>> task = GetLegalAndSupportSettingsWithHttpInfoAsync(betaSettingsServiceGetLegalAndSupportSettingsRequest);
-        ApiResult<BetaSettingsServiceGetLegalAndSupportSettingsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaSettingsServiceGetLegalAndSupportSettingsResponse>> task =
+            GetLegalAndSupportSettingsWithHttpInfoAsync(
+                betaSettingsServiceGetLegalAndSupportSettingsRequest
+            );
+        ApiResult<BetaSettingsServiceGetLegalAndSupportSettingsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -280,7 +327,8 @@ public class BetaSettingsServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -290,7 +338,11 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetLegalAndSupportSettingsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetLegalAndSupportSettingsResponse>> GetLegalAndSupportSettingsWithHttpInfoAsync(BetaSettingsServiceGetLegalAndSupportSettingsRequest betaSettingsServiceGetLegalAndSupportSettingsRequest)
+    public async Task<
+        ApiResult<BetaSettingsServiceGetLegalAndSupportSettingsResponse>
+    > GetLegalAndSupportSettingsWithHttpInfoAsync(
+        BetaSettingsServiceGetLegalAndSupportSettingsRequest betaSettingsServiceGetLegalAndSupportSettingsRequest
+    )
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetLegalAndSupportSettings";
 
@@ -317,10 +369,15 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetLockoutSettingsRequest"></param>
     /// <returns><![CDATA[BetaSettingsServiceGetLockoutSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetLockoutSettingsResponse> GetLockoutSettingsAsync(BetaSettingsServiceGetLockoutSettingsRequest betaSettingsServiceGetLockoutSettingsRequest)
+    public async Task<BetaSettingsServiceGetLockoutSettingsResponse> GetLockoutSettingsAsync(
+        BetaSettingsServiceGetLockoutSettingsRequest betaSettingsServiceGetLockoutSettingsRequest
+    )
     {
-        Task<ApiResult<BetaSettingsServiceGetLockoutSettingsResponse>> task = GetLockoutSettingsWithHttpInfoAsync(betaSettingsServiceGetLockoutSettingsRequest);
-        ApiResult<BetaSettingsServiceGetLockoutSettingsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaSettingsServiceGetLockoutSettingsResponse>> task =
+            GetLockoutSettingsWithHttpInfoAsync(betaSettingsServiceGetLockoutSettingsRequest);
+        ApiResult<BetaSettingsServiceGetLockoutSettingsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -331,7 +388,8 @@ public class BetaSettingsServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -341,7 +399,11 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetLockoutSettingsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetLockoutSettingsResponse>> GetLockoutSettingsWithHttpInfoAsync(BetaSettingsServiceGetLockoutSettingsRequest betaSettingsServiceGetLockoutSettingsRequest)
+    public async Task<
+        ApiResult<BetaSettingsServiceGetLockoutSettingsResponse>
+    > GetLockoutSettingsWithHttpInfoAsync(
+        BetaSettingsServiceGetLockoutSettingsRequest betaSettingsServiceGetLockoutSettingsRequest
+    )
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetLockoutSettings";
 
@@ -368,10 +430,15 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetLoginSettingsRequest"></param>
     /// <returns><![CDATA[BetaSettingsServiceGetLoginSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetLoginSettingsResponse> GetLoginSettingsAsync(BetaSettingsServiceGetLoginSettingsRequest betaSettingsServiceGetLoginSettingsRequest)
+    public async Task<BetaSettingsServiceGetLoginSettingsResponse> GetLoginSettingsAsync(
+        BetaSettingsServiceGetLoginSettingsRequest betaSettingsServiceGetLoginSettingsRequest
+    )
     {
-        Task<ApiResult<BetaSettingsServiceGetLoginSettingsResponse>> task = GetLoginSettingsWithHttpInfoAsync(betaSettingsServiceGetLoginSettingsRequest);
-        ApiResult<BetaSettingsServiceGetLoginSettingsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaSettingsServiceGetLoginSettingsResponse>> task =
+            GetLoginSettingsWithHttpInfoAsync(betaSettingsServiceGetLoginSettingsRequest);
+        ApiResult<BetaSettingsServiceGetLoginSettingsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -382,7 +449,8 @@ public class BetaSettingsServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -392,7 +460,11 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetLoginSettingsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetLoginSettingsResponse>> GetLoginSettingsWithHttpInfoAsync(BetaSettingsServiceGetLoginSettingsRequest betaSettingsServiceGetLoginSettingsRequest)
+    public async Task<
+        ApiResult<BetaSettingsServiceGetLoginSettingsResponse>
+    > GetLoginSettingsWithHttpInfoAsync(
+        BetaSettingsServiceGetLoginSettingsRequest betaSettingsServiceGetLoginSettingsRequest
+    )
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetLoginSettings";
 
@@ -419,10 +491,16 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetPasswordComplexitySettingsRequest"></param>
     /// <returns><![CDATA[BetaSettingsServiceGetPasswordComplexitySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetPasswordComplexitySettingsResponse> GetPasswordComplexitySettingsAsync(BetaSettingsServiceGetPasswordComplexitySettingsRequest betaSettingsServiceGetPasswordComplexitySettingsRequest)
+    public async Task<BetaSettingsServiceGetPasswordComplexitySettingsResponse> GetPasswordComplexitySettingsAsync(
+        BetaSettingsServiceGetPasswordComplexitySettingsRequest betaSettingsServiceGetPasswordComplexitySettingsRequest
+    )
     {
-        Task<ApiResult<BetaSettingsServiceGetPasswordComplexitySettingsResponse>> task = GetPasswordComplexitySettingsWithHttpInfoAsync(betaSettingsServiceGetPasswordComplexitySettingsRequest);
-        ApiResult<BetaSettingsServiceGetPasswordComplexitySettingsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaSettingsServiceGetPasswordComplexitySettingsResponse>> task =
+            GetPasswordComplexitySettingsWithHttpInfoAsync(
+                betaSettingsServiceGetPasswordComplexitySettingsRequest
+            );
+        ApiResult<BetaSettingsServiceGetPasswordComplexitySettingsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -433,7 +511,8 @@ public class BetaSettingsServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -443,7 +522,11 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetPasswordComplexitySettingsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetPasswordComplexitySettingsResponse>> GetPasswordComplexitySettingsWithHttpInfoAsync(BetaSettingsServiceGetPasswordComplexitySettingsRequest betaSettingsServiceGetPasswordComplexitySettingsRequest)
+    public async Task<
+        ApiResult<BetaSettingsServiceGetPasswordComplexitySettingsResponse>
+    > GetPasswordComplexitySettingsWithHttpInfoAsync(
+        BetaSettingsServiceGetPasswordComplexitySettingsRequest betaSettingsServiceGetPasswordComplexitySettingsRequest
+    )
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetPasswordComplexitySettings";
 
@@ -470,10 +553,16 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetPasswordExpirySettingsRequest"></param>
     /// <returns><![CDATA[BetaSettingsServiceGetPasswordExpirySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetPasswordExpirySettingsResponse> GetPasswordExpirySettingsAsync(BetaSettingsServiceGetPasswordExpirySettingsRequest betaSettingsServiceGetPasswordExpirySettingsRequest)
+    public async Task<BetaSettingsServiceGetPasswordExpirySettingsResponse> GetPasswordExpirySettingsAsync(
+        BetaSettingsServiceGetPasswordExpirySettingsRequest betaSettingsServiceGetPasswordExpirySettingsRequest
+    )
     {
-        Task<ApiResult<BetaSettingsServiceGetPasswordExpirySettingsResponse>> task = GetPasswordExpirySettingsWithHttpInfoAsync(betaSettingsServiceGetPasswordExpirySettingsRequest);
-        ApiResult<BetaSettingsServiceGetPasswordExpirySettingsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaSettingsServiceGetPasswordExpirySettingsResponse>> task =
+            GetPasswordExpirySettingsWithHttpInfoAsync(
+                betaSettingsServiceGetPasswordExpirySettingsRequest
+            );
+        ApiResult<BetaSettingsServiceGetPasswordExpirySettingsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -484,7 +573,8 @@ public class BetaSettingsServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -494,7 +584,11 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceGetPasswordExpirySettingsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetPasswordExpirySettingsResponse>> GetPasswordExpirySettingsWithHttpInfoAsync(BetaSettingsServiceGetPasswordExpirySettingsRequest betaSettingsServiceGetPasswordExpirySettingsRequest)
+    public async Task<
+        ApiResult<BetaSettingsServiceGetPasswordExpirySettingsResponse>
+    > GetPasswordExpirySettingsWithHttpInfoAsync(
+        BetaSettingsServiceGetPasswordExpirySettingsRequest betaSettingsServiceGetPasswordExpirySettingsRequest
+    )
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetPasswordExpirySettings";
 
@@ -521,10 +615,14 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns><![CDATA[BetaSettingsServiceGetSecuritySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetSecuritySettingsResponse> GetSecuritySettingsAsync(Object body)
+    public async Task<BetaSettingsServiceGetSecuritySettingsResponse> GetSecuritySettingsAsync(
+        Object body
+    )
     {
-        Task<ApiResult<BetaSettingsServiceGetSecuritySettingsResponse>> task = GetSecuritySettingsWithHttpInfoAsync(body);
-        ApiResult<BetaSettingsServiceGetSecuritySettingsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaSettingsServiceGetSecuritySettingsResponse>> task =
+            GetSecuritySettingsWithHttpInfoAsync(body);
+        ApiResult<BetaSettingsServiceGetSecuritySettingsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -535,7 +633,8 @@ public class BetaSettingsServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -545,7 +644,9 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetSecuritySettingsResponse>> GetSecuritySettingsWithHttpInfoAsync(Object body)
+    public async Task<
+        ApiResult<BetaSettingsServiceGetSecuritySettingsResponse>
+    > GetSecuritySettingsWithHttpInfoAsync(Object body)
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetSecuritySettings";
 
@@ -572,10 +673,14 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceSetSecuritySettingsRequest"></param>
     /// <returns><![CDATA[BetaSettingsServiceSetSecuritySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceSetSecuritySettingsResponse> SetSecuritySettingsAsync(BetaSettingsServiceSetSecuritySettingsRequest betaSettingsServiceSetSecuritySettingsRequest)
+    public async Task<BetaSettingsServiceSetSecuritySettingsResponse> SetSecuritySettingsAsync(
+        BetaSettingsServiceSetSecuritySettingsRequest betaSettingsServiceSetSecuritySettingsRequest
+    )
     {
-        Task<ApiResult<BetaSettingsServiceSetSecuritySettingsResponse>> task = SetSecuritySettingsWithHttpInfoAsync(betaSettingsServiceSetSecuritySettingsRequest);
-        ApiResult<BetaSettingsServiceSetSecuritySettingsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaSettingsServiceSetSecuritySettingsResponse>> task =
+            SetSecuritySettingsWithHttpInfoAsync(betaSettingsServiceSetSecuritySettingsRequest);
+        ApiResult<BetaSettingsServiceSetSecuritySettingsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -586,7 +691,8 @@ public class BetaSettingsServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -596,7 +702,11 @@ public class BetaSettingsServiceApi : BaseApi
     /// <param name="betaSettingsServiceSetSecuritySettingsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceSetSecuritySettingsResponse>> SetSecuritySettingsWithHttpInfoAsync(BetaSettingsServiceSetSecuritySettingsRequest betaSettingsServiceSetSecuritySettingsRequest)
+    public async Task<
+        ApiResult<BetaSettingsServiceSetSecuritySettingsResponse>
+    > SetSecuritySettingsWithHttpInfoAsync(
+        BetaSettingsServiceSetSecuritySettingsRequest betaSettingsServiceSetSecuritySettingsRequest
+    )
     {
         string path = "/zitadel.settings.v2beta.SettingsService/SetSecuritySettings";
 

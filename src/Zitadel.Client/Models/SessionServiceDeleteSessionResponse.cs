@@ -19,8 +19,13 @@ public class SessionServiceDeleteSessionResponse : IEquatable<SessionServiceDele
     public bool Equals(SessionServiceDeleteSessionResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<SessionServiceDetails?>.Default.Equals(this.Details, other.Details));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<SessionServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
+            );
     }
 
     public override bool Equals(object? obj)

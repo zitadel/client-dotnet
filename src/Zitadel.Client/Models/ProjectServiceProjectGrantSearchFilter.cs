@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ProjectServiceProjectGrantSearchFilter : IEquatable<ProjectServiceProjectGrantSearchFilter>
+public class ProjectServiceProjectGrantSearchFilter
+    : IEquatable<ProjectServiceProjectGrantSearchFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("grantedOrganizationIdFilter")]
@@ -35,12 +36,29 @@ public class ProjectServiceProjectGrantSearchFilter : IEquatable<ProjectServiceP
     public bool Equals(ProjectServiceProjectGrantSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ProjectServiceIDFilter?>.Default.Equals(this.GrantedOrganizationIdFilter, other.GrantedOrganizationIdFilter)
-                    && EqualityComparer<ProjectServiceInIDsFilter?>.Default.Equals(this.InProjectIdsFilter, other.InProjectIdsFilter)
-                    && EqualityComparer<ProjectServiceIDFilter?>.Default.Equals(this.OrganizationIdFilter, other.OrganizationIdFilter)
-                    && EqualityComparer<ProjectServiceProjectNameFilter?>.Default.Equals(this.ProjectNameFilter, other.ProjectNameFilter)
-                    && EqualityComparer<ProjectServiceProjectRoleKeyFilter?>.Default.Equals(this.RoleKeyFilter, other.RoleKeyFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ProjectServiceIDFilter?>.Default.Equals(
+                    this.GrantedOrganizationIdFilter,
+                    other.GrantedOrganizationIdFilter
+                )
+                    && EqualityComparer<ProjectServiceInIDsFilter?>.Default.Equals(
+                        this.InProjectIdsFilter,
+                        other.InProjectIdsFilter
+                    )
+                    && EqualityComparer<ProjectServiceIDFilter?>.Default.Equals(
+                        this.OrganizationIdFilter,
+                        other.OrganizationIdFilter
+                    )
+                    && EqualityComparer<ProjectServiceProjectNameFilter?>.Default.Equals(
+                        this.ProjectNameFilter,
+                        other.ProjectNameFilter
+                    )
+                    && EqualityComparer<ProjectServiceProjectRoleKeyFilter?>.Default.Equals(
+                        this.RoleKeyFilter,
+                        other.RoleKeyFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -23,9 +23,13 @@ public class BetaUserServiceGetUserByIDResponse : IEquatable<BetaUserServiceGetU
     public bool Equals(BetaUserServiceGetUserByIDResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<BetaUserServiceUser?>.Default.Equals(this.User, other.User));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaUserServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                ) && EqualityComparer<BetaUserServiceUser?>.Default.Equals(this.User, other.User)
+            );
     }
 
     public override bool Equals(object? obj)

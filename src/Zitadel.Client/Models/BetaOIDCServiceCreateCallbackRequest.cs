@@ -27,10 +27,18 @@ public class BetaOIDCServiceCreateCallbackRequest : IEquatable<BetaOIDCServiceCr
     public bool Equals(BetaOIDCServiceCreateCallbackRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.AuthRequestId, other.AuthRequestId)
-                    && EqualityComparer<BetaOIDCServiceAuthorizationError?>.Default.Equals(this.Error, other.Error)
-                    && EqualityComparer<BetaOIDCServiceSession?>.Default.Equals(this.Session, other.Session));
+                    && EqualityComparer<BetaOIDCServiceAuthorizationError?>.Default.Equals(
+                        this.Error,
+                        other.Error
+                    )
+                    && EqualityComparer<BetaOIDCServiceSession?>.Default.Equals(
+                        this.Session,
+                        other.Session
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

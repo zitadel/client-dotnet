@@ -23,9 +23,11 @@ public class UserServiceHumanEmail : IEquatable<UserServiceHumanEmail>
     public bool Equals(UserServiceHumanEmail? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Email, other.Email)
-                    && EqualityComparer<bool?>.Default.Equals(this.IsVerified, other.IsVerified));
+                    && EqualityComparer<bool?>.Default.Equals(this.IsVerified, other.IsVerified)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class IdentityProviderServiceGenericOIDCConfig : IEquatable<IdentityProviderServiceGenericOIDCConfig>
+public class IdentityProviderServiceGenericOIDCConfig
+    : IEquatable<IdentityProviderServiceGenericOIDCConfig>
 {
     /// <summary>
     /// The OIDC issuer of the identity provider.
@@ -43,11 +44,16 @@ public class IdentityProviderServiceGenericOIDCConfig : IEquatable<IdentityProvi
     public bool Equals(IdentityProviderServiceGenericOIDCConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Issuer, other.Issuer)
                     && EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
                     && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes)
-                    && EqualityComparer<bool?>.Default.Equals(this.IsIdTokenMapping, other.IsIdTokenMapping));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.IsIdTokenMapping,
+                        other.IsIdTokenMapping
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

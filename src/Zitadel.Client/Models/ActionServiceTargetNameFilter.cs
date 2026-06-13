@@ -26,9 +26,14 @@ public class ActionServiceTargetNameFilter : IEquatable<ActionServiceTargetNameF
     public bool Equals(ActionServiceTargetNameFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.TargetName, other.TargetName)
-                    && EqualityComparer<ActionServiceTextFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<ActionServiceTextFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

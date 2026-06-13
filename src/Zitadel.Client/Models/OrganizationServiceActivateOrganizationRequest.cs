@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceActivateOrganizationRequest : IEquatable<OrganizationServiceActivateOrganizationRequest>
+public class OrganizationServiceActivateOrganizationRequest
+    : IEquatable<OrganizationServiceActivateOrganizationRequest>
 {
     /// <summary>
     /// OrganizationID is the unique identifier of the organization to be activated.
@@ -22,8 +23,13 @@ public class OrganizationServiceActivateOrganizationRequest : IEquatable<Organiz
     public bool Equals(OrganizationServiceActivateOrganizationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                )
+            );
     }
 
     public override bool Equals(object? obj)

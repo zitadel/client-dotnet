@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class InstanceServiceListTrustedDomainsRequest : IEquatable<InstanceServiceListTrustedDomainsRequest>
+public class InstanceServiceListTrustedDomainsRequest
+    : IEquatable<InstanceServiceListTrustedDomainsRequest>
 {
     /// <summary>
     /// InstanceID is the unique ID of the instance whose trusted domains will be listed.  If not set, the instance in the current context (e.g. identified by the host header) will be used.  If an ID is set, the caller must have additional permissions.
@@ -37,11 +38,22 @@ public class InstanceServiceListTrustedDomainsRequest : IEquatable<InstanceServi
     public bool Equals(InstanceServiceListTrustedDomainsRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
-                    && EqualityComparer<InstanceServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<InstanceServiceTrustedDomainFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<InstanceServiceTrustedDomainFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && EqualityComparer<InstanceServicePaginationRequest?>.Default.Equals(
+                        this.Pagination,
+                        other.Pagination
+                    )
+                    && EqualityComparer<InstanceServiceTrustedDomainFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<List<InstanceServiceTrustedDomainFilter>?>.Default.Equals(
+                        this.Filters,
+                        other.Filters
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

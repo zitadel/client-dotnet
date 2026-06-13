@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest : IEquatable<OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest>
+public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest
+    : IEquatable<OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest>
 {
     /// <summary>
     /// The device authorization id returned when submitting the user code.
@@ -30,10 +31,18 @@ public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest : IEquatable<O
     public bool Equals(OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.DeviceAuthorizationId, other.DeviceAuthorizationId)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.DeviceAuthorizationId,
+                    other.DeviceAuthorizationId
+                )
                     && EqualityComparer<Object?>.Default.Equals(this.Deny, other.Deny)
-                    && EqualityComparer<OIDCServiceSession?>.Default.Equals(this.Session, other.Session));
+                    && EqualityComparer<OIDCServiceSession?>.Default.Equals(
+                        this.Session,
+                        other.Session
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -19,8 +19,10 @@ public class BetaSessionServiceSendCode : IEquatable<BetaSessionServiceSendCode>
     public bool Equals(BetaSessionServiceSendCode? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.UrlTemplate, other.UrlTemplate));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.UrlTemplate, other.UrlTemplate)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -22,8 +22,10 @@ public class SessionServiceCheckRecoveryCode : IEquatable<SessionServiceCheckRec
     public bool Equals(SessionServiceCheckRecoveryCode? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.Code, other.Code));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.Code, other.Code)
+            );
     }
 
     public override bool Equals(object? obj)

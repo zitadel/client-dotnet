@@ -30,10 +30,21 @@ public class SessionServiceSetSessionResponse : IEquatable<SessionServiceSetSess
     public bool Equals(SessionServiceSetSessionResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<SessionServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<string?>.Default.Equals(this.SessionToken, other.SessionToken)
-                    && EqualityComparer<SessionServiceChallenges?>.Default.Equals(this.Challenges, other.Challenges));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<SessionServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.SessionToken,
+                        other.SessionToken
+                    )
+                    && EqualityComparer<SessionServiceChallenges?>.Default.Equals(
+                        this.Challenges,
+                        other.Challenges
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

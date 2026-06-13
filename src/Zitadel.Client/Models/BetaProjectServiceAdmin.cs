@@ -26,9 +26,11 @@ public class BetaProjectServiceAdmin : IEquatable<BetaProjectServiceAdmin>
     public bool Equals(BetaProjectServiceAdmin? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Roles, other.Roles));
+                    && EqualityComparer<List<string>?>.Default.Equals(this.Roles, other.Roles)
+            );
     }
 
     public override bool Equals(object? obj)

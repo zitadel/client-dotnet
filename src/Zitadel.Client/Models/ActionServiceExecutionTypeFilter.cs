@@ -19,8 +19,13 @@ public class ActionServiceExecutionTypeFilter : IEquatable<ActionServiceExecutio
     public bool Equals(ActionServiceExecutionTypeFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ActionServiceExecutionType?>.Default.Equals(this.ExecutionType, other.ExecutionType));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ActionServiceExecutionType?>.Default.Equals(
+                    this.ExecutionType,
+                    other.ExecutionType
+                )
+            );
     }
 
     public override bool Equals(object? obj)

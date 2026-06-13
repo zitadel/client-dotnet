@@ -50,12 +50,20 @@ public class AuthorizationServiceUser : IEquatable<AuthorizationServiceUser>
     public bool Equals(AuthorizationServiceUser? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
-                    && EqualityComparer<string?>.Default.Equals(this.PreferredLoginName, other.PreferredLoginName)
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.PreferredLoginName,
+                        other.PreferredLoginName
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.DisplayName, other.DisplayName)
                     && EqualityComparer<string?>.Default.Equals(this.AvatarUrl, other.AvatarUrl)
-                    && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

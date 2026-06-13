@@ -44,12 +44,20 @@ public class UserServiceCreateUserRequest : IEquatable<UserServiceCreateUserRequ
     public bool Equals(UserServiceCreateUserRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                )
                     && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.Username, other.Username)
                     && EqualityComparer<UserServiceHuman?>.Default.Equals(this.Human, other.Human)
-                    && EqualityComparer<UserServiceMachine?>.Default.Equals(this.Machine, other.Machine));
+                    && EqualityComparer<UserServiceMachine?>.Default.Equals(
+                        this.Machine,
+                        other.Machine
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

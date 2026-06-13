@@ -23,7 +23,7 @@ public class ActionServiceEventExecution : IEquatable<ActionServiceEventExecutio
     /// </summary>
     /// <example>null</example>
     [JsonPropertyName("event")]
-    public string? _Event { get; set; }
+    public string? Event { get; set; }
 
     /// <summary>
     /// Define an event group as condition.  After any event under this group is created, the execution is triggered.
@@ -36,10 +36,12 @@ public class ActionServiceEventExecution : IEquatable<ActionServiceEventExecutio
     public bool Equals(ActionServiceEventExecution? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.All, other.All)
-                    && EqualityComparer<string?>.Default.Equals(this._Event, other._Event)
-                    && EqualityComparer<string?>.Default.Equals(this.Group, other.Group));
+                    && EqualityComparer<string?>.Default.Equals(this.Event, other.Event)
+                    && EqualityComparer<string?>.Default.Equals(this.Group, other.Group)
+            );
     }
 
     public override bool Equals(object? obj)
@@ -51,7 +53,7 @@ public class ActionServiceEventExecution : IEquatable<ActionServiceEventExecutio
     {
         HashCode hash = default;
         hash.Add(this.All);
-        hash.Add(this._Event);
+        hash.Add(this.Event);
         hash.Add(this.Group);
         return hash.ToHashCode();
     }

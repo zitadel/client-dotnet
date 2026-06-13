@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class InternalPermissionServiceListAdministratorsRequest : IEquatable<InternalPermissionServiceListAdministratorsRequest>
+public class InternalPermissionServiceListAdministratorsRequest
+    : IEquatable<InternalPermissionServiceListAdministratorsRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("pagination")]
@@ -30,10 +31,21 @@ public class InternalPermissionServiceListAdministratorsRequest : IEquatable<Int
     public bool Equals(InternalPermissionServiceListAdministratorsRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<InternalPermissionServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<InternalPermissionServiceAdministratorFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<InternalPermissionServiceAdministratorSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<InternalPermissionServicePaginationRequest?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<InternalPermissionServiceAdministratorFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<List<InternalPermissionServiceAdministratorSearchFilter>?>.Default.Equals(
+                        this.Filters,
+                        other.Filters
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

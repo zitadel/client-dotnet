@@ -22,8 +22,13 @@ public class BetaUserServiceOrganizationIdQuery : IEquatable<BetaUserServiceOrga
     public bool Equals(BetaUserServiceOrganizationIdQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaWebKeyServiceActivateWebKeyRequest : IEquatable<BetaWebKeyServiceActivateWebKeyRequest>
+public class BetaWebKeyServiceActivateWebKeyRequest
+    : IEquatable<BetaWebKeyServiceActivateWebKeyRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("id")]
@@ -19,8 +20,10 @@ public class BetaWebKeyServiceActivateWebKeyRequest : IEquatable<BetaWebKeyServi
     public bool Equals(BetaWebKeyServiceActivateWebKeyRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.Id, other.Id));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
+            );
     }
 
     public override bool Equals(object? obj)

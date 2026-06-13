@@ -27,10 +27,15 @@ public class UserServicePasswordResetRequest : IEquatable<UserServicePasswordRes
     public bool Equals(UserServicePasswordResetRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<Object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
-                    && EqualityComparer<UserServiceSendPasswordResetLink?>.Default.Equals(this.SendLink, other.SendLink));
+                    && EqualityComparer<UserServiceSendPasswordResetLink?>.Default.Equals(
+                        this.SendLink,
+                        other.SendLink
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

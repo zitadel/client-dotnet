@@ -26,9 +26,17 @@ public class ProjectServiceListProjectsResponse : IEquatable<ProjectServiceListP
     public bool Equals(ProjectServiceListProjectsResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ProjectServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<ProjectServiceProject>?>.Default.Equals(this.Projects, other.Projects));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ProjectServicePaginationResponse?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<List<ProjectServiceProject>?>.Default.Equals(
+                        this.Projects,
+                        other.Projects
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

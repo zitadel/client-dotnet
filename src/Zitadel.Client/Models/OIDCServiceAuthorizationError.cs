@@ -27,10 +27,15 @@ public class OIDCServiceAuthorizationError : IEquatable<OIDCServiceAuthorization
     public bool Equals(OIDCServiceAuthorizationError? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<OIDCServiceErrorReason?>.Default.Equals(this.Error, other.Error)
-                    && EqualityComparer<string?>.Default.Equals(this.ErrorDescription, other.ErrorDescription)
-                    && EqualityComparer<string?>.Default.Equals(this.ErrorUri, other.ErrorUri));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ErrorDescription,
+                        other.ErrorDescription
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.ErrorUri, other.ErrorUri)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -29,9 +29,13 @@ public class UserServiceDomainQuery : IEquatable<UserServiceDomainQuery>
     public bool Equals(UserServiceDomainQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<bool?>.Default.Equals(this.IncludeWithoutDomain, other.IncludeWithoutDomain)
-                    && EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<bool?>.Default.Equals(
+                    this.IncludeWithoutDomain,
+                    other.IncludeWithoutDomain
+                ) && EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaProjectServiceListProjectGrantsResponse : IEquatable<BetaProjectServiceListProjectGrantsResponse>
+public class BetaProjectServiceListProjectGrantsResponse
+    : IEquatable<BetaProjectServiceListProjectGrantsResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("pagination")]
@@ -23,9 +24,17 @@ public class BetaProjectServiceListProjectGrantsResponse : IEquatable<BetaProjec
     public bool Equals(BetaProjectServiceListProjectGrantsResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaProjectServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<BetaProjectServiceProjectGrant>?>.Default.Equals(this.ProjectGrants, other.ProjectGrants));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaProjectServicePaginationResponse?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<List<BetaProjectServiceProjectGrant>?>.Default.Equals(
+                        this.ProjectGrants,
+                        other.ProjectGrants
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

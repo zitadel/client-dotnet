@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ProjectServiceDeleteProjectGrantRequest : IEquatable<ProjectServiceDeleteProjectGrantRequest>
+public class ProjectServiceDeleteProjectGrantRequest
+    : IEquatable<ProjectServiceDeleteProjectGrantRequest>
 {
     /// <summary>
     /// ProjectID is the unique identifier of the project.
@@ -29,9 +30,14 @@ public class ProjectServiceDeleteProjectGrantRequest : IEquatable<ProjectService
     public bool Equals(ProjectServiceDeleteProjectGrantRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
-                    && EqualityComparer<string?>.Default.Equals(this.GrantedOrganizationId, other.GrantedOrganizationId));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.GrantedOrganizationId,
+                        other.GrantedOrganizationId
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

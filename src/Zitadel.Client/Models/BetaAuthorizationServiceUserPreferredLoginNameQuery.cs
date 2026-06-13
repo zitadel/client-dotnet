@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAuthorizationServiceUserPreferredLoginNameQuery : IEquatable<BetaAuthorizationServiceUserPreferredLoginNameQuery>
+public class BetaAuthorizationServiceUserPreferredLoginNameQuery
+    : IEquatable<BetaAuthorizationServiceUserPreferredLoginNameQuery>
 {
     /// <summary>
     /// Specify the preferred login name of the granted user to search for.
@@ -26,9 +27,14 @@ public class BetaAuthorizationServiceUserPreferredLoginNameQuery : IEquatable<Be
     public bool Equals(BetaAuthorizationServiceUserPreferredLoginNameQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.LoginName, other.LoginName)
-                    && EqualityComparer<BetaAuthorizationServiceTextFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<BetaAuthorizationServiceTextFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

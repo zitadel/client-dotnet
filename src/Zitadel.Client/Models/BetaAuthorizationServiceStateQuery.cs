@@ -19,8 +19,13 @@ public class BetaAuthorizationServiceStateQuery : IEquatable<BetaAuthorizationSe
     public bool Equals(BetaAuthorizationServiceStateQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaAuthorizationServiceState?>.Default.Equals(this.State, other.State));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaAuthorizationServiceState?>.Default.Equals(
+                    this.State,
+                    other.State
+                )
+            );
     }
 
     public override bool Equals(object? obj)

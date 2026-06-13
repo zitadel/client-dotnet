@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class SettingsServiceGetGeneralSettingsResponse : IEquatable<SettingsServiceGetGeneralSettingsResponse>
+public class SettingsServiceGetGeneralSettingsResponse
+    : IEquatable<SettingsServiceGetGeneralSettingsResponse>
 {
     /// <summary>
     /// The unique identifier of the default organization.  The default organization is used to assign new users to an organization if no other organization is specified.  Deprecated: use default_organization_id instead.
@@ -50,12 +51,26 @@ public class SettingsServiceGetGeneralSettingsResponse : IEquatable<SettingsServ
     public bool Equals(SettingsServiceGetGeneralSettingsResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.DefaultOrgId, other.DefaultOrgId)
-                    && EqualityComparer<string?>.Default.Equals(this.DefaultLanguage, other.DefaultLanguage)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.SupportedLanguages, other.SupportedLanguages)
-                    && EqualityComparer<string?>.Default.Equals(this.DefaultOrganizationId, other.DefaultOrganizationId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.AllowedLanguages, other.AllowedLanguages));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.DefaultLanguage,
+                        other.DefaultLanguage
+                    )
+                    && EqualityComparer<List<string>?>.Default.Equals(
+                        this.SupportedLanguages,
+                        other.SupportedLanguages
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.DefaultOrganizationId,
+                        other.DefaultOrganizationId
+                    )
+                    && EqualityComparer<List<string>?>.Default.Equals(
+                        this.AllowedLanguages,
+                        other.AllowedLanguages
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -31,11 +31,16 @@ public class OrganizationServiceSetHumanEmail : IEquatable<OrganizationServiceSe
     public bool Equals(OrganizationServiceSetHumanEmail? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Email, other.Email)
                     && EqualityComparer<bool?>.Default.Equals(this.IsVerified, other.IsVerified)
                     && EqualityComparer<Object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
-                    && EqualityComparer<OrganizationServiceSendEmailVerificationCode?>.Default.Equals(this.SendCode, other.SendCode));
+                    && EqualityComparer<OrganizationServiceSendEmailVerificationCode?>.Default.Equals(
+                        this.SendCode,
+                        other.SendCode
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

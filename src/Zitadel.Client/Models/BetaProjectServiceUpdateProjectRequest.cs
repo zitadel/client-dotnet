@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaProjectServiceUpdateProjectRequest : IEquatable<BetaProjectServiceUpdateProjectRequest>
+public class BetaProjectServiceUpdateProjectRequest
+    : IEquatable<BetaProjectServiceUpdateProjectRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("id")]
@@ -51,13 +52,27 @@ public class BetaProjectServiceUpdateProjectRequest : IEquatable<BetaProjectServ
     public bool Equals(BetaProjectServiceUpdateProjectRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
                     && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<bool?>.Default.Equals(this.ProjectRoleAssertion, other.ProjectRoleAssertion)
-                    && EqualityComparer<bool?>.Default.Equals(this.ProjectRoleCheck, other.ProjectRoleCheck)
-                    && EqualityComparer<bool?>.Default.Equals(this.HasProjectCheck, other.HasProjectCheck)
-                    && EqualityComparer<BetaProjectServicePrivateLabelingSetting?>.Default.Equals(this.PrivateLabelingSetting, other.PrivateLabelingSetting));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.ProjectRoleAssertion,
+                        other.ProjectRoleAssertion
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.ProjectRoleCheck,
+                        other.ProjectRoleCheck
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.HasProjectCheck,
+                        other.HasProjectCheck
+                    )
+                    && EqualityComparer<BetaProjectServicePrivateLabelingSetting?>.Default.Equals(
+                        this.PrivateLabelingSetting,
+                        other.PrivateLabelingSetting
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

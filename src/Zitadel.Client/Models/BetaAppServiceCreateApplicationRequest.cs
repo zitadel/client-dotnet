@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAppServiceCreateApplicationRequest : IEquatable<BetaAppServiceCreateApplicationRequest>
+public class BetaAppServiceCreateApplicationRequest
+    : IEquatable<BetaAppServiceCreateApplicationRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("projectId")]
@@ -39,13 +40,24 @@ public class BetaAppServiceCreateApplicationRequest : IEquatable<BetaAppServiceC
     public bool Equals(BetaAppServiceCreateApplicationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
                     && EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
                     && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<BetaAppServiceCreateAPIApplicationRequest?>.Default.Equals(this.ApiRequest, other.ApiRequest)
-                    && EqualityComparer<BetaAppServiceCreateOIDCApplicationRequest?>.Default.Equals(this.OidcRequest, other.OidcRequest)
-                    && EqualityComparer<BetaAppServiceCreateSAMLApplicationRequest?>.Default.Equals(this.SamlRequest, other.SamlRequest));
+                    && EqualityComparer<BetaAppServiceCreateAPIApplicationRequest?>.Default.Equals(
+                        this.ApiRequest,
+                        other.ApiRequest
+                    )
+                    && EqualityComparer<BetaAppServiceCreateOIDCApplicationRequest?>.Default.Equals(
+                        this.OidcRequest,
+                        other.OidcRequest
+                    )
+                    && EqualityComparer<BetaAppServiceCreateSAMLApplicationRequest?>.Default.Equals(
+                        this.SamlRequest,
+                        other.SamlRequest
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

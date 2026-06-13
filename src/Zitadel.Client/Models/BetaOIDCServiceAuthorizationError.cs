@@ -27,10 +27,18 @@ public class BetaOIDCServiceAuthorizationError : IEquatable<BetaOIDCServiceAutho
     public bool Equals(BetaOIDCServiceAuthorizationError? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaOIDCServiceErrorReason?>.Default.Equals(this.Error, other.Error)
-                    && EqualityComparer<string?>.Default.Equals(this.ErrorDescription, other.ErrorDescription)
-                    && EqualityComparer<string?>.Default.Equals(this.ErrorUri, other.ErrorUri));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaOIDCServiceErrorReason?>.Default.Equals(
+                    this.Error,
+                    other.Error
+                )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ErrorDescription,
+                        other.ErrorDescription
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.ErrorUri, other.ErrorUri)
+            );
     }
 
     public override bool Equals(object? obj)

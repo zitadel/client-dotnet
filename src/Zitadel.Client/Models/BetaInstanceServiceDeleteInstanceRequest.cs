@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInstanceServiceDeleteInstanceRequest : IEquatable<BetaInstanceServiceDeleteInstanceRequest>
+public class BetaInstanceServiceDeleteInstanceRequest
+    : IEquatable<BetaInstanceServiceDeleteInstanceRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("instanceId")]
@@ -19,8 +20,10 @@ public class BetaInstanceServiceDeleteInstanceRequest : IEquatable<BetaInstanceS
     public bool Equals(BetaInstanceServiceDeleteInstanceRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
+            );
     }
 
     public override bool Equals(object? obj)

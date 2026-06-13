@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class IdentityProviderServiceApi : BaseApi
 {
-
     private static readonly string[] GetIDPByIDAccepts = ["application/json"];
 
     /// <summary>Initializes a new instance of <see cref="IdentityProviderServiceApi"/> with defaults.</summary>
@@ -32,7 +31,11 @@ public class IdentityProviderServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public IdentityProviderServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public IdentityProviderServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -42,10 +45,15 @@ public class IdentityProviderServiceApi : BaseApi
     /// <param name="identityProviderServiceGetIDPByIDRequest"></param>
     /// <returns><![CDATA[IdentityProviderServiceGetIDPByIDResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<IdentityProviderServiceGetIDPByIDResponse> GetIDPByIDAsync(IdentityProviderServiceGetIDPByIDRequest identityProviderServiceGetIDPByIDRequest)
+    public async Task<IdentityProviderServiceGetIDPByIDResponse> GetIDPByIDAsync(
+        IdentityProviderServiceGetIDPByIDRequest identityProviderServiceGetIDPByIDRequest
+    )
     {
-        Task<ApiResult<IdentityProviderServiceGetIDPByIDResponse>> task = GetIDPByIDWithHttpInfoAsync(identityProviderServiceGetIDPByIDRequest);
-        ApiResult<IdentityProviderServiceGetIDPByIDResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<IdentityProviderServiceGetIDPByIDResponse>> task =
+            GetIDPByIDWithHttpInfoAsync(identityProviderServiceGetIDPByIDRequest);
+        ApiResult<IdentityProviderServiceGetIDPByIDResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -56,7 +64,8 @@ public class IdentityProviderServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -66,7 +75,11 @@ public class IdentityProviderServiceApi : BaseApi
     /// <param name="identityProviderServiceGetIDPByIDRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<IdentityProviderServiceGetIDPByIDResponse>> GetIDPByIDWithHttpInfoAsync(IdentityProviderServiceGetIDPByIDRequest identityProviderServiceGetIDPByIDRequest)
+    public async Task<
+        ApiResult<IdentityProviderServiceGetIDPByIDResponse>
+    > GetIDPByIDWithHttpInfoAsync(
+        IdentityProviderServiceGetIDPByIDRequest identityProviderServiceGetIDPByIDRequest
+    )
     {
         string path = "/zitadel.idp.v2.IdentityProviderService/GetIDPByID";
 

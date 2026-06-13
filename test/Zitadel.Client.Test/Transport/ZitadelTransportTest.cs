@@ -170,8 +170,10 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
     // runner. A test-level async timeout cannot bound a synchronously-blocked
     // call, so the test is skipped rather than left to stall the suite. Re-enable
     // once the auth path fast-fails on TLS errors (and honours a timeout).
-    [Fact(Skip = "SDK auth/OIDC path blocks synchronously with no timeout on TLS "
-        + "failure; missing-CA-cert request hangs instead of fast-failing.")]
+    [Fact(
+        Skip = "SDK auth/OIDC path blocks synchronously with no timeout on TLS "
+            + "failure; missing-CA-cert request hangs instead of fast-failing."
+    )]
     public async Task MissingCaCertFails()
     {
         using Client client = new(

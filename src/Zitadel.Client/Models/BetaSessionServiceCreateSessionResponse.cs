@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaSessionServiceCreateSessionResponse : IEquatable<BetaSessionServiceCreateSessionResponse>
+public class BetaSessionServiceCreateSessionResponse
+    : IEquatable<BetaSessionServiceCreateSessionResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("details")]
@@ -31,11 +32,22 @@ public class BetaSessionServiceCreateSessionResponse : IEquatable<BetaSessionSer
     public bool Equals(BetaSessionServiceCreateSessionResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaSessionServiceDetails?>.Default.Equals(this.Details, other.Details)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaSessionServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
                     && EqualityComparer<string?>.Default.Equals(this.SessionId, other.SessionId)
-                    && EqualityComparer<string?>.Default.Equals(this.SessionToken, other.SessionToken)
-                    && EqualityComparer<BetaSessionServiceChallenges?>.Default.Equals(this.Challenges, other.Challenges));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.SessionToken,
+                        other.SessionToken
+                    )
+                    && EqualityComparer<BetaSessionServiceChallenges?>.Default.Equals(
+                        this.Challenges,
+                        other.Challenges
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

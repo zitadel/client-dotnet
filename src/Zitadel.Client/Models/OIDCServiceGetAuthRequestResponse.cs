@@ -19,8 +19,13 @@ public class OIDCServiceGetAuthRequestResponse : IEquatable<OIDCServiceGetAuthRe
     public bool Equals(OIDCServiceGetAuthRequestResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<OIDCServiceAuthRequest?>.Default.Equals(this.AuthRequest, other.AuthRequest));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<OIDCServiceAuthRequest?>.Default.Equals(
+                    this.AuthRequest,
+                    other.AuthRequest
+                )
+            );
     }
 
     public override bool Equals(object? obj)

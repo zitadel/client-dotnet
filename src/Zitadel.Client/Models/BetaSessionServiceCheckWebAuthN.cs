@@ -22,8 +22,13 @@ public class BetaSessionServiceCheckWebAuthN : IEquatable<BetaSessionServiceChec
     public bool Equals(BetaSessionServiceCheckWebAuthN? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.CredentialAssertionData, other.CredentialAssertionData));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<Dictionary<string, Object>?>.Default.Equals(
+                    this.CredentialAssertionData,
+                    other.CredentialAssertionData
+                )
+            );
     }
 
     public override bool Equals(object? obj)

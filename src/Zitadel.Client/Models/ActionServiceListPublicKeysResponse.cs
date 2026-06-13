@@ -26,9 +26,17 @@ public class ActionServiceListPublicKeysResponse : IEquatable<ActionServiceListP
     public bool Equals(ActionServiceListPublicKeysResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ActionServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<ActionServicePublicKey>?>.Default.Equals(this.PublicKeys, other.PublicKeys));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ActionServicePaginationResponse?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<List<ActionServicePublicKey>?>.Default.Equals(
+                        this.PublicKeys,
+                        other.PublicKeys
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

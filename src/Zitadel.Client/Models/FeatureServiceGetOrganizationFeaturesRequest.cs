@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class FeatureServiceGetOrganizationFeaturesRequest : IEquatable<FeatureServiceGetOrganizationFeaturesRequest>
+public class FeatureServiceGetOrganizationFeaturesRequest
+    : IEquatable<FeatureServiceGetOrganizationFeaturesRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("organizationId")]
@@ -23,9 +24,13 @@ public class FeatureServiceGetOrganizationFeaturesRequest : IEquatable<FeatureSe
     public bool Equals(FeatureServiceGetOrganizationFeaturesRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<bool?>.Default.Equals(this.Inheritance, other.Inheritance));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                ) && EqualityComparer<bool?>.Default.Equals(this.Inheritance, other.Inheritance)
+            );
     }
 
     public override bool Equals(object? obj)

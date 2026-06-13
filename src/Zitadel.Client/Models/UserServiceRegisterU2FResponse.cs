@@ -30,10 +30,15 @@ public class UserServiceRegisterU2FResponse : IEquatable<UserServiceRegisterU2FR
     public bool Equals(UserServiceRegisterU2FResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
                     && EqualityComparer<string?>.Default.Equals(this.U2fId, other.U2fId)
-                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.PublicKeyCredentialCreationOptions, other.PublicKeyCredentialCreationOptions));
+                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(
+                        this.PublicKeyCredentialCreationOptions,
+                        other.PublicKeyCredentialCreationOptions
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

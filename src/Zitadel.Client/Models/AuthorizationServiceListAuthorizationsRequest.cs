@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class AuthorizationServiceListAuthorizationsRequest : IEquatable<AuthorizationServiceListAuthorizationsRequest>
+public class AuthorizationServiceListAuthorizationsRequest
+    : IEquatable<AuthorizationServiceListAuthorizationsRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("pagination")]
@@ -30,10 +31,21 @@ public class AuthorizationServiceListAuthorizationsRequest : IEquatable<Authoriz
     public bool Equals(AuthorizationServiceListAuthorizationsRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<AuthorizationServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<AuthorizationServiceAuthorizationFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<AuthorizationServiceAuthorizationsSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<AuthorizationServicePaginationRequest?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<AuthorizationServiceAuthorizationFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<List<AuthorizationServiceAuthorizationsSearchFilter>?>.Default.Equals(
+                        this.Filters,
+                        other.Filters
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

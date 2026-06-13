@@ -23,9 +23,14 @@ public class BetaUserServiceVerifyEmailRequest : IEquatable<BetaUserServiceVerif
     public bool Equals(BetaUserServiceVerifyEmailRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<string?>.Default.Equals(this.VerificationCode, other.VerificationCode));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.VerificationCode,
+                        other.VerificationCode
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaOIDCServiceCreateCallbackResponse : IEquatable<BetaOIDCServiceCreateCallbackResponse>
+public class BetaOIDCServiceCreateCallbackResponse
+    : IEquatable<BetaOIDCServiceCreateCallbackResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("details")]
@@ -23,9 +24,13 @@ public class BetaOIDCServiceCreateCallbackResponse : IEquatable<BetaOIDCServiceC
     public bool Equals(BetaOIDCServiceCreateCallbackResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaOIDCServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<string?>.Default.Equals(this.CallbackUrl, other.CallbackUrl));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaOIDCServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                ) && EqualityComparer<string?>.Default.Equals(this.CallbackUrl, other.CallbackUrl)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAuthorizationServiceActivateAuthorizationRequest : IEquatable<BetaAuthorizationServiceActivateAuthorizationRequest>
+public class BetaAuthorizationServiceActivateAuthorizationRequest
+    : IEquatable<BetaAuthorizationServiceActivateAuthorizationRequest>
 {
     /// <summary>
     /// ID is the unique identifier of the authorization that should be activated.
@@ -22,8 +23,10 @@ public class BetaAuthorizationServiceActivateAuthorizationRequest : IEquatable<B
     public bool Equals(BetaAuthorizationServiceActivateAuthorizationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.Id, other.Id));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
+            );
     }
 
     public override bool Equals(object? obj)

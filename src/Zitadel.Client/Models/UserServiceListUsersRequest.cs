@@ -30,10 +30,18 @@ public class UserServiceListUsersRequest : IEquatable<UserServiceListUsersReques
     public bool Equals(UserServiceListUsersRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceListQuery?>.Default.Equals(this.Query, other.Query)
-                    && EqualityComparer<UserServiceUserFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<UserServiceSearchQuery>?>.Default.Equals(this.Queries, other.Queries));
+                    && EqualityComparer<UserServiceUserFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<List<UserServiceSearchQuery>?>.Default.Equals(
+                        this.Queries,
+                        other.Queries
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

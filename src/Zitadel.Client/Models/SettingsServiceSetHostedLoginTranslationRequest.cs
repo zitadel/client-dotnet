@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class SettingsServiceSetHostedLoginTranslationRequest : IEquatable<SettingsServiceSetHostedLoginTranslationRequest>
+public class SettingsServiceSetHostedLoginTranslationRequest
+    : IEquatable<SettingsServiceSetHostedLoginTranslationRequest>
 {
     /// <summary>
     /// The locale of the translations to be set.  Needs to be a BCP 47 language tag (e.g. \"en\", \"de\", \"fr-CH\").
@@ -37,11 +38,19 @@ public class SettingsServiceSetHostedLoginTranslationRequest : IEquatable<Settin
     public bool Equals(SettingsServiceSetHostedLoginTranslationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Locale, other.Locale)
-                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.Translations, other.Translations)
+                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(
+                        this.Translations,
+                        other.Translations
+                    )
                     && EqualityComparer<bool?>.Default.Equals(this.Instance, other.Instance)
-                    && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

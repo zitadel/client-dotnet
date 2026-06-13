@@ -68,18 +68,44 @@ public class UserServiceAddHumanUserRequest : IEquatable<UserServiceAddHumanUser
     public bool Equals(UserServiceAddHumanUserRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.Username, other.Username)
-                    && EqualityComparer<UserServiceOrganization?>.Default.Equals(this.Organization, other.Organization)
-                    && EqualityComparer<UserServiceSetHumanProfile?>.Default.Equals(this.Profile, other.Profile)
-                    && EqualityComparer<UserServiceSetHumanEmail?>.Default.Equals(this.Email, other.Email)
-                    && EqualityComparer<UserServiceSetHumanPhone?>.Default.Equals(this.Phone, other.Phone)
-                    && EqualityComparer<List<UserServiceSetMetadataEntry>?>.Default.Equals(this.Metadata, other.Metadata)
-                    && EqualityComparer<List<UserServiceIDPLink>?>.Default.Equals(this.IdpLinks, other.IdpLinks)
+                    && EqualityComparer<UserServiceOrganization?>.Default.Equals(
+                        this.Organization,
+                        other.Organization
+                    )
+                    && EqualityComparer<UserServiceSetHumanProfile?>.Default.Equals(
+                        this.Profile,
+                        other.Profile
+                    )
+                    && EqualityComparer<UserServiceSetHumanEmail?>.Default.Equals(
+                        this.Email,
+                        other.Email
+                    )
+                    && EqualityComparer<UserServiceSetHumanPhone?>.Default.Equals(
+                        this.Phone,
+                        other.Phone
+                    )
+                    && EqualityComparer<List<UserServiceSetMetadataEntry>?>.Default.Equals(
+                        this.Metadata,
+                        other.Metadata
+                    )
+                    && EqualityComparer<List<UserServiceIDPLink>?>.Default.Equals(
+                        this.IdpLinks,
+                        other.IdpLinks
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.TotpSecret, other.TotpSecret)
-                    && EqualityComparer<UserServiceHashedPassword?>.Default.Equals(this.HashedPassword, other.HashedPassword)
-                    && EqualityComparer<UserServicePassword?>.Default.Equals(this.Password, other.Password));
+                    && EqualityComparer<UserServiceHashedPassword?>.Default.Equals(
+                        this.HashedPassword,
+                        other.HashedPassword
+                    )
+                    && EqualityComparer<UserServicePassword?>.Default.Equals(
+                        this.Password,
+                        other.Password
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

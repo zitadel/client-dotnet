@@ -10,7 +10,11 @@ namespace Zitadel.Client;
 /// <summary>
 /// Represents an HTTP API response.
 /// </summary>
-public class ApiHttpResponse(int statusCode, string body, IReadOnlyDictionary<string, string> headers)
+public class ApiHttpResponse(
+    int statusCode,
+    string body,
+    IReadOnlyDictionary<string, string> headers
+)
 {
     public int StatusCode { get; } = statusCode;
     public string Body { get; } = body;

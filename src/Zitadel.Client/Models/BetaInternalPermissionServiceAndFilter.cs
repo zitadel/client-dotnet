@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInternalPermissionServiceAndFilter : IEquatable<BetaInternalPermissionServiceAndFilter>
+public class BetaInternalPermissionServiceAndFilter
+    : IEquatable<BetaInternalPermissionServiceAndFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("queries")]
@@ -19,8 +20,13 @@ public class BetaInternalPermissionServiceAndFilter : IEquatable<BetaInternalPer
     public bool Equals(BetaInternalPermissionServiceAndFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<BetaInternalPermissionServiceAdministratorSearchFilter>?>.Default.Equals(this.Queries, other.Queries));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<BetaInternalPermissionServiceAdministratorSearchFilter>?>.Default.Equals(
+                    this.Queries,
+                    other.Queries
+                )
+            );
     }
 
     public override bool Equals(object? obj)

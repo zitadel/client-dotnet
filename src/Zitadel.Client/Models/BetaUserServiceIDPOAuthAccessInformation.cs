@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaUserServiceIDPOAuthAccessInformation : IEquatable<BetaUserServiceIDPOAuthAccessInformation>
+public class BetaUserServiceIDPOAuthAccessInformation
+    : IEquatable<BetaUserServiceIDPOAuthAccessInformation>
 {
     /// <example>null</example>
     [JsonPropertyName("accessToken")]
@@ -23,9 +24,11 @@ public class BetaUserServiceIDPOAuthAccessInformation : IEquatable<BetaUserServi
     public bool Equals(BetaUserServiceIDPOAuthAccessInformation? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.AccessToken, other.AccessToken)
-                    && EqualityComparer<string?>.Default.Equals(this.IdToken, other.IdToken));
+                    && EqualityComparer<string?>.Default.Equals(this.IdToken, other.IdToken)
+            );
     }
 
     public override bool Equals(object? obj)

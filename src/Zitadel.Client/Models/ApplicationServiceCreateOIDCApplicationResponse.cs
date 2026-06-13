@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceCreateOIDCApplicationResponse : IEquatable<ApplicationServiceCreateOIDCApplicationResponse>
+public class ApplicationServiceCreateOIDCApplicationResponse
+    : IEquatable<ApplicationServiceCreateOIDCApplicationResponse>
 {
     /// <summary>
     /// The unique OAuth2/OIDC client_id used for authentication of the application,  e.g. at the token endpoint.
@@ -43,11 +44,19 @@ public class ApplicationServiceCreateOIDCApplicationResponse : IEquatable<Applic
     public bool Equals(ApplicationServiceCreateOIDCApplicationResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<string?>.Default.Equals(this.ClientSecret, other.ClientSecret)
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ClientSecret,
+                        other.ClientSecret
+                    )
                     && EqualityComparer<bool?>.Default.Equals(this.NonCompliant, other.NonCompliant)
-                    && EqualityComparer<List<ApplicationServiceOIDCLocalizedMessage>?>.Default.Equals(this.ComplianceProblems, other.ComplianceProblems));
+                    && EqualityComparer<List<ApplicationServiceOIDCLocalizedMessage>?>.Default.Equals(
+                        this.ComplianceProblems,
+                        other.ComplianceProblems
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

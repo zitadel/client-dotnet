@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceApplicationNameFilter : IEquatable<ApplicationServiceApplicationNameFilter>
+public class ApplicationServiceApplicationNameFilter
+    : IEquatable<ApplicationServiceApplicationNameFilter>
 {
     /// <summary>
     /// The name of the application to search for.
@@ -26,9 +27,14 @@ public class ApplicationServiceApplicationNameFilter : IEquatable<ApplicationSer
     public bool Equals(ApplicationServiceApplicationNameFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<ApplicationServiceTextFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<ApplicationServiceTextFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -27,10 +27,12 @@ public class UserServiceUpdateHumanUserResponse : IEquatable<UserServiceUpdateHu
     public bool Equals(UserServiceUpdateHumanUserResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
                     && EqualityComparer<string?>.Default.Equals(this.EmailCode, other.EmailCode)
-                    && EqualityComparer<string?>.Default.Equals(this.PhoneCode, other.PhoneCode));
+                    && EqualityComparer<string?>.Default.Equals(this.PhoneCode, other.PhoneCode)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -22,8 +22,10 @@ public class SessionServiceOTPSMS : IEquatable<SessionServiceOTPSMS>
     public bool Equals(SessionServiceOTPSMS? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<bool?>.Default.Equals(this.ReturnCode, other.ReturnCode));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<bool?>.Default.Equals(this.ReturnCode, other.ReturnCode)
+            );
     }
 
     public override bool Equals(object? obj)

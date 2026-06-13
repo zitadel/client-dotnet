@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceOIDCLocalizedMessage : IEquatable<ApplicationServiceOIDCLocalizedMessage>
+public class ApplicationServiceOIDCLocalizedMessage
+    : IEquatable<ApplicationServiceOIDCLocalizedMessage>
 {
     /// <example>null</example>
     [JsonPropertyName("key")]
@@ -23,9 +24,14 @@ public class ApplicationServiceOIDCLocalizedMessage : IEquatable<ApplicationServ
     public bool Equals(ApplicationServiceOIDCLocalizedMessage? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Key, other.Key)
-                    && EqualityComparer<string?>.Default.Equals(this.LocalizedMessage, other.LocalizedMessage));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.LocalizedMessage,
+                        other.LocalizedMessage
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

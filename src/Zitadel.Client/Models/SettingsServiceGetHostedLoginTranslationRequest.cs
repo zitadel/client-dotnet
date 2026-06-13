@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class SettingsServiceGetHostedLoginTranslationRequest : IEquatable<SettingsServiceGetHostedLoginTranslationRequest>
+public class SettingsServiceGetHostedLoginTranslationRequest
+    : IEquatable<SettingsServiceGetHostedLoginTranslationRequest>
 {
     /// <summary>
     /// The locale of the translations to be returned.  Needs to be a BCP 47 language tag (e.g. \"en\", \"de\", \"fr-CH\").
@@ -41,12 +42,20 @@ public class SettingsServiceGetHostedLoginTranslationRequest : IEquatable<Settin
     public bool Equals(SettingsServiceGetHostedLoginTranslationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Locale, other.Locale)
-                    && EqualityComparer<bool?>.Default.Equals(this.IgnoreInheritance, other.IgnoreInheritance)
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.IgnoreInheritance,
+                        other.IgnoreInheritance
+                    )
                     && EqualityComparer<bool?>.Default.Equals(this.Instance, other.Instance)
-                    && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<bool?>.Default.Equals(this.System, other.System));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(this.System, other.System)
+            );
     }
 
     public override bool Equals(object? obj)

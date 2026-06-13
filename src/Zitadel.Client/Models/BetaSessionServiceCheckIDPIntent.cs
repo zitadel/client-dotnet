@@ -23,9 +23,14 @@ public class BetaSessionServiceCheckIDPIntent : IEquatable<BetaSessionServiceChe
     public bool Equals(BetaSessionServiceCheckIDPIntent? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.IdpIntentId, other.IdpIntentId)
-                    && EqualityComparer<string?>.Default.Equals(this.IdpIntentToken, other.IdpIntentToken));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.IdpIntentToken,
+                        other.IdpIntentToken
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

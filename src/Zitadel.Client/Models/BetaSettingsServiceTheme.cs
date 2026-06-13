@@ -57,13 +57,18 @@ public class BetaSettingsServiceTheme : IEquatable<BetaSettingsServiceTheme>
     public bool Equals(BetaSettingsServiceTheme? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.PrimaryColor, other.PrimaryColor)
-                    && EqualityComparer<string?>.Default.Equals(this.BackgroundColor, other.BackgroundColor)
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.BackgroundColor,
+                        other.BackgroundColor
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.WarnColor, other.WarnColor)
                     && EqualityComparer<string?>.Default.Equals(this.FontColor, other.FontColor)
                     && EqualityComparer<string?>.Default.Equals(this.LogoUrl, other.LogoUrl)
-                    && EqualityComparer<string?>.Default.Equals(this.IconUrl, other.IconUrl));
+                    && EqualityComparer<string?>.Default.Equals(this.IconUrl, other.IconUrl)
+            );
     }
 
     public override bool Equals(object? obj)

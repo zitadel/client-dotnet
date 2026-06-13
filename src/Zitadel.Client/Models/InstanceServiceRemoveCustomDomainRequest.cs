@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class InstanceServiceRemoveCustomDomainRequest : IEquatable<InstanceServiceRemoveCustomDomainRequest>
+public class InstanceServiceRemoveCustomDomainRequest
+    : IEquatable<InstanceServiceRemoveCustomDomainRequest>
 {
     /// <summary>
     /// InstanceID is the unique ID of the instance from which the domain will be removed.
@@ -29,9 +30,14 @@ public class InstanceServiceRemoveCustomDomainRequest : IEquatable<InstanceServi
     public bool Equals(InstanceServiceRemoveCustomDomainRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
-                    && EqualityComparer<string?>.Default.Equals(this.CustomDomain, other.CustomDomain));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.CustomDomain,
+                        other.CustomDomain
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

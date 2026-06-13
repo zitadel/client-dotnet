@@ -26,9 +26,13 @@ public class ActionServiceSetExecutionRequest : IEquatable<ActionServiceSetExecu
     public bool Equals(ActionServiceSetExecutionRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ActionServiceCondition?>.Default.Equals(this.Condition, other.Condition)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Targets, other.Targets));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ActionServiceCondition?>.Default.Equals(
+                    this.Condition,
+                    other.Condition
+                ) && EqualityComparer<List<string>?>.Default.Equals(this.Targets, other.Targets)
+            );
     }
 
     public override bool Equals(object? obj)

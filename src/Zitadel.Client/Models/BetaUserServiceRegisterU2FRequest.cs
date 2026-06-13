@@ -23,9 +23,11 @@ public class BetaUserServiceRegisterU2FRequest : IEquatable<BetaUserServiceRegis
     public bool Equals(BetaUserServiceRegisterU2FRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain));
+                    && EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain)
+            );
     }
 
     public override bool Equals(object? obj)

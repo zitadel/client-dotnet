@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInternalPermissionServiceResourceFilter : IEquatable<BetaInternalPermissionServiceResourceFilter>
+public class BetaInternalPermissionServiceResourceFilter
+    : IEquatable<BetaInternalPermissionServiceResourceFilter>
 {
     /// <summary>
     /// Search for administrators granted on the instance level.
@@ -43,11 +44,19 @@ public class BetaInternalPermissionServiceResourceFilter : IEquatable<BetaIntern
     public bool Equals(BetaInternalPermissionServiceResourceFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.Instance, other.Instance)
-                    && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<string?>.Default.Equals(this.ProjectGrantId, other.ProjectGrantId)
-                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ProjectGrantId,
+                        other.ProjectGrantId
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
+            );
     }
 
     public override bool Equals(object? obj)

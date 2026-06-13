@@ -26,9 +26,14 @@ public class AuthorizationServiceRoleKeyQuery : IEquatable<AuthorizationServiceR
     public bool Equals(AuthorizationServiceRoleKeyQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Key, other.Key)
-                    && EqualityComparer<AuthorizationServiceTextFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<AuthorizationServiceTextFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -33,10 +33,15 @@ public class ApplicationServiceSAMLConfiguration : IEquatable<ApplicationService
     public bool Equals(ApplicationServiceSAMLConfiguration? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<byte[]?>.Default.Equals(this.MetadataXml, other.MetadataXml)
                     && EqualityComparer<string?>.Default.Equals(this.MetadataUrl, other.MetadataUrl)
-                    && EqualityComparer<ApplicationServiceLoginVersion?>.Default.Equals(this.LoginVersion, other.LoginVersion));
+                    && EqualityComparer<ApplicationServiceLoginVersion?>.Default.Equals(
+                        this.LoginVersion,
+                        other.LoginVersion
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

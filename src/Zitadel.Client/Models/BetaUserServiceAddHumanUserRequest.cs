@@ -68,18 +68,44 @@ public class BetaUserServiceAddHumanUserRequest : IEquatable<BetaUserServiceAddH
     public bool Equals(BetaUserServiceAddHumanUserRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.Username, other.Username)
-                    && EqualityComparer<BetaUserServiceOrganization?>.Default.Equals(this.Organization, other.Organization)
-                    && EqualityComparer<BetaUserServiceSetHumanProfile?>.Default.Equals(this.Profile, other.Profile)
-                    && EqualityComparer<BetaUserServiceSetHumanEmail?>.Default.Equals(this.Email, other.Email)
-                    && EqualityComparer<BetaUserServiceSetHumanPhone?>.Default.Equals(this.Phone, other.Phone)
-                    && EqualityComparer<List<BetaUserServiceSetMetadataEntry>?>.Default.Equals(this.Metadata, other.Metadata)
-                    && EqualityComparer<List<BetaUserServiceIDPLink>?>.Default.Equals(this.IdpLinks, other.IdpLinks)
+                    && EqualityComparer<BetaUserServiceOrganization?>.Default.Equals(
+                        this.Organization,
+                        other.Organization
+                    )
+                    && EqualityComparer<BetaUserServiceSetHumanProfile?>.Default.Equals(
+                        this.Profile,
+                        other.Profile
+                    )
+                    && EqualityComparer<BetaUserServiceSetHumanEmail?>.Default.Equals(
+                        this.Email,
+                        other.Email
+                    )
+                    && EqualityComparer<BetaUserServiceSetHumanPhone?>.Default.Equals(
+                        this.Phone,
+                        other.Phone
+                    )
+                    && EqualityComparer<List<BetaUserServiceSetMetadataEntry>?>.Default.Equals(
+                        this.Metadata,
+                        other.Metadata
+                    )
+                    && EqualityComparer<List<BetaUserServiceIDPLink>?>.Default.Equals(
+                        this.IdpLinks,
+                        other.IdpLinks
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.TotpSecret, other.TotpSecret)
-                    && EqualityComparer<BetaUserServiceHashedPassword?>.Default.Equals(this.HashedPassword, other.HashedPassword)
-                    && EqualityComparer<BetaUserServicePassword?>.Default.Equals(this.Password, other.Password));
+                    && EqualityComparer<BetaUserServiceHashedPassword?>.Default.Equals(
+                        this.HashedPassword,
+                        other.HashedPassword
+                    )
+                    && EqualityComparer<BetaUserServicePassword?>.Default.Equals(
+                        this.Password,
+                        other.Password
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -23,9 +23,17 @@ public class UserServiceListKeysResponse : IEquatable<UserServiceListKeysRespons
     public bool Equals(UserServiceListKeysResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<UserServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<UserServiceKey>?>.Default.Equals(this.Result, other.Result));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<UserServicePaginationResponse?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<List<UserServiceKey>?>.Default.Equals(
+                        this.Result,
+                        other.Result
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

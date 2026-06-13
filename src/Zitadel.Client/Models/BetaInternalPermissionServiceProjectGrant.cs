@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInternalPermissionServiceProjectGrant : IEquatable<BetaInternalPermissionServiceProjectGrant>
+public class BetaInternalPermissionServiceProjectGrant
+    : IEquatable<BetaInternalPermissionServiceProjectGrant>
 {
     /// <summary>
     /// ProjectID is required to grant administrator privileges for a specific project.
@@ -29,9 +30,14 @@ public class BetaInternalPermissionServiceProjectGrant : IEquatable<BetaInternal
     public bool Equals(BetaInternalPermissionServiceProjectGrant? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
-                    && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

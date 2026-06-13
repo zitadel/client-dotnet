@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceOrganizationNameQuery : IEquatable<OrganizationServiceOrganizationNameQuery>
+public class OrganizationServiceOrganizationNameQuery
+    : IEquatable<OrganizationServiceOrganizationNameQuery>
 {
     /// <summary>
     /// Name of the organization.
@@ -26,9 +27,14 @@ public class OrganizationServiceOrganizationNameQuery : IEquatable<OrganizationS
     public bool Equals(OrganizationServiceOrganizationNameQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<OrganizationServiceTextQueryMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<OrganizationServiceTextQueryMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

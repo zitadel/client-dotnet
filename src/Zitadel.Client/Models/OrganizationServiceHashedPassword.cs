@@ -23,9 +23,14 @@ public class OrganizationServiceHashedPassword : IEquatable<OrganizationServiceH
     public bool Equals(OrganizationServiceHashedPassword? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Hash, other.Hash)
-                    && EqualityComparer<bool?>.Default.Equals(this.ChangeRequired, other.ChangeRequired));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.ChangeRequired,
+                        other.ChangeRequired
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

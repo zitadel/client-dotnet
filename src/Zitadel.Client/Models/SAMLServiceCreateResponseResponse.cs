@@ -34,11 +34,16 @@ public class SAMLServiceCreateResponseResponse : IEquatable<SAMLServiceCreateRes
     public bool Equals(SAMLServiceCreateResponseResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<SAMLServiceDetails?>.Default.Equals(this.Details, other.Details)
                     && EqualityComparer<string?>.Default.Equals(this.Url, other.Url)
-                    && EqualityComparer<SAMLServicePostResponse?>.Default.Equals(this.Post, other.Post)
-                    && EqualityComparer<Object?>.Default.Equals(this.Redirect, other.Redirect));
+                    && EqualityComparer<SAMLServicePostResponse?>.Default.Equals(
+                        this.Post,
+                        other.Post
+                    )
+                    && EqualityComparer<Object?>.Default.Equals(this.Redirect, other.Redirect)
+            );
     }
 
     public override bool Equals(object? obj)

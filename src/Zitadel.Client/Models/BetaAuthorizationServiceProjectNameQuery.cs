@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAuthorizationServiceProjectNameQuery : IEquatable<BetaAuthorizationServiceProjectNameQuery>
+public class BetaAuthorizationServiceProjectNameQuery
+    : IEquatable<BetaAuthorizationServiceProjectNameQuery>
 {
     /// <summary>
     /// Specify the name of the project the user was granted the authorization for to search for.  Note that this will also include authorizations granted for project grants of the same project.
@@ -26,9 +27,14 @@ public class BetaAuthorizationServiceProjectNameQuery : IEquatable<BetaAuthoriza
     public bool Equals(BetaAuthorizationServiceProjectNameQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<BetaAuthorizationServiceTextFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<BetaAuthorizationServiceTextFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

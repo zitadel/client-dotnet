@@ -23,9 +23,11 @@ public class OrganizationServiceSetMetadataEntry : IEquatable<OrganizationServic
     public bool Equals(OrganizationServiceSetMetadataEntry? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Key, other.Key)
-                    && EqualityComparer<byte[]?>.Default.Equals(this.Value, other.Value));
+                    && EqualityComparer<byte[]?>.Default.Equals(this.Value, other.Value)
+            );
     }
 
     public override bool Equals(object? obj)

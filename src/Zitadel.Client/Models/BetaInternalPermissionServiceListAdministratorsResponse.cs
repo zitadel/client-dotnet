@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInternalPermissionServiceListAdministratorsResponse : IEquatable<BetaInternalPermissionServiceListAdministratorsResponse>
+public class BetaInternalPermissionServiceListAdministratorsResponse
+    : IEquatable<BetaInternalPermissionServiceListAdministratorsResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("pagination")]
@@ -23,9 +24,17 @@ public class BetaInternalPermissionServiceListAdministratorsResponse : IEquatabl
     public bool Equals(BetaInternalPermissionServiceListAdministratorsResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaInternalPermissionServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<BetaInternalPermissionServiceAdministrator>?>.Default.Equals(this.Administrators, other.Administrators));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaInternalPermissionServicePaginationResponse?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<List<BetaInternalPermissionServiceAdministrator>?>.Default.Equals(
+                        this.Administrators,
+                        other.Administrators
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

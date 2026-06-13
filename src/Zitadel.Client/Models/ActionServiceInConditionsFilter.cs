@@ -22,8 +22,13 @@ public class ActionServiceInConditionsFilter : IEquatable<ActionServiceInConditi
     public bool Equals(ActionServiceInConditionsFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<ActionServiceCondition>?>.Default.Equals(this.Conditions, other.Conditions));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<ActionServiceCondition>?>.Default.Equals(
+                    this.Conditions,
+                    other.Conditions
+                )
+            );
     }
 
     public override bool Equals(object? obj)

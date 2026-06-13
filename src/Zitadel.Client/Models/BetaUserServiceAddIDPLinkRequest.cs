@@ -23,9 +23,14 @@ public class BetaUserServiceAddIDPLinkRequest : IEquatable<BetaUserServiceAddIDP
     public bool Equals(BetaUserServiceAddIDPLinkRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<BetaUserServiceIDPLink?>.Default.Equals(this.IdpLink, other.IdpLink));
+                    && EqualityComparer<BetaUserServiceIDPLink?>.Default.Equals(
+                        this.IdpLink,
+                        other.IdpLink
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

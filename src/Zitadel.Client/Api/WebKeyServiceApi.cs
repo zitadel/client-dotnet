@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class WebKeyServiceApi : BaseApi
 {
-
     private static readonly string[] ActivateWebKeyAccepts = ["application/json"];
 
     private static readonly string[] CreateWebKeyAccepts = ["application/json"];
@@ -38,7 +37,11 @@ public class WebKeyServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public WebKeyServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public WebKeyServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -48,9 +51,13 @@ public class WebKeyServiceApi : BaseApi
     /// <param name="webKeyServiceActivateWebKeyRequest"></param>
     /// <returns><![CDATA[WebKeyServiceActivateWebKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<WebKeyServiceActivateWebKeyResponse> ActivateWebKeyAsync(WebKeyServiceActivateWebKeyRequest webKeyServiceActivateWebKeyRequest)
+    public async Task<WebKeyServiceActivateWebKeyResponse> ActivateWebKeyAsync(
+        WebKeyServiceActivateWebKeyRequest webKeyServiceActivateWebKeyRequest
+    )
     {
-        Task<ApiResult<WebKeyServiceActivateWebKeyResponse>> task = ActivateWebKeyWithHttpInfoAsync(webKeyServiceActivateWebKeyRequest);
+        Task<ApiResult<WebKeyServiceActivateWebKeyResponse>> task = ActivateWebKeyWithHttpInfoAsync(
+            webKeyServiceActivateWebKeyRequest
+        );
         ApiResult<WebKeyServiceActivateWebKeyResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -62,7 +69,8 @@ public class WebKeyServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -72,7 +80,11 @@ public class WebKeyServiceApi : BaseApi
     /// <param name="webKeyServiceActivateWebKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<WebKeyServiceActivateWebKeyResponse>> ActivateWebKeyWithHttpInfoAsync(WebKeyServiceActivateWebKeyRequest webKeyServiceActivateWebKeyRequest)
+    public async Task<
+        ApiResult<WebKeyServiceActivateWebKeyResponse>
+    > ActivateWebKeyWithHttpInfoAsync(
+        WebKeyServiceActivateWebKeyRequest webKeyServiceActivateWebKeyRequest
+    )
     {
         string path = "/zitadel.webkey.v2.WebKeyService/ActivateWebKey";
 
@@ -99,9 +111,13 @@ public class WebKeyServiceApi : BaseApi
     /// <param name="webKeyServiceCreateWebKeyRequest"></param>
     /// <returns><![CDATA[WebKeyServiceCreateWebKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<WebKeyServiceCreateWebKeyResponse> CreateWebKeyAsync(WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest)
+    public async Task<WebKeyServiceCreateWebKeyResponse> CreateWebKeyAsync(
+        WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest
+    )
     {
-        Task<ApiResult<WebKeyServiceCreateWebKeyResponse>> task = CreateWebKeyWithHttpInfoAsync(webKeyServiceCreateWebKeyRequest);
+        Task<ApiResult<WebKeyServiceCreateWebKeyResponse>> task = CreateWebKeyWithHttpInfoAsync(
+            webKeyServiceCreateWebKeyRequest
+        );
         ApiResult<WebKeyServiceCreateWebKeyResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -113,7 +129,8 @@ public class WebKeyServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -123,7 +140,9 @@ public class WebKeyServiceApi : BaseApi
     /// <param name="webKeyServiceCreateWebKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<WebKeyServiceCreateWebKeyResponse>> CreateWebKeyWithHttpInfoAsync(WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest)
+    public async Task<ApiResult<WebKeyServiceCreateWebKeyResponse>> CreateWebKeyWithHttpInfoAsync(
+        WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest
+    )
     {
         string path = "/zitadel.webkey.v2.WebKeyService/CreateWebKey";
 
@@ -150,9 +169,13 @@ public class WebKeyServiceApi : BaseApi
     /// <param name="webKeyServiceDeleteWebKeyRequest"></param>
     /// <returns><![CDATA[WebKeyServiceDeleteWebKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<WebKeyServiceDeleteWebKeyResponse> DeleteWebKeyAsync(WebKeyServiceDeleteWebKeyRequest webKeyServiceDeleteWebKeyRequest)
+    public async Task<WebKeyServiceDeleteWebKeyResponse> DeleteWebKeyAsync(
+        WebKeyServiceDeleteWebKeyRequest webKeyServiceDeleteWebKeyRequest
+    )
     {
-        Task<ApiResult<WebKeyServiceDeleteWebKeyResponse>> task = DeleteWebKeyWithHttpInfoAsync(webKeyServiceDeleteWebKeyRequest);
+        Task<ApiResult<WebKeyServiceDeleteWebKeyResponse>> task = DeleteWebKeyWithHttpInfoAsync(
+            webKeyServiceDeleteWebKeyRequest
+        );
         ApiResult<WebKeyServiceDeleteWebKeyResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -164,7 +187,8 @@ public class WebKeyServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -174,7 +198,9 @@ public class WebKeyServiceApi : BaseApi
     /// <param name="webKeyServiceDeleteWebKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<WebKeyServiceDeleteWebKeyResponse>> DeleteWebKeyWithHttpInfoAsync(WebKeyServiceDeleteWebKeyRequest webKeyServiceDeleteWebKeyRequest)
+    public async Task<ApiResult<WebKeyServiceDeleteWebKeyResponse>> DeleteWebKeyWithHttpInfoAsync(
+        WebKeyServiceDeleteWebKeyRequest webKeyServiceDeleteWebKeyRequest
+    )
     {
         string path = "/zitadel.webkey.v2.WebKeyService/DeleteWebKey";
 
@@ -215,7 +241,8 @@ public class WebKeyServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -225,7 +252,9 @@ public class WebKeyServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<WebKeyServiceListWebKeysResponse>> ListWebKeysWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<WebKeyServiceListWebKeysResponse>> ListWebKeysWithHttpInfoAsync(
+        Object body
+    )
     {
         string path = "/zitadel.webkey.v2.WebKeyService/ListWebKeys";
 

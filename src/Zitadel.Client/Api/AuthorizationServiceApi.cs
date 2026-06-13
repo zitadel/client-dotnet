@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class AuthorizationServiceApi : BaseApi
 {
-
     private static readonly string[] ActivateAuthorizationAccepts = ["application/json"];
 
     private static readonly string[] CreateAuthorizationAccepts = ["application/json"];
@@ -42,7 +41,11 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public AuthorizationServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public AuthorizationServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -52,10 +55,16 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceActivateAuthorizationRequest"></param>
     /// <returns><![CDATA[AuthorizationServiceActivateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<AuthorizationServiceActivateAuthorizationResponse> ActivateAuthorizationAsync(AuthorizationServiceActivateAuthorizationRequest authorizationServiceActivateAuthorizationRequest)
+    public async Task<AuthorizationServiceActivateAuthorizationResponse> ActivateAuthorizationAsync(
+        AuthorizationServiceActivateAuthorizationRequest authorizationServiceActivateAuthorizationRequest
+    )
     {
-        Task<ApiResult<AuthorizationServiceActivateAuthorizationResponse>> task = ActivateAuthorizationWithHttpInfoAsync(authorizationServiceActivateAuthorizationRequest);
-        ApiResult<AuthorizationServiceActivateAuthorizationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<AuthorizationServiceActivateAuthorizationResponse>> task =
+            ActivateAuthorizationWithHttpInfoAsync(
+                authorizationServiceActivateAuthorizationRequest
+            );
+        ApiResult<AuthorizationServiceActivateAuthorizationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -66,7 +75,8 @@ public class AuthorizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -76,7 +86,11 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceActivateAuthorizationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<AuthorizationServiceActivateAuthorizationResponse>> ActivateAuthorizationWithHttpInfoAsync(AuthorizationServiceActivateAuthorizationRequest authorizationServiceActivateAuthorizationRequest)
+    public async Task<
+        ApiResult<AuthorizationServiceActivateAuthorizationResponse>
+    > ActivateAuthorizationWithHttpInfoAsync(
+        AuthorizationServiceActivateAuthorizationRequest authorizationServiceActivateAuthorizationRequest
+    )
     {
         string path = "/zitadel.authorization.v2.AuthorizationService/ActivateAuthorization";
 
@@ -103,10 +117,14 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceCreateAuthorizationRequest"></param>
     /// <returns><![CDATA[AuthorizationServiceCreateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<AuthorizationServiceCreateAuthorizationResponse> CreateAuthorizationAsync(AuthorizationServiceCreateAuthorizationRequest authorizationServiceCreateAuthorizationRequest)
+    public async Task<AuthorizationServiceCreateAuthorizationResponse> CreateAuthorizationAsync(
+        AuthorizationServiceCreateAuthorizationRequest authorizationServiceCreateAuthorizationRequest
+    )
     {
-        Task<ApiResult<AuthorizationServiceCreateAuthorizationResponse>> task = CreateAuthorizationWithHttpInfoAsync(authorizationServiceCreateAuthorizationRequest);
-        ApiResult<AuthorizationServiceCreateAuthorizationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<AuthorizationServiceCreateAuthorizationResponse>> task =
+            CreateAuthorizationWithHttpInfoAsync(authorizationServiceCreateAuthorizationRequest);
+        ApiResult<AuthorizationServiceCreateAuthorizationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -117,7 +135,8 @@ public class AuthorizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -127,7 +146,11 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceCreateAuthorizationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<AuthorizationServiceCreateAuthorizationResponse>> CreateAuthorizationWithHttpInfoAsync(AuthorizationServiceCreateAuthorizationRequest authorizationServiceCreateAuthorizationRequest)
+    public async Task<
+        ApiResult<AuthorizationServiceCreateAuthorizationResponse>
+    > CreateAuthorizationWithHttpInfoAsync(
+        AuthorizationServiceCreateAuthorizationRequest authorizationServiceCreateAuthorizationRequest
+    )
     {
         string path = "/zitadel.authorization.v2.AuthorizationService/CreateAuthorization";
 
@@ -154,10 +177,16 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceDeactivateAuthorizationRequest"></param>
     /// <returns><![CDATA[AuthorizationServiceDeactivateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<AuthorizationServiceDeactivateAuthorizationResponse> DeactivateAuthorizationAsync(AuthorizationServiceDeactivateAuthorizationRequest authorizationServiceDeactivateAuthorizationRequest)
+    public async Task<AuthorizationServiceDeactivateAuthorizationResponse> DeactivateAuthorizationAsync(
+        AuthorizationServiceDeactivateAuthorizationRequest authorizationServiceDeactivateAuthorizationRequest
+    )
     {
-        Task<ApiResult<AuthorizationServiceDeactivateAuthorizationResponse>> task = DeactivateAuthorizationWithHttpInfoAsync(authorizationServiceDeactivateAuthorizationRequest);
-        ApiResult<AuthorizationServiceDeactivateAuthorizationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<AuthorizationServiceDeactivateAuthorizationResponse>> task =
+            DeactivateAuthorizationWithHttpInfoAsync(
+                authorizationServiceDeactivateAuthorizationRequest
+            );
+        ApiResult<AuthorizationServiceDeactivateAuthorizationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -168,7 +197,8 @@ public class AuthorizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -178,7 +208,11 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceDeactivateAuthorizationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<AuthorizationServiceDeactivateAuthorizationResponse>> DeactivateAuthorizationWithHttpInfoAsync(AuthorizationServiceDeactivateAuthorizationRequest authorizationServiceDeactivateAuthorizationRequest)
+    public async Task<
+        ApiResult<AuthorizationServiceDeactivateAuthorizationResponse>
+    > DeactivateAuthorizationWithHttpInfoAsync(
+        AuthorizationServiceDeactivateAuthorizationRequest authorizationServiceDeactivateAuthorizationRequest
+    )
     {
         string path = "/zitadel.authorization.v2.AuthorizationService/DeactivateAuthorization";
 
@@ -205,10 +239,14 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceDeleteAuthorizationRequest"></param>
     /// <returns><![CDATA[AuthorizationServiceDeleteAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<AuthorizationServiceDeleteAuthorizationResponse> DeleteAuthorizationAsync(AuthorizationServiceDeleteAuthorizationRequest authorizationServiceDeleteAuthorizationRequest)
+    public async Task<AuthorizationServiceDeleteAuthorizationResponse> DeleteAuthorizationAsync(
+        AuthorizationServiceDeleteAuthorizationRequest authorizationServiceDeleteAuthorizationRequest
+    )
     {
-        Task<ApiResult<AuthorizationServiceDeleteAuthorizationResponse>> task = DeleteAuthorizationWithHttpInfoAsync(authorizationServiceDeleteAuthorizationRequest);
-        ApiResult<AuthorizationServiceDeleteAuthorizationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<AuthorizationServiceDeleteAuthorizationResponse>> task =
+            DeleteAuthorizationWithHttpInfoAsync(authorizationServiceDeleteAuthorizationRequest);
+        ApiResult<AuthorizationServiceDeleteAuthorizationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -219,7 +257,8 @@ public class AuthorizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -229,7 +268,11 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceDeleteAuthorizationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<AuthorizationServiceDeleteAuthorizationResponse>> DeleteAuthorizationWithHttpInfoAsync(AuthorizationServiceDeleteAuthorizationRequest authorizationServiceDeleteAuthorizationRequest)
+    public async Task<
+        ApiResult<AuthorizationServiceDeleteAuthorizationResponse>
+    > DeleteAuthorizationWithHttpInfoAsync(
+        AuthorizationServiceDeleteAuthorizationRequest authorizationServiceDeleteAuthorizationRequest
+    )
     {
         string path = "/zitadel.authorization.v2.AuthorizationService/DeleteAuthorization";
 
@@ -256,10 +299,14 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceListAuthorizationsRequest"></param>
     /// <returns><![CDATA[AuthorizationServiceListAuthorizationsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<AuthorizationServiceListAuthorizationsResponse> ListAuthorizationsAsync(AuthorizationServiceListAuthorizationsRequest authorizationServiceListAuthorizationsRequest)
+    public async Task<AuthorizationServiceListAuthorizationsResponse> ListAuthorizationsAsync(
+        AuthorizationServiceListAuthorizationsRequest authorizationServiceListAuthorizationsRequest
+    )
     {
-        Task<ApiResult<AuthorizationServiceListAuthorizationsResponse>> task = ListAuthorizationsWithHttpInfoAsync(authorizationServiceListAuthorizationsRequest);
-        ApiResult<AuthorizationServiceListAuthorizationsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<AuthorizationServiceListAuthorizationsResponse>> task =
+            ListAuthorizationsWithHttpInfoAsync(authorizationServiceListAuthorizationsRequest);
+        ApiResult<AuthorizationServiceListAuthorizationsResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -270,7 +317,8 @@ public class AuthorizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -280,7 +328,11 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceListAuthorizationsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<AuthorizationServiceListAuthorizationsResponse>> ListAuthorizationsWithHttpInfoAsync(AuthorizationServiceListAuthorizationsRequest authorizationServiceListAuthorizationsRequest)
+    public async Task<
+        ApiResult<AuthorizationServiceListAuthorizationsResponse>
+    > ListAuthorizationsWithHttpInfoAsync(
+        AuthorizationServiceListAuthorizationsRequest authorizationServiceListAuthorizationsRequest
+    )
     {
         string path = "/zitadel.authorization.v2.AuthorizationService/ListAuthorizations";
 
@@ -307,10 +359,14 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceUpdateAuthorizationRequest"></param>
     /// <returns><![CDATA[AuthorizationServiceUpdateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<AuthorizationServiceUpdateAuthorizationResponse> UpdateAuthorizationAsync(AuthorizationServiceUpdateAuthorizationRequest authorizationServiceUpdateAuthorizationRequest)
+    public async Task<AuthorizationServiceUpdateAuthorizationResponse> UpdateAuthorizationAsync(
+        AuthorizationServiceUpdateAuthorizationRequest authorizationServiceUpdateAuthorizationRequest
+    )
     {
-        Task<ApiResult<AuthorizationServiceUpdateAuthorizationResponse>> task = UpdateAuthorizationWithHttpInfoAsync(authorizationServiceUpdateAuthorizationRequest);
-        ApiResult<AuthorizationServiceUpdateAuthorizationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<AuthorizationServiceUpdateAuthorizationResponse>> task =
+            UpdateAuthorizationWithHttpInfoAsync(authorizationServiceUpdateAuthorizationRequest);
+        ApiResult<AuthorizationServiceUpdateAuthorizationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -321,7 +377,8 @@ public class AuthorizationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -331,7 +388,11 @@ public class AuthorizationServiceApi : BaseApi
     /// <param name="authorizationServiceUpdateAuthorizationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<AuthorizationServiceUpdateAuthorizationResponse>> UpdateAuthorizationWithHttpInfoAsync(AuthorizationServiceUpdateAuthorizationRequest authorizationServiceUpdateAuthorizationRequest)
+    public async Task<
+        ApiResult<AuthorizationServiceUpdateAuthorizationResponse>
+    > UpdateAuthorizationWithHttpInfoAsync(
+        AuthorizationServiceUpdateAuthorizationRequest authorizationServiceUpdateAuthorizationRequest
+    )
     {
         string path = "/zitadel.authorization.v2.AuthorizationService/UpdateAuthorization";
 

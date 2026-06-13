@@ -26,9 +26,17 @@ public class UserServiceListUserMetadataResponse : IEquatable<UserServiceListUse
     public bool Equals(UserServiceListUserMetadataResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<UserServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<UserServiceMetadata>?>.Default.Equals(this.Metadata, other.Metadata));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<UserServicePaginationResponse?>.Default.Equals(
+                    this.Pagination,
+                    other.Pagination
+                )
+                    && EqualityComparer<List<UserServiceMetadata>?>.Default.Equals(
+                        this.Metadata,
+                        other.Metadata
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

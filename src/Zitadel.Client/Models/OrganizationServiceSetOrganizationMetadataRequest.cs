@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceSetOrganizationMetadataRequest : IEquatable<OrganizationServiceSetOrganizationMetadataRequest>
+public class OrganizationServiceSetOrganizationMetadataRequest
+    : IEquatable<OrganizationServiceSetOrganizationMetadataRequest>
 {
     /// <summary>
     /// Organization ID is the unique identifier of the organization whose metadata is to be set.
@@ -29,9 +30,17 @@ public class OrganizationServiceSetOrganizationMetadataRequest : IEquatable<Orga
     public bool Equals(OrganizationServiceSetOrganizationMetadataRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<List<OrganizationServiceMetadata>?>.Default.Equals(this.Metadata, other.Metadata));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                )
+                    && EqualityComparer<List<OrganizationServiceMetadata>?>.Default.Equals(
+                        this.Metadata,
+                        other.Metadata
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

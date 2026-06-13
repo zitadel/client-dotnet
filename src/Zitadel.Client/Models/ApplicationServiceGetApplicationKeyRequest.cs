@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceGetApplicationKeyRequest : IEquatable<ApplicationServiceGetApplicationKeyRequest>
+public class ApplicationServiceGetApplicationKeyRequest
+    : IEquatable<ApplicationServiceGetApplicationKeyRequest>
 {
     /// <summary>
     /// The unique ID of the application key to be retrieved.
@@ -22,8 +23,10 @@ public class ApplicationServiceGetApplicationKeyRequest : IEquatable<Application
     public bool Equals(ApplicationServiceGetApplicationKeyRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.KeyId, other.KeyId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.KeyId, other.KeyId)
+            );
     }
 
     public override bool Equals(object? obj)

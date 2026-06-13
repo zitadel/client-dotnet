@@ -23,9 +23,14 @@ public class UserServiceMetadataKeyFilter : IEquatable<UserServiceMetadataKeyFil
     public bool Equals(UserServiceMetadataKeyFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Key, other.Key)
-                    && EqualityComparer<UserServiceTextFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<UserServiceTextFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

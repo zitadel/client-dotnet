@@ -29,9 +29,14 @@ public class UserServiceSendInviteCode : IEquatable<UserServiceSendInviteCode>
     public bool Equals(UserServiceSendInviteCode? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UrlTemplate, other.UrlTemplate)
-                    && EqualityComparer<string?>.Default.Equals(this.ApplicationName, other.ApplicationName));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ApplicationName,
+                        other.ApplicationName
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

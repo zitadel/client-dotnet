@@ -23,9 +23,11 @@ public class UserServiceRemovePasskeyRequest : IEquatable<UserServiceRemovePassk
     public bool Equals(UserServiceRemovePasskeyRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<string?>.Default.Equals(this.PasskeyId, other.PasskeyId));
+                    && EqualityComparer<string?>.Default.Equals(this.PasskeyId, other.PasskeyId)
+            );
     }
 
     public override bool Equals(object? obj)

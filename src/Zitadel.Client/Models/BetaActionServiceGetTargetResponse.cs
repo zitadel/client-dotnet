@@ -19,8 +19,13 @@ public class BetaActionServiceGetTargetResponse : IEquatable<BetaActionServiceGe
     public bool Equals(BetaActionServiceGetTargetResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaActionServiceTarget?>.Default.Equals(this.Target, other.Target));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaActionServiceTarget?>.Default.Equals(
+                    this.Target,
+                    other.Target
+                )
+            );
     }
 
     public override bool Equals(object? obj)

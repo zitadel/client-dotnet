@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class UserServiceVerifyTOTPRegistrationRequest : IEquatable<UserServiceVerifyTOTPRegistrationRequest>
+public class UserServiceVerifyTOTPRegistrationRequest
+    : IEquatable<UserServiceVerifyTOTPRegistrationRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("userId")]
@@ -23,9 +24,11 @@ public class UserServiceVerifyTOTPRegistrationRequest : IEquatable<UserServiceVe
     public bool Equals(UserServiceVerifyTOTPRegistrationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<string?>.Default.Equals(this.Code, other.Code));
+                    && EqualityComparer<string?>.Default.Equals(this.Code, other.Code)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class BetaOIDCServiceApi : BaseApi
 {
-
     private static readonly string[] CreateCallbackAccepts = ["application/json"];
 
     private static readonly string[] GetAuthRequestAccepts = ["application/json"];
@@ -34,7 +33,11 @@ public class BetaOIDCServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public BetaOIDCServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public BetaOIDCServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -44,9 +47,12 @@ public class BetaOIDCServiceApi : BaseApi
     /// <param name="betaOIDCServiceCreateCallbackRequest"></param>
     /// <returns><![CDATA[BetaOIDCServiceCreateCallbackResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOIDCServiceCreateCallbackResponse> CreateCallbackAsync(BetaOIDCServiceCreateCallbackRequest betaOIDCServiceCreateCallbackRequest)
+    public async Task<BetaOIDCServiceCreateCallbackResponse> CreateCallbackAsync(
+        BetaOIDCServiceCreateCallbackRequest betaOIDCServiceCreateCallbackRequest
+    )
     {
-        Task<ApiResult<BetaOIDCServiceCreateCallbackResponse>> task = CreateCallbackWithHttpInfoAsync(betaOIDCServiceCreateCallbackRequest);
+        Task<ApiResult<BetaOIDCServiceCreateCallbackResponse>> task =
+            CreateCallbackWithHttpInfoAsync(betaOIDCServiceCreateCallbackRequest);
         ApiResult<BetaOIDCServiceCreateCallbackResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -58,7 +64,8 @@ public class BetaOIDCServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -68,7 +75,11 @@ public class BetaOIDCServiceApi : BaseApi
     /// <param name="betaOIDCServiceCreateCallbackRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOIDCServiceCreateCallbackResponse>> CreateCallbackWithHttpInfoAsync(BetaOIDCServiceCreateCallbackRequest betaOIDCServiceCreateCallbackRequest)
+    public async Task<
+        ApiResult<BetaOIDCServiceCreateCallbackResponse>
+    > CreateCallbackWithHttpInfoAsync(
+        BetaOIDCServiceCreateCallbackRequest betaOIDCServiceCreateCallbackRequest
+    )
     {
         string path = "/zitadel.oidc.v2beta.OIDCService/CreateCallback";
 
@@ -95,9 +106,12 @@ public class BetaOIDCServiceApi : BaseApi
     /// <param name="betaOIDCServiceGetAuthRequestRequest"></param>
     /// <returns><![CDATA[BetaOIDCServiceGetAuthRequestResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaOIDCServiceGetAuthRequestResponse> GetAuthRequestAsync(BetaOIDCServiceGetAuthRequestRequest betaOIDCServiceGetAuthRequestRequest)
+    public async Task<BetaOIDCServiceGetAuthRequestResponse> GetAuthRequestAsync(
+        BetaOIDCServiceGetAuthRequestRequest betaOIDCServiceGetAuthRequestRequest
+    )
     {
-        Task<ApiResult<BetaOIDCServiceGetAuthRequestResponse>> task = GetAuthRequestWithHttpInfoAsync(betaOIDCServiceGetAuthRequestRequest);
+        Task<ApiResult<BetaOIDCServiceGetAuthRequestResponse>> task =
+            GetAuthRequestWithHttpInfoAsync(betaOIDCServiceGetAuthRequestRequest);
         ApiResult<BetaOIDCServiceGetAuthRequestResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -109,7 +123,8 @@ public class BetaOIDCServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -119,7 +134,11 @@ public class BetaOIDCServiceApi : BaseApi
     /// <param name="betaOIDCServiceGetAuthRequestRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaOIDCServiceGetAuthRequestResponse>> GetAuthRequestWithHttpInfoAsync(BetaOIDCServiceGetAuthRequestRequest betaOIDCServiceGetAuthRequestRequest)
+    public async Task<
+        ApiResult<BetaOIDCServiceGetAuthRequestResponse>
+    > GetAuthRequestWithHttpInfoAsync(
+        BetaOIDCServiceGetAuthRequestRequest betaOIDCServiceGetAuthRequestRequest
+    )
     {
         string path = "/zitadel.oidc.v2beta.OIDCService/GetAuthRequest";
 

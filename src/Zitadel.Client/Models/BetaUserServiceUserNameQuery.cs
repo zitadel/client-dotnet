@@ -26,9 +26,14 @@ public class BetaUserServiceUserNameQuery : IEquatable<BetaUserServiceUserNameQu
     public bool Equals(BetaUserServiceUserNameQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserName, other.UserName)
-                    && EqualityComparer<BetaUserServiceTextQueryMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<BetaUserServiceTextQueryMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

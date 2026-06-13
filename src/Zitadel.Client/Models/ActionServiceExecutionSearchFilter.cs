@@ -27,10 +27,21 @@ public class ActionServiceExecutionSearchFilter : IEquatable<ActionServiceExecut
     public bool Equals(ActionServiceExecutionSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ActionServiceExecutionTypeFilter?>.Default.Equals(this.ExecutionTypeFilter, other.ExecutionTypeFilter)
-                    && EqualityComparer<ActionServiceInConditionsFilter?>.Default.Equals(this.InConditionsFilter, other.InConditionsFilter)
-                    && EqualityComparer<ActionServiceTargetFilter?>.Default.Equals(this.TargetFilter, other.TargetFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ActionServiceExecutionTypeFilter?>.Default.Equals(
+                    this.ExecutionTypeFilter,
+                    other.ExecutionTypeFilter
+                )
+                    && EqualityComparer<ActionServiceInConditionsFilter?>.Default.Equals(
+                        this.InConditionsFilter,
+                        other.InConditionsFilter
+                    )
+                    && EqualityComparer<ActionServiceTargetFilter?>.Default.Equals(
+                        this.TargetFilter,
+                        other.TargetFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

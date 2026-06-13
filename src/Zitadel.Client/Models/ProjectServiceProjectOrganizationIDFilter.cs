@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ProjectServiceProjectOrganizationIDFilter : IEquatable<ProjectServiceProjectOrganizationIDFilter>
+public class ProjectServiceProjectOrganizationIDFilter
+    : IEquatable<ProjectServiceProjectOrganizationIDFilter>
 {
     /// <summary>
     /// OrganizationID Is the ID of the organization to query for.
@@ -26,9 +27,13 @@ public class ProjectServiceProjectOrganizationIDFilter : IEquatable<ProjectServi
     public bool Equals(ProjectServiceProjectOrganizationIDFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<ProjectServiceType?>.Default.Equals(this.Type, other.Type));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                ) && EqualityComparer<ProjectServiceType?>.Default.Equals(this.Type, other.Type)
+            );
     }
 
     public override bool Equals(object? obj)

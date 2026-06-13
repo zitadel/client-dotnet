@@ -23,9 +23,11 @@ public class SettingsServiceRequestContext : IEquatable<SettingsServiceRequestCo
     public bool Equals(SettingsServiceRequestContext? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.Instance, other.Instance)
-                    && EqualityComparer<string?>.Default.Equals(this.OrgId, other.OrgId));
+                    && EqualityComparer<string?>.Default.Equals(this.OrgId, other.OrgId)
+            );
     }
 
     public override bool Equals(object? obj)

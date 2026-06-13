@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class SettingsServiceEmbeddedIframeSettings : IEquatable<SettingsServiceEmbeddedIframeSettings>
+public class SettingsServiceEmbeddedIframeSettings
+    : IEquatable<SettingsServiceEmbeddedIframeSettings>
 {
     /// <summary>
     /// Enabled states if iframe embedding is enabled or disabled.
@@ -29,9 +30,14 @@ public class SettingsServiceEmbeddedIframeSettings : IEquatable<SettingsServiceE
     public bool Equals(SettingsServiceEmbeddedIframeSettings? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.Enabled, other.Enabled)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.AllowedOrigins, other.AllowedOrigins));
+                    && EqualityComparer<List<string>?>.Default.Equals(
+                        this.AllowedOrigins,
+                        other.AllowedOrigins
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -29,9 +29,11 @@ public class AuthorizationServiceOrganization : IEquatable<AuthorizationServiceO
     public bool Equals(AuthorizationServiceOrganization? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
-                    && EqualityComparer<string?>.Default.Equals(this.Name, other.Name));
+                    && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -33,10 +33,18 @@ public class UserServiceListUserMetadataRequest : IEquatable<UserServiceListUser
     public bool Equals(UserServiceListUserMetadataRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<UserServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<UserServiceMetadataSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && EqualityComparer<UserServicePaginationRequest?>.Default.Equals(
+                        this.Pagination,
+                        other.Pagination
+                    )
+                    && EqualityComparer<List<UserServiceMetadataSearchFilter>?>.Default.Equals(
+                        this.Filters,
+                        other.Filters
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

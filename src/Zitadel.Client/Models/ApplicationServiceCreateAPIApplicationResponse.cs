@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceCreateAPIApplicationResponse : IEquatable<ApplicationServiceCreateAPIApplicationResponse>
+public class ApplicationServiceCreateAPIApplicationResponse
+    : IEquatable<ApplicationServiceCreateAPIApplicationResponse>
 {
     /// <summary>
     /// The unique OAuth2 client_id used for authentication of the API, e.g. at the introspection endpoint.
@@ -29,9 +30,14 @@ public class ApplicationServiceCreateAPIApplicationResponse : IEquatable<Applica
     public bool Equals(ApplicationServiceCreateAPIApplicationResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<string?>.Default.Equals(this.ClientSecret, other.ClientSecret));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ClientSecret,
+                        other.ClientSecret
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

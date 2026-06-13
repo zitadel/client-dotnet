@@ -27,10 +27,15 @@ public class UserServicePasskey : IEquatable<UserServicePasskey>
     public bool Equals(UserServicePasskey? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
-                    && EqualityComparer<UserServiceAuthFactorState?>.Default.Equals(this.State, other.State)
-                    && EqualityComparer<string?>.Default.Equals(this.Name, other.Name));
+                    && EqualityComparer<UserServiceAuthFactorState?>.Default.Equals(
+                        this.State,
+                        other.State
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
+            );
     }
 
     public override bool Equals(object? obj)

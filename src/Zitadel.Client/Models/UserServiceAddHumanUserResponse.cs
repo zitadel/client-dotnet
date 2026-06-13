@@ -31,11 +31,16 @@ public class UserServiceAddHumanUserResponse : IEquatable<UserServiceAddHumanUse
     public bool Equals(UserServiceAddHumanUserResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
+                    && EqualityComparer<UserServiceDetails?>.Default.Equals(
+                        this.Details,
+                        other.Details
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.EmailCode, other.EmailCode)
-                    && EqualityComparer<string?>.Default.Equals(this.PhoneCode, other.PhoneCode));
+                    && EqualityComparer<string?>.Default.Equals(this.PhoneCode, other.PhoneCode)
+            );
     }
 
     public override bool Equals(object? obj)

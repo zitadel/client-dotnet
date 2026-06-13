@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceUpdateSAMLApplicationConfigurationRequest : IEquatable<ApplicationServiceUpdateSAMLApplicationConfigurationRequest>
+public class ApplicationServiceUpdateSAMLApplicationConfigurationRequest
+    : IEquatable<ApplicationServiceUpdateSAMLApplicationConfigurationRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("loginVersion")]
@@ -27,10 +28,15 @@ public class ApplicationServiceUpdateSAMLApplicationConfigurationRequest : IEqua
     public bool Equals(ApplicationServiceUpdateSAMLApplicationConfigurationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ApplicationServiceLoginVersion?>.Default.Equals(this.LoginVersion, other.LoginVersion)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ApplicationServiceLoginVersion?>.Default.Equals(
+                    this.LoginVersion,
+                    other.LoginVersion
+                )
                     && EqualityComparer<string?>.Default.Equals(this.MetadataUrl, other.MetadataUrl)
-                    && EqualityComparer<byte[]?>.Default.Equals(this.MetadataXml, other.MetadataXml));
+                    && EqualityComparer<byte[]?>.Default.Equals(this.MetadataXml, other.MetadataXml)
+            );
     }
 
     public override bool Equals(object? obj)

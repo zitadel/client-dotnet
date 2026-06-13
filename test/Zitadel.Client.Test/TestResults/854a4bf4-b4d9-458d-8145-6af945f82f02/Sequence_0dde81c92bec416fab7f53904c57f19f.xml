@@ -1,4 +1,0 @@
-<?xml version="1.0"?>
-<TestSequence>
-  <Test Name="Zitadel.Client.Test.Transport.ZitadelTransportTest.MissingCaCertFails" DisplayName="Zitadel.Client.Test.Transport.ZitadelTransportTest.MissingCaCertFails" Source="/Users/mridang/Code/zitadel/client-dotnet/test/Zitadel.Client.Test/bin/Debug/net8.0/Zitadel.Client.Test.dll" Completed="False" />
-</TestSequence>

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class UserServiceStartIdentityProviderIntentResponse : IEquatable<UserServiceStartIdentityProviderIntentResponse>
+public class UserServiceStartIdentityProviderIntentResponse
+    : IEquatable<UserServiceStartIdentityProviderIntentResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("details")]
@@ -38,12 +39,20 @@ public class UserServiceStartIdentityProviderIntentResponse : IEquatable<UserSer
     public bool Equals(UserServiceStartIdentityProviderIntentResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
                     && EqualityComparer<string?>.Default.Equals(this.AuthUrl, other.AuthUrl)
-                    && EqualityComparer<UserServiceFormData?>.Default.Equals(this.FormData, other.FormData)
-                    && EqualityComparer<UserServiceIDPIntent?>.Default.Equals(this.IdpIntent, other.IdpIntent)
-                    && EqualityComparer<byte[]?>.Default.Equals(this.PostForm, other.PostForm));
+                    && EqualityComparer<UserServiceFormData?>.Default.Equals(
+                        this.FormData,
+                        other.FormData
+                    )
+                    && EqualityComparer<UserServiceIDPIntent?>.Default.Equals(
+                        this.IdpIntent,
+                        other.IdpIntent
+                    )
+                    && EqualityComparer<byte[]?>.Default.Equals(this.PostForm, other.PostForm)
+            );
     }
 
     public override bool Equals(object? obj)

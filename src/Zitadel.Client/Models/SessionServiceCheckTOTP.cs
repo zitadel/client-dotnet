@@ -22,8 +22,10 @@ public class SessionServiceCheckTOTP : IEquatable<SessionServiceCheckTOTP>
     public bool Equals(SessionServiceCheckTOTP? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.Code, other.Code));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.Code, other.Code)
+            );
     }
 
     public override bool Equals(object? obj)

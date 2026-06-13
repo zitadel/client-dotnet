@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class ApplicationServiceApi : BaseApi
 {
-
     private static readonly string[] CreateApplicationAccepts = ["application/json"];
 
     private static readonly string[] CreateApplicationKeyAccepts = ["application/json"];
@@ -54,7 +53,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public ApplicationServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public ApplicationServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -64,10 +67,15 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceCreateApplicationRequest"></param>
     /// <returns><![CDATA[ApplicationServiceCreateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceCreateApplicationResponse> CreateApplicationAsync(ApplicationServiceCreateApplicationRequest applicationServiceCreateApplicationRequest)
+    public async Task<ApplicationServiceCreateApplicationResponse> CreateApplicationAsync(
+        ApplicationServiceCreateApplicationRequest applicationServiceCreateApplicationRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceCreateApplicationResponse>> task = CreateApplicationWithHttpInfoAsync(applicationServiceCreateApplicationRequest);
-        ApiResult<ApplicationServiceCreateApplicationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceCreateApplicationResponse>> task =
+            CreateApplicationWithHttpInfoAsync(applicationServiceCreateApplicationRequest);
+        ApiResult<ApplicationServiceCreateApplicationResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -78,7 +86,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -88,7 +97,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceCreateApplicationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceCreateApplicationResponse>> CreateApplicationWithHttpInfoAsync(ApplicationServiceCreateApplicationRequest applicationServiceCreateApplicationRequest)
+    public async Task<
+        ApiResult<ApplicationServiceCreateApplicationResponse>
+    > CreateApplicationWithHttpInfoAsync(
+        ApplicationServiceCreateApplicationRequest applicationServiceCreateApplicationRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/CreateApplication";
 
@@ -115,10 +128,14 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceCreateApplicationKeyRequest"></param>
     /// <returns><![CDATA[ApplicationServiceCreateApplicationKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceCreateApplicationKeyResponse> CreateApplicationKeyAsync(ApplicationServiceCreateApplicationKeyRequest applicationServiceCreateApplicationKeyRequest)
+    public async Task<ApplicationServiceCreateApplicationKeyResponse> CreateApplicationKeyAsync(
+        ApplicationServiceCreateApplicationKeyRequest applicationServiceCreateApplicationKeyRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceCreateApplicationKeyResponse>> task = CreateApplicationKeyWithHttpInfoAsync(applicationServiceCreateApplicationKeyRequest);
-        ApiResult<ApplicationServiceCreateApplicationKeyResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceCreateApplicationKeyResponse>> task =
+            CreateApplicationKeyWithHttpInfoAsync(applicationServiceCreateApplicationKeyRequest);
+        ApiResult<ApplicationServiceCreateApplicationKeyResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -129,7 +146,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -139,7 +157,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceCreateApplicationKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceCreateApplicationKeyResponse>> CreateApplicationKeyWithHttpInfoAsync(ApplicationServiceCreateApplicationKeyRequest applicationServiceCreateApplicationKeyRequest)
+    public async Task<
+        ApiResult<ApplicationServiceCreateApplicationKeyResponse>
+    > CreateApplicationKeyWithHttpInfoAsync(
+        ApplicationServiceCreateApplicationKeyRequest applicationServiceCreateApplicationKeyRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/CreateApplicationKey";
 
@@ -166,10 +188,14 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceDeactivateApplicationRequest"></param>
     /// <returns><![CDATA[ApplicationServiceDeactivateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceDeactivateApplicationResponse> DeactivateApplicationAsync(ApplicationServiceDeactivateApplicationRequest applicationServiceDeactivateApplicationRequest)
+    public async Task<ApplicationServiceDeactivateApplicationResponse> DeactivateApplicationAsync(
+        ApplicationServiceDeactivateApplicationRequest applicationServiceDeactivateApplicationRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceDeactivateApplicationResponse>> task = DeactivateApplicationWithHttpInfoAsync(applicationServiceDeactivateApplicationRequest);
-        ApiResult<ApplicationServiceDeactivateApplicationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceDeactivateApplicationResponse>> task =
+            DeactivateApplicationWithHttpInfoAsync(applicationServiceDeactivateApplicationRequest);
+        ApiResult<ApplicationServiceDeactivateApplicationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -180,7 +206,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -190,7 +217,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceDeactivateApplicationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceDeactivateApplicationResponse>> DeactivateApplicationWithHttpInfoAsync(ApplicationServiceDeactivateApplicationRequest applicationServiceDeactivateApplicationRequest)
+    public async Task<
+        ApiResult<ApplicationServiceDeactivateApplicationResponse>
+    > DeactivateApplicationWithHttpInfoAsync(
+        ApplicationServiceDeactivateApplicationRequest applicationServiceDeactivateApplicationRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/DeactivateApplication";
 
@@ -217,10 +248,15 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceDeleteApplicationRequest"></param>
     /// <returns><![CDATA[ApplicationServiceDeleteApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceDeleteApplicationResponse> DeleteApplicationAsync(ApplicationServiceDeleteApplicationRequest applicationServiceDeleteApplicationRequest)
+    public async Task<ApplicationServiceDeleteApplicationResponse> DeleteApplicationAsync(
+        ApplicationServiceDeleteApplicationRequest applicationServiceDeleteApplicationRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceDeleteApplicationResponse>> task = DeleteApplicationWithHttpInfoAsync(applicationServiceDeleteApplicationRequest);
-        ApiResult<ApplicationServiceDeleteApplicationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceDeleteApplicationResponse>> task =
+            DeleteApplicationWithHttpInfoAsync(applicationServiceDeleteApplicationRequest);
+        ApiResult<ApplicationServiceDeleteApplicationResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -231,7 +267,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -241,7 +278,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceDeleteApplicationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceDeleteApplicationResponse>> DeleteApplicationWithHttpInfoAsync(ApplicationServiceDeleteApplicationRequest applicationServiceDeleteApplicationRequest)
+    public async Task<
+        ApiResult<ApplicationServiceDeleteApplicationResponse>
+    > DeleteApplicationWithHttpInfoAsync(
+        ApplicationServiceDeleteApplicationRequest applicationServiceDeleteApplicationRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/DeleteApplication";
 
@@ -268,10 +309,14 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceDeleteApplicationKeyRequest"></param>
     /// <returns><![CDATA[ApplicationServiceDeleteApplicationKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceDeleteApplicationKeyResponse> DeleteApplicationKeyAsync(ApplicationServiceDeleteApplicationKeyRequest applicationServiceDeleteApplicationKeyRequest)
+    public async Task<ApplicationServiceDeleteApplicationKeyResponse> DeleteApplicationKeyAsync(
+        ApplicationServiceDeleteApplicationKeyRequest applicationServiceDeleteApplicationKeyRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceDeleteApplicationKeyResponse>> task = DeleteApplicationKeyWithHttpInfoAsync(applicationServiceDeleteApplicationKeyRequest);
-        ApiResult<ApplicationServiceDeleteApplicationKeyResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceDeleteApplicationKeyResponse>> task =
+            DeleteApplicationKeyWithHttpInfoAsync(applicationServiceDeleteApplicationKeyRequest);
+        ApiResult<ApplicationServiceDeleteApplicationKeyResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -282,7 +327,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -292,7 +338,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceDeleteApplicationKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceDeleteApplicationKeyResponse>> DeleteApplicationKeyWithHttpInfoAsync(ApplicationServiceDeleteApplicationKeyRequest applicationServiceDeleteApplicationKeyRequest)
+    public async Task<
+        ApiResult<ApplicationServiceDeleteApplicationKeyResponse>
+    > DeleteApplicationKeyWithHttpInfoAsync(
+        ApplicationServiceDeleteApplicationKeyRequest applicationServiceDeleteApplicationKeyRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/DeleteApplicationKey";
 
@@ -319,10 +369,14 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceGenerateClientSecretRequest"></param>
     /// <returns><![CDATA[ApplicationServiceGenerateClientSecretResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceGenerateClientSecretResponse> GenerateClientSecretAsync(ApplicationServiceGenerateClientSecretRequest applicationServiceGenerateClientSecretRequest)
+    public async Task<ApplicationServiceGenerateClientSecretResponse> GenerateClientSecretAsync(
+        ApplicationServiceGenerateClientSecretRequest applicationServiceGenerateClientSecretRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceGenerateClientSecretResponse>> task = GenerateClientSecretWithHttpInfoAsync(applicationServiceGenerateClientSecretRequest);
-        ApiResult<ApplicationServiceGenerateClientSecretResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceGenerateClientSecretResponse>> task =
+            GenerateClientSecretWithHttpInfoAsync(applicationServiceGenerateClientSecretRequest);
+        ApiResult<ApplicationServiceGenerateClientSecretResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -333,7 +387,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -343,7 +398,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceGenerateClientSecretRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceGenerateClientSecretResponse>> GenerateClientSecretWithHttpInfoAsync(ApplicationServiceGenerateClientSecretRequest applicationServiceGenerateClientSecretRequest)
+    public async Task<
+        ApiResult<ApplicationServiceGenerateClientSecretResponse>
+    > GenerateClientSecretWithHttpInfoAsync(
+        ApplicationServiceGenerateClientSecretRequest applicationServiceGenerateClientSecretRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/GenerateClientSecret";
 
@@ -370,10 +429,15 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceGetApplicationRequest"></param>
     /// <returns><![CDATA[ApplicationServiceGetApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceGetApplicationResponse> GetApplicationAsync(ApplicationServiceGetApplicationRequest applicationServiceGetApplicationRequest)
+    public async Task<ApplicationServiceGetApplicationResponse> GetApplicationAsync(
+        ApplicationServiceGetApplicationRequest applicationServiceGetApplicationRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceGetApplicationResponse>> task = GetApplicationWithHttpInfoAsync(applicationServiceGetApplicationRequest);
-        ApiResult<ApplicationServiceGetApplicationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceGetApplicationResponse>> task =
+            GetApplicationWithHttpInfoAsync(applicationServiceGetApplicationRequest);
+        ApiResult<ApplicationServiceGetApplicationResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -384,7 +448,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -394,7 +459,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceGetApplicationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceGetApplicationResponse>> GetApplicationWithHttpInfoAsync(ApplicationServiceGetApplicationRequest applicationServiceGetApplicationRequest)
+    public async Task<
+        ApiResult<ApplicationServiceGetApplicationResponse>
+    > GetApplicationWithHttpInfoAsync(
+        ApplicationServiceGetApplicationRequest applicationServiceGetApplicationRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/GetApplication";
 
@@ -421,10 +490,15 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceGetApplicationKeyRequest"></param>
     /// <returns><![CDATA[ApplicationServiceGetApplicationKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceGetApplicationKeyResponse> GetApplicationKeyAsync(ApplicationServiceGetApplicationKeyRequest applicationServiceGetApplicationKeyRequest)
+    public async Task<ApplicationServiceGetApplicationKeyResponse> GetApplicationKeyAsync(
+        ApplicationServiceGetApplicationKeyRequest applicationServiceGetApplicationKeyRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceGetApplicationKeyResponse>> task = GetApplicationKeyWithHttpInfoAsync(applicationServiceGetApplicationKeyRequest);
-        ApiResult<ApplicationServiceGetApplicationKeyResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceGetApplicationKeyResponse>> task =
+            GetApplicationKeyWithHttpInfoAsync(applicationServiceGetApplicationKeyRequest);
+        ApiResult<ApplicationServiceGetApplicationKeyResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -435,7 +509,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -445,7 +520,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceGetApplicationKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceGetApplicationKeyResponse>> GetApplicationKeyWithHttpInfoAsync(ApplicationServiceGetApplicationKeyRequest applicationServiceGetApplicationKeyRequest)
+    public async Task<
+        ApiResult<ApplicationServiceGetApplicationKeyResponse>
+    > GetApplicationKeyWithHttpInfoAsync(
+        ApplicationServiceGetApplicationKeyRequest applicationServiceGetApplicationKeyRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/GetApplicationKey";
 
@@ -472,10 +551,15 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceListApplicationKeysRequest"></param>
     /// <returns><![CDATA[ApplicationServiceListApplicationKeysResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceListApplicationKeysResponse> ListApplicationKeysAsync(ApplicationServiceListApplicationKeysRequest applicationServiceListApplicationKeysRequest)
+    public async Task<ApplicationServiceListApplicationKeysResponse> ListApplicationKeysAsync(
+        ApplicationServiceListApplicationKeysRequest applicationServiceListApplicationKeysRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceListApplicationKeysResponse>> task = ListApplicationKeysWithHttpInfoAsync(applicationServiceListApplicationKeysRequest);
-        ApiResult<ApplicationServiceListApplicationKeysResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceListApplicationKeysResponse>> task =
+            ListApplicationKeysWithHttpInfoAsync(applicationServiceListApplicationKeysRequest);
+        ApiResult<ApplicationServiceListApplicationKeysResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -486,7 +570,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -496,7 +581,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceListApplicationKeysRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceListApplicationKeysResponse>> ListApplicationKeysWithHttpInfoAsync(ApplicationServiceListApplicationKeysRequest applicationServiceListApplicationKeysRequest)
+    public async Task<
+        ApiResult<ApplicationServiceListApplicationKeysResponse>
+    > ListApplicationKeysWithHttpInfoAsync(
+        ApplicationServiceListApplicationKeysRequest applicationServiceListApplicationKeysRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/ListApplicationKeys";
 
@@ -523,10 +612,15 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceListApplicationsRequest"></param>
     /// <returns><![CDATA[ApplicationServiceListApplicationsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceListApplicationsResponse> ListApplicationsAsync(ApplicationServiceListApplicationsRequest applicationServiceListApplicationsRequest)
+    public async Task<ApplicationServiceListApplicationsResponse> ListApplicationsAsync(
+        ApplicationServiceListApplicationsRequest applicationServiceListApplicationsRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceListApplicationsResponse>> task = ListApplicationsWithHttpInfoAsync(applicationServiceListApplicationsRequest);
-        ApiResult<ApplicationServiceListApplicationsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceListApplicationsResponse>> task =
+            ListApplicationsWithHttpInfoAsync(applicationServiceListApplicationsRequest);
+        ApiResult<ApplicationServiceListApplicationsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -537,7 +631,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -547,7 +642,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceListApplicationsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceListApplicationsResponse>> ListApplicationsWithHttpInfoAsync(ApplicationServiceListApplicationsRequest applicationServiceListApplicationsRequest)
+    public async Task<
+        ApiResult<ApplicationServiceListApplicationsResponse>
+    > ListApplicationsWithHttpInfoAsync(
+        ApplicationServiceListApplicationsRequest applicationServiceListApplicationsRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/ListApplications";
 
@@ -574,10 +673,14 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceReactivateApplicationRequest"></param>
     /// <returns><![CDATA[ApplicationServiceReactivateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceReactivateApplicationResponse> ReactivateApplicationAsync(ApplicationServiceReactivateApplicationRequest applicationServiceReactivateApplicationRequest)
+    public async Task<ApplicationServiceReactivateApplicationResponse> ReactivateApplicationAsync(
+        ApplicationServiceReactivateApplicationRequest applicationServiceReactivateApplicationRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceReactivateApplicationResponse>> task = ReactivateApplicationWithHttpInfoAsync(applicationServiceReactivateApplicationRequest);
-        ApiResult<ApplicationServiceReactivateApplicationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceReactivateApplicationResponse>> task =
+            ReactivateApplicationWithHttpInfoAsync(applicationServiceReactivateApplicationRequest);
+        ApiResult<ApplicationServiceReactivateApplicationResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -588,7 +691,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -598,7 +702,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceReactivateApplicationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceReactivateApplicationResponse>> ReactivateApplicationWithHttpInfoAsync(ApplicationServiceReactivateApplicationRequest applicationServiceReactivateApplicationRequest)
+    public async Task<
+        ApiResult<ApplicationServiceReactivateApplicationResponse>
+    > ReactivateApplicationWithHttpInfoAsync(
+        ApplicationServiceReactivateApplicationRequest applicationServiceReactivateApplicationRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/ReactivateApplication";
 
@@ -625,10 +733,15 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceUpdateApplicationRequest"></param>
     /// <returns><![CDATA[ApplicationServiceUpdateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApplicationServiceUpdateApplicationResponse> UpdateApplicationAsync(ApplicationServiceUpdateApplicationRequest applicationServiceUpdateApplicationRequest)
+    public async Task<ApplicationServiceUpdateApplicationResponse> UpdateApplicationAsync(
+        ApplicationServiceUpdateApplicationRequest applicationServiceUpdateApplicationRequest
+    )
     {
-        Task<ApiResult<ApplicationServiceUpdateApplicationResponse>> task = UpdateApplicationWithHttpInfoAsync(applicationServiceUpdateApplicationRequest);
-        ApiResult<ApplicationServiceUpdateApplicationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ApplicationServiceUpdateApplicationResponse>> task =
+            UpdateApplicationWithHttpInfoAsync(applicationServiceUpdateApplicationRequest);
+        ApiResult<ApplicationServiceUpdateApplicationResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -639,7 +752,8 @@ public class ApplicationServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -649,7 +763,11 @@ public class ApplicationServiceApi : BaseApi
     /// <param name="applicationServiceUpdateApplicationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ApplicationServiceUpdateApplicationResponse>> UpdateApplicationWithHttpInfoAsync(ApplicationServiceUpdateApplicationRequest applicationServiceUpdateApplicationRequest)
+    public async Task<
+        ApiResult<ApplicationServiceUpdateApplicationResponse>
+    > UpdateApplicationWithHttpInfoAsync(
+        ApplicationServiceUpdateApplicationRequest applicationServiceUpdateApplicationRequest
+    )
     {
         string path = "/zitadel.application.v2.ApplicationService/UpdateApplication";
 

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInstanceServiceUpdateInstanceRequest : IEquatable<BetaInstanceServiceUpdateInstanceRequest>
+public class BetaInstanceServiceUpdateInstanceRequest
+    : IEquatable<BetaInstanceServiceUpdateInstanceRequest>
 {
     /// <summary>
     /// used only to identify the instance to change.
@@ -26,9 +27,14 @@ public class BetaInstanceServiceUpdateInstanceRequest : IEquatable<BetaInstanceS
     public bool Equals(BetaInstanceServiceUpdateInstanceRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
-                    && EqualityComparer<string?>.Default.Equals(this.InstanceName, other.InstanceName));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.InstanceName,
+                        other.InstanceName
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

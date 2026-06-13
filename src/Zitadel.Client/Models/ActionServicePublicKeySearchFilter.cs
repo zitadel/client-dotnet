@@ -30,10 +30,18 @@ public class ActionServicePublicKeySearchFilter : IEquatable<ActionServicePublic
     public bool Equals(ActionServicePublicKeySearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.ActiveFilter, other.ActiveFilter)
-                    && EqualityComparer<ActionServiceTimestampFilter?>.Default.Equals(this.ExpirationDateFilter, other.ExpirationDateFilter)
-                    && EqualityComparer<ActionServiceInIDsFilter?>.Default.Equals(this.KeyIdsFilter, other.KeyIdsFilter));
+                    && EqualityComparer<ActionServiceTimestampFilter?>.Default.Equals(
+                        this.ExpirationDateFilter,
+                        other.ExpirationDateFilter
+                    )
+                    && EqualityComparer<ActionServiceInIDsFilter?>.Default.Equals(
+                        this.KeyIdsFilter,
+                        other.KeyIdsFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -22,8 +22,10 @@ public class ActionServiceFunctionExecution : IEquatable<ActionServiceFunctionEx
     public bool Equals(ActionServiceFunctionExecution? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.Name, other.Name));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
+            );
     }
 
     public override bool Equals(object? obj)

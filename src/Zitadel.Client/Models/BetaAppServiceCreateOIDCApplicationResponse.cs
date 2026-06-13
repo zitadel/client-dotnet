@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAppServiceCreateOIDCApplicationResponse : IEquatable<BetaAppServiceCreateOIDCApplicationResponse>
+public class BetaAppServiceCreateOIDCApplicationResponse
+    : IEquatable<BetaAppServiceCreateOIDCApplicationResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("clientId")]
@@ -31,11 +32,22 @@ public class BetaAppServiceCreateOIDCApplicationResponse : IEquatable<BetaAppSer
     public bool Equals(BetaAppServiceCreateOIDCApplicationResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<string?>.Default.Equals(this.ClientSecret, other.ClientSecret)
-                    && EqualityComparer<bool?>.Default.Equals(this.NoneCompliant, other.NoneCompliant)
-                    && EqualityComparer<List<BetaAppServiceOIDCLocalizedMessage>?>.Default.Equals(this.ComplianceProblems, other.ComplianceProblems));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ClientSecret,
+                        other.ClientSecret
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.NoneCompliant,
+                        other.NoneCompliant
+                    )
+                    && EqualityComparer<List<BetaAppServiceOIDCLocalizedMessage>?>.Default.Equals(
+                        this.ComplianceProblems,
+                        other.ComplianceProblems
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

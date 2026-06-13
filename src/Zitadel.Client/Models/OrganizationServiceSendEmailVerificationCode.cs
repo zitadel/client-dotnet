@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceSendEmailVerificationCode : IEquatable<OrganizationServiceSendEmailVerificationCode>
+public class OrganizationServiceSendEmailVerificationCode
+    : IEquatable<OrganizationServiceSendEmailVerificationCode>
 {
     /// <summary>
     /// Optionally set a url_template, which will be used in the verification mail sent by ZITADEL to guide the user to your verification page.  If no template is set, the default ZITADEL url will be used.   The following placeholders can be used: UserID, OrgID, Code
@@ -22,8 +23,10 @@ public class OrganizationServiceSendEmailVerificationCode : IEquatable<Organizat
     public bool Equals(OrganizationServiceSendEmailVerificationCode? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.UrlTemplate, other.UrlTemplate));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.UrlTemplate, other.UrlTemplate)
+            );
     }
 
     public override bool Equals(object? obj)

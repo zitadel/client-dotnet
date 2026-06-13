@@ -19,8 +19,13 @@ public class BetaWebKeyServiceListWebKeysResponse : IEquatable<BetaWebKeyService
     public bool Equals(BetaWebKeyServiceListWebKeysResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<BetaWebKeyServiceWebKey>?>.Default.Equals(this.WebKeys, other.WebKeys));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<BetaWebKeyServiceWebKey>?>.Default.Equals(
+                    this.WebKeys,
+                    other.WebKeys
+                )
+            );
     }
 
     public override bool Equals(object? obj)

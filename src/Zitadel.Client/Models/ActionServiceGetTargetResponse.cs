@@ -19,8 +19,10 @@ public class ActionServiceGetTargetResponse : IEquatable<ActionServiceGetTargetR
     public bool Equals(ActionServiceGetTargetResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ActionServiceTarget?>.Default.Equals(this.Target, other.Target));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ActionServiceTarget?>.Default.Equals(this.Target, other.Target)
+            );
     }
 
     public override bool Equals(object? obj)

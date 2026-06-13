@@ -40,11 +40,25 @@ public class SettingsServiceDomainSettings : IEquatable<SettingsServiceDomainSet
     public bool Equals(SettingsServiceDomainSettings? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<bool?>.Default.Equals(this.LoginNameIncludesDomain, other.LoginNameIncludesDomain)
-                    && EqualityComparer<bool?>.Default.Equals(this.RequireOrgDomainVerification, other.RequireOrgDomainVerification)
-                    && EqualityComparer<bool?>.Default.Equals(this.SmtpSenderAddressMatchesInstanceDomain, other.SmtpSenderAddressMatchesInstanceDomain)
-                    && EqualityComparer<SettingsServiceResourceOwnerType?>.Default.Equals(this.ResourceOwnerType, other.ResourceOwnerType));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<bool?>.Default.Equals(
+                    this.LoginNameIncludesDomain,
+                    other.LoginNameIncludesDomain
+                )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.RequireOrgDomainVerification,
+                        other.RequireOrgDomainVerification
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.SmtpSenderAddressMatchesInstanceDomain,
+                        other.SmtpSenderAddressMatchesInstanceDomain
+                    )
+                    && EqualityComparer<SettingsServiceResourceOwnerType?>.Default.Equals(
+                        this.ResourceOwnerType,
+                        other.ResourceOwnerType
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

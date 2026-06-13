@@ -19,8 +19,10 @@ public class UserServiceVerifyEmailResponse : IEquatable<UserServiceVerifyEmailR
     public bool Equals(UserServiceVerifyEmailResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ProjectServiceListProjectRolesRequest : IEquatable<ProjectServiceListProjectRolesRequest>
+public class ProjectServiceListProjectRolesRequest
+    : IEquatable<ProjectServiceListProjectRolesRequest>
 {
     /// <summary>
     /// ProjectID is the unique identifier of the project.
@@ -37,11 +38,22 @@ public class ProjectServiceListProjectRolesRequest : IEquatable<ProjectServiceLi
     public bool Equals(ProjectServiceListProjectRolesRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
-                    && EqualityComparer<ProjectServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<ProjectServiceProjectRoleFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<ProjectServiceProjectRoleSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && EqualityComparer<ProjectServicePaginationRequest?>.Default.Equals(
+                        this.Pagination,
+                        other.Pagination
+                    )
+                    && EqualityComparer<ProjectServiceProjectRoleFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<List<ProjectServiceProjectRoleSearchFilter>?>.Default.Equals(
+                        this.Filters,
+                        other.Filters
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

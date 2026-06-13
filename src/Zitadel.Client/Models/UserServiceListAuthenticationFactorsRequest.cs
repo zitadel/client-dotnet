@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class UserServiceListAuthenticationFactorsRequest : IEquatable<UserServiceListAuthenticationFactorsRequest>
+public class UserServiceListAuthenticationFactorsRequest
+    : IEquatable<UserServiceListAuthenticationFactorsRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("userId")]
@@ -27,10 +28,18 @@ public class UserServiceListAuthenticationFactorsRequest : IEquatable<UserServic
     public bool Equals(UserServiceListAuthenticationFactorsRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<List<UserServiceAuthFactors>?>.Default.Equals(this.AuthFactors, other.AuthFactors)
-                    && EqualityComparer<List<UserServiceAuthFactorState>?>.Default.Equals(this.States, other.States));
+                    && EqualityComparer<List<UserServiceAuthFactors>?>.Default.Equals(
+                        this.AuthFactors,
+                        other.AuthFactors
+                    )
+                    && EqualityComparer<List<UserServiceAuthFactorState>?>.Default.Equals(
+                        this.States,
+                        other.States
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

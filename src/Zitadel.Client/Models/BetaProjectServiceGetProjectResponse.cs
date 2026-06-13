@@ -19,8 +19,13 @@ public class BetaProjectServiceGetProjectResponse : IEquatable<BetaProjectServic
     public bool Equals(BetaProjectServiceGetProjectResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaProjectServiceProject?>.Default.Equals(this.Project, other.Project));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaProjectServiceProject?>.Default.Equals(
+                    this.Project,
+                    other.Project
+                )
+            );
     }
 
     public override bool Equals(object? obj)

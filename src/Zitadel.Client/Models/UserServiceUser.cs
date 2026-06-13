@@ -47,15 +47,35 @@ public class UserServiceUser : IEquatable<UserServiceUser>
     public bool Equals(UserServiceUser? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<UserServiceUserState?>.Default.Equals(this.State, other.State)
+                    && EqualityComparer<UserServiceDetails?>.Default.Equals(
+                        this.Details,
+                        other.Details
+                    )
+                    && EqualityComparer<UserServiceUserState?>.Default.Equals(
+                        this.State,
+                        other.State
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.Username, other.Username)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.LoginNames, other.LoginNames)
-                    && EqualityComparer<string?>.Default.Equals(this.PreferredLoginName, other.PreferredLoginName)
-                    && EqualityComparer<UserServiceHumanUser?>.Default.Equals(this.Human, other.Human)
-                    && EqualityComparer<UserServiceMachineUser?>.Default.Equals(this.Machine, other.Machine));
+                    && EqualityComparer<List<string>?>.Default.Equals(
+                        this.LoginNames,
+                        other.LoginNames
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.PreferredLoginName,
+                        other.PreferredLoginName
+                    )
+                    && EqualityComparer<UserServiceHumanUser?>.Default.Equals(
+                        this.Human,
+                        other.Human
+                    )
+                    && EqualityComparer<UserServiceMachineUser?>.Default.Equals(
+                        this.Machine,
+                        other.Machine
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

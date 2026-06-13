@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceDeactivateApplicationRequest : IEquatable<ApplicationServiceDeactivateApplicationRequest>
+public class ApplicationServiceDeactivateApplicationRequest
+    : IEquatable<ApplicationServiceDeactivateApplicationRequest>
 {
     /// <summary>
     /// The unique ID of the application to be deactivated.
@@ -29,9 +30,11 @@ public class ApplicationServiceDeactivateApplicationRequest : IEquatable<Applica
     public bool Equals(ApplicationServiceDeactivateApplicationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ApplicationId, other.ApplicationId)
-                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId));
+                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
+            );
     }
 
     public override bool Equals(object? obj)

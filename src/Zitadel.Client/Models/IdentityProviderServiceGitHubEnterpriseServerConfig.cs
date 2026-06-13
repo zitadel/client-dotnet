@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class IdentityProviderServiceGitHubEnterpriseServerConfig : IEquatable<IdentityProviderServiceGitHubEnterpriseServerConfig>
+public class IdentityProviderServiceGitHubEnterpriseServerConfig
+    : IEquatable<IdentityProviderServiceGitHubEnterpriseServerConfig>
 {
     /// <summary>
     /// The client ID of the GitHub App.
@@ -41,12 +42,23 @@ public class IdentityProviderServiceGitHubEnterpriseServerConfig : IEquatable<Id
     public bool Equals(IdentityProviderServiceGitHubEnterpriseServerConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<string?>.Default.Equals(this.AuthorizationEndpoint, other.AuthorizationEndpoint)
-                    && EqualityComparer<string?>.Default.Equals(this.TokenEndpoint, other.TokenEndpoint)
-                    && EqualityComparer<string?>.Default.Equals(this.UserEndpoint, other.UserEndpoint)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.AuthorizationEndpoint,
+                        other.AuthorizationEndpoint
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.TokenEndpoint,
+                        other.TokenEndpoint
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.UserEndpoint,
+                        other.UserEndpoint
+                    )
+                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes)
+            );
     }
 
     public override bool Equals(object? obj)

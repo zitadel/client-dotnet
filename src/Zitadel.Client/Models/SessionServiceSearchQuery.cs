@@ -39,13 +39,33 @@ public class SessionServiceSearchQuery : IEquatable<SessionServiceSearchQuery>
     public bool Equals(SessionServiceSearchQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<SessionServiceCreationDateQuery?>.Default.Equals(this.CreationDateQuery, other.CreationDateQuery)
-                    && EqualityComparer<SessionServiceCreatorQuery?>.Default.Equals(this.CreatorQuery, other.CreatorQuery)
-                    && EqualityComparer<SessionServiceExpirationDateQuery?>.Default.Equals(this.ExpirationDateQuery, other.ExpirationDateQuery)
-                    && EqualityComparer<SessionServiceIDsQuery?>.Default.Equals(this.IdsQuery, other.IdsQuery)
-                    && EqualityComparer<SessionServiceUserAgentQuery?>.Default.Equals(this.UserAgentQuery, other.UserAgentQuery)
-                    && EqualityComparer<SessionServiceUserIDQuery?>.Default.Equals(this.UserIdQuery, other.UserIdQuery));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<SessionServiceCreationDateQuery?>.Default.Equals(
+                    this.CreationDateQuery,
+                    other.CreationDateQuery
+                )
+                    && EqualityComparer<SessionServiceCreatorQuery?>.Default.Equals(
+                        this.CreatorQuery,
+                        other.CreatorQuery
+                    )
+                    && EqualityComparer<SessionServiceExpirationDateQuery?>.Default.Equals(
+                        this.ExpirationDateQuery,
+                        other.ExpirationDateQuery
+                    )
+                    && EqualityComparer<SessionServiceIDsQuery?>.Default.Equals(
+                        this.IdsQuery,
+                        other.IdsQuery
+                    )
+                    && EqualityComparer<SessionServiceUserAgentQuery?>.Default.Equals(
+                        this.UserAgentQuery,
+                        other.UserAgentQuery
+                    )
+                    && EqualityComparer<SessionServiceUserIDQuery?>.Default.Equals(
+                        this.UserIdQuery,
+                        other.UserIdQuery
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

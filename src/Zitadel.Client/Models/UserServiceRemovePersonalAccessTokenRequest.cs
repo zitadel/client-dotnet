@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class UserServiceRemovePersonalAccessTokenRequest : IEquatable<UserServiceRemovePersonalAccessTokenRequest>
+public class UserServiceRemovePersonalAccessTokenRequest
+    : IEquatable<UserServiceRemovePersonalAccessTokenRequest>
 {
     /// <summary>
     /// The users resource ID.
@@ -29,9 +30,11 @@ public class UserServiceRemovePersonalAccessTokenRequest : IEquatable<UserServic
     public bool Equals(UserServiceRemovePersonalAccessTokenRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<string?>.Default.Equals(this.TokenId, other.TokenId));
+                    && EqualityComparer<string?>.Default.Equals(this.TokenId, other.TokenId)
+            );
     }
 
     public override bool Equals(object? obj)

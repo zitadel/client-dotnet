@@ -19,8 +19,13 @@ public class BetaSessionServiceGetSessionResponse : IEquatable<BetaSessionServic
     public bool Equals(BetaSessionServiceGetSessionResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaSessionServiceSession?>.Default.Equals(this.Session, other.Session));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaSessionServiceSession?>.Default.Equals(
+                    this.Session,
+                    other.Session
+                )
+            );
     }
 
     public override bool Equals(object? obj)

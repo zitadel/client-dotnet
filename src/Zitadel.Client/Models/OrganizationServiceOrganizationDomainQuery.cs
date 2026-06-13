@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceOrganizationDomainQuery : IEquatable<OrganizationServiceOrganizationDomainQuery>
+public class OrganizationServiceOrganizationDomainQuery
+    : IEquatable<OrganizationServiceOrganizationDomainQuery>
 {
     /// <summary>
     /// Domain used in organization, not necessary primary domain.
@@ -26,9 +27,14 @@ public class OrganizationServiceOrganizationDomainQuery : IEquatable<Organizatio
     public bool Equals(OrganizationServiceOrganizationDomainQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain)
-                    && EqualityComparer<OrganizationServiceTextQueryMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<OrganizationServiceTextQueryMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

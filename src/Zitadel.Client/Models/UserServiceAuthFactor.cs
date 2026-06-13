@@ -35,12 +35,20 @@ public class UserServiceAuthFactor : IEquatable<UserServiceAuthFactor>
     public bool Equals(UserServiceAuthFactor? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<UserServiceAuthFactorState?>.Default.Equals(this.State, other.State)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<UserServiceAuthFactorState?>.Default.Equals(
+                    this.State,
+                    other.State
+                )
                     && EqualityComparer<Object?>.Default.Equals(this.Otp, other.Otp)
                     && EqualityComparer<Object?>.Default.Equals(this.OtpEmail, other.OtpEmail)
                     && EqualityComparer<Object?>.Default.Equals(this.OtpSms, other.OtpSms)
-                    && EqualityComparer<UserServiceAuthFactorU2F?>.Default.Equals(this.U2f, other.U2f));
+                    && EqualityComparer<UserServiceAuthFactorU2F?>.Default.Equals(
+                        this.U2f,
+                        other.U2f
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -19,8 +19,13 @@ public class AuthorizationServiceStateQuery : IEquatable<AuthorizationServiceSta
     public bool Equals(AuthorizationServiceStateQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<AuthorizationServiceState?>.Default.Equals(this.State, other.State));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<AuthorizationServiceState?>.Default.Equals(
+                    this.State,
+                    other.State
+                )
+            );
     }
 
     public override bool Equals(object? obj)

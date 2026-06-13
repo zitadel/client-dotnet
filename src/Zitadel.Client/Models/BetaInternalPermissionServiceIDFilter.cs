@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInternalPermissionServiceIDFilter : IEquatable<BetaInternalPermissionServiceIDFilter>
+public class BetaInternalPermissionServiceIDFilter
+    : IEquatable<BetaInternalPermissionServiceIDFilter>
 {
     /// <summary>
     /// Only return resources that belong to this id.
@@ -22,8 +23,10 @@ public class BetaInternalPermissionServiceIDFilter : IEquatable<BetaInternalPerm
     public bool Equals(BetaInternalPermissionServiceIDFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.Id, other.Id));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
+            );
     }
 
     public override bool Equals(object? obj)

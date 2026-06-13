@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaOrganizationServiceAddHumanUserRequest : IEquatable<BetaOrganizationServiceAddHumanUserRequest>
+public class BetaOrganizationServiceAddHumanUserRequest
+    : IEquatable<BetaOrganizationServiceAddHumanUserRequest>
 {
     /// <summary>
     /// optionally set your own id unique for the user.
@@ -68,18 +69,44 @@ public class BetaOrganizationServiceAddHumanUserRequest : IEquatable<BetaOrganiz
     public bool Equals(BetaOrganizationServiceAddHumanUserRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.Username, other.Username)
-                    && EqualityComparer<BetaOrganizationServiceOrganization?>.Default.Equals(this.Organization, other.Organization)
-                    && EqualityComparer<BetaOrganizationServiceSetHumanProfile?>.Default.Equals(this.Profile, other.Profile)
-                    && EqualityComparer<BetaOrganizationServiceSetHumanEmail?>.Default.Equals(this.Email, other.Email)
-                    && EqualityComparer<BetaOrganizationServiceSetHumanPhone?>.Default.Equals(this.Phone, other.Phone)
-                    && EqualityComparer<List<BetaOrganizationServiceSetMetadataEntry>?>.Default.Equals(this.Metadata, other.Metadata)
-                    && EqualityComparer<List<BetaOrganizationServiceIDPLink>?>.Default.Equals(this.IdpLinks, other.IdpLinks)
+                    && EqualityComparer<BetaOrganizationServiceOrganization?>.Default.Equals(
+                        this.Organization,
+                        other.Organization
+                    )
+                    && EqualityComparer<BetaOrganizationServiceSetHumanProfile?>.Default.Equals(
+                        this.Profile,
+                        other.Profile
+                    )
+                    && EqualityComparer<BetaOrganizationServiceSetHumanEmail?>.Default.Equals(
+                        this.Email,
+                        other.Email
+                    )
+                    && EqualityComparer<BetaOrganizationServiceSetHumanPhone?>.Default.Equals(
+                        this.Phone,
+                        other.Phone
+                    )
+                    && EqualityComparer<List<BetaOrganizationServiceSetMetadataEntry>?>.Default.Equals(
+                        this.Metadata,
+                        other.Metadata
+                    )
+                    && EqualityComparer<List<BetaOrganizationServiceIDPLink>?>.Default.Equals(
+                        this.IdpLinks,
+                        other.IdpLinks
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.TotpSecret, other.TotpSecret)
-                    && EqualityComparer<BetaOrganizationServiceHashedPassword?>.Default.Equals(this.HashedPassword, other.HashedPassword)
-                    && EqualityComparer<BetaOrganizationServicePassword?>.Default.Equals(this.Password, other.Password));
+                    && EqualityComparer<BetaOrganizationServiceHashedPassword?>.Default.Equals(
+                        this.HashedPassword,
+                        other.HashedPassword
+                    )
+                    && EqualityComparer<BetaOrganizationServicePassword?>.Default.Equals(
+                        this.Password,
+                        other.Password
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

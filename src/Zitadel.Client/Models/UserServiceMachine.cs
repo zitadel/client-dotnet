@@ -29,9 +29,11 @@ public class UserServiceMachine : IEquatable<UserServiceMachine>
     public bool Equals(UserServiceMachine? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<string?>.Default.Equals(this.Description, other.Description));
+                    && EqualityComparer<string?>.Default.Equals(this.Description, other.Description)
+            );
     }
 
     public override bool Equals(object? obj)

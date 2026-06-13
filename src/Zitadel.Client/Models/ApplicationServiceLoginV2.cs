@@ -22,8 +22,10 @@ public class ApplicationServiceLoginV2 : IEquatable<ApplicationServiceLoginV2>
     public bool Equals(ApplicationServiceLoginV2? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.BaseUri, other.BaseUri));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.BaseUri, other.BaseUri)
+            );
     }
 
     public override bool Equals(object? obj)

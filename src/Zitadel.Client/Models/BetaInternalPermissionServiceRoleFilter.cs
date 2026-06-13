@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInternalPermissionServiceRoleFilter : IEquatable<BetaInternalPermissionServiceRoleFilter>
+public class BetaInternalPermissionServiceRoleFilter
+    : IEquatable<BetaInternalPermissionServiceRoleFilter>
 {
     /// <summary>
     /// Search for administrators by the granted role.
@@ -22,8 +23,10 @@ public class BetaInternalPermissionServiceRoleFilter : IEquatable<BetaInternalPe
     public bool Equals(BetaInternalPermissionServiceRoleFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.RoleKey, other.RoleKey));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.RoleKey, other.RoleKey)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -15,8 +15,10 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class OIDCServiceApi : BaseApi
 {
-
-    private static readonly string[] AuthorizeOrDenyDeviceAuthorizationAccepts = ["application/json"];
+    private static readonly string[] AuthorizeOrDenyDeviceAuthorizationAccepts =
+    [
+        "application/json",
+    ];
 
     private static readonly string[] CreateCallbackAccepts = ["application/json"];
 
@@ -48,9 +50,13 @@ public class OIDCServiceApi : BaseApi
     /// <param name="oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest"></param>
     /// <returns><![CDATA[Object]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<Object> AuthorizeOrDenyDeviceAuthorizationAsync(OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest)
+    public async Task<Object> AuthorizeOrDenyDeviceAuthorizationAsync(
+        OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest
+    )
     {
-        Task<ApiResult<Object>> task = AuthorizeOrDenyDeviceAuthorizationWithHttpInfoAsync(oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest);
+        Task<ApiResult<Object>> task = AuthorizeOrDenyDeviceAuthorizationWithHttpInfoAsync(
+            oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest
+        );
         ApiResult<Object> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -62,7 +68,8 @@ public class OIDCServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -72,7 +79,9 @@ public class OIDCServiceApi : BaseApi
     /// <param name="oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<Object>> AuthorizeOrDenyDeviceAuthorizationWithHttpInfoAsync(OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest)
+    public async Task<ApiResult<Object>> AuthorizeOrDenyDeviceAuthorizationWithHttpInfoAsync(
+        OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest
+    )
     {
         string path = "/zitadel.oidc.v2.OIDCService/AuthorizeOrDenyDeviceAuthorization";
 
@@ -99,9 +108,13 @@ public class OIDCServiceApi : BaseApi
     /// <param name="oIDCServiceCreateCallbackRequest"></param>
     /// <returns><![CDATA[OIDCServiceCreateCallbackResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<OIDCServiceCreateCallbackResponse> CreateCallbackAsync(OIDCServiceCreateCallbackRequest oIDCServiceCreateCallbackRequest)
+    public async Task<OIDCServiceCreateCallbackResponse> CreateCallbackAsync(
+        OIDCServiceCreateCallbackRequest oIDCServiceCreateCallbackRequest
+    )
     {
-        Task<ApiResult<OIDCServiceCreateCallbackResponse>> task = CreateCallbackWithHttpInfoAsync(oIDCServiceCreateCallbackRequest);
+        Task<ApiResult<OIDCServiceCreateCallbackResponse>> task = CreateCallbackWithHttpInfoAsync(
+            oIDCServiceCreateCallbackRequest
+        );
         ApiResult<OIDCServiceCreateCallbackResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -113,7 +126,8 @@ public class OIDCServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -123,7 +137,9 @@ public class OIDCServiceApi : BaseApi
     /// <param name="oIDCServiceCreateCallbackRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<OIDCServiceCreateCallbackResponse>> CreateCallbackWithHttpInfoAsync(OIDCServiceCreateCallbackRequest oIDCServiceCreateCallbackRequest)
+    public async Task<ApiResult<OIDCServiceCreateCallbackResponse>> CreateCallbackWithHttpInfoAsync(
+        OIDCServiceCreateCallbackRequest oIDCServiceCreateCallbackRequest
+    )
     {
         string path = "/zitadel.oidc.v2.OIDCService/CreateCallback";
 
@@ -150,9 +166,13 @@ public class OIDCServiceApi : BaseApi
     /// <param name="oIDCServiceGetAuthRequestRequest"></param>
     /// <returns><![CDATA[OIDCServiceGetAuthRequestResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<OIDCServiceGetAuthRequestResponse> GetAuthRequestAsync(OIDCServiceGetAuthRequestRequest oIDCServiceGetAuthRequestRequest)
+    public async Task<OIDCServiceGetAuthRequestResponse> GetAuthRequestAsync(
+        OIDCServiceGetAuthRequestRequest oIDCServiceGetAuthRequestRequest
+    )
     {
-        Task<ApiResult<OIDCServiceGetAuthRequestResponse>> task = GetAuthRequestWithHttpInfoAsync(oIDCServiceGetAuthRequestRequest);
+        Task<ApiResult<OIDCServiceGetAuthRequestResponse>> task = GetAuthRequestWithHttpInfoAsync(
+            oIDCServiceGetAuthRequestRequest
+        );
         ApiResult<OIDCServiceGetAuthRequestResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -164,7 +184,8 @@ public class OIDCServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -174,7 +195,9 @@ public class OIDCServiceApi : BaseApi
     /// <param name="oIDCServiceGetAuthRequestRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<OIDCServiceGetAuthRequestResponse>> GetAuthRequestWithHttpInfoAsync(OIDCServiceGetAuthRequestRequest oIDCServiceGetAuthRequestRequest)
+    public async Task<ApiResult<OIDCServiceGetAuthRequestResponse>> GetAuthRequestWithHttpInfoAsync(
+        OIDCServiceGetAuthRequestRequest oIDCServiceGetAuthRequestRequest
+    )
     {
         string path = "/zitadel.oidc.v2.OIDCService/GetAuthRequest";
 
@@ -201,10 +224,16 @@ public class OIDCServiceApi : BaseApi
     /// <param name="oIDCServiceGetDeviceAuthorizationRequestRequest"></param>
     /// <returns><![CDATA[OIDCServiceGetDeviceAuthorizationRequestResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<OIDCServiceGetDeviceAuthorizationRequestResponse> GetDeviceAuthorizationRequestAsync(OIDCServiceGetDeviceAuthorizationRequestRequest oIDCServiceGetDeviceAuthorizationRequestRequest)
+    public async Task<OIDCServiceGetDeviceAuthorizationRequestResponse> GetDeviceAuthorizationRequestAsync(
+        OIDCServiceGetDeviceAuthorizationRequestRequest oIDCServiceGetDeviceAuthorizationRequestRequest
+    )
     {
-        Task<ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse>> task = GetDeviceAuthorizationRequestWithHttpInfoAsync(oIDCServiceGetDeviceAuthorizationRequestRequest);
-        ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse>> task =
+            GetDeviceAuthorizationRequestWithHttpInfoAsync(
+                oIDCServiceGetDeviceAuthorizationRequestRequest
+            );
+        ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -215,7 +244,8 @@ public class OIDCServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -225,7 +255,11 @@ public class OIDCServiceApi : BaseApi
     /// <param name="oIDCServiceGetDeviceAuthorizationRequestRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse>> GetDeviceAuthorizationRequestWithHttpInfoAsync(OIDCServiceGetDeviceAuthorizationRequestRequest oIDCServiceGetDeviceAuthorizationRequestRequest)
+    public async Task<
+        ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse>
+    > GetDeviceAuthorizationRequestWithHttpInfoAsync(
+        OIDCServiceGetDeviceAuthorizationRequestRequest oIDCServiceGetDeviceAuthorizationRequestRequest
+    )
     {
         string path = "/zitadel.oidc.v2.OIDCService/GetDeviceAuthorizationRequest";
 

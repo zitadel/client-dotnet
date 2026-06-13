@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class SettingsServiceSetHostedLoginTranslationResponse : IEquatable<SettingsServiceSetHostedLoginTranslationResponse>
+public class SettingsServiceSetHostedLoginTranslationResponse
+    : IEquatable<SettingsServiceSetHostedLoginTranslationResponse>
 {
     /// <summary>
     /// hash of the saved translation. Valid only when ignore_inheritance = true
@@ -22,8 +23,10 @@ public class SettingsServiceSetHostedLoginTranslationResponse : IEquatable<Setti
     public bool Equals(SettingsServiceSetHostedLoginTranslationResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.Etag, other.Etag));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.Etag, other.Etag)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -27,10 +27,21 @@ public class BetaInstanceServiceDomainSearchQuery : IEquatable<BetaInstanceServi
     public bool Equals(BetaInstanceServiceDomainSearchQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaInstanceServiceDomainQuery?>.Default.Equals(this.DomainQuery, other.DomainQuery)
-                    && EqualityComparer<BetaInstanceServiceDomainGeneratedQuery?>.Default.Equals(this.GeneratedQuery, other.GeneratedQuery)
-                    && EqualityComparer<BetaInstanceServiceDomainPrimaryQuery?>.Default.Equals(this.PrimaryQuery, other.PrimaryQuery));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaInstanceServiceDomainQuery?>.Default.Equals(
+                    this.DomainQuery,
+                    other.DomainQuery
+                )
+                    && EqualityComparer<BetaInstanceServiceDomainGeneratedQuery?>.Default.Equals(
+                        this.GeneratedQuery,
+                        other.GeneratedQuery
+                    )
+                    && EqualityComparer<BetaInstanceServiceDomainPrimaryQuery?>.Default.Equals(
+                        this.PrimaryQuery,
+                        other.PrimaryQuery
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -43,14 +43,37 @@ public class BetaSessionServiceFactors : IEquatable<BetaSessionServiceFactors>
     public bool Equals(BetaSessionServiceFactors? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaSessionServiceUserFactor?>.Default.Equals(this.User, other.User)
-                    && EqualityComparer<BetaSessionServicePasswordFactor?>.Default.Equals(this.Password, other.Password)
-                    && EqualityComparer<BetaSessionServiceWebAuthNFactor?>.Default.Equals(this.WebAuthN, other.WebAuthN)
-                    && EqualityComparer<BetaSessionServiceIntentFactor?>.Default.Equals(this.Intent, other.Intent)
-                    && EqualityComparer<BetaSessionServiceTOTPFactor?>.Default.Equals(this.Totp, other.Totp)
-                    && EqualityComparer<BetaSessionServiceOTPFactor?>.Default.Equals(this.OtpSms, other.OtpSms)
-                    && EqualityComparer<BetaSessionServiceOTPFactor?>.Default.Equals(this.OtpEmail, other.OtpEmail));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaSessionServiceUserFactor?>.Default.Equals(
+                    this.User,
+                    other.User
+                )
+                    && EqualityComparer<BetaSessionServicePasswordFactor?>.Default.Equals(
+                        this.Password,
+                        other.Password
+                    )
+                    && EqualityComparer<BetaSessionServiceWebAuthNFactor?>.Default.Equals(
+                        this.WebAuthN,
+                        other.WebAuthN
+                    )
+                    && EqualityComparer<BetaSessionServiceIntentFactor?>.Default.Equals(
+                        this.Intent,
+                        other.Intent
+                    )
+                    && EqualityComparer<BetaSessionServiceTOTPFactor?>.Default.Equals(
+                        this.Totp,
+                        other.Totp
+                    )
+                    && EqualityComparer<BetaSessionServiceOTPFactor?>.Default.Equals(
+                        this.OtpSms,
+                        other.OtpSms
+                    )
+                    && EqualityComparer<BetaSessionServiceOTPFactor?>.Default.Equals(
+                        this.OtpEmail,
+                        other.OtpEmail
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

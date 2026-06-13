@@ -29,9 +29,11 @@ public class ActionServiceRemovePublicKeyRequest : IEquatable<ActionServiceRemov
     public bool Equals(ActionServiceRemovePublicKeyRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.TargetId, other.TargetId)
-                    && EqualityComparer<string?>.Default.Equals(this.KeyId, other.KeyId));
+                    && EqualityComparer<string?>.Default.Equals(this.KeyId, other.KeyId)
+            );
     }
 
     public override bool Equals(object? obj)

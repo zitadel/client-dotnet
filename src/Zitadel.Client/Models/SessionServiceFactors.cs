@@ -47,15 +47,38 @@ public class SessionServiceFactors : IEquatable<SessionServiceFactors>
     public bool Equals(SessionServiceFactors? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<SessionServiceUserFactor?>.Default.Equals(this.User, other.User)
-                    && EqualityComparer<SessionServicePasswordFactor?>.Default.Equals(this.Password, other.Password)
-                    && EqualityComparer<SessionServiceWebAuthNFactor?>.Default.Equals(this.WebAuthN, other.WebAuthN)
-                    && EqualityComparer<SessionServiceIntentFactor?>.Default.Equals(this.Intent, other.Intent)
-                    && EqualityComparer<SessionServiceTOTPFactor?>.Default.Equals(this.Totp, other.Totp)
-                    && EqualityComparer<SessionServiceOTPFactor?>.Default.Equals(this.OtpSms, other.OtpSms)
-                    && EqualityComparer<SessionServiceOTPFactor?>.Default.Equals(this.OtpEmail, other.OtpEmail)
-                    && EqualityComparer<SessionServiceRecoveryCodeFactor?>.Default.Equals(this.RecoveryCode, other.RecoveryCode));
+                    && EqualityComparer<SessionServicePasswordFactor?>.Default.Equals(
+                        this.Password,
+                        other.Password
+                    )
+                    && EqualityComparer<SessionServiceWebAuthNFactor?>.Default.Equals(
+                        this.WebAuthN,
+                        other.WebAuthN
+                    )
+                    && EqualityComparer<SessionServiceIntentFactor?>.Default.Equals(
+                        this.Intent,
+                        other.Intent
+                    )
+                    && EqualityComparer<SessionServiceTOTPFactor?>.Default.Equals(
+                        this.Totp,
+                        other.Totp
+                    )
+                    && EqualityComparer<SessionServiceOTPFactor?>.Default.Equals(
+                        this.OtpSms,
+                        other.OtpSms
+                    )
+                    && EqualityComparer<SessionServiceOTPFactor?>.Default.Equals(
+                        this.OtpEmail,
+                        other.OtpEmail
+                    )
+                    && EqualityComparer<SessionServiceRecoveryCodeFactor?>.Default.Equals(
+                        this.RecoveryCode,
+                        other.RecoveryCode
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

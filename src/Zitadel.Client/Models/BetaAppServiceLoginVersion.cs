@@ -23,9 +23,14 @@ public class BetaAppServiceLoginVersion : IEquatable<BetaAppServiceLoginVersion>
     public bool Equals(BetaAppServiceLoginVersion? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<Object?>.Default.Equals(this.LoginV1, other.LoginV1)
-                    && EqualityComparer<BetaAppServiceLoginV2?>.Default.Equals(this.LoginV2, other.LoginV2));
+                    && EqualityComparer<BetaAppServiceLoginV2?>.Default.Equals(
+                        this.LoginV2,
+                        other.LoginV2
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

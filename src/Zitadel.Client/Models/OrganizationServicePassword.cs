@@ -23,9 +23,14 @@ public class OrganizationServicePassword : IEquatable<OrganizationServicePasswor
     public bool Equals(OrganizationServicePassword? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Password, other.Password)
-                    && EqualityComparer<bool?>.Default.Equals(this.ChangeRequired, other.ChangeRequired));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.ChangeRequired,
+                        other.ChangeRequired
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

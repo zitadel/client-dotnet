@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class InstanceServiceListCustomDomainsResponse : IEquatable<InstanceServiceListCustomDomainsResponse>
+public class InstanceServiceListCustomDomainsResponse
+    : IEquatable<InstanceServiceListCustomDomainsResponse>
 {
     /// <summary>
     /// The list of custom domains matching the query.
@@ -26,9 +27,17 @@ public class InstanceServiceListCustomDomainsResponse : IEquatable<InstanceServi
     public bool Equals(InstanceServiceListCustomDomainsResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<InstanceServiceCustomDomain>?>.Default.Equals(this.Domains, other.Domains)
-                    && EqualityComparer<InstanceServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<InstanceServiceCustomDomain>?>.Default.Equals(
+                    this.Domains,
+                    other.Domains
+                )
+                    && EqualityComparer<InstanceServicePaginationResponse?>.Default.Equals(
+                        this.Pagination,
+                        other.Pagination
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

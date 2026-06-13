@@ -46,14 +46,34 @@ public class BetaSettingsServiceBrandingSettings : IEquatable<BetaSettingsServic
     public bool Equals(BetaSettingsServiceBrandingSettings? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaSettingsServiceTheme?>.Default.Equals(this.LightTheme, other.LightTheme)
-                    && EqualityComparer<BetaSettingsServiceTheme?>.Default.Equals(this.DarkTheme, other.DarkTheme)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaSettingsServiceTheme?>.Default.Equals(
+                    this.LightTheme,
+                    other.LightTheme
+                )
+                    && EqualityComparer<BetaSettingsServiceTheme?>.Default.Equals(
+                        this.DarkTheme,
+                        other.DarkTheme
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.FontUrl, other.FontUrl)
-                    && EqualityComparer<bool?>.Default.Equals(this.HideLoginNameSuffix, other.HideLoginNameSuffix)
-                    && EqualityComparer<bool?>.Default.Equals(this.DisableWatermark, other.DisableWatermark)
-                    && EqualityComparer<BetaSettingsServiceResourceOwnerType?>.Default.Equals(this.ResourceOwnerType, other.ResourceOwnerType)
-                    && EqualityComparer<BetaSettingsServiceThemeMode?>.Default.Equals(this.ThemeMode, other.ThemeMode));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.HideLoginNameSuffix,
+                        other.HideLoginNameSuffix
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.DisableWatermark,
+                        other.DisableWatermark
+                    )
+                    && EqualityComparer<BetaSettingsServiceResourceOwnerType?>.Default.Equals(
+                        this.ResourceOwnerType,
+                        other.ResourceOwnerType
+                    )
+                    && EqualityComparer<BetaSettingsServiceThemeMode?>.Default.Equals(
+                        this.ThemeMode,
+                        other.ThemeMode
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

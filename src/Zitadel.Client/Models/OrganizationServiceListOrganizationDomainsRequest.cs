@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceListOrganizationDomainsRequest : IEquatable<OrganizationServiceListOrganizationDomainsRequest>
+public class OrganizationServiceListOrganizationDomainsRequest
+    : IEquatable<OrganizationServiceListOrganizationDomainsRequest>
 {
     /// <summary>
     /// OrganizationID is the unique identifier of the organization from which the domains are to be listed.
@@ -37,11 +38,25 @@ public class OrganizationServiceListOrganizationDomainsRequest : IEquatable<Orga
     public bool Equals(OrganizationServiceListOrganizationDomainsRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<OrganizationServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<OrganizationServiceDomainSearchFilter>?>.Default.Equals(this.Filters, other.Filters)
-                    && EqualityComparer<OrganizationServiceDomainFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                )
+                    && EqualityComparer<OrganizationServicePaginationRequest?>.Default.Equals(
+                        this.Pagination,
+                        other.Pagination
+                    )
+                    && EqualityComparer<List<OrganizationServiceDomainSearchFilter>?>.Default.Equals(
+                        this.Filters,
+                        other.Filters
+                    )
+                    && EqualityComparer<OrganizationServiceDomainFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

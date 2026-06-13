@@ -26,9 +26,14 @@ public class ProjectServiceProjectRoleKeyFilter : IEquatable<ProjectServiceProje
     public bool Equals(ProjectServiceProjectRoleKeyFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Key, other.Key)
-                    && EqualityComparer<ProjectServiceTextFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<ProjectServiceTextFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

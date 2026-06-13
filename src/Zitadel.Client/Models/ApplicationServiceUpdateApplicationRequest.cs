@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceUpdateApplicationRequest : IEquatable<ApplicationServiceUpdateApplicationRequest>
+public class ApplicationServiceUpdateApplicationRequest
+    : IEquatable<ApplicationServiceUpdateApplicationRequest>
 {
     /// <summary>
     /// The unique ID of the application to be updated.
@@ -48,13 +49,24 @@ public class ApplicationServiceUpdateApplicationRequest : IEquatable<Application
     public bool Equals(ApplicationServiceUpdateApplicationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ApplicationId, other.ApplicationId)
                     && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
                     && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<ApplicationServiceUpdateAPIApplicationConfigurationRequest?>.Default.Equals(this.ApiConfiguration, other.ApiConfiguration)
-                    && EqualityComparer<ApplicationServiceUpdateOIDCApplicationConfigurationRequest?>.Default.Equals(this.OidcConfiguration, other.OidcConfiguration)
-                    && EqualityComparer<ApplicationServiceUpdateSAMLApplicationConfigurationRequest?>.Default.Equals(this.SamlConfiguration, other.SamlConfiguration));
+                    && EqualityComparer<ApplicationServiceUpdateAPIApplicationConfigurationRequest?>.Default.Equals(
+                        this.ApiConfiguration,
+                        other.ApiConfiguration
+                    )
+                    && EqualityComparer<ApplicationServiceUpdateOIDCApplicationConfigurationRequest?>.Default.Equals(
+                        this.OidcConfiguration,
+                        other.OidcConfiguration
+                    )
+                    && EqualityComparer<ApplicationServiceUpdateSAMLApplicationConfigurationRequest?>.Default.Equals(
+                        this.SamlConfiguration,
+                        other.SamlConfiguration
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

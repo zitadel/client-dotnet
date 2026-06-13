@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceVerifyOrganizationDomainRequest : IEquatable<OrganizationServiceVerifyOrganizationDomainRequest>
+public class OrganizationServiceVerifyOrganizationDomainRequest
+    : IEquatable<OrganizationServiceVerifyOrganizationDomainRequest>
 {
     /// <summary>
     /// Organization ID is the unique identifier of the organization whose domain is to be verified.
@@ -29,9 +30,13 @@ public class OrganizationServiceVerifyOrganizationDomainRequest : IEquatable<Org
     public bool Equals(OrganizationServiceVerifyOrganizationDomainRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                ) && EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain)
+            );
     }
 
     public override bool Equals(object? obj)

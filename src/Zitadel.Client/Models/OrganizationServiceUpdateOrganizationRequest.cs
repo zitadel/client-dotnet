@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceUpdateOrganizationRequest : IEquatable<OrganizationServiceUpdateOrganizationRequest>
+public class OrganizationServiceUpdateOrganizationRequest
+    : IEquatable<OrganizationServiceUpdateOrganizationRequest>
 {
     /// <summary>
     /// OrganizationID is the unique identifier of the organization to be updated.
@@ -29,9 +30,13 @@ public class OrganizationServiceUpdateOrganizationRequest : IEquatable<Organizat
     public bool Equals(OrganizationServiceUpdateOrganizationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<string?>.Default.Equals(this.Name, other.Name));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                ) && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
+            );
     }
 
     public override bool Equals(object? obj)

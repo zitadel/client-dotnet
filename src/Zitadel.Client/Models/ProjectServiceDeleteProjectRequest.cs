@@ -22,8 +22,10 @@ public class ProjectServiceDeleteProjectRequest : IEquatable<ProjectServiceDelet
     public bool Equals(ProjectServiceDeleteProjectRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
+            );
     }
 
     public override bool Equals(object? obj)

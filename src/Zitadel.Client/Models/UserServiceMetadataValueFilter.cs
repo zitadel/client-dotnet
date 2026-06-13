@@ -23,9 +23,14 @@ public class UserServiceMetadataValueFilter : IEquatable<UserServiceMetadataValu
     public bool Equals(UserServiceMetadataValueFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<byte[]?>.Default.Equals(this.Value, other.Value)
-                    && EqualityComparer<UserServiceByteFilterMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<UserServiceByteFilterMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

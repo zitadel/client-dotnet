@@ -27,10 +27,15 @@ public class BetaSettingsServiceIdentityProvider : IEquatable<BetaSettingsServic
     public bool Equals(BetaSettingsServiceIdentityProvider? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
                     && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<BetaSettingsServiceIdentityProviderType?>.Default.Equals(this.Type, other.Type));
+                    && EqualityComparer<BetaSettingsServiceIdentityProviderType?>.Default.Equals(
+                        this.Type,
+                        other.Type
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

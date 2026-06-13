@@ -33,10 +33,21 @@ public class InstanceServiceCustomDomainFilter : IEquatable<InstanceServiceCusto
     public bool Equals(InstanceServiceCustomDomainFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<InstanceServiceDomainFilter?>.Default.Equals(this.DomainFilter, other.DomainFilter)
-                    && EqualityComparer<bool?>.Default.Equals(this.GeneratedFilter, other.GeneratedFilter)
-                    && EqualityComparer<bool?>.Default.Equals(this.PrimaryFilter, other.PrimaryFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<InstanceServiceDomainFilter?>.Default.Equals(
+                    this.DomainFilter,
+                    other.DomainFilter
+                )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.GeneratedFilter,
+                        other.GeneratedFilter
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.PrimaryFilter,
+                        other.PrimaryFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -29,9 +29,14 @@ public class BetaUserServiceFormData : IEquatable<BetaUserServiceFormData>
     public bool Equals(BetaUserServiceFormData? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Url, other.Url)
-                    && EqualityComparer<Dictionary<string, string>?>.Default.Equals(this.Fields, other.Fields));
+                    && EqualityComparer<Dictionary<string, string>?>.Default.Equals(
+                        this.Fields,
+                        other.Fields
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

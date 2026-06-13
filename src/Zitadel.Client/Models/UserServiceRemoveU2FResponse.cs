@@ -19,8 +19,10 @@ public class UserServiceRemoveU2FResponse : IEquatable<UserServiceRemoveU2FRespo
     public bool Equals(UserServiceRemoveU2FResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
+            );
     }
 
     public override bool Equals(object? obj)

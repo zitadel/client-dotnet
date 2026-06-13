@@ -19,8 +19,10 @@ public class BetaAppServiceGetApplicationResponse : IEquatable<BetaAppServiceGet
     public bool Equals(BetaAppServiceGetApplicationResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaAppServiceApplication?>.Default.Equals(this.App, other.App));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaAppServiceApplication?>.Default.Equals(this.App, other.App)
+            );
     }
 
     public override bool Equals(object? obj)

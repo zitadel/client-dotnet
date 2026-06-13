@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class SettingsServiceLegalAndSupportSettings : IEquatable<SettingsServiceLegalAndSupportSettings>
+public class SettingsServiceLegalAndSupportSettings
+    : IEquatable<SettingsServiceLegalAndSupportSettings>
 {
     /// <summary>
     /// Link to the Terms of Service. Can be a relative or absolute URL.
@@ -68,15 +69,29 @@ public class SettingsServiceLegalAndSupportSettings : IEquatable<SettingsService
     public bool Equals(SettingsServiceLegalAndSupportSettings? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.TosLink, other.TosLink)
-                    && EqualityComparer<string?>.Default.Equals(this.PrivacyPolicyLink, other.PrivacyPolicyLink)
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.PrivacyPolicyLink,
+                        other.PrivacyPolicyLink
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.HelpLink, other.HelpLink)
-                    && EqualityComparer<string?>.Default.Equals(this.SupportEmail, other.SupportEmail)
-                    && EqualityComparer<SettingsServiceResourceOwnerType?>.Default.Equals(this.ResourceOwnerType, other.ResourceOwnerType)
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.SupportEmail,
+                        other.SupportEmail
+                    )
+                    && EqualityComparer<SettingsServiceResourceOwnerType?>.Default.Equals(
+                        this.ResourceOwnerType,
+                        other.ResourceOwnerType
+                    )
                     && EqualityComparer<string?>.Default.Equals(this.DocsLink, other.DocsLink)
                     && EqualityComparer<string?>.Default.Equals(this.CustomLink, other.CustomLink)
-                    && EqualityComparer<string?>.Default.Equals(this.CustomLinkText, other.CustomLinkText));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.CustomLinkText,
+                        other.CustomLinkText
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

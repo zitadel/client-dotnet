@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class UserServicePersonalAccessTokensSearchFilter : IEquatable<UserServicePersonalAccessTokensSearchFilter>
+public class UserServicePersonalAccessTokensSearchFilter
+    : IEquatable<UserServicePersonalAccessTokensSearchFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("createdDateFilter")]
@@ -35,12 +36,29 @@ public class UserServicePersonalAccessTokensSearchFilter : IEquatable<UserServic
     public bool Equals(UserServicePersonalAccessTokensSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<UserServiceTimestampFilter?>.Default.Equals(this.CreatedDateFilter, other.CreatedDateFilter)
-                    && EqualityComparer<UserServiceTimestampFilter?>.Default.Equals(this.ExpirationDateFilter, other.ExpirationDateFilter)
-                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(this.OrganizationIdFilter, other.OrganizationIdFilter)
-                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(this.TokenIdFilter, other.TokenIdFilter)
-                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(this.UserIdFilter, other.UserIdFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<UserServiceTimestampFilter?>.Default.Equals(
+                    this.CreatedDateFilter,
+                    other.CreatedDateFilter
+                )
+                    && EqualityComparer<UserServiceTimestampFilter?>.Default.Equals(
+                        this.ExpirationDateFilter,
+                        other.ExpirationDateFilter
+                    )
+                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(
+                        this.OrganizationIdFilter,
+                        other.OrganizationIdFilter
+                    )
+                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(
+                        this.TokenIdFilter,
+                        other.TokenIdFilter
+                    )
+                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(
+                        this.UserIdFilter,
+                        other.UserIdFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

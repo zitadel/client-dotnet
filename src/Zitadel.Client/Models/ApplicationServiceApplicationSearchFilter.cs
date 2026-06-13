@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceApplicationSearchFilter : IEquatable<ApplicationServiceApplicationSearchFilter>
+public class ApplicationServiceApplicationSearchFilter
+    : IEquatable<ApplicationServiceApplicationSearchFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("clientIdFilter")]
@@ -39,13 +40,33 @@ public class ApplicationServiceApplicationSearchFilter : IEquatable<ApplicationS
     public bool Equals(ApplicationServiceApplicationSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ApplicationServiceClientIDFilter?>.Default.Equals(this.ClientIdFilter, other.ClientIdFilter)
-                    && EqualityComparer<ApplicationServiceEntityIDFilter?>.Default.Equals(this.EntityIdFilter, other.EntityIdFilter)
-                    && EqualityComparer<ApplicationServiceApplicationNameFilter?>.Default.Equals(this.NameFilter, other.NameFilter)
-                    && EqualityComparer<ApplicationServiceProjectIDFilter?>.Default.Equals(this.ProjectIdFilter, other.ProjectIdFilter)
-                    && EqualityComparer<ApplicationServiceApplicationState?>.Default.Equals(this.StateFilter, other.StateFilter)
-                    && EqualityComparer<ApplicationServiceApplicationType?>.Default.Equals(this.TypeFilter, other.TypeFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ApplicationServiceClientIDFilter?>.Default.Equals(
+                    this.ClientIdFilter,
+                    other.ClientIdFilter
+                )
+                    && EqualityComparer<ApplicationServiceEntityIDFilter?>.Default.Equals(
+                        this.EntityIdFilter,
+                        other.EntityIdFilter
+                    )
+                    && EqualityComparer<ApplicationServiceApplicationNameFilter?>.Default.Equals(
+                        this.NameFilter,
+                        other.NameFilter
+                    )
+                    && EqualityComparer<ApplicationServiceProjectIDFilter?>.Default.Equals(
+                        this.ProjectIdFilter,
+                        other.ProjectIdFilter
+                    )
+                    && EqualityComparer<ApplicationServiceApplicationState?>.Default.Equals(
+                        this.StateFilter,
+                        other.StateFilter
+                    )
+                    && EqualityComparer<ApplicationServiceApplicationType?>.Default.Equals(
+                        this.TypeFilter,
+                        other.TypeFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

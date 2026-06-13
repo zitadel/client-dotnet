@@ -35,12 +35,29 @@ public class UserServiceKeysSearchFilter : IEquatable<UserServiceKeysSearchFilte
     public bool Equals(UserServiceKeysSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<UserServiceTimestampFilter?>.Default.Equals(this.CreatedDateFilter, other.CreatedDateFilter)
-                    && EqualityComparer<UserServiceTimestampFilter?>.Default.Equals(this.ExpirationDateFilter, other.ExpirationDateFilter)
-                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(this.KeyIdFilter, other.KeyIdFilter)
-                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(this.OrganizationIdFilter, other.OrganizationIdFilter)
-                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(this.UserIdFilter, other.UserIdFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<UserServiceTimestampFilter?>.Default.Equals(
+                    this.CreatedDateFilter,
+                    other.CreatedDateFilter
+                )
+                    && EqualityComparer<UserServiceTimestampFilter?>.Default.Equals(
+                        this.ExpirationDateFilter,
+                        other.ExpirationDateFilter
+                    )
+                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(
+                        this.KeyIdFilter,
+                        other.KeyIdFilter
+                    )
+                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(
+                        this.OrganizationIdFilter,
+                        other.OrganizationIdFilter
+                    )
+                    && EqualityComparer<UserServiceIDFilter?>.Default.Equals(
+                        this.UserIdFilter,
+                        other.UserIdFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

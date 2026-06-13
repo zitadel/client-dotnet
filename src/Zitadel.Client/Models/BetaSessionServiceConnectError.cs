@@ -95,11 +95,19 @@ public class BetaSessionServiceConnectError : IEquatable<BetaSessionServiceConne
     public bool Equals(BetaSessionServiceConnectError? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<CodeEnum?>.Default.Equals(this.Code, other.Code)
                     && EqualityComparer<string?>.Default.Equals(this.Message, other.Message)
-                    && EqualityComparer<List<BetaSessionServiceAny>?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<Dictionary<string, object>?>.Default.Equals(this.AdditionalProperties, other.AdditionalProperties));
+                    && EqualityComparer<List<BetaSessionServiceAny>?>.Default.Equals(
+                        this.Details,
+                        other.Details
+                    )
+                    && EqualityComparer<Dictionary<string, object>?>.Default.Equals(
+                        this.AdditionalProperties,
+                        other.AdditionalProperties
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

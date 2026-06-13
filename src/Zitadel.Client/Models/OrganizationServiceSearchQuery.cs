@@ -35,12 +35,26 @@ public class OrganizationServiceSearchQuery : IEquatable<OrganizationServiceSear
     public bool Equals(OrganizationServiceSearchQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<Object?>.Default.Equals(this.DefaultQuery, other.DefaultQuery)
-                    && EqualityComparer<OrganizationServiceOrganizationDomainQuery?>.Default.Equals(this.DomainQuery, other.DomainQuery)
-                    && EqualityComparer<OrganizationServiceOrganizationIDQuery?>.Default.Equals(this.IdQuery, other.IdQuery)
-                    && EqualityComparer<OrganizationServiceOrganizationNameQuery?>.Default.Equals(this.NameQuery, other.NameQuery)
-                    && EqualityComparer<OrganizationServiceOrganizationStateQuery?>.Default.Equals(this.StateQuery, other.StateQuery));
+                    && EqualityComparer<OrganizationServiceOrganizationDomainQuery?>.Default.Equals(
+                        this.DomainQuery,
+                        other.DomainQuery
+                    )
+                    && EqualityComparer<OrganizationServiceOrganizationIDQuery?>.Default.Equals(
+                        this.IdQuery,
+                        other.IdQuery
+                    )
+                    && EqualityComparer<OrganizationServiceOrganizationNameQuery?>.Default.Equals(
+                        this.NameQuery,
+                        other.NameQuery
+                    )
+                    && EqualityComparer<OrganizationServiceOrganizationStateQuery?>.Default.Equals(
+                        this.StateQuery,
+                        other.StateQuery
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

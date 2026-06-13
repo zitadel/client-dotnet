@@ -19,8 +19,13 @@ public class InternalPermissionServiceNotFilter : IEquatable<InternalPermissionS
     public bool Equals(InternalPermissionServiceNotFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<InternalPermissionServiceAdministratorSearchFilter?>.Default.Equals(this.Query, other.Query));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<InternalPermissionServiceAdministratorSearchFilter?>.Default.Equals(
+                    this.Query,
+                    other.Query
+                )
+            );
     }
 
     public override bool Equals(object? obj)

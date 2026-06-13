@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class BetaProjectServiceApi : BaseApi
 {
-
     private static readonly string[] ActivateProjectAccepts = ["application/json"];
 
     private static readonly string[] ActivateProjectGrantAccepts = ["application/json"];
@@ -64,7 +63,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public BetaProjectServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public BetaProjectServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -74,10 +77,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceActivateProjectRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceActivateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceActivateProjectResponse> ActivateProjectAsync(BetaProjectServiceActivateProjectRequest betaProjectServiceActivateProjectRequest)
+    public async Task<BetaProjectServiceActivateProjectResponse> ActivateProjectAsync(
+        BetaProjectServiceActivateProjectRequest betaProjectServiceActivateProjectRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceActivateProjectResponse>> task = ActivateProjectWithHttpInfoAsync(betaProjectServiceActivateProjectRequest);
-        ApiResult<BetaProjectServiceActivateProjectResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceActivateProjectResponse>> task =
+            ActivateProjectWithHttpInfoAsync(betaProjectServiceActivateProjectRequest);
+        ApiResult<BetaProjectServiceActivateProjectResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -88,7 +96,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -98,7 +107,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceActivateProjectRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceActivateProjectResponse>> ActivateProjectWithHttpInfoAsync(BetaProjectServiceActivateProjectRequest betaProjectServiceActivateProjectRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceActivateProjectResponse>
+    > ActivateProjectWithHttpInfoAsync(
+        BetaProjectServiceActivateProjectRequest betaProjectServiceActivateProjectRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/ActivateProject";
 
@@ -125,10 +138,14 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceActivateProjectGrantRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceActivateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceActivateProjectGrantResponse> ActivateProjectGrantAsync(BetaProjectServiceActivateProjectGrantRequest betaProjectServiceActivateProjectGrantRequest)
+    public async Task<BetaProjectServiceActivateProjectGrantResponse> ActivateProjectGrantAsync(
+        BetaProjectServiceActivateProjectGrantRequest betaProjectServiceActivateProjectGrantRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceActivateProjectGrantResponse>> task = ActivateProjectGrantWithHttpInfoAsync(betaProjectServiceActivateProjectGrantRequest);
-        ApiResult<BetaProjectServiceActivateProjectGrantResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceActivateProjectGrantResponse>> task =
+            ActivateProjectGrantWithHttpInfoAsync(betaProjectServiceActivateProjectGrantRequest);
+        ApiResult<BetaProjectServiceActivateProjectGrantResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -139,7 +156,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -149,7 +167,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceActivateProjectGrantRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceActivateProjectGrantResponse>> ActivateProjectGrantWithHttpInfoAsync(BetaProjectServiceActivateProjectGrantRequest betaProjectServiceActivateProjectGrantRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceActivateProjectGrantResponse>
+    > ActivateProjectGrantWithHttpInfoAsync(
+        BetaProjectServiceActivateProjectGrantRequest betaProjectServiceActivateProjectGrantRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/ActivateProjectGrant";
 
@@ -176,10 +198,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceAddProjectRoleRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceAddProjectRoleResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceAddProjectRoleResponse> AddProjectRoleAsync(BetaProjectServiceAddProjectRoleRequest betaProjectServiceAddProjectRoleRequest)
+    public async Task<BetaProjectServiceAddProjectRoleResponse> AddProjectRoleAsync(
+        BetaProjectServiceAddProjectRoleRequest betaProjectServiceAddProjectRoleRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceAddProjectRoleResponse>> task = AddProjectRoleWithHttpInfoAsync(betaProjectServiceAddProjectRoleRequest);
-        ApiResult<BetaProjectServiceAddProjectRoleResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceAddProjectRoleResponse>> task =
+            AddProjectRoleWithHttpInfoAsync(betaProjectServiceAddProjectRoleRequest);
+        ApiResult<BetaProjectServiceAddProjectRoleResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -190,7 +217,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -200,7 +228,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceAddProjectRoleRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceAddProjectRoleResponse>> AddProjectRoleWithHttpInfoAsync(BetaProjectServiceAddProjectRoleRequest betaProjectServiceAddProjectRoleRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceAddProjectRoleResponse>
+    > AddProjectRoleWithHttpInfoAsync(
+        BetaProjectServiceAddProjectRoleRequest betaProjectServiceAddProjectRoleRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/AddProjectRole";
 
@@ -227,10 +259,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceCreateProjectRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceCreateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceCreateProjectResponse> CreateProjectAsync(BetaProjectServiceCreateProjectRequest betaProjectServiceCreateProjectRequest)
+    public async Task<BetaProjectServiceCreateProjectResponse> CreateProjectAsync(
+        BetaProjectServiceCreateProjectRequest betaProjectServiceCreateProjectRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceCreateProjectResponse>> task = CreateProjectWithHttpInfoAsync(betaProjectServiceCreateProjectRequest);
-        ApiResult<BetaProjectServiceCreateProjectResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceCreateProjectResponse>> task =
+            CreateProjectWithHttpInfoAsync(betaProjectServiceCreateProjectRequest);
+        ApiResult<BetaProjectServiceCreateProjectResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -241,7 +278,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -251,7 +289,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceCreateProjectRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceCreateProjectResponse>> CreateProjectWithHttpInfoAsync(BetaProjectServiceCreateProjectRequest betaProjectServiceCreateProjectRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceCreateProjectResponse>
+    > CreateProjectWithHttpInfoAsync(
+        BetaProjectServiceCreateProjectRequest betaProjectServiceCreateProjectRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/CreateProject";
 
@@ -278,10 +320,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceCreateProjectGrantRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceCreateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceCreateProjectGrantResponse> CreateProjectGrantAsync(BetaProjectServiceCreateProjectGrantRequest betaProjectServiceCreateProjectGrantRequest)
+    public async Task<BetaProjectServiceCreateProjectGrantResponse> CreateProjectGrantAsync(
+        BetaProjectServiceCreateProjectGrantRequest betaProjectServiceCreateProjectGrantRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceCreateProjectGrantResponse>> task = CreateProjectGrantWithHttpInfoAsync(betaProjectServiceCreateProjectGrantRequest);
-        ApiResult<BetaProjectServiceCreateProjectGrantResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceCreateProjectGrantResponse>> task =
+            CreateProjectGrantWithHttpInfoAsync(betaProjectServiceCreateProjectGrantRequest);
+        ApiResult<BetaProjectServiceCreateProjectGrantResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -292,7 +339,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -302,7 +350,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceCreateProjectGrantRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceCreateProjectGrantResponse>> CreateProjectGrantWithHttpInfoAsync(BetaProjectServiceCreateProjectGrantRequest betaProjectServiceCreateProjectGrantRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceCreateProjectGrantResponse>
+    > CreateProjectGrantWithHttpInfoAsync(
+        BetaProjectServiceCreateProjectGrantRequest betaProjectServiceCreateProjectGrantRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/CreateProjectGrant";
 
@@ -329,10 +381,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceDeactivateProjectRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceDeactivateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceDeactivateProjectResponse> DeactivateProjectAsync(BetaProjectServiceDeactivateProjectRequest betaProjectServiceDeactivateProjectRequest)
+    public async Task<BetaProjectServiceDeactivateProjectResponse> DeactivateProjectAsync(
+        BetaProjectServiceDeactivateProjectRequest betaProjectServiceDeactivateProjectRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceDeactivateProjectResponse>> task = DeactivateProjectWithHttpInfoAsync(betaProjectServiceDeactivateProjectRequest);
-        ApiResult<BetaProjectServiceDeactivateProjectResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceDeactivateProjectResponse>> task =
+            DeactivateProjectWithHttpInfoAsync(betaProjectServiceDeactivateProjectRequest);
+        ApiResult<BetaProjectServiceDeactivateProjectResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -343,7 +400,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -353,7 +411,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceDeactivateProjectRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceDeactivateProjectResponse>> DeactivateProjectWithHttpInfoAsync(BetaProjectServiceDeactivateProjectRequest betaProjectServiceDeactivateProjectRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceDeactivateProjectResponse>
+    > DeactivateProjectWithHttpInfoAsync(
+        BetaProjectServiceDeactivateProjectRequest betaProjectServiceDeactivateProjectRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/DeactivateProject";
 
@@ -380,10 +442,16 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceDeactivateProjectGrantRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceDeactivateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceDeactivateProjectGrantResponse> DeactivateProjectGrantAsync(BetaProjectServiceDeactivateProjectGrantRequest betaProjectServiceDeactivateProjectGrantRequest)
+    public async Task<BetaProjectServiceDeactivateProjectGrantResponse> DeactivateProjectGrantAsync(
+        BetaProjectServiceDeactivateProjectGrantRequest betaProjectServiceDeactivateProjectGrantRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceDeactivateProjectGrantResponse>> task = DeactivateProjectGrantWithHttpInfoAsync(betaProjectServiceDeactivateProjectGrantRequest);
-        ApiResult<BetaProjectServiceDeactivateProjectGrantResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceDeactivateProjectGrantResponse>> task =
+            DeactivateProjectGrantWithHttpInfoAsync(
+                betaProjectServiceDeactivateProjectGrantRequest
+            );
+        ApiResult<BetaProjectServiceDeactivateProjectGrantResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -394,7 +462,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -404,7 +473,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceDeactivateProjectGrantRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceDeactivateProjectGrantResponse>> DeactivateProjectGrantWithHttpInfoAsync(BetaProjectServiceDeactivateProjectGrantRequest betaProjectServiceDeactivateProjectGrantRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceDeactivateProjectGrantResponse>
+    > DeactivateProjectGrantWithHttpInfoAsync(
+        BetaProjectServiceDeactivateProjectGrantRequest betaProjectServiceDeactivateProjectGrantRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/DeactivateProjectGrant";
 
@@ -431,10 +504,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceDeleteProjectRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceDeleteProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceDeleteProjectResponse> DeleteProjectAsync(BetaProjectServiceDeleteProjectRequest betaProjectServiceDeleteProjectRequest)
+    public async Task<BetaProjectServiceDeleteProjectResponse> DeleteProjectAsync(
+        BetaProjectServiceDeleteProjectRequest betaProjectServiceDeleteProjectRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceDeleteProjectResponse>> task = DeleteProjectWithHttpInfoAsync(betaProjectServiceDeleteProjectRequest);
-        ApiResult<BetaProjectServiceDeleteProjectResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceDeleteProjectResponse>> task =
+            DeleteProjectWithHttpInfoAsync(betaProjectServiceDeleteProjectRequest);
+        ApiResult<BetaProjectServiceDeleteProjectResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -445,7 +523,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -455,7 +534,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceDeleteProjectRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceDeleteProjectResponse>> DeleteProjectWithHttpInfoAsync(BetaProjectServiceDeleteProjectRequest betaProjectServiceDeleteProjectRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceDeleteProjectResponse>
+    > DeleteProjectWithHttpInfoAsync(
+        BetaProjectServiceDeleteProjectRequest betaProjectServiceDeleteProjectRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/DeleteProject";
 
@@ -482,10 +565,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceDeleteProjectGrantRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceDeleteProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceDeleteProjectGrantResponse> DeleteProjectGrantAsync(BetaProjectServiceDeleteProjectGrantRequest betaProjectServiceDeleteProjectGrantRequest)
+    public async Task<BetaProjectServiceDeleteProjectGrantResponse> DeleteProjectGrantAsync(
+        BetaProjectServiceDeleteProjectGrantRequest betaProjectServiceDeleteProjectGrantRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceDeleteProjectGrantResponse>> task = DeleteProjectGrantWithHttpInfoAsync(betaProjectServiceDeleteProjectGrantRequest);
-        ApiResult<BetaProjectServiceDeleteProjectGrantResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceDeleteProjectGrantResponse>> task =
+            DeleteProjectGrantWithHttpInfoAsync(betaProjectServiceDeleteProjectGrantRequest);
+        ApiResult<BetaProjectServiceDeleteProjectGrantResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -496,7 +584,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -506,7 +595,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceDeleteProjectGrantRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceDeleteProjectGrantResponse>> DeleteProjectGrantWithHttpInfoAsync(BetaProjectServiceDeleteProjectGrantRequest betaProjectServiceDeleteProjectGrantRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceDeleteProjectGrantResponse>
+    > DeleteProjectGrantWithHttpInfoAsync(
+        BetaProjectServiceDeleteProjectGrantRequest betaProjectServiceDeleteProjectGrantRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/DeleteProjectGrant";
 
@@ -533,9 +626,13 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceGetProjectRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceGetProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceGetProjectResponse> GetProjectAsync(BetaProjectServiceGetProjectRequest betaProjectServiceGetProjectRequest)
+    public async Task<BetaProjectServiceGetProjectResponse> GetProjectAsync(
+        BetaProjectServiceGetProjectRequest betaProjectServiceGetProjectRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceGetProjectResponse>> task = GetProjectWithHttpInfoAsync(betaProjectServiceGetProjectRequest);
+        Task<ApiResult<BetaProjectServiceGetProjectResponse>> task = GetProjectWithHttpInfoAsync(
+            betaProjectServiceGetProjectRequest
+        );
         ApiResult<BetaProjectServiceGetProjectResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -547,7 +644,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -557,7 +655,9 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceGetProjectRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceGetProjectResponse>> GetProjectWithHttpInfoAsync(BetaProjectServiceGetProjectRequest betaProjectServiceGetProjectRequest)
+    public async Task<ApiResult<BetaProjectServiceGetProjectResponse>> GetProjectWithHttpInfoAsync(
+        BetaProjectServiceGetProjectRequest betaProjectServiceGetProjectRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/GetProject";
 
@@ -584,10 +684,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceListProjectGrantsRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceListProjectGrantsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceListProjectGrantsResponse> ListProjectGrantsAsync(BetaProjectServiceListProjectGrantsRequest betaProjectServiceListProjectGrantsRequest)
+    public async Task<BetaProjectServiceListProjectGrantsResponse> ListProjectGrantsAsync(
+        BetaProjectServiceListProjectGrantsRequest betaProjectServiceListProjectGrantsRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceListProjectGrantsResponse>> task = ListProjectGrantsWithHttpInfoAsync(betaProjectServiceListProjectGrantsRequest);
-        ApiResult<BetaProjectServiceListProjectGrantsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceListProjectGrantsResponse>> task =
+            ListProjectGrantsWithHttpInfoAsync(betaProjectServiceListProjectGrantsRequest);
+        ApiResult<BetaProjectServiceListProjectGrantsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -598,7 +703,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -608,7 +714,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceListProjectGrantsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceListProjectGrantsResponse>> ListProjectGrantsWithHttpInfoAsync(BetaProjectServiceListProjectGrantsRequest betaProjectServiceListProjectGrantsRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceListProjectGrantsResponse>
+    > ListProjectGrantsWithHttpInfoAsync(
+        BetaProjectServiceListProjectGrantsRequest betaProjectServiceListProjectGrantsRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/ListProjectGrants";
 
@@ -635,10 +745,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceListProjectRolesRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceListProjectRolesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceListProjectRolesResponse> ListProjectRolesAsync(BetaProjectServiceListProjectRolesRequest betaProjectServiceListProjectRolesRequest)
+    public async Task<BetaProjectServiceListProjectRolesResponse> ListProjectRolesAsync(
+        BetaProjectServiceListProjectRolesRequest betaProjectServiceListProjectRolesRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceListProjectRolesResponse>> task = ListProjectRolesWithHttpInfoAsync(betaProjectServiceListProjectRolesRequest);
-        ApiResult<BetaProjectServiceListProjectRolesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceListProjectRolesResponse>> task =
+            ListProjectRolesWithHttpInfoAsync(betaProjectServiceListProjectRolesRequest);
+        ApiResult<BetaProjectServiceListProjectRolesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -649,7 +764,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -659,7 +775,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceListProjectRolesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceListProjectRolesResponse>> ListProjectRolesWithHttpInfoAsync(BetaProjectServiceListProjectRolesRequest betaProjectServiceListProjectRolesRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceListProjectRolesResponse>
+    > ListProjectRolesWithHttpInfoAsync(
+        BetaProjectServiceListProjectRolesRequest betaProjectServiceListProjectRolesRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/ListProjectRoles";
 
@@ -686,9 +806,12 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceListProjectsRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceListProjectsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceListProjectsResponse> ListProjectsAsync(BetaProjectServiceListProjectsRequest betaProjectServiceListProjectsRequest)
+    public async Task<BetaProjectServiceListProjectsResponse> ListProjectsAsync(
+        BetaProjectServiceListProjectsRequest betaProjectServiceListProjectsRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceListProjectsResponse>> task = ListProjectsWithHttpInfoAsync(betaProjectServiceListProjectsRequest);
+        Task<ApiResult<BetaProjectServiceListProjectsResponse>> task =
+            ListProjectsWithHttpInfoAsync(betaProjectServiceListProjectsRequest);
         ApiResult<BetaProjectServiceListProjectsResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -700,7 +823,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -710,7 +834,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceListProjectsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceListProjectsResponse>> ListProjectsWithHttpInfoAsync(BetaProjectServiceListProjectsRequest betaProjectServiceListProjectsRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceListProjectsResponse>
+    > ListProjectsWithHttpInfoAsync(
+        BetaProjectServiceListProjectsRequest betaProjectServiceListProjectsRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/ListProjects";
 
@@ -737,10 +865,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceRemoveProjectRoleRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceRemoveProjectRoleResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceRemoveProjectRoleResponse> RemoveProjectRoleAsync(BetaProjectServiceRemoveProjectRoleRequest betaProjectServiceRemoveProjectRoleRequest)
+    public async Task<BetaProjectServiceRemoveProjectRoleResponse> RemoveProjectRoleAsync(
+        BetaProjectServiceRemoveProjectRoleRequest betaProjectServiceRemoveProjectRoleRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceRemoveProjectRoleResponse>> task = RemoveProjectRoleWithHttpInfoAsync(betaProjectServiceRemoveProjectRoleRequest);
-        ApiResult<BetaProjectServiceRemoveProjectRoleResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceRemoveProjectRoleResponse>> task =
+            RemoveProjectRoleWithHttpInfoAsync(betaProjectServiceRemoveProjectRoleRequest);
+        ApiResult<BetaProjectServiceRemoveProjectRoleResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -751,7 +884,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -761,7 +895,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceRemoveProjectRoleRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceRemoveProjectRoleResponse>> RemoveProjectRoleWithHttpInfoAsync(BetaProjectServiceRemoveProjectRoleRequest betaProjectServiceRemoveProjectRoleRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceRemoveProjectRoleResponse>
+    > RemoveProjectRoleWithHttpInfoAsync(
+        BetaProjectServiceRemoveProjectRoleRequest betaProjectServiceRemoveProjectRoleRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/RemoveProjectRole";
 
@@ -788,10 +926,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceUpdateProjectRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceUpdateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceUpdateProjectResponse> UpdateProjectAsync(BetaProjectServiceUpdateProjectRequest betaProjectServiceUpdateProjectRequest)
+    public async Task<BetaProjectServiceUpdateProjectResponse> UpdateProjectAsync(
+        BetaProjectServiceUpdateProjectRequest betaProjectServiceUpdateProjectRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceUpdateProjectResponse>> task = UpdateProjectWithHttpInfoAsync(betaProjectServiceUpdateProjectRequest);
-        ApiResult<BetaProjectServiceUpdateProjectResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceUpdateProjectResponse>> task =
+            UpdateProjectWithHttpInfoAsync(betaProjectServiceUpdateProjectRequest);
+        ApiResult<BetaProjectServiceUpdateProjectResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -802,7 +945,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -812,7 +956,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceUpdateProjectRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceUpdateProjectResponse>> UpdateProjectWithHttpInfoAsync(BetaProjectServiceUpdateProjectRequest betaProjectServiceUpdateProjectRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceUpdateProjectResponse>
+    > UpdateProjectWithHttpInfoAsync(
+        BetaProjectServiceUpdateProjectRequest betaProjectServiceUpdateProjectRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/UpdateProject";
 
@@ -839,10 +987,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceUpdateProjectGrantRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceUpdateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceUpdateProjectGrantResponse> UpdateProjectGrantAsync(BetaProjectServiceUpdateProjectGrantRequest betaProjectServiceUpdateProjectGrantRequest)
+    public async Task<BetaProjectServiceUpdateProjectGrantResponse> UpdateProjectGrantAsync(
+        BetaProjectServiceUpdateProjectGrantRequest betaProjectServiceUpdateProjectGrantRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceUpdateProjectGrantResponse>> task = UpdateProjectGrantWithHttpInfoAsync(betaProjectServiceUpdateProjectGrantRequest);
-        ApiResult<BetaProjectServiceUpdateProjectGrantResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceUpdateProjectGrantResponse>> task =
+            UpdateProjectGrantWithHttpInfoAsync(betaProjectServiceUpdateProjectGrantRequest);
+        ApiResult<BetaProjectServiceUpdateProjectGrantResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -853,7 +1006,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -863,7 +1017,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceUpdateProjectGrantRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceUpdateProjectGrantResponse>> UpdateProjectGrantWithHttpInfoAsync(BetaProjectServiceUpdateProjectGrantRequest betaProjectServiceUpdateProjectGrantRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceUpdateProjectGrantResponse>
+    > UpdateProjectGrantWithHttpInfoAsync(
+        BetaProjectServiceUpdateProjectGrantRequest betaProjectServiceUpdateProjectGrantRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/UpdateProjectGrant";
 
@@ -890,10 +1048,15 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceUpdateProjectRoleRequest"></param>
     /// <returns><![CDATA[BetaProjectServiceUpdateProjectRoleResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaProjectServiceUpdateProjectRoleResponse> UpdateProjectRoleAsync(BetaProjectServiceUpdateProjectRoleRequest betaProjectServiceUpdateProjectRoleRequest)
+    public async Task<BetaProjectServiceUpdateProjectRoleResponse> UpdateProjectRoleAsync(
+        BetaProjectServiceUpdateProjectRoleRequest betaProjectServiceUpdateProjectRoleRequest
+    )
     {
-        Task<ApiResult<BetaProjectServiceUpdateProjectRoleResponse>> task = UpdateProjectRoleWithHttpInfoAsync(betaProjectServiceUpdateProjectRoleRequest);
-        ApiResult<BetaProjectServiceUpdateProjectRoleResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaProjectServiceUpdateProjectRoleResponse>> task =
+            UpdateProjectRoleWithHttpInfoAsync(betaProjectServiceUpdateProjectRoleRequest);
+        ApiResult<BetaProjectServiceUpdateProjectRoleResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -904,7 +1067,8 @@ public class BetaProjectServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -914,7 +1078,11 @@ public class BetaProjectServiceApi : BaseApi
     /// <param name="betaProjectServiceUpdateProjectRoleRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaProjectServiceUpdateProjectRoleResponse>> UpdateProjectRoleWithHttpInfoAsync(BetaProjectServiceUpdateProjectRoleRequest betaProjectServiceUpdateProjectRoleRequest)
+    public async Task<
+        ApiResult<BetaProjectServiceUpdateProjectRoleResponse>
+    > UpdateProjectRoleWithHttpInfoAsync(
+        BetaProjectServiceUpdateProjectRoleRequest betaProjectServiceUpdateProjectRoleRequest
+    )
     {
         string path = "/zitadel.project.v2beta.ProjectService/UpdateProjectRole";
 

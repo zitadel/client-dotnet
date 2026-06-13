@@ -27,10 +27,15 @@ public class UserServiceSendEmailCodeRequest : IEquatable<UserServiceSendEmailCo
     public bool Equals(UserServiceSendEmailCodeRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<Object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
-                    && EqualityComparer<UserServiceSendEmailVerificationCode?>.Default.Equals(this.SendCode, other.SendCode));
+                    && EqualityComparer<UserServiceSendEmailVerificationCode?>.Default.Equals(
+                        this.SendCode,
+                        other.SendCode
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -27,10 +27,21 @@ public class BetaSettingsServiceLockoutSettings : IEquatable<BetaSettingsService
     public bool Equals(BetaSettingsServiceLockoutSettings? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.MaxPasswordAttempts, other.MaxPasswordAttempts)
-                    && EqualityComparer<BetaSettingsServiceResourceOwnerType?>.Default.Equals(this.ResourceOwnerType, other.ResourceOwnerType)
-                    && EqualityComparer<Object?>.Default.Equals(this.MaxOtpAttempts, other.MaxOtpAttempts));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<Object?>.Default.Equals(
+                    this.MaxPasswordAttempts,
+                    other.MaxPasswordAttempts
+                )
+                    && EqualityComparer<BetaSettingsServiceResourceOwnerType?>.Default.Equals(
+                        this.ResourceOwnerType,
+                        other.ResourceOwnerType
+                    )
+                    && EqualityComparer<Object?>.Default.Equals(
+                        this.MaxOtpAttempts,
+                        other.MaxOtpAttempts
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -22,8 +22,13 @@ public class UserServiceIDPLDAPAccessInformation : IEquatable<UserServiceIDPLDAP
     public bool Equals(UserServiceIDPLDAPAccessInformation? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.Attributes, other.Attributes));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<Dictionary<string, Object>?>.Default.Equals(
+                    this.Attributes,
+                    other.Attributes
+                )
+            );
     }
 
     public override bool Equals(object? obj)

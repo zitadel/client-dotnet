@@ -26,9 +26,14 @@ public class SessionServiceWebAuthN : IEquatable<SessionServiceWebAuthN>
     public bool Equals(SessionServiceWebAuthN? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain)
-                    && EqualityComparer<SessionServiceUserVerificationRequirement?>.Default.Equals(this.UserVerificationRequirement, other.UserVerificationRequirement));
+                    && EqualityComparer<SessionServiceUserVerificationRequirement?>.Default.Equals(
+                        this.UserVerificationRequirement,
+                        other.UserVerificationRequirement
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

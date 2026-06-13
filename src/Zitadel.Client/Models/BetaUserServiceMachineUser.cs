@@ -31,11 +31,16 @@ public class BetaUserServiceMachineUser : IEquatable<BetaUserServiceMachineUser>
     public bool Equals(BetaUserServiceMachineUser? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
                     && EqualityComparer<string?>.Default.Equals(this.Description, other.Description)
                     && EqualityComparer<bool?>.Default.Equals(this.HasSecret, other.HasSecret)
-                    && EqualityComparer<BetaUserServiceAccessTokenType?>.Default.Equals(this.AccessTokenType, other.AccessTokenType));
+                    && EqualityComparer<BetaUserServiceAccessTokenType?>.Default.Equals(
+                        this.AccessTokenType,
+                        other.AccessTokenType
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

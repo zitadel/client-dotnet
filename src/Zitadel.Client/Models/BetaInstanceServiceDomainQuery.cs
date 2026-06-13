@@ -23,9 +23,14 @@ public class BetaInstanceServiceDomainQuery : IEquatable<BetaInstanceServiceDoma
     public bool Equals(BetaInstanceServiceDomainQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain)
-                    && EqualityComparer<BetaInstanceServiceTextQueryMethod?>.Default.Equals(this.Method, other.Method));
+                    && EqualityComparer<BetaInstanceServiceTextQueryMethod?>.Default.Equals(
+                        this.Method,
+                        other.Method
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

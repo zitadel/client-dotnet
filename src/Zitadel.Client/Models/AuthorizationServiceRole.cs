@@ -36,10 +36,12 @@ public class AuthorizationServiceRole : IEquatable<AuthorizationServiceRole>
     public bool Equals(AuthorizationServiceRole? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Key, other.Key)
                     && EqualityComparer<string?>.Default.Equals(this.DisplayName, other.DisplayName)
-                    && EqualityComparer<string?>.Default.Equals(this.Group, other.Group));
+                    && EqualityComparer<string?>.Default.Equals(this.Group, other.Group)
+            );
     }
 
     public override bool Equals(object? obj)

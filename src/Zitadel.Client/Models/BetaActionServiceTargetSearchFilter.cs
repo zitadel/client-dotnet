@@ -23,9 +23,17 @@ public class BetaActionServiceTargetSearchFilter : IEquatable<BetaActionServiceT
     public bool Equals(BetaActionServiceTargetSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaActionServiceInTargetIDsFilter?>.Default.Equals(this.InTargetIdsFilter, other.InTargetIdsFilter)
-                    && EqualityComparer<BetaActionServiceTargetNameFilter?>.Default.Equals(this.TargetNameFilter, other.TargetNameFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaActionServiceInTargetIDsFilter?>.Default.Equals(
+                    this.InTargetIdsFilter,
+                    other.InTargetIdsFilter
+                )
+                    && EqualityComparer<BetaActionServiceTargetNameFilter?>.Default.Equals(
+                        this.TargetNameFilter,
+                        other.TargetNameFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaSettingsServiceSetSecuritySettingsRequest : IEquatable<BetaSettingsServiceSetSecuritySettingsRequest>
+public class BetaSettingsServiceSetSecuritySettingsRequest
+    : IEquatable<BetaSettingsServiceSetSecuritySettingsRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("embeddedIframe")]
@@ -23,9 +24,17 @@ public class BetaSettingsServiceSetSecuritySettingsRequest : IEquatable<BetaSett
     public bool Equals(BetaSettingsServiceSetSecuritySettingsRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaSettingsServiceEmbeddedIframeSettings?>.Default.Equals(this.EmbeddedIframe, other.EmbeddedIframe)
-                    && EqualityComparer<bool?>.Default.Equals(this.EnableImpersonation, other.EnableImpersonation));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaSettingsServiceEmbeddedIframeSettings?>.Default.Equals(
+                    this.EmbeddedIframe,
+                    other.EmbeddedIframe
+                )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.EnableImpersonation,
+                        other.EnableImpersonation
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

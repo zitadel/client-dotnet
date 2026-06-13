@@ -23,9 +23,14 @@ public class BetaUserServiceHashedPassword : IEquatable<BetaUserServiceHashedPas
     public bool Equals(BetaUserServiceHashedPassword? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Hash, other.Hash)
-                    && EqualityComparer<bool?>.Default.Equals(this.ChangeRequired, other.ChangeRequired));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.ChangeRequired,
+                        other.ChangeRequired
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

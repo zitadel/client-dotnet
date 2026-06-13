@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceDeleteApplicationKeyRequest : IEquatable<ApplicationServiceDeleteApplicationKeyRequest>
+public class ApplicationServiceDeleteApplicationKeyRequest
+    : IEquatable<ApplicationServiceDeleteApplicationKeyRequest>
 {
     /// <summary>
     /// The unique ID of the application key to be deleted.
@@ -36,10 +37,15 @@ public class ApplicationServiceDeleteApplicationKeyRequest : IEquatable<Applicat
     public bool Equals(ApplicationServiceDeleteApplicationKeyRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.KeyId, other.KeyId)
-                    && EqualityComparer<string?>.Default.Equals(this.ApplicationId, other.ApplicationId)
-                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ApplicationId,
+                        other.ApplicationId
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
+            );
     }
 
     public override bool Equals(object? obj)

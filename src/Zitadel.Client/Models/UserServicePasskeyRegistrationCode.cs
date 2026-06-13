@@ -23,9 +23,11 @@ public class UserServicePasskeyRegistrationCode : IEquatable<UserServicePasskeyR
     public bool Equals(UserServicePasskeyRegistrationCode? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
-                    && EqualityComparer<string?>.Default.Equals(this.Code, other.Code));
+                    && EqualityComparer<string?>.Default.Equals(this.Code, other.Code)
+            );
     }
 
     public override bool Equals(object? obj)

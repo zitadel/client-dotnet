@@ -23,9 +23,11 @@ public class UserServiceOrganization : IEquatable<UserServiceOrganization>
     public bool Equals(UserServiceOrganization? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.OrgDomain, other.OrgDomain)
-                    && EqualityComparer<string?>.Default.Equals(this.OrgId, other.OrgId));
+                    && EqualityComparer<string?>.Default.Equals(this.OrgId, other.OrgId)
+            );
     }
 
     public override bool Equals(object? obj)

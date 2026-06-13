@@ -22,8 +22,10 @@ public class BetaActionServiceInTargetIDsFilter : IEquatable<BetaActionServiceIn
     public bool Equals(BetaActionServiceInTargetIDsFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<string>?>.Default.Equals(this.TargetIds, other.TargetIds));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<string>?>.Default.Equals(this.TargetIds, other.TargetIds)
+            );
     }
 
     public override bool Equals(object? obj)

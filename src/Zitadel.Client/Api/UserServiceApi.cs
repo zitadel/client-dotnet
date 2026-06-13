@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class UserServiceApi : BaseApi
 {
-
     private static readonly string[] AddHumanUserAccepts = ["application/json"];
 
     private static readonly string[] AddIDPLinkAccepts = ["application/json"];
@@ -160,9 +159,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddHumanUserRequest"></param>
     /// <returns><![CDATA[UserServiceAddHumanUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceAddHumanUserResponse> AddHumanUserAsync(UserServiceAddHumanUserRequest userServiceAddHumanUserRequest)
+    public async Task<UserServiceAddHumanUserResponse> AddHumanUserAsync(
+        UserServiceAddHumanUserRequest userServiceAddHumanUserRequest
+    )
     {
-        Task<ApiResult<UserServiceAddHumanUserResponse>> task = AddHumanUserWithHttpInfoAsync(userServiceAddHumanUserRequest);
+        Task<ApiResult<UserServiceAddHumanUserResponse>> task = AddHumanUserWithHttpInfoAsync(
+            userServiceAddHumanUserRequest
+        );
         ApiResult<UserServiceAddHumanUserResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -174,7 +177,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -184,7 +188,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddHumanUserRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceAddHumanUserResponse>> AddHumanUserWithHttpInfoAsync(UserServiceAddHumanUserRequest userServiceAddHumanUserRequest)
+    public async Task<ApiResult<UserServiceAddHumanUserResponse>> AddHumanUserWithHttpInfoAsync(
+        UserServiceAddHumanUserRequest userServiceAddHumanUserRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/AddHumanUser";
 
@@ -211,9 +217,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddIDPLinkRequest"></param>
     /// <returns><![CDATA[UserServiceAddIDPLinkResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceAddIDPLinkResponse> AddIDPLinkAsync(UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest)
+    public async Task<UserServiceAddIDPLinkResponse> AddIDPLinkAsync(
+        UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest
+    )
     {
-        Task<ApiResult<UserServiceAddIDPLinkResponse>> task = AddIDPLinkWithHttpInfoAsync(userServiceAddIDPLinkRequest);
+        Task<ApiResult<UserServiceAddIDPLinkResponse>> task = AddIDPLinkWithHttpInfoAsync(
+            userServiceAddIDPLinkRequest
+        );
         ApiResult<UserServiceAddIDPLinkResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -225,7 +235,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -235,7 +246,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddIDPLinkRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceAddIDPLinkResponse>> AddIDPLinkWithHttpInfoAsync(UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest)
+    public async Task<ApiResult<UserServiceAddIDPLinkResponse>> AddIDPLinkWithHttpInfoAsync(
+        UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/AddIDPLink";
 
@@ -262,9 +275,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddKeyRequest"></param>
     /// <returns><![CDATA[UserServiceAddKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceAddKeyResponse> AddKeyAsync(UserServiceAddKeyRequest userServiceAddKeyRequest)
+    public async Task<UserServiceAddKeyResponse> AddKeyAsync(
+        UserServiceAddKeyRequest userServiceAddKeyRequest
+    )
     {
-        Task<ApiResult<UserServiceAddKeyResponse>> task = AddKeyWithHttpInfoAsync(userServiceAddKeyRequest);
+        Task<ApiResult<UserServiceAddKeyResponse>> task = AddKeyWithHttpInfoAsync(
+            userServiceAddKeyRequest
+        );
         ApiResult<UserServiceAddKeyResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -276,7 +293,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -286,7 +304,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceAddKeyResponse>> AddKeyWithHttpInfoAsync(UserServiceAddKeyRequest userServiceAddKeyRequest)
+    public async Task<ApiResult<UserServiceAddKeyResponse>> AddKeyWithHttpInfoAsync(
+        UserServiceAddKeyRequest userServiceAddKeyRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/AddKey";
 
@@ -313,9 +333,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddOTPEmailRequest"></param>
     /// <returns><![CDATA[UserServiceAddOTPEmailResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceAddOTPEmailResponse> AddOTPEmailAsync(UserServiceAddOTPEmailRequest userServiceAddOTPEmailRequest)
+    public async Task<UserServiceAddOTPEmailResponse> AddOTPEmailAsync(
+        UserServiceAddOTPEmailRequest userServiceAddOTPEmailRequest
+    )
     {
-        Task<ApiResult<UserServiceAddOTPEmailResponse>> task = AddOTPEmailWithHttpInfoAsync(userServiceAddOTPEmailRequest);
+        Task<ApiResult<UserServiceAddOTPEmailResponse>> task = AddOTPEmailWithHttpInfoAsync(
+            userServiceAddOTPEmailRequest
+        );
         ApiResult<UserServiceAddOTPEmailResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -327,7 +351,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -337,7 +362,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddOTPEmailRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceAddOTPEmailResponse>> AddOTPEmailWithHttpInfoAsync(UserServiceAddOTPEmailRequest userServiceAddOTPEmailRequest)
+    public async Task<ApiResult<UserServiceAddOTPEmailResponse>> AddOTPEmailWithHttpInfoAsync(
+        UserServiceAddOTPEmailRequest userServiceAddOTPEmailRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/AddOTPEmail";
 
@@ -364,9 +391,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddOTPSMSRequest"></param>
     /// <returns><![CDATA[UserServiceAddOTPSMSResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceAddOTPSMSResponse> AddOTPSMSAsync(UserServiceAddOTPSMSRequest userServiceAddOTPSMSRequest)
+    public async Task<UserServiceAddOTPSMSResponse> AddOTPSMSAsync(
+        UserServiceAddOTPSMSRequest userServiceAddOTPSMSRequest
+    )
     {
-        Task<ApiResult<UserServiceAddOTPSMSResponse>> task = AddOTPSMSWithHttpInfoAsync(userServiceAddOTPSMSRequest);
+        Task<ApiResult<UserServiceAddOTPSMSResponse>> task = AddOTPSMSWithHttpInfoAsync(
+            userServiceAddOTPSMSRequest
+        );
         ApiResult<UserServiceAddOTPSMSResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -378,7 +409,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -388,7 +420,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddOTPSMSRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceAddOTPSMSResponse>> AddOTPSMSWithHttpInfoAsync(UserServiceAddOTPSMSRequest userServiceAddOTPSMSRequest)
+    public async Task<ApiResult<UserServiceAddOTPSMSResponse>> AddOTPSMSWithHttpInfoAsync(
+        UserServiceAddOTPSMSRequest userServiceAddOTPSMSRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/AddOTPSMS";
 
@@ -415,10 +449,15 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddPersonalAccessTokenRequest"></param>
     /// <returns><![CDATA[UserServiceAddPersonalAccessTokenResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceAddPersonalAccessTokenResponse> AddPersonalAccessTokenAsync(UserServiceAddPersonalAccessTokenRequest userServiceAddPersonalAccessTokenRequest)
+    public async Task<UserServiceAddPersonalAccessTokenResponse> AddPersonalAccessTokenAsync(
+        UserServiceAddPersonalAccessTokenRequest userServiceAddPersonalAccessTokenRequest
+    )
     {
-        Task<ApiResult<UserServiceAddPersonalAccessTokenResponse>> task = AddPersonalAccessTokenWithHttpInfoAsync(userServiceAddPersonalAccessTokenRequest);
-        ApiResult<UserServiceAddPersonalAccessTokenResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceAddPersonalAccessTokenResponse>> task =
+            AddPersonalAccessTokenWithHttpInfoAsync(userServiceAddPersonalAccessTokenRequest);
+        ApiResult<UserServiceAddPersonalAccessTokenResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -429,7 +468,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -439,7 +479,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddPersonalAccessTokenRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceAddPersonalAccessTokenResponse>> AddPersonalAccessTokenWithHttpInfoAsync(UserServiceAddPersonalAccessTokenRequest userServiceAddPersonalAccessTokenRequest)
+    public async Task<
+        ApiResult<UserServiceAddPersonalAccessTokenResponse>
+    > AddPersonalAccessTokenWithHttpInfoAsync(
+        UserServiceAddPersonalAccessTokenRequest userServiceAddPersonalAccessTokenRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/AddPersonalAccessToken";
 
@@ -466,9 +510,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddSecretRequest"></param>
     /// <returns><![CDATA[UserServiceAddSecretResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceAddSecretResponse> AddSecretAsync(UserServiceAddSecretRequest userServiceAddSecretRequest)
+    public async Task<UserServiceAddSecretResponse> AddSecretAsync(
+        UserServiceAddSecretRequest userServiceAddSecretRequest
+    )
     {
-        Task<ApiResult<UserServiceAddSecretResponse>> task = AddSecretWithHttpInfoAsync(userServiceAddSecretRequest);
+        Task<ApiResult<UserServiceAddSecretResponse>> task = AddSecretWithHttpInfoAsync(
+            userServiceAddSecretRequest
+        );
         ApiResult<UserServiceAddSecretResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -480,7 +528,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -490,7 +539,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceAddSecretRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceAddSecretResponse>> AddSecretWithHttpInfoAsync(UserServiceAddSecretRequest userServiceAddSecretRequest)
+    public async Task<ApiResult<UserServiceAddSecretResponse>> AddSecretWithHttpInfoAsync(
+        UserServiceAddSecretRequest userServiceAddSecretRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/AddSecret";
 
@@ -517,9 +568,12 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceCreateInviteCodeRequest"></param>
     /// <returns><![CDATA[UserServiceCreateInviteCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceCreateInviteCodeResponse> CreateInviteCodeAsync(UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest)
+    public async Task<UserServiceCreateInviteCodeResponse> CreateInviteCodeAsync(
+        UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest
+    )
     {
-        Task<ApiResult<UserServiceCreateInviteCodeResponse>> task = CreateInviteCodeWithHttpInfoAsync(userServiceCreateInviteCodeRequest);
+        Task<ApiResult<UserServiceCreateInviteCodeResponse>> task =
+            CreateInviteCodeWithHttpInfoAsync(userServiceCreateInviteCodeRequest);
         ApiResult<UserServiceCreateInviteCodeResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -531,7 +585,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -541,7 +596,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceCreateInviteCodeRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceCreateInviteCodeResponse>> CreateInviteCodeWithHttpInfoAsync(UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest)
+    public async Task<
+        ApiResult<UserServiceCreateInviteCodeResponse>
+    > CreateInviteCodeWithHttpInfoAsync(
+        UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/CreateInviteCode";
 
@@ -568,10 +627,16 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceCreatePasskeyRegistrationLinkRequest"></param>
     /// <returns><![CDATA[UserServiceCreatePasskeyRegistrationLinkResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceCreatePasskeyRegistrationLinkResponse> CreatePasskeyRegistrationLinkAsync(UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest)
+    public async Task<UserServiceCreatePasskeyRegistrationLinkResponse> CreatePasskeyRegistrationLinkAsync(
+        UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest
+    )
     {
-        Task<ApiResult<UserServiceCreatePasskeyRegistrationLinkResponse>> task = CreatePasskeyRegistrationLinkWithHttpInfoAsync(userServiceCreatePasskeyRegistrationLinkRequest);
-        ApiResult<UserServiceCreatePasskeyRegistrationLinkResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceCreatePasskeyRegistrationLinkResponse>> task =
+            CreatePasskeyRegistrationLinkWithHttpInfoAsync(
+                userServiceCreatePasskeyRegistrationLinkRequest
+            );
+        ApiResult<UserServiceCreatePasskeyRegistrationLinkResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -582,7 +647,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -592,7 +658,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceCreatePasskeyRegistrationLinkRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceCreatePasskeyRegistrationLinkResponse>> CreatePasskeyRegistrationLinkWithHttpInfoAsync(UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest)
+    public async Task<
+        ApiResult<UserServiceCreatePasskeyRegistrationLinkResponse>
+    > CreatePasskeyRegistrationLinkWithHttpInfoAsync(
+        UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/CreatePasskeyRegistrationLink";
 
@@ -619,9 +689,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceCreateUserRequest"></param>
     /// <returns><![CDATA[UserServiceCreateUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceCreateUserResponse> CreateUserAsync(UserServiceCreateUserRequest userServiceCreateUserRequest)
+    public async Task<UserServiceCreateUserResponse> CreateUserAsync(
+        UserServiceCreateUserRequest userServiceCreateUserRequest
+    )
     {
-        Task<ApiResult<UserServiceCreateUserResponse>> task = CreateUserWithHttpInfoAsync(userServiceCreateUserRequest);
+        Task<ApiResult<UserServiceCreateUserResponse>> task = CreateUserWithHttpInfoAsync(
+            userServiceCreateUserRequest
+        );
         ApiResult<UserServiceCreateUserResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -633,7 +707,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -643,7 +718,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceCreateUserRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceCreateUserResponse>> CreateUserWithHttpInfoAsync(UserServiceCreateUserRequest userServiceCreateUserRequest)
+    public async Task<ApiResult<UserServiceCreateUserResponse>> CreateUserWithHttpInfoAsync(
+        UserServiceCreateUserRequest userServiceCreateUserRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/CreateUser";
 
@@ -670,9 +747,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceDeactivateUserRequest"></param>
     /// <returns><![CDATA[UserServiceDeactivateUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceDeactivateUserResponse> DeactivateUserAsync(UserServiceDeactivateUserRequest userServiceDeactivateUserRequest)
+    public async Task<UserServiceDeactivateUserResponse> DeactivateUserAsync(
+        UserServiceDeactivateUserRequest userServiceDeactivateUserRequest
+    )
     {
-        Task<ApiResult<UserServiceDeactivateUserResponse>> task = DeactivateUserWithHttpInfoAsync(userServiceDeactivateUserRequest);
+        Task<ApiResult<UserServiceDeactivateUserResponse>> task = DeactivateUserWithHttpInfoAsync(
+            userServiceDeactivateUserRequest
+        );
         ApiResult<UserServiceDeactivateUserResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -684,7 +765,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -694,7 +776,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceDeactivateUserRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceDeactivateUserResponse>> DeactivateUserWithHttpInfoAsync(UserServiceDeactivateUserRequest userServiceDeactivateUserRequest)
+    public async Task<ApiResult<UserServiceDeactivateUserResponse>> DeactivateUserWithHttpInfoAsync(
+        UserServiceDeactivateUserRequest userServiceDeactivateUserRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/DeactivateUser";
 
@@ -721,9 +805,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceDeleteUserRequest"></param>
     /// <returns><![CDATA[UserServiceDeleteUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceDeleteUserResponse> DeleteUserAsync(UserServiceDeleteUserRequest userServiceDeleteUserRequest)
+    public async Task<UserServiceDeleteUserResponse> DeleteUserAsync(
+        UserServiceDeleteUserRequest userServiceDeleteUserRequest
+    )
     {
-        Task<ApiResult<UserServiceDeleteUserResponse>> task = DeleteUserWithHttpInfoAsync(userServiceDeleteUserRequest);
+        Task<ApiResult<UserServiceDeleteUserResponse>> task = DeleteUserWithHttpInfoAsync(
+            userServiceDeleteUserRequest
+        );
         ApiResult<UserServiceDeleteUserResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -735,7 +823,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -745,7 +834,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceDeleteUserRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceDeleteUserResponse>> DeleteUserWithHttpInfoAsync(UserServiceDeleteUserRequest userServiceDeleteUserRequest)
+    public async Task<ApiResult<UserServiceDeleteUserResponse>> DeleteUserWithHttpInfoAsync(
+        UserServiceDeleteUserRequest userServiceDeleteUserRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/DeleteUser";
 
@@ -772,9 +863,12 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceDeleteUserMetadataRequest"></param>
     /// <returns><![CDATA[UserServiceDeleteUserMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceDeleteUserMetadataResponse> DeleteUserMetadataAsync(UserServiceDeleteUserMetadataRequest userServiceDeleteUserMetadataRequest)
+    public async Task<UserServiceDeleteUserMetadataResponse> DeleteUserMetadataAsync(
+        UserServiceDeleteUserMetadataRequest userServiceDeleteUserMetadataRequest
+    )
     {
-        Task<ApiResult<UserServiceDeleteUserMetadataResponse>> task = DeleteUserMetadataWithHttpInfoAsync(userServiceDeleteUserMetadataRequest);
+        Task<ApiResult<UserServiceDeleteUserMetadataResponse>> task =
+            DeleteUserMetadataWithHttpInfoAsync(userServiceDeleteUserMetadataRequest);
         ApiResult<UserServiceDeleteUserMetadataResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -786,7 +880,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -796,7 +891,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceDeleteUserMetadataRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceDeleteUserMetadataResponse>> DeleteUserMetadataWithHttpInfoAsync(UserServiceDeleteUserMetadataRequest userServiceDeleteUserMetadataRequest)
+    public async Task<
+        ApiResult<UserServiceDeleteUserMetadataResponse>
+    > DeleteUserMetadataWithHttpInfoAsync(
+        UserServiceDeleteUserMetadataRequest userServiceDeleteUserMetadataRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/DeleteUserMetadata";
 
@@ -823,10 +922,15 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceGenerateRecoveryCodesRequest"></param>
     /// <returns><![CDATA[UserServiceGenerateRecoveryCodesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceGenerateRecoveryCodesResponse> GenerateRecoveryCodesAsync(UserServiceGenerateRecoveryCodesRequest userServiceGenerateRecoveryCodesRequest)
+    public async Task<UserServiceGenerateRecoveryCodesResponse> GenerateRecoveryCodesAsync(
+        UserServiceGenerateRecoveryCodesRequest userServiceGenerateRecoveryCodesRequest
+    )
     {
-        Task<ApiResult<UserServiceGenerateRecoveryCodesResponse>> task = GenerateRecoveryCodesWithHttpInfoAsync(userServiceGenerateRecoveryCodesRequest);
-        ApiResult<UserServiceGenerateRecoveryCodesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceGenerateRecoveryCodesResponse>> task =
+            GenerateRecoveryCodesWithHttpInfoAsync(userServiceGenerateRecoveryCodesRequest);
+        ApiResult<UserServiceGenerateRecoveryCodesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -837,7 +941,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -847,7 +952,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceGenerateRecoveryCodesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceGenerateRecoveryCodesResponse>> GenerateRecoveryCodesWithHttpInfoAsync(UserServiceGenerateRecoveryCodesRequest userServiceGenerateRecoveryCodesRequest)
+    public async Task<
+        ApiResult<UserServiceGenerateRecoveryCodesResponse>
+    > GenerateRecoveryCodesWithHttpInfoAsync(
+        UserServiceGenerateRecoveryCodesRequest userServiceGenerateRecoveryCodesRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/GenerateRecoveryCodes";
 
@@ -874,9 +983,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceGetUserByIDRequest"></param>
     /// <returns><![CDATA[UserServiceGetUserByIDResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceGetUserByIDResponse> GetUserByIDAsync(UserServiceGetUserByIDRequest userServiceGetUserByIDRequest)
+    public async Task<UserServiceGetUserByIDResponse> GetUserByIDAsync(
+        UserServiceGetUserByIDRequest userServiceGetUserByIDRequest
+    )
     {
-        Task<ApiResult<UserServiceGetUserByIDResponse>> task = GetUserByIDWithHttpInfoAsync(userServiceGetUserByIDRequest);
+        Task<ApiResult<UserServiceGetUserByIDResponse>> task = GetUserByIDWithHttpInfoAsync(
+            userServiceGetUserByIDRequest
+        );
         ApiResult<UserServiceGetUserByIDResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -888,7 +1001,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -898,7 +1012,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceGetUserByIDRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceGetUserByIDResponse>> GetUserByIDWithHttpInfoAsync(UserServiceGetUserByIDRequest userServiceGetUserByIDRequest)
+    public async Task<ApiResult<UserServiceGetUserByIDResponse>> GetUserByIDWithHttpInfoAsync(
+        UserServiceGetUserByIDRequest userServiceGetUserByIDRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/GetUserByID";
 
@@ -925,9 +1041,12 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceHumanMFAInitSkippedRequest"></param>
     /// <returns><![CDATA[UserServiceHumanMFAInitSkippedResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceHumanMFAInitSkippedResponse> HumanMFAInitSkippedAsync(UserServiceHumanMFAInitSkippedRequest userServiceHumanMFAInitSkippedRequest)
+    public async Task<UserServiceHumanMFAInitSkippedResponse> HumanMFAInitSkippedAsync(
+        UserServiceHumanMFAInitSkippedRequest userServiceHumanMFAInitSkippedRequest
+    )
     {
-        Task<ApiResult<UserServiceHumanMFAInitSkippedResponse>> task = HumanMFAInitSkippedWithHttpInfoAsync(userServiceHumanMFAInitSkippedRequest);
+        Task<ApiResult<UserServiceHumanMFAInitSkippedResponse>> task =
+            HumanMFAInitSkippedWithHttpInfoAsync(userServiceHumanMFAInitSkippedRequest);
         ApiResult<UserServiceHumanMFAInitSkippedResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -939,7 +1058,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -949,7 +1069,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceHumanMFAInitSkippedRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceHumanMFAInitSkippedResponse>> HumanMFAInitSkippedWithHttpInfoAsync(UserServiceHumanMFAInitSkippedRequest userServiceHumanMFAInitSkippedRequest)
+    public async Task<
+        ApiResult<UserServiceHumanMFAInitSkippedResponse>
+    > HumanMFAInitSkippedWithHttpInfoAsync(
+        UserServiceHumanMFAInitSkippedRequest userServiceHumanMFAInitSkippedRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/HumanMFAInitSkipped";
 
@@ -975,10 +1099,15 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListAuthenticationFactorsRequest"></param>
     /// <returns><![CDATA[UserServiceListAuthenticationFactorsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceListAuthenticationFactorsResponse> ListAuthenticationFactorsAsync(UserServiceListAuthenticationFactorsRequest userServiceListAuthenticationFactorsRequest)
+    public async Task<UserServiceListAuthenticationFactorsResponse> ListAuthenticationFactorsAsync(
+        UserServiceListAuthenticationFactorsRequest userServiceListAuthenticationFactorsRequest
+    )
     {
-        Task<ApiResult<UserServiceListAuthenticationFactorsResponse>> task = ListAuthenticationFactorsWithHttpInfoAsync(userServiceListAuthenticationFactorsRequest);
-        ApiResult<UserServiceListAuthenticationFactorsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceListAuthenticationFactorsResponse>> task =
+            ListAuthenticationFactorsWithHttpInfoAsync(userServiceListAuthenticationFactorsRequest);
+        ApiResult<UserServiceListAuthenticationFactorsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -989,7 +1118,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -998,7 +1128,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListAuthenticationFactorsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceListAuthenticationFactorsResponse>> ListAuthenticationFactorsWithHttpInfoAsync(UserServiceListAuthenticationFactorsRequest userServiceListAuthenticationFactorsRequest)
+    public async Task<
+        ApiResult<UserServiceListAuthenticationFactorsResponse>
+    > ListAuthenticationFactorsWithHttpInfoAsync(
+        UserServiceListAuthenticationFactorsRequest userServiceListAuthenticationFactorsRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ListAuthenticationFactors";
 
@@ -1025,10 +1159,16 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListAuthenticationMethodTypesRequest"></param>
     /// <returns><![CDATA[UserServiceListAuthenticationMethodTypesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceListAuthenticationMethodTypesResponse> ListAuthenticationMethodTypesAsync(UserServiceListAuthenticationMethodTypesRequest userServiceListAuthenticationMethodTypesRequest)
+    public async Task<UserServiceListAuthenticationMethodTypesResponse> ListAuthenticationMethodTypesAsync(
+        UserServiceListAuthenticationMethodTypesRequest userServiceListAuthenticationMethodTypesRequest
+    )
     {
-        Task<ApiResult<UserServiceListAuthenticationMethodTypesResponse>> task = ListAuthenticationMethodTypesWithHttpInfoAsync(userServiceListAuthenticationMethodTypesRequest);
-        ApiResult<UserServiceListAuthenticationMethodTypesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceListAuthenticationMethodTypesResponse>> task =
+            ListAuthenticationMethodTypesWithHttpInfoAsync(
+                userServiceListAuthenticationMethodTypesRequest
+            );
+        ApiResult<UserServiceListAuthenticationMethodTypesResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -1039,7 +1179,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1049,7 +1190,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListAuthenticationMethodTypesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceListAuthenticationMethodTypesResponse>> ListAuthenticationMethodTypesWithHttpInfoAsync(UserServiceListAuthenticationMethodTypesRequest userServiceListAuthenticationMethodTypesRequest)
+    public async Task<
+        ApiResult<UserServiceListAuthenticationMethodTypesResponse>
+    > ListAuthenticationMethodTypesWithHttpInfoAsync(
+        UserServiceListAuthenticationMethodTypesRequest userServiceListAuthenticationMethodTypesRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ListAuthenticationMethodTypes";
 
@@ -1076,9 +1221,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListIDPLinksRequest"></param>
     /// <returns><![CDATA[UserServiceListIDPLinksResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceListIDPLinksResponse> ListIDPLinksAsync(UserServiceListIDPLinksRequest userServiceListIDPLinksRequest)
+    public async Task<UserServiceListIDPLinksResponse> ListIDPLinksAsync(
+        UserServiceListIDPLinksRequest userServiceListIDPLinksRequest
+    )
     {
-        Task<ApiResult<UserServiceListIDPLinksResponse>> task = ListIDPLinksWithHttpInfoAsync(userServiceListIDPLinksRequest);
+        Task<ApiResult<UserServiceListIDPLinksResponse>> task = ListIDPLinksWithHttpInfoAsync(
+            userServiceListIDPLinksRequest
+        );
         ApiResult<UserServiceListIDPLinksResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1090,7 +1239,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1100,7 +1250,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListIDPLinksRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceListIDPLinksResponse>> ListIDPLinksWithHttpInfoAsync(UserServiceListIDPLinksRequest userServiceListIDPLinksRequest)
+    public async Task<ApiResult<UserServiceListIDPLinksResponse>> ListIDPLinksWithHttpInfoAsync(
+        UserServiceListIDPLinksRequest userServiceListIDPLinksRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ListIDPLinks";
 
@@ -1127,9 +1279,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListKeysRequest"></param>
     /// <returns><![CDATA[UserServiceListKeysResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceListKeysResponse> ListKeysAsync(UserServiceListKeysRequest userServiceListKeysRequest)
+    public async Task<UserServiceListKeysResponse> ListKeysAsync(
+        UserServiceListKeysRequest userServiceListKeysRequest
+    )
     {
-        Task<ApiResult<UserServiceListKeysResponse>> task = ListKeysWithHttpInfoAsync(userServiceListKeysRequest);
+        Task<ApiResult<UserServiceListKeysResponse>> task = ListKeysWithHttpInfoAsync(
+            userServiceListKeysRequest
+        );
         ApiResult<UserServiceListKeysResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1141,7 +1297,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1151,7 +1308,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListKeysRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceListKeysResponse>> ListKeysWithHttpInfoAsync(UserServiceListKeysRequest userServiceListKeysRequest)
+    public async Task<ApiResult<UserServiceListKeysResponse>> ListKeysWithHttpInfoAsync(
+        UserServiceListKeysRequest userServiceListKeysRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ListKeys";
 
@@ -1178,9 +1337,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListPasskeysRequest"></param>
     /// <returns><![CDATA[UserServiceListPasskeysResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceListPasskeysResponse> ListPasskeysAsync(UserServiceListPasskeysRequest userServiceListPasskeysRequest)
+    public async Task<UserServiceListPasskeysResponse> ListPasskeysAsync(
+        UserServiceListPasskeysRequest userServiceListPasskeysRequest
+    )
     {
-        Task<ApiResult<UserServiceListPasskeysResponse>> task = ListPasskeysWithHttpInfoAsync(userServiceListPasskeysRequest);
+        Task<ApiResult<UserServiceListPasskeysResponse>> task = ListPasskeysWithHttpInfoAsync(
+            userServiceListPasskeysRequest
+        );
         ApiResult<UserServiceListPasskeysResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1192,7 +1355,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1202,7 +1366,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListPasskeysRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceListPasskeysResponse>> ListPasskeysWithHttpInfoAsync(UserServiceListPasskeysRequest userServiceListPasskeysRequest)
+    public async Task<ApiResult<UserServiceListPasskeysResponse>> ListPasskeysWithHttpInfoAsync(
+        UserServiceListPasskeysRequest userServiceListPasskeysRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ListPasskeys";
 
@@ -1229,10 +1395,15 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListPersonalAccessTokensRequest"></param>
     /// <returns><![CDATA[UserServiceListPersonalAccessTokensResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceListPersonalAccessTokensResponse> ListPersonalAccessTokensAsync(UserServiceListPersonalAccessTokensRequest userServiceListPersonalAccessTokensRequest)
+    public async Task<UserServiceListPersonalAccessTokensResponse> ListPersonalAccessTokensAsync(
+        UserServiceListPersonalAccessTokensRequest userServiceListPersonalAccessTokensRequest
+    )
     {
-        Task<ApiResult<UserServiceListPersonalAccessTokensResponse>> task = ListPersonalAccessTokensWithHttpInfoAsync(userServiceListPersonalAccessTokensRequest);
-        ApiResult<UserServiceListPersonalAccessTokensResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceListPersonalAccessTokensResponse>> task =
+            ListPersonalAccessTokensWithHttpInfoAsync(userServiceListPersonalAccessTokensRequest);
+        ApiResult<UserServiceListPersonalAccessTokensResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -1243,7 +1414,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1253,7 +1425,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListPersonalAccessTokensRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceListPersonalAccessTokensResponse>> ListPersonalAccessTokensWithHttpInfoAsync(UserServiceListPersonalAccessTokensRequest userServiceListPersonalAccessTokensRequest)
+    public async Task<
+        ApiResult<UserServiceListPersonalAccessTokensResponse>
+    > ListPersonalAccessTokensWithHttpInfoAsync(
+        UserServiceListPersonalAccessTokensRequest userServiceListPersonalAccessTokensRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ListPersonalAccessTokens";
 
@@ -1280,9 +1456,12 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListUserMetadataRequest"></param>
     /// <returns><![CDATA[UserServiceListUserMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceListUserMetadataResponse> ListUserMetadataAsync(UserServiceListUserMetadataRequest userServiceListUserMetadataRequest)
+    public async Task<UserServiceListUserMetadataResponse> ListUserMetadataAsync(
+        UserServiceListUserMetadataRequest userServiceListUserMetadataRequest
+    )
     {
-        Task<ApiResult<UserServiceListUserMetadataResponse>> task = ListUserMetadataWithHttpInfoAsync(userServiceListUserMetadataRequest);
+        Task<ApiResult<UserServiceListUserMetadataResponse>> task =
+            ListUserMetadataWithHttpInfoAsync(userServiceListUserMetadataRequest);
         ApiResult<UserServiceListUserMetadataResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1294,7 +1473,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1304,7 +1484,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListUserMetadataRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceListUserMetadataResponse>> ListUserMetadataWithHttpInfoAsync(UserServiceListUserMetadataRequest userServiceListUserMetadataRequest)
+    public async Task<
+        ApiResult<UserServiceListUserMetadataResponse>
+    > ListUserMetadataWithHttpInfoAsync(
+        UserServiceListUserMetadataRequest userServiceListUserMetadataRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ListUserMetadata";
 
@@ -1331,9 +1515,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListUsersRequest"></param>
     /// <returns><![CDATA[UserServiceListUsersResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceListUsersResponse> ListUsersAsync(UserServiceListUsersRequest userServiceListUsersRequest)
+    public async Task<UserServiceListUsersResponse> ListUsersAsync(
+        UserServiceListUsersRequest userServiceListUsersRequest
+    )
     {
-        Task<ApiResult<UserServiceListUsersResponse>> task = ListUsersWithHttpInfoAsync(userServiceListUsersRequest);
+        Task<ApiResult<UserServiceListUsersResponse>> task = ListUsersWithHttpInfoAsync(
+            userServiceListUsersRequest
+        );
         ApiResult<UserServiceListUsersResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1345,7 +1533,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1355,7 +1544,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceListUsersRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceListUsersResponse>> ListUsersWithHttpInfoAsync(UserServiceListUsersRequest userServiceListUsersRequest)
+    public async Task<ApiResult<UserServiceListUsersResponse>> ListUsersWithHttpInfoAsync(
+        UserServiceListUsersRequest userServiceListUsersRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ListUsers";
 
@@ -1382,9 +1573,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceLockUserRequest"></param>
     /// <returns><![CDATA[UserServiceLockUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceLockUserResponse> LockUserAsync(UserServiceLockUserRequest userServiceLockUserRequest)
+    public async Task<UserServiceLockUserResponse> LockUserAsync(
+        UserServiceLockUserRequest userServiceLockUserRequest
+    )
     {
-        Task<ApiResult<UserServiceLockUserResponse>> task = LockUserWithHttpInfoAsync(userServiceLockUserRequest);
+        Task<ApiResult<UserServiceLockUserResponse>> task = LockUserWithHttpInfoAsync(
+            userServiceLockUserRequest
+        );
         ApiResult<UserServiceLockUserResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1396,7 +1591,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1406,7 +1602,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceLockUserRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceLockUserResponse>> LockUserWithHttpInfoAsync(UserServiceLockUserRequest userServiceLockUserRequest)
+    public async Task<ApiResult<UserServiceLockUserResponse>> LockUserWithHttpInfoAsync(
+        UserServiceLockUserRequest userServiceLockUserRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/LockUser";
 
@@ -1433,9 +1631,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServicePasswordResetRequest"></param>
     /// <returns><![CDATA[UserServicePasswordResetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServicePasswordResetResponse> PasswordResetAsync(UserServicePasswordResetRequest userServicePasswordResetRequest)
+    public async Task<UserServicePasswordResetResponse> PasswordResetAsync(
+        UserServicePasswordResetRequest userServicePasswordResetRequest
+    )
     {
-        Task<ApiResult<UserServicePasswordResetResponse>> task = PasswordResetWithHttpInfoAsync(userServicePasswordResetRequest);
+        Task<ApiResult<UserServicePasswordResetResponse>> task = PasswordResetWithHttpInfoAsync(
+            userServicePasswordResetRequest
+        );
         ApiResult<UserServicePasswordResetResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1447,7 +1649,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1457,7 +1660,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServicePasswordResetRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServicePasswordResetResponse>> PasswordResetWithHttpInfoAsync(UserServicePasswordResetRequest userServicePasswordResetRequest)
+    public async Task<ApiResult<UserServicePasswordResetResponse>> PasswordResetWithHttpInfoAsync(
+        UserServicePasswordResetRequest userServicePasswordResetRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/PasswordReset";
 
@@ -1484,9 +1689,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceReactivateUserRequest"></param>
     /// <returns><![CDATA[UserServiceReactivateUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceReactivateUserResponse> ReactivateUserAsync(UserServiceReactivateUserRequest userServiceReactivateUserRequest)
+    public async Task<UserServiceReactivateUserResponse> ReactivateUserAsync(
+        UserServiceReactivateUserRequest userServiceReactivateUserRequest
+    )
     {
-        Task<ApiResult<UserServiceReactivateUserResponse>> task = ReactivateUserWithHttpInfoAsync(userServiceReactivateUserRequest);
+        Task<ApiResult<UserServiceReactivateUserResponse>> task = ReactivateUserWithHttpInfoAsync(
+            userServiceReactivateUserRequest
+        );
         ApiResult<UserServiceReactivateUserResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1498,7 +1707,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1508,7 +1718,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceReactivateUserRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceReactivateUserResponse>> ReactivateUserWithHttpInfoAsync(UserServiceReactivateUserRequest userServiceReactivateUserRequest)
+    public async Task<ApiResult<UserServiceReactivateUserResponse>> ReactivateUserWithHttpInfoAsync(
+        UserServiceReactivateUserRequest userServiceReactivateUserRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ReactivateUser";
 
@@ -1535,9 +1747,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRegisterPasskeyRequest"></param>
     /// <returns><![CDATA[UserServiceRegisterPasskeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRegisterPasskeyResponse> RegisterPasskeyAsync(UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest)
+    public async Task<UserServiceRegisterPasskeyResponse> RegisterPasskeyAsync(
+        UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest
+    )
     {
-        Task<ApiResult<UserServiceRegisterPasskeyResponse>> task = RegisterPasskeyWithHttpInfoAsync(userServiceRegisterPasskeyRequest);
+        Task<ApiResult<UserServiceRegisterPasskeyResponse>> task = RegisterPasskeyWithHttpInfoAsync(
+            userServiceRegisterPasskeyRequest
+        );
         ApiResult<UserServiceRegisterPasskeyResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1549,7 +1765,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1559,7 +1776,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRegisterPasskeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRegisterPasskeyResponse>> RegisterPasskeyWithHttpInfoAsync(UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest)
+    public async Task<
+        ApiResult<UserServiceRegisterPasskeyResponse>
+    > RegisterPasskeyWithHttpInfoAsync(
+        UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RegisterPasskey";
 
@@ -1586,9 +1807,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRegisterTOTPRequest"></param>
     /// <returns><![CDATA[UserServiceRegisterTOTPResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRegisterTOTPResponse> RegisterTOTPAsync(UserServiceRegisterTOTPRequest userServiceRegisterTOTPRequest)
+    public async Task<UserServiceRegisterTOTPResponse> RegisterTOTPAsync(
+        UserServiceRegisterTOTPRequest userServiceRegisterTOTPRequest
+    )
     {
-        Task<ApiResult<UserServiceRegisterTOTPResponse>> task = RegisterTOTPWithHttpInfoAsync(userServiceRegisterTOTPRequest);
+        Task<ApiResult<UserServiceRegisterTOTPResponse>> task = RegisterTOTPWithHttpInfoAsync(
+            userServiceRegisterTOTPRequest
+        );
         ApiResult<UserServiceRegisterTOTPResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1600,7 +1825,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1610,7 +1836,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRegisterTOTPRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRegisterTOTPResponse>> RegisterTOTPWithHttpInfoAsync(UserServiceRegisterTOTPRequest userServiceRegisterTOTPRequest)
+    public async Task<ApiResult<UserServiceRegisterTOTPResponse>> RegisterTOTPWithHttpInfoAsync(
+        UserServiceRegisterTOTPRequest userServiceRegisterTOTPRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RegisterTOTP";
 
@@ -1637,9 +1865,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRegisterU2FRequest"></param>
     /// <returns><![CDATA[UserServiceRegisterU2FResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRegisterU2FResponse> RegisterU2FAsync(UserServiceRegisterU2FRequest userServiceRegisterU2FRequest)
+    public async Task<UserServiceRegisterU2FResponse> RegisterU2FAsync(
+        UserServiceRegisterU2FRequest userServiceRegisterU2FRequest
+    )
     {
-        Task<ApiResult<UserServiceRegisterU2FResponse>> task = RegisterU2FWithHttpInfoAsync(userServiceRegisterU2FRequest);
+        Task<ApiResult<UserServiceRegisterU2FResponse>> task = RegisterU2FWithHttpInfoAsync(
+            userServiceRegisterU2FRequest
+        );
         ApiResult<UserServiceRegisterU2FResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1651,7 +1883,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1661,7 +1894,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRegisterU2FRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRegisterU2FResponse>> RegisterU2FWithHttpInfoAsync(UserServiceRegisterU2FRequest userServiceRegisterU2FRequest)
+    public async Task<ApiResult<UserServiceRegisterU2FResponse>> RegisterU2FWithHttpInfoAsync(
+        UserServiceRegisterU2FRequest userServiceRegisterU2FRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RegisterU2F";
 
@@ -1688,9 +1923,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveIDPLinkRequest"></param>
     /// <returns><![CDATA[UserServiceRemoveIDPLinkResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRemoveIDPLinkResponse> RemoveIDPLinkAsync(UserServiceRemoveIDPLinkRequest userServiceRemoveIDPLinkRequest)
+    public async Task<UserServiceRemoveIDPLinkResponse> RemoveIDPLinkAsync(
+        UserServiceRemoveIDPLinkRequest userServiceRemoveIDPLinkRequest
+    )
     {
-        Task<ApiResult<UserServiceRemoveIDPLinkResponse>> task = RemoveIDPLinkWithHttpInfoAsync(userServiceRemoveIDPLinkRequest);
+        Task<ApiResult<UserServiceRemoveIDPLinkResponse>> task = RemoveIDPLinkWithHttpInfoAsync(
+            userServiceRemoveIDPLinkRequest
+        );
         ApiResult<UserServiceRemoveIDPLinkResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1702,7 +1941,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1712,7 +1952,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveIDPLinkRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRemoveIDPLinkResponse>> RemoveIDPLinkWithHttpInfoAsync(UserServiceRemoveIDPLinkRequest userServiceRemoveIDPLinkRequest)
+    public async Task<ApiResult<UserServiceRemoveIDPLinkResponse>> RemoveIDPLinkWithHttpInfoAsync(
+        UserServiceRemoveIDPLinkRequest userServiceRemoveIDPLinkRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RemoveIDPLink";
 
@@ -1739,9 +1981,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveKeyRequest"></param>
     /// <returns><![CDATA[UserServiceRemoveKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRemoveKeyResponse> RemoveKeyAsync(UserServiceRemoveKeyRequest userServiceRemoveKeyRequest)
+    public async Task<UserServiceRemoveKeyResponse> RemoveKeyAsync(
+        UserServiceRemoveKeyRequest userServiceRemoveKeyRequest
+    )
     {
-        Task<ApiResult<UserServiceRemoveKeyResponse>> task = RemoveKeyWithHttpInfoAsync(userServiceRemoveKeyRequest);
+        Task<ApiResult<UserServiceRemoveKeyResponse>> task = RemoveKeyWithHttpInfoAsync(
+            userServiceRemoveKeyRequest
+        );
         ApiResult<UserServiceRemoveKeyResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1753,7 +1999,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1763,7 +2010,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRemoveKeyResponse>> RemoveKeyWithHttpInfoAsync(UserServiceRemoveKeyRequest userServiceRemoveKeyRequest)
+    public async Task<ApiResult<UserServiceRemoveKeyResponse>> RemoveKeyWithHttpInfoAsync(
+        UserServiceRemoveKeyRequest userServiceRemoveKeyRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RemoveKey";
 
@@ -1790,9 +2039,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveOTPEmailRequest"></param>
     /// <returns><![CDATA[UserServiceRemoveOTPEmailResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRemoveOTPEmailResponse> RemoveOTPEmailAsync(UserServiceRemoveOTPEmailRequest userServiceRemoveOTPEmailRequest)
+    public async Task<UserServiceRemoveOTPEmailResponse> RemoveOTPEmailAsync(
+        UserServiceRemoveOTPEmailRequest userServiceRemoveOTPEmailRequest
+    )
     {
-        Task<ApiResult<UserServiceRemoveOTPEmailResponse>> task = RemoveOTPEmailWithHttpInfoAsync(userServiceRemoveOTPEmailRequest);
+        Task<ApiResult<UserServiceRemoveOTPEmailResponse>> task = RemoveOTPEmailWithHttpInfoAsync(
+            userServiceRemoveOTPEmailRequest
+        );
         ApiResult<UserServiceRemoveOTPEmailResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1804,7 +2057,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1814,7 +2068,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveOTPEmailRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRemoveOTPEmailResponse>> RemoveOTPEmailWithHttpInfoAsync(UserServiceRemoveOTPEmailRequest userServiceRemoveOTPEmailRequest)
+    public async Task<ApiResult<UserServiceRemoveOTPEmailResponse>> RemoveOTPEmailWithHttpInfoAsync(
+        UserServiceRemoveOTPEmailRequest userServiceRemoveOTPEmailRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RemoveOTPEmail";
 
@@ -1841,9 +2097,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveOTPSMSRequest"></param>
     /// <returns><![CDATA[UserServiceRemoveOTPSMSResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRemoveOTPSMSResponse> RemoveOTPSMSAsync(UserServiceRemoveOTPSMSRequest userServiceRemoveOTPSMSRequest)
+    public async Task<UserServiceRemoveOTPSMSResponse> RemoveOTPSMSAsync(
+        UserServiceRemoveOTPSMSRequest userServiceRemoveOTPSMSRequest
+    )
     {
-        Task<ApiResult<UserServiceRemoveOTPSMSResponse>> task = RemoveOTPSMSWithHttpInfoAsync(userServiceRemoveOTPSMSRequest);
+        Task<ApiResult<UserServiceRemoveOTPSMSResponse>> task = RemoveOTPSMSWithHttpInfoAsync(
+            userServiceRemoveOTPSMSRequest
+        );
         ApiResult<UserServiceRemoveOTPSMSResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1855,7 +2115,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1865,7 +2126,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveOTPSMSRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRemoveOTPSMSResponse>> RemoveOTPSMSWithHttpInfoAsync(UserServiceRemoveOTPSMSRequest userServiceRemoveOTPSMSRequest)
+    public async Task<ApiResult<UserServiceRemoveOTPSMSResponse>> RemoveOTPSMSWithHttpInfoAsync(
+        UserServiceRemoveOTPSMSRequest userServiceRemoveOTPSMSRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RemoveOTPSMS";
 
@@ -1892,9 +2155,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemovePasskeyRequest"></param>
     /// <returns><![CDATA[UserServiceRemovePasskeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRemovePasskeyResponse> RemovePasskeyAsync(UserServiceRemovePasskeyRequest userServiceRemovePasskeyRequest)
+    public async Task<UserServiceRemovePasskeyResponse> RemovePasskeyAsync(
+        UserServiceRemovePasskeyRequest userServiceRemovePasskeyRequest
+    )
     {
-        Task<ApiResult<UserServiceRemovePasskeyResponse>> task = RemovePasskeyWithHttpInfoAsync(userServiceRemovePasskeyRequest);
+        Task<ApiResult<UserServiceRemovePasskeyResponse>> task = RemovePasskeyWithHttpInfoAsync(
+            userServiceRemovePasskeyRequest
+        );
         ApiResult<UserServiceRemovePasskeyResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -1906,7 +2173,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1916,7 +2184,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemovePasskeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRemovePasskeyResponse>> RemovePasskeyWithHttpInfoAsync(UserServiceRemovePasskeyRequest userServiceRemovePasskeyRequest)
+    public async Task<ApiResult<UserServiceRemovePasskeyResponse>> RemovePasskeyWithHttpInfoAsync(
+        UserServiceRemovePasskeyRequest userServiceRemovePasskeyRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RemovePasskey";
 
@@ -1943,10 +2213,15 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemovePersonalAccessTokenRequest"></param>
     /// <returns><![CDATA[UserServiceRemovePersonalAccessTokenResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRemovePersonalAccessTokenResponse> RemovePersonalAccessTokenAsync(UserServiceRemovePersonalAccessTokenRequest userServiceRemovePersonalAccessTokenRequest)
+    public async Task<UserServiceRemovePersonalAccessTokenResponse> RemovePersonalAccessTokenAsync(
+        UserServiceRemovePersonalAccessTokenRequest userServiceRemovePersonalAccessTokenRequest
+    )
     {
-        Task<ApiResult<UserServiceRemovePersonalAccessTokenResponse>> task = RemovePersonalAccessTokenWithHttpInfoAsync(userServiceRemovePersonalAccessTokenRequest);
-        ApiResult<UserServiceRemovePersonalAccessTokenResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceRemovePersonalAccessTokenResponse>> task =
+            RemovePersonalAccessTokenWithHttpInfoAsync(userServiceRemovePersonalAccessTokenRequest);
+        ApiResult<UserServiceRemovePersonalAccessTokenResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -1957,7 +2232,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -1967,7 +2243,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemovePersonalAccessTokenRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRemovePersonalAccessTokenResponse>> RemovePersonalAccessTokenWithHttpInfoAsync(UserServiceRemovePersonalAccessTokenRequest userServiceRemovePersonalAccessTokenRequest)
+    public async Task<
+        ApiResult<UserServiceRemovePersonalAccessTokenResponse>
+    > RemovePersonalAccessTokenWithHttpInfoAsync(
+        UserServiceRemovePersonalAccessTokenRequest userServiceRemovePersonalAccessTokenRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RemovePersonalAccessToken";
 
@@ -1994,9 +2274,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemovePhoneRequest"></param>
     /// <returns><![CDATA[UserServiceRemovePhoneResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRemovePhoneResponse> RemovePhoneAsync(UserServiceRemovePhoneRequest userServiceRemovePhoneRequest)
+    public async Task<UserServiceRemovePhoneResponse> RemovePhoneAsync(
+        UserServiceRemovePhoneRequest userServiceRemovePhoneRequest
+    )
     {
-        Task<ApiResult<UserServiceRemovePhoneResponse>> task = RemovePhoneWithHttpInfoAsync(userServiceRemovePhoneRequest);
+        Task<ApiResult<UserServiceRemovePhoneResponse>> task = RemovePhoneWithHttpInfoAsync(
+            userServiceRemovePhoneRequest
+        );
         ApiResult<UserServiceRemovePhoneResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2008,7 +2292,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2018,7 +2303,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemovePhoneRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRemovePhoneResponse>> RemovePhoneWithHttpInfoAsync(UserServiceRemovePhoneRequest userServiceRemovePhoneRequest)
+    public async Task<ApiResult<UserServiceRemovePhoneResponse>> RemovePhoneWithHttpInfoAsync(
+        UserServiceRemovePhoneRequest userServiceRemovePhoneRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RemovePhone";
 
@@ -2045,9 +2332,12 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveRecoveryCodesRequest"></param>
     /// <returns><![CDATA[UserServiceRemoveRecoveryCodesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRemoveRecoveryCodesResponse> RemoveRecoveryCodesAsync(UserServiceRemoveRecoveryCodesRequest userServiceRemoveRecoveryCodesRequest)
+    public async Task<UserServiceRemoveRecoveryCodesResponse> RemoveRecoveryCodesAsync(
+        UserServiceRemoveRecoveryCodesRequest userServiceRemoveRecoveryCodesRequest
+    )
     {
-        Task<ApiResult<UserServiceRemoveRecoveryCodesResponse>> task = RemoveRecoveryCodesWithHttpInfoAsync(userServiceRemoveRecoveryCodesRequest);
+        Task<ApiResult<UserServiceRemoveRecoveryCodesResponse>> task =
+            RemoveRecoveryCodesWithHttpInfoAsync(userServiceRemoveRecoveryCodesRequest);
         ApiResult<UserServiceRemoveRecoveryCodesResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2059,7 +2349,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2069,7 +2360,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveRecoveryCodesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRemoveRecoveryCodesResponse>> RemoveRecoveryCodesWithHttpInfoAsync(UserServiceRemoveRecoveryCodesRequest userServiceRemoveRecoveryCodesRequest)
+    public async Task<
+        ApiResult<UserServiceRemoveRecoveryCodesResponse>
+    > RemoveRecoveryCodesWithHttpInfoAsync(
+        UserServiceRemoveRecoveryCodesRequest userServiceRemoveRecoveryCodesRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RemoveRecoveryCodes";
 
@@ -2096,9 +2391,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveSecretRequest"></param>
     /// <returns><![CDATA[UserServiceRemoveSecretResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRemoveSecretResponse> RemoveSecretAsync(UserServiceRemoveSecretRequest userServiceRemoveSecretRequest)
+    public async Task<UserServiceRemoveSecretResponse> RemoveSecretAsync(
+        UserServiceRemoveSecretRequest userServiceRemoveSecretRequest
+    )
     {
-        Task<ApiResult<UserServiceRemoveSecretResponse>> task = RemoveSecretWithHttpInfoAsync(userServiceRemoveSecretRequest);
+        Task<ApiResult<UserServiceRemoveSecretResponse>> task = RemoveSecretWithHttpInfoAsync(
+            userServiceRemoveSecretRequest
+        );
         ApiResult<UserServiceRemoveSecretResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2110,7 +2409,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2120,7 +2420,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveSecretRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRemoveSecretResponse>> RemoveSecretWithHttpInfoAsync(UserServiceRemoveSecretRequest userServiceRemoveSecretRequest)
+    public async Task<ApiResult<UserServiceRemoveSecretResponse>> RemoveSecretWithHttpInfoAsync(
+        UserServiceRemoveSecretRequest userServiceRemoveSecretRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RemoveSecret";
 
@@ -2147,9 +2449,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveTOTPRequest"></param>
     /// <returns><![CDATA[UserServiceRemoveTOTPResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRemoveTOTPResponse> RemoveTOTPAsync(UserServiceRemoveTOTPRequest userServiceRemoveTOTPRequest)
+    public async Task<UserServiceRemoveTOTPResponse> RemoveTOTPAsync(
+        UserServiceRemoveTOTPRequest userServiceRemoveTOTPRequest
+    )
     {
-        Task<ApiResult<UserServiceRemoveTOTPResponse>> task = RemoveTOTPWithHttpInfoAsync(userServiceRemoveTOTPRequest);
+        Task<ApiResult<UserServiceRemoveTOTPResponse>> task = RemoveTOTPWithHttpInfoAsync(
+            userServiceRemoveTOTPRequest
+        );
         ApiResult<UserServiceRemoveTOTPResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2161,7 +2467,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2171,7 +2478,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveTOTPRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRemoveTOTPResponse>> RemoveTOTPWithHttpInfoAsync(UserServiceRemoveTOTPRequest userServiceRemoveTOTPRequest)
+    public async Task<ApiResult<UserServiceRemoveTOTPResponse>> RemoveTOTPWithHttpInfoAsync(
+        UserServiceRemoveTOTPRequest userServiceRemoveTOTPRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RemoveTOTP";
 
@@ -2198,9 +2507,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveU2FRequest"></param>
     /// <returns><![CDATA[UserServiceRemoveU2FResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRemoveU2FResponse> RemoveU2FAsync(UserServiceRemoveU2FRequest userServiceRemoveU2FRequest)
+    public async Task<UserServiceRemoveU2FResponse> RemoveU2FAsync(
+        UserServiceRemoveU2FRequest userServiceRemoveU2FRequest
+    )
     {
-        Task<ApiResult<UserServiceRemoveU2FResponse>> task = RemoveU2FWithHttpInfoAsync(userServiceRemoveU2FRequest);
+        Task<ApiResult<UserServiceRemoveU2FResponse>> task = RemoveU2FWithHttpInfoAsync(
+            userServiceRemoveU2FRequest
+        );
         ApiResult<UserServiceRemoveU2FResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2212,7 +2525,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2222,7 +2536,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRemoveU2FRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRemoveU2FResponse>> RemoveU2FWithHttpInfoAsync(UserServiceRemoveU2FRequest userServiceRemoveU2FRequest)
+    public async Task<ApiResult<UserServiceRemoveU2FResponse>> RemoveU2FWithHttpInfoAsync(
+        UserServiceRemoveU2FRequest userServiceRemoveU2FRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RemoveU2F";
 
@@ -2249,9 +2565,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceResendEmailCodeRequest"></param>
     /// <returns><![CDATA[UserServiceResendEmailCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceResendEmailCodeResponse> ResendEmailCodeAsync(UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest)
+    public async Task<UserServiceResendEmailCodeResponse> ResendEmailCodeAsync(
+        UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest
+    )
     {
-        Task<ApiResult<UserServiceResendEmailCodeResponse>> task = ResendEmailCodeWithHttpInfoAsync(userServiceResendEmailCodeRequest);
+        Task<ApiResult<UserServiceResendEmailCodeResponse>> task = ResendEmailCodeWithHttpInfoAsync(
+            userServiceResendEmailCodeRequest
+        );
         ApiResult<UserServiceResendEmailCodeResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2263,7 +2583,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2273,7 +2594,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceResendEmailCodeRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceResendEmailCodeResponse>> ResendEmailCodeWithHttpInfoAsync(UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest)
+    public async Task<
+        ApiResult<UserServiceResendEmailCodeResponse>
+    > ResendEmailCodeWithHttpInfoAsync(
+        UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ResendEmailCode";
 
@@ -2300,9 +2625,12 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceResendInviteCodeRequest"></param>
     /// <returns><![CDATA[UserServiceResendInviteCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceResendInviteCodeResponse> ResendInviteCodeAsync(UserServiceResendInviteCodeRequest userServiceResendInviteCodeRequest)
+    public async Task<UserServiceResendInviteCodeResponse> ResendInviteCodeAsync(
+        UserServiceResendInviteCodeRequest userServiceResendInviteCodeRequest
+    )
     {
-        Task<ApiResult<UserServiceResendInviteCodeResponse>> task = ResendInviteCodeWithHttpInfoAsync(userServiceResendInviteCodeRequest);
+        Task<ApiResult<UserServiceResendInviteCodeResponse>> task =
+            ResendInviteCodeWithHttpInfoAsync(userServiceResendInviteCodeRequest);
         ApiResult<UserServiceResendInviteCodeResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2314,7 +2642,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2324,7 +2653,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceResendInviteCodeRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceResendInviteCodeResponse>> ResendInviteCodeWithHttpInfoAsync(UserServiceResendInviteCodeRequest userServiceResendInviteCodeRequest)
+    public async Task<
+        ApiResult<UserServiceResendInviteCodeResponse>
+    > ResendInviteCodeWithHttpInfoAsync(
+        UserServiceResendInviteCodeRequest userServiceResendInviteCodeRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ResendInviteCode";
 
@@ -2351,9 +2684,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceResendPhoneCodeRequest"></param>
     /// <returns><![CDATA[UserServiceResendPhoneCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceResendPhoneCodeResponse> ResendPhoneCodeAsync(UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest)
+    public async Task<UserServiceResendPhoneCodeResponse> ResendPhoneCodeAsync(
+        UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest
+    )
     {
-        Task<ApiResult<UserServiceResendPhoneCodeResponse>> task = ResendPhoneCodeWithHttpInfoAsync(userServiceResendPhoneCodeRequest);
+        Task<ApiResult<UserServiceResendPhoneCodeResponse>> task = ResendPhoneCodeWithHttpInfoAsync(
+            userServiceResendPhoneCodeRequest
+        );
         ApiResult<UserServiceResendPhoneCodeResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2365,7 +2702,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2375,7 +2713,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceResendPhoneCodeRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceResendPhoneCodeResponse>> ResendPhoneCodeWithHttpInfoAsync(UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest)
+    public async Task<
+        ApiResult<UserServiceResendPhoneCodeResponse>
+    > ResendPhoneCodeWithHttpInfoAsync(
+        UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/ResendPhoneCode";
 
@@ -2402,10 +2744,16 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRetrieveIdentityProviderIntentRequest"></param>
     /// <returns><![CDATA[UserServiceRetrieveIdentityProviderIntentResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceRetrieveIdentityProviderIntentResponse> RetrieveIdentityProviderIntentAsync(UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest)
+    public async Task<UserServiceRetrieveIdentityProviderIntentResponse> RetrieveIdentityProviderIntentAsync(
+        UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest
+    )
     {
-        Task<ApiResult<UserServiceRetrieveIdentityProviderIntentResponse>> task = RetrieveIdentityProviderIntentWithHttpInfoAsync(userServiceRetrieveIdentityProviderIntentRequest);
-        ApiResult<UserServiceRetrieveIdentityProviderIntentResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceRetrieveIdentityProviderIntentResponse>> task =
+            RetrieveIdentityProviderIntentWithHttpInfoAsync(
+                userServiceRetrieveIdentityProviderIntentRequest
+            );
+        ApiResult<UserServiceRetrieveIdentityProviderIntentResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -2416,7 +2764,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2426,7 +2775,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceRetrieveIdentityProviderIntentRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceRetrieveIdentityProviderIntentResponse>> RetrieveIdentityProviderIntentWithHttpInfoAsync(UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest)
+    public async Task<
+        ApiResult<UserServiceRetrieveIdentityProviderIntentResponse>
+    > RetrieveIdentityProviderIntentWithHttpInfoAsync(
+        UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/RetrieveIdentityProviderIntent";
 
@@ -2453,9 +2806,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceSendEmailCodeRequest"></param>
     /// <returns><![CDATA[UserServiceSendEmailCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceSendEmailCodeResponse> SendEmailCodeAsync(UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest)
+    public async Task<UserServiceSendEmailCodeResponse> SendEmailCodeAsync(
+        UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest
+    )
     {
-        Task<ApiResult<UserServiceSendEmailCodeResponse>> task = SendEmailCodeWithHttpInfoAsync(userServiceSendEmailCodeRequest);
+        Task<ApiResult<UserServiceSendEmailCodeResponse>> task = SendEmailCodeWithHttpInfoAsync(
+            userServiceSendEmailCodeRequest
+        );
         ApiResult<UserServiceSendEmailCodeResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2467,7 +2824,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2477,7 +2835,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceSendEmailCodeRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceSendEmailCodeResponse>> SendEmailCodeWithHttpInfoAsync(UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest)
+    public async Task<ApiResult<UserServiceSendEmailCodeResponse>> SendEmailCodeWithHttpInfoAsync(
+        UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/SendEmailCode";
 
@@ -2504,9 +2864,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceSetEmailRequest"></param>
     /// <returns><![CDATA[UserServiceSetEmailResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceSetEmailResponse> SetEmailAsync(UserServiceSetEmailRequest userServiceSetEmailRequest)
+    public async Task<UserServiceSetEmailResponse> SetEmailAsync(
+        UserServiceSetEmailRequest userServiceSetEmailRequest
+    )
     {
-        Task<ApiResult<UserServiceSetEmailResponse>> task = SetEmailWithHttpInfoAsync(userServiceSetEmailRequest);
+        Task<ApiResult<UserServiceSetEmailResponse>> task = SetEmailWithHttpInfoAsync(
+            userServiceSetEmailRequest
+        );
         ApiResult<UserServiceSetEmailResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2518,7 +2882,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2528,7 +2893,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceSetEmailRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceSetEmailResponse>> SetEmailWithHttpInfoAsync(UserServiceSetEmailRequest userServiceSetEmailRequest)
+    public async Task<ApiResult<UserServiceSetEmailResponse>> SetEmailWithHttpInfoAsync(
+        UserServiceSetEmailRequest userServiceSetEmailRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/SetEmail";
 
@@ -2555,9 +2922,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceSetPasswordRequest"></param>
     /// <returns><![CDATA[UserServiceSetPasswordResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceSetPasswordResponse> SetPasswordAsync(UserServiceSetPasswordRequest userServiceSetPasswordRequest)
+    public async Task<UserServiceSetPasswordResponse> SetPasswordAsync(
+        UserServiceSetPasswordRequest userServiceSetPasswordRequest
+    )
     {
-        Task<ApiResult<UserServiceSetPasswordResponse>> task = SetPasswordWithHttpInfoAsync(userServiceSetPasswordRequest);
+        Task<ApiResult<UserServiceSetPasswordResponse>> task = SetPasswordWithHttpInfoAsync(
+            userServiceSetPasswordRequest
+        );
         ApiResult<UserServiceSetPasswordResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2569,7 +2940,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2579,7 +2951,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceSetPasswordRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceSetPasswordResponse>> SetPasswordWithHttpInfoAsync(UserServiceSetPasswordRequest userServiceSetPasswordRequest)
+    public async Task<ApiResult<UserServiceSetPasswordResponse>> SetPasswordWithHttpInfoAsync(
+        UserServiceSetPasswordRequest userServiceSetPasswordRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/SetPassword";
 
@@ -2606,9 +2980,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceSetPhoneRequest"></param>
     /// <returns><![CDATA[UserServiceSetPhoneResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceSetPhoneResponse> SetPhoneAsync(UserServiceSetPhoneRequest userServiceSetPhoneRequest)
+    public async Task<UserServiceSetPhoneResponse> SetPhoneAsync(
+        UserServiceSetPhoneRequest userServiceSetPhoneRequest
+    )
     {
-        Task<ApiResult<UserServiceSetPhoneResponse>> task = SetPhoneWithHttpInfoAsync(userServiceSetPhoneRequest);
+        Task<ApiResult<UserServiceSetPhoneResponse>> task = SetPhoneWithHttpInfoAsync(
+            userServiceSetPhoneRequest
+        );
         ApiResult<UserServiceSetPhoneResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2620,7 +2998,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2630,7 +3009,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceSetPhoneRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceSetPhoneResponse>> SetPhoneWithHttpInfoAsync(UserServiceSetPhoneRequest userServiceSetPhoneRequest)
+    public async Task<ApiResult<UserServiceSetPhoneResponse>> SetPhoneWithHttpInfoAsync(
+        UserServiceSetPhoneRequest userServiceSetPhoneRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/SetPhone";
 
@@ -2657,9 +3038,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceSetUserMetadataRequest"></param>
     /// <returns><![CDATA[UserServiceSetUserMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceSetUserMetadataResponse> SetUserMetadataAsync(UserServiceSetUserMetadataRequest userServiceSetUserMetadataRequest)
+    public async Task<UserServiceSetUserMetadataResponse> SetUserMetadataAsync(
+        UserServiceSetUserMetadataRequest userServiceSetUserMetadataRequest
+    )
     {
-        Task<ApiResult<UserServiceSetUserMetadataResponse>> task = SetUserMetadataWithHttpInfoAsync(userServiceSetUserMetadataRequest);
+        Task<ApiResult<UserServiceSetUserMetadataResponse>> task = SetUserMetadataWithHttpInfoAsync(
+            userServiceSetUserMetadataRequest
+        );
         ApiResult<UserServiceSetUserMetadataResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2671,7 +3056,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2681,7 +3067,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceSetUserMetadataRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceSetUserMetadataResponse>> SetUserMetadataWithHttpInfoAsync(UserServiceSetUserMetadataRequest userServiceSetUserMetadataRequest)
+    public async Task<
+        ApiResult<UserServiceSetUserMetadataResponse>
+    > SetUserMetadataWithHttpInfoAsync(
+        UserServiceSetUserMetadataRequest userServiceSetUserMetadataRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/SetUserMetadata";
 
@@ -2708,10 +3098,16 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceStartIdentityProviderIntentRequest"></param>
     /// <returns><![CDATA[UserServiceStartIdentityProviderIntentResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceStartIdentityProviderIntentResponse> StartIdentityProviderIntentAsync(UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest)
+    public async Task<UserServiceStartIdentityProviderIntentResponse> StartIdentityProviderIntentAsync(
+        UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest
+    )
     {
-        Task<ApiResult<UserServiceStartIdentityProviderIntentResponse>> task = StartIdentityProviderIntentWithHttpInfoAsync(userServiceStartIdentityProviderIntentRequest);
-        ApiResult<UserServiceStartIdentityProviderIntentResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceStartIdentityProviderIntentResponse>> task =
+            StartIdentityProviderIntentWithHttpInfoAsync(
+                userServiceStartIdentityProviderIntentRequest
+            );
+        ApiResult<UserServiceStartIdentityProviderIntentResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -2722,7 +3118,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2732,7 +3129,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceStartIdentityProviderIntentRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceStartIdentityProviderIntentResponse>> StartIdentityProviderIntentWithHttpInfoAsync(UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest)
+    public async Task<
+        ApiResult<UserServiceStartIdentityProviderIntentResponse>
+    > StartIdentityProviderIntentWithHttpInfoAsync(
+        UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/StartIdentityProviderIntent";
 
@@ -2759,9 +3160,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceUnlockUserRequest"></param>
     /// <returns><![CDATA[UserServiceUnlockUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceUnlockUserResponse> UnlockUserAsync(UserServiceUnlockUserRequest userServiceUnlockUserRequest)
+    public async Task<UserServiceUnlockUserResponse> UnlockUserAsync(
+        UserServiceUnlockUserRequest userServiceUnlockUserRequest
+    )
     {
-        Task<ApiResult<UserServiceUnlockUserResponse>> task = UnlockUserWithHttpInfoAsync(userServiceUnlockUserRequest);
+        Task<ApiResult<UserServiceUnlockUserResponse>> task = UnlockUserWithHttpInfoAsync(
+            userServiceUnlockUserRequest
+        );
         ApiResult<UserServiceUnlockUserResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2773,7 +3178,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2783,7 +3189,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceUnlockUserRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceUnlockUserResponse>> UnlockUserWithHttpInfoAsync(UserServiceUnlockUserRequest userServiceUnlockUserRequest)
+    public async Task<ApiResult<UserServiceUnlockUserResponse>> UnlockUserWithHttpInfoAsync(
+        UserServiceUnlockUserRequest userServiceUnlockUserRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/UnlockUser";
 
@@ -2810,9 +3218,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceUpdateHumanUserRequest"></param>
     /// <returns><![CDATA[UserServiceUpdateHumanUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceUpdateHumanUserResponse> UpdateHumanUserAsync(UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest)
+    public async Task<UserServiceUpdateHumanUserResponse> UpdateHumanUserAsync(
+        UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest
+    )
     {
-        Task<ApiResult<UserServiceUpdateHumanUserResponse>> task = UpdateHumanUserWithHttpInfoAsync(userServiceUpdateHumanUserRequest);
+        Task<ApiResult<UserServiceUpdateHumanUserResponse>> task = UpdateHumanUserWithHttpInfoAsync(
+            userServiceUpdateHumanUserRequest
+        );
         ApiResult<UserServiceUpdateHumanUserResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2824,7 +3236,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2834,7 +3247,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceUpdateHumanUserRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceUpdateHumanUserResponse>> UpdateHumanUserWithHttpInfoAsync(UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest)
+    public async Task<
+        ApiResult<UserServiceUpdateHumanUserResponse>
+    > UpdateHumanUserWithHttpInfoAsync(
+        UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/UpdateHumanUser";
 
@@ -2861,9 +3278,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceUpdateUserRequest"></param>
     /// <returns><![CDATA[UserServiceUpdateUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceUpdateUserResponse> UpdateUserAsync(UserServiceUpdateUserRequest userServiceUpdateUserRequest)
+    public async Task<UserServiceUpdateUserResponse> UpdateUserAsync(
+        UserServiceUpdateUserRequest userServiceUpdateUserRequest
+    )
     {
-        Task<ApiResult<UserServiceUpdateUserResponse>> task = UpdateUserWithHttpInfoAsync(userServiceUpdateUserRequest);
+        Task<ApiResult<UserServiceUpdateUserResponse>> task = UpdateUserWithHttpInfoAsync(
+            userServiceUpdateUserRequest
+        );
         ApiResult<UserServiceUpdateUserResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2875,7 +3296,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2885,7 +3307,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceUpdateUserRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceUpdateUserResponse>> UpdateUserWithHttpInfoAsync(UserServiceUpdateUserRequest userServiceUpdateUserRequest)
+    public async Task<ApiResult<UserServiceUpdateUserResponse>> UpdateUserWithHttpInfoAsync(
+        UserServiceUpdateUserRequest userServiceUpdateUserRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/UpdateUser";
 
@@ -2912,9 +3336,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyEmailRequest"></param>
     /// <returns><![CDATA[UserServiceVerifyEmailResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceVerifyEmailResponse> VerifyEmailAsync(UserServiceVerifyEmailRequest userServiceVerifyEmailRequest)
+    public async Task<UserServiceVerifyEmailResponse> VerifyEmailAsync(
+        UserServiceVerifyEmailRequest userServiceVerifyEmailRequest
+    )
     {
-        Task<ApiResult<UserServiceVerifyEmailResponse>> task = VerifyEmailWithHttpInfoAsync(userServiceVerifyEmailRequest);
+        Task<ApiResult<UserServiceVerifyEmailResponse>> task = VerifyEmailWithHttpInfoAsync(
+            userServiceVerifyEmailRequest
+        );
         ApiResult<UserServiceVerifyEmailResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2926,7 +3354,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2936,7 +3365,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyEmailRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceVerifyEmailResponse>> VerifyEmailWithHttpInfoAsync(UserServiceVerifyEmailRequest userServiceVerifyEmailRequest)
+    public async Task<ApiResult<UserServiceVerifyEmailResponse>> VerifyEmailWithHttpInfoAsync(
+        UserServiceVerifyEmailRequest userServiceVerifyEmailRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/VerifyEmail";
 
@@ -2963,9 +3394,12 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyInviteCodeRequest"></param>
     /// <returns><![CDATA[UserServiceVerifyInviteCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceVerifyInviteCodeResponse> VerifyInviteCodeAsync(UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest)
+    public async Task<UserServiceVerifyInviteCodeResponse> VerifyInviteCodeAsync(
+        UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest
+    )
     {
-        Task<ApiResult<UserServiceVerifyInviteCodeResponse>> task = VerifyInviteCodeWithHttpInfoAsync(userServiceVerifyInviteCodeRequest);
+        Task<ApiResult<UserServiceVerifyInviteCodeResponse>> task =
+            VerifyInviteCodeWithHttpInfoAsync(userServiceVerifyInviteCodeRequest);
         ApiResult<UserServiceVerifyInviteCodeResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -2977,7 +3411,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -2987,7 +3422,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyInviteCodeRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceVerifyInviteCodeResponse>> VerifyInviteCodeWithHttpInfoAsync(UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest)
+    public async Task<
+        ApiResult<UserServiceVerifyInviteCodeResponse>
+    > VerifyInviteCodeWithHttpInfoAsync(
+        UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/VerifyInviteCode";
 
@@ -3014,10 +3453,15 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyPasskeyRegistrationRequest"></param>
     /// <returns><![CDATA[UserServiceVerifyPasskeyRegistrationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceVerifyPasskeyRegistrationResponse> VerifyPasskeyRegistrationAsync(UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest)
+    public async Task<UserServiceVerifyPasskeyRegistrationResponse> VerifyPasskeyRegistrationAsync(
+        UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest
+    )
     {
-        Task<ApiResult<UserServiceVerifyPasskeyRegistrationResponse>> task = VerifyPasskeyRegistrationWithHttpInfoAsync(userServiceVerifyPasskeyRegistrationRequest);
-        ApiResult<UserServiceVerifyPasskeyRegistrationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceVerifyPasskeyRegistrationResponse>> task =
+            VerifyPasskeyRegistrationWithHttpInfoAsync(userServiceVerifyPasskeyRegistrationRequest);
+        ApiResult<UserServiceVerifyPasskeyRegistrationResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -3028,7 +3472,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -3038,7 +3483,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyPasskeyRegistrationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceVerifyPasskeyRegistrationResponse>> VerifyPasskeyRegistrationWithHttpInfoAsync(UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest)
+    public async Task<
+        ApiResult<UserServiceVerifyPasskeyRegistrationResponse>
+    > VerifyPasskeyRegistrationWithHttpInfoAsync(
+        UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/VerifyPasskeyRegistration";
 
@@ -3065,9 +3514,13 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyPhoneRequest"></param>
     /// <returns><![CDATA[UserServiceVerifyPhoneResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceVerifyPhoneResponse> VerifyPhoneAsync(UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest)
+    public async Task<UserServiceVerifyPhoneResponse> VerifyPhoneAsync(
+        UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest
+    )
     {
-        Task<ApiResult<UserServiceVerifyPhoneResponse>> task = VerifyPhoneWithHttpInfoAsync(userServiceVerifyPhoneRequest);
+        Task<ApiResult<UserServiceVerifyPhoneResponse>> task = VerifyPhoneWithHttpInfoAsync(
+            userServiceVerifyPhoneRequest
+        );
         ApiResult<UserServiceVerifyPhoneResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -3079,7 +3532,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -3089,7 +3543,9 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyPhoneRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceVerifyPhoneResponse>> VerifyPhoneWithHttpInfoAsync(UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest)
+    public async Task<ApiResult<UserServiceVerifyPhoneResponse>> VerifyPhoneWithHttpInfoAsync(
+        UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/VerifyPhone";
 
@@ -3116,10 +3572,15 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyTOTPRegistrationRequest"></param>
     /// <returns><![CDATA[UserServiceVerifyTOTPRegistrationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceVerifyTOTPRegistrationResponse> VerifyTOTPRegistrationAsync(UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest)
+    public async Task<UserServiceVerifyTOTPRegistrationResponse> VerifyTOTPRegistrationAsync(
+        UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest
+    )
     {
-        Task<ApiResult<UserServiceVerifyTOTPRegistrationResponse>> task = VerifyTOTPRegistrationWithHttpInfoAsync(userServiceVerifyTOTPRegistrationRequest);
-        ApiResult<UserServiceVerifyTOTPRegistrationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceVerifyTOTPRegistrationResponse>> task =
+            VerifyTOTPRegistrationWithHttpInfoAsync(userServiceVerifyTOTPRegistrationRequest);
+        ApiResult<UserServiceVerifyTOTPRegistrationResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -3130,7 +3591,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -3140,7 +3602,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyTOTPRegistrationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceVerifyTOTPRegistrationResponse>> VerifyTOTPRegistrationWithHttpInfoAsync(UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest)
+    public async Task<
+        ApiResult<UserServiceVerifyTOTPRegistrationResponse>
+    > VerifyTOTPRegistrationWithHttpInfoAsync(
+        UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/VerifyTOTPRegistration";
 
@@ -3167,10 +3633,15 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyU2FRegistrationRequest"></param>
     /// <returns><![CDATA[UserServiceVerifyU2FRegistrationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<UserServiceVerifyU2FRegistrationResponse> VerifyU2FRegistrationAsync(UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest)
+    public async Task<UserServiceVerifyU2FRegistrationResponse> VerifyU2FRegistrationAsync(
+        UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest
+    )
     {
-        Task<ApiResult<UserServiceVerifyU2FRegistrationResponse>> task = VerifyU2FRegistrationWithHttpInfoAsync(userServiceVerifyU2FRegistrationRequest);
-        ApiResult<UserServiceVerifyU2FRegistrationResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<UserServiceVerifyU2FRegistrationResponse>> task =
+            VerifyU2FRegistrationWithHttpInfoAsync(userServiceVerifyU2FRegistrationRequest);
+        ApiResult<UserServiceVerifyU2FRegistrationResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -3181,7 +3652,8 @@ public class UserServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -3191,7 +3663,11 @@ public class UserServiceApi : BaseApi
     /// <param name="userServiceVerifyU2FRegistrationRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<UserServiceVerifyU2FRegistrationResponse>> VerifyU2FRegistrationWithHttpInfoAsync(UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest)
+    public async Task<
+        ApiResult<UserServiceVerifyU2FRegistrationResponse>
+    > VerifyU2FRegistrationWithHttpInfoAsync(
+        UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest
+    )
     {
         string path = "/zitadel.user.v2.UserService/VerifyU2FRegistration";
 

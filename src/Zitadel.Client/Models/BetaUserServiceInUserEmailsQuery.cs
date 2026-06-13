@@ -22,8 +22,10 @@ public class BetaUserServiceInUserEmailsQuery : IEquatable<BetaUserServiceInUser
     public bool Equals(BetaUserServiceInUserEmailsQuery? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<string>?>.Default.Equals(this.UserEmails, other.UserEmails));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<string>?>.Default.Equals(this.UserEmails, other.UserEmails)
+            );
     }
 
     public override bool Equals(object? obj)

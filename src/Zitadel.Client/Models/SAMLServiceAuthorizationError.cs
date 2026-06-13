@@ -23,9 +23,14 @@ public class SAMLServiceAuthorizationError : IEquatable<SAMLServiceAuthorization
     public bool Equals(SAMLServiceAuthorizationError? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<SAMLServiceErrorReason?>.Default.Equals(this.Error, other.Error)
-                    && EqualityComparer<string?>.Default.Equals(this.ErrorDescription, other.ErrorDescription));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ErrorDescription,
+                        other.ErrorDescription
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

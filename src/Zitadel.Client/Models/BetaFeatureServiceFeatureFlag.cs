@@ -26,9 +26,14 @@ public class BetaFeatureServiceFeatureFlag : IEquatable<BetaFeatureServiceFeatur
     public bool Equals(BetaFeatureServiceFeatureFlag? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.Enabled, other.Enabled)
-                    && EqualityComparer<BetaFeatureServiceSource?>.Default.Equals(this.Source, other.Source));
+                    && EqualityComparer<BetaFeatureServiceSource?>.Default.Equals(
+                        this.Source,
+                        other.Source
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

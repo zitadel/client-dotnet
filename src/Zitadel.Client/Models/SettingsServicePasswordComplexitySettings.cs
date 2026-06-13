@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class SettingsServicePasswordComplexitySettings : IEquatable<SettingsServicePasswordComplexitySettings>
+public class SettingsServicePasswordComplexitySettings
+    : IEquatable<SettingsServicePasswordComplexitySettings>
 {
     /// <summary>
     /// The minimum length a password must have.
@@ -54,13 +55,30 @@ public class SettingsServicePasswordComplexitySettings : IEquatable<SettingsServ
     public bool Equals(SettingsServicePasswordComplexitySettings? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<Object?>.Default.Equals(this.MinLength, other.MinLength)
-                    && EqualityComparer<bool?>.Default.Equals(this.RequiresUppercase, other.RequiresUppercase)
-                    && EqualityComparer<bool?>.Default.Equals(this.RequiresLowercase, other.RequiresLowercase)
-                    && EqualityComparer<bool?>.Default.Equals(this.RequiresNumber, other.RequiresNumber)
-                    && EqualityComparer<bool?>.Default.Equals(this.RequiresSymbol, other.RequiresSymbol)
-                    && EqualityComparer<SettingsServiceResourceOwnerType?>.Default.Equals(this.ResourceOwnerType, other.ResourceOwnerType));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.RequiresUppercase,
+                        other.RequiresUppercase
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.RequiresLowercase,
+                        other.RequiresLowercase
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.RequiresNumber,
+                        other.RequiresNumber
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.RequiresSymbol,
+                        other.RequiresSymbol
+                    )
+                    && EqualityComparer<SettingsServiceResourceOwnerType?>.Default.Equals(
+                        this.ResourceOwnerType,
+                        other.ResourceOwnerType
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

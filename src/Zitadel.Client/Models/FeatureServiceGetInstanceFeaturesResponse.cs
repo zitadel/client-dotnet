@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class FeatureServiceGetInstanceFeaturesResponse : IEquatable<FeatureServiceGetInstanceFeaturesResponse>
+public class FeatureServiceGetInstanceFeaturesResponse
+    : IEquatable<FeatureServiceGetInstanceFeaturesResponse>
 {
     /// <example>null</example>
     [JsonPropertyName("details")]
@@ -59,18 +60,53 @@ public class FeatureServiceGetInstanceFeaturesResponse : IEquatable<FeatureServi
     public bool Equals(FeatureServiceGetInstanceFeaturesResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<FeatureServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(this.LoginDefaultOrg, other.LoginDefaultOrg)
-                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(this.UserSchema, other.UserSchema)
-                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(this.OidcTokenExchange, other.OidcTokenExchange)
-                    && EqualityComparer<FeatureServiceImprovedPerformanceFeatureFlag?>.Default.Equals(this.ImprovedPerformance, other.ImprovedPerformance)
-                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(this.DebugOidcParentError, other.DebugOidcParentError)
-                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(this.OidcSingleV1SessionTermination, other.OidcSingleV1SessionTermination)
-                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(this.EnableBackChannelLogout, other.EnableBackChannelLogout)
-                    && EqualityComparer<FeatureServiceLoginV2FeatureFlag?>.Default.Equals(this.LoginV2, other.LoginV2)
-                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(this.PermissionCheckV2, other.PermissionCheckV2)
-                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(this.ConsoleUseV2UserApi, other.ConsoleUseV2UserApi));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<FeatureServiceDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
+                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(
+                        this.LoginDefaultOrg,
+                        other.LoginDefaultOrg
+                    )
+                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(
+                        this.UserSchema,
+                        other.UserSchema
+                    )
+                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(
+                        this.OidcTokenExchange,
+                        other.OidcTokenExchange
+                    )
+                    && EqualityComparer<FeatureServiceImprovedPerformanceFeatureFlag?>.Default.Equals(
+                        this.ImprovedPerformance,
+                        other.ImprovedPerformance
+                    )
+                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(
+                        this.DebugOidcParentError,
+                        other.DebugOidcParentError
+                    )
+                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(
+                        this.OidcSingleV1SessionTermination,
+                        other.OidcSingleV1SessionTermination
+                    )
+                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(
+                        this.EnableBackChannelLogout,
+                        other.EnableBackChannelLogout
+                    )
+                    && EqualityComparer<FeatureServiceLoginV2FeatureFlag?>.Default.Equals(
+                        this.LoginV2,
+                        other.LoginV2
+                    )
+                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(
+                        this.PermissionCheckV2,
+                        other.PermissionCheckV2
+                    )
+                    && EqualityComparer<FeatureServiceFeatureFlag?>.Default.Equals(
+                        this.ConsoleUseV2UserApi,
+                        other.ConsoleUseV2UserApi
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

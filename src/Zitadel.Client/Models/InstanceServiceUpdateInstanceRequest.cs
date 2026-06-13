@@ -29,9 +29,14 @@ public class InstanceServiceUpdateInstanceRequest : IEquatable<InstanceServiceUp
     public bool Equals(InstanceServiceUpdateInstanceRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
-                    && EqualityComparer<string?>.Default.Equals(this.InstanceName, other.InstanceName));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.InstanceName,
+                        other.InstanceName
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

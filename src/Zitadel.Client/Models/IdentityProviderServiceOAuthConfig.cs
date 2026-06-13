@@ -57,13 +57,24 @@ public class IdentityProviderServiceOAuthConfig : IEquatable<IdentityProviderSer
     public bool Equals(IdentityProviderServiceOAuthConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<string?>.Default.Equals(this.AuthorizationEndpoint, other.AuthorizationEndpoint)
-                    && EqualityComparer<string?>.Default.Equals(this.TokenEndpoint, other.TokenEndpoint)
-                    && EqualityComparer<string?>.Default.Equals(this.UserEndpoint, other.UserEndpoint)
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.AuthorizationEndpoint,
+                        other.AuthorizationEndpoint
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.TokenEndpoint,
+                        other.TokenEndpoint
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.UserEndpoint,
+                        other.UserEndpoint
+                    )
                     && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes)
-                    && EqualityComparer<string?>.Default.Equals(this.IdAttribute, other.IdAttribute));
+                    && EqualityComparer<string?>.Default.Equals(this.IdAttribute, other.IdAttribute)
+            );
     }
 
     public override bool Equals(object? obj)

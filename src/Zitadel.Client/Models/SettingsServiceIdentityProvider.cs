@@ -31,11 +31,19 @@ public class SettingsServiceIdentityProvider : IEquatable<SettingsServiceIdentit
     public bool Equals(SettingsServiceIdentityProvider? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
                     && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<SettingsServiceIdentityProviderType?>.Default.Equals(this.Type, other.Type)
-                    && EqualityComparer<SettingsServiceOptions?>.Default.Equals(this.Options, other.Options));
+                    && EqualityComparer<SettingsServiceIdentityProviderType?>.Default.Equals(
+                        this.Type,
+                        other.Type
+                    )
+                    && EqualityComparer<SettingsServiceOptions?>.Default.Equals(
+                        this.Options,
+                        other.Options
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

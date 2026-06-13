@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class ApplicationServiceListApplicationsResponse : IEquatable<ApplicationServiceListApplicationsResponse>
+public class ApplicationServiceListApplicationsResponse
+    : IEquatable<ApplicationServiceListApplicationsResponse>
 {
     /// <summary>
     /// The list of applications matching the query. Depending on the applied limit,  there might be more applications available than included in this list.  Use the returned pagination information to request further applications.
@@ -26,9 +27,17 @@ public class ApplicationServiceListApplicationsResponse : IEquatable<Application
     public bool Equals(ApplicationServiceListApplicationsResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<ApplicationServiceApplication>?>.Default.Equals(this.Applications, other.Applications)
-                    && EqualityComparer<ApplicationServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<ApplicationServiceApplication>?>.Default.Equals(
+                    this.Applications,
+                    other.Applications
+                )
+                    && EqualityComparer<ApplicationServicePaginationResponse?>.Default.Equals(
+                        this.Pagination,
+                        other.Pagination
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

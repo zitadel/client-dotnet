@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class BetaInstanceServiceApi : BaseApi
 {
-
     private static readonly string[] AddCustomDomainAccepts = ["application/json"];
 
     private static readonly string[] AddTrustedDomainAccepts = ["application/json"];
@@ -50,7 +49,11 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public BetaInstanceServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public BetaInstanceServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -60,10 +63,15 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceAddCustomDomainRequest"></param>
     /// <returns><![CDATA[BetaInstanceServiceAddCustomDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInstanceServiceAddCustomDomainResponse> AddCustomDomainAsync(BetaInstanceServiceAddCustomDomainRequest betaInstanceServiceAddCustomDomainRequest)
+    public async Task<BetaInstanceServiceAddCustomDomainResponse> AddCustomDomainAsync(
+        BetaInstanceServiceAddCustomDomainRequest betaInstanceServiceAddCustomDomainRequest
+    )
     {
-        Task<ApiResult<BetaInstanceServiceAddCustomDomainResponse>> task = AddCustomDomainWithHttpInfoAsync(betaInstanceServiceAddCustomDomainRequest);
-        ApiResult<BetaInstanceServiceAddCustomDomainResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInstanceServiceAddCustomDomainResponse>> task =
+            AddCustomDomainWithHttpInfoAsync(betaInstanceServiceAddCustomDomainRequest);
+        ApiResult<BetaInstanceServiceAddCustomDomainResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -74,7 +82,8 @@ public class BetaInstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -84,7 +93,11 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceAddCustomDomainRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInstanceServiceAddCustomDomainResponse>> AddCustomDomainWithHttpInfoAsync(BetaInstanceServiceAddCustomDomainRequest betaInstanceServiceAddCustomDomainRequest)
+    public async Task<
+        ApiResult<BetaInstanceServiceAddCustomDomainResponse>
+    > AddCustomDomainWithHttpInfoAsync(
+        BetaInstanceServiceAddCustomDomainRequest betaInstanceServiceAddCustomDomainRequest
+    )
     {
         string path = "/zitadel.instance.v2beta.InstanceService/AddCustomDomain";
 
@@ -111,10 +124,15 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceAddTrustedDomainRequest"></param>
     /// <returns><![CDATA[BetaInstanceServiceAddTrustedDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInstanceServiceAddTrustedDomainResponse> AddTrustedDomainAsync(BetaInstanceServiceAddTrustedDomainRequest betaInstanceServiceAddTrustedDomainRequest)
+    public async Task<BetaInstanceServiceAddTrustedDomainResponse> AddTrustedDomainAsync(
+        BetaInstanceServiceAddTrustedDomainRequest betaInstanceServiceAddTrustedDomainRequest
+    )
     {
-        Task<ApiResult<BetaInstanceServiceAddTrustedDomainResponse>> task = AddTrustedDomainWithHttpInfoAsync(betaInstanceServiceAddTrustedDomainRequest);
-        ApiResult<BetaInstanceServiceAddTrustedDomainResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInstanceServiceAddTrustedDomainResponse>> task =
+            AddTrustedDomainWithHttpInfoAsync(betaInstanceServiceAddTrustedDomainRequest);
+        ApiResult<BetaInstanceServiceAddTrustedDomainResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -125,7 +143,8 @@ public class BetaInstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -135,7 +154,11 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceAddTrustedDomainRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInstanceServiceAddTrustedDomainResponse>> AddTrustedDomainWithHttpInfoAsync(BetaInstanceServiceAddTrustedDomainRequest betaInstanceServiceAddTrustedDomainRequest)
+    public async Task<
+        ApiResult<BetaInstanceServiceAddTrustedDomainResponse>
+    > AddTrustedDomainWithHttpInfoAsync(
+        BetaInstanceServiceAddTrustedDomainRequest betaInstanceServiceAddTrustedDomainRequest
+    )
     {
         string path = "/zitadel.instance.v2beta.InstanceService/AddTrustedDomain";
 
@@ -162,10 +185,15 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceDeleteInstanceRequest"></param>
     /// <returns><![CDATA[BetaInstanceServiceDeleteInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInstanceServiceDeleteInstanceResponse> DeleteInstanceAsync(BetaInstanceServiceDeleteInstanceRequest betaInstanceServiceDeleteInstanceRequest)
+    public async Task<BetaInstanceServiceDeleteInstanceResponse> DeleteInstanceAsync(
+        BetaInstanceServiceDeleteInstanceRequest betaInstanceServiceDeleteInstanceRequest
+    )
     {
-        Task<ApiResult<BetaInstanceServiceDeleteInstanceResponse>> task = DeleteInstanceWithHttpInfoAsync(betaInstanceServiceDeleteInstanceRequest);
-        ApiResult<BetaInstanceServiceDeleteInstanceResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInstanceServiceDeleteInstanceResponse>> task =
+            DeleteInstanceWithHttpInfoAsync(betaInstanceServiceDeleteInstanceRequest);
+        ApiResult<BetaInstanceServiceDeleteInstanceResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -176,7 +204,8 @@ public class BetaInstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -186,7 +215,11 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceDeleteInstanceRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInstanceServiceDeleteInstanceResponse>> DeleteInstanceWithHttpInfoAsync(BetaInstanceServiceDeleteInstanceRequest betaInstanceServiceDeleteInstanceRequest)
+    public async Task<
+        ApiResult<BetaInstanceServiceDeleteInstanceResponse>
+    > DeleteInstanceWithHttpInfoAsync(
+        BetaInstanceServiceDeleteInstanceRequest betaInstanceServiceDeleteInstanceRequest
+    )
     {
         string path = "/zitadel.instance.v2beta.InstanceService/DeleteInstance";
 
@@ -213,9 +246,13 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceGetInstanceRequest"></param>
     /// <returns><![CDATA[BetaInstanceServiceGetInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInstanceServiceGetInstanceResponse> GetInstanceAsync(BetaInstanceServiceGetInstanceRequest betaInstanceServiceGetInstanceRequest)
+    public async Task<BetaInstanceServiceGetInstanceResponse> GetInstanceAsync(
+        BetaInstanceServiceGetInstanceRequest betaInstanceServiceGetInstanceRequest
+    )
     {
-        Task<ApiResult<BetaInstanceServiceGetInstanceResponse>> task = GetInstanceWithHttpInfoAsync(betaInstanceServiceGetInstanceRequest);
+        Task<ApiResult<BetaInstanceServiceGetInstanceResponse>> task = GetInstanceWithHttpInfoAsync(
+            betaInstanceServiceGetInstanceRequest
+        );
         ApiResult<BetaInstanceServiceGetInstanceResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -227,7 +264,8 @@ public class BetaInstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -237,7 +275,11 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceGetInstanceRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInstanceServiceGetInstanceResponse>> GetInstanceWithHttpInfoAsync(BetaInstanceServiceGetInstanceRequest betaInstanceServiceGetInstanceRequest)
+    public async Task<
+        ApiResult<BetaInstanceServiceGetInstanceResponse>
+    > GetInstanceWithHttpInfoAsync(
+        BetaInstanceServiceGetInstanceRequest betaInstanceServiceGetInstanceRequest
+    )
     {
         string path = "/zitadel.instance.v2beta.InstanceService/GetInstance";
 
@@ -264,10 +306,15 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceListCustomDomainsRequest"></param>
     /// <returns><![CDATA[BetaInstanceServiceListCustomDomainsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInstanceServiceListCustomDomainsResponse> ListCustomDomainsAsync(BetaInstanceServiceListCustomDomainsRequest betaInstanceServiceListCustomDomainsRequest)
+    public async Task<BetaInstanceServiceListCustomDomainsResponse> ListCustomDomainsAsync(
+        BetaInstanceServiceListCustomDomainsRequest betaInstanceServiceListCustomDomainsRequest
+    )
     {
-        Task<ApiResult<BetaInstanceServiceListCustomDomainsResponse>> task = ListCustomDomainsWithHttpInfoAsync(betaInstanceServiceListCustomDomainsRequest);
-        ApiResult<BetaInstanceServiceListCustomDomainsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInstanceServiceListCustomDomainsResponse>> task =
+            ListCustomDomainsWithHttpInfoAsync(betaInstanceServiceListCustomDomainsRequest);
+        ApiResult<BetaInstanceServiceListCustomDomainsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -278,7 +325,8 @@ public class BetaInstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -288,7 +336,11 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceListCustomDomainsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInstanceServiceListCustomDomainsResponse>> ListCustomDomainsWithHttpInfoAsync(BetaInstanceServiceListCustomDomainsRequest betaInstanceServiceListCustomDomainsRequest)
+    public async Task<
+        ApiResult<BetaInstanceServiceListCustomDomainsResponse>
+    > ListCustomDomainsWithHttpInfoAsync(
+        BetaInstanceServiceListCustomDomainsRequest betaInstanceServiceListCustomDomainsRequest
+    )
     {
         string path = "/zitadel.instance.v2beta.InstanceService/ListCustomDomains";
 
@@ -315,10 +367,15 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceListInstancesRequest"></param>
     /// <returns><![CDATA[BetaInstanceServiceListInstancesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInstanceServiceListInstancesResponse> ListInstancesAsync(BetaInstanceServiceListInstancesRequest betaInstanceServiceListInstancesRequest)
+    public async Task<BetaInstanceServiceListInstancesResponse> ListInstancesAsync(
+        BetaInstanceServiceListInstancesRequest betaInstanceServiceListInstancesRequest
+    )
     {
-        Task<ApiResult<BetaInstanceServiceListInstancesResponse>> task = ListInstancesWithHttpInfoAsync(betaInstanceServiceListInstancesRequest);
-        ApiResult<BetaInstanceServiceListInstancesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInstanceServiceListInstancesResponse>> task =
+            ListInstancesWithHttpInfoAsync(betaInstanceServiceListInstancesRequest);
+        ApiResult<BetaInstanceServiceListInstancesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -329,7 +386,8 @@ public class BetaInstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -339,7 +397,11 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceListInstancesRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInstanceServiceListInstancesResponse>> ListInstancesWithHttpInfoAsync(BetaInstanceServiceListInstancesRequest betaInstanceServiceListInstancesRequest)
+    public async Task<
+        ApiResult<BetaInstanceServiceListInstancesResponse>
+    > ListInstancesWithHttpInfoAsync(
+        BetaInstanceServiceListInstancesRequest betaInstanceServiceListInstancesRequest
+    )
     {
         string path = "/zitadel.instance.v2beta.InstanceService/ListInstances";
 
@@ -366,10 +428,15 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceListTrustedDomainsRequest"></param>
     /// <returns><![CDATA[BetaInstanceServiceListTrustedDomainsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInstanceServiceListTrustedDomainsResponse> ListTrustedDomainsAsync(BetaInstanceServiceListTrustedDomainsRequest betaInstanceServiceListTrustedDomainsRequest)
+    public async Task<BetaInstanceServiceListTrustedDomainsResponse> ListTrustedDomainsAsync(
+        BetaInstanceServiceListTrustedDomainsRequest betaInstanceServiceListTrustedDomainsRequest
+    )
     {
-        Task<ApiResult<BetaInstanceServiceListTrustedDomainsResponse>> task = ListTrustedDomainsWithHttpInfoAsync(betaInstanceServiceListTrustedDomainsRequest);
-        ApiResult<BetaInstanceServiceListTrustedDomainsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInstanceServiceListTrustedDomainsResponse>> task =
+            ListTrustedDomainsWithHttpInfoAsync(betaInstanceServiceListTrustedDomainsRequest);
+        ApiResult<BetaInstanceServiceListTrustedDomainsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -380,7 +447,8 @@ public class BetaInstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -390,7 +458,11 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceListTrustedDomainsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInstanceServiceListTrustedDomainsResponse>> ListTrustedDomainsWithHttpInfoAsync(BetaInstanceServiceListTrustedDomainsRequest betaInstanceServiceListTrustedDomainsRequest)
+    public async Task<
+        ApiResult<BetaInstanceServiceListTrustedDomainsResponse>
+    > ListTrustedDomainsWithHttpInfoAsync(
+        BetaInstanceServiceListTrustedDomainsRequest betaInstanceServiceListTrustedDomainsRequest
+    )
     {
         string path = "/zitadel.instance.v2beta.InstanceService/ListTrustedDomains";
 
@@ -417,10 +489,15 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceRemoveCustomDomainRequest"></param>
     /// <returns><![CDATA[BetaInstanceServiceRemoveCustomDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInstanceServiceRemoveCustomDomainResponse> RemoveCustomDomainAsync(BetaInstanceServiceRemoveCustomDomainRequest betaInstanceServiceRemoveCustomDomainRequest)
+    public async Task<BetaInstanceServiceRemoveCustomDomainResponse> RemoveCustomDomainAsync(
+        BetaInstanceServiceRemoveCustomDomainRequest betaInstanceServiceRemoveCustomDomainRequest
+    )
     {
-        Task<ApiResult<BetaInstanceServiceRemoveCustomDomainResponse>> task = RemoveCustomDomainWithHttpInfoAsync(betaInstanceServiceRemoveCustomDomainRequest);
-        ApiResult<BetaInstanceServiceRemoveCustomDomainResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInstanceServiceRemoveCustomDomainResponse>> task =
+            RemoveCustomDomainWithHttpInfoAsync(betaInstanceServiceRemoveCustomDomainRequest);
+        ApiResult<BetaInstanceServiceRemoveCustomDomainResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -431,7 +508,8 @@ public class BetaInstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -441,7 +519,11 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceRemoveCustomDomainRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInstanceServiceRemoveCustomDomainResponse>> RemoveCustomDomainWithHttpInfoAsync(BetaInstanceServiceRemoveCustomDomainRequest betaInstanceServiceRemoveCustomDomainRequest)
+    public async Task<
+        ApiResult<BetaInstanceServiceRemoveCustomDomainResponse>
+    > RemoveCustomDomainWithHttpInfoAsync(
+        BetaInstanceServiceRemoveCustomDomainRequest betaInstanceServiceRemoveCustomDomainRequest
+    )
     {
         string path = "/zitadel.instance.v2beta.InstanceService/RemoveCustomDomain";
 
@@ -468,10 +550,14 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceRemoveTrustedDomainRequest"></param>
     /// <returns><![CDATA[BetaInstanceServiceRemoveTrustedDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInstanceServiceRemoveTrustedDomainResponse> RemoveTrustedDomainAsync(BetaInstanceServiceRemoveTrustedDomainRequest betaInstanceServiceRemoveTrustedDomainRequest)
+    public async Task<BetaInstanceServiceRemoveTrustedDomainResponse> RemoveTrustedDomainAsync(
+        BetaInstanceServiceRemoveTrustedDomainRequest betaInstanceServiceRemoveTrustedDomainRequest
+    )
     {
-        Task<ApiResult<BetaInstanceServiceRemoveTrustedDomainResponse>> task = RemoveTrustedDomainWithHttpInfoAsync(betaInstanceServiceRemoveTrustedDomainRequest);
-        ApiResult<BetaInstanceServiceRemoveTrustedDomainResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInstanceServiceRemoveTrustedDomainResponse>> task =
+            RemoveTrustedDomainWithHttpInfoAsync(betaInstanceServiceRemoveTrustedDomainRequest);
+        ApiResult<BetaInstanceServiceRemoveTrustedDomainResponse> result =
+            await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -482,7 +568,8 @@ public class BetaInstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -492,7 +579,11 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceRemoveTrustedDomainRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInstanceServiceRemoveTrustedDomainResponse>> RemoveTrustedDomainWithHttpInfoAsync(BetaInstanceServiceRemoveTrustedDomainRequest betaInstanceServiceRemoveTrustedDomainRequest)
+    public async Task<
+        ApiResult<BetaInstanceServiceRemoveTrustedDomainResponse>
+    > RemoveTrustedDomainWithHttpInfoAsync(
+        BetaInstanceServiceRemoveTrustedDomainRequest betaInstanceServiceRemoveTrustedDomainRequest
+    )
     {
         string path = "/zitadel.instance.v2beta.InstanceService/RemoveTrustedDomain";
 
@@ -519,10 +610,15 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceUpdateInstanceRequest"></param>
     /// <returns><![CDATA[BetaInstanceServiceUpdateInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaInstanceServiceUpdateInstanceResponse> UpdateInstanceAsync(BetaInstanceServiceUpdateInstanceRequest betaInstanceServiceUpdateInstanceRequest)
+    public async Task<BetaInstanceServiceUpdateInstanceResponse> UpdateInstanceAsync(
+        BetaInstanceServiceUpdateInstanceRequest betaInstanceServiceUpdateInstanceRequest
+    )
     {
-        Task<ApiResult<BetaInstanceServiceUpdateInstanceResponse>> task = UpdateInstanceWithHttpInfoAsync(betaInstanceServiceUpdateInstanceRequest);
-        ApiResult<BetaInstanceServiceUpdateInstanceResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<BetaInstanceServiceUpdateInstanceResponse>> task =
+            UpdateInstanceWithHttpInfoAsync(betaInstanceServiceUpdateInstanceRequest);
+        ApiResult<BetaInstanceServiceUpdateInstanceResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -533,7 +629,8 @@ public class BetaInstanceServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -543,7 +640,11 @@ public class BetaInstanceServiceApi : BaseApi
     /// <param name="betaInstanceServiceUpdateInstanceRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaInstanceServiceUpdateInstanceResponse>> UpdateInstanceWithHttpInfoAsync(BetaInstanceServiceUpdateInstanceRequest betaInstanceServiceUpdateInstanceRequest)
+    public async Task<
+        ApiResult<BetaInstanceServiceUpdateInstanceResponse>
+    > UpdateInstanceWithHttpInfoAsync(
+        BetaInstanceServiceUpdateInstanceRequest betaInstanceServiceUpdateInstanceRequest
+    )
     {
         string path = "/zitadel.instance.v2beta.InstanceService/UpdateInstance";
 

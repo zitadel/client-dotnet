@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class SettingsServiceGetLegalAndSupportSettingsRequest : IEquatable<SettingsServiceGetLegalAndSupportSettingsRequest>
+public class SettingsServiceGetLegalAndSupportSettingsRequest
+    : IEquatable<SettingsServiceGetLegalAndSupportSettingsRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("ctx")]
@@ -19,8 +20,13 @@ public class SettingsServiceGetLegalAndSupportSettingsRequest : IEquatable<Setti
     public bool Equals(SettingsServiceGetLegalAndSupportSettingsRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<SettingsServiceRequestContext?>.Default.Equals(this.Ctx, other.Ctx));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<SettingsServiceRequestContext?>.Default.Equals(
+                    this.Ctx,
+                    other.Ctx
+                )
+            );
     }
 
     public override bool Equals(object? obj)

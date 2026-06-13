@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class FeatureServiceSetInstanceFeaturesRequest : IEquatable<FeatureServiceSetInstanceFeaturesRequest>
+public class FeatureServiceSetInstanceFeaturesRequest
+    : IEquatable<FeatureServiceSetInstanceFeaturesRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("loginDefaultOrg")]
@@ -65,17 +66,46 @@ public class FeatureServiceSetInstanceFeaturesRequest : IEquatable<FeatureServic
     public bool Equals(FeatureServiceSetInstanceFeaturesRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<bool?>.Default.Equals(this.LoginDefaultOrg, other.LoginDefaultOrg)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<bool?>.Default.Equals(
+                    this.LoginDefaultOrg,
+                    other.LoginDefaultOrg
+                )
                     && EqualityComparer<bool?>.Default.Equals(this.UserSchema, other.UserSchema)
-                    && EqualityComparer<bool?>.Default.Equals(this.OidcTokenExchange, other.OidcTokenExchange)
-                    && EqualityComparer<List<FeatureServiceImprovedPerformance>?>.Default.Equals(this.ImprovedPerformance, other.ImprovedPerformance)
-                    && EqualityComparer<bool?>.Default.Equals(this.DebugOidcParentError, other.DebugOidcParentError)
-                    && EqualityComparer<bool?>.Default.Equals(this.OidcSingleV1SessionTermination, other.OidcSingleV1SessionTermination)
-                    && EqualityComparer<bool?>.Default.Equals(this.EnableBackChannelLogout, other.EnableBackChannelLogout)
-                    && EqualityComparer<FeatureServiceLoginV2?>.Default.Equals(this.LoginV2, other.LoginV2)
-                    && EqualityComparer<bool?>.Default.Equals(this.PermissionCheckV2, other.PermissionCheckV2)
-                    && EqualityComparer<bool?>.Default.Equals(this.ConsoleUseV2UserApi, other.ConsoleUseV2UserApi));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.OidcTokenExchange,
+                        other.OidcTokenExchange
+                    )
+                    && EqualityComparer<List<FeatureServiceImprovedPerformance>?>.Default.Equals(
+                        this.ImprovedPerformance,
+                        other.ImprovedPerformance
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.DebugOidcParentError,
+                        other.DebugOidcParentError
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.OidcSingleV1SessionTermination,
+                        other.OidcSingleV1SessionTermination
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.EnableBackChannelLogout,
+                        other.EnableBackChannelLogout
+                    )
+                    && EqualityComparer<FeatureServiceLoginV2?>.Default.Equals(
+                        this.LoginV2,
+                        other.LoginV2
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.PermissionCheckV2,
+                        other.PermissionCheckV2
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.ConsoleUseV2UserApi,
+                        other.ConsoleUseV2UserApi
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

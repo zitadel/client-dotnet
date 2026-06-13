@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaProjectServiceCreateProjectGrantRequest : IEquatable<BetaProjectServiceCreateProjectGrantRequest>
+public class BetaProjectServiceCreateProjectGrantRequest
+    : IEquatable<BetaProjectServiceCreateProjectGrantRequest>
 {
     /// <summary>
     /// ID of the project.
@@ -36,10 +37,15 @@ public class BetaProjectServiceCreateProjectGrantRequest : IEquatable<BetaProjec
     public bool Equals(BetaProjectServiceCreateProjectGrantRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
-                    && EqualityComparer<string?>.Default.Equals(this.GrantedOrganizationId, other.GrantedOrganizationId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.RoleKeys, other.RoleKeys));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.GrantedOrganizationId,
+                        other.GrantedOrganizationId
+                    )
+                    && EqualityComparer<List<string>?>.Default.Equals(this.RoleKeys, other.RoleKeys)
+            );
     }
 
     public override bool Equals(object? obj)

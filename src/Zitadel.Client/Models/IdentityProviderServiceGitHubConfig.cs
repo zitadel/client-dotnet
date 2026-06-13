@@ -29,9 +29,11 @@ public class IdentityProviderServiceGitHubConfig : IEquatable<IdentityProviderSe
     public bool Equals(IdentityProviderServiceGitHubConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes));
+                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes)
+            );
     }
 
     public override bool Equals(object? obj)

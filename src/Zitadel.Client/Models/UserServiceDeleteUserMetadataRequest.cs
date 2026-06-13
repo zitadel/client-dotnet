@@ -29,9 +29,11 @@ public class UserServiceDeleteUserMetadataRequest : IEquatable<UserServiceDelete
     public bool Equals(UserServiceDeleteUserMetadataRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Keys, other.Keys));
+                    && EqualityComparer<List<string>?>.Default.Equals(this.Keys, other.Keys)
+            );
     }
 
     public override bool Equals(object? obj)

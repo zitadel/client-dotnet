@@ -43,11 +43,16 @@ public class IdentityProviderServiceJWTConfig : IEquatable<IdentityProviderServi
     public bool Equals(IdentityProviderServiceJWTConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.JwtEndpoint, other.JwtEndpoint)
                     && EqualityComparer<string?>.Default.Equals(this.Issuer, other.Issuer)
-                    && EqualityComparer<string?>.Default.Equals(this.KeysEndpoint, other.KeysEndpoint)
-                    && EqualityComparer<string?>.Default.Equals(this.HeaderName, other.HeaderName));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.KeysEndpoint,
+                        other.KeysEndpoint
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.HeaderName, other.HeaderName)
+            );
     }
 
     public override bool Equals(object? obj)

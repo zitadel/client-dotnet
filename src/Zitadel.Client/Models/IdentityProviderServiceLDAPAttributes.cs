@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class IdentityProviderServiceLDAPAttributes : IEquatable<IdentityProviderServiceLDAPAttributes>
+public class IdentityProviderServiceLDAPAttributes
+    : IEquatable<IdentityProviderServiceLDAPAttributes>
 {
     /// <example>null</example>
     [JsonPropertyName("idAttribute")]
@@ -71,21 +72,59 @@ public class IdentityProviderServiceLDAPAttributes : IEquatable<IdentityProvider
     public bool Equals(IdentityProviderServiceLDAPAttributes? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.IdAttribute, other.IdAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.FirstNameAttribute, other.FirstNameAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.LastNameAttribute, other.LastNameAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.DisplayNameAttribute, other.DisplayNameAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.NickNameAttribute, other.NickNameAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.PreferredUsernameAttribute, other.PreferredUsernameAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.EmailAttribute, other.EmailAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.EmailVerifiedAttribute, other.EmailVerifiedAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.PhoneAttribute, other.PhoneAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.PhoneVerifiedAttribute, other.PhoneVerifiedAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.PreferredLanguageAttribute, other.PreferredLanguageAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.AvatarUrlAttribute, other.AvatarUrlAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.ProfileAttribute, other.ProfileAttribute)
-                    && EqualityComparer<string?>.Default.Equals(this.RootCa, other.RootCa));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.FirstNameAttribute,
+                        other.FirstNameAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.LastNameAttribute,
+                        other.LastNameAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.DisplayNameAttribute,
+                        other.DisplayNameAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.NickNameAttribute,
+                        other.NickNameAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.PreferredUsernameAttribute,
+                        other.PreferredUsernameAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.EmailAttribute,
+                        other.EmailAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.EmailVerifiedAttribute,
+                        other.EmailVerifiedAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.PhoneAttribute,
+                        other.PhoneAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.PhoneVerifiedAttribute,
+                        other.PhoneVerifiedAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.PreferredLanguageAttribute,
+                        other.PreferredLanguageAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.AvatarUrlAttribute,
+                        other.AvatarUrlAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.ProfileAttribute,
+                        other.ProfileAttribute
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.RootCa, other.RootCa)
+            );
     }
 
     public override bool Equals(object? obj)

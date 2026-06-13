@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class InternalPermissionServiceUpdateAdministratorRequest : IEquatable<InternalPermissionServiceUpdateAdministratorRequest>
+public class InternalPermissionServiceUpdateAdministratorRequest
+    : IEquatable<InternalPermissionServiceUpdateAdministratorRequest>
 {
     /// <summary>
     /// UserID is the ID of the user whose administrator roles should be updated.
@@ -33,10 +34,15 @@ public class InternalPermissionServiceUpdateAdministratorRequest : IEquatable<In
     public bool Equals(InternalPermissionServiceUpdateAdministratorRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<InternalPermissionServiceResourceType?>.Default.Equals(this.Resource, other.Resource)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Roles, other.Roles));
+                    && EqualityComparer<InternalPermissionServiceResourceType?>.Default.Equals(
+                        this.Resource,
+                        other.Resource
+                    )
+                    && EqualityComparer<List<string>?>.Default.Equals(this.Roles, other.Roles)
+            );
     }
 
     public override bool Equals(object? obj)

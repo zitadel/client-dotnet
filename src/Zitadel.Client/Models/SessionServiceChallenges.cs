@@ -27,10 +27,15 @@ public class SessionServiceChallenges : IEquatable<SessionServiceChallenges>
     public bool Equals(SessionServiceChallenges? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<SessionServiceWebAuthN?>.Default.Equals(this.WebAuthN, other.WebAuthN)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<SessionServiceWebAuthN?>.Default.Equals(
+                    this.WebAuthN,
+                    other.WebAuthN
+                )
                     && EqualityComparer<string?>.Default.Equals(this.OtpSms, other.OtpSms)
-                    && EqualityComparer<string?>.Default.Equals(this.OtpEmail, other.OtpEmail));
+                    && EqualityComparer<string?>.Default.Equals(this.OtpEmail, other.OtpEmail)
+            );
     }
 
     public override bool Equals(object? obj)

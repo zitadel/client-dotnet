@@ -23,9 +23,11 @@ public class BetaUserServiceHumanPhone : IEquatable<BetaUserServiceHumanPhone>
     public bool Equals(BetaUserServiceHumanPhone? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Phone, other.Phone)
-                    && EqualityComparer<bool?>.Default.Equals(this.IsVerified, other.IsVerified));
+                    && EqualityComparer<bool?>.Default.Equals(this.IsVerified, other.IsVerified)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaUserServiceIDPLDAPAccessInformation : IEquatable<BetaUserServiceIDPLDAPAccessInformation>
+public class BetaUserServiceIDPLDAPAccessInformation
+    : IEquatable<BetaUserServiceIDPLDAPAccessInformation>
 {
     /// <summary>
     /// `Struct` represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, `Struct`  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for `Struct` is JSON object.
@@ -22,8 +23,13 @@ public class BetaUserServiceIDPLDAPAccessInformation : IEquatable<BetaUserServic
     public bool Equals(BetaUserServiceIDPLDAPAccessInformation? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.Attributes, other.Attributes));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<Dictionary<string, Object>?>.Default.Equals(
+                    this.Attributes,
+                    other.Attributes
+                )
+            );
     }
 
     public override bool Equals(object? obj)

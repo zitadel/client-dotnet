@@ -23,9 +23,11 @@ public class BetaSessionServiceCheckUser : IEquatable<BetaSessionServiceCheckUse
     public bool Equals(BetaSessionServiceCheckUser? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.LoginName, other.LoginName)
-                    && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId));
+                    && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
+            );
     }
 
     public override bool Equals(object? obj)

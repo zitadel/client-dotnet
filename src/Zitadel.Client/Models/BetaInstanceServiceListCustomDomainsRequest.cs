@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaInstanceServiceListCustomDomainsRequest : IEquatable<BetaInstanceServiceListCustomDomainsRequest>
+public class BetaInstanceServiceListCustomDomainsRequest
+    : IEquatable<BetaInstanceServiceListCustomDomainsRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("instanceId")]
@@ -34,11 +35,22 @@ public class BetaInstanceServiceListCustomDomainsRequest : IEquatable<BetaInstan
     public bool Equals(BetaInstanceServiceListCustomDomainsRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
-                    && EqualityComparer<BetaInstanceServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<BetaInstanceServiceDomainFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<BetaInstanceServiceDomainSearchQuery>?>.Default.Equals(this.Queries, other.Queries));
+                    && EqualityComparer<BetaInstanceServicePaginationRequest?>.Default.Equals(
+                        this.Pagination,
+                        other.Pagination
+                    )
+                    && EqualityComparer<BetaInstanceServiceDomainFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<List<BetaInstanceServiceDomainSearchQuery>?>.Default.Equals(
+                        this.Queries,
+                        other.Queries
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

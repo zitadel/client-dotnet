@@ -12,7 +12,8 @@ namespace Zitadel.Client.Models;
 /// <summary>
 /// Error type returned by Connect: https://connectrpc.com/docs/go/errors/#http-representation
 /// </summary>
-public class BetaInternalPermissionServiceConnectError : IEquatable<BetaInternalPermissionServiceConnectError>
+public class BetaInternalPermissionServiceConnectError
+    : IEquatable<BetaInternalPermissionServiceConnectError>
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum CodeEnum
@@ -95,11 +96,19 @@ public class BetaInternalPermissionServiceConnectError : IEquatable<BetaInternal
     public bool Equals(BetaInternalPermissionServiceConnectError? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<CodeEnum?>.Default.Equals(this.Code, other.Code)
                     && EqualityComparer<string?>.Default.Equals(this.Message, other.Message)
-                    && EqualityComparer<List<BetaInternalPermissionServiceAny>?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<Dictionary<string, object>?>.Default.Equals(this.AdditionalProperties, other.AdditionalProperties));
+                    && EqualityComparer<List<BetaInternalPermissionServiceAny>?>.Default.Equals(
+                        this.Details,
+                        other.Details
+                    )
+                    && EqualityComparer<Dictionary<string, object>?>.Default.Equals(
+                        this.AdditionalProperties,
+                        other.AdditionalProperties
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

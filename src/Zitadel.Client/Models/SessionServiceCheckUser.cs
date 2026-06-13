@@ -29,9 +29,11 @@ public class SessionServiceCheckUser : IEquatable<SessionServiceCheckUser>
     public bool Equals(SessionServiceCheckUser? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.LoginName, other.LoginName)
-                    && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId));
+                    && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
+            );
     }
 
     public override bool Equals(object? obj)

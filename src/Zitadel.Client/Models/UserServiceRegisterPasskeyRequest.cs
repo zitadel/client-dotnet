@@ -31,11 +31,19 @@ public class UserServiceRegisterPasskeyRequest : IEquatable<UserServiceRegisterP
     public bool Equals(UserServiceRegisterPasskeyRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<UserServicePasskeyRegistrationCode?>.Default.Equals(this.Code, other.Code)
-                    && EqualityComparer<UserServicePasskeyAuthenticator?>.Default.Equals(this.Authenticator, other.Authenticator)
-                    && EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain));
+                    && EqualityComparer<UserServicePasskeyRegistrationCode?>.Default.Equals(
+                        this.Code,
+                        other.Code
+                    )
+                    && EqualityComparer<UserServicePasskeyAuthenticator?>.Default.Equals(
+                        this.Authenticator,
+                        other.Authenticator
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain)
+            );
     }
 
     public override bool Equals(object? obj)

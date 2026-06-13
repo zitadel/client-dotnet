@@ -29,9 +29,14 @@ public class BetaAppServicePaginationResponse : IEquatable<BetaAppServicePaginat
     public bool Equals(BetaAppServicePaginationResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<Object?>.Default.Equals(this.TotalResult, other.TotalResult)
-                    && EqualityComparer<Object?>.Default.Equals(this.AppliedLimit, other.AppliedLimit));
+                    && EqualityComparer<Object?>.Default.Equals(
+                        this.AppliedLimit,
+                        other.AppliedLimit
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

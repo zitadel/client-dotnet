@@ -43,11 +43,13 @@ public class ProjectServiceAddProjectRoleRequest : IEquatable<ProjectServiceAddP
     public bool Equals(ProjectServiceAddProjectRoleRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
                     && EqualityComparer<string?>.Default.Equals(this.RoleKey, other.RoleKey)
                     && EqualityComparer<string?>.Default.Equals(this.DisplayName, other.DisplayName)
-                    && EqualityComparer<string?>.Default.Equals(this.Group, other.Group));
+                    && EqualityComparer<string?>.Default.Equals(this.Group, other.Group)
+            );
     }
 
     public override bool Equals(object? obj)

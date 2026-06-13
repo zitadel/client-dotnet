@@ -27,10 +27,21 @@ public class ProjectServiceProjectSearchFilter : IEquatable<ProjectServiceProjec
     public bool Equals(ProjectServiceProjectSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ProjectServiceInIDsFilter?>.Default.Equals(this.InProjectIdsFilter, other.InProjectIdsFilter)
-                    && EqualityComparer<ProjectServiceProjectOrganizationIDFilter?>.Default.Equals(this.OrganizationIdFilter, other.OrganizationIdFilter)
-                    && EqualityComparer<ProjectServiceProjectNameFilter?>.Default.Equals(this.ProjectNameFilter, other.ProjectNameFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ProjectServiceInIDsFilter?>.Default.Equals(
+                    this.InProjectIdsFilter,
+                    other.InProjectIdsFilter
+                )
+                    && EqualityComparer<ProjectServiceProjectOrganizationIDFilter?>.Default.Equals(
+                        this.OrganizationIdFilter,
+                        other.OrganizationIdFilter
+                    )
+                    && EqualityComparer<ProjectServiceProjectNameFilter?>.Default.Equals(
+                        this.ProjectNameFilter,
+                        other.ProjectNameFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

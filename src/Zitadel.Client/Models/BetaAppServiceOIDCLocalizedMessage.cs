@@ -23,9 +23,14 @@ public class BetaAppServiceOIDCLocalizedMessage : IEquatable<BetaAppServiceOIDCL
     public bool Equals(BetaAppServiceOIDCLocalizedMessage? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Key, other.Key)
-                    && EqualityComparer<string?>.Default.Equals(this.LocalizedMessage, other.LocalizedMessage));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.LocalizedMessage,
+                        other.LocalizedMessage
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

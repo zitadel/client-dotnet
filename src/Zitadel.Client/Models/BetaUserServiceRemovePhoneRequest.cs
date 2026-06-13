@@ -19,8 +19,10 @@ public class BetaUserServiceRemovePhoneRequest : IEquatable<BetaUserServiceRemov
     public bool Equals(BetaUserServiceRemovePhoneRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
+            );
     }
 
     public override bool Equals(object? obj)

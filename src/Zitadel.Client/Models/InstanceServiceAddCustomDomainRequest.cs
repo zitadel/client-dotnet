@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class InstanceServiceAddCustomDomainRequest : IEquatable<InstanceServiceAddCustomDomainRequest>
+public class InstanceServiceAddCustomDomainRequest
+    : IEquatable<InstanceServiceAddCustomDomainRequest>
 {
     /// <summary>
     /// InstanceID is the unique ID of the instance to which the domain will be added.
@@ -29,9 +30,14 @@ public class InstanceServiceAddCustomDomainRequest : IEquatable<InstanceServiceA
     public bool Equals(InstanceServiceAddCustomDomainRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
-                    && EqualityComparer<string?>.Default.Equals(this.CustomDomain, other.CustomDomain));
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.CustomDomain,
+                        other.CustomDomain
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

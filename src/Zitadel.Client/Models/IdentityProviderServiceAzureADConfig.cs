@@ -40,11 +40,19 @@ public class IdentityProviderServiceAzureADConfig : IEquatable<IdentityProviderS
     public bool Equals(IdentityProviderServiceAzureADConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<IdentityProviderServiceAzureADTenant?>.Default.Equals(this.Tenant, other.Tenant)
-                    && EqualityComparer<bool?>.Default.Equals(this.EmailVerified, other.EmailVerified)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes));
+                    && EqualityComparer<IdentityProviderServiceAzureADTenant?>.Default.Equals(
+                        this.Tenant,
+                        other.Tenant
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.EmailVerified,
+                        other.EmailVerified
+                    )
+                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes)
+            );
     }
 
     public override bool Equals(object? obj)

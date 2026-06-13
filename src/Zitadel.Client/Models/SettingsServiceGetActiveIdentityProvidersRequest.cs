@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class SettingsServiceGetActiveIdentityProvidersRequest : IEquatable<SettingsServiceGetActiveIdentityProvidersRequest>
+public class SettingsServiceGetActiveIdentityProvidersRequest
+    : IEquatable<SettingsServiceGetActiveIdentityProvidersRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("ctx")]
@@ -35,12 +36,23 @@ public class SettingsServiceGetActiveIdentityProvidersRequest : IEquatable<Setti
     public bool Equals(SettingsServiceGetActiveIdentityProvidersRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<SettingsServiceRequestContext?>.Default.Equals(this.Ctx, other.Ctx)
-                    && EqualityComparer<bool?>.Default.Equals(this.CreationAllowed, other.CreationAllowed)
-                    && EqualityComparer<bool?>.Default.Equals(this.LinkingAllowed, other.LinkingAllowed)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<SettingsServiceRequestContext?>.Default.Equals(
+                    this.Ctx,
+                    other.Ctx
+                )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.CreationAllowed,
+                        other.CreationAllowed
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.LinkingAllowed,
+                        other.LinkingAllowed
+                    )
                     && EqualityComparer<bool?>.Default.Equals(this.AutoCreation, other.AutoCreation)
-                    && EqualityComparer<bool?>.Default.Equals(this.AutoLinking, other.AutoLinking));
+                    && EqualityComparer<bool?>.Default.Equals(this.AutoLinking, other.AutoLinking)
+            );
     }
 
     public override bool Equals(object? obj)

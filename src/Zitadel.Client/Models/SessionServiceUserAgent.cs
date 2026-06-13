@@ -40,11 +40,16 @@ public class SessionServiceUserAgent : IEquatable<SessionServiceUserAgent>
     public bool Equals(SessionServiceUserAgent? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.FingerprintId, other.FingerprintId)
                     && EqualityComparer<string?>.Default.Equals(this.Ip, other.Ip)
                     && EqualityComparer<string?>.Default.Equals(this.Description, other.Description)
-                    && EqualityComparer<Dictionary<string, SessionServiceHeaderValues>?>.Default.Equals(this.Header, other.Header));
+                    && EqualityComparer<Dictionary<
+                        string,
+                        SessionServiceHeaderValues
+                    >?>.Default.Equals(this.Header, other.Header)
+            );
     }
 
     public override bool Equals(object? obj)

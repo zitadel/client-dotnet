@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaAuthorizationServiceDeleteAuthorizationRequest : IEquatable<BetaAuthorizationServiceDeleteAuthorizationRequest>
+public class BetaAuthorizationServiceDeleteAuthorizationRequest
+    : IEquatable<BetaAuthorizationServiceDeleteAuthorizationRequest>
 {
     /// <summary>
     /// ID is the unique identifier of the authorization that should be deleted.
@@ -22,8 +23,10 @@ public class BetaAuthorizationServiceDeleteAuthorizationRequest : IEquatable<Bet
     public bool Equals(BetaAuthorizationServiceDeleteAuthorizationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.Id, other.Id));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
+            );
     }
 
     public override bool Equals(object? obj)

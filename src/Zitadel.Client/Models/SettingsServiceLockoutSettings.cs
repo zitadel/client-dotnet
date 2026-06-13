@@ -33,10 +33,21 @@ public class SettingsServiceLockoutSettings : IEquatable<SettingsServiceLockoutS
     public bool Equals(SettingsServiceLockoutSettings? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.MaxPasswordAttempts, other.MaxPasswordAttempts)
-                    && EqualityComparer<SettingsServiceResourceOwnerType?>.Default.Equals(this.ResourceOwnerType, other.ResourceOwnerType)
-                    && EqualityComparer<Object?>.Default.Equals(this.MaxOtpAttempts, other.MaxOtpAttempts));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<Object?>.Default.Equals(
+                    this.MaxPasswordAttempts,
+                    other.MaxPasswordAttempts
+                )
+                    && EqualityComparer<SettingsServiceResourceOwnerType?>.Default.Equals(
+                        this.ResourceOwnerType,
+                        other.ResourceOwnerType
+                    )
+                    && EqualityComparer<Object?>.Default.Equals(
+                        this.MaxOtpAttempts,
+                        other.MaxOtpAttempts
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -37,11 +37,22 @@ public class ActionServiceListPublicKeysRequest : IEquatable<ActionServiceListPu
     public bool Equals(ActionServiceListPublicKeysRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.TargetId, other.TargetId)
-                    && EqualityComparer<ActionServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<ActionServicePublicKeyFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<ActionServicePublicKeySearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && EqualityComparer<ActionServicePaginationRequest?>.Default.Equals(
+                        this.Pagination,
+                        other.Pagination
+                    )
+                    && EqualityComparer<ActionServicePublicKeyFieldName?>.Default.Equals(
+                        this.SortingColumn,
+                        other.SortingColumn
+                    )
+                    && EqualityComparer<List<ActionServicePublicKeySearchFilter>?>.Default.Equals(
+                        this.Filters,
+                        other.Filters
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -6,8 +6,8 @@
     "docfx@latest"
   ],
   "env": {
-    "NUGET_PACKAGES": "./.nuget/packages",
-    "DOTNET_CLI_HOME": "./.dotnet"
+    "NUGET_PACKAGES": "$DEVBOX_PROJECT_ROOT/.nuget/packages",
+    "DOTNET_CLI_HOME": "$DEVBOX_PROJECT_ROOT/.dotnet"
   },
   "shell": {
     "init_hook": [

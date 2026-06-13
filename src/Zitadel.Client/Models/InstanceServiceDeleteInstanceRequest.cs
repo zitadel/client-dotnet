@@ -22,8 +22,10 @@ public class InstanceServiceDeleteInstanceRequest : IEquatable<InstanceServiceDe
     public bool Equals(InstanceServiceDeleteInstanceRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
+            );
     }
 
     public override bool Equals(object? obj)

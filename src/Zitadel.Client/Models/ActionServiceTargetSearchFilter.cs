@@ -23,9 +23,17 @@ public class ActionServiceTargetSearchFilter : IEquatable<ActionServiceTargetSea
     public bool Equals(ActionServiceTargetSearchFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<ActionServiceInTargetIDsFilter?>.Default.Equals(this.InTargetIdsFilter, other.InTargetIdsFilter)
-                    && EqualityComparer<ActionServiceTargetNameFilter?>.Default.Equals(this.TargetNameFilter, other.TargetNameFilter));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<ActionServiceInTargetIDsFilter?>.Default.Equals(
+                    this.InTargetIdsFilter,
+                    other.InTargetIdsFilter
+                )
+                    && EqualityComparer<ActionServiceTargetNameFilter?>.Default.Equals(
+                        this.TargetNameFilter,
+                        other.TargetNameFilter
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

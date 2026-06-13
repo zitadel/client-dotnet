@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaFeatureServiceImprovedPerformanceFeatureFlag : IEquatable<BetaFeatureServiceImprovedPerformanceFeatureFlag>
+public class BetaFeatureServiceImprovedPerformanceFeatureFlag
+    : IEquatable<BetaFeatureServiceImprovedPerformanceFeatureFlag>
 {
     /// <example>null</example>
     [JsonPropertyName("executionPaths")]
@@ -23,9 +24,17 @@ public class BetaFeatureServiceImprovedPerformanceFeatureFlag : IEquatable<BetaF
     public bool Equals(BetaFeatureServiceImprovedPerformanceFeatureFlag? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<BetaFeatureServiceImprovedPerformance>?>.Default.Equals(this.ExecutionPaths, other.ExecutionPaths)
-                    && EqualityComparer<BetaFeatureServiceSource?>.Default.Equals(this.Source, other.Source));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<BetaFeatureServiceImprovedPerformance>?>.Default.Equals(
+                    this.ExecutionPaths,
+                    other.ExecutionPaths
+                )
+                    && EqualityComparer<BetaFeatureServiceSource?>.Default.Equals(
+                        this.Source,
+                        other.Source
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

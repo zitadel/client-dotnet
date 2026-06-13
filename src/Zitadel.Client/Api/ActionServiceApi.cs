@@ -15,7 +15,6 @@ namespace Zitadel.Client.Api;
 /// </summary>
 public class ActionServiceApi : BaseApi
 {
-
     private static readonly string[] ActivatePublicKeyAccepts = ["application/json"];
 
     private static readonly string[] AddPublicKeyAccepts = ["application/json"];
@@ -60,7 +59,11 @@ public class ActionServiceApi : BaseApi
     /// <param name="apiClient">The HTTP client used to make API calls.</param>
     /// <param name="config">The configuration for the API client.</param>
     /// <param name="authenticator">Optional default authenticator applied when none is passed per-operation.</param>
-    public ActionServiceApi(IApiClient apiClient, Configuration config, IAuthenticator? authenticator)
+    public ActionServiceApi(
+        IApiClient apiClient,
+        Configuration config,
+        IAuthenticator? authenticator
+    )
         : base(apiClient, config, authenticator) { }
 
     /// <summary>
@@ -70,9 +73,12 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceActivatePublicKeyRequest"></param>
     /// <returns><![CDATA[ActionServiceActivatePublicKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceActivatePublicKeyResponse> ActivatePublicKeyAsync(ActionServiceActivatePublicKeyRequest actionServiceActivatePublicKeyRequest)
+    public async Task<ActionServiceActivatePublicKeyResponse> ActivatePublicKeyAsync(
+        ActionServiceActivatePublicKeyRequest actionServiceActivatePublicKeyRequest
+    )
     {
-        Task<ApiResult<ActionServiceActivatePublicKeyResponse>> task = ActivatePublicKeyWithHttpInfoAsync(actionServiceActivatePublicKeyRequest);
+        Task<ApiResult<ActionServiceActivatePublicKeyResponse>> task =
+            ActivatePublicKeyWithHttpInfoAsync(actionServiceActivatePublicKeyRequest);
         ApiResult<ActionServiceActivatePublicKeyResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -84,7 +90,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -94,7 +101,11 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceActivatePublicKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceActivatePublicKeyResponse>> ActivatePublicKeyWithHttpInfoAsync(ActionServiceActivatePublicKeyRequest actionServiceActivatePublicKeyRequest)
+    public async Task<
+        ApiResult<ActionServiceActivatePublicKeyResponse>
+    > ActivatePublicKeyWithHttpInfoAsync(
+        ActionServiceActivatePublicKeyRequest actionServiceActivatePublicKeyRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/ActivatePublicKey";
 
@@ -121,9 +132,13 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceAddPublicKeyRequest"></param>
     /// <returns><![CDATA[ActionServiceAddPublicKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceAddPublicKeyResponse> AddPublicKeyAsync(ActionServiceAddPublicKeyRequest actionServiceAddPublicKeyRequest)
+    public async Task<ActionServiceAddPublicKeyResponse> AddPublicKeyAsync(
+        ActionServiceAddPublicKeyRequest actionServiceAddPublicKeyRequest
+    )
     {
-        Task<ApiResult<ActionServiceAddPublicKeyResponse>> task = AddPublicKeyWithHttpInfoAsync(actionServiceAddPublicKeyRequest);
+        Task<ApiResult<ActionServiceAddPublicKeyResponse>> task = AddPublicKeyWithHttpInfoAsync(
+            actionServiceAddPublicKeyRequest
+        );
         ApiResult<ActionServiceAddPublicKeyResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -135,7 +150,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -145,7 +161,9 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceAddPublicKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceAddPublicKeyResponse>> AddPublicKeyWithHttpInfoAsync(ActionServiceAddPublicKeyRequest actionServiceAddPublicKeyRequest)
+    public async Task<ApiResult<ActionServiceAddPublicKeyResponse>> AddPublicKeyWithHttpInfoAsync(
+        ActionServiceAddPublicKeyRequest actionServiceAddPublicKeyRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/AddPublicKey";
 
@@ -172,9 +190,13 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceCreateTargetRequest"></param>
     /// <returns><![CDATA[ActionServiceCreateTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceCreateTargetResponse> CreateTargetAsync(ActionServiceCreateTargetRequest actionServiceCreateTargetRequest)
+    public async Task<ActionServiceCreateTargetResponse> CreateTargetAsync(
+        ActionServiceCreateTargetRequest actionServiceCreateTargetRequest
+    )
     {
-        Task<ApiResult<ActionServiceCreateTargetResponse>> task = CreateTargetWithHttpInfoAsync(actionServiceCreateTargetRequest);
+        Task<ApiResult<ActionServiceCreateTargetResponse>> task = CreateTargetWithHttpInfoAsync(
+            actionServiceCreateTargetRequest
+        );
         ApiResult<ActionServiceCreateTargetResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -186,7 +208,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -196,7 +219,9 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceCreateTargetRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceCreateTargetResponse>> CreateTargetWithHttpInfoAsync(ActionServiceCreateTargetRequest actionServiceCreateTargetRequest)
+    public async Task<ApiResult<ActionServiceCreateTargetResponse>> CreateTargetWithHttpInfoAsync(
+        ActionServiceCreateTargetRequest actionServiceCreateTargetRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/CreateTarget";
 
@@ -223,10 +248,15 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceDeactivatePublicKeyRequest"></param>
     /// <returns><![CDATA[ActionServiceDeactivatePublicKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceDeactivatePublicKeyResponse> DeactivatePublicKeyAsync(ActionServiceDeactivatePublicKeyRequest actionServiceDeactivatePublicKeyRequest)
+    public async Task<ActionServiceDeactivatePublicKeyResponse> DeactivatePublicKeyAsync(
+        ActionServiceDeactivatePublicKeyRequest actionServiceDeactivatePublicKeyRequest
+    )
     {
-        Task<ApiResult<ActionServiceDeactivatePublicKeyResponse>> task = DeactivatePublicKeyWithHttpInfoAsync(actionServiceDeactivatePublicKeyRequest);
-        ApiResult<ActionServiceDeactivatePublicKeyResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ActionServiceDeactivatePublicKeyResponse>> task =
+            DeactivatePublicKeyWithHttpInfoAsync(actionServiceDeactivatePublicKeyRequest);
+        ApiResult<ActionServiceDeactivatePublicKeyResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -237,7 +267,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -247,7 +278,11 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceDeactivatePublicKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceDeactivatePublicKeyResponse>> DeactivatePublicKeyWithHttpInfoAsync(ActionServiceDeactivatePublicKeyRequest actionServiceDeactivatePublicKeyRequest)
+    public async Task<
+        ApiResult<ActionServiceDeactivatePublicKeyResponse>
+    > DeactivatePublicKeyWithHttpInfoAsync(
+        ActionServiceDeactivatePublicKeyRequest actionServiceDeactivatePublicKeyRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/DeactivatePublicKey";
 
@@ -274,9 +309,13 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceDeleteTargetRequest"></param>
     /// <returns><![CDATA[ActionServiceDeleteTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceDeleteTargetResponse> DeleteTargetAsync(ActionServiceDeleteTargetRequest actionServiceDeleteTargetRequest)
+    public async Task<ActionServiceDeleteTargetResponse> DeleteTargetAsync(
+        ActionServiceDeleteTargetRequest actionServiceDeleteTargetRequest
+    )
     {
-        Task<ApiResult<ActionServiceDeleteTargetResponse>> task = DeleteTargetWithHttpInfoAsync(actionServiceDeleteTargetRequest);
+        Task<ApiResult<ActionServiceDeleteTargetResponse>> task = DeleteTargetWithHttpInfoAsync(
+            actionServiceDeleteTargetRequest
+        );
         ApiResult<ActionServiceDeleteTargetResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -288,7 +327,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -298,7 +338,9 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceDeleteTargetRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceDeleteTargetResponse>> DeleteTargetWithHttpInfoAsync(ActionServiceDeleteTargetRequest actionServiceDeleteTargetRequest)
+    public async Task<ApiResult<ActionServiceDeleteTargetResponse>> DeleteTargetWithHttpInfoAsync(
+        ActionServiceDeleteTargetRequest actionServiceDeleteTargetRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/DeleteTarget";
 
@@ -325,9 +367,13 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceGetTargetRequest"></param>
     /// <returns><![CDATA[ActionServiceGetTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceGetTargetResponse> GetTargetAsync(ActionServiceGetTargetRequest actionServiceGetTargetRequest)
+    public async Task<ActionServiceGetTargetResponse> GetTargetAsync(
+        ActionServiceGetTargetRequest actionServiceGetTargetRequest
+    )
     {
-        Task<ApiResult<ActionServiceGetTargetResponse>> task = GetTargetWithHttpInfoAsync(actionServiceGetTargetRequest);
+        Task<ApiResult<ActionServiceGetTargetResponse>> task = GetTargetWithHttpInfoAsync(
+            actionServiceGetTargetRequest
+        );
         ApiResult<ActionServiceGetTargetResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -339,7 +385,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -349,7 +396,9 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceGetTargetRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceGetTargetResponse>> GetTargetWithHttpInfoAsync(ActionServiceGetTargetRequest actionServiceGetTargetRequest)
+    public async Task<ApiResult<ActionServiceGetTargetResponse>> GetTargetWithHttpInfoAsync(
+        ActionServiceGetTargetRequest actionServiceGetTargetRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/GetTarget";
 
@@ -376,10 +425,15 @@ public class ActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns><![CDATA[ActionServiceListExecutionFunctionsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceListExecutionFunctionsResponse> ListExecutionFunctionsAsync(Object body)
+    public async Task<ActionServiceListExecutionFunctionsResponse> ListExecutionFunctionsAsync(
+        Object body
+    )
     {
-        Task<ApiResult<ActionServiceListExecutionFunctionsResponse>> task = ListExecutionFunctionsWithHttpInfoAsync(body);
-        ApiResult<ActionServiceListExecutionFunctionsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ActionServiceListExecutionFunctionsResponse>> task =
+            ListExecutionFunctionsWithHttpInfoAsync(body);
+        ApiResult<ActionServiceListExecutionFunctionsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -390,7 +444,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -400,7 +455,9 @@ public class ActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceListExecutionFunctionsResponse>> ListExecutionFunctionsWithHttpInfoAsync(Object body)
+    public async Task<
+        ApiResult<ActionServiceListExecutionFunctionsResponse>
+    > ListExecutionFunctionsWithHttpInfoAsync(Object body)
     {
         string path = "/zitadel.action.v2.ActionService/ListExecutionFunctions";
 
@@ -427,10 +484,15 @@ public class ActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns><![CDATA[ActionServiceListExecutionMethodsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceListExecutionMethodsResponse> ListExecutionMethodsAsync(Object body)
+    public async Task<ActionServiceListExecutionMethodsResponse> ListExecutionMethodsAsync(
+        Object body
+    )
     {
-        Task<ApiResult<ActionServiceListExecutionMethodsResponse>> task = ListExecutionMethodsWithHttpInfoAsync(body);
-        ApiResult<ActionServiceListExecutionMethodsResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ActionServiceListExecutionMethodsResponse>> task =
+            ListExecutionMethodsWithHttpInfoAsync(body);
+        ApiResult<ActionServiceListExecutionMethodsResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -441,7 +503,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -451,7 +514,9 @@ public class ActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceListExecutionMethodsResponse>> ListExecutionMethodsWithHttpInfoAsync(Object body)
+    public async Task<
+        ApiResult<ActionServiceListExecutionMethodsResponse>
+    > ListExecutionMethodsWithHttpInfoAsync(Object body)
     {
         string path = "/zitadel.action.v2.ActionService/ListExecutionMethods";
 
@@ -478,10 +543,15 @@ public class ActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns><![CDATA[ActionServiceListExecutionServicesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceListExecutionServicesResponse> ListExecutionServicesAsync(Object body)
+    public async Task<ActionServiceListExecutionServicesResponse> ListExecutionServicesAsync(
+        Object body
+    )
     {
-        Task<ApiResult<ActionServiceListExecutionServicesResponse>> task = ListExecutionServicesWithHttpInfoAsync(body);
-        ApiResult<ActionServiceListExecutionServicesResponse> result = await task.ConfigureAwait(false);
+        Task<ApiResult<ActionServiceListExecutionServicesResponse>> task =
+            ListExecutionServicesWithHttpInfoAsync(body);
+        ApiResult<ActionServiceListExecutionServicesResponse> result = await task.ConfigureAwait(
+            false
+        );
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
@@ -492,7 +562,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -502,7 +573,9 @@ public class ActionServiceApi : BaseApi
     /// <param name="body"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceListExecutionServicesResponse>> ListExecutionServicesWithHttpInfoAsync(Object body)
+    public async Task<
+        ApiResult<ActionServiceListExecutionServicesResponse>
+    > ListExecutionServicesWithHttpInfoAsync(Object body)
     {
         string path = "/zitadel.action.v2.ActionService/ListExecutionServices";
 
@@ -529,9 +602,13 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceListExecutionsRequest"></param>
     /// <returns><![CDATA[ActionServiceListExecutionsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceListExecutionsResponse> ListExecutionsAsync(ActionServiceListExecutionsRequest actionServiceListExecutionsRequest)
+    public async Task<ActionServiceListExecutionsResponse> ListExecutionsAsync(
+        ActionServiceListExecutionsRequest actionServiceListExecutionsRequest
+    )
     {
-        Task<ApiResult<ActionServiceListExecutionsResponse>> task = ListExecutionsWithHttpInfoAsync(actionServiceListExecutionsRequest);
+        Task<ApiResult<ActionServiceListExecutionsResponse>> task = ListExecutionsWithHttpInfoAsync(
+            actionServiceListExecutionsRequest
+        );
         ApiResult<ActionServiceListExecutionsResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -543,7 +620,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -553,7 +631,11 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceListExecutionsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceListExecutionsResponse>> ListExecutionsWithHttpInfoAsync(ActionServiceListExecutionsRequest actionServiceListExecutionsRequest)
+    public async Task<
+        ApiResult<ActionServiceListExecutionsResponse>
+    > ListExecutionsWithHttpInfoAsync(
+        ActionServiceListExecutionsRequest actionServiceListExecutionsRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/ListExecutions";
 
@@ -580,9 +662,13 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceListPublicKeysRequest"></param>
     /// <returns><![CDATA[ActionServiceListPublicKeysResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceListPublicKeysResponse> ListPublicKeysAsync(ActionServiceListPublicKeysRequest actionServiceListPublicKeysRequest)
+    public async Task<ActionServiceListPublicKeysResponse> ListPublicKeysAsync(
+        ActionServiceListPublicKeysRequest actionServiceListPublicKeysRequest
+    )
     {
-        Task<ApiResult<ActionServiceListPublicKeysResponse>> task = ListPublicKeysWithHttpInfoAsync(actionServiceListPublicKeysRequest);
+        Task<ApiResult<ActionServiceListPublicKeysResponse>> task = ListPublicKeysWithHttpInfoAsync(
+            actionServiceListPublicKeysRequest
+        );
         ApiResult<ActionServiceListPublicKeysResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -594,7 +680,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -604,7 +691,11 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceListPublicKeysRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceListPublicKeysResponse>> ListPublicKeysWithHttpInfoAsync(ActionServiceListPublicKeysRequest actionServiceListPublicKeysRequest)
+    public async Task<
+        ApiResult<ActionServiceListPublicKeysResponse>
+    > ListPublicKeysWithHttpInfoAsync(
+        ActionServiceListPublicKeysRequest actionServiceListPublicKeysRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/ListPublicKeys";
 
@@ -631,9 +722,13 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceListTargetsRequest"></param>
     /// <returns><![CDATA[ActionServiceListTargetsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceListTargetsResponse> ListTargetsAsync(ActionServiceListTargetsRequest actionServiceListTargetsRequest)
+    public async Task<ActionServiceListTargetsResponse> ListTargetsAsync(
+        ActionServiceListTargetsRequest actionServiceListTargetsRequest
+    )
     {
-        Task<ApiResult<ActionServiceListTargetsResponse>> task = ListTargetsWithHttpInfoAsync(actionServiceListTargetsRequest);
+        Task<ApiResult<ActionServiceListTargetsResponse>> task = ListTargetsWithHttpInfoAsync(
+            actionServiceListTargetsRequest
+        );
         ApiResult<ActionServiceListTargetsResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -645,7 +740,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -655,7 +751,9 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceListTargetsRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceListTargetsResponse>> ListTargetsWithHttpInfoAsync(ActionServiceListTargetsRequest actionServiceListTargetsRequest)
+    public async Task<ApiResult<ActionServiceListTargetsResponse>> ListTargetsWithHttpInfoAsync(
+        ActionServiceListTargetsRequest actionServiceListTargetsRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/ListTargets";
 
@@ -682,9 +780,12 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceRemovePublicKeyRequest"></param>
     /// <returns><![CDATA[ActionServiceRemovePublicKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceRemovePublicKeyResponse> RemovePublicKeyAsync(ActionServiceRemovePublicKeyRequest actionServiceRemovePublicKeyRequest)
+    public async Task<ActionServiceRemovePublicKeyResponse> RemovePublicKeyAsync(
+        ActionServiceRemovePublicKeyRequest actionServiceRemovePublicKeyRequest
+    )
     {
-        Task<ApiResult<ActionServiceRemovePublicKeyResponse>> task = RemovePublicKeyWithHttpInfoAsync(actionServiceRemovePublicKeyRequest);
+        Task<ApiResult<ActionServiceRemovePublicKeyResponse>> task =
+            RemovePublicKeyWithHttpInfoAsync(actionServiceRemovePublicKeyRequest);
         ApiResult<ActionServiceRemovePublicKeyResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -696,7 +797,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -706,7 +808,11 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceRemovePublicKeyRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceRemovePublicKeyResponse>> RemovePublicKeyWithHttpInfoAsync(ActionServiceRemovePublicKeyRequest actionServiceRemovePublicKeyRequest)
+    public async Task<
+        ApiResult<ActionServiceRemovePublicKeyResponse>
+    > RemovePublicKeyWithHttpInfoAsync(
+        ActionServiceRemovePublicKeyRequest actionServiceRemovePublicKeyRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/RemovePublicKey";
 
@@ -733,9 +839,13 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceSetExecutionRequest"></param>
     /// <returns><![CDATA[ActionServiceSetExecutionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceSetExecutionResponse> SetExecutionAsync(ActionServiceSetExecutionRequest actionServiceSetExecutionRequest)
+    public async Task<ActionServiceSetExecutionResponse> SetExecutionAsync(
+        ActionServiceSetExecutionRequest actionServiceSetExecutionRequest
+    )
     {
-        Task<ApiResult<ActionServiceSetExecutionResponse>> task = SetExecutionWithHttpInfoAsync(actionServiceSetExecutionRequest);
+        Task<ApiResult<ActionServiceSetExecutionResponse>> task = SetExecutionWithHttpInfoAsync(
+            actionServiceSetExecutionRequest
+        );
         ApiResult<ActionServiceSetExecutionResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -747,7 +857,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -757,7 +868,9 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceSetExecutionRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceSetExecutionResponse>> SetExecutionWithHttpInfoAsync(ActionServiceSetExecutionRequest actionServiceSetExecutionRequest)
+    public async Task<ApiResult<ActionServiceSetExecutionResponse>> SetExecutionWithHttpInfoAsync(
+        ActionServiceSetExecutionRequest actionServiceSetExecutionRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/SetExecution";
 
@@ -784,9 +897,13 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceUpdateTargetRequest"></param>
     /// <returns><![CDATA[ActionServiceUpdateTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceUpdateTargetResponse> UpdateTargetAsync(ActionServiceUpdateTargetRequest actionServiceUpdateTargetRequest)
+    public async Task<ActionServiceUpdateTargetResponse> UpdateTargetAsync(
+        ActionServiceUpdateTargetRequest actionServiceUpdateTargetRequest
+    )
     {
-        Task<ApiResult<ActionServiceUpdateTargetResponse>> task = UpdateTargetWithHttpInfoAsync(actionServiceUpdateTargetRequest);
+        Task<ApiResult<ActionServiceUpdateTargetResponse>> task = UpdateTargetWithHttpInfoAsync(
+            actionServiceUpdateTargetRequest
+        );
         ApiResult<ActionServiceUpdateTargetResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
@@ -798,7 +915,8 @@ public class ActionServiceApi : BaseApi
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
-                result.RawBody);
+                result.RawBody
+            );
     }
 
     /// <summary>
@@ -808,7 +926,9 @@ public class ActionServiceApi : BaseApi
     /// <param name="actionServiceUpdateTargetRequest"></param>
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceUpdateTargetResponse>> UpdateTargetWithHttpInfoAsync(ActionServiceUpdateTargetRequest actionServiceUpdateTargetRequest)
+    public async Task<ApiResult<ActionServiceUpdateTargetResponse>> UpdateTargetWithHttpInfoAsync(
+        ActionServiceUpdateTargetRequest actionServiceUpdateTargetRequest
+    )
     {
         string path = "/zitadel.action.v2.ActionService/UpdateTarget";
 

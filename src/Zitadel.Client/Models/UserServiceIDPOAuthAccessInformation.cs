@@ -23,9 +23,11 @@ public class UserServiceIDPOAuthAccessInformation : IEquatable<UserServiceIDPOAu
     public bool Equals(UserServiceIDPOAuthAccessInformation? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.AccessToken, other.AccessToken)
-                    && EqualityComparer<string?>.Default.Equals(this.IdToken, other.IdToken));
+                    && EqualityComparer<string?>.Default.Equals(this.IdToken, other.IdToken)
+            );
     }
 
     public override bool Equals(object? obj)

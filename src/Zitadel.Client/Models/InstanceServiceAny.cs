@@ -43,11 +43,16 @@ public class InstanceServiceAny : IEquatable<InstanceServiceAny>
     public bool Equals(InstanceServiceAny? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Type, other.Type)
                     && EqualityComparer<System.IO.Stream?>.Default.Equals(this.Value, other.Value)
                     && EqualityComparer<Object?>.Default.Equals(this.Debug, other.Debug)
-                    && EqualityComparer<Dictionary<string, object>?>.Default.Equals(this.AdditionalProperties, other.AdditionalProperties));
+                    && EqualityComparer<Dictionary<string, object>?>.Default.Equals(
+                        this.AdditionalProperties,
+                        other.AdditionalProperties
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -26,9 +26,14 @@ public class ApplicationServiceAPIConfiguration : IEquatable<ApplicationServiceA
     public bool Equals(ApplicationServiceAPIConfiguration? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<ApplicationServiceAPIAuthMethodType?>.Default.Equals(this.AuthMethodType, other.AuthMethodType));
+                    && EqualityComparer<ApplicationServiceAPIAuthMethodType?>.Default.Equals(
+                        this.AuthMethodType,
+                        other.AuthMethodType
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

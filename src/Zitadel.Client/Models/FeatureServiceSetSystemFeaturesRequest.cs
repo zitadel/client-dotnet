@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class FeatureServiceSetSystemFeaturesRequest : IEquatable<FeatureServiceSetSystemFeaturesRequest>
+public class FeatureServiceSetSystemFeaturesRequest
+    : IEquatable<FeatureServiceSetSystemFeaturesRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("loginDefaultOrg")]
@@ -57,15 +58,38 @@ public class FeatureServiceSetSystemFeaturesRequest : IEquatable<FeatureServiceS
     public bool Equals(FeatureServiceSetSystemFeaturesRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<bool?>.Default.Equals(this.LoginDefaultOrg, other.LoginDefaultOrg)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<bool?>.Default.Equals(
+                    this.LoginDefaultOrg,
+                    other.LoginDefaultOrg
+                )
                     && EqualityComparer<bool?>.Default.Equals(this.UserSchema, other.UserSchema)
-                    && EqualityComparer<bool?>.Default.Equals(this.OidcTokenExchange, other.OidcTokenExchange)
-                    && EqualityComparer<List<FeatureServiceImprovedPerformance>?>.Default.Equals(this.ImprovedPerformance, other.ImprovedPerformance)
-                    && EqualityComparer<bool?>.Default.Equals(this.OidcSingleV1SessionTermination, other.OidcSingleV1SessionTermination)
-                    && EqualityComparer<bool?>.Default.Equals(this.EnableBackChannelLogout, other.EnableBackChannelLogout)
-                    && EqualityComparer<FeatureServiceLoginV2?>.Default.Equals(this.LoginV2, other.LoginV2)
-                    && EqualityComparer<bool?>.Default.Equals(this.PermissionCheckV2, other.PermissionCheckV2));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.OidcTokenExchange,
+                        other.OidcTokenExchange
+                    )
+                    && EqualityComparer<List<FeatureServiceImprovedPerformance>?>.Default.Equals(
+                        this.ImprovedPerformance,
+                        other.ImprovedPerformance
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.OidcSingleV1SessionTermination,
+                        other.OidcSingleV1SessionTermination
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.EnableBackChannelLogout,
+                        other.EnableBackChannelLogout
+                    )
+                    && EqualityComparer<FeatureServiceLoginV2?>.Default.Equals(
+                        this.LoginV2,
+                        other.LoginV2
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.PermissionCheckV2,
+                        other.PermissionCheckV2
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

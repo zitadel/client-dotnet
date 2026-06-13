@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaOrganizationServiceOrgStateFilter : IEquatable<BetaOrganizationServiceOrgStateFilter>
+public class BetaOrganizationServiceOrgStateFilter
+    : IEquatable<BetaOrganizationServiceOrgStateFilter>
 {
     /// <example>null</example>
     [JsonPropertyName("state")]
@@ -19,8 +20,13 @@ public class BetaOrganizationServiceOrgStateFilter : IEquatable<BetaOrganization
     public bool Equals(BetaOrganizationServiceOrgStateFilter? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<BetaOrganizationServiceOrgState?>.Default.Equals(this.State, other.State));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<BetaOrganizationServiceOrgState?>.Default.Equals(
+                    this.State,
+                    other.State
+                )
+            );
     }
 
     public override bool Equals(object? obj)

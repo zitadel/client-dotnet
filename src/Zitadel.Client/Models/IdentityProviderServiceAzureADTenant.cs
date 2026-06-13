@@ -23,9 +23,14 @@ public class IdentityProviderServiceAzureADTenant : IEquatable<IdentityProviderS
     public bool Equals(IdentityProviderServiceAzureADTenant? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.TenantId, other.TenantId)
-                    && EqualityComparer<IdentityProviderServiceAzureADTenantType?>.Default.Equals(this.TenantType, other.TenantType));
+                    && EqualityComparer<IdentityProviderServiceAzureADTenantType?>.Default.Equals(
+                        this.TenantType,
+                        other.TenantType
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

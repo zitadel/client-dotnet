@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaActionServiceListExecutionServicesResponse : IEquatable<BetaActionServiceListExecutionServicesResponse>
+public class BetaActionServiceListExecutionServicesResponse
+    : IEquatable<BetaActionServiceListExecutionServicesResponse>
 {
     /// <summary>
     /// All available methods
@@ -22,8 +23,10 @@ public class BetaActionServiceListExecutionServicesResponse : IEquatable<BetaAct
     public bool Equals(BetaActionServiceListExecutionServicesResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<List<string>?>.Default.Equals(this.Services, other.Services));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<List<string>?>.Default.Equals(this.Services, other.Services)
+            );
     }
 
     public override bool Equals(object? obj)

@@ -27,10 +27,12 @@ public class BetaWebKeyServiceCreateWebKeyRequest : IEquatable<BetaWebKeyService
     public bool Equals(BetaWebKeyServiceCreateWebKeyRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<BetaWebKeyServiceECDSA?>.Default.Equals(this.Ecdsa, other.Ecdsa)
                     && EqualityComparer<Object?>.Default.Equals(this.Ed25519, other.Ed25519)
-                    && EqualityComparer<BetaWebKeyServiceRSA?>.Default.Equals(this.Rsa, other.Rsa));
+                    && EqualityComparer<BetaWebKeyServiceRSA?>.Default.Equals(this.Rsa, other.Rsa)
+            );
     }
 
     public override bool Equals(object? obj)

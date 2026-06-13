@@ -27,10 +27,15 @@ public class FeatureServiceLoginV2FeatureFlag : IEquatable<FeatureServiceLoginV2
     public bool Equals(FeatureServiceLoginV2FeatureFlag? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.Required, other.Required)
                     && EqualityComparer<string?>.Default.Equals(this.BaseUri, other.BaseUri)
-                    && EqualityComparer<FeatureServiceSource?>.Default.Equals(this.Source, other.Source));
+                    && EqualityComparer<FeatureServiceSource?>.Default.Equals(
+                        this.Source,
+                        other.Source
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

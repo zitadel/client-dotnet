@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaSettingsServicePasswordExpirySettings : IEquatable<BetaSettingsServicePasswordExpirySettings>
+public class BetaSettingsServicePasswordExpirySettings
+    : IEquatable<BetaSettingsServicePasswordExpirySettings>
 {
     /// <summary>
     /// Amount of days after which a password will expire. The user will be forced to change the password on the following authentication.
@@ -33,10 +34,18 @@ public class BetaSettingsServicePasswordExpirySettings : IEquatable<BetaSettings
     public bool Equals(BetaSettingsServicePasswordExpirySettings? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<Object?>.Default.Equals(this.MaxAgeDays, other.MaxAgeDays)
-                    && EqualityComparer<Object?>.Default.Equals(this.ExpireWarnDays, other.ExpireWarnDays)
-                    && EqualityComparer<BetaSettingsServiceResourceOwnerType?>.Default.Equals(this.ResourceOwnerType, other.ResourceOwnerType));
+                    && EqualityComparer<Object?>.Default.Equals(
+                        this.ExpireWarnDays,
+                        other.ExpireWarnDays
+                    )
+                    && EqualityComparer<BetaSettingsServiceResourceOwnerType?>.Default.Equals(
+                        this.ResourceOwnerType,
+                        other.ResourceOwnerType
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

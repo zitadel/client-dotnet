@@ -23,9 +23,14 @@ public class BetaSessionServiceWebAuthN : IEquatable<BetaSessionServiceWebAuthN>
     public bool Equals(BetaSessionServiceWebAuthN? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Domain, other.Domain)
-                    && EqualityComparer<BetaSessionServiceUserVerificationRequirement?>.Default.Equals(this.UserVerificationRequirement, other.UserVerificationRequirement));
+                    && EqualityComparer<BetaSessionServiceUserVerificationRequirement?>.Default.Equals(
+                        this.UserVerificationRequirement,
+                        other.UserVerificationRequirement
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

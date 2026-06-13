@@ -23,9 +23,17 @@ public class UserServiceListIDPLinksResponse : IEquatable<UserServiceListIDPLink
     public bool Equals(UserServiceListIDPLinksResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<UserServiceListDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<List<UserServiceIDPLink>?>.Default.Equals(this.Result, other.Result));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<UserServiceListDetails?>.Default.Equals(
+                    this.Details,
+                    other.Details
+                )
+                    && EqualityComparer<List<UserServiceIDPLink>?>.Default.Equals(
+                        this.Result,
+                        other.Result
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

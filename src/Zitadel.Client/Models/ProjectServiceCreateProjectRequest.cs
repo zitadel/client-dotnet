@@ -61,14 +61,31 @@ public class ProjectServiceCreateProjectRequest : IEquatable<ProjectServiceCreat
     public bool Equals(ProjectServiceCreateProjectRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<string?>.Default.Equals(
+                    this.OrganizationId,
+                    other.OrganizationId
+                )
                     && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
                     && EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<bool?>.Default.Equals(this.ProjectRoleAssertion, other.ProjectRoleAssertion)
-                    && EqualityComparer<bool?>.Default.Equals(this.AuthorizationRequired, other.AuthorizationRequired)
-                    && EqualityComparer<bool?>.Default.Equals(this.ProjectAccessRequired, other.ProjectAccessRequired)
-                    && EqualityComparer<ProjectServicePrivateLabelingSetting?>.Default.Equals(this.PrivateLabelingSetting, other.PrivateLabelingSetting));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.ProjectRoleAssertion,
+                        other.ProjectRoleAssertion
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.AuthorizationRequired,
+                        other.AuthorizationRequired
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.ProjectAccessRequired,
+                        other.ProjectAccessRequired
+                    )
+                    && EqualityComparer<ProjectServicePrivateLabelingSetting?>.Default.Equals(
+                        this.PrivateLabelingSetting,
+                        other.PrivateLabelingSetting
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -27,10 +27,12 @@ public class UserServiceRegisterTOTPResponse : IEquatable<UserServiceRegisterTOT
     public bool Equals(UserServiceRegisterTOTPResponse? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
                     && EqualityComparer<string?>.Default.Equals(this.Uri, other.Uri)
-                    && EqualityComparer<string?>.Default.Equals(this.Secret, other.Secret));
+                    && EqualityComparer<string?>.Default.Equals(this.Secret, other.Secret)
+            );
     }
 
     public override bool Equals(object? obj)

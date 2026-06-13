@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class OrganizationServiceAddOrganizationRequest : IEquatable<OrganizationServiceAddOrganizationRequest>
+public class OrganizationServiceAddOrganizationRequest
+    : IEquatable<OrganizationServiceAddOrganizationRequest>
 {
     /// <summary>
     /// Name is the unique name of the organization to be created.  This must be unique across the instance.
@@ -45,11 +46,19 @@ public class OrganizationServiceAddOrganizationRequest : IEquatable<Organization
     public bool Equals(OrganizationServiceAddOrganizationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<List<OrganizationServiceAdmin>?>.Default.Equals(this.Admins, other.Admins)
-                    && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<string?>.Default.Equals(this.OrgId, other.OrgId));
+                    && EqualityComparer<List<OrganizationServiceAdmin>?>.Default.Equals(
+                        this.Admins,
+                        other.Admins
+                    )
+                    && EqualityComparer<string?>.Default.Equals(
+                        this.OrganizationId,
+                        other.OrganizationId
+                    )
+                    && EqualityComparer<string?>.Default.Equals(this.OrgId, other.OrgId)
+            );
     }
 
     public override bool Equals(object? obj)

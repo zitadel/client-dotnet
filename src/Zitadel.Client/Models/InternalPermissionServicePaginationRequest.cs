@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class InternalPermissionServicePaginationRequest : IEquatable<InternalPermissionServicePaginationRequest>
+public class InternalPermissionServicePaginationRequest
+    : IEquatable<InternalPermissionServicePaginationRequest>
 {
     /// <summary>
     /// Starting point for retrieval, in combination of offset used to query a set list of objects.
@@ -36,10 +37,12 @@ public class InternalPermissionServicePaginationRequest : IEquatable<InternalPer
     public bool Equals(InternalPermissionServicePaginationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<Object?>.Default.Equals(this.Offset, other.Offset)
                     && EqualityComparer<int?>.Default.Equals(this.Limit, other.Limit)
-                    && EqualityComparer<bool?>.Default.Equals(this.Asc, other.Asc));
+                    && EqualityComparer<bool?>.Default.Equals(this.Asc, other.Asc)
+            );
     }
 
     public override bool Equals(object? obj)

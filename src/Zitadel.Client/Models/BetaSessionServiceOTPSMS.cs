@@ -19,8 +19,10 @@ public class BetaSessionServiceOTPSMS : IEquatable<BetaSessionServiceOTPSMS>
     public bool Equals(BetaSessionServiceOTPSMS? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<bool?>.Default.Equals(this.ReturnCode, other.ReturnCode));
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<bool?>.Default.Equals(this.ReturnCode, other.ReturnCode)
+            );
     }
 
     public override bool Equals(object? obj)

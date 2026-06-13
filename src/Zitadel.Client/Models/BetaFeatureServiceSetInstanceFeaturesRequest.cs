@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaFeatureServiceSetInstanceFeaturesRequest : IEquatable<BetaFeatureServiceSetInstanceFeaturesRequest>
+public class BetaFeatureServiceSetInstanceFeaturesRequest
+    : IEquatable<BetaFeatureServiceSetInstanceFeaturesRequest>
 {
     /// <example>null</example>
     [JsonPropertyName("loginDefaultOrg")]
@@ -44,13 +45,30 @@ public class BetaFeatureServiceSetInstanceFeaturesRequest : IEquatable<BetaFeatu
     public bool Equals(BetaFeatureServiceSetInstanceFeaturesRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
-                || EqualityComparer<bool?>.Default.Equals(this.LoginDefaultOrg, other.LoginDefaultOrg)
+            && (
+                ReferenceEquals(this, other)
+                || EqualityComparer<bool?>.Default.Equals(
+                    this.LoginDefaultOrg,
+                    other.LoginDefaultOrg
+                )
                     && EqualityComparer<bool?>.Default.Equals(this.UserSchema, other.UserSchema)
-                    && EqualityComparer<bool?>.Default.Equals(this.OidcTokenExchange, other.OidcTokenExchange)
-                    && EqualityComparer<List<BetaFeatureServiceImprovedPerformance>?>.Default.Equals(this.ImprovedPerformance, other.ImprovedPerformance)
-                    && EqualityComparer<bool?>.Default.Equals(this.DebugOidcParentError, other.DebugOidcParentError)
-                    && EqualityComparer<bool?>.Default.Equals(this.OidcSingleV1SessionTermination, other.OidcSingleV1SessionTermination));
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.OidcTokenExchange,
+                        other.OidcTokenExchange
+                    )
+                    && EqualityComparer<List<BetaFeatureServiceImprovedPerformance>?>.Default.Equals(
+                        this.ImprovedPerformance,
+                        other.ImprovedPerformance
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.DebugOidcParentError,
+                        other.DebugOidcParentError
+                    )
+                    && EqualityComparer<bool?>.Default.Equals(
+                        this.OidcSingleV1SessionTermination,
+                        other.OidcSingleV1SessionTermination
+                    )
+            );
     }
 
     public override bool Equals(object? obj)

@@ -43,11 +43,13 @@ public class IdentityProviderServiceAppleConfig : IEquatable<IdentityProviderSer
     public bool Equals(IdentityProviderServiceAppleConfig? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
                     && EqualityComparer<string?>.Default.Equals(this.TeamId, other.TeamId)
                     && EqualityComparer<string?>.Default.Equals(this.KeyId, other.KeyId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes));
+                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes)
+            );
     }
 
     public override bool Equals(object? obj)

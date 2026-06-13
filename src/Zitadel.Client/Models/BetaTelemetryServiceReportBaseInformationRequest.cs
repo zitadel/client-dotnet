@@ -9,7 +9,8 @@ using System.Text.Json.Serialization;
 
 namespace Zitadel.Client.Models;
 
-public class BetaTelemetryServiceReportBaseInformationRequest : IEquatable<BetaTelemetryServiceReportBaseInformationRequest>
+public class BetaTelemetryServiceReportBaseInformationRequest
+    : IEquatable<BetaTelemetryServiceReportBaseInformationRequest>
 {
     /// <summary>
     /// The system ID is a unique identifier for the ZITADEL system.
@@ -36,10 +37,15 @@ public class BetaTelemetryServiceReportBaseInformationRequest : IEquatable<BetaT
     public bool Equals(BetaTelemetryServiceReportBaseInformationRequest? other)
     {
         return other is not null
-            && (ReferenceEquals(this, other)
+            && (
+                ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.SystemId, other.SystemId)
                     && EqualityComparer<string?>.Default.Equals(this.Version, other.Version)
-                    && EqualityComparer<List<BetaTelemetryServiceInstanceInformation>?>.Default.Equals(this.Instances, other.Instances));
+                    && EqualityComparer<List<BetaTelemetryServiceInstanceInformation>?>.Default.Equals(
+                        this.Instances,
+                        other.Instances
+                    )
+            );
     }
 
     public override bool Equals(object? obj)
