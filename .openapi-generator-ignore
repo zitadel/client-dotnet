@@ -59,3 +59,10 @@ Folder.DotSettings.user
 proc.yml
 Makefile
 .openapi-generator-ignore
+
+# --- generator bookkeeping: the FILES manifest + VERSION are committed but
+#     are not themselves listed in FILES, so prune must be told to spare them. ---
+.openapi-generator/
+
+# --- devbox-managed local dotnet SDK/NuGet state (committed, not generated) ---
+.dotnet/
