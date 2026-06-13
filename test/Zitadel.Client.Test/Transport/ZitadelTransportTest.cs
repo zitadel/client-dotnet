@@ -50,10 +50,13 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
             .WithPortBinding(8080, true)
             .WithPortBinding(8443, true)
             .WithResourceMapping(
-                Path.Combine(FixturesDir, "keystore.p12"),
-                "/home/wiremock/keystore.p12"
+                new FileInfo(Path.Combine(FixturesDir, "keystore.p12")),
+                new FileInfo("/home/wiremock/keystore.p12")
             )
-            .WithResourceMapping(Path.Combine(FixturesDir, "mappings"), "/home/wiremock/mappings")
+            .WithResourceMapping(
+                new DirectoryInfo(Path.Combine(FixturesDir, "mappings")),
+                "/home/wiremock/mappings"
+            )
             .WithCommand(
                 "--https-port",
                 "8443",
@@ -75,7 +78,10 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
             .WithImage("ubuntu/squid:6.10-24.10_beta")
             .WithNetwork(_network)
             .WithPortBinding(3128, true)
-            .WithResourceMapping(Path.Combine(FixturesDir, "squid.conf"), "/etc/squid/squid.conf")
+            .WithResourceMapping(
+                new FileInfo(Path.Combine(FixturesDir, "squid.conf")),
+                new FileInfo("/etc/squid/squid.conf")
+            )
             .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(3128))
             .Build();
 
@@ -164,16 +170,7 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
         Assert.Equal("http", response.DefaultLanguage);
     }
 
-    // Skipped pending an SDK fix: a missing CA cert must surface as a fast TLS
-    // handshake failure, but the OIDC auth/discovery path blocks synchronously
-    // with no transport timeout, so this call never returns and hangs the whole
-    // runner. A test-level async timeout cannot bound a synchronously-blocked
-    // call, so the test is skipped rather than left to stall the suite. Re-enable
-    // once the auth path fast-fails on TLS errors (and honours a timeout).
-    [Fact(
-        Skip = "SDK auth/OIDC path blocks synchronously with no timeout on TLS "
-            + "failure; missing-CA-cert request hangs instead of fast-failing."
-    )]
+    [Fact]
     public async Task MissingCaCertFails()
     {
         using Client client = new(

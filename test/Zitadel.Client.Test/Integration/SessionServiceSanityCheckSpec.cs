@@ -85,11 +85,7 @@ public sealed class SessionServiceSanityCheckSpec : IAsyncLifetime
     public async Task RetrievesSessionDetailsById()
     {
         SessionServiceGetSessionResponse response = await _client.SessionService.GetSessionAsync(
-            new SessionServiceGetSessionRequest
-            {
-                SessionId = _session.SessionId ?? string.Empty,
-                SessionToken = _session.SessionToken,
-            }
+            new SessionServiceGetSessionRequest { SessionId = _session.SessionId ?? string.Empty }
         );
 
         Assert.NotNull(response.Session);
