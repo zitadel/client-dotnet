@@ -1,4 +1,5 @@
 packageName: Zitadel.Client
+clientClassName: Zitadel
 sourceFolder: src
 disallowAdditionalPropertiesIfNotPresent: false
 generateUnitTests: true

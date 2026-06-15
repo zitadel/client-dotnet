@@ -24,7 +24,7 @@ namespace Zitadel.Client.Test.Integration;
 [Collection(ZitadelStackCollection.Name)]
 public sealed class SessionServiceSanityCheckSpec : IAsyncLifetime
 {
-    private readonly Client _client;
+    private readonly global::Zitadel.Client.Zitadel _client;
     private SessionServiceCreateSessionResponse _session = new();
 
     public SessionServiceSanityCheckSpec(ZitadelStackFixture stack)

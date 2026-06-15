@@ -24,17 +24,17 @@ namespace Zitadel.Client;
 /// Usage:
 /// <code>
 /// // Default transport
-/// var client = new Client(authenticator);
+/// var client = new Zitadel(authenticator);
 ///
 /// // Custom transport (proxy, timeouts, etc.)
 /// var transport = TransportOptions.Builder()
 ///     .Proxy("http://proxy:3128")
 ///     .Timeout(5000)
 ///     .Build();
-/// var client = new Client(authenticator, transport);
+/// var client = new Zitadel(authenticator, transport);
 /// </code>
 /// </summary>
-public sealed class Client : IDisposable
+public sealed class Zitadel : IDisposable
 {
     private readonly DefaultApiClient _apiClient;
 
@@ -129,7 +129,7 @@ public sealed class Client : IDisposable
     /// Creates a new client with the given authenticator and default transport settings.
     /// </summary>
     /// <param name="authenticator">Provides host URL and auth credentials.</param>
-    public Client(IAuthenticator authenticator)
+    public Zitadel(IAuthenticator authenticator)
         : this(authenticator, TransportOptions.Builder().Build()) { }
 
     /// <summary>
@@ -141,7 +141,7 @@ public sealed class Client : IDisposable
     /// </summary>
     /// <param name="authenticator">Provides host URL and auth credentials.</param>
     /// <param name="transportOptions">HTTP transport configuration (proxy, TLS, timeouts, etc.).</param>
-    public Client(IAuthenticator authenticator, TransportOptions? transportOptions)
+    public Zitadel(IAuthenticator authenticator, TransportOptions? transportOptions)
     {
         ArgumentNullException.ThrowIfNull(authenticator);
         transportOptions ??= TransportOptions.Builder().Build();
@@ -195,9 +195,23 @@ public sealed class Client : IDisposable
     /// <param name="accessToken">Bearer token.</param>
     /// <param name="transportOptions">Optional HTTP transport configuration.</param>
     /// <returns>Configured client instance.</returns>
-    public static Client WithToken(string host, string accessToken, TransportOptions? transportOptions = null)
+    public static Zitadel WithToken(string host, string accessToken, TransportOptions? transportOptions = null)
     {
-        return new Client(new BearerAuthenticator(host, accessToken), transportOptions ?? TransportOptions.Builder().Build());
+        return new Zitadel(new BearerAuthenticator(host, accessToken), transportOptions ?? TransportOptions.Builder().Build());
+    }
+
+    /// <summary>
+    /// Creates a client from a ready-made <see cref="IAuthenticator"/>.
+    ///
+    /// This is the generic entry point for bespoke authenticators, such as
+    /// client credentials, JWT private key, or personal access token (PAT) flows.
+    /// </summary>
+    /// <param name="authenticator">Provides host URL and auth credentials.</param>
+    /// <param name="transportOptions">Optional HTTP transport configuration.</param>
+    /// <returns>Configured client instance.</returns>
+    public static Zitadel WithAuthenticator(IAuthenticator authenticator, TransportOptions? transportOptions = null)
+    {
+        return new Zitadel(authenticator, transportOptions ?? TransportOptions.Builder().Build());
     }
 
     /// <inheritdoc/>

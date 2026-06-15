@@ -39,7 +39,7 @@ public sealed class UseClientCredentialsSpec
             "api-user"
         );
 
-        using Client client = ZitadelClients.WithClientCredentials(
+        using var client = ZitadelClients.WithClientCredentials(
             _stack.BaseUrl,
             clientId,
             clientSecret
@@ -51,7 +51,7 @@ public sealed class UseClientCredentialsSpec
     [Fact]
     public async Task RaisesApiExceptionWithInvalidClientCredentials()
     {
-        using Client client = ZitadelClients.WithClientCredentials(
+        using var client = ZitadelClients.WithClientCredentials(
             _stack.BaseUrl,
             "invalid",
             "invalid"

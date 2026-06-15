@@ -28,7 +28,7 @@ public sealed class UseAccessTokenSpec
     [Fact]
     public async Task RetrievesGeneralSettingsWithValidToken()
     {
-        using Client client = ZitadelClients.WithAccessToken(_stack.BaseUrl, _stack.AuthToken);
+        using var client = ZitadelClients.WithAccessToken(_stack.BaseUrl, _stack.AuthToken);
 
         Assert.NotNull(await client.SettingsService.GetGeneralSettingsAsync(new object()));
     }
@@ -36,7 +36,7 @@ public sealed class UseAccessTokenSpec
     [Fact]
     public async Task RaisesApiExceptionWithInvalidToken()
     {
-        using Client client = ZitadelClients.WithAccessToken(_stack.BaseUrl, "invalid");
+        using var client = ZitadelClients.WithAccessToken(_stack.BaseUrl, "invalid");
 
         _ = await Assert.ThrowsAnyAsync<ApiException>(() =>
             client.SettingsService.GetGeneralSettingsAsync(new object())

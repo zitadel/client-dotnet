@@ -46,7 +46,6 @@ src/Zitadel.Client/Auth/BearerAuthenticator.cs
 src/Zitadel.Client/Auth/IAuthenticator.cs
 src/Zitadel.Client/Auth/IHttpAwareAuthenticator.cs
 src/Zitadel.Client/Auth/ZitadelAccessTokenAuthenticator.cs
-src/Zitadel.Client/Client.cs
 src/Zitadel.Client/Configuration.cs
 src/Zitadel.Client/DefaultApiClient.cs
 src/Zitadel.Client/Errors/BadRequestException.cs
@@ -1416,6 +1415,7 @@ src/Zitadel.Client/Servers.cs
 src/Zitadel.Client/TraceContextUtil.cs
 src/Zitadel.Client/TransportOptions.cs
 src/Zitadel.Client/ValueSerializer.cs
+src/Zitadel.Client/Zitadel.cs
 src/Zitadel.Client/ZitadelException.cs
 toc.yml
 test/Zitadel.Client.Test/xunit.runner.json

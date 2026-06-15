@@ -12,7 +12,7 @@ dotnet add package Zitadel.Client
 using Zitadel.Client;
 using Zitadel.Client.Auth;
 
-var client = Client.WithToken("https://api.example.com", "your-token");
+var client = Zitadel.WithToken("https://api.example.com", "your-token");
 ```
 
 ## Authentication
@@ -25,7 +25,7 @@ All authentication is handled via `IAuthenticator` implementations passed to the
 using Zitadel.Client.Auth;
 
 var authenticator = new BearerAuthenticator("https://api.example.com", "your-token");
-var client = new Client(authenticator);
+var client = new Zitadel(authenticator);
 ```
 
 ## Servers
@@ -35,7 +35,7 @@ If the OpenAPI spec defines multiple servers, the generated `Servers` class expo
 ```csharp
 using Zitadel.Client;
 
-var client = Client.WithToken(Servers.Server0.Url(), "your-token");
+var client = Zitadel.WithToken(Servers.Server0.Url(), "your-token");
 ```
 
 ## Testing
@@ -51,7 +51,7 @@ public sealed class FakeAuthenticator : IAuthenticator
     public string Host => "https://api.example.com";
 }
 
-var client = new Client(new FakeAuthenticator());
+var client = new Zitadel(new FakeAuthenticator());
 ```
 
 ## Error Handling
@@ -104,7 +104,7 @@ var transport = TransportOptions.Builder()
     .Timeout(5000)
     .Build();
 
-var client = new Client(authenticator, transport);
+var client = new Zitadel(authenticator, transport);
 ```
 
 The client implements `IDisposable`. Use `using` statements or call `Dispose()` when done.

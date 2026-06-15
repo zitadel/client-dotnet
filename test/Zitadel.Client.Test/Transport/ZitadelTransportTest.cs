@@ -11,6 +11,7 @@ using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Containers;
 using DotNet.Testcontainers.Networks;
 using Zitadel.Client.Auth;
+using ZitadelClient = Zitadel.Client.Zitadel;
 
 namespace Zitadel.Client.Test.Transport;
 
@@ -99,7 +100,7 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
     public async Task CustomCaCertIsTrusted()
     {
         TransportOptions transport = TransportOptions.Builder().CaCertPath(CaCertPath).Build();
-        using Client client = new(
+        using var client = ZitadelClient.WithAuthenticator(
             ClientCredentialsAuthenticator
                 .CreateBuilder($"https://{Host}:{HttpsPort}", "dummy-client", "dummy-secret")
                 .Build(),
@@ -116,7 +117,7 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
     public async Task InsecureModeSkipsVerification()
     {
         TransportOptions transport = TransportOptions.Builder().VerifySsl(false).Build();
-        using Client client = new(
+        using var client = ZitadelClient.WithAuthenticator(
             ClientCredentialsAuthenticator
                 .CreateBuilder($"https://{Host}:{HttpsPort}", "dummy-client", "dummy-secret")
                 .Build(),
@@ -136,7 +137,7 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
             .Builder()
             .DefaultHeader("X-Custom-Header", "test-value")
             .Build();
-        using Client client = new(
+        using var client = ZitadelClient.WithAuthenticator(
             ClientCredentialsAuthenticator
                 .CreateBuilder($"http://{Host}:{HttpPort}", "dummy-client", "dummy-secret")
                 .Build(),
@@ -157,7 +158,7 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
             .Builder()
             .Proxy($"http://{Host}:{ProxyPort}")
             .Build();
-        using Client client = new(
+        using var client = ZitadelClient.WithAuthenticator(
             new BearerAuthenticator("http://wiremock:8080", "test-token"),
             transport
         );
@@ -171,7 +172,7 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
     [Fact]
     public async Task MissingCaCertFails()
     {
-        using Client client = new(
+        using var client = ZitadelClient.WithAuthenticator(
             ClientCredentialsAuthenticator
                 .CreateBuilder($"https://{Host}:{HttpsPort}", "dummy-client", "dummy-secret")
                 .Build()

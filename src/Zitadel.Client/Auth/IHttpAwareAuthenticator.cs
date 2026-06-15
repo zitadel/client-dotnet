@@ -18,7 +18,7 @@ namespace Zitadel.Client.Auth;
 /// use the same transport configuration (proxy, TLS, timeouts) as regular
 /// API calls.
 ///
-/// The <see cref="IApiClient"/> is injected by the <see cref="Client"/> class after
+/// The <see cref="IApiClient"/> is injected by the <see cref="Zitadel"/> class after
 /// construction, via <see cref="SetApiClient"/>. Implementations must not make
 /// HTTP calls before the client is injected.
 ///
@@ -31,7 +31,7 @@ public interface IHttpAwareAuthenticator : IAuthenticator
     /// <summary>
     /// Inject the shared API client for making HTTP requests.
     ///
-    /// Called by the <see cref="Client"/> constructor after the <see cref="IApiClient"/>
+    /// Called by the <see cref="Zitadel"/> constructor after the <see cref="IApiClient"/>
     /// has been created with the user's <see cref="TransportOptions"/>.
     /// Implementations should store this reference and use it for all
     /// outbound HTTP calls (token exchange, discovery, etc.).

@@ -24,7 +24,7 @@ namespace Zitadel.Client.Test.Integration;
 [Collection(ZitadelStackCollection.Name)]
 public sealed class UserServiceSanityCheckSpec : IAsyncLifetime
 {
-    private readonly Client _client;
+    private readonly global::Zitadel.Client.Zitadel _client;
     private UserServiceAddHumanUserResponse _user = new();
 
     public UserServiceSanityCheckSpec(ZitadelStackFixture stack)

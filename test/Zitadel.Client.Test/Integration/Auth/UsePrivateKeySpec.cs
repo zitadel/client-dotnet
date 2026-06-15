@@ -28,7 +28,7 @@ public sealed class UsePrivateKeySpec
     [Fact]
     public async Task RetrievesGeneralSettingsWithValidPrivateKey()
     {
-        using Client client = ZitadelClients.WithPrivateKey(_stack.BaseUrl, _stack.JwtKeyPath);
+        using var client = ZitadelClients.WithPrivateKey(_stack.BaseUrl, _stack.JwtKeyPath);
 
         Assert.NotNull(await client.SettingsService.GetGeneralSettingsAsync(new object()));
     }
@@ -36,7 +36,7 @@ public sealed class UsePrivateKeySpec
     [Fact]
     public async Task RaisesApiExceptionWithInvalidPrivateKey()
     {
-        using Client client = ZitadelClients.WithPrivateKey(
+        using var client = ZitadelClients.WithPrivateKey(
             "https://zitadel.cloud",
             _stack.JwtKeyPath
         );
