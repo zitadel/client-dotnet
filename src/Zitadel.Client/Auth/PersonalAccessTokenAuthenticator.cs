@@ -36,4 +36,14 @@ public class PersonalAccessTokenAuthenticator : BaseAuthenticator
     {
         return new() { ["Authorization"] = "Bearer " + _token };
     }
+
+    /// <summary>
+    /// Returns a string representation of this authenticator with the personal
+    /// access token redacted (rendered as <c>***</c>), so the credential is
+    /// never leaked through logging or diagnostics.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"{nameof(PersonalAccessTokenAuthenticator)}(host={_host}, token=***)";
+    }
 }

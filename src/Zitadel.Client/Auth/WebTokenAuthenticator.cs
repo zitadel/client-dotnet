@@ -185,6 +185,17 @@ public class WebTokenAuthenticator : OAuthAuthenticator
     {
         return Convert.ToBase64String(input).TrimEnd('=').Replace('+', '-').Replace('/', '_');
     }
+
+    /// <summary>
+    /// Returns a string representation of this authenticator with the private
+    /// signing key redacted (rendered as <c>***</c>), so the key material is
+    /// never leaked through logging or diagnostics.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"{nameof(WebTokenAuthenticator)}(host={GetHost()}, issuer={_jwtIssuer}, "
+            + $"subject={_jwtSubject}, audience={_jwtAudience}, keyId={_keyId}, key=***)";
+    }
 }
 
 /// <summary>

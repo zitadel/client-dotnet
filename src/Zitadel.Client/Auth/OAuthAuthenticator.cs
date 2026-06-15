@@ -103,6 +103,17 @@ public abstract class OAuthAuthenticator : BaseAuthenticator, IHttpAwareAuthenti
     }
 
     /// <summary>
+    /// Returns a string representation of this authenticator with the cached
+    /// access token redacted (rendered as <c>***</c> when present), so the
+    /// bearer token is never leaked through logging or diagnostics.
+    /// </summary>
+    public override string ToString()
+    {
+        string masked = _token == null ? "null" : "***";
+        return $"{GetType().Name}(host={GetHost()}, scope={Scope}, accessToken={masked})";
+    }
+
+    /// <summary>
     /// Refreshes the access token by POSTing to the OAuth2 token endpoint
     /// through the shared API client.
     /// </summary>

@@ -70,4 +70,14 @@ public class BearerAuthenticator : BaseAuthenticator
         }
         return new() { ["Authorization"] = "Bearer " + value };
     }
+
+    /// <summary>
+    /// Returns a string representation of this authenticator with the bearer
+    /// token redacted (rendered as <c>***</c>), so the credential is never
+    /// leaked through logging or diagnostics.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"{GetType().Name}(host={_host}, token=***)";
+    }
 }
