@@ -72,12 +72,11 @@ public class BearerAuthenticator : BaseAuthenticator
     }
 
     /// <summary>
-    /// Returns a string representation of this authenticator with the bearer
-    /// token redacted (rendered as <c>***</c>), so the credential is never
-    /// leaked through logging or diagnostics.
+    /// Returns a string representation with the bearer token redacted so the
+    /// credential never leaks into logs, stack traces, or debugger output.
     /// </summary>
     public override string ToString()
     {
-        return $"{GetType().Name}(host={_host}, token=***)";
+        return $"{GetType().Name}(Host={_host}, Token=***)";
     }
 }

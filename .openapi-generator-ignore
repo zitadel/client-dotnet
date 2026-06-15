@@ -19,6 +19,7 @@ src/Zitadel.Client/Auth/WebTokenAuthenticator.cs
 #     generator-owned and deliberately NOT keep-listed) ---
 etc/
 test/.editorconfig
+test/Zitadel.Client.Test/Auth/AuthenticatorRedactionTest.cs
 test/Zitadel.Client.Test/Integration/
 test/Zitadel.Client.Test/Transport/
 test/Zitadel.Client.Test/fixtures/
