@@ -35,6 +35,7 @@ public sealed class UseClientCredentialsSpec
     public async Task RetrievesGeneralSettingsWithValidClientCredentials()
     {
         (string clientId, string clientSecret) = await GenerateUserSecretAsync(
+            _stack.BaseUrl,
             _stack.AuthToken,
             "api-user"
         );
@@ -63,6 +64,7 @@ public sealed class UseClientCredentialsSpec
     }
 
     private static async Task<(string ClientId, string ClientSecret)> GenerateUserSecretAsync(
+        string baseUrl,
         string token,
         string loginName
     )
@@ -74,7 +76,7 @@ public sealed class UseClientCredentialsSpec
         );
 
         string lookupUrl =
-            "http://localhost:18104/management/v1/global/users/_by_login_name?loginName="
+            $"{baseUrl}/management/v1/global/users/_by_login_name?loginName="
             + Uri.EscapeDataString(loginName);
         using HttpResponseMessage lookup = await http.GetAsync(new Uri(lookupUrl));
         string lookupBody = await lookup.Content.ReadAsStringAsync();
@@ -93,7 +95,7 @@ public sealed class UseClientCredentialsSpec
 
         using HttpRequestMessage secretRequest = new(
             HttpMethod.Put,
-            new Uri($"http://localhost:18104/management/v1/users/{userId}/secret")
+            new Uri($"{baseUrl}/management/v1/users/{userId}/secret")
         );
         secretRequest.Content = new StringContent("{}", Encoding.UTF8, "application/json");
         using HttpResponseMessage secret = await http.SendAsync(secretRequest);

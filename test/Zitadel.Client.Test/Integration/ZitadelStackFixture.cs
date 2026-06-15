@@ -23,7 +23,7 @@ namespace Zitadel.Client.Test.Integration;
 public sealed class ZitadelStackFixture : IAsyncLifetime
 {
     /// <summary>The base URL the provisioned Zitadel instance is reachable at.</summary>
-    public string BaseUrl { get; } = "http://localhost:18104";
+    public string BaseUrl { get; private set; } = string.Empty;
 
     /// <summary>The personal access token minted by the stack.</summary>
     public string AuthToken { get; private set; } = string.Empty;
@@ -43,6 +43,8 @@ public sealed class ZitadelStackFixture : IAsyncLifetime
             ["up", "--detach", "--no-color", "--quiet-pull", "--yes"],
             TimeSpan.FromMinutes(5)
         );
+
+        BaseUrl = await DiscoverBaseUrlAsync();
 
         string authTokenPath = Path.Combine(ComposeFileDir, "zitadel_output", "pat.txt");
         if (!File.Exists(authTokenPath))
@@ -76,7 +78,41 @@ public sealed class ZitadelStackFixture : IAsyncLifetime
         }
     }
 
+    /// <summary>
+    /// Discovers the host port that Docker mapped to the zitadel service's
+    /// container port 8080 and builds the base URL from it.
+    ///
+    /// <para>The compose file requests an ephemeral host port
+    /// (<c>- "8080"</c>), so Docker assigns a random free port at startup.
+    /// <c>docker compose port</c> reports the resolved <c>host:port</c>
+    /// binding, which is parsed to extract the host port.</para>
+    /// </summary>
+    private static async Task<string> DiscoverBaseUrlAsync()
+    {
+        string output = await RunComposeCaptureAsync(
+            ["port", "zitadel", "8080"],
+            TimeSpan.FromMinutes(1)
+        );
+
+        string mapping = output.Trim();
+        int colon = mapping.LastIndexOf(':');
+        string hostPort = colon >= 0 ? mapping[(colon + 1)..] : string.Empty;
+        if (hostPort.Length == 0 || !hostPort.All(char.IsDigit))
+        {
+            throw new InvalidOperationException(
+                $"Failed to discover the mapped host port for zitadel:8080 (got: \"{mapping}\")."
+            );
+        }
+
+        return $"http://localhost:{hostPort}";
+    }
+
     private static async Task RunComposeAsync(string[] composeArgs, TimeSpan timeout)
+    {
+        await RunComposeCaptureAsync(composeArgs, timeout);
+    }
+
+    private static async Task<string> RunComposeCaptureAsync(string[] composeArgs, TimeSpan timeout)
     {
         ProcessStartInfo psi = new()
         {
@@ -115,13 +151,15 @@ public sealed class ZitadelStackFixture : IAsyncLifetime
 
         if (process.ExitCode != 0)
         {
-            string output = await stdOut;
+            string failedOutput = await stdOut;
             string error = await stdErr;
             throw new InvalidOperationException(
                 $"docker compose {string.Join(' ', composeArgs)} failed "
-                    + $"(exit code {process.ExitCode}).\n{output}\n{error}"
+                    + $"(exit code {process.ExitCode}).\n{failedOutput}\n{error}"
             );
         }
+
+        return await stdOut;
     }
 
     private static string RepositoryRoot
