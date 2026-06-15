@@ -16,6 +16,9 @@ TestResults/
 # Coverage and docs output
 .out/
 
+# Local tooling caches
+.repograph/
+
 # DocFX generated API metadata (intermediate YAML)
 /api/
 
