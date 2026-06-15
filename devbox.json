@@ -2,7 +2,6 @@
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.10.7/.schema/devbox.schema.json",
   "packages": [
     "dotnet-sdk_10@latest",
-    "lefthook@latest",
     "docfx@latest",
     "github:mridang/nixpkgs#qodana"
   ],
@@ -13,7 +12,6 @@
   },
   "shell": {
     "init_hook": [
-      "lefthook install",
       "dotnet restore"
     ],
     "scripts": {

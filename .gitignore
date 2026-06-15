@@ -19,6 +19,10 @@ TestResults/
 # Local tooling caches
 .repograph/
 
+# Devbox
+.devbox/
+devbox.d/
+
 # DocFX generated API metadata (intermediate YAML)
 /api/
 

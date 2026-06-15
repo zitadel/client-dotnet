@@ -111,54 +111,6 @@
           "store_path": "/nix/store/jcf366niva29fva5bszdz40p31y8xfrz-dotnet-sdk-wrapped-10.0.300"
         }
       }
-    },
-    "lefthook@latest": {
-      "last_modified": "2025-11-15T07:28:48Z",
-      "resolved": "github:NixOS/nixpkgs/1d4c88323ac36805d09657d13a5273aea1b34f0c#lefthook",
-      "source": "devbox-search",
-      "version": "1.13.6",
-      "systems": {
-        "aarch64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/yh1niz6pv9z8qdk5fpd1kldlmax65dgh-lefthook-1.13.6",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/yh1niz6pv9z8qdk5fpd1kldlmax65dgh-lefthook-1.13.6"
-        },
-        "aarch64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/ksnfhvmrdf2r06g5a5klvn6chr01xmkj-lefthook-1.13.6",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/ksnfhvmrdf2r06g5a5klvn6chr01xmkj-lefthook-1.13.6"
-        },
-        "x86_64-darwin": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/5dhq6fjp8m38qkvidba639wighi35199-lefthook-1.13.6",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/5dhq6fjp8m38qkvidba639wighi35199-lefthook-1.13.6"
-        },
-        "x86_64-linux": {
-          "outputs": [
-            {
-              "name": "out",
-              "path": "/nix/store/7agxpgsqwqpm2vdd5d4nysv2hyw6fn30-lefthook-1.13.6",
-              "default": true
-            }
-          ],
-          "store_path": "/nix/store/7agxpgsqwqpm2vdd5d4nysv2hyw6fn30-lefthook-1.13.6"
-        }
-      }
     }
   }
 }

@@ -35,10 +35,9 @@ VERSIONING.md
 .dockerignore
 .dotnet/
 .editorconfig
-.env
 .github/
 .gitignore
-.idea/
+.pre-commit-config.yaml
 .releaserc.json
 devbox.json
 devbox.lock
