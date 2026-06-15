@@ -19,7 +19,11 @@ src/Zitadel.Client/Auth/WebTokenAuthenticator.cs
 #     generator-owned and deliberately NOT keep-listed) ---
 etc/
 test/.editorconfig
-test/Zitadel.Client.Test/Auth/AuthenticatorRedactionTest.cs
+# one redaction test per bespoke secret-bearing authenticator
+test/Zitadel.Client.Test/Auth/ClientCredentialsAuthenticatorTest.cs
+test/Zitadel.Client.Test/Auth/OAuthAuthenticatorTest.cs
+test/Zitadel.Client.Test/Auth/PersonalAccessTokenAuthenticatorTest.cs
+test/Zitadel.Client.Test/Auth/WebTokenAuthenticatorTest.cs
 test/Zitadel.Client.Test/Integration/
 test/Zitadel.Client.Test/Transport/
 test/Zitadel.Client.Test/fixtures/
