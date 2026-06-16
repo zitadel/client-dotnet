@@ -55,6 +55,9 @@ qodana.yaml
 Zitadel.Client.sln
 src/Zitadel.Client/Zitadel.Client.csproj
 test/Zitadel.Client.Test/Zitadel.Client.Test.csproj
+Directory.Build.props
+src/Zitadel.Client/packages.lock.json
+test/Zitadel.Client.Test/packages.lock.json
 
 # --- generation tooling we added ---
 .openapi-generator-ignore
