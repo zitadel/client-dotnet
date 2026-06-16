@@ -43,7 +43,29 @@ jobs:
         #   source files from coverage. Without it the Cobertura report is ~6.8 MB
         #   and the reporter's Markdown summary exceeds GitHub's 1 MB
         #   $GITHUB_STEP_SUMMARY limit, failing the step.
-        run: dotnet test --no-restore --collect:"XPlat Code Coverage" --logger trx --results-directory .out --settings coverlet.runsettings
+        # LogFileName pins the trx to a deterministic path (.out/results.trx) so
+        # the upload and reporters reference it exactly instead of globbing.
+        run: dotnet test --no-restore --collect:"XPlat Code Coverage" --logger "trx;LogFileName=results.trx" --results-directory .out --settings coverlet.runsettings
+
+      - name: Upload Results
+        # Uploaded immediately after the test run, before the coverage reporter
+        # below, which rewrites .out while building its summary and would
+        # otherwise remove the trx that the Qodana job downloads as test-results.
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: test-results
+          path: .out/results.trx
+          if-no-files-found: error
+
+      - name: Generate Report
+        if: ${{ always() && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false) }}
+        uses: dorny/test-reporter@6e6a65b7a0bd2c9197df7d0ae36ac5cee784230c # v2.0.0
+        with:
+          name: Tests
+          reporter: dotnet-trx
+          path: .out/results.trx
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Consolidate coverage file
         # The XPlat collector writes coverage.cobertura.xml into a random GUID
@@ -59,32 +81,9 @@ jobs:
           cp "$src" .out/coverage.cobertura.xml
 
       - name: Generate coverage report
+        # Uploads the coverage as the "test-coverage" artifact the Qodana job consumes.
         uses: mridang/action-test-reporter@v1
         if: always()
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           coverage-file: '.out/coverage.cobertura.xml'
-
-      - name: Upload Results
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        if: always()
-        with:
-          name: test-results
-          # dotnet writes the trx at the root of --results-directory (.out), so
-          # match root-level files; a recursive-only glob misses it and silently
-          # uploads nothing, which then breaks the Qodana job's artifact download.
-          path: '.out/*.trx'
-          if-no-files-found: error
-
-      # The coverage artifact is uploaded by mridang/action-test-reporter above
-      # (under the name "test-coverage"). A second upload-artifact step using the
-      # same name caused a 409 conflict, so the coverage upload lives only there.
-
-      - name: Generate Report
-        if: ${{ always() && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false) }}
-        uses: dorny/test-reporter@6e6a65b7a0bd2c9197df7d0ae36ac5cee784230c # v2.0.0
-        with:
-          name: Tests
-          reporter: dotnet-trx
-          path: '.out/*.trx'
-          token: ${{ secrets.GITHUB_TOKEN }}
