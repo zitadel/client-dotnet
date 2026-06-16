@@ -70,7 +70,11 @@ jobs:
         if: always()
         with:
           name: test-results
-          path: '.out/**/*.trx'
+          # dotnet writes the trx at the root of --results-directory (.out), so
+          # match root-level files; a recursive-only glob misses it and silently
+          # uploads nothing, which then breaks the Qodana job's artifact download.
+          path: '.out/*.trx'
+          if-no-files-found: error
 
       # The coverage artifact is uploaded by mridang/action-test-reporter above
       # (under the name "test-coverage"). A second upload-artifact step using the
@@ -82,5 +86,5 @@ jobs:
         with:
           name: Tests
           reporter: dotnet-trx
-          path: '.out/**/*.trx'
+          path: '.out/*.trx'
           token: ${{ secrets.GITHUB_TOKEN }}
