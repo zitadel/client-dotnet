@@ -39,7 +39,11 @@ jobs:
         # --logger trx: Outputs native .NET test results
         # --collect:"XPlat Code Coverage": Outputs coverage.cobertura.xml
         # --results-directory: Collects all outputs under a known directory
-        run: dotnet test --no-restore --collect:"XPlat Code Coverage" --logger trx --results-directory .out
+        # --settings: coverlet.runsettings excludes the ~1,380 OpenAPI-generated
+        #   source files from coverage. Without it the Cobertura report is ~6.8 MB
+        #   and the reporter's Markdown summary exceeds GitHub's 1 MB
+        #   $GITHUB_STEP_SUMMARY limit, failing the step.
+        run: dotnet test --no-restore --collect:"XPlat Code Coverage" --logger trx --results-directory .out --settings coverlet.runsettings
 
       - name: Consolidate coverage file
         # The XPlat collector writes coverage.cobertura.xml into a random GUID
@@ -68,12 +72,9 @@ jobs:
           name: test-results
           path: '.out/**/*.trx'
 
-      - name: Upload Coverage
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        if: always()
-        with:
-          name: test-coverage
-          path: .out/coverage.cobertura.xml
+      # The coverage artifact is uploaded by mridang/action-test-reporter above
+      # (under the name "test-coverage"). A second upload-artifact step using the
+      # same name caused a 409 conflict, so the coverage upload lives only there.
 
       - name: Generate Report
         if: ${{ always() && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false) }}

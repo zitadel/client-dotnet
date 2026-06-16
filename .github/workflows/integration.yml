@@ -19,8 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # Check compatibility across recent supported .NET versions
-        dotnet-version: [ '8.0.x', '9.0.x', '10.0.x' ]
+        # Check compatibility across the frameworks the library ships
+        # (lib/net9.0 and lib/net10.0). net8.0 is intentionally excluded:
+        # the generated models use System.Text.Json's JsonStringEnumMemberName,
+        # which only exists on .NET 9 and later.
+        dotnet-version: [ '9.0.x', '10.0.x' ]
       fail-fast: false
 
     steps:
@@ -44,12 +47,24 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@3951f0dfe7a07e2313ec93c75700083e2005cbab # v4.3.0
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+          # Always install the .NET 10 SDK alongside the matrix row's SDK:
+          # packing a net9.0;net10.0 library requires the newest SDK, while the
+          # row's SDK is what builds the matching sanity TFM.
+          dotnet-version: |
+            ${{ matrix.dotnet-version }}
+            10.0.x
 
       - name: Build Library
+        # Pack the SDK into a local feed so the sanity project can consume it
+        # as a real NuGet package instead of via a project reference.
         working-directory: project/library
-        run: dotnet build --configuration Release
+        run: dotnet pack --configuration Release --output "$GITHUB_WORKSPACE/localfeed"
 
       - name: Check Installability
+        # The sanity project's nuget.config points at ../../localfeed, which
+        # resolves to $GITHUB_WORKSPACE/localfeed from project/sanity. Restore
+        # then test against the freshly packed package.
         working-directory: project/sanity
-        run: dotnet test --configuration Release
+        run: |
+          dotnet restore
+          dotnet test --configuration Release --no-restore

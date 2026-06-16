@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Coverage settings for the XPlat Code Coverage collector (coverlet).
+
+    The SDK is overwhelmingly OpenAPI-generated source: the `Models/` and `Api/`
+    trees alone are ~1,380 generated files. Including them in coverage produced a
+    6.8 MB Cobertura report and a rendered Markdown summary above GitHub's 1 MB
+    `$GITHUB_STEP_SUMMARY` cap, which made the test reporter step fail. Generated
+    code is not meaningfully unit-testable, so it is excluded here. Coverage then
+    reflects the hand-written transport, auth and serialization code that the 222
+    tests actually exercise, and the report stays well under the summary limit.
+-->
+<RunSettings>
+    <DataCollectionRunSettings>
+        <DataCollectors>
+            <DataCollector friendlyName="XPlat code coverage">
+                <Configuration>
+                    <Format>cobertura</Format>
+                    <!--
+                        Exclude OpenAPI-generated source. Globs are matched
+                        against absolute source paths, so the leading `**`
+                        keeps them anchored regardless of checkout location.
+                    -->
+                    <ExcludeByFile>**/Models/**/*.cs,**/Api/**/*.cs</ExcludeByFile>
+                    <!-- Also honour the conventional generated-code attribute. -->
+                    <ExcludeByAttribute>GeneratedCodeAttribute,CompilerGeneratedAttribute,ExcludeFromCodeCoverageAttribute</ExcludeByAttribute>
+                </Configuration>
+            </DataCollector>
+        </DataCollectors>
+    </DataCollectionRunSettings>
+</RunSettings>
