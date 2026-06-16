@@ -46,6 +46,7 @@ jobs:
         with:
           dotnet-version: '10.0.x'
           cache: true
+          cache-dependency-path: '**/packages.lock.json'
 
       - name: Run semantic-release
         uses: mridang/action-semantic-release@v2

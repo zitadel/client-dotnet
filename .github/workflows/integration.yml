@@ -45,8 +45,6 @@ jobs:
         uses: actions/setup-dotnet@3951f0dfe7a07e2313ec93c75700083e2005cbab # v4.3.0
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-          cache: true
-          cache-dependency-path: project/library/**/packages.lock.json
 
       - name: Build Library
         working-directory: project/library
