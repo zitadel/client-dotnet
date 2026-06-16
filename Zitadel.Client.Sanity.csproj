@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <!--
+            Multi-target the same frameworks the published library ships
+            (`lib/net9.0` and `lib/net10.0`). Each compatibility matrix row
+            installs one SDK; building both TFMs here proves the packed
+            package restores and links against whichever runtime is present.
+        -->
+        <TargetFrameworks>net9.0;net10.0</TargetFrameworks>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
+        <PackageReference Include="xunit.v3" Version="3.2.2" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!--
+            Depend on the SDK as a published NuGet package (not a project
+            reference) so this exercises the real installability surface:
+            restore from the local feed, then link against the packed lib.
+        -->
+        <PackageReference Include="Zitadel.Client" Version="0.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="Xunit" />
+    </ItemGroup>
+</Project>

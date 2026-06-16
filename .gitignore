@@ -1,0 +1,23 @@
+# Build output
+bin/
+obj/
+
+# Test runner output
+TestResults/
+
+# Consolidated results directory
+.out/
+
+# Local NuGet feed consumed during installability checks
+/localfeed/
+
+# IDE files
+*.user
+.vs/
+.idea/
+
+# Devbox / local env
+.devbox/
+devbox.json
+devbox.lock
+.env
