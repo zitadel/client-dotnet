@@ -1,20 +1,31 @@
-# Build results
-[Bb]in/
-[Oo]bj/
+# Build output
+bin/
+obj/
 
-# User-specific files
-*.suo
+# Test runner output
+TestResults/
+
+# Project-root NuGet/dotnet caches (scoped here via devbox env)
+/.nuget/
+/.dotnet/
+
+# IDE files
 *.user
-*.userosscache
-*.sln.docstates
+.vs/
 
-# VS Code
-.vscode/
+# Coverage and docs output
+.out/
 
-# Rider / IntelliJ
-.idea/
-*.sln.iml
+# Local tooling caches
+.repograph/
 
-# OS generated files
-.DS_Store
-Thumbs.db
+# Devbox
+.devbox/
+devbox.d/
+
+# DocFX generated API metadata (intermediate YAML)
+/api/
+
+# Runtime credentials minted by the integration-test docker-compose stack
+etc/zitadel_output/
+.env

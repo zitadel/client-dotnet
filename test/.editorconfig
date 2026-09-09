@@ -1,0 +1,10 @@
+# Style scope for the bespoke test project. The repo-root .editorconfig is
+# tuned for the generated SDK tree and enforces explicit-type / unused-using
+# rules that the hand-written xUnit fixtures intentionally do not follow
+# (they use `var` and a redundant top-level using for readability). These are
+# style-only preferences; relaxing them here keeps `dotnet format` clean
+# without touching the test sources, which are a fixed contract.
+[*.cs]
+dotnet_diagnostic.IDE0005.severity = none
+dotnet_diagnostic.IDE0008.severity = none
+dotnet_diagnostic.IDE0090.severity = none

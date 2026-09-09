@@ -1,13 +1,17 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.10.7/.schema/devbox.schema.json",
   "packages": [
-    "dotnet-sdk@latest",
-    "lefthook@latest",
-    "docfx@latest"
+    "dotnet-sdk_10@latest",
+    "docfx@latest",
+    "github:mridang/nixpkgs#qodana"
   ],
+  "env": {
+    "NUGET_PACKAGES":      "$DEVBOX_PROJECT_ROOT/.nuget/packages",
+    "DOTNET_CLI_HOME":     "$DEVBOX_PROJECT_ROOT/.dotnet",
+    "DOTNET_ROLL_FORWARD": "Major"
+  },
   "shell": {
     "init_hook": [
-      "lefthook install",
       "dotnet restore"
     ],
     "scripts": {

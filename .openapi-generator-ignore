@@ -1,0 +1,70 @@
+# Keep-list: files the generator must NOT overwrite, and the Makefile's
+# `prune` step must NOT delete. Everything else is generator-owned.
+# Sections are shared across all SDK repos for harmony; keep them in order and
+# sorted alphabetically (case-insensitive) within each section.
+
+# --- bespoke authenticators (ported onto the generated IAuthenticator /
+#     IHttpAwareAuthenticator interfaces; the interfaces + base/bearer/token
+#     classes are generator-owned and deliberately NOT keep-listed) ---
+src/Zitadel.Client/Auth/ClientCredentialsAuthenticator.cs
+src/Zitadel.Client/Auth/NoAuthAuthenticator.cs
+src/Zitadel.Client/Auth/OAuthAuthenticator.cs
+src/Zitadel.Client/Auth/OAuthAuthenticatorBuilder.cs
+src/Zitadel.Client/Auth/OpenId.cs
+src/Zitadel.Client/Auth/PersonalAccessTokenAuthenticator.cs
+src/Zitadel.Client/Auth/WebTokenAuthenticator.cs
+
+# --- bespoke tests + fixtures the generator does not emit (the integration
+#     specs + Zitadel server fixtures; the spec-independent unit tests are
+#     generator-owned and deliberately NOT keep-listed) ---
+etc/
+test/.editorconfig
+# one redaction test per bespoke secret-bearing authenticator
+test/Zitadel.Client.Test/Auth/ClientCredentialsAuthenticatorTest.cs
+test/Zitadel.Client.Test/Auth/OAuthAuthenticatorTest.cs
+test/Zitadel.Client.Test/Auth/PersonalAccessTokenAuthenticatorTest.cs
+test/Zitadel.Client.Test/Auth/WebTokenAuthenticatorTest.cs
+test/Zitadel.Client.Test/Integration/
+test/Zitadel.Client.Test/Transport/
+test/Zitadel.Client.Test/fixtures/
+
+# --- repo identity + docs (team-owned) ---
+LICENSE
+README.md
+SECURITY.md
+VERSIONING.md
+
+# --- house tooling (team-owned) ---
+.commitlintrc.json
+.config/
+.dockerignore
+.dotnet/
+.editorconfig
+.github/
+.gitignore
+.pre-commit-config.yaml
+.releaserc.json
+devbox.json
+devbox.lock
+Dockerfile
+Folder.DotSettings.user
+lefthook.yml
+qodana.yaml
+
+# --- build / package config (team-owned: PackageReferences survive regen) ---
+Zitadel.Client.sln
+src/Zitadel.Client/Zitadel.Client.csproj
+test/Zitadel.Client.Test/Zitadel.Client.Test.csproj
+coverlet.runsettings
+Directory.Build.props
+src/Zitadel.Client/packages.lock.json
+test/Zitadel.Client.Test/packages.lock.json
+
+# --- generation tooling we added ---
+.openapi-generator-ignore
+Makefile
+proc.yml
+
+# --- generator bookkeeping (the FILES manifest + VERSION are committed but are
+#     not themselves listed in FILES, so prune must be told to spare them) ---
+.openapi-generator/

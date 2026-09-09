@@ -1,0 +1,47 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "src/Zitadel.Client",
+          "files": [
+            "**/*.csproj"
+          ]
+        }
+      ],
+      "dest": "api",
+      "properties": {
+        "TargetFramework": "net10.0"
+      },
+      "disableGitFeatures": true,
+      "disableDefaultFilter": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "api/**.{md,yml}",
+          "toc.yml",
+          "index.md"
+        ]
+      }
+    ],
+    "globalMetadata": {
+      "_appTitle": "Zitadel SDK API Documentation",
+      "_appName": "Zitadel.Client",
+      "_enableSearch": true,
+      "_disableContribution": true
+    },
+    "dest": ".out/docs",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template": [
+      "default",
+      "modern"
+    ],
+    "postProcessors": [],
+    "keepFileLink": false,
+    "disableGitFeatures": true
+  }
+}
