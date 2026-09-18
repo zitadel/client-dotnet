@@ -16,25 +16,21 @@ public class BetaInternalPermissionServiceResourceType : IEquatable<BetaInternal
     /// <summary>
     /// Instance is the resource type for granting administrator privileges on the instance level.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("instance")]
     public bool? Instance { get; set; }
 
     /// <summary>
     /// OrganizationID is required to grant administrator privileges for a specific organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectGrant")]
     public BetaInternalPermissionServiceProjectGrant? ProjectGrant { get; set; }
 
     /// <summary>
     /// ProjectID is required to grant administrator privileges for a specific project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 

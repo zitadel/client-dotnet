@@ -16,14 +16,12 @@ public class FeatureServiceLoginV2 : IEquatable<FeatureServiceLoginV2>
     /// <summary>
     /// Require that all users must use the new login UI. If enabled, all users will be redirected to the login V2 regardless of the application's preference.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("required")]
     public bool? Required { get; set; }
 
     /// <summary>
     /// Optionally specify a base uri of the login UI. If unspecified the default URI will be used.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("baseUri")]
     public string? BaseUri { get; set; }
 

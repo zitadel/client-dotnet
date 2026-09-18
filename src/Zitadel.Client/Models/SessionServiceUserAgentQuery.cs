@@ -16,7 +16,6 @@ public class SessionServiceUserAgentQuery : IEquatable<SessionServiceUserAgentQu
     /// <summary>
     /// Finger print id of the user agent used for the session.  Set an empty fingerprint_id to use the user agent from the call.  If the user agent is not available from the current token, an error will be returned.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("fingerprintId")]
     public string? FingerprintId { get; set; }
 

@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceListAuthenticationMethodTypesRequest : IEquatable<UserServiceListAuthenticationMethodTypesRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("domainQuery")]
     public UserServiceDomainQuery? DomainQuery { get; set; }
 

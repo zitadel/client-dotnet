@@ -16,53 +16,45 @@ public class BetaProjectServiceCreateProjectRequest : IEquatable<BetaProjectServ
     /// <summary>
     /// The unique identifier of the organization the project belongs to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// The unique identifier of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
     /// <summary>
     /// Name of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
     /// <summary>
     /// Enable this setting to provide role information to your application. For OpenID Connect, the roles can be requested from the UserInfo endpoint or sent in the ID or Access Token, based on your application's configuration.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectRoleAssertion")]
     public bool? ProjectRoleAssertion { get; set; }
 
     /// <summary>
     /// Deny authentication if the user has no authorization assigned to this project. Authorizations to the project without assigned a specific role to the user are allowed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("authorizationRequired")]
     public bool? AuthorizationRequired { get; set; }
 
     /// <summary>
     /// Before a user can be authenticated, it is verified that their affiliated organization has been granted access to this project. Authentication is not permitted for users from unauthorized organizations.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectAccessRequired")]
     public bool? ProjectAccessRequired { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("privateLabelingSetting")]
     public BetaProjectServicePrivateLabelingSetting? PrivateLabelingSetting { get; set; }
 
     /// <summary>
     /// List of users and Project Member roles (PROJECT_OWNER, by default) to be assigned to those users.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("admins")]
     public List<BetaProjectServiceAdmin>? Admins { get; set; }
 
@@ -78,7 +70,7 @@ public class BetaProjectServiceCreateProjectRequest : IEquatable<BetaProjectServ
                     && EqualityComparer<bool?>.Default.Equals(this.AuthorizationRequired, other.AuthorizationRequired)
                     && EqualityComparer<bool?>.Default.Equals(this.ProjectAccessRequired, other.ProjectAccessRequired)
                     && EqualityComparer<BetaProjectServicePrivateLabelingSetting?>.Default.Equals(this.PrivateLabelingSetting, other.PrivateLabelingSetting)
-                    && EqualityComparer<List<BetaProjectServiceAdmin>?>.Default.Equals(this.Admins, other.Admins));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Admins, other.Admins));
     }
 
     public override bool Equals(object? obj)
@@ -96,7 +88,7 @@ public class BetaProjectServiceCreateProjectRequest : IEquatable<BetaProjectServ
         hash.Add(this.AuthorizationRequired);
         hash.Add(this.ProjectAccessRequired);
         hash.Add(this.PrivateLabelingSetting);
-        hash.Add(this.Admins);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Admins));
         return hash.ToHashCode();
     }
 }

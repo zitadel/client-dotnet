@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceCreateInviteCodeResponse : IEquatable<UserServiceCreateInviteCodeResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 
     /// <summary>
     /// The invite code is returned if the verification was set to return_code.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("inviteCode")]
     public string? InviteCode { get; set; }
 

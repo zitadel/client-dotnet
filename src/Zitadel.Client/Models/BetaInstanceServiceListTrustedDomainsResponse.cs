@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaInstanceServiceListTrustedDomainsResponse : IEquatable<BetaInstanceServiceListTrustedDomainsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("trustedDomain")]
     public List<BetaInstanceServiceTrustedDomain>? TrustedDomain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaInstanceServicePaginationResponse? Pagination { get; set; }
 
@@ -26,7 +24,7 @@ public class BetaInstanceServiceListTrustedDomainsResponse : IEquatable<BetaInst
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<BetaInstanceServiceTrustedDomain>?>.Default.Equals(this.TrustedDomain, other.TrustedDomain)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.TrustedDomain, other.TrustedDomain)
                     && EqualityComparer<BetaInstanceServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination));
     }
 
@@ -38,7 +36,7 @@ public class BetaInstanceServiceListTrustedDomainsResponse : IEquatable<BetaInst
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.TrustedDomain);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.TrustedDomain));
         hash.Add(this.Pagination);
         return hash.ToHashCode();
     }

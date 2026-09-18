@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaOrganizationServiceSendEmailVerificationCode : IEquatable<BetaOrganizationServiceSendEmailVerificationCode>
 {
-    /// <example>null</example>
     [JsonPropertyName("urlTemplate")]
     public string? UrlTemplate { get; set; }
 

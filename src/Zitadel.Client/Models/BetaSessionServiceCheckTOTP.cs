@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceCheckTOTP : IEquatable<BetaSessionServiceCheckTOTP>
 {
-    /// <example>null</example>
     [JsonPropertyName("code")]
     public string? Code { get; set; }
 

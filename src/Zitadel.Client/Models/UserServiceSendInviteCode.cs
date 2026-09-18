@@ -16,14 +16,12 @@ public class UserServiceSendInviteCode : IEquatable<UserServiceSendInviteCode>
     /// <summary>
     /// Optionally set a url_template, which will be used in the invite mail sent by ZITADEL to guide the user to your invitation page.  If no template is set and no previous code was created, the default ZITADEL url will be used.   The following placeholders can be used: UserID, OrgID, Code
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("urlTemplate")]
     public string? UrlTemplate { get; set; }
 
     /// <summary>
     /// Optionally set an application name, which will be used in the invite mail sent by ZITADEL.  If no application name is set and no previous code was created, ZITADEL will be used as default.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("applicationName")]
     public string? ApplicationName { get; set; }
 

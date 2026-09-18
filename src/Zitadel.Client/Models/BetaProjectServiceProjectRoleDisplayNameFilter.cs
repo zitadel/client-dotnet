@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaProjectServiceProjectRoleDisplayNameFilter : IEquatable<BetaProjectServiceProjectRoleDisplayNameFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("displayName")]
     public string? DisplayName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaProjectServiceTextFilterMethod? Method { get; set; }
 

@@ -16,32 +16,27 @@ public class IdentityProviderServiceOptions : IEquatable<IdentityProviderService
     /// <summary>
     /// Enable if users should be able to link an existing ZITADEL user with an  external account.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("isLinkingAllowed")]
     public bool? IsLinkingAllowed { get; set; }
 
     /// <summary>
     /// Enable if users should be able to create a new account in ZITADEL when  using an external account.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("isCreationAllowed")]
     public bool? IsCreationAllowed { get; set; }
 
     /// <summary>
     /// Enable if a new account in ZITADEL should be created automatically when  login with an external account.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("isAutoCreation")]
     public bool? IsAutoCreation { get; set; }
 
     /// <summary>
     /// Enable if a the ZITADEL account fields should be updated automatically on  each login.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("isAutoUpdate")]
     public bool? IsAutoUpdate { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("autoLinking")]
     public IdentityProviderServiceAutoLinkingOption? AutoLinking { get; set; }
 

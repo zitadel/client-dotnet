@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaInstanceServiceGetInstanceRequest : IEquatable<BetaInstanceServiceGetInstanceRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("instanceId")]
     public string? InstanceId { get; set; }
 

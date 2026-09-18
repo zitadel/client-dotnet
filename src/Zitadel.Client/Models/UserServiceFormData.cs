@@ -16,14 +16,12 @@ public class UserServiceFormData : IEquatable<UserServiceFormData>
     /// <summary>
     /// The URL to which the form should be submitted using the POST method.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("url")]
     public string? Url { get; set; }
 
     /// <summary>
-    /// The form fields to be submitted.  Each field is represented as a key-value pair, where the key is the field / input name  and the value is the field / input value.  All fields need to be submitted as is and as input type \"text\".
+    /// The form fields to be submitted.  Each field is represented as a key-value pair, where the key is the field / input name  and the value is the field / input value.  All fields need to be submitted as is and as input type "text".
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("fields")]
     public Dictionary<string, string>? Fields { get; set; }
 
@@ -33,7 +31,7 @@ public class UserServiceFormData : IEquatable<UserServiceFormData>
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Url, other.Url)
-                    && EqualityComparer<Dictionary<string, string>?>.Default.Equals(this.Fields, other.Fields));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Fields, other.Fields));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +43,7 @@ public class UserServiceFormData : IEquatable<UserServiceFormData>
     {
         HashCode hash = default;
         hash.Add(this.Url);
-        hash.Add(this.Fields);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Fields));
         return hash.ToHashCode();
     }
 }

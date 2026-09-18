@@ -16,11 +16,9 @@ public class BetaInstanceServiceUpdateInstanceRequest : IEquatable<BetaInstanceS
     /// <summary>
     /// used only to identify the instance to change.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("instanceId")]
     public string? InstanceId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("instanceName")]
     public string? InstanceName { get; set; }
 

@@ -14,28 +14,23 @@ namespace Zitadel.Client.Models;
 public class SettingsServiceGetHostedLoginTranslationRequest : IEquatable<SettingsServiceGetHostedLoginTranslationRequest>
 {
     /// <summary>
-    /// The locale of the translations to be returned.  Needs to be a BCP 47 language tag (e.g. \"en\", \"de\", \"fr-CH\").
+    /// The locale of the translations to be returned.  Needs to be a BCP 47 language tag (e.g. "en", "de", "fr-CH").
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("locale")]
     public string? Locale { get; set; }
 
     /// <summary>
     /// if set to true, higher levels are ignored, if false higher levels are merged into the file
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("ignoreInheritance")]
     public bool? IgnoreInheritance { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("instance")]
     public bool? Instance { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("system")]
     public bool? System { get; set; }
 

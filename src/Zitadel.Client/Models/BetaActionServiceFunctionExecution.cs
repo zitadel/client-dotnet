@@ -16,7 +16,6 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class BetaActionServiceFunctionExecution : IEquatable<BetaActionServiceFunctionExecution>
 {
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 

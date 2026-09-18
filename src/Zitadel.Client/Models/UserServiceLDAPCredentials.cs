@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceLDAPCredentials : IEquatable<UserServiceLDAPCredentials>
 {
-    /// <example>null</example>
     [JsonPropertyName("username")]
     public string? Username { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public string? Password { get; set; }
 

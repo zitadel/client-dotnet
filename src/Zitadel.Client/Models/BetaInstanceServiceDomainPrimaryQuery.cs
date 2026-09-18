@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaInstanceServiceDomainPrimaryQuery : IEquatable<BetaInstanceServiceDomainPrimaryQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("primary")]
     public bool? Primary { get; set; }
 

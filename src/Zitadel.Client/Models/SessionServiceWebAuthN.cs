@@ -14,13 +14,11 @@ namespace Zitadel.Client.Models;
 public class SessionServiceWebAuthN : IEquatable<SessionServiceWebAuthN>
 {
     /// <summary>
-    /// The domain on which the session was created. Will be used in the WebAuthN challenge.  It must be either the exact domain or a top-level domain of the origin of the request.  For example if the request is coming from \"login.example.com\", the domain can be  \"login.example.com\" or \"example.com\", but not \"other.com\" or \"sub.login.example.com\".  See also: https://www.w3.org/TR/webauthn/#relying-party-identifier
+    /// The domain on which the session was created. Will be used in the WebAuthN challenge.  It must be either the exact domain or a top-level domain of the origin of the request.  For example if the request is coming from "login.example.com", the domain can be  "login.example.com" or "example.com", but not "other.com" or "sub.login.example.com".  See also: https://www.w3.org/TR/webauthn/#relying-party-identifier
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userVerificationRequirement")]
     public SessionServiceUserVerificationRequirement? UserVerificationRequirement { get; set; }
 

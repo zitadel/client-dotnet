@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceReactivateApplicationRequest : IEquatable<BetaAppServiceReactivateApplicationRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

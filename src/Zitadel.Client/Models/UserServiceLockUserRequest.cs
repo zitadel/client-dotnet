@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceLockUserRequest : IEquatable<UserServiceLockUserRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 

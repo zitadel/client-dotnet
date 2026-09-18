@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class SettingsServiceGetDomainSettingsResponse : IEquatable<SettingsServiceGetDomainSettingsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public SettingsServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("settings")]
     public SettingsServiceDomainSettings? Settings { get; set; }
 

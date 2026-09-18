@@ -16,7 +16,6 @@ public class WebKeyServiceActivateWebKeyRequest : IEquatable<WebKeyServiceActiva
     /// <summary>
     /// The unique identifier of the key to activate.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

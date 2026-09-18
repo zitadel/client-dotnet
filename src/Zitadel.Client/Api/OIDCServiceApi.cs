@@ -47,48 +47,57 @@ public class OIDCServiceApi : BaseApi
     /// Authorize or Deny Device Authorization
     /// </summary>
     /// <remarks>Authorize or deny the device authorization request based on the provided device authorization id.   Required permissions:    - `session.link`</remarks>
-    /// <param name="oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest"></param>
-    /// <returns><![CDATA[Object]]></returns>
+    /// <param name="oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest"></param>
+
+    /// <returns><![CDATA[object]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<Object> AuthorizeOrDenyDeviceAuthorizationAsync(OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest)
+    public async Task<object> AuthorizeOrDenyDeviceAuthorizationAsync(OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest)
     {
-        Task<ApiResult<Object>> task = AuthorizeOrDenyDeviceAuthorizationWithHttpInfoAsync(oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest);
-        ApiResult<Object> result = await task.ConfigureAwait(false);
+        Task<ApiResult<object>> task = AuthorizeOrDenyDeviceAuthorizationWithHttpInfoAsync(oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest);
+        ApiResult<object> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
     /// Authorize or Deny Device Authorization (with HTTP info)
     /// </summary>
     /// <remarks>Authorize or deny the device authorization request based on the provided device authorization id.   Required permissions:    - `session.link`</remarks>
-    /// <param name="oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest"></param>
+    /// <param name="oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<Object>> AuthorizeOrDenyDeviceAuthorizationWithHttpInfoAsync(OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest)
+    public async Task<ApiResult<object>> AuthorizeOrDenyDeviceAuthorizationWithHttpInfoAsync(OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest)
     {
         string path = "/zitadel.oidc.v2.OIDCService/AuthorizeOrDenyDeviceAuthorization";
 
         Dictionary<string, object?> queryParams = [];
         Dictionary<string, string> headerParams = [];
-        return await InvokeApiForResultAsync<Object>(
+        return await InvokeApiForResultAsync<object>(
                 "POST",
                 path,
                 queryParams,
                 headerParams,
-                oIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest,
+                oidcServiceAuthorizeOrDenyDeviceAuthorizationRequest,
                 AuthorizeOrDenyDeviceAuthorizationAccepts,
                 "application/json",
-                typeof(Object),
+                typeof(object),
                 null
             )
             .ConfigureAwait(false);
@@ -98,34 +107,43 @@ public class OIDCServiceApi : BaseApi
     /// Create Callback
     /// </summary>
     /// <remarks>Finalize an Auth Request and get the callback URL for success or failure.  The user must be redirected to the URL in order to inform the application about the success or failure.  On success, the URL contains details for the application to obtain the tokens.  This method can only be called once for an Auth request.   Required permissions:    - `session.link`</remarks>
-    /// <param name="oIDCServiceCreateCallbackRequest"></param>
+    /// <param name="oidcServiceCreateCallbackRequest"></param>
+
     /// <returns><![CDATA[OIDCServiceCreateCallbackResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<OIDCServiceCreateCallbackResponse> CreateCallbackAsync(OIDCServiceCreateCallbackRequest oIDCServiceCreateCallbackRequest)
+    public async Task<OIDCServiceCreateCallbackResponse> CreateCallbackAsync(OIDCServiceCreateCallbackRequest oidcServiceCreateCallbackRequest)
     {
-        Task<ApiResult<OIDCServiceCreateCallbackResponse>> task = CreateCallbackWithHttpInfoAsync(oIDCServiceCreateCallbackRequest);
+        Task<ApiResult<OIDCServiceCreateCallbackResponse>> task = CreateCallbackWithHttpInfoAsync(oidcServiceCreateCallbackRequest);
         ApiResult<OIDCServiceCreateCallbackResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
     /// Create Callback (with HTTP info)
     /// </summary>
     /// <remarks>Finalize an Auth Request and get the callback URL for success or failure.  The user must be redirected to the URL in order to inform the application about the success or failure.  On success, the URL contains details for the application to obtain the tokens.  This method can only be called once for an Auth request.   Required permissions:    - `session.link`</remarks>
-    /// <param name="oIDCServiceCreateCallbackRequest"></param>
+    /// <param name="oidcServiceCreateCallbackRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<OIDCServiceCreateCallbackResponse>> CreateCallbackWithHttpInfoAsync(OIDCServiceCreateCallbackRequest oIDCServiceCreateCallbackRequest)
+    public async Task<ApiResult<OIDCServiceCreateCallbackResponse>> CreateCallbackWithHttpInfoAsync(OIDCServiceCreateCallbackRequest oidcServiceCreateCallbackRequest)
     {
         string path = "/zitadel.oidc.v2.OIDCService/CreateCallback";
 
@@ -136,7 +154,7 @@ public class OIDCServiceApi : BaseApi
                 path,
                 queryParams,
                 headerParams,
-                oIDCServiceCreateCallbackRequest,
+                oidcServiceCreateCallbackRequest,
                 CreateCallbackAccepts,
                 "application/json",
                 typeof(OIDCServiceCreateCallbackResponse),
@@ -149,34 +167,43 @@ public class OIDCServiceApi : BaseApi
     /// Get Auth Request
     /// </summary>
     /// <remarks>Get OIDC Auth Request details by ID, obtained from the redirect URL.  Returns details that are parsed from the application's Auth Request.   Required permissions:    - `session.read`</remarks>
-    /// <param name="oIDCServiceGetAuthRequestRequest"></param>
+    /// <param name="oidcServiceGetAuthRequestRequest"></param>
+
     /// <returns><![CDATA[OIDCServiceGetAuthRequestResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<OIDCServiceGetAuthRequestResponse> GetAuthRequestAsync(OIDCServiceGetAuthRequestRequest oIDCServiceGetAuthRequestRequest)
+    public async Task<OIDCServiceGetAuthRequestResponse> GetAuthRequestAsync(OIDCServiceGetAuthRequestRequest oidcServiceGetAuthRequestRequest)
     {
-        Task<ApiResult<OIDCServiceGetAuthRequestResponse>> task = GetAuthRequestWithHttpInfoAsync(oIDCServiceGetAuthRequestRequest);
+        Task<ApiResult<OIDCServiceGetAuthRequestResponse>> task = GetAuthRequestWithHttpInfoAsync(oidcServiceGetAuthRequestRequest);
         ApiResult<OIDCServiceGetAuthRequestResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
     /// Get Auth Request (with HTTP info)
     /// </summary>
     /// <remarks>Get OIDC Auth Request details by ID, obtained from the redirect URL.  Returns details that are parsed from the application's Auth Request.   Required permissions:    - `session.read`</remarks>
-    /// <param name="oIDCServiceGetAuthRequestRequest"></param>
+    /// <param name="oidcServiceGetAuthRequestRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<OIDCServiceGetAuthRequestResponse>> GetAuthRequestWithHttpInfoAsync(OIDCServiceGetAuthRequestRequest oIDCServiceGetAuthRequestRequest)
+    public async Task<ApiResult<OIDCServiceGetAuthRequestResponse>> GetAuthRequestWithHttpInfoAsync(OIDCServiceGetAuthRequestRequest oidcServiceGetAuthRequestRequest)
     {
         string path = "/zitadel.oidc.v2.OIDCService/GetAuthRequest";
 
@@ -187,7 +214,7 @@ public class OIDCServiceApi : BaseApi
                 path,
                 queryParams,
                 headerParams,
-                oIDCServiceGetAuthRequestRequest,
+                oidcServiceGetAuthRequestRequest,
                 GetAuthRequestAccepts,
                 "application/json",
                 typeof(OIDCServiceGetAuthRequestResponse),
@@ -200,34 +227,43 @@ public class OIDCServiceApi : BaseApi
     /// Get Device Authorization Request
     /// </summary>
     /// <remarks>Get the device authorization based on the provided \"user code\".  This will return the device authorization request, which contains the device authorization id  that is required to authorize the request once the user signed in or to deny it.   Required permissions:    - `session.read`</remarks>
-    /// <param name="oIDCServiceGetDeviceAuthorizationRequestRequest"></param>
+    /// <param name="oidcServiceGetDeviceAuthorizationRequestRequest"></param>
+
     /// <returns><![CDATA[OIDCServiceGetDeviceAuthorizationRequestResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<OIDCServiceGetDeviceAuthorizationRequestResponse> GetDeviceAuthorizationRequestAsync(OIDCServiceGetDeviceAuthorizationRequestRequest oIDCServiceGetDeviceAuthorizationRequestRequest)
+    public async Task<OIDCServiceGetDeviceAuthorizationRequestResponse> GetDeviceAuthorizationRequestAsync(OIDCServiceGetDeviceAuthorizationRequestRequest oidcServiceGetDeviceAuthorizationRequestRequest)
     {
-        Task<ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse>> task = GetDeviceAuthorizationRequestWithHttpInfoAsync(oIDCServiceGetDeviceAuthorizationRequestRequest);
+        Task<ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse>> task = GetDeviceAuthorizationRequestWithHttpInfoAsync(oidcServiceGetDeviceAuthorizationRequestRequest);
         ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
     /// Get Device Authorization Request (with HTTP info)
     /// </summary>
     /// <remarks>Get the device authorization based on the provided \"user code\".  This will return the device authorization request, which contains the device authorization id  that is required to authorize the request once the user signed in or to deny it.   Required permissions:    - `session.read`</remarks>
-    /// <param name="oIDCServiceGetDeviceAuthorizationRequestRequest"></param>
+    /// <param name="oidcServiceGetDeviceAuthorizationRequestRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse>> GetDeviceAuthorizationRequestWithHttpInfoAsync(OIDCServiceGetDeviceAuthorizationRequestRequest oIDCServiceGetDeviceAuthorizationRequestRequest)
+    public async Task<ApiResult<OIDCServiceGetDeviceAuthorizationRequestResponse>> GetDeviceAuthorizationRequestWithHttpInfoAsync(OIDCServiceGetDeviceAuthorizationRequestRequest oidcServiceGetDeviceAuthorizationRequestRequest)
     {
         string path = "/zitadel.oidc.v2.OIDCService/GetDeviceAuthorizationRequest";
 
@@ -238,7 +274,7 @@ public class OIDCServiceApi : BaseApi
                 path,
                 queryParams,
                 headerParams,
-                oIDCServiceGetDeviceAuthorizationRequestRequest,
+                oidcServiceGetDeviceAuthorizationRequestRequest,
                 GetDeviceAuthorizationRequestAccepts,
                 "application/json",
                 typeof(OIDCServiceGetDeviceAuthorizationRequestResponse),

@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceListAuthenticationMethodTypesResponse : IEquatable<UserServiceListAuthenticationMethodTypesResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceListDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("authMethodTypes")]
     public List<UserServiceAuthenticationMethodType>? AuthMethodTypes { get; set; }
 
@@ -27,7 +25,7 @@ public class UserServiceListAuthenticationMethodTypesResponse : IEquatable<UserS
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceListDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<List<UserServiceAuthenticationMethodType>?>.Default.Equals(this.AuthMethodTypes, other.AuthMethodTypes));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.AuthMethodTypes, other.AuthMethodTypes));
     }
 
     public override bool Equals(object? obj)
@@ -39,7 +37,7 @@ public class UserServiceListAuthenticationMethodTypesResponse : IEquatable<UserS
     {
         HashCode hash = default;
         hash.Add(this.Details);
-        hash.Add(this.AuthMethodTypes);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.AuthMethodTypes));
         return hash.ToHashCode();
     }
 }

@@ -16,29 +16,24 @@ public class OrganizationServiceOrganization : IEquatable<OrganizationServiceOrg
     /// <summary>
     /// ID is the unique identifier of the organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public OrganizationServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("state")]
     public OrganizationServiceOrganizationState? State { get; set; }
 
     /// <summary>
     /// Name of the organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
     /// <summary>
     /// Primary domain used in the organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("primaryDomain")]
     public string? PrimaryDomain { get; set; }
 

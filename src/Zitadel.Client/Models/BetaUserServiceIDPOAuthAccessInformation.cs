@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceIDPOAuthAccessInformation : IEquatable<BetaUserServiceIDPOAuthAccessInformation>
 {
-    /// <example>null</example>
     [JsonPropertyName("accessToken")]
     public string? AccessToken { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idToken")]
     public string? IdToken { get; set; }
 

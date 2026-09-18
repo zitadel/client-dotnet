@@ -16,14 +16,12 @@ public class SessionServiceCheckIDPIntent : IEquatable<SessionServiceCheckIDPInt
     /// <summary>
     /// The ID of the idp intent, previously returned on the success response of the IDP callback.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("idpIntentId")]
     public string? IdpIntentId { get; set; }
 
     /// <summary>
     /// The token of the idp intent, previously returned on the success response of the IDP callback.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("idpIntentToken")]
     public string? IdpIntentToken { get; set; }
 

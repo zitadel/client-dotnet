@@ -16,18 +16,15 @@ public class ApplicationServiceSAMLConfiguration : IEquatable<ApplicationService
     /// <summary>
     /// The Metadata XML is the provided or fetched metadata stored at Zitadel.  If either the metadata was provided as XML or when Zitadel fetched it at the provided URL,  it is stored here.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("metadataXml")]
     public byte[]? MetadataXml { get; set; }
 
     /// <summary>
     /// The Metadata URL is the URL where the metadata was fetched from.  In case the metadata was provided as raw XML, this field is empty.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("metadataUrl")]
     public string? MetadataUrl { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("loginVersion")]
     public ApplicationServiceLoginVersion? LoginVersion { get; set; }
 
@@ -36,7 +33,7 @@ public class ApplicationServiceSAMLConfiguration : IEquatable<ApplicationService
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<byte[]?>.Default.Equals(this.MetadataXml, other.MetadataXml)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.MetadataXml, other.MetadataXml)
                     && EqualityComparer<string?>.Default.Equals(this.MetadataUrl, other.MetadataUrl)
                     && EqualityComparer<ApplicationServiceLoginVersion?>.Default.Equals(this.LoginVersion, other.LoginVersion));
     }
@@ -49,7 +46,7 @@ public class ApplicationServiceSAMLConfiguration : IEquatable<ApplicationService
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.MetadataXml);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.MetadataXml));
         hash.Add(this.MetadataUrl);
         hash.Add(this.LoginVersion);
         return hash.ToHashCode();

@@ -44,6 +44,7 @@ public class BetaTelemetryServiceApi : BaseApi
     /// </summary>
     /// <remarks>ReportBaseInformation is used to report the base information of the ZITADEL system,  including the version, instances, their creation date and domains.  The response contains a report ID to link it to the resource counts or other reports.  The report ID is only valid for the same system ID.</remarks>
     /// <param name="betaTelemetryServiceReportBaseInformationRequest"></param>
+
     /// <returns><![CDATA[BetaTelemetryServiceReportBaseInformationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaTelemetryServiceReportBaseInformationResponse> ReportBaseInformationAsync(BetaTelemetryServiceReportBaseInformationRequest betaTelemetryServiceReportBaseInformationRequest)
@@ -54,13 +55,20 @@ public class BetaTelemetryServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -68,6 +76,7 @@ public class BetaTelemetryServiceApi : BaseApi
     /// </summary>
     /// <remarks>ReportBaseInformation is used to report the base information of the ZITADEL system,  including the version, instances, their creation date and domains.  The response contains a report ID to link it to the resource counts or other reports.  The report ID is only valid for the same system ID.</remarks>
     /// <param name="betaTelemetryServiceReportBaseInformationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaTelemetryServiceReportBaseInformationResponse>> ReportBaseInformationWithHttpInfoAsync(BetaTelemetryServiceReportBaseInformationRequest betaTelemetryServiceReportBaseInformationRequest)
@@ -95,6 +104,7 @@ public class BetaTelemetryServiceApi : BaseApi
     /// </summary>
     /// <remarks>ReportResourceCounts is used to report the resource counts such as amount of organizations  or users per organization and much more.  Since the resource counts can be reported in multiple batches,  the response contains a report ID to continue reporting.  The report ID is only valid for the same system ID.</remarks>
     /// <param name="betaTelemetryServiceReportResourceCountsRequest"></param>
+
     /// <returns><![CDATA[BetaTelemetryServiceReportResourceCountsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaTelemetryServiceReportResourceCountsResponse> ReportResourceCountsAsync(BetaTelemetryServiceReportResourceCountsRequest betaTelemetryServiceReportResourceCountsRequest)
@@ -105,13 +115,20 @@ public class BetaTelemetryServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -119,6 +136,7 @@ public class BetaTelemetryServiceApi : BaseApi
     /// </summary>
     /// <remarks>ReportResourceCounts is used to report the resource counts such as amount of organizations  or users per organization and much more.  Since the resource counts can be reported in multiple batches,  the response contains a report ID to continue reporting.  The report ID is only valid for the same system ID.</remarks>
     /// <param name="betaTelemetryServiceReportResourceCountsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaTelemetryServiceReportResourceCountsResponse>> ReportResourceCountsWithHttpInfoAsync(BetaTelemetryServiceReportResourceCountsRequest betaTelemetryServiceReportResourceCountsRequest)

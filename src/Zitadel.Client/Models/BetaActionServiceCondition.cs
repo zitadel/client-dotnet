@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaActionServiceCondition : IEquatable<BetaActionServiceCondition>
 {
-    /// <example>null</example>
     [JsonPropertyName("event")]
     public BetaActionServiceEventExecution? Event { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("function")]
     public BetaActionServiceFunctionExecution? Function { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("request")]
     public BetaActionServiceRequestExecution? Request { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("response")]
     public BetaActionServiceResponseExecution? Response { get; set; }
 

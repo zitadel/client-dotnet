@@ -16,11 +16,9 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class BetaUserServiceLoginNameQuery : IEquatable<BetaUserServiceLoginNameQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("loginName")]
     public string? LoginName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaUserServiceTextQueryMethod? Method { get; set; }
 

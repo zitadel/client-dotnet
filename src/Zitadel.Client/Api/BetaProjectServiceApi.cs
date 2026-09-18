@@ -74,6 +74,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of a project to active. Request returns no error if the project is already activated.   Required permission:    - `project.write`</remarks>
     /// <param name="betaProjectServiceActivateProjectRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceActivateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceActivateProjectResponse> ActivateProjectAsync(BetaProjectServiceActivateProjectRequest betaProjectServiceActivateProjectRequest)
@@ -84,13 +85,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -98,6 +106,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of a project to active. Request returns no error if the project is already activated.   Required permission:    - `project.write`</remarks>
     /// <param name="betaProjectServiceActivateProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceActivateProjectResponse>> ActivateProjectWithHttpInfoAsync(BetaProjectServiceActivateProjectRequest betaProjectServiceActivateProjectRequest)
@@ -125,6 +134,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of the project grant to activated.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="betaProjectServiceActivateProjectGrantRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceActivateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceActivateProjectGrantResponse> ActivateProjectGrantAsync(BetaProjectServiceActivateProjectGrantRequest betaProjectServiceActivateProjectGrantRequest)
@@ -135,13 +145,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -149,6 +166,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of the project grant to activated.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="betaProjectServiceActivateProjectGrantRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceActivateProjectGrantResponse>> ActivateProjectGrantWithHttpInfoAsync(BetaProjectServiceActivateProjectGrantRequest betaProjectServiceActivateProjectGrantRequest)
@@ -176,6 +194,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Add a new project role to a project. The key must be unique within the project.   Required permission:    - `project.role.write`</remarks>
     /// <param name="betaProjectServiceAddProjectRoleRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceAddProjectRoleResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceAddProjectRoleResponse> AddProjectRoleAsync(BetaProjectServiceAddProjectRoleRequest betaProjectServiceAddProjectRoleRequest)
@@ -186,13 +205,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -200,6 +226,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Add a new project role to a project. The key must be unique within the project.   Required permission:    - `project.role.write`</remarks>
     /// <param name="betaProjectServiceAddProjectRoleRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceAddProjectRoleResponse>> AddProjectRoleWithHttpInfoAsync(BetaProjectServiceAddProjectRoleRequest betaProjectServiceAddProjectRoleRequest)
@@ -227,6 +254,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Create a new Project.   Required permission:    - `project.create`</remarks>
     /// <param name="betaProjectServiceCreateProjectRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceCreateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceCreateProjectResponse> CreateProjectAsync(BetaProjectServiceCreateProjectRequest betaProjectServiceCreateProjectRequest)
@@ -237,13 +265,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -251,6 +286,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Create a new Project.   Required permission:    - `project.create`</remarks>
     /// <param name="betaProjectServiceCreateProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceCreateProjectResponse>> CreateProjectWithHttpInfoAsync(BetaProjectServiceCreateProjectRequest betaProjectServiceCreateProjectRequest)
@@ -278,6 +314,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Grant a project to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - `project.grant.create`</remarks>
     /// <param name="betaProjectServiceCreateProjectGrantRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceCreateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceCreateProjectGrantResponse> CreateProjectGrantAsync(BetaProjectServiceCreateProjectGrantRequest betaProjectServiceCreateProjectGrantRequest)
@@ -288,13 +325,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -302,6 +346,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Grant a project to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - `project.grant.create`</remarks>
     /// <param name="betaProjectServiceCreateProjectGrantRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceCreateProjectGrantResponse>> CreateProjectGrantWithHttpInfoAsync(BetaProjectServiceCreateProjectGrantRequest betaProjectServiceCreateProjectGrantRequest)
@@ -329,6 +374,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of a project to deactivated. Request returns no error if the project is already deactivated.  Applications under deactivated projects are not able to login anymore.   Required permission:    - `project.write`</remarks>
     /// <param name="betaProjectServiceDeactivateProjectRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceDeactivateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceDeactivateProjectResponse> DeactivateProjectAsync(BetaProjectServiceDeactivateProjectRequest betaProjectServiceDeactivateProjectRequest)
@@ -339,13 +385,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -353,6 +406,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of a project to deactivated. Request returns no error if the project is already deactivated.  Applications under deactivated projects are not able to login anymore.   Required permission:    - `project.write`</remarks>
     /// <param name="betaProjectServiceDeactivateProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceDeactivateProjectResponse>> DeactivateProjectWithHttpInfoAsync(BetaProjectServiceDeactivateProjectRequest betaProjectServiceDeactivateProjectRequest)
@@ -380,6 +434,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of the project grant to deactivated.  Applications under deactivated projects grants are not able to login anymore.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="betaProjectServiceDeactivateProjectGrantRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceDeactivateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceDeactivateProjectGrantResponse> DeactivateProjectGrantAsync(BetaProjectServiceDeactivateProjectGrantRequest betaProjectServiceDeactivateProjectGrantRequest)
@@ -390,13 +445,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -404,6 +466,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of the project grant to deactivated.  Applications under deactivated projects grants are not able to login anymore.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="betaProjectServiceDeactivateProjectGrantRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceDeactivateProjectGrantResponse>> DeactivateProjectGrantWithHttpInfoAsync(BetaProjectServiceDeactivateProjectGrantRequest betaProjectServiceDeactivateProjectGrantRequest)
@@ -431,6 +494,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete an existing project.  In case the project is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `project.delete`</remarks>
     /// <param name="betaProjectServiceDeleteProjectRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceDeleteProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceDeleteProjectResponse> DeleteProjectAsync(BetaProjectServiceDeleteProjectRequest betaProjectServiceDeleteProjectRequest)
@@ -441,13 +505,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -455,6 +526,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete an existing project.  In case the project is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `project.delete`</remarks>
     /// <param name="betaProjectServiceDeleteProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceDeleteProjectResponse>> DeleteProjectWithHttpInfoAsync(BetaProjectServiceDeleteProjectRequest betaProjectServiceDeleteProjectRequest)
@@ -482,6 +554,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete a project grant. All user grants for this project grant will also be removed.  A user will not have access to the project afterward (if permissions are checked).  In case the project grant is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `project.grant.delete`</remarks>
     /// <param name="betaProjectServiceDeleteProjectGrantRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceDeleteProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceDeleteProjectGrantResponse> DeleteProjectGrantAsync(BetaProjectServiceDeleteProjectGrantRequest betaProjectServiceDeleteProjectGrantRequest)
@@ -492,13 +565,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -506,6 +586,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete a project grant. All user grants for this project grant will also be removed.  A user will not have access to the project afterward (if permissions are checked).  In case the project grant is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `project.grant.delete`</remarks>
     /// <param name="betaProjectServiceDeleteProjectGrantRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceDeleteProjectGrantResponse>> DeleteProjectGrantWithHttpInfoAsync(BetaProjectServiceDeleteProjectGrantRequest betaProjectServiceDeleteProjectGrantRequest)
@@ -533,6 +614,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the project identified by the requested ID.   Required permission:    - `project.read`</remarks>
     /// <param name="betaProjectServiceGetProjectRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceGetProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceGetProjectResponse> GetProjectAsync(BetaProjectServiceGetProjectRequest betaProjectServiceGetProjectRequest)
@@ -543,13 +625,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -557,6 +646,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the project identified by the requested ID.   Required permission:    - `project.read`</remarks>
     /// <param name="betaProjectServiceGetProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceGetProjectResponse>> GetProjectWithHttpInfoAsync(BetaProjectServiceGetProjectRequest betaProjectServiceGetProjectRequest)
@@ -584,6 +674,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns a list of project grants. A project grant is when the organization grants its project to another organization.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="betaProjectServiceListProjectGrantsRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceListProjectGrantsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceListProjectGrantsResponse> ListProjectGrantsAsync(BetaProjectServiceListProjectGrantsRequest betaProjectServiceListProjectGrantsRequest)
@@ -594,13 +685,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -608,6 +706,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns a list of project grants. A project grant is when the organization grants its project to another organization.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="betaProjectServiceListProjectGrantsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceListProjectGrantsResponse>> ListProjectGrantsWithHttpInfoAsync(BetaProjectServiceListProjectGrantsRequest betaProjectServiceListProjectGrantsRequest)
@@ -635,6 +734,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns all roles of a project matching the search query.   Required permission:    - `project.role.read`</remarks>
     /// <param name="betaProjectServiceListProjectRolesRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceListProjectRolesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceListProjectRolesResponse> ListProjectRolesAsync(BetaProjectServiceListProjectRolesRequest betaProjectServiceListProjectRolesRequest)
@@ -645,13 +745,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -659,6 +766,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns all roles of a project matching the search query.   Required permission:    - `project.role.read`</remarks>
     /// <param name="betaProjectServiceListProjectRolesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceListProjectRolesResponse>> ListProjectRolesWithHttpInfoAsync(BetaProjectServiceListProjectRolesRequest betaProjectServiceListProjectRolesRequest)
@@ -686,6 +794,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching projects. By default all projects of the instance that the caller has permission to read are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - `project.read`</remarks>
     /// <param name="betaProjectServiceListProjectsRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceListProjectsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceListProjectsResponse> ListProjectsAsync(BetaProjectServiceListProjectsRequest betaProjectServiceListProjectsRequest)
@@ -696,13 +805,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -710,6 +826,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching projects. By default all projects of the instance that the caller has permission to read are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - `project.read`</remarks>
     /// <param name="betaProjectServiceListProjectsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceListProjectsResponse>> ListProjectsWithHttpInfoAsync(BetaProjectServiceListProjectsRequest betaProjectServiceListProjectsRequest)
@@ -737,6 +854,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes the role from the project and on every resource it has a dependency. This includes project grants and user grants.   Required permission:    - `project.role.write`</remarks>
     /// <param name="betaProjectServiceRemoveProjectRoleRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceRemoveProjectRoleResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceRemoveProjectRoleResponse> RemoveProjectRoleAsync(BetaProjectServiceRemoveProjectRoleRequest betaProjectServiceRemoveProjectRoleRequest)
@@ -747,13 +865,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -761,6 +886,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes the role from the project and on every resource it has a dependency. This includes project grants and user grants.   Required permission:    - `project.role.write`</remarks>
     /// <param name="betaProjectServiceRemoveProjectRoleRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceRemoveProjectRoleResponse>> RemoveProjectRoleWithHttpInfoAsync(BetaProjectServiceRemoveProjectRoleRequest betaProjectServiceRemoveProjectRoleRequest)
@@ -788,6 +914,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Update an existing project.   Required permission:    - `project.write`</remarks>
     /// <param name="betaProjectServiceUpdateProjectRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceUpdateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceUpdateProjectResponse> UpdateProjectAsync(BetaProjectServiceUpdateProjectRequest betaProjectServiceUpdateProjectRequest)
@@ -798,13 +925,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -812,6 +946,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Update an existing project.   Required permission:    - `project.write`</remarks>
     /// <param name="betaProjectServiceUpdateProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceUpdateProjectResponse>> UpdateProjectWithHttpInfoAsync(BetaProjectServiceUpdateProjectRequest betaProjectServiceUpdateProjectRequest)
@@ -839,6 +974,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Change the roles of the project that is granted to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="betaProjectServiceUpdateProjectGrantRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceUpdateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceUpdateProjectGrantResponse> UpdateProjectGrantAsync(BetaProjectServiceUpdateProjectGrantRequest betaProjectServiceUpdateProjectGrantRequest)
@@ -849,13 +985,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -863,6 +1006,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Change the roles of the project that is granted to another organization.  The project grant will allow the granted organization to access the project and manage the authorizations for its users.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="betaProjectServiceUpdateProjectGrantRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceUpdateProjectGrantResponse>> UpdateProjectGrantWithHttpInfoAsync(BetaProjectServiceUpdateProjectGrantRequest betaProjectServiceUpdateProjectGrantRequest)
@@ -890,6 +1034,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Change a project role. The key is not editable. If a key should change, remove the role and create a new one.   Required permission:    - `project.role.write`</remarks>
     /// <param name="betaProjectServiceUpdateProjectRoleRequest"></param>
+
     /// <returns><![CDATA[BetaProjectServiceUpdateProjectRoleResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaProjectServiceUpdateProjectRoleResponse> UpdateProjectRoleAsync(BetaProjectServiceUpdateProjectRoleRequest betaProjectServiceUpdateProjectRoleRequest)
@@ -900,13 +1045,20 @@ public class BetaProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -914,6 +1066,7 @@ public class BetaProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under project service v2. This endpoint will be removed with the next major version of ZITADEL.   Change a project role. The key is not editable. If a key should change, remove the role and create a new one.   Required permission:    - `project.role.write`</remarks>
     /// <param name="betaProjectServiceUpdateProjectRoleRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaProjectServiceUpdateProjectRoleResponse>> UpdateProjectRoleWithHttpInfoAsync(BetaProjectServiceUpdateProjectRoleRequest betaProjectServiceUpdateProjectRoleRequest)

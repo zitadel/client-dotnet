@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaProjectServiceAdmin : IEquatable<BetaProjectServiceAdmin>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
     /// <summary>
     /// specify the Project Member Roles for the provided user (default is PROJECT_OWNER if roles are empty
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roles")]
     public List<string>? Roles { get; set; }
 
@@ -30,7 +28,7 @@ public class BetaProjectServiceAdmin : IEquatable<BetaProjectServiceAdmin>
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Roles, other.Roles));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Roles, other.Roles));
     }
 
     public override bool Equals(object? obj)
@@ -42,7 +40,7 @@ public class BetaProjectServiceAdmin : IEquatable<BetaProjectServiceAdmin>
     {
         HashCode hash = default;
         hash.Add(this.UserId);
-        hash.Add(this.Roles);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Roles));
         return hash.ToHashCode();
     }
 }

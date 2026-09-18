@@ -16,21 +16,18 @@ public class BetaActionServiceResponseExecution : IEquatable<BetaActionServiceRe
     /// <summary>
     /// All calls to any available services and methods as condition.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("all")]
     public bool? All { get; set; }
 
     /// <summary>
     /// GRPC-method as condition.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public string? Method { get; set; }
 
     /// <summary>
     /// GRPC-service as condition.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("service")]
     public string? Service { get; set; }
 

@@ -16,21 +16,18 @@ public class ProjectServiceCreateProjectGrantRequest : IEquatable<ProjectService
     /// <summary>
     /// ProjectID is the unique identifier of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// GrantedOrganizationID is the unique identifier of the organization the project will be granted to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("grantedOrganizationId")]
     public string? GrantedOrganizationId { get; set; }
 
     /// <summary>
     /// RoleKeys is a list of roles to be granted to the organization for self management.  The roles are identified by their keys.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roleKeys")]
     public List<string>? RoleKeys { get; set; }
 
@@ -41,7 +38,7 @@ public class ProjectServiceCreateProjectGrantRequest : IEquatable<ProjectService
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
                     && EqualityComparer<string?>.Default.Equals(this.GrantedOrganizationId, other.GrantedOrganizationId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.RoleKeys, other.RoleKeys));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.RoleKeys, other.RoleKeys));
     }
 
     public override bool Equals(object? obj)
@@ -54,7 +51,7 @@ public class ProjectServiceCreateProjectGrantRequest : IEquatable<ProjectService
         HashCode hash = default;
         hash.Add(this.ProjectId);
         hash.Add(this.GrantedOrganizationId);
-        hash.Add(this.RoleKeys);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.RoleKeys));
         return hash.ToHashCode();
     }
 }

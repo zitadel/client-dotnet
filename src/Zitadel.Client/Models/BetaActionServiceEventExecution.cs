@@ -16,21 +16,18 @@ public class BetaActionServiceEventExecution : IEquatable<BetaActionServiceEvent
     /// <summary>
     /// all events as condition.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("all")]
     public bool? All { get; set; }
 
     /// <summary>
     /// Event name as condition.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("event")]
     public string? Event { get; set; }
 
     /// <summary>
     /// Event group as condition, all events under this group.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("group")]
     public string? Group { get; set; }
 

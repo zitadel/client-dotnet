@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceMachineUser : IEquatable<BetaUserServiceMachineUser>
 {
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("description")]
     public string? Description { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("hasSecret")]
     public bool? HasSecret { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("accessTokenType")]
     public BetaUserServiceAccessTokenType? AccessTokenType { get; set; }
 

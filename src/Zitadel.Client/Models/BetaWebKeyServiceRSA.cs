@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaWebKeyServiceRSA : IEquatable<BetaWebKeyServiceRSA>
 {
-    /// <example>null</example>
     [JsonPropertyName("bits")]
     public BetaWebKeyServiceRSABits? Bits { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("hasher")]
     public BetaWebKeyServiceRSAHasher? Hasher { get; set; }
 

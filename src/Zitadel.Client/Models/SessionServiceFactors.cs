@@ -13,35 +13,27 @@ namespace Zitadel.Client.Models;
 
 public class SessionServiceFactors : IEquatable<SessionServiceFactors>
 {
-    /// <example>null</example>
     [JsonPropertyName("user")]
     public SessionServiceUserFactor? User { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public SessionServicePasswordFactor? Password { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("webAuthN")]
     public SessionServiceWebAuthNFactor? WebAuthN { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("intent")]
     public SessionServiceIntentFactor? Intent { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("totp")]
     public SessionServiceTOTPFactor? Totp { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpSms")]
     public SessionServiceOTPFactor? OtpSms { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpEmail")]
     public SessionServiceOTPFactor? OtpEmail { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("recoveryCode")]
     public SessionServiceRecoveryCodeFactor? RecoveryCode { get; set; }
 

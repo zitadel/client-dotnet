@@ -16,7 +16,6 @@ public class SessionServiceCheckOTP : IEquatable<SessionServiceCheckOTP>
     /// <summary>
     /// The One-Time Password sent over SMS or Email of the user to be checked.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("code")]
     public string? Code { get; set; }
 

@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceRemoveTOTPResponse : IEquatable<UserServiceRemoveTOTPResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 

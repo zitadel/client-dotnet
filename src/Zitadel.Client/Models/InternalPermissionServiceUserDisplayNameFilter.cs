@@ -16,11 +16,9 @@ public class InternalPermissionServiceUserDisplayNameFilter : IEquatable<Interna
     /// <summary>
     /// Search for administrators by the display name of the user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("displayName")]
     public string? DisplayName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public InternalPermissionServiceTextFilterMethod? Method { get; set; }
 

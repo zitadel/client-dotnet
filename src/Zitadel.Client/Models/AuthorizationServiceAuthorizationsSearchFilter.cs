@@ -13,47 +13,36 @@ namespace Zitadel.Client.Models;
 
 public class AuthorizationServiceAuthorizationsSearchFilter : IEquatable<AuthorizationServiceAuthorizationsSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("authorizationIds")]
     public AuthorizationServiceInIDsFilter? AuthorizationIds { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("inUserIds")]
     public AuthorizationServiceInIDsFilter? InUserIds { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public AuthorizationServiceIDFilter? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectGrantId")]
     public AuthorizationServiceIDFilter? ProjectGrantId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public AuthorizationServiceIDFilter? ProjectId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectName")]
     public AuthorizationServiceProjectNameQuery? ProjectName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("roleKey")]
     public AuthorizationServiceRoleKeyQuery? RoleKey { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("state")]
     public AuthorizationServiceStateQuery? State { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userDisplayName")]
     public AuthorizationServiceUserDisplayNameQuery? UserDisplayName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userOrganizationId")]
     public AuthorizationServiceIDFilter? UserOrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userPreferredLoginName")]
     public AuthorizationServiceUserPreferredLoginNameQuery? UserPreferredLoginName { get; set; }
 

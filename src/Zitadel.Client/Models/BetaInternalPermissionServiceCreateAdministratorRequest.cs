@@ -16,18 +16,15 @@ public class BetaInternalPermissionServiceCreateAdministratorRequest : IEquatabl
     /// <summary>
     /// UserID is the ID of the user who should be granted the administrator role.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resource")]
     public BetaInternalPermissionServiceResourceType? Resource { get; set; }
 
     /// <summary>
     /// Roles are the roles that should be granted to the user for the specified resource.  Note that roles are currently specific to the resource type.  This means that if you want to grant a user the administrator role for an organization and a project,  you need to create two administrator roles.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roles")]
     public List<string>? Roles { get; set; }
 
@@ -38,7 +35,7 @@ public class BetaInternalPermissionServiceCreateAdministratorRequest : IEquatabl
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<BetaInternalPermissionServiceResourceType?>.Default.Equals(this.Resource, other.Resource)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Roles, other.Roles));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Roles, other.Roles));
     }
 
     public override bool Equals(object? obj)
@@ -51,7 +48,7 @@ public class BetaInternalPermissionServiceCreateAdministratorRequest : IEquatabl
         HashCode hash = default;
         hash.Add(this.UserId);
         hash.Add(this.Resource);
-        hash.Add(this.Roles);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Roles));
         return hash.ToHashCode();
     }
 }

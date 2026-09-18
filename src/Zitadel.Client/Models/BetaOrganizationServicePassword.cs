@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaOrganizationServicePassword : IEquatable<BetaOrganizationServicePassword>
 {
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public string? Password { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("changeRequired")]
     public bool? ChangeRequired { get; set; }
 

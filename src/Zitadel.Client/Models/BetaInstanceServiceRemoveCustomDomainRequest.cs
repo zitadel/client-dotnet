@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaInstanceServiceRemoveCustomDomainRequest : IEquatable<BetaInstanceServiceRemoveCustomDomainRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("instanceId")]
     public string? InstanceId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 

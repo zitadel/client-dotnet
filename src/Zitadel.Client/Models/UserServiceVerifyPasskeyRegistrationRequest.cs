@@ -13,22 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceVerifyPasskeyRegistrationRequest : IEquatable<UserServiceVerifyPasskeyRegistrationRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("passkeyId")]
     public string? PasskeyId { get; set; }
 
     /// <summary>
     /// `Struct` represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, `Struct`  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for `Struct` is JSON object.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("publicKeyCredential")]
-    public Dictionary<string, Object>? PublicKeyCredential { get; set; }
+    public Dictionary<string, object>? PublicKeyCredential { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("passkeyName")]
     public string? PasskeyName { get; set; }
 
@@ -39,7 +35,7 @@ public class UserServiceVerifyPasskeyRegistrationRequest : IEquatable<UserServic
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.PasskeyId, other.PasskeyId)
-                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.PublicKeyCredential, other.PublicKeyCredential)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.PublicKeyCredential, other.PublicKeyCredential)
                     && EqualityComparer<string?>.Default.Equals(this.PasskeyName, other.PasskeyName));
     }
 
@@ -53,7 +49,7 @@ public class UserServiceVerifyPasskeyRegistrationRequest : IEquatable<UserServic
         HashCode hash = default;
         hash.Add(this.UserId);
         hash.Add(this.PasskeyId);
-        hash.Add(this.PublicKeyCredential);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.PublicKeyCredential));
         hash.Add(this.PasskeyName);
         return hash.ToHashCode();
     }

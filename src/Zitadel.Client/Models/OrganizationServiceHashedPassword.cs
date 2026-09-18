@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class OrganizationServiceHashedPassword : IEquatable<OrganizationServiceHashedPassword>
 {
-    /// <example>null</example>
     [JsonPropertyName("hash")]
     public string? Hash { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("changeRequired")]
     public bool? ChangeRequired { get; set; }
 

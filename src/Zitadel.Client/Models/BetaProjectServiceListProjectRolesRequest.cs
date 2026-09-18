@@ -16,22 +16,18 @@ public class BetaProjectServiceListProjectRolesRequest : IEquatable<BetaProjectS
     /// <summary>
     /// ID of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaProjectServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public BetaProjectServiceProjectRoleFieldName? SortingColumn { get; set; }
 
     /// <summary>
     /// Define the criteria to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<BetaProjectServiceProjectRoleSearchFilter>? Filters { get; set; }
 
@@ -43,7 +39,7 @@ public class BetaProjectServiceListProjectRolesRequest : IEquatable<BetaProjectS
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
                     && EqualityComparer<BetaProjectServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<BetaProjectServiceProjectRoleFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<BetaProjectServiceProjectRoleSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -57,7 +53,7 @@ public class BetaProjectServiceListProjectRolesRequest : IEquatable<BetaProjectS
         hash.Add(this.ProjectId);
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

@@ -43,34 +43,43 @@ public class SAMLServiceApi : BaseApi
     /// Create Response
     /// </summary>
     /// <remarks>Finalize a SAML Request and get the response definition for success or failure.  The response must be handled as per the SAML definition to inform the application about the success or failure.  On success, the response contains details for the application to obtain the SAMLResponse.  This method can only be called once for an SAML request.   Required permissions:    - `session.link`</remarks>
-    /// <param name="sAMLServiceCreateResponseRequest"></param>
+    /// <param name="samlServiceCreateResponseRequest"></param>
+
     /// <returns><![CDATA[SAMLServiceCreateResponseResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<SAMLServiceCreateResponseResponse> CreateResponseAsync(SAMLServiceCreateResponseRequest sAMLServiceCreateResponseRequest)
+    public async Task<SAMLServiceCreateResponseResponse> CreateResponseAsync(SAMLServiceCreateResponseRequest samlServiceCreateResponseRequest)
     {
-        Task<ApiResult<SAMLServiceCreateResponseResponse>> task = CreateResponseWithHttpInfoAsync(sAMLServiceCreateResponseRequest);
+        Task<ApiResult<SAMLServiceCreateResponseResponse>> task = CreateResponseWithHttpInfoAsync(samlServiceCreateResponseRequest);
         ApiResult<SAMLServiceCreateResponseResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
     /// Create Response (with HTTP info)
     /// </summary>
     /// <remarks>Finalize a SAML Request and get the response definition for success or failure.  The response must be handled as per the SAML definition to inform the application about the success or failure.  On success, the response contains details for the application to obtain the SAMLResponse.  This method can only be called once for an SAML request.   Required permissions:    - `session.link`</remarks>
-    /// <param name="sAMLServiceCreateResponseRequest"></param>
+    /// <param name="samlServiceCreateResponseRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<SAMLServiceCreateResponseResponse>> CreateResponseWithHttpInfoAsync(SAMLServiceCreateResponseRequest sAMLServiceCreateResponseRequest)
+    public async Task<ApiResult<SAMLServiceCreateResponseResponse>> CreateResponseWithHttpInfoAsync(SAMLServiceCreateResponseRequest samlServiceCreateResponseRequest)
     {
         string path = "/zitadel.saml.v2.SAMLService/CreateResponse";
 
@@ -81,7 +90,7 @@ public class SAMLServiceApi : BaseApi
                 path,
                 queryParams,
                 headerParams,
-                sAMLServiceCreateResponseRequest,
+                samlServiceCreateResponseRequest,
                 CreateResponseAccepts,
                 "application/json",
                 typeof(SAMLServiceCreateResponseResponse),
@@ -94,34 +103,43 @@ public class SAMLServiceApi : BaseApi
     /// Get SAML Request
     /// </summary>
     /// <remarks>Get SAML Request details by ID. Returns details that are parsed from the application's SAML Request.   Required permissions:    - `session.read`</remarks>
-    /// <param name="sAMLServiceGetSAMLRequestRequest"></param>
+    /// <param name="samlServiceGetSAMLRequestRequest"></param>
+
     /// <returns><![CDATA[SAMLServiceGetSAMLRequestResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<SAMLServiceGetSAMLRequestResponse> GetSAMLRequestAsync(SAMLServiceGetSAMLRequestRequest sAMLServiceGetSAMLRequestRequest)
+    public async Task<SAMLServiceGetSAMLRequestResponse> GetSAMLRequestAsync(SAMLServiceGetSAMLRequestRequest samlServiceGetSAMLRequestRequest)
     {
-        Task<ApiResult<SAMLServiceGetSAMLRequestResponse>> task = GetSAMLRequestWithHttpInfoAsync(sAMLServiceGetSAMLRequestRequest);
+        Task<ApiResult<SAMLServiceGetSAMLRequestResponse>> task = GetSAMLRequestWithHttpInfoAsync(samlServiceGetSAMLRequestRequest);
         ApiResult<SAMLServiceGetSAMLRequestResponse> result = await task.ConfigureAwait(false);
         /* convenience-empty-body-handling: a body-returning operation that
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
     /// Get SAML Request (with HTTP info)
     /// </summary>
     /// <remarks>Get SAML Request details by ID. Returns details that are parsed from the application's SAML Request.   Required permissions:    - `session.read`</remarks>
-    /// <param name="sAMLServiceGetSAMLRequestRequest"></param>
+    /// <param name="samlServiceGetSAMLRequestRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<SAMLServiceGetSAMLRequestResponse>> GetSAMLRequestWithHttpInfoAsync(SAMLServiceGetSAMLRequestRequest sAMLServiceGetSAMLRequestRequest)
+    public async Task<ApiResult<SAMLServiceGetSAMLRequestResponse>> GetSAMLRequestWithHttpInfoAsync(SAMLServiceGetSAMLRequestRequest samlServiceGetSAMLRequestRequest)
     {
         string path = "/zitadel.saml.v2.SAMLService/GetSAMLRequest";
 
@@ -132,7 +150,7 @@ public class SAMLServiceApi : BaseApi
                 path,
                 queryParams,
                 headerParams,
-                sAMLServiceGetSAMLRequestRequest,
+                samlServiceGetSAMLRequestRequest,
                 GetSAMLRequestAccepts,
                 "application/json",
                 typeof(SAMLServiceGetSAMLRequestResponse),

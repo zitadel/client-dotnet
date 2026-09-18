@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceRedirectURLs : IEquatable<BetaUserServiceRedirectURLs>
 {
-    /// <example>null</example>
     [JsonPropertyName("successUrl")]
     public string? SuccessUrl { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("failureUrl")]
     public string? FailureUrl { get; set; }
 

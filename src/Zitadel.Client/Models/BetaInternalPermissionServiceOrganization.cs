@@ -16,14 +16,12 @@ public class BetaInternalPermissionServiceOrganization : IEquatable<BetaInternal
     /// <summary>
     /// ID is the unique identifier of the organization the user was granted the administrator role for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
     /// <summary>
     /// Name is the name of the organization the user was granted the administrator role for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 

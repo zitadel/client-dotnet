@@ -16,22 +16,18 @@ public class OrganizationServiceListOrganizationDomainsRequest : IEquatable<Orga
     /// <summary>
     /// OrganizationID is the unique identifier of the organization from which the domains are to be listed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public OrganizationServicePaginationRequest? Pagination { get; set; }
 
     /// <summary>
     /// Filters define the criteria to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<OrganizationServiceDomainSearchFilter>? Filters { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public OrganizationServiceDomainFieldName? SortingColumn { get; set; }
 
@@ -42,7 +38,7 @@ public class OrganizationServiceListOrganizationDomainsRequest : IEquatable<Orga
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
                     && EqualityComparer<OrganizationServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<OrganizationServiceDomainSearchFilter>?>.Default.Equals(this.Filters, other.Filters)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters)
                     && EqualityComparer<OrganizationServiceDomainFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn));
     }
 
@@ -56,7 +52,7 @@ public class OrganizationServiceListOrganizationDomainsRequest : IEquatable<Orga
         HashCode hash = default;
         hash.Add(this.OrganizationId);
         hash.Add(this.Pagination);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         hash.Add(this.SortingColumn);
         return hash.ToHashCode();
     }

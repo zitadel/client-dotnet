@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class OrganizationServiceListOrganizationDomainsResponse : IEquatable<OrganizationServiceListOrganizationDomainsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public OrganizationServicePaginationResponse? Pagination { get; set; }
 
     /// <summary>
     /// Domains is a list of fully qualified domain names registered to the organization matching the query.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domains")]
     public List<OrganizationServiceDomain>? Domains { get; set; }
 
@@ -30,7 +28,7 @@ public class OrganizationServiceListOrganizationDomainsResponse : IEquatable<Org
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<OrganizationServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<OrganizationServiceDomain>?>.Default.Equals(this.Domains, other.Domains));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Domains, other.Domains));
     }
 
     public override bool Equals(object? obj)
@@ -42,7 +40,7 @@ public class OrganizationServiceListOrganizationDomainsResponse : IEquatable<Org
     {
         HashCode hash = default;
         hash.Add(this.Pagination);
-        hash.Add(this.Domains);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Domains));
         return hash.ToHashCode();
     }
 }

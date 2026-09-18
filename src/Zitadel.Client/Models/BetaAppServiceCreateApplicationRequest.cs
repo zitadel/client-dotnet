@@ -13,27 +13,21 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceCreateApplicationRequest : IEquatable<BetaAppServiceCreateApplicationRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("apiRequest")]
     public BetaAppServiceCreateAPIApplicationRequest? ApiRequest { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oidcRequest")]
     public BetaAppServiceCreateOIDCApplicationRequest? OidcRequest { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("samlRequest")]
     public BetaAppServiceCreateSAMLApplicationRequest? SamlRequest { get; set; }
 

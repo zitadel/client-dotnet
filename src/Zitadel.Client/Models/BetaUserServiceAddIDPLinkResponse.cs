@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceAddIDPLinkResponse : IEquatable<BetaUserServiceAddIDPLinkResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaUserServiceDetails? Details { get; set; }
 

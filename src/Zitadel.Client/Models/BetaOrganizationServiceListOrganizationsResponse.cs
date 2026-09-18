@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaOrganizationServiceListOrganizationsResponse : IEquatable<BetaOrganizationServiceListOrganizationsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaOrganizationServicePaginationResponse? Pagination { get; set; }
 
     /// <summary>
     /// The Organizations requested
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizations")]
     public List<BetaOrganizationServiceOrganization>? Organizations { get; set; }
 
@@ -30,7 +28,7 @@ public class BetaOrganizationServiceListOrganizationsResponse : IEquatable<BetaO
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<BetaOrganizationServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<BetaOrganizationServiceOrganization>?>.Default.Equals(this.Organizations, other.Organizations));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Organizations, other.Organizations));
     }
 
     public override bool Equals(object? obj)
@@ -42,7 +40,7 @@ public class BetaOrganizationServiceListOrganizationsResponse : IEquatable<BetaO
     {
         HashCode hash = default;
         hash.Add(this.Pagination);
-        hash.Add(this.Organizations);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Organizations));
         return hash.ToHashCode();
     }
 }

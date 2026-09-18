@@ -16,14 +16,12 @@ public class ProjectServiceDeleteProjectGrantRequest : IEquatable<ProjectService
     /// <summary>
     /// ProjectID is the unique identifier of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// GrantedOrganizationID is the unique identifier of the organization the project was granted to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("grantedOrganizationId")]
     public string? GrantedOrganizationId { get; set; }
 

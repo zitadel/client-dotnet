@@ -16,35 +16,30 @@ public class OIDCServiceDeviceAuthorizationRequest : IEquatable<OIDCServiceDevic
     /// <summary>
     /// The unique identifier of the device authorization request to be used for authorizing or denying the request.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
     /// <summary>
     /// The client_id of the application that initiated the device authorization request.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("clientId")]
     public string? ClientId { get; set; }
 
     /// <summary>
     /// The scopes requested by the application.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("scope")]
     public List<string>? Scope { get; set; }
 
     /// <summary>
     /// Name of the client application.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("appName")]
     public string? AppName { get; set; }
 
     /// <summary>
     /// Name of the project the client application is part of.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectName")]
     public string? ProjectName { get; set; }
 
@@ -55,7 +50,7 @@ public class OIDCServiceDeviceAuthorizationRequest : IEquatable<OIDCServiceDevic
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
                     && EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Scope, other.Scope)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Scope, other.Scope)
                     && EqualityComparer<string?>.Default.Equals(this.AppName, other.AppName)
                     && EqualityComparer<string?>.Default.Equals(this.ProjectName, other.ProjectName));
     }
@@ -70,7 +65,7 @@ public class OIDCServiceDeviceAuthorizationRequest : IEquatable<OIDCServiceDevic
         HashCode hash = default;
         hash.Add(this.Id);
         hash.Add(this.ClientId);
-        hash.Add(this.Scope);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Scope));
         hash.Add(this.AppName);
         hash.Add(this.ProjectName);
         return hash.ToHashCode();

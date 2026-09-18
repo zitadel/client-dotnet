@@ -13,18 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class ProjectServiceListProjectGrantsRequest : IEquatable<ProjectServiceListProjectGrantsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public ProjectServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public ProjectServiceProjectGrantFieldName? SortingColumn { get; set; }
 
     /// <summary>
     /// Filters define the criteria to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<ProjectServiceProjectGrantSearchFilter>? Filters { get; set; }
 
@@ -35,7 +32,7 @@ public class ProjectServiceListProjectGrantsRequest : IEquatable<ProjectServiceL
             && (ReferenceEquals(this, other)
                 || EqualityComparer<ProjectServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<ProjectServiceProjectGrantFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<ProjectServiceProjectGrantSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -48,7 +45,7 @@ public class ProjectServiceListProjectGrantsRequest : IEquatable<ProjectServiceL
         HashCode hash = default;
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

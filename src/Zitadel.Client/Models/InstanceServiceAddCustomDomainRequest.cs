@@ -16,14 +16,12 @@ public class InstanceServiceAddCustomDomainRequest : IEquatable<InstanceServiceA
     /// <summary>
     /// InstanceID is the unique ID of the instance to which the domain will be added.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("instanceId")]
     public string? InstanceId { get; set; }
 
     /// <summary>
     /// Custom domain to add to the instance.  Must be a valid domain name.  Once the domain is added, it will be used to route requests to this instance.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("customDomain")]
     public string? CustomDomain { get; set; }
 

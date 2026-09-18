@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceHuman : IEquatable<UserServiceHuman>
 {
-    /// <example>null</example>
     [JsonPropertyName("profile")]
     public UserServiceProfile? Profile { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("email")]
     public UserServiceSetHumanEmail? Email { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("phone")]
     public UserServiceSetHumanPhone? Phone { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public UserServiceSetPassword? Password { get; set; }
 

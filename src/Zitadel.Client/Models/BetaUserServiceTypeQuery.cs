@@ -16,7 +16,6 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class BetaUserServiceTypeQuery : IEquatable<BetaUserServiceTypeQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("type")]
     public BetaUserServiceType? Type { get; set; }
 

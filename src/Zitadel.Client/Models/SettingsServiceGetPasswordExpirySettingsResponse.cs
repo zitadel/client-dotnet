@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class SettingsServiceGetPasswordExpirySettingsResponse : IEquatable<SettingsServiceGetPasswordExpirySettingsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public SettingsServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("settings")]
     public SettingsServicePasswordExpirySettings? Settings { get; set; }
 

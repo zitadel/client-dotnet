@@ -16,7 +16,6 @@ public class BetaAuthorizationServiceActivateAuthorizationRequest : IEquatable<B
     /// <summary>
     /// ID is the unique identifier of the authorization that should be activated.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

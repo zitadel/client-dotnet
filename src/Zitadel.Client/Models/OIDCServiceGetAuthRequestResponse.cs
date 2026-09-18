@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class OIDCServiceGetAuthRequestResponse : IEquatable<OIDCServiceGetAuthRequestResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("authRequest")]
     public OIDCServiceAuthRequest? AuthRequest { get; set; }
 

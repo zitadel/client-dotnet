@@ -13,18 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaInternalPermissionServiceListAdministratorsRequest : IEquatable<BetaInternalPermissionServiceListAdministratorsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaInternalPermissionServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public BetaInternalPermissionServiceAdministratorFieldName? SortingColumn { get; set; }
 
     /// <summary>
     /// Filter the administrator roles to be returned.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<BetaInternalPermissionServiceAdministratorSearchFilter>? Filters { get; set; }
 
@@ -35,7 +32,7 @@ public class BetaInternalPermissionServiceListAdministratorsRequest : IEquatable
             && (ReferenceEquals(this, other)
                 || EqualityComparer<BetaInternalPermissionServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<BetaInternalPermissionServiceAdministratorFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<BetaInternalPermissionServiceAdministratorSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -48,7 +45,7 @@ public class BetaInternalPermissionServiceListAdministratorsRequest : IEquatable
         HashCode hash = default;
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

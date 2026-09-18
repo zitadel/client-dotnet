@@ -13,23 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class SettingsServiceGetActiveIdentityProvidersRequest : IEquatable<SettingsServiceGetActiveIdentityProvidersRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("ctx")]
     public SettingsServiceRequestContext? Ctx { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("creationAllowed")]
     public bool? CreationAllowed { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("linkingAllowed")]
     public bool? LinkingAllowed { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("autoCreation")]
     public bool? AutoCreation { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("autoLinking")]
     public bool? AutoLinking { get; set; }
 

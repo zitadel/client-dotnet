@@ -16,14 +16,12 @@ public class BetaAuthorizationServiceUpdateAuthorizationRequest : IEquatable<Bet
     /// <summary>
     /// ID is the unique identifier of the authorization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
     /// <summary>
     /// RoleKeys are the keys of the roles the user should be granted.  Note that any role keys previously granted to the user and not present in the list will be revoked.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roleKeys")]
     public List<string>? RoleKeys { get; set; }
 
@@ -33,7 +31,7 @@ public class BetaAuthorizationServiceUpdateAuthorizationRequest : IEquatable<Bet
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.RoleKeys, other.RoleKeys));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.RoleKeys, other.RoleKeys));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +43,7 @@ public class BetaAuthorizationServiceUpdateAuthorizationRequest : IEquatable<Bet
     {
         HashCode hash = default;
         hash.Add(this.Id);
-        hash.Add(this.RoleKeys);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.RoleKeys));
         return hash.ToHashCode();
     }
 }

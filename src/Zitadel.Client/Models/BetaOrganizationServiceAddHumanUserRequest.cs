@@ -16,53 +16,42 @@ public class BetaOrganizationServiceAddHumanUserRequest : IEquatable<BetaOrganiz
     /// <summary>
     /// optionally set your own id unique for the user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
     /// <summary>
     /// optionally set a unique username, if none is provided the email will be used.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("username")]
     public string? Username { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organization")]
     public BetaOrganizationServiceOrganization? Organization { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("profile")]
     public BetaOrganizationServiceSetHumanProfile? Profile { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("email")]
     public BetaOrganizationServiceSetHumanEmail? Email { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("phone")]
     public BetaOrganizationServiceSetHumanPhone? Phone { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("metadata")]
     public List<BetaOrganizationServiceSetMetadataEntry>? Metadata { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpLinks")]
     public List<BetaOrganizationServiceIDPLink>? IdpLinks { get; set; }
 
     /// <summary>
     /// An Implementation of RFC 6238 is used, with HMAC-SHA-1 and time-step of 30 seconds.  Currently no other options are supported, and if anything different is used the validation will fail.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("totpSecret")]
     public string? TotpSecret { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("hashedPassword")]
     public BetaOrganizationServiceHashedPassword? HashedPassword { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public BetaOrganizationServicePassword? Password { get; set; }
 
@@ -77,8 +66,8 @@ public class BetaOrganizationServiceAddHumanUserRequest : IEquatable<BetaOrganiz
                     && EqualityComparer<BetaOrganizationServiceSetHumanProfile?>.Default.Equals(this.Profile, other.Profile)
                     && EqualityComparer<BetaOrganizationServiceSetHumanEmail?>.Default.Equals(this.Email, other.Email)
                     && EqualityComparer<BetaOrganizationServiceSetHumanPhone?>.Default.Equals(this.Phone, other.Phone)
-                    && EqualityComparer<List<BetaOrganizationServiceSetMetadataEntry>?>.Default.Equals(this.Metadata, other.Metadata)
-                    && EqualityComparer<List<BetaOrganizationServiceIDPLink>?>.Default.Equals(this.IdpLinks, other.IdpLinks)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Metadata, other.Metadata)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.IdpLinks, other.IdpLinks)
                     && EqualityComparer<string?>.Default.Equals(this.TotpSecret, other.TotpSecret)
                     && EqualityComparer<BetaOrganizationServiceHashedPassword?>.Default.Equals(this.HashedPassword, other.HashedPassword)
                     && EqualityComparer<BetaOrganizationServicePassword?>.Default.Equals(this.Password, other.Password));
@@ -98,8 +87,8 @@ public class BetaOrganizationServiceAddHumanUserRequest : IEquatable<BetaOrganiz
         hash.Add(this.Profile);
         hash.Add(this.Email);
         hash.Add(this.Phone);
-        hash.Add(this.Metadata);
-        hash.Add(this.IdpLinks);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Metadata));
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.IdpLinks));
         hash.Add(this.TotpSecret);
         hash.Add(this.HashedPassword);
         hash.Add(this.Password);

@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaOIDCServiceCreateCallbackRequest : IEquatable<BetaOIDCServiceCreateCallbackRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("authRequestId")]
     public string? AuthRequestId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("error")]
     public BetaOIDCServiceAuthorizationError? Error { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("session")]
     public BetaOIDCServiceSession? Session { get; set; }
 

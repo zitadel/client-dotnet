@@ -16,7 +16,6 @@ public class ApplicationServiceGetApplicationKeyRequest : IEquatable<Application
     /// <summary>
     /// The unique ID of the application key to be retrieved.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("keyId")]
     public string? KeyId { get; set; }
 

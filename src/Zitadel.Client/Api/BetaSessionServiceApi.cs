@@ -50,6 +50,7 @@ public class BetaSessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSessionServiceCreateSessionRequest"></param>
+
     /// <returns><![CDATA[BetaSessionServiceCreateSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSessionServiceCreateSessionResponse> CreateSessionAsync(BetaSessionServiceCreateSessionRequest betaSessionServiceCreateSessionRequest)
@@ -60,13 +61,20 @@ public class BetaSessionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -74,6 +82,7 @@ public class BetaSessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSessionServiceCreateSessionRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSessionServiceCreateSessionResponse>> CreateSessionWithHttpInfoAsync(BetaSessionServiceCreateSessionRequest betaSessionServiceCreateSessionRequest)
@@ -101,6 +110,7 @@ public class BetaSessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSessionServiceDeleteSessionRequest"></param>
+
     /// <returns><![CDATA[BetaSessionServiceDeleteSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSessionServiceDeleteSessionResponse> DeleteSessionAsync(BetaSessionServiceDeleteSessionRequest betaSessionServiceDeleteSessionRequest)
@@ -111,13 +121,20 @@ public class BetaSessionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -125,6 +142,7 @@ public class BetaSessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSessionServiceDeleteSessionRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSessionServiceDeleteSessionResponse>> DeleteSessionWithHttpInfoAsync(BetaSessionServiceDeleteSessionRequest betaSessionServiceDeleteSessionRequest)
@@ -152,6 +170,7 @@ public class BetaSessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSessionServiceGetSessionRequest"></param>
+
     /// <returns><![CDATA[BetaSessionServiceGetSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSessionServiceGetSessionResponse> GetSessionAsync(BetaSessionServiceGetSessionRequest betaSessionServiceGetSessionRequest)
@@ -162,13 +181,20 @@ public class BetaSessionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -176,6 +202,7 @@ public class BetaSessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSessionServiceGetSessionRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSessionServiceGetSessionResponse>> GetSessionWithHttpInfoAsync(BetaSessionServiceGetSessionRequest betaSessionServiceGetSessionRequest)
@@ -203,6 +230,7 @@ public class BetaSessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSessionServiceListSessionsRequest"></param>
+
     /// <returns><![CDATA[BetaSessionServiceListSessionsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSessionServiceListSessionsResponse> ListSessionsAsync(BetaSessionServiceListSessionsRequest betaSessionServiceListSessionsRequest)
@@ -213,13 +241,20 @@ public class BetaSessionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -227,6 +262,7 @@ public class BetaSessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSessionServiceListSessionsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSessionServiceListSessionsResponse>> ListSessionsWithHttpInfoAsync(BetaSessionServiceListSessionsRequest betaSessionServiceListSessionsRequest)
@@ -254,6 +290,7 @@ public class BetaSessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSessionServiceSetSessionRequest"></param>
+
     /// <returns><![CDATA[BetaSessionServiceSetSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSessionServiceSetSessionResponse> SetSessionAsync(BetaSessionServiceSetSessionRequest betaSessionServiceSetSessionRequest)
@@ -264,13 +301,20 @@ public class BetaSessionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -278,6 +322,7 @@ public class BetaSessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under session service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSessionServiceSetSessionRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSessionServiceSetSessionResponse>> SetSessionWithHttpInfoAsync(BetaSessionServiceSetSessionRequest betaSessionServiceSetSessionRequest)

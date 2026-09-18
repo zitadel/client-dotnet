@@ -13,39 +13,30 @@ namespace Zitadel.Client.Models;
 
 public class FeatureServiceGetSystemFeaturesResponse : IEquatable<FeatureServiceGetSystemFeaturesResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public FeatureServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("loginDefaultOrg")]
     public FeatureServiceFeatureFlag? LoginDefaultOrg { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userSchema")]
     public FeatureServiceFeatureFlag? UserSchema { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oidcTokenExchange")]
     public FeatureServiceFeatureFlag? OidcTokenExchange { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("improvedPerformance")]
     public FeatureServiceImprovedPerformanceFeatureFlag? ImprovedPerformance { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oidcSingleV1SessionTermination")]
     public FeatureServiceFeatureFlag? OidcSingleV1SessionTermination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("enableBackChannelLogout")]
     public FeatureServiceFeatureFlag? EnableBackChannelLogout { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("loginV2")]
     public FeatureServiceLoginV2FeatureFlag? LoginV2 { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("permissionCheckV2")]
     public FeatureServiceFeatureFlag? PermissionCheckV2 { get; set; }
 

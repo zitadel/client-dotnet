@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class SAMLServiceGetSAMLRequestResponse : IEquatable<SAMLServiceGetSAMLRequestResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("samlRequest")]
     public SAMLServiceSAMLRequest? SamlRequest { get; set; }
 

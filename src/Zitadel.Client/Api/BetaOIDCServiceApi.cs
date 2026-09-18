@@ -44,6 +44,7 @@ public class BetaOIDCServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under oidc service v2. This endpoint will be removed with the next major version of ZITADEL.   Finalize an Auth Request and get the callback URL for success or failure.  The user must be redirected to the URL in order to inform the application about the success or failure.  On success, the URL contains details for the application to obtain the tokens.  This method can only be called once for an Auth request.</remarks>
     /// <param name="betaOIDCServiceCreateCallbackRequest"></param>
+
     /// <returns><![CDATA[BetaOIDCServiceCreateCallbackResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOIDCServiceCreateCallbackResponse> CreateCallbackAsync(BetaOIDCServiceCreateCallbackRequest betaOIDCServiceCreateCallbackRequest)
@@ -54,13 +55,20 @@ public class BetaOIDCServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -68,6 +76,7 @@ public class BetaOIDCServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under oidc service v2. This endpoint will be removed with the next major version of ZITADEL.   Finalize an Auth Request and get the callback URL for success or failure.  The user must be redirected to the URL in order to inform the application about the success or failure.  On success, the URL contains details for the application to obtain the tokens.  This method can only be called once for an Auth request.</remarks>
     /// <param name="betaOIDCServiceCreateCallbackRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOIDCServiceCreateCallbackResponse>> CreateCallbackWithHttpInfoAsync(BetaOIDCServiceCreateCallbackRequest betaOIDCServiceCreateCallbackRequest)
@@ -95,6 +104,7 @@ public class BetaOIDCServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under oidc service v2. This endpoint will be removed with the next major version of ZITADEL.   Get OIDC Auth Request details by ID, obtained from the redirect URL. Returns details that are parsed from the application's Auth Request.</remarks>
     /// <param name="betaOIDCServiceGetAuthRequestRequest"></param>
+
     /// <returns><![CDATA[BetaOIDCServiceGetAuthRequestResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOIDCServiceGetAuthRequestResponse> GetAuthRequestAsync(BetaOIDCServiceGetAuthRequestRequest betaOIDCServiceGetAuthRequestRequest)
@@ -105,13 +115,20 @@ public class BetaOIDCServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -119,6 +136,7 @@ public class BetaOIDCServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under oidc service v2. This endpoint will be removed with the next major version of ZITADEL.   Get OIDC Auth Request details by ID, obtained from the redirect URL. Returns details that are parsed from the application's Auth Request.</remarks>
     /// <param name="betaOIDCServiceGetAuthRequestRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOIDCServiceGetAuthRequestResponse>> GetAuthRequestWithHttpInfoAsync(BetaOIDCServiceGetAuthRequestRequest betaOIDCServiceGetAuthRequestRequest)

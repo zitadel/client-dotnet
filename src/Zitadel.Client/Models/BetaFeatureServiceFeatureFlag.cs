@@ -16,11 +16,9 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class BetaFeatureServiceFeatureFlag : IEquatable<BetaFeatureServiceFeatureFlag>
 {
-    /// <example>null</example>
     [JsonPropertyName("enabled")]
     public bool? Enabled { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("source")]
     public BetaFeatureServiceSource? Source { get; set; }
 

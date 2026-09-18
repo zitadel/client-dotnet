@@ -16,14 +16,12 @@ public class OrganizationServiceUpdateOrganizationRequest : IEquatable<Organizat
     /// <summary>
     /// OrganizationID is the unique identifier of the organization to be updated.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// Name is the new name for the organization to be set.  Note that since the name is used to generate the organization's default domain,  changing the name will also change the domain.  Additionally, if the domain is used as suffix for user logins,  their login names will also change accordingly.  It will not affect any custom domains added to the organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 

@@ -16,11 +16,9 @@ public class InternalPermissionServiceDeleteAdministratorRequest : IEquatable<In
     /// <summary>
     /// UserID is the ID of the user whose administrator roles should be removed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resource")]
     public InternalPermissionServiceResourceType? Resource { get; set; }
 

@@ -16,15 +16,12 @@ public class BetaInstanceServiceListInstancesRequest : IEquatable<BetaInstanceSe
     /// <summary>
     /// Criterias the client is looking for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("queries")]
     public List<BetaInstanceServiceQuery>? Queries { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaInstanceServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public BetaInstanceServiceFieldName? SortingColumn { get; set; }
 
@@ -33,7 +30,7 @@ public class BetaInstanceServiceListInstancesRequest : IEquatable<BetaInstanceSe
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<BetaInstanceServiceQuery>?>.Default.Equals(this.Queries, other.Queries)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Queries, other.Queries)
                     && EqualityComparer<BetaInstanceServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<BetaInstanceServiceFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn));
     }
@@ -46,7 +43,7 @@ public class BetaInstanceServiceListInstancesRequest : IEquatable<BetaInstanceSe
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Queries);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Queries));
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
         return hash.ToHashCode();

@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaOrganizationServiceOrganizationAdmin : IEquatable<BetaOrganizationServiceOrganizationAdmin>
 {
-    /// <example>null</example>
     [JsonPropertyName("assignedAdmin")]
     public BetaOrganizationServiceAssignedAdmin? AssignedAdmin { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("createdAdmin")]
     public BetaOrganizationServiceCreatedAdmin? CreatedAdmin { get; set; }
 

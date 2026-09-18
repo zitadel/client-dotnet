@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceListKeysResponse : IEquatable<UserServiceListKeysResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public UserServicePaginationResponse? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("result")]
     public List<UserServiceKey>? Result { get; set; }
 
@@ -27,7 +25,7 @@ public class UserServiceListKeysResponse : IEquatable<UserServiceListKeysRespons
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<UserServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<UserServiceKey>?>.Default.Equals(this.Result, other.Result));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Result, other.Result));
     }
 
     public override bool Equals(object? obj)
@@ -39,7 +37,7 @@ public class UserServiceListKeysResponse : IEquatable<UserServiceListKeysRespons
     {
         HashCode hash = default;
         hash.Add(this.Pagination);
-        hash.Add(this.Result);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Result));
         return hash.ToHashCode();
     }
 }

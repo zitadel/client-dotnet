@@ -16,14 +16,12 @@ public class ActionServiceRemovePublicKeyRequest : IEquatable<ActionServiceRemov
     /// <summary>
     /// TargetID is the unique identifier of the target to remove the public key from.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("targetId")]
     public string? TargetId { get; set; }
 
     /// <summary>
     /// KeyID is the unique identifier of the public key to remove.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("keyId")]
     public string? KeyId { get; set; }
 

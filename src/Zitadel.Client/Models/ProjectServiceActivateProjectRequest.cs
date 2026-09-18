@@ -16,7 +16,6 @@ public class ProjectServiceActivateProjectRequest : IEquatable<ProjectServiceAct
     /// <summary>
     /// ProjectID is the unique identifier of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 

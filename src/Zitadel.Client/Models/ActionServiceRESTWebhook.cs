@@ -16,7 +16,6 @@ public class ActionServiceRESTWebhook : IEquatable<ActionServiceRESTWebhook>
     /// <summary>
     /// Define if any error stops the whole execution. By default the process continues as normal.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("interruptOnError")]
     public bool? InterruptOnError { get; set; }
 

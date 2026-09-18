@@ -16,7 +16,6 @@ public class SessionServiceCreatorQuery : IEquatable<SessionServiceCreatorQuery>
     /// <summary>
     /// ID of the user who created the session. If empty, the calling user's ID is used.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

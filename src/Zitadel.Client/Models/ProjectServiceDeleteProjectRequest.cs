@@ -16,7 +16,6 @@ public class ProjectServiceDeleteProjectRequest : IEquatable<ProjectServiceDelet
     /// <summary>
     /// ProjectID is the unique identifier of the project to be deleted.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 

@@ -16,16 +16,14 @@ public class SettingsServiceGetHostedLoginTranslationResponse : IEquatable<Setti
     /// <summary>
     /// hash of the payload
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("etag")]
     public string? Etag { get; set; }
 
     /// <summary>
     /// `Struct` represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, `Struct`  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for `Struct` is JSON object.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("translations")]
-    public Dictionary<string, Object>? Translations { get; set; }
+    public Dictionary<string, object>? Translations { get; set; }
 
     /// <summary>Value-equality based on all declared fields.</summary>
     public bool Equals(SettingsServiceGetHostedLoginTranslationResponse? other)
@@ -33,7 +31,7 @@ public class SettingsServiceGetHostedLoginTranslationResponse : IEquatable<Setti
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Etag, other.Etag)
-                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.Translations, other.Translations));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Translations, other.Translations));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +43,7 @@ public class SettingsServiceGetHostedLoginTranslationResponse : IEquatable<Setti
     {
         HashCode hash = default;
         hash.Add(this.Etag);
-        hash.Add(this.Translations);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Translations));
         return hash.ToHashCode();
     }
 }

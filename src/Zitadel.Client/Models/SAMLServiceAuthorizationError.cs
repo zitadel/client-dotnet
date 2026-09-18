@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class SAMLServiceAuthorizationError : IEquatable<SAMLServiceAuthorizationError>
 {
-    /// <example>null</example>
     [JsonPropertyName("error")]
     public SAMLServiceErrorReason? Error { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("errorDescription")]
     public string? ErrorDescription { get; set; }
 

@@ -60,6 +60,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Adds a custom domain to the instance.  The custom domain must be unique across all instances.  Once the domain is added, it will be used to route requests to this instance.  This method requires system level permissions and cannot be called from an instance context.   Required permissions:    - `system.domain.write`</remarks>
     /// <param name="instanceServiceAddCustomDomainRequest"></param>
+
     /// <returns><![CDATA[InstanceServiceAddCustomDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InstanceServiceAddCustomDomainResponse> AddCustomDomainAsync(InstanceServiceAddCustomDomainRequest instanceServiceAddCustomDomainRequest)
@@ -70,13 +71,20 @@ public class InstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -84,6 +92,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Adds a custom domain to the instance.  The custom domain must be unique across all instances.  Once the domain is added, it will be used to route requests to this instance.  This method requires system level permissions and cannot be called from an instance context.   Required permissions:    - `system.domain.write`</remarks>
     /// <param name="instanceServiceAddCustomDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InstanceServiceAddCustomDomainResponse>> AddCustomDomainWithHttpInfoAsync(InstanceServiceAddCustomDomainRequest instanceServiceAddCustomDomainRequest)
@@ -111,6 +120,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Adds a trusted domain to the instance.  By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to list the domains of a specific instance.  This requires additional permissions.   It must be a valid domain name.  Once the domain is added, it can be used in API responses like OIDC discovery,  email templates, and more.  This can be used in cases where the API is accessed through a different domain  than the instance domain, e.g. proxy setups and custom login UIs.  Unlike custom domain, trusted domains are not used to route requests to this instance  and therefore do not need to be uniquely assigned to an instance.   Required permissions:   - `iam.write`   - `system.instance.write` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceAddTrustedDomainRequest"></param>
+
     /// <returns><![CDATA[InstanceServiceAddTrustedDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InstanceServiceAddTrustedDomainResponse> AddTrustedDomainAsync(InstanceServiceAddTrustedDomainRequest instanceServiceAddTrustedDomainRequest)
@@ -121,13 +131,20 @@ public class InstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -135,6 +152,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Adds a trusted domain to the instance.  By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to list the domains of a specific instance.  This requires additional permissions.   It must be a valid domain name.  Once the domain is added, it can be used in API responses like OIDC discovery,  email templates, and more.  This can be used in cases where the API is accessed through a different domain  than the instance domain, e.g. proxy setups and custom login UIs.  Unlike custom domain, trusted domains are not used to route requests to this instance  and therefore do not need to be uniquely assigned to an instance.   Required permissions:   - `iam.write`   - `system.instance.write` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceAddTrustedDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InstanceServiceAddTrustedDomainResponse>> AddTrustedDomainWithHttpInfoAsync(InstanceServiceAddTrustedDomainRequest instanceServiceAddTrustedDomainRequest)
@@ -162,6 +180,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes an instance with the given ID.  This method requires system level permissions and cannot be called from an instance context.   Required permissions:    - `system.instance.delete`</remarks>
     /// <param name="instanceServiceDeleteInstanceRequest"></param>
+
     /// <returns><![CDATA[InstanceServiceDeleteInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InstanceServiceDeleteInstanceResponse> DeleteInstanceAsync(InstanceServiceDeleteInstanceRequest instanceServiceDeleteInstanceRequest)
@@ -172,13 +191,20 @@ public class InstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -186,6 +212,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes an instance with the given ID.  This method requires system level permissions and cannot be called from an instance context.   Required permissions:    - `system.instance.delete`</remarks>
     /// <param name="instanceServiceDeleteInstanceRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InstanceServiceDeleteInstanceResponse>> DeleteInstanceWithHttpInfoAsync(InstanceServiceDeleteInstanceRequest instanceServiceDeleteInstanceRequest)
@@ -213,6 +240,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the instance in the current context or by its ID.  By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to retrieve a specific instance.  This requires additional permissions.   Required permissions:    - `iam.read`    - `system.instance.read` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceGetInstanceRequest"></param>
+
     /// <returns><![CDATA[InstanceServiceGetInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InstanceServiceGetInstanceResponse> GetInstanceAsync(InstanceServiceGetInstanceRequest instanceServiceGetInstanceRequest)
@@ -223,13 +251,20 @@ public class InstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -237,6 +272,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the instance in the current context or by its ID.  By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to retrieve a specific instance.  This requires additional permissions.   Required permissions:    - `iam.read`    - `system.instance.read` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceGetInstanceRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InstanceServiceGetInstanceResponse>> GetInstanceWithHttpInfoAsync(InstanceServiceGetInstanceRequest instanceServiceGetInstanceRequest)
@@ -264,6 +300,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Lists custom domains of the instance.   By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to list the domains of a specific instance.  This requires additional permissions.   Required permissions:   - `iam.read`   - `system.instance.read` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceListCustomDomainsRequest"></param>
+
     /// <returns><![CDATA[InstanceServiceListCustomDomainsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InstanceServiceListCustomDomainsResponse> ListCustomDomainsAsync(InstanceServiceListCustomDomainsRequest instanceServiceListCustomDomainsRequest)
@@ -274,13 +311,20 @@ public class InstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -288,6 +332,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Lists custom domains of the instance.   By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to list the domains of a specific instance.  This requires additional permissions.   Required permissions:   - `iam.read`   - `system.instance.read` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceListCustomDomainsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InstanceServiceListCustomDomainsResponse>> ListCustomDomainsWithHttpInfoAsync(InstanceServiceListCustomDomainsRequest instanceServiceListCustomDomainsRequest)
@@ -315,6 +360,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Lists instances matching the given query.  The query can be used to filter either by instance ID or domain.  The request is paginated and returns 100 results by default.  This method requires system level permissions and cannot be called from an instance context.   Required permissions:   - `system.instance.read`</remarks>
     /// <param name="instanceServiceListInstancesRequest"></param>
+
     /// <returns><![CDATA[InstanceServiceListInstancesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InstanceServiceListInstancesResponse> ListInstancesAsync(InstanceServiceListInstancesRequest instanceServiceListInstancesRequest)
@@ -325,13 +371,20 @@ public class InstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -339,6 +392,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Lists instances matching the given query.  The query can be used to filter either by instance ID or domain.  The request is paginated and returns 100 results by default.  This method requires system level permissions and cannot be called from an instance context.   Required permissions:   - `system.instance.read`</remarks>
     /// <param name="instanceServiceListInstancesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InstanceServiceListInstancesResponse>> ListInstancesWithHttpInfoAsync(InstanceServiceListInstancesRequest instanceServiceListInstancesRequest)
@@ -366,6 +420,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Lists trusted domains of the instance.  By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to list the domains of a specific instance.  This requires additional permissions.   Required permissions:    - `iam.read`    - `system.instance.read` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceListTrustedDomainsRequest"></param>
+
     /// <returns><![CDATA[InstanceServiceListTrustedDomainsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InstanceServiceListTrustedDomainsResponse> ListTrustedDomainsAsync(InstanceServiceListTrustedDomainsRequest instanceServiceListTrustedDomainsRequest)
@@ -376,13 +431,20 @@ public class InstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -390,6 +452,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Lists trusted domains of the instance.  By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to list the domains of a specific instance.  This requires additional permissions.   Required permissions:    - `iam.read`    - `system.instance.read` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceListTrustedDomainsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InstanceServiceListTrustedDomainsResponse>> ListTrustedDomainsWithHttpInfoAsync(InstanceServiceListTrustedDomainsRequest instanceServiceListTrustedDomainsRequest)
@@ -417,6 +480,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Removes a custom domain from the instance.  Be aware that this will stop routing requests from this domain to the instance and  might break existing setups or integrations.  This method requires system level permissions and cannot be called from an instance context.   Required permissions:   - `system.domain.write`</remarks>
     /// <param name="instanceServiceRemoveCustomDomainRequest"></param>
+
     /// <returns><![CDATA[InstanceServiceRemoveCustomDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InstanceServiceRemoveCustomDomainResponse> RemoveCustomDomainAsync(InstanceServiceRemoveCustomDomainRequest instanceServiceRemoveCustomDomainRequest)
@@ -427,13 +491,20 @@ public class InstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -441,6 +512,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Removes a custom domain from the instance.  Be aware that this will stop routing requests from this domain to the instance and  might break existing setups or integrations.  This method requires system level permissions and cannot be called from an instance context.   Required permissions:   - `system.domain.write`</remarks>
     /// <param name="instanceServiceRemoveCustomDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InstanceServiceRemoveCustomDomainResponse>> RemoveCustomDomainWithHttpInfoAsync(InstanceServiceRemoveCustomDomainRequest instanceServiceRemoveCustomDomainRequest)
@@ -468,6 +540,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Removes a trusted domain from the instance.  By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to list the domains of a specific instance.  This requires additional permissions.   Required permissions:   - `iam.write`   - `system.instance.write` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceRemoveTrustedDomainRequest"></param>
+
     /// <returns><![CDATA[InstanceServiceRemoveTrustedDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InstanceServiceRemoveTrustedDomainResponse> RemoveTrustedDomainAsync(InstanceServiceRemoveTrustedDomainRequest instanceServiceRemoveTrustedDomainRequest)
@@ -478,13 +551,20 @@ public class InstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -492,6 +572,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Removes a trusted domain from the instance.  By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to list the domains of a specific instance.  This requires additional permissions.   Required permissions:   - `iam.write`   - `system.instance.write` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceRemoveTrustedDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InstanceServiceRemoveTrustedDomainResponse>> RemoveTrustedDomainWithHttpInfoAsync(InstanceServiceRemoveTrustedDomainRequest instanceServiceRemoveTrustedDomainRequest)
@@ -519,6 +600,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Updates instance's name in the current context or by its ID.  By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to update a specific instance.  This requires additional permissions.   Required permissions:    - `iam.write`    - `system.instance.write` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceUpdateInstanceRequest"></param>
+
     /// <returns><![CDATA[InstanceServiceUpdateInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InstanceServiceUpdateInstanceResponse> UpdateInstanceAsync(InstanceServiceUpdateInstanceRequest instanceServiceUpdateInstanceRequest)
@@ -529,13 +611,20 @@ public class InstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -543,6 +632,7 @@ public class InstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Updates instance's name in the current context or by its ID.  By default the instance will be determined by the context of the request,  e.g. the host header.  You can optionally pass an InstanceID to update a specific instance.  This requires additional permissions.   Required permissions:    - `iam.write`    - `system.instance.write` (if InstanceID is set)</remarks>
     /// <param name="instanceServiceUpdateInstanceRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InstanceServiceUpdateInstanceResponse>> UpdateInstanceWithHttpInfoAsync(InstanceServiceUpdateInstanceRequest instanceServiceUpdateInstanceRequest)

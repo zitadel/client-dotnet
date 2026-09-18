@@ -16,14 +16,12 @@ public class UserServiceRemoveKeyRequest : IEquatable<UserServiceRemoveKeyReques
     /// <summary>
     /// The users resource ID.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
     /// <summary>
     /// The keys ID.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("keyId")]
     public string? KeyId { get; set; }
 

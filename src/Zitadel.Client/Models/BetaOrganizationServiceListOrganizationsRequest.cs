@@ -13,18 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaOrganizationServiceListOrganizationsRequest : IEquatable<BetaOrganizationServiceListOrganizationsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaOrganizationServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public BetaOrganizationServiceOrgFieldName? SortingColumn { get; set; }
 
     /// <summary>
     /// Define the criteria to query for.  repeated ProjectRoleQuery filters = 4;
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filter")]
     public List<BetaOrganizationServiceOrganizationSearchFilter>? Filter { get; set; }
 
@@ -35,7 +32,7 @@ public class BetaOrganizationServiceListOrganizationsRequest : IEquatable<BetaOr
             && (ReferenceEquals(this, other)
                 || EqualityComparer<BetaOrganizationServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<BetaOrganizationServiceOrgFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<BetaOrganizationServiceOrganizationSearchFilter>?>.Default.Equals(this.Filter, other.Filter));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filter, other.Filter));
     }
 
     public override bool Equals(object? obj)
@@ -48,7 +45,7 @@ public class BetaOrganizationServiceListOrganizationsRequest : IEquatable<BetaOr
         HashCode hash = default;
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Filter);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filter));
         return hash.ToHashCode();
     }
 }

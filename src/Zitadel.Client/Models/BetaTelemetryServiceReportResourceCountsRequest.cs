@@ -16,21 +16,18 @@ public class BetaTelemetryServiceReportResourceCountsRequest : IEquatable<BetaTe
     /// <summary>
     /// The system ID is a unique identifier for the ZITADEL system.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("systemId")]
     public string? SystemId { get; set; }
 
     /// <summary>
     /// The previously returned report ID from the server to continue reporting.  Note that the report ID is only valid for the same system ID.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("reportId")]
     public string? ReportId { get; set; }
 
     /// <summary>
     /// A list of resource counts to report.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("resourceCounts")]
     public List<BetaTelemetryServiceResourceCount>? ResourceCounts { get; set; }
 
@@ -41,7 +38,7 @@ public class BetaTelemetryServiceReportResourceCountsRequest : IEquatable<BetaTe
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.SystemId, other.SystemId)
                     && EqualityComparer<string?>.Default.Equals(this.ReportId, other.ReportId)
-                    && EqualityComparer<List<BetaTelemetryServiceResourceCount>?>.Default.Equals(this.ResourceCounts, other.ResourceCounts));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.ResourceCounts, other.ResourceCounts));
     }
 
     public override bool Equals(object? obj)
@@ -54,7 +51,7 @@ public class BetaTelemetryServiceReportResourceCountsRequest : IEquatable<BetaTe
         HashCode hash = default;
         hash.Add(this.SystemId);
         hash.Add(this.ReportId);
-        hash.Add(this.ResourceCounts);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.ResourceCounts));
         return hash.ToHashCode();
     }
 }

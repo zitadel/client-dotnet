@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class SettingsServiceSecuritySettings : IEquatable<SettingsServiceSecuritySettings>
 {
-    /// <example>null</example>
     [JsonPropertyName("embeddedIframe")]
     public SettingsServiceEmbeddedIframeSettings? EmbeddedIframe { get; set; }
 
     /// <summary>
-    /// If enabled, users are allowed to impersonate other users.  The impersonator needs the appropriate `*_IMPERSONATOR` roles assigned as well\".
+    /// If enabled, users are allowed to impersonate other users.  The impersonator needs the appropriate `*_IMPERSONATOR` roles assigned as well".
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("enableImpersonation")]
     public bool? EnableImpersonation { get; set; }
 

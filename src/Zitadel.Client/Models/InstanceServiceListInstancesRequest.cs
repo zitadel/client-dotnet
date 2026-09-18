@@ -13,18 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class InstanceServiceListInstancesRequest : IEquatable<InstanceServiceListInstancesRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public InstanceServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public InstanceServiceFieldName? SortingColumn { get; set; }
 
     /// <summary>
     /// Filter the instances to be returned.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<InstanceServiceFilter>? Filters { get; set; }
 
@@ -35,7 +32,7 @@ public class InstanceServiceListInstancesRequest : IEquatable<InstanceServiceLis
             && (ReferenceEquals(this, other)
                 || EqualityComparer<InstanceServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<InstanceServiceFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<InstanceServiceFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -48,7 +45,7 @@ public class InstanceServiceListInstancesRequest : IEquatable<InstanceServiceLis
         HashCode hash = default;
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

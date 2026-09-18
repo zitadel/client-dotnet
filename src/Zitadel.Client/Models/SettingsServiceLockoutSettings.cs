@@ -16,29 +16,26 @@ public class SettingsServiceLockoutSettings : IEquatable<SettingsServiceLockoutS
     /// <summary>
     /// The amount of failed password attempts before the account gets locked.  Attempts are reset as soon as the password is entered correctly or the password is reset.  If set to 0 the account will never be locked.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("maxPasswordAttempts")]
-    public Object? MaxPasswordAttempts { get; set; }
+    public object? MaxPasswordAttempts { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public SettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 
     /// <summary>
     /// THe amount of failed OTP (TOTP, SMS, Email) attempts before the account gets locked.  Attempts are reset as soon as the OTP is entered correctly.  If set to 0 the account will never be locked.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("maxOtpAttempts")]
-    public Object? MaxOtpAttempts { get; set; }
+    public object? MaxOtpAttempts { get; set; }
 
     /// <summary>Value-equality based on all declared fields.</summary>
     public bool Equals(SettingsServiceLockoutSettings? other)
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.MaxPasswordAttempts, other.MaxPasswordAttempts)
+                || EqualityComparer<object?>.Default.Equals(this.MaxPasswordAttempts, other.MaxPasswordAttempts)
                     && EqualityComparer<SettingsServiceResourceOwnerType?>.Default.Equals(this.ResourceOwnerType, other.ResourceOwnerType)
-                    && EqualityComparer<Object?>.Default.Equals(this.MaxOtpAttempts, other.MaxOtpAttempts));
+                    && EqualityComparer<object?>.Default.Equals(this.MaxOtpAttempts, other.MaxOtpAttempts));
     }
 
     public override bool Equals(object? obj)

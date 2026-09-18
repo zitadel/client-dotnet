@@ -16,46 +16,39 @@ public class ProjectServiceCreateProjectRequest : IEquatable<ProjectServiceCreat
     /// <summary>
     /// OrganizationID is the unique identifier of the organization the project belongs to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// ProjectID is the unique identifier of the new project. This field is optional.  If omitted, the system will generate a unique ID for you. This is the  recommended way. The generated ID will be returned in the response.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// Name of the project. This might be presented to users, e.g. in sign-in flows.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
     /// <summary>
     /// ProjectRoleAssertion is a  setting that can be enabled to have role information  included in the user info endpoint.  It is also dependent on your application settings to include it in tokens and other types.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectRoleAssertion")]
     public bool? ProjectRoleAssertion { get; set; }
 
     /// <summary>
     /// AuthorizationRequired is a boolean flag that can be enabled to check if a user has  an authorization to use this project assigned when login into an application of this project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("authorizationRequired")]
     public bool? AuthorizationRequired { get; set; }
 
     /// <summary>
     /// ProjectAccessRequired is a boolean flag that can be enabled to check if the organization  of the user, that is trying to log in,  has access to this project (either owns the project or is granted).
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectAccessRequired")]
     public bool? ProjectAccessRequired { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("privateLabelingSetting")]
     public ProjectServicePrivateLabelingSetting? PrivateLabelingSetting { get; set; }
 

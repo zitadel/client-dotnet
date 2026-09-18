@@ -16,14 +16,12 @@ public class ApplicationServiceGenerateClientSecretRequest : IEquatable<Applicat
     /// <summary>
     /// The unique ID of the application to generate a new client secret for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("applicationId")]
     public string? ApplicationId { get; set; }
 
     /// <summary>
     /// The ID of the project the application belongs to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 

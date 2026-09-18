@@ -16,22 +16,18 @@ public class InstanceServiceListTrustedDomainsRequest : IEquatable<InstanceServi
     /// <summary>
     /// InstanceID is the unique ID of the instance whose trusted domains will be listed.  If not set, the instance in the current context (e.g. identified by the host header) will be used.  If an ID is set, the caller must have additional permissions.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("instanceId")]
     public string? InstanceId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public InstanceServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public InstanceServiceTrustedDomainFieldName? SortingColumn { get; set; }
 
     /// <summary>
     /// Filter the domains to be returned.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<InstanceServiceTrustedDomainFilter>? Filters { get; set; }
 
@@ -43,7 +39,7 @@ public class InstanceServiceListTrustedDomainsRequest : IEquatable<InstanceServi
                 || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
                     && EqualityComparer<InstanceServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<InstanceServiceTrustedDomainFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<InstanceServiceTrustedDomainFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -57,7 +53,7 @@ public class InstanceServiceListTrustedDomainsRequest : IEquatable<InstanceServi
         hash.Add(this.InstanceId);
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

@@ -13,24 +13,20 @@ namespace Zitadel.Client.Models;
 
 public class SAMLServiceCreateResponseResponse : IEquatable<SAMLServiceCreateResponseResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public SAMLServiceDetails? Details { get; set; }
 
     /// <summary>
     /// URL including the Assertion Consumer Service where the user should be redirected or has to call per POST, depending on the binding. Contains details for the application to obtain the response on success, or error details on failure. Note that this field must be treated as credentials, as the contained SAMLResponse or code can be used on behalve of the user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("url")]
     public string? Url { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("post")]
     public SAMLServicePostResponse? Post { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("redirect")]
-    public Object? Redirect { get; set; }
+    public object? Redirect { get; set; }
 
     /// <summary>Value-equality based on all declared fields.</summary>
     public bool Equals(SAMLServiceCreateResponseResponse? other)
@@ -40,7 +36,7 @@ public class SAMLServiceCreateResponseResponse : IEquatable<SAMLServiceCreateRes
                 || EqualityComparer<SAMLServiceDetails?>.Default.Equals(this.Details, other.Details)
                     && EqualityComparer<string?>.Default.Equals(this.Url, other.Url)
                     && EqualityComparer<SAMLServicePostResponse?>.Default.Equals(this.Post, other.Post)
-                    && EqualityComparer<Object?>.Default.Equals(this.Redirect, other.Redirect));
+                    && EqualityComparer<object?>.Default.Equals(this.Redirect, other.Redirect));
     }
 
     public override bool Equals(object? obj)

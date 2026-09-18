@@ -16,7 +16,6 @@ public class BetaAuthorizationServiceDeactivateAuthorizationRequest : IEquatable
     /// <summary>
     /// ID is the unique identifier of the authorization that should be deactivated.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

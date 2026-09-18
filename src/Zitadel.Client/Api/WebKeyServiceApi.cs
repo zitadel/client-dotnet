@@ -48,6 +48,7 @@ public class WebKeyServiceApi : BaseApi
     /// </summary>
     /// <remarks>Switch the active signing web key. The previously active key will be deactivated.  Note that the JWKs OIDC endpoint returns a cacheable response.  Therefore it is not advised to activate a key that has been created within the cache duration (default is 5min),  as the public key may not have been propagated to caches and clients yet.   Required permission:    - `iam.web_key.write`</remarks>
     /// <param name="webKeyServiceActivateWebKeyRequest"></param>
+
     /// <returns><![CDATA[WebKeyServiceActivateWebKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<WebKeyServiceActivateWebKeyResponse> ActivateWebKeyAsync(WebKeyServiceActivateWebKeyRequest webKeyServiceActivateWebKeyRequest)
@@ -58,13 +59,20 @@ public class WebKeyServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -72,6 +80,7 @@ public class WebKeyServiceApi : BaseApi
     /// </summary>
     /// <remarks>Switch the active signing web key. The previously active key will be deactivated.  Note that the JWKs OIDC endpoint returns a cacheable response.  Therefore it is not advised to activate a key that has been created within the cache duration (default is 5min),  as the public key may not have been propagated to caches and clients yet.   Required permission:    - `iam.web_key.write`</remarks>
     /// <param name="webKeyServiceActivateWebKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<WebKeyServiceActivateWebKeyResponse>> ActivateWebKeyWithHttpInfoAsync(WebKeyServiceActivateWebKeyRequest webKeyServiceActivateWebKeyRequest)
@@ -99,6 +108,7 @@ public class WebKeyServiceApi : BaseApi
     /// </summary>
     /// <remarks>Generate a private and public key pair. The private key can be used to sign OIDC tokens after activation.  The public key can be used to validate OIDC tokens.  The newly created key will have the state `STATE_INITIAL` and is published to the public key endpoint.  Note that the JWKs OIDC endpoint returns a cacheable response.   If no key type is provided, a RSA key pair with 2048 bits and SHA256 hashing will be created.   Required permission:    - `iam.web_key.write`</remarks>
     /// <param name="webKeyServiceCreateWebKeyRequest"></param>
+
     /// <returns><![CDATA[WebKeyServiceCreateWebKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<WebKeyServiceCreateWebKeyResponse> CreateWebKeyAsync(WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest)
@@ -109,13 +119,20 @@ public class WebKeyServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -123,6 +140,7 @@ public class WebKeyServiceApi : BaseApi
     /// </summary>
     /// <remarks>Generate a private and public key pair. The private key can be used to sign OIDC tokens after activation.  The public key can be used to validate OIDC tokens.  The newly created key will have the state `STATE_INITIAL` and is published to the public key endpoint.  Note that the JWKs OIDC endpoint returns a cacheable response.   If no key type is provided, a RSA key pair with 2048 bits and SHA256 hashing will be created.   Required permission:    - `iam.web_key.write`</remarks>
     /// <param name="webKeyServiceCreateWebKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<WebKeyServiceCreateWebKeyResponse>> CreateWebKeyWithHttpInfoAsync(WebKeyServiceCreateWebKeyRequest webKeyServiceCreateWebKeyRequest)
@@ -150,6 +168,7 @@ public class WebKeyServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete a web key pair. Only inactive keys can be deleted. Once a key is deleted,  any tokens signed by this key will be invalid.  Note that the JWKs OIDC endpoint returns a cacheable response.  In case the web key is not found, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the web key was deleted during the request.   Required permission:    - `iam.web_key.delete`</remarks>
     /// <param name="webKeyServiceDeleteWebKeyRequest"></param>
+
     /// <returns><![CDATA[WebKeyServiceDeleteWebKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<WebKeyServiceDeleteWebKeyResponse> DeleteWebKeyAsync(WebKeyServiceDeleteWebKeyRequest webKeyServiceDeleteWebKeyRequest)
@@ -160,13 +179,20 @@ public class WebKeyServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -174,6 +200,7 @@ public class WebKeyServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete a web key pair. Only inactive keys can be deleted. Once a key is deleted,  any tokens signed by this key will be invalid.  Note that the JWKs OIDC endpoint returns a cacheable response.  In case the web key is not found, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the web key was deleted during the request.   Required permission:    - `iam.web_key.delete`</remarks>
     /// <param name="webKeyServiceDeleteWebKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<WebKeyServiceDeleteWebKeyResponse>> DeleteWebKeyWithHttpInfoAsync(WebKeyServiceDeleteWebKeyRequest webKeyServiceDeleteWebKeyRequest)
@@ -201,9 +228,10 @@ public class WebKeyServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all web keys and their states.   Required permission:    - `iam.web_key.read`</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[WebKeyServiceListWebKeysResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<WebKeyServiceListWebKeysResponse> ListWebKeysAsync(Object body)
+    public async Task<WebKeyServiceListWebKeysResponse> ListWebKeysAsync(object body)
     {
         Task<ApiResult<WebKeyServiceListWebKeysResponse>> task = ListWebKeysWithHttpInfoAsync(body);
         ApiResult<WebKeyServiceListWebKeysResponse> result = await task.ConfigureAwait(false);
@@ -211,13 +239,20 @@ public class WebKeyServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -225,9 +260,10 @@ public class WebKeyServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all web keys and their states.   Required permission:    - `iam.web_key.read`</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<WebKeyServiceListWebKeysResponse>> ListWebKeysWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<WebKeyServiceListWebKeysResponse>> ListWebKeysWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.webkey.v2.WebKeyService/ListWebKeys";
 

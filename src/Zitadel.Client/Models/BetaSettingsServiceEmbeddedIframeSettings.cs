@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServiceEmbeddedIframeSettings : IEquatable<BetaSettingsServiceEmbeddedIframeSettings>
 {
-    /// <example>null</example>
     [JsonPropertyName("enabled")]
     public bool? Enabled { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("allowedOrigins")]
     public List<string>? AllowedOrigins { get; set; }
 
@@ -27,7 +25,7 @@ public class BetaSettingsServiceEmbeddedIframeSettings : IEquatable<BetaSettings
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.Enabled, other.Enabled)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.AllowedOrigins, other.AllowedOrigins));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.AllowedOrigins, other.AllowedOrigins));
     }
 
     public override bool Equals(object? obj)
@@ -39,7 +37,7 @@ public class BetaSettingsServiceEmbeddedIframeSettings : IEquatable<BetaSettings
     {
         HashCode hash = default;
         hash.Add(this.Enabled);
-        hash.Add(this.AllowedOrigins);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.AllowedOrigins));
         return hash.ToHashCode();
     }
 }

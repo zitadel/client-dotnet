@@ -16,11 +16,9 @@ public class ApplicationServiceListApplicationKeysResponse : IEquatable<Applicat
     /// <summary>
     /// The list of application keys matching the query. Depending on the applied limit,  there might be more keys available than returned in this list.  Use the returned pagination information to request further keys.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("keys")]
     public List<ApplicationServiceApplicationKey>? Keys { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public ApplicationServicePaginationResponse? Pagination { get; set; }
 
@@ -29,7 +27,7 @@ public class ApplicationServiceListApplicationKeysResponse : IEquatable<Applicat
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<ApplicationServiceApplicationKey>?>.Default.Equals(this.Keys, other.Keys)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Keys, other.Keys)
                     && EqualityComparer<ApplicationServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination));
     }
 
@@ -41,7 +39,7 @@ public class ApplicationServiceListApplicationKeysResponse : IEquatable<Applicat
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Keys);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Keys));
         hash.Add(this.Pagination);
         return hash.ToHashCode();
     }

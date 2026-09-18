@@ -16,11 +16,9 @@ public class ApplicationServiceListApplicationsResponse : IEquatable<Application
     /// <summary>
     /// The list of applications matching the query. Depending on the applied limit,  there might be more applications available than included in this list.  Use the returned pagination information to request further applications.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("applications")]
     public List<ApplicationServiceApplication>? Applications { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public ApplicationServicePaginationResponse? Pagination { get; set; }
 
@@ -29,7 +27,7 @@ public class ApplicationServiceListApplicationsResponse : IEquatable<Application
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<ApplicationServiceApplication>?>.Default.Equals(this.Applications, other.Applications)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Applications, other.Applications)
                     && EqualityComparer<ApplicationServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination));
     }
 
@@ -41,7 +39,7 @@ public class ApplicationServiceListApplicationsResponse : IEquatable<Application
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Applications);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Applications));
         hash.Add(this.Pagination);
         return hash.ToHashCode();
     }

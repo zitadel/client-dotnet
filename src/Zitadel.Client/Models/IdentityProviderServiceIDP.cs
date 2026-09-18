@@ -16,27 +16,21 @@ public class IdentityProviderServiceIDP : IEquatable<IdentityProviderServiceIDP>
     /// <summary>
     /// Unique identifier for the identity provider.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public IdentityProviderServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("state")]
     public IdentityProviderServiceIDPState? State { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("type")]
     public IdentityProviderServiceIDPType? Type { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("config")]
     public IdentityProviderServiceIDPConfig? Config { get; set; }
 

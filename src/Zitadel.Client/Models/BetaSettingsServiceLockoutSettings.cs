@@ -13,26 +13,23 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServiceLockoutSettings : IEquatable<BetaSettingsServiceLockoutSettings>
 {
-    /// <example>null</example>
     [JsonPropertyName("maxPasswordAttempts")]
-    public Object? MaxPasswordAttempts { get; set; }
+    public object? MaxPasswordAttempts { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public BetaSettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("maxOtpAttempts")]
-    public Object? MaxOtpAttempts { get; set; }
+    public object? MaxOtpAttempts { get; set; }
 
     /// <summary>Value-equality based on all declared fields.</summary>
     public bool Equals(BetaSettingsServiceLockoutSettings? other)
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.MaxPasswordAttempts, other.MaxPasswordAttempts)
+                || EqualityComparer<object?>.Default.Equals(this.MaxPasswordAttempts, other.MaxPasswordAttempts)
                     && EqualityComparer<BetaSettingsServiceResourceOwnerType?>.Default.Equals(this.ResourceOwnerType, other.ResourceOwnerType)
-                    && EqualityComparer<Object?>.Default.Equals(this.MaxOtpAttempts, other.MaxOtpAttempts));
+                    && EqualityComparer<object?>.Default.Equals(this.MaxOtpAttempts, other.MaxOtpAttempts));
     }
 
     public override bool Equals(object? obj)

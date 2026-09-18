@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceAddOTPEmailResponse : IEquatable<BetaUserServiceAddOTPEmailResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaUserServiceDetails? Details { get; set; }
 

@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaFeatureServiceGetOrganizationFeaturesResponse : IEquatable<BetaFeatureServiceGetOrganizationFeaturesResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaFeatureServiceDetails? Details { get; set; }
 

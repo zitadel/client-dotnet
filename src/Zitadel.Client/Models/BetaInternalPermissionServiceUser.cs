@@ -16,28 +16,24 @@ public class BetaInternalPermissionServiceUser : IEquatable<BetaInternalPermissi
     /// <summary>
     /// ID is the unique identifier of the user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
     /// <summary>
     /// PreferredLoginName is the preferred login name of the user. This value is unique across the whole instance.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("preferredLoginName")]
     public string? PreferredLoginName { get; set; }
 
     /// <summary>
     /// DisplayName is the public display name of the user.  By default it's the user's given name and family name, their username or their email address.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("displayName")]
     public string? DisplayName { get; set; }
 
     /// <summary>
     /// The organization the user belong to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 

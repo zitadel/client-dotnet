@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceLoginVersion : IEquatable<BetaAppServiceLoginVersion>
 {
-    /// <example>null</example>
     [JsonPropertyName("loginV1")]
-    public Object? LoginV1 { get; set; }
+    public object? LoginV1 { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("loginV2")]
     public BetaAppServiceLoginV2? LoginV2 { get; set; }
 
@@ -26,7 +24,7 @@ public class BetaAppServiceLoginVersion : IEquatable<BetaAppServiceLoginVersion>
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.LoginV1, other.LoginV1)
+                || EqualityComparer<object?>.Default.Equals(this.LoginV1, other.LoginV1)
                     && EqualityComparer<BetaAppServiceLoginV2?>.Default.Equals(this.LoginV2, other.LoginV2));
     }
 

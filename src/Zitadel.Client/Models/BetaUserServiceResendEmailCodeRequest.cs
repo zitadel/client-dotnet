@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceResendEmailCodeRequest : IEquatable<BetaUserServiceResendEmailCodeRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("returnCode")]
-    public Object? ReturnCode { get; set; }
+    public object? ReturnCode { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sendCode")]
     public BetaUserServiceSendEmailVerificationCode? SendCode { get; set; }
 
@@ -31,7 +28,7 @@ public class BetaUserServiceResendEmailCodeRequest : IEquatable<BetaUserServiceR
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<Object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
+                    && EqualityComparer<object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
                     && EqualityComparer<BetaUserServiceSendEmailVerificationCode?>.Default.Equals(this.SendCode, other.SendCode));
     }
 

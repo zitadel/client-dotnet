@@ -13,47 +13,36 @@ namespace Zitadel.Client.Models;
 
 public class BetaInternalPermissionServiceAdministratorSearchFilter : IEquatable<BetaInternalPermissionServiceAdministratorSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("and")]
     public BetaInternalPermissionServiceAndFilter? And { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("changeDate")]
     public BetaInternalPermissionServiceTimestampFilter? ChangeDate { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("creationDate")]
     public BetaInternalPermissionServiceTimestampFilter? CreationDate { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("inUserIdsFilter")]
     public BetaInternalPermissionServiceInIDsFilter? InUserIdsFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("not")]
     public BetaInternalPermissionServiceNotFilter? Not { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("or")]
     public BetaInternalPermissionServiceOrFilter? Or { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resource")]
     public BetaInternalPermissionServiceResourceFilter? Resource { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("role")]
     public BetaInternalPermissionServiceRoleFilter? Role { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userDisplayName")]
     public BetaInternalPermissionServiceUserDisplayNameFilter? UserDisplayName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userOrganizationId")]
     public BetaInternalPermissionServiceIDFilter? UserOrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userPreferredLoginName")]
     public BetaInternalPermissionServiceUserPreferredLoginNameFilter? UserPreferredLoginName { get; set; }
 

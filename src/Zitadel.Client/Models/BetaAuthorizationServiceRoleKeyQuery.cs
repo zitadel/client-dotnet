@@ -16,11 +16,9 @@ public class BetaAuthorizationServiceRoleKeyQuery : IEquatable<BetaAuthorization
     /// <summary>
     /// Specify the key of the role the user was granted to search for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("key")]
     public string? Key { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaAuthorizationServiceTextFilterMethod? Method { get; set; }
 

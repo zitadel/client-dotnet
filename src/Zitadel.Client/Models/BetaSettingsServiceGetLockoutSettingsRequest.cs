@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServiceGetLockoutSettingsRequest : IEquatable<BetaSettingsServiceGetLockoutSettingsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("ctx")]
     public BetaSettingsServiceRequestContext? Ctx { get; set; }
 

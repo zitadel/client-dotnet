@@ -16,21 +16,18 @@ public class AuthorizationServiceProject : IEquatable<AuthorizationServiceProjec
     /// <summary>
     /// ID is the unique identifier of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
     /// <summary>
     /// Name is the name of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
     /// <summary>
     /// OrganizationID is the ID of the organization the project belongs to.  This does not have to correspond with the authorizations organization.  In case the authorization is given on a granted project, this is the organization  that owns the project and granted it.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 

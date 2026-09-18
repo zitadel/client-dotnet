@@ -16,11 +16,9 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class BetaUserServiceEmailQuery : IEquatable<BetaUserServiceEmailQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("emailAddress")]
     public string? EmailAddress { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaUserServiceTextQueryMethod? Method { get; set; }
 

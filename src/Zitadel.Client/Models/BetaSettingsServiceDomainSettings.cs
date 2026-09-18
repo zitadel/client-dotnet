@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServiceDomainSettings : IEquatable<BetaSettingsServiceDomainSettings>
 {
-    /// <example>null</example>
     [JsonPropertyName("loginNameIncludesDomain")]
     public bool? LoginNameIncludesDomain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("requireOrgDomainVerification")]
     public bool? RequireOrgDomainVerification { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("smtpSenderAddressMatchesInstanceDomain")]
     public bool? SmtpSenderAddressMatchesInstanceDomain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public BetaSettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 

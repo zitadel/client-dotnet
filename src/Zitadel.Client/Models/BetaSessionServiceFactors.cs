@@ -13,31 +13,24 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceFactors : IEquatable<BetaSessionServiceFactors>
 {
-    /// <example>null</example>
     [JsonPropertyName("user")]
     public BetaSessionServiceUserFactor? User { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public BetaSessionServicePasswordFactor? Password { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("webAuthN")]
     public BetaSessionServiceWebAuthNFactor? WebAuthN { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("intent")]
     public BetaSessionServiceIntentFactor? Intent { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("totp")]
     public BetaSessionServiceTOTPFactor? Totp { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpSms")]
     public BetaSessionServiceOTPFactor? OtpSms { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpEmail")]
     public BetaSessionServiceOTPFactor? OtpEmail { get; set; }
 

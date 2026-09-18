@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceSearchQuery : IEquatable<BetaSessionServiceSearchQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("creationDateQuery")]
     public BetaSessionServiceCreationDateQuery? CreationDateQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idsQuery")]
     public BetaSessionServiceIDsQuery? IdsQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userIdQuery")]
     public BetaSessionServiceUserIDQuery? UserIdQuery { get; set; }
 

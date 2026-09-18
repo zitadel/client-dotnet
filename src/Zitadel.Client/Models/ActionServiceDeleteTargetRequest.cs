@@ -16,7 +16,6 @@ public class ActionServiceDeleteTargetRequest : IEquatable<ActionServiceDeleteTa
     /// <summary>
     /// The unique identifier of the target to delete.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

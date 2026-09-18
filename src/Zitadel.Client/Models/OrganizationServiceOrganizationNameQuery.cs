@@ -16,11 +16,9 @@ public class OrganizationServiceOrganizationNameQuery : IEquatable<OrganizationS
     /// <summary>
     /// Name of the organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public OrganizationServiceTextQueryMethod? Method { get; set; }
 

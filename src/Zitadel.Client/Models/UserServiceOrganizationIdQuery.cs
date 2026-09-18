@@ -16,7 +16,6 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class UserServiceOrganizationIdQuery : IEquatable<UserServiceOrganizationIdQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 

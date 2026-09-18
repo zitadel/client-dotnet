@@ -16,28 +16,24 @@ public class ApplicationServiceCreateOIDCApplicationResponse : IEquatable<Applic
     /// <summary>
     /// The unique OAuth2/OIDC client_id used for authentication of the application,  e.g. at the token endpoint.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("clientId")]
     public string? ClientId { get; set; }
 
     /// <summary>
     /// In case of using the OIDCAuthMethodType.OIDC_AUTH_METHOD_TYPE_CLIENT_SECRET_BASIC  or OIDCAuthMethodType.OIDC_AUTH_METHOD_TYPE_CLIENT_SECRET_POST the client_secret is generated and returned.  It must be stored safely, as it will not be possible to retrieve it again.  A new client_secret can be generated using the GenerateClientSecret endpoint.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("clientSecret")]
     public string? ClientSecret { get; set; }
 
     /// <summary>
     /// NonCompliant specifies whether the config is OIDC compliant. A production configuration SHOULD be compliant.  Non-compliant configurations can run into interoperability issues with OIDC libraries and tools.  Compliance problems are listed in the compliance_problems field.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("nonCompliant")]
     public bool? NonCompliant { get; set; }
 
     /// <summary>
     /// ComplianceProblems lists the problems for non-compliant configurations.  In case of a compliant configuration, this list is empty.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("complianceProblems")]
     public List<ApplicationServiceOIDCLocalizedMessage>? ComplianceProblems { get; set; }
 
@@ -49,7 +45,7 @@ public class ApplicationServiceCreateOIDCApplicationResponse : IEquatable<Applic
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
                     && EqualityComparer<string?>.Default.Equals(this.ClientSecret, other.ClientSecret)
                     && EqualityComparer<bool?>.Default.Equals(this.NonCompliant, other.NonCompliant)
-                    && EqualityComparer<List<ApplicationServiceOIDCLocalizedMessage>?>.Default.Equals(this.ComplianceProblems, other.ComplianceProblems));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.ComplianceProblems, other.ComplianceProblems));
     }
 
     public override bool Equals(object? obj)
@@ -63,7 +59,7 @@ public class ApplicationServiceCreateOIDCApplicationResponse : IEquatable<Applic
         hash.Add(this.ClientId);
         hash.Add(this.ClientSecret);
         hash.Add(this.NonCompliant);
-        hash.Add(this.ComplianceProblems);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.ComplianceProblems));
         return hash.ToHashCode();
     }
 }

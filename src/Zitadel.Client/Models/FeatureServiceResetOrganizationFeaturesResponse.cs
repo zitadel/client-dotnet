@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class FeatureServiceResetOrganizationFeaturesResponse : IEquatable<FeatureServiceResetOrganizationFeaturesResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public FeatureServiceDetails? Details { get; set; }
 

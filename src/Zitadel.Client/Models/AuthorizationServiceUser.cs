@@ -16,35 +16,30 @@ public class AuthorizationServiceUser : IEquatable<AuthorizationServiceUser>
     /// <summary>
     /// ID represents the ID of the user who was granted the authorization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
     /// <summary>
     /// PreferredLoginName represents the preferred login name of the granted user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("preferredLoginName")]
     public string? PreferredLoginName { get; set; }
 
     /// <summary>
     /// DisplayName represents the public display name of the granted user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("displayName")]
     public string? DisplayName { get; set; }
 
     /// <summary>
     /// AvatarURL is the URL to the user's public avatar image.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("avatarUrl")]
     public string? AvatarUrl { get; set; }
 
     /// <summary>
     /// The organization the user belong to.  This does not have to correspond with the authorizations organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 

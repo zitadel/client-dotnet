@@ -64,6 +64,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns all configured features for an instance. Unset fields mean the feature is the current system default.   Required permissions:   - none</remarks>
     /// <param name="featureServiceGetInstanceFeaturesRequest"></param>
+
     /// <returns><![CDATA[FeatureServiceGetInstanceFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<FeatureServiceGetInstanceFeaturesResponse> GetInstanceFeaturesAsync(FeatureServiceGetInstanceFeaturesRequest featureServiceGetInstanceFeaturesRequest)
@@ -74,13 +75,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -88,6 +96,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns all configured features for an instance. Unset fields mean the feature is the current system default.   Required permissions:   - none</remarks>
     /// <param name="featureServiceGetInstanceFeaturesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<FeatureServiceGetInstanceFeaturesResponse>> GetInstanceFeaturesWithHttpInfoAsync(FeatureServiceGetInstanceFeaturesRequest featureServiceGetInstanceFeaturesRequest)
@@ -115,6 +124,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns all configured features for an organization. Unset fields mean the feature is the current instance default.   Required permissions:   - org.feature.read   - no permission required for the organization the user belongs to</remarks>
     /// <param name="featureServiceGetOrganizationFeaturesRequest"></param>
+
     /// <returns><![CDATA[FeatureServiceGetOrganizationFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<FeatureServiceGetOrganizationFeaturesResponse> GetOrganizationFeaturesAsync(FeatureServiceGetOrganizationFeaturesRequest featureServiceGetOrganizationFeaturesRequest)
@@ -125,13 +135,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -139,6 +156,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns all configured features for an organization. Unset fields mean the feature is the current instance default.   Required permissions:   - org.feature.read   - no permission required for the organization the user belongs to</remarks>
     /// <param name="featureServiceGetOrganizationFeaturesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<FeatureServiceGetOrganizationFeaturesResponse>> GetOrganizationFeaturesWithHttpInfoAsync(FeatureServiceGetOrganizationFeaturesRequest featureServiceGetOrganizationFeaturesRequest)
@@ -166,9 +184,10 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns all configured features for the system. Unset fields mean the feature is the current system default.   Required permissions:   - none</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[FeatureServiceGetSystemFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<FeatureServiceGetSystemFeaturesResponse> GetSystemFeaturesAsync(Object body)
+    public async Task<FeatureServiceGetSystemFeaturesResponse> GetSystemFeaturesAsync(object body)
     {
         Task<ApiResult<FeatureServiceGetSystemFeaturesResponse>> task = GetSystemFeaturesWithHttpInfoAsync(body);
         ApiResult<FeatureServiceGetSystemFeaturesResponse> result = await task.ConfigureAwait(false);
@@ -176,13 +195,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -190,9 +216,10 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns all configured features for the system. Unset fields mean the feature is the current system default.   Required permissions:   - none</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<FeatureServiceGetSystemFeaturesResponse>> GetSystemFeaturesWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<FeatureServiceGetSystemFeaturesResponse>> GetSystemFeaturesWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.feature.v2.FeatureService/GetSystemFeatures";
 
@@ -217,6 +244,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns all configured features for a user. Unset fields mean the feature is the current organization default.   Required permissions:   - user.feature.read   - no permission required for the own user</remarks>
     /// <param name="featureServiceGetUserFeaturesRequest"></param>
+
     /// <returns><![CDATA[FeatureServiceGetUserFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<FeatureServiceGetUserFeaturesResponse> GetUserFeaturesAsync(FeatureServiceGetUserFeaturesRequest featureServiceGetUserFeaturesRequest)
@@ -227,13 +255,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -241,6 +276,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns all configured features for a user. Unset fields mean the feature is the current organization default.   Required permissions:   - user.feature.read   - no permission required for the own user</remarks>
     /// <param name="featureServiceGetUserFeaturesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<FeatureServiceGetUserFeaturesResponse>> GetUserFeaturesWithHttpInfoAsync(FeatureServiceGetUserFeaturesRequest featureServiceGetUserFeaturesRequest)
@@ -268,9 +304,10 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes ALL configured features for an instance, reverting the behaviors to system defaults.   Required permissions:   - iam.feature.delete</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[FeatureServiceResetInstanceFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<FeatureServiceResetInstanceFeaturesResponse> ResetInstanceFeaturesAsync(Object body)
+    public async Task<FeatureServiceResetInstanceFeaturesResponse> ResetInstanceFeaturesAsync(object body)
     {
         Task<ApiResult<FeatureServiceResetInstanceFeaturesResponse>> task = ResetInstanceFeaturesWithHttpInfoAsync(body);
         ApiResult<FeatureServiceResetInstanceFeaturesResponse> result = await task.ConfigureAwait(false);
@@ -278,13 +315,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -292,9 +336,10 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes ALL configured features for an instance, reverting the behaviors to system defaults.   Required permissions:   - iam.feature.delete</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<FeatureServiceResetInstanceFeaturesResponse>> ResetInstanceFeaturesWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<FeatureServiceResetInstanceFeaturesResponse>> ResetInstanceFeaturesWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.feature.v2.FeatureService/ResetInstanceFeatures";
 
@@ -319,6 +364,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes ALL configured features for an organization, reverting the behaviors to instance defaults.   Required permissions:   - org.feature.delete</remarks>
     /// <param name="featureServiceResetOrganizationFeaturesRequest"></param>
+
     /// <returns><![CDATA[FeatureServiceResetOrganizationFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<FeatureServiceResetOrganizationFeaturesResponse> ResetOrganizationFeaturesAsync(FeatureServiceResetOrganizationFeaturesRequest featureServiceResetOrganizationFeaturesRequest)
@@ -329,13 +375,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -343,6 +396,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes ALL configured features for an organization, reverting the behaviors to instance defaults.   Required permissions:   - org.feature.delete</remarks>
     /// <param name="featureServiceResetOrganizationFeaturesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<FeatureServiceResetOrganizationFeaturesResponse>> ResetOrganizationFeaturesWithHttpInfoAsync(FeatureServiceResetOrganizationFeaturesRequest featureServiceResetOrganizationFeaturesRequest)
@@ -370,9 +424,10 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes ALL configured features for the system, reverting the behaviors to system defaults.   Required permissions:   - system.feature.delete</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[FeatureServiceResetSystemFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<FeatureServiceResetSystemFeaturesResponse> ResetSystemFeaturesAsync(Object body)
+    public async Task<FeatureServiceResetSystemFeaturesResponse> ResetSystemFeaturesAsync(object body)
     {
         Task<ApiResult<FeatureServiceResetSystemFeaturesResponse>> task = ResetSystemFeaturesWithHttpInfoAsync(body);
         ApiResult<FeatureServiceResetSystemFeaturesResponse> result = await task.ConfigureAwait(false);
@@ -380,13 +435,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -394,9 +456,10 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes ALL configured features for the system, reverting the behaviors to system defaults.   Required permissions:   - system.feature.delete</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<FeatureServiceResetSystemFeaturesResponse>> ResetSystemFeaturesWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<FeatureServiceResetSystemFeaturesResponse>> ResetSystemFeaturesWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.feature.v2.FeatureService/ResetSystemFeatures";
 
@@ -421,6 +484,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes ALL configured features for a user, reverting the behaviors to organization defaults.   Required permissions:   - user.feature.delete</remarks>
     /// <param name="featureServiceResetUserFeaturesRequest"></param>
+
     /// <returns><![CDATA[FeatureServiceResetUserFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<FeatureServiceResetUserFeaturesResponse> ResetUserFeaturesAsync(FeatureServiceResetUserFeaturesRequest featureServiceResetUserFeaturesRequest)
@@ -431,13 +495,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -445,6 +516,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes ALL configured features for a user, reverting the behaviors to organization defaults.   Required permissions:   - user.feature.delete</remarks>
     /// <param name="featureServiceResetUserFeaturesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<FeatureServiceResetUserFeaturesResponse>> ResetUserFeaturesWithHttpInfoAsync(FeatureServiceResetUserFeaturesRequest featureServiceResetUserFeaturesRequest)
@@ -472,6 +544,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.   Required permissions:   - iam.feature.write</remarks>
     /// <param name="featureServiceSetInstanceFeaturesRequest"></param>
+
     /// <returns><![CDATA[FeatureServiceSetInstanceFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<FeatureServiceSetInstanceFeaturesResponse> SetInstanceFeaturesAsync(FeatureServiceSetInstanceFeaturesRequest featureServiceSetInstanceFeaturesRequest)
@@ -482,13 +555,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -496,6 +576,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.   Required permissions:   - iam.feature.write</remarks>
     /// <param name="featureServiceSetInstanceFeaturesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<FeatureServiceSetInstanceFeaturesResponse>> SetInstanceFeaturesWithHttpInfoAsync(FeatureServiceSetInstanceFeaturesRequest featureServiceSetInstanceFeaturesRequest)
@@ -523,6 +604,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.   Required permissions:   - org.feature.write</remarks>
     /// <param name="featureServiceSetOrganizationFeaturesRequest"></param>
+
     /// <returns><![CDATA[FeatureServiceSetOrganizationFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<FeatureServiceSetOrganizationFeaturesResponse> SetOrganizationFeaturesAsync(FeatureServiceSetOrganizationFeaturesRequest featureServiceSetOrganizationFeaturesRequest)
@@ -533,13 +615,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -547,6 +636,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Configure and set features that apply to a complete instance. Only fields present in the request are set or unset.   Required permissions:   - org.feature.write</remarks>
     /// <param name="featureServiceSetOrganizationFeaturesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<FeatureServiceSetOrganizationFeaturesResponse>> SetOrganizationFeaturesWithHttpInfoAsync(FeatureServiceSetOrganizationFeaturesRequest featureServiceSetOrganizationFeaturesRequest)
@@ -574,6 +664,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Configure and set features that apply to the complete system. Only fields present in the request are set or unset.   Required permissions:   - system.feature.write</remarks>
     /// <param name="featureServiceSetSystemFeaturesRequest"></param>
+
     /// <returns><![CDATA[FeatureServiceSetSystemFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<FeatureServiceSetSystemFeaturesResponse> SetSystemFeaturesAsync(FeatureServiceSetSystemFeaturesRequest featureServiceSetSystemFeaturesRequest)
@@ -584,13 +675,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -598,6 +696,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Configure and set features that apply to the complete system. Only fields present in the request are set or unset.   Required permissions:   - system.feature.write</remarks>
     /// <param name="featureServiceSetSystemFeaturesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<FeatureServiceSetSystemFeaturesResponse>> SetSystemFeaturesWithHttpInfoAsync(FeatureServiceSetSystemFeaturesRequest featureServiceSetSystemFeaturesRequest)
@@ -625,6 +724,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Configure and set features that apply to an user. Only fields present in the request are set or unset.   Required permissions:   - user.feature.write</remarks>
     /// <param name="featureServiceSetUserFeatureRequest"></param>
+
     /// <returns><![CDATA[FeatureServiceSetUserFeaturesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<FeatureServiceSetUserFeaturesResponse> SetUserFeaturesAsync(FeatureServiceSetUserFeatureRequest featureServiceSetUserFeatureRequest)
@@ -635,13 +735,20 @@ public class FeatureServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -649,6 +756,7 @@ public class FeatureServiceApi : BaseApi
     /// </summary>
     /// <remarks>Configure and set features that apply to an user. Only fields present in the request are set or unset.   Required permissions:   - user.feature.write</remarks>
     /// <param name="featureServiceSetUserFeatureRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<FeatureServiceSetUserFeaturesResponse>> SetUserFeaturesWithHttpInfoAsync(FeatureServiceSetUserFeatureRequest featureServiceSetUserFeatureRequest)

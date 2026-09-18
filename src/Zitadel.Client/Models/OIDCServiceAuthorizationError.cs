@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class OIDCServiceAuthorizationError : IEquatable<OIDCServiceAuthorizationError>
 {
-    /// <example>null</example>
     [JsonPropertyName("error")]
     public OIDCServiceErrorReason? Error { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("errorDescription")]
     public string? ErrorDescription { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("errorUri")]
     public string? ErrorUri { get; set; }
 

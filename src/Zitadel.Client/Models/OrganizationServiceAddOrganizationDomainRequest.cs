@@ -16,14 +16,12 @@ public class OrganizationServiceAddOrganizationDomainRequest : IEquatable<Organi
     /// <summary>
     /// OrganizationID is the unique identifier of the organization to which the domain is to be added.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// Domain is the full qualified domain name to be added to the organization.  Note that the domain has to be unique across the instance.  Depending on the settings, you might have to verify the domain before it can be used.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 

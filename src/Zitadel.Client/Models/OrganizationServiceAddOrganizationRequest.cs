@@ -17,28 +17,24 @@ public class OrganizationServiceAddOrganizationRequest : IEquatable<Organization
     /// <summary>
     /// Name is the unique name of the organization to be created.  This must be unique across the instance.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
     /// <summary>
     /// Specify users to be assigned as organization admins.  If no users are specified here, the organization will be created without any admin users.  The organization can still be managed by any instance administrator.  If no roles are specified for a user, they will be assigned the role ORG_OWNER.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("admins")]
     public List<OrganizationServiceAdmin>? Admins { get; set; }
 
     /// <summary>
     /// OrganizationID is the unique identifier of the organization. This field is optional.  If omitted, the system will generate one,  which is the recommended way. The generated ID will be returned in the response.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// Optionally, set a unique id for the organization. If omitted, the system will generate one,  which is the recommended way. The generated ID will be returned in the response.   Deprecated: use 'organization_id' field instead.  If both org_id and organization_id are set, organization_id will take precedence.
     /// </summary>
-    /// <example>null</example>
     /// <remarks>Deprecated.</remarks>
     [Obsolete("This property is deprecated.")]
     [JsonPropertyName("orgId")]
@@ -50,7 +46,7 @@ public class OrganizationServiceAddOrganizationRequest : IEquatable<Organization
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
-                    && EqualityComparer<List<OrganizationServiceAdmin>?>.Default.Equals(this.Admins, other.Admins)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Admins, other.Admins)
                     && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
                     && EqualityComparer<string?>.Default.Equals(this.OrgId, other.OrgId));
     }
@@ -64,7 +60,7 @@ public class OrganizationServiceAddOrganizationRequest : IEquatable<Organization
     {
         HashCode hash = default;
         hash.Add(this.Name);
-        hash.Add(this.Admins);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Admins));
         hash.Add(this.OrganizationId);
         hash.Add(this.OrgId);
         return hash.ToHashCode();

@@ -16,26 +16,21 @@ public class IdentityProviderServiceGitHubEnterpriseServerConfig : IEquatable<Id
     /// <summary>
     /// The client ID of the GitHub App.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("clientId")]
     public string? ClientId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("authorizationEndpoint")]
     public string? AuthorizationEndpoint { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("tokenEndpoint")]
     public string? TokenEndpoint { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userEndpoint")]
     public string? UserEndpoint { get; set; }
 
     /// <summary>
     /// The scopes requested by ZITADEL during the request to GitHub.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("scopes")]
     public List<string>? Scopes { get; set; }
 
@@ -48,7 +43,7 @@ public class IdentityProviderServiceGitHubEnterpriseServerConfig : IEquatable<Id
                     && EqualityComparer<string?>.Default.Equals(this.AuthorizationEndpoint, other.AuthorizationEndpoint)
                     && EqualityComparer<string?>.Default.Equals(this.TokenEndpoint, other.TokenEndpoint)
                     && EqualityComparer<string?>.Default.Equals(this.UserEndpoint, other.UserEndpoint)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Scopes, other.Scopes));
     }
 
     public override bool Equals(object? obj)
@@ -63,7 +58,7 @@ public class IdentityProviderServiceGitHubEnterpriseServerConfig : IEquatable<Id
         hash.Add(this.AuthorizationEndpoint);
         hash.Add(this.TokenEndpoint);
         hash.Add(this.UserEndpoint);
-        hash.Add(this.Scopes);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Scopes));
         return hash.ToHashCode();
     }
 }

@@ -16,76 +16,119 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class OIDCServiceConnectError : IEquatable<OIDCServiceConnectError>
 {
-    [JsonConverter(typeof(JsonStringEnumConverter))]
+    [JsonConverter(typeof(CodeEnumConverter))]
     public enum CodeEnum
     {
-        [JsonStringEnumMemberName("canceled")]
         Canceled,
 
-        [JsonStringEnumMemberName("unknown")]
         Unknown,
 
-        [JsonStringEnumMemberName("invalid_argument")]
         InvalidArgument,
 
-        [JsonStringEnumMemberName("deadline_exceeded")]
         DeadlineExceeded,
 
-        [JsonStringEnumMemberName("not_found")]
         NotFound,
 
-        [JsonStringEnumMemberName("already_exists")]
         AlreadyExists,
 
-        [JsonStringEnumMemberName("permission_denied")]
         PermissionDenied,
 
-        [JsonStringEnumMemberName("resource_exhausted")]
         ResourceExhausted,
 
-        [JsonStringEnumMemberName("failed_precondition")]
         FailedPrecondition,
 
-        [JsonStringEnumMemberName("aborted")]
         Aborted,
 
-        [JsonStringEnumMemberName("out_of_range")]
         OutOfRange,
 
-        [JsonStringEnumMemberName("unimplemented")]
         Unimplemented,
 
-        [JsonStringEnumMemberName("internal")]
         _Internal,
 
-        [JsonStringEnumMemberName("unavailable")]
         Unavailable,
 
-        [JsonStringEnumMemberName("data_loss")]
         DataLoss,
 
-        [JsonStringEnumMemberName("unauthenticated")]
         Unauthenticated,
+    }
+
+    /// <summary>
+    /// Serializes <see cref="CodeEnum"/> to and from its OpenAPI wire string
+    /// values -- a net8.0-compatible replacement for the .NET 9+
+    /// <c>[JsonStringEnumMemberName]</c> attribute.
+    /// </summary>
+    private sealed class CodeEnumConverter : JsonConverter<CodeEnum>
+    {
+        public override CodeEnum Read(ref System.Text.Json.Utf8JsonReader reader, Type typeToConvert, System.Text.Json.JsonSerializerOptions options)
+        {
+            if (reader.TokenType != System.Text.Json.JsonTokenType.String)
+            {
+                throw new System.Text.Json.JsonException($"Expected a JSON string for enum CodeEnum but got {reader.TokenType}.");
+            }
+
+            string? value = reader.GetString();
+            return value switch
+            {
+                "canceled" => CodeEnum.Canceled,
+                "unknown" => CodeEnum.Unknown,
+                "invalid_argument" => CodeEnum.InvalidArgument,
+                "deadline_exceeded" => CodeEnum.DeadlineExceeded,
+                "not_found" => CodeEnum.NotFound,
+                "already_exists" => CodeEnum.AlreadyExists,
+                "permission_denied" => CodeEnum.PermissionDenied,
+                "resource_exhausted" => CodeEnum.ResourceExhausted,
+                "failed_precondition" => CodeEnum.FailedPrecondition,
+                "aborted" => CodeEnum.Aborted,
+                "out_of_range" => CodeEnum.OutOfRange,
+                "unimplemented" => CodeEnum.Unimplemented,
+                "internal" => CodeEnum._Internal,
+                "unavailable" => CodeEnum.Unavailable,
+                "data_loss" => CodeEnum.DataLoss,
+                "unauthenticated" => CodeEnum.Unauthenticated,
+                _ => throw new System.Text.Json.JsonException($"Unknown value '{value}' for enum CodeEnum.")
+            };
+        }
+
+        public override void Write(System.Text.Json.Utf8JsonWriter writer, CodeEnum value, System.Text.Json.JsonSerializerOptions options)
+        {
+            writer.WriteStringValue(value switch
+            {
+                CodeEnum.Canceled => "canceled",
+                CodeEnum.Unknown => "unknown",
+                CodeEnum.InvalidArgument => "invalid_argument",
+                CodeEnum.DeadlineExceeded => "deadline_exceeded",
+                CodeEnum.NotFound => "not_found",
+                CodeEnum.AlreadyExists => "already_exists",
+                CodeEnum.PermissionDenied => "permission_denied",
+                CodeEnum.ResourceExhausted => "resource_exhausted",
+                CodeEnum.FailedPrecondition => "failed_precondition",
+                CodeEnum.Aborted => "aborted",
+                CodeEnum.OutOfRange => "out_of_range",
+                CodeEnum.Unimplemented => "unimplemented",
+                CodeEnum._Internal => "internal",
+                CodeEnum.Unavailable => "unavailable",
+                CodeEnum.DataLoss => "data_loss",
+                CodeEnum.Unauthenticated => "unauthenticated",
+                _ => throw new System.Text.Json.JsonException($"Unknown value '{value}' for enum CodeEnum.")
+            });
+        }
     }
 
     /// <summary>
     /// The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code].
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("code")]
     public CodeEnum? Code { get; set; }
 
     /// <summary>
     /// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the [google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("message")]
     public string? Message { get; set; }
 
     /// <summary>
     /// A list of messages that carry the error details. There is no limit on the number of messages.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public List<OIDCServiceAny>? Details { get; set; }
 
@@ -100,8 +143,8 @@ public class OIDCServiceConnectError : IEquatable<OIDCServiceConnectError>
             && (ReferenceEquals(this, other)
                 || EqualityComparer<CodeEnum?>.Default.Equals(this.Code, other.Code)
                     && EqualityComparer<string?>.Default.Equals(this.Message, other.Message)
-                    && EqualityComparer<List<OIDCServiceAny>?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<Dictionary<string, object>?>.Default.Equals(this.AdditionalProperties, other.AdditionalProperties));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Details, other.Details)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.AdditionalProperties, other.AdditionalProperties));
     }
 
     public override bool Equals(object? obj)
@@ -114,8 +157,8 @@ public class OIDCServiceConnectError : IEquatable<OIDCServiceConnectError>
         HashCode hash = default;
         hash.Add(this.Code);
         hash.Add(this.Message);
-        hash.Add(this.Details);
-        hash.Add(this.AdditionalProperties);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Details));
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.AdditionalProperties));
         return hash.ToHashCode();
     }
 }

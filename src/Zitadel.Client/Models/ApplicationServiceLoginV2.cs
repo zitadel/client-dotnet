@@ -16,7 +16,6 @@ public class ApplicationServiceLoginV2 : IEquatable<ApplicationServiceLoginV2>
     /// <summary>
     /// Optionally specify a base uri of the login UI. If unspecified the default URI will be used.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("baseUri")]
     public string? BaseUri { get; set; }
 

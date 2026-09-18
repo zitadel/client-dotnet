@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceSendPasswordResetLink : IEquatable<UserServiceSendPasswordResetLink>
 {
-    /// <example>null</example>
     [JsonPropertyName("notificationType")]
     public UserServiceNotificationType? NotificationType { get; set; }
 
     /// <summary>
     /// Optionally set a url_template, which will be used in the password reset mail sent by ZITADEL to guide the user to your password change page.  If no template is set, the default ZITADEL url will be used.   The following placeholders can be used: UserID, OrgID, Code
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("urlTemplate")]
     public string? UrlTemplate { get; set; }
 

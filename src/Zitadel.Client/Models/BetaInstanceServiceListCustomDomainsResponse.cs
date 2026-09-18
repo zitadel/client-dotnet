@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaInstanceServiceListCustomDomainsResponse : IEquatable<BetaInstanceServiceListCustomDomainsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("domains")]
     public List<BetaInstanceServiceDomain>? Domains { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaInstanceServicePaginationResponse? Pagination { get; set; }
 
@@ -26,7 +24,7 @@ public class BetaInstanceServiceListCustomDomainsResponse : IEquatable<BetaInsta
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<BetaInstanceServiceDomain>?>.Default.Equals(this.Domains, other.Domains)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Domains, other.Domains)
                     && EqualityComparer<BetaInstanceServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination));
     }
 
@@ -38,7 +36,7 @@ public class BetaInstanceServiceListCustomDomainsResponse : IEquatable<BetaInsta
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Domains);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Domains));
         hash.Add(this.Pagination);
         return hash.ToHashCode();
     }

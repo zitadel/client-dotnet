@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaOrganizationServiceOrgStateFilter : IEquatable<BetaOrganizationServiceOrgStateFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("state")]
     public BetaOrganizationServiceOrgState? State { get; set; }
 

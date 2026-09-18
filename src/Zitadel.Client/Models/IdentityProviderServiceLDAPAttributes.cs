@@ -13,59 +13,45 @@ namespace Zitadel.Client.Models;
 
 public class IdentityProviderServiceLDAPAttributes : IEquatable<IdentityProviderServiceLDAPAttributes>
 {
-    /// <example>null</example>
     [JsonPropertyName("idAttribute")]
     public string? IdAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("firstNameAttribute")]
     public string? FirstNameAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("lastNameAttribute")]
     public string? LastNameAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("displayNameAttribute")]
     public string? DisplayNameAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("nickNameAttribute")]
     public string? NickNameAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("preferredUsernameAttribute")]
     public string? PreferredUsernameAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("emailAttribute")]
     public string? EmailAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("emailVerifiedAttribute")]
     public string? EmailVerifiedAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("phoneAttribute")]
     public string? PhoneAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("phoneVerifiedAttribute")]
     public string? PhoneVerifiedAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("preferredLanguageAttribute")]
     public string? PreferredLanguageAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("avatarUrlAttribute")]
     public string? AvatarUrlAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("profileAttribute")]
     public string? ProfileAttribute { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("rootCa")]
     public string? RootCa { get; set; }
 

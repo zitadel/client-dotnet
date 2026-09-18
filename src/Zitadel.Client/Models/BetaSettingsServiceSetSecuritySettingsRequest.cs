@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServiceSetSecuritySettingsRequest : IEquatable<BetaSettingsServiceSetSecuritySettingsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("embeddedIframe")]
     public BetaSettingsServiceEmbeddedIframeSettings? EmbeddedIframe { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("enableImpersonation")]
     public bool? EnableImpersonation { get; set; }
 

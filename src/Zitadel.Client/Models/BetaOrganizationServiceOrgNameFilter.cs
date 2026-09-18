@@ -16,11 +16,9 @@ public class BetaOrganizationServiceOrgNameFilter : IEquatable<BetaOrganizationS
     /// <summary>
     /// Organization name.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaOrganizationServiceTextQueryMethod? Method { get; set; }
 

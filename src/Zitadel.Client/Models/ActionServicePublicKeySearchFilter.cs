@@ -16,15 +16,12 @@ public class ActionServicePublicKeySearchFilter : IEquatable<ActionServicePublic
     /// <summary>
     /// Filter the keys by their active status.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("activeFilter")]
     public bool? ActiveFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("expirationDateFilter")]
     public ActionServiceTimestampFilter? ExpirationDateFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("keyIdsFilter")]
     public ActionServiceInIDsFilter? KeyIdsFilter { get; set; }
 

@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceListAuthenticationFactorsResponse : IEquatable<UserServiceListAuthenticationFactorsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("result")]
     public List<UserServiceAuthFactor>? Result { get; set; }
 
@@ -22,7 +21,7 @@ public class UserServiceListAuthenticationFactorsResponse : IEquatable<UserServi
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<UserServiceAuthFactor>?>.Default.Equals(this.Result, other.Result));
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Result, other.Result));
     }
 
     public override bool Equals(object? obj)
@@ -33,7 +32,7 @@ public class UserServiceListAuthenticationFactorsResponse : IEquatable<UserServi
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Result);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Result));
         return hash.ToHashCode();
     }
 }

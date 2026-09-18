@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class IdentityProviderServiceAzureADTenant : IEquatable<IdentityProviderServiceAzureADTenant>
 {
-    /// <example>null</example>
     [JsonPropertyName("tenantId")]
     public string? TenantId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("tenantType")]
     public IdentityProviderServiceAzureADTenantType? TenantType { get; set; }
 

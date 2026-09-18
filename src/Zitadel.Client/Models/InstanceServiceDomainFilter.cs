@@ -16,11 +16,9 @@ public class InstanceServiceDomainFilter : IEquatable<InstanceServiceDomainFilte
     /// <summary>
     /// The domain to filter for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public InstanceServiceTextQueryMethod? Method { get; set; }
 

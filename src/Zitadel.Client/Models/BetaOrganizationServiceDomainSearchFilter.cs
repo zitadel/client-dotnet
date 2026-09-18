@@ -16,7 +16,6 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class BetaOrganizationServiceDomainSearchFilter : IEquatable<BetaOrganizationServiceDomainSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("domainNameFilter")]
     public BetaOrganizationServiceDomainNameFilter? DomainNameFilter { get; set; }
 

@@ -16,14 +16,12 @@ public class OrganizationServiceDeleteOrganizationMetadataRequest : IEquatable<O
     /// <summary>
     /// Organization ID is the unique identifier of the organization whose metadata is to be deleted.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// Keys are the organization metadata entries to be deleted by their key.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("keys")]
     public List<string>? Keys { get; set; }
 
@@ -33,7 +31,7 @@ public class OrganizationServiceDeleteOrganizationMetadataRequest : IEquatable<O
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Keys, other.Keys));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Keys, other.Keys));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +43,7 @@ public class OrganizationServiceDeleteOrganizationMetadataRequest : IEquatable<O
     {
         HashCode hash = default;
         hash.Add(this.OrganizationId);
-        hash.Add(this.Keys);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Keys));
         return hash.ToHashCode();
     }
 }

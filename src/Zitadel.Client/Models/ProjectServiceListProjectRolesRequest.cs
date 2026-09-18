@@ -16,22 +16,18 @@ public class ProjectServiceListProjectRolesRequest : IEquatable<ProjectServiceLi
     /// <summary>
     /// ProjectID is the unique identifier of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public ProjectServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public ProjectServiceProjectRoleFieldName? SortingColumn { get; set; }
 
     /// <summary>
     /// Filters define the criteria to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<ProjectServiceProjectRoleSearchFilter>? Filters { get; set; }
 
@@ -43,7 +39,7 @@ public class ProjectServiceListProjectRolesRequest : IEquatable<ProjectServiceLi
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
                     && EqualityComparer<ProjectServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<ProjectServiceProjectRoleFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<ProjectServiceProjectRoleSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -57,7 +53,7 @@ public class ProjectServiceListProjectRolesRequest : IEquatable<ProjectServiceLi
         hash.Add(this.ProjectId);
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

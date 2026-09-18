@@ -13,67 +13,51 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceSearchQuery : IEquatable<BetaUserServiceSearchQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("andQuery")]
     public BetaUserServiceAndQuery? AndQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("displayNameQuery")]
     public BetaUserServiceDisplayNameQuery? DisplayNameQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("emailQuery")]
     public BetaUserServiceEmailQuery? EmailQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("firstNameQuery")]
     public BetaUserServiceFirstNameQuery? FirstNameQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("inUserEmailsQuery")]
     public BetaUserServiceInUserEmailsQuery? InUserEmailsQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("inUserIdsQuery")]
     public BetaUserServiceInUserIDQuery? InUserIdsQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("lastNameQuery")]
     public BetaUserServiceLastNameQuery? LastNameQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("loginNameQuery")]
     public BetaUserServiceLoginNameQuery? LoginNameQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("nickNameQuery")]
     public BetaUserServiceNickNameQuery? NickNameQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("notQuery")]
     public BetaUserServiceNotQuery? NotQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("orQuery")]
     public BetaUserServiceOrQuery? OrQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organizationIdQuery")]
     public BetaUserServiceOrganizationIdQuery? OrganizationIdQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("phoneQuery")]
     public BetaUserServicePhoneQuery? PhoneQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("stateQuery")]
     public BetaUserServiceStateQuery? StateQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("typeQuery")]
     public BetaUserServiceTypeQuery? TypeQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userNameQuery")]
     public BetaUserServiceUserNameQuery? UserNameQuery { get; set; }
 

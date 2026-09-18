@@ -16,14 +16,12 @@ public class SAMLServiceSession : IEquatable<SAMLServiceSession>
     /// <summary>
     /// ID of the session, used to login the user. Connects the session to the SAML Request.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("sessionId")]
     public string? SessionId { get; set; }
 
     /// <summary>
     /// Token to verify the session is valid.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("sessionToken")]
     public string? SessionToken { get; set; }
 

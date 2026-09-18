@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceRemoveIDPLinkRequest : IEquatable<UserServiceRemoveIDPLinkRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpId")]
     public string? IdpId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("linkedUserId")]
     public string? LinkedUserId { get; set; }
 

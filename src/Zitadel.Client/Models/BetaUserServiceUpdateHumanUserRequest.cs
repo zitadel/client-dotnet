@@ -13,27 +13,21 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceUpdateHumanUserRequest : IEquatable<BetaUserServiceUpdateHumanUserRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("username")]
     public string? Username { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("profile")]
     public BetaUserServiceSetHumanProfile? Profile { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("email")]
     public BetaUserServiceSetHumanEmail? Email { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("phone")]
     public BetaUserServiceSetHumanPhone? Phone { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public BetaUserServiceSetPassword? Password { get; set; }
 

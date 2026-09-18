@@ -16,7 +16,6 @@ public class OrganizationServiceOrganizationIDQuery : IEquatable<OrganizationSer
     /// <summary>
     /// Unique identifier of the organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

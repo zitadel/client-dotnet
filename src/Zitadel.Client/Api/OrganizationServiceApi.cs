@@ -68,6 +68,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the state of my organization to active. The state of the organization has to be deactivated to perform the request. Users of this organization will be able to log in again.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceActivateOrganizationRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceActivateOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceActivateOrganizationResponse> ActivateOrganizationAsync(OrganizationServiceActivateOrganizationRequest organizationServiceActivateOrganizationRequest)
@@ -78,13 +79,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -92,6 +100,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the state of my organization to active. The state of the organization has to be deactivated to perform the request. Users of this organization will be able to log in again.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceActivateOrganizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceActivateOrganizationResponse>> ActivateOrganizationWithHttpInfoAsync(OrganizationServiceActivateOrganizationRequest organizationServiceActivateOrganizationRequest)
@@ -119,6 +128,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.   Required permission:   - `org.create`</remarks>
     /// <param name="organizationServiceAddOrganizationRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceAddOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceAddOrganizationResponse> AddOrganizationAsync(OrganizationServiceAddOrganizationRequest organizationServiceAddOrganizationRequest)
@@ -129,13 +139,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -143,6 +160,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.   Required permission:   - `org.create`</remarks>
     /// <param name="organizationServiceAddOrganizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceAddOrganizationResponse>> AddOrganizationWithHttpInfoAsync(OrganizationServiceAddOrganizationRequest organizationServiceAddOrganizationRequest)
@@ -170,6 +188,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add a new domain to an organization. The domains are used to identify to which organization a user belongs.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceAddOrganizationDomainRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceAddOrganizationDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceAddOrganizationDomainResponse> AddOrganizationDomainAsync(OrganizationServiceAddOrganizationDomainRequest organizationServiceAddOrganizationDomainRequest)
@@ -180,13 +199,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -194,6 +220,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add a new domain to an organization. The domains are used to identify to which organization a user belongs.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceAddOrganizationDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceAddOrganizationDomainResponse>> AddOrganizationDomainWithHttpInfoAsync(OrganizationServiceAddOrganizationDomainRequest organizationServiceAddOrganizationDomainRequest)
@@ -221,6 +248,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Sets the state of my organization to deactivated. Users of this organization will not be able to log in.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceDeactivateOrganizationRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceDeactivateOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceDeactivateOrganizationResponse> DeactivateOrganizationAsync(OrganizationServiceDeactivateOrganizationRequest organizationServiceDeactivateOrganizationRequest)
@@ -231,13 +259,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -245,6 +280,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Sets the state of my organization to deactivated. Users of this organization will not be able to log in.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceDeactivateOrganizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceDeactivateOrganizationResponse>> DeactivateOrganizationWithHttpInfoAsync(OrganizationServiceDeactivateOrganizationRequest organizationServiceDeactivateOrganizationRequest)
@@ -272,6 +308,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes the organization and all its resources (Users, Projects, Grants to and from the org). Users of this organization will not be able to log in.   Required permission:   - `org.delete`</remarks>
     /// <param name="organizationServiceDeleteOrganizationRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceDeleteOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceDeleteOrganizationResponse> DeleteOrganizationAsync(OrganizationServiceDeleteOrganizationRequest organizationServiceDeleteOrganizationRequest)
@@ -282,13 +319,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -296,6 +340,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes the organization and all its resources (Users, Projects, Grants to and from the org). Users of this organization will not be able to log in.   Required permission:   - `org.delete`</remarks>
     /// <param name="organizationServiceDeleteOrganizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceDeleteOrganizationResponse>> DeleteOrganizationWithHttpInfoAsync(OrganizationServiceDeleteOrganizationRequest organizationServiceDeleteOrganizationRequest)
@@ -323,6 +368,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete a new domain from an organization. The domains are used to identify to which organization a user belongs. If the uses use the domain for login, this will not be possible afterwards. They have to use another domain instead.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceDeleteOrganizationDomainRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceDeleteOrganizationDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceDeleteOrganizationDomainResponse> DeleteOrganizationDomainAsync(OrganizationServiceDeleteOrganizationDomainRequest organizationServiceDeleteOrganizationDomainRequest)
@@ -333,13 +379,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -347,6 +400,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete a new domain from an organization. The domains are used to identify to which organization a user belongs. If the uses use the domain for login, this will not be possible afterwards. They have to use another domain instead.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceDeleteOrganizationDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceDeleteOrganizationDomainResponse>> DeleteOrganizationDomainWithHttpInfoAsync(OrganizationServiceDeleteOrganizationDomainRequest organizationServiceDeleteOrganizationDomainRequest)
@@ -374,6 +428,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete metadata objects from an organization with a specific key.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceDeleteOrganizationMetadataRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceDeleteOrganizationMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceDeleteOrganizationMetadataResponse> DeleteOrganizationMetadataAsync(OrganizationServiceDeleteOrganizationMetadataRequest organizationServiceDeleteOrganizationMetadataRequest)
@@ -384,13 +439,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -398,6 +460,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete metadata objects from an organization with a specific key.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceDeleteOrganizationMetadataRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceDeleteOrganizationMetadataResponse>> DeleteOrganizationMetadataWithHttpInfoAsync(OrganizationServiceDeleteOrganizationMetadataRequest organizationServiceDeleteOrganizationMetadataRequest)
@@ -425,6 +488,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Generate a new file to be able to verify your domain with DNS or HTTP challenge.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceGenerateOrganizationDomainValidationRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceGenerateOrganizationDomainValidationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceGenerateOrganizationDomainValidationResponse> GenerateOrganizationDomainValidationAsync(OrganizationServiceGenerateOrganizationDomainValidationRequest organizationServiceGenerateOrganizationDomainValidationRequest)
@@ -435,13 +499,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -449,6 +520,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Generate a new file to be able to verify your domain with DNS or HTTP challenge.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceGenerateOrganizationDomainValidationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceGenerateOrganizationDomainValidationResponse>> GenerateOrganizationDomainValidationWithHttpInfoAsync(OrganizationServiceGenerateOrganizationDomainValidationRequest organizationServiceGenerateOrganizationDomainValidationRequest)
@@ -476,6 +548,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the list of registered domains of an organization. The domains are used to identify to which organization a user belongs.   Required permission:   - `org.read`</remarks>
     /// <param name="organizationServiceListOrganizationDomainsRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceListOrganizationDomainsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceListOrganizationDomainsResponse> ListOrganizationDomainsAsync(OrganizationServiceListOrganizationDomainsRequest organizationServiceListOrganizationDomainsRequest)
@@ -486,13 +559,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -500,6 +580,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the list of registered domains of an organization. The domains are used to identify to which organization a user belongs.   Required permission:   - `org.read`</remarks>
     /// <param name="organizationServiceListOrganizationDomainsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceListOrganizationDomainsResponse>> ListOrganizationDomainsWithHttpInfoAsync(OrganizationServiceListOrganizationDomainsRequest organizationServiceListOrganizationDomainsRequest)
@@ -527,6 +608,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>List metadata of an organization filtered by query.   Required permission:   - `org.read`</remarks>
     /// <param name="organizationServiceListOrganizationMetadataRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceListOrganizationMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceListOrganizationMetadataResponse> ListOrganizationMetadataAsync(OrganizationServiceListOrganizationMetadataRequest organizationServiceListOrganizationMetadataRequest)
@@ -537,13 +619,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -551,6 +640,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>List metadata of an organization filtered by query.   Required permission:   - `org.read`</remarks>
     /// <param name="organizationServiceListOrganizationMetadataRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceListOrganizationMetadataResponse>> ListOrganizationMetadataWithHttpInfoAsync(OrganizationServiceListOrganizationMetadataRequest organizationServiceListOrganizationMetadataRequest)
@@ -578,6 +668,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Search for Organizations. By default, we will return all organization of the instance that you have permission to read.  Make sure to include a limit and sorting for pagination.   Required permission:   - `org.read`</remarks>
     /// <param name="organizationServiceListOrganizationsRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceListOrganizationsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceListOrganizationsResponse> ListOrganizationsAsync(OrganizationServiceListOrganizationsRequest organizationServiceListOrganizationsRequest)
@@ -588,13 +679,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -602,6 +700,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Search for Organizations. By default, we will return all organization of the instance that you have permission to read.  Make sure to include a limit and sorting for pagination.   Required permission:   - `org.read`</remarks>
     /// <param name="organizationServiceListOrganizationsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceListOrganizationsResponse>> ListOrganizationsWithHttpInfoAsync(OrganizationServiceListOrganizationsRequest organizationServiceListOrganizationsRequest)
@@ -629,6 +728,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Adds or updates a metadata value for the requested key. Make sure the value is base64 encoded.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceSetOrganizationMetadataRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceSetOrganizationMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceSetOrganizationMetadataResponse> SetOrganizationMetadataAsync(OrganizationServiceSetOrganizationMetadataRequest organizationServiceSetOrganizationMetadataRequest)
@@ -639,13 +739,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -653,6 +760,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Adds or updates a metadata value for the requested key. Make sure the value is base64 encoded.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceSetOrganizationMetadataRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceSetOrganizationMetadataResponse>> SetOrganizationMetadataWithHttpInfoAsync(OrganizationServiceSetOrganizationMetadataRequest organizationServiceSetOrganizationMetadataRequest)
@@ -680,6 +788,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Change the name of the organization.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceUpdateOrganizationRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceUpdateOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceUpdateOrganizationResponse> UpdateOrganizationAsync(OrganizationServiceUpdateOrganizationRequest organizationServiceUpdateOrganizationRequest)
@@ -690,13 +799,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -704,6 +820,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Change the name of the organization.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceUpdateOrganizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceUpdateOrganizationResponse>> UpdateOrganizationWithHttpInfoAsync(OrganizationServiceUpdateOrganizationRequest organizationServiceUpdateOrganizationRequest)
@@ -731,6 +848,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Make sure you have added the required verification to your domain, depending on the method you have chosen (HTTP or DNS challenge). ZITADEL will check it and set the domain as verified if it was successful. A verify domain has to be unique.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceVerifyOrganizationDomainRequest"></param>
+
     /// <returns><![CDATA[OrganizationServiceVerifyOrganizationDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<OrganizationServiceVerifyOrganizationDomainResponse> VerifyOrganizationDomainAsync(OrganizationServiceVerifyOrganizationDomainRequest organizationServiceVerifyOrganizationDomainRequest)
@@ -741,13 +859,20 @@ public class OrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -755,6 +880,7 @@ public class OrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Make sure you have added the required verification to your domain, depending on the method you have chosen (HTTP or DNS challenge). ZITADEL will check it and set the domain as verified if it was successful. A verify domain has to be unique.   Required permission:   - `org.write`</remarks>
     /// <param name="organizationServiceVerifyOrganizationDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<OrganizationServiceVerifyOrganizationDomainResponse>> VerifyOrganizationDomainWithHttpInfoAsync(OrganizationServiceVerifyOrganizationDomainRequest organizationServiceVerifyOrganizationDomainRequest)

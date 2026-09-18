@@ -16,7 +16,6 @@ public class OIDCServiceGetDeviceAuthorizationRequestRequest : IEquatable<OIDCSe
     /// <summary>
     /// The user_code returned by the device authorization request and provided to the user by the device.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userCode")]
     public string? UserCode { get; set; }
 

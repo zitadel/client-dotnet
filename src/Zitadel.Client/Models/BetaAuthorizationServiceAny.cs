@@ -19,23 +19,20 @@ public class BetaAuthorizationServiceAny : IEquatable<BetaAuthorizationServiceAn
     /// <summary>
     /// A URL that acts as a globally unique identifier for the type of the serialized message. For example: `type.googleapis.com/google.rpc.ErrorInfo`. This is used to determine the schema of the data in the `value` field and is the discriminator for the `debug` field.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("type")]
     public string? Type { get; set; }
 
     /// <summary>
     /// The Protobuf message, serialized as bytes and base64-encoded. The specific message type is identified by the `type` field.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("value")]
     public System.IO.Stream? Value { get; set; }
 
     /// <summary>
     /// Deserialized error detail payload. The 'type' field indicates the schema. This field is for easier debugging and should not be relied upon for application logic.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("debug")]
-    public Object? Debug { get; set; }
+    public object? Debug { get; set; }
 
     [JsonExtensionData]
     public Dictionary<string, object>? AdditionalProperties { get; set; }
@@ -48,8 +45,8 @@ public class BetaAuthorizationServiceAny : IEquatable<BetaAuthorizationServiceAn
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Type, other.Type)
                     && EqualityComparer<System.IO.Stream?>.Default.Equals(this.Value, other.Value)
-                    && EqualityComparer<Object?>.Default.Equals(this.Debug, other.Debug)
-                    && EqualityComparer<Dictionary<string, object>?>.Default.Equals(this.AdditionalProperties, other.AdditionalProperties));
+                    && EqualityComparer<object?>.Default.Equals(this.Debug, other.Debug)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.AdditionalProperties, other.AdditionalProperties));
     }
 
     public override bool Equals(object? obj)
@@ -63,7 +60,7 @@ public class BetaAuthorizationServiceAny : IEquatable<BetaAuthorizationServiceAn
         hash.Add(this.Type);
         hash.Add(this.Value);
         hash.Add(this.Debug);
-        hash.Add(this.AdditionalProperties);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.AdditionalProperties));
         return hash.ToHashCode();
     }
 }

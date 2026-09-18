@@ -16,7 +16,6 @@ public class BetaActionServiceInConditionsFilter : IEquatable<BetaActionServiceI
     /// <summary>
     /// Defines the conditions to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("conditions")]
     public List<BetaActionServiceCondition>? Conditions { get; set; }
 
@@ -25,7 +24,7 @@ public class BetaActionServiceInConditionsFilter : IEquatable<BetaActionServiceI
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<BetaActionServiceCondition>?>.Default.Equals(this.Conditions, other.Conditions));
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Conditions, other.Conditions));
     }
 
     public override bool Equals(object? obj)
@@ -36,7 +35,7 @@ public class BetaActionServiceInConditionsFilter : IEquatable<BetaActionServiceI
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Conditions);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Conditions));
         return hash.ToHashCode();
     }
 }

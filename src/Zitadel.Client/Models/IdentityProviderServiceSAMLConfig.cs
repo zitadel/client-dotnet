@@ -16,40 +16,33 @@ public class IdentityProviderServiceSAMLConfig : IEquatable<IdentityProviderServ
     /// <summary>
     /// Metadata of the SAML identity provider.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("metadataXml")]
     public byte[]? MetadataXml { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("binding")]
     public IdentityProviderServiceSAMLBinding? Binding { get; set; }
 
     /// <summary>
     /// Boolean which defines if the authentication requests are signed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("withSignedRequest")]
     public bool? WithSignedRequest { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("nameIdFormat")]
     public IdentityProviderServiceSAMLNameIDFormat? NameIdFormat { get; set; }
 
     /// <summary>
     /// Optional name of the attribute, which will be used to map the user  in case the nameid-format returned is  `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("transientMappingAttributeName")]
     public string? TransientMappingAttributeName { get; set; }
 
     /// <summary>
     /// Boolean weather federated logout is enabled. If enabled, ZITADEL will send a logout request to the identity provider,  if the user terminates the session in ZITADEL. Be sure to provide a SLO endpoint as part of the metadata.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("federatedLogoutEnabled")]
     public bool? FederatedLogoutEnabled { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("signatureAlgorithm")]
     public IdentityProviderServiceSAMLSignatureAlgorithm? SignatureAlgorithm { get; set; }
 
@@ -58,7 +51,7 @@ public class IdentityProviderServiceSAMLConfig : IEquatable<IdentityProviderServ
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<byte[]?>.Default.Equals(this.MetadataXml, other.MetadataXml)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.MetadataXml, other.MetadataXml)
                     && EqualityComparer<IdentityProviderServiceSAMLBinding?>.Default.Equals(this.Binding, other.Binding)
                     && EqualityComparer<bool?>.Default.Equals(this.WithSignedRequest, other.WithSignedRequest)
                     && EqualityComparer<IdentityProviderServiceSAMLNameIDFormat?>.Default.Equals(this.NameIdFormat, other.NameIdFormat)
@@ -75,7 +68,7 @@ public class IdentityProviderServiceSAMLConfig : IEquatable<IdentityProviderServ
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.MetadataXml);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.MetadataXml));
         hash.Add(this.Binding);
         hash.Add(this.WithSignedRequest);
         hash.Add(this.NameIdFormat);

@@ -13,26 +13,21 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceStartIdentityProviderIntentResponse : IEquatable<UserServiceStartIdentityProviderIntentResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("authUrl")]
     public string? AuthUrl { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("formData")]
     public UserServiceFormData? FormData { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpIntent")]
     public UserServiceIDPIntent? IdpIntent { get; set; }
 
     /// <summary>
     /// POST call information  Deprecated: Use form_data instead
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("postForm")]
     public byte[]? PostForm { get; set; }
 
@@ -45,7 +40,7 @@ public class UserServiceStartIdentityProviderIntentResponse : IEquatable<UserSer
                     && EqualityComparer<string?>.Default.Equals(this.AuthUrl, other.AuthUrl)
                     && EqualityComparer<UserServiceFormData?>.Default.Equals(this.FormData, other.FormData)
                     && EqualityComparer<UserServiceIDPIntent?>.Default.Equals(this.IdpIntent, other.IdpIntent)
-                    && EqualityComparer<byte[]?>.Default.Equals(this.PostForm, other.PostForm));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.PostForm, other.PostForm));
     }
 
     public override bool Equals(object? obj)
@@ -60,7 +55,7 @@ public class UserServiceStartIdentityProviderIntentResponse : IEquatable<UserSer
         hash.Add(this.AuthUrl);
         hash.Add(this.FormData);
         hash.Add(this.IdpIntent);
-        hash.Add(this.PostForm);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.PostForm));
         return hash.ToHashCode();
     }
 }

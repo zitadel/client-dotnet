@@ -16,15 +16,12 @@ public class OrganizationServiceAdmin : IEquatable<OrganizationServiceAdmin>
     /// <summary>
     /// specify Org Member Roles for the provided user (default is ORG_OWNER if roles are empty)
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roles")]
     public List<string>? Roles { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("human")]
     public OrganizationServiceAddHumanUserRequest? Human { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
@@ -33,7 +30,7 @@ public class OrganizationServiceAdmin : IEquatable<OrganizationServiceAdmin>
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<string>?>.Default.Equals(this.Roles, other.Roles)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Roles, other.Roles)
                     && EqualityComparer<OrganizationServiceAddHumanUserRequest?>.Default.Equals(this.Human, other.Human)
                     && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId));
     }
@@ -46,7 +43,7 @@ public class OrganizationServiceAdmin : IEquatable<OrganizationServiceAdmin>
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Roles);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Roles));
         hash.Add(this.Human);
         hash.Add(this.UserId);
         return hash.ToHashCode();

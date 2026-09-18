@@ -16,7 +16,6 @@ public class ActionServiceGetTargetRequest : IEquatable<ActionServiceGetTargetRe
     /// <summary>
     /// The unique identifier of the target to retrieve.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceSetSessionResponse : IEquatable<BetaSessionServiceSetSessionResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaSessionServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sessionToken")]
     public string? SessionToken { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("challenges")]
     public BetaSessionServiceChallenges? Challenges { get; set; }
 

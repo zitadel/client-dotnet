@@ -14,28 +14,23 @@ namespace Zitadel.Client.Models;
 
 public class BetaFeatureServiceSetSystemFeaturesRequest : IEquatable<BetaFeatureServiceSetSystemFeaturesRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("loginDefaultOrg")]
     public bool? LoginDefaultOrg { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userSchema")]
     public bool? UserSchema { get; set; }
 
     /// <summary>
     /// Deprecated: the flag has been removed and `urn:ietf:params:oauth:grant-type:token-exchange`  grant type for the OIDC token endpoint is enabled by default.  Token exchange can be used to request tokens with a lesser scope or impersonate other users.  See the security policy to allow impersonation on an instance.  This field is only kept for backward compatibility and will be removed in the next major version of Zitadel.  Setting the field will have no effect.
     /// </summary>
-    /// <example>null</example>
     /// <remarks>Deprecated.</remarks>
     [Obsolete("This property is deprecated.")]
     [JsonPropertyName("oidcTokenExchange")]
     public bool? OidcTokenExchange { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("improvedPerformance")]
     public List<BetaFeatureServiceImprovedPerformance>? ImprovedPerformance { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oidcSingleV1SessionTermination")]
     public bool? OidcSingleV1SessionTermination { get; set; }
 
@@ -47,7 +42,7 @@ public class BetaFeatureServiceSetSystemFeaturesRequest : IEquatable<BetaFeature
                 || EqualityComparer<bool?>.Default.Equals(this.LoginDefaultOrg, other.LoginDefaultOrg)
                     && EqualityComparer<bool?>.Default.Equals(this.UserSchema, other.UserSchema)
                     && EqualityComparer<bool?>.Default.Equals(this.OidcTokenExchange, other.OidcTokenExchange)
-                    && EqualityComparer<List<BetaFeatureServiceImprovedPerformance>?>.Default.Equals(this.ImprovedPerformance, other.ImprovedPerformance)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.ImprovedPerformance, other.ImprovedPerformance)
                     && EqualityComparer<bool?>.Default.Equals(this.OidcSingleV1SessionTermination, other.OidcSingleV1SessionTermination));
     }
 
@@ -62,7 +57,7 @@ public class BetaFeatureServiceSetSystemFeaturesRequest : IEquatable<BetaFeature
         hash.Add(this.LoginDefaultOrg);
         hash.Add(this.UserSchema);
         hash.Add(this.OidcTokenExchange);
-        hash.Add(this.ImprovedPerformance);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.ImprovedPerformance));
         hash.Add(this.OidcSingleV1SessionTermination);
         return hash.ToHashCode();
     }

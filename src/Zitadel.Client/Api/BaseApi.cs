@@ -86,7 +86,18 @@ public abstract class BaseApi
     {
         ArgumentNullException.ThrowIfNull(queryParams);
         ArgumentNullException.ThrowIfNull(headerParams);
-        IAuthenticator? effectiveAuth = auth ?? Authenticator;
+        /* Three-state auth resolution (the no-auth sentinel disambiguates the
+           two meanings null used to carry):
+             - auth is the NoAuth sentinel  -> the operation is explicitly
+               unauthenticated (security: []); apply NO credential and do NOT
+               fall back to the client authenticator;
+             - auth is null                 -> no per-call override on a secured
+               operation; fall back to the client-level authenticator;
+             - auth is any real authenticator -> per-call override; use it.
+           Identity (reference) comparison against NoAuth.Instance is what
+           distinguishes the sentinel from a real authenticator. */
+        IAuthenticator? effectiveAuth =
+            ReferenceEquals(auth, NoAuth.Instance) ? null : (auth ?? Authenticator);
         string url;
         if (path.StartsWith("http://", StringComparison.Ordinal) || path.StartsWith("https://", StringComparison.Ordinal))
         {
@@ -186,7 +197,23 @@ public abstract class BaseApi
                     StringComparison.OrdinalIgnoreCase
                 );
 
-            if (isBinary || isMultipart)
+            if (isBinary && body is Dictionary<string, object> binaryForm)
+            {
+                /* The operation declares a binary content-type
+                 * (application/octet-stream or image/*) alongside
+                 * multipart/form-data, and the API layer always hands us a
+                 * form-style Dictionary keyed by the declared parts. When the
+                 * caller selects the raw-binary content-type we must NOT wrap
+                 * the payload in a multipart envelope: extract the single
+                 * binary part (Stream / byte[]) and send its raw bytes so the
+                 * wire Content-Type stays the selected binary type. Falling
+                 * through to the plain pass-through below would hand a
+                 * Dictionary to DefaultApiClient, which emits multipart/form-data
+                 * instead. Mirrors the single-binary-body path (e.g. SetPetAvatar)
+                 * that already streams raw bytes. */
+                requestBody = ExtractBinaryPart(binaryForm);
+            }
+            else if (isBinary || isMultipart)
             {
                 requestBody = body;
             }
@@ -267,7 +294,19 @@ public abstract class BaseApi
             bool binaryTarget =
                 typeof(T) == typeof(System.IO.Stream) || typeof(T) == typeof(byte[]);
 
-            if (binaryTarget)
+            if (typeof(T) == typeof(byte[])
+                && responseContentType != null
+                && HeaderSelector.IsJsonMime(responseContentType))
+            {
+                /* A top-level `format: byte` response carried as application/json
+                   arrives as a JSON string literal (e.g. "dGVzdC1pbWFnZQ==").
+                   JSON-parse it to the inner string, then base64-decode to the
+                   raw bytes — never the UTF-8 bytes of the quoted literal, and
+                   never the un-decoded base64 string. Matches python/go/java/rust. */
+                string base64 = Serializer.Deserialize<string>(response.Body) ?? "";
+                data = (T)(object)Convert.FromBase64String(base64);
+            }
+            else if (binaryTarget)
             {
                 /* The caller expects raw bytes (Stream/byte[]). DefaultApiClient
                    base64-encodes the body for non-text content types and leaves
@@ -438,6 +477,36 @@ public abstract class BaseApi
         return Uri.EscapeDataString(value).Replace("%20", "+", StringComparison.Ordinal);
     }
 
+    /// <summary>
+    /// Extract the single binary payload from a form-style body Dictionary when
+    /// a raw-binary content-type (application/octet-stream or image/*) was
+    /// selected for an operation that also declares multipart/form-data.
+    /// </summary>
+    /// <remarks>
+    /// The API layer always builds a form Dictionary keyed by the operation's
+    /// declared parts. For a raw-binary upload only the binary part travels on
+    /// the wire — the auxiliary string parts (classification, notes, ...) belong
+    /// to the multipart variant and are dropped. This returns the first
+    /// binary-typed value (<see cref="System.IO.Stream"/> or <c>byte[]</c>) so
+    /// the transport sends its raw bytes under the selected Content-Type rather
+    /// than a multipart envelope.
+    /// </remarks>
+    /// <param name="formBody">The form-style body Dictionary.</param>
+    /// <returns>The binary part suitable for raw transmission.</returns>
+    /// <exception cref="ApiException">Thrown when no binary part is present.</exception>
+    private static object ExtractBinaryPart(Dictionary<string, object> formBody)
+    {
+        foreach (object value in formBody.Values)
+        {
+            if (value is System.IO.Stream || value is byte[])
+            {
+                return value;
+            }
+        }
+        throw new ApiException(
+            "No binary payload found in request body for raw octet-stream upload");
+    }
+
     private static string BuildQueryString(Dictionary<string, object?> queryParams)
     {
         List<string> parts = [];
@@ -473,7 +542,12 @@ public abstract class BaseApi
     }
 
     /// <summary>RFC 6265 cookie-name validation (RFC 7230 token).</summary>
-    private static bool IsValidCookieName(string name)
+    /// <remarks>
+    /// Exposed to derived API classes so operation-level cookie parameters
+    /// (in: cookie) are validated with the identical rules as auth-provided
+    /// cookies, keeping the Cookie header free of header-injection vectors.
+    /// </remarks>
+    protected static bool IsValidCookieName(string name)
     {
         if (string.IsNullOrEmpty(name))
         {
@@ -492,7 +566,13 @@ public abstract class BaseApi
     }
 
     /// <summary>RFC 6265 cookie-value validation (cookie-octet*).</summary>
-    private static bool IsValidCookieValue(string value)
+    /// <remarks>
+    /// Exposed to derived API classes so operation-level cookie parameters
+    /// (in: cookie) are validated with the identical rules as auth-provided
+    /// cookies, rejecting CR/LF and control characters that would otherwise
+    /// allow header injection into the Cookie request header.
+    /// </remarks>
+    protected static bool IsValidCookieValue(string value)
     {
         if (value == null)
         {

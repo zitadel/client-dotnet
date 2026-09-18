@@ -16,7 +16,6 @@ public class OIDCServiceGetAuthRequestRequest : IEquatable<OIDCServiceGetAuthReq
     /// <summary>
     /// The ID of the Auth Request, as obtained from the redirect URL.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("authRequestId")]
     public string? AuthRequestId { get; set; }
 

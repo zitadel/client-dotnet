@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class SessionServiceGetSessionResponse : IEquatable<SessionServiceGetSessionResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("session")]
     public SessionServiceSession? Session { get; set; }
 

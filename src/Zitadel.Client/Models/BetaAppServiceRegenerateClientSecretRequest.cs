@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceRegenerateClientSecretRequest : IEquatable<BetaAppServiceRegenerateClientSecretRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("applicationId")]
     public string? ApplicationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("isApi")]
     public bool? IsApi { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("isOidc")]
     public bool? IsOidc { get; set; }
 

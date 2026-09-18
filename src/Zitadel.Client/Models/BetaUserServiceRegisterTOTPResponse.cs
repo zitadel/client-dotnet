@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceRegisterTOTPResponse : IEquatable<BetaUserServiceRegisterTOTPResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaUserServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("uri")]
     public string? Uri { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("secret")]
     public string? Secret { get; set; }
 

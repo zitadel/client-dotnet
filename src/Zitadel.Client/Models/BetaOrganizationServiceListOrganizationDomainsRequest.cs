@@ -16,18 +16,15 @@ public class BetaOrganizationServiceListOrganizationDomainsRequest : IEquatable<
     /// <summary>
     /// Organization Id for the Organization which domains are to be listed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaOrganizationServicePaginationRequest? Pagination { get; set; }
 
     /// <summary>
     /// Define the criteria to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<BetaOrganizationServiceDomainSearchFilter>? Filters { get; set; }
 
@@ -38,7 +35,7 @@ public class BetaOrganizationServiceListOrganizationDomainsRequest : IEquatable<
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
                     && EqualityComparer<BetaOrganizationServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<BetaOrganizationServiceDomainSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -51,7 +48,7 @@ public class BetaOrganizationServiceListOrganizationDomainsRequest : IEquatable<
         HashCode hash = default;
         hash.Add(this.OrganizationId);
         hash.Add(this.Pagination);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

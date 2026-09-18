@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaInternalPermissionServiceNotFilter : IEquatable<BetaInternalPermissionServiceNotFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("query")]
     public BetaInternalPermissionServiceAdministratorSearchFilter? Query { get; set; }
 

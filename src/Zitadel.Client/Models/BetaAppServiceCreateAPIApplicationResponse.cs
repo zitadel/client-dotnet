@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceCreateAPIApplicationResponse : IEquatable<BetaAppServiceCreateAPIApplicationResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("clientId")]
     public string? ClientId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("clientSecret")]
     public string? ClientSecret { get; set; }
 

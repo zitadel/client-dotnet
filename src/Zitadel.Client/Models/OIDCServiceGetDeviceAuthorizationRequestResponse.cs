@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class OIDCServiceGetDeviceAuthorizationRequestResponse : IEquatable<OIDCServiceGetDeviceAuthorizationRequestResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("deviceAuthorizationRequest")]
     public OIDCServiceDeviceAuthorizationRequest? DeviceAuthorizationRequest { get; set; }
 

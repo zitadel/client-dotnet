@@ -1,7 +1,10 @@
 SKILLS.md
+test/Zitadel.Client.Test/ApiResultTest.cs
 test/Zitadel.Client.Test/ConfigurationTest.cs
 test/Zitadel.Client.Test/DefaultApiClientUnitTest.cs
 test/Zitadel.Client.Test/HeaderSelectorTest.cs
+test/Zitadel.Client.Test/ServerConfigurationTest.cs
+test/Zitadel.Client.Test/ServerVariableTest.cs
 test/Zitadel.Client.Test/TraceContextUtilTest.cs
 test/Zitadel.Client.Test/TransportOptionsTest.cs
 test/Zitadel.Client.Test/ValueSerializerTest.cs
@@ -58,6 +61,7 @@ src/Zitadel.Client/Errors/ServerException.cs
 src/Zitadel.Client/Errors/UnauthorizedException.cs
 src/Zitadel.Client/Errors/UnprocessableEntityException.cs
 src/Zitadel.Client/HeaderSelector.cs
+src/Zitadel.Client/ILLink.Descriptors.xml
 src/Zitadel.Client/Models/ActionServiceActivatePublicKeyRequest.cs
 src/Zitadel.Client/Models/ActionServiceActivatePublicKeyResponse.cs
 src/Zitadel.Client/Models/ActionServiceAddPublicKeyRequest.cs

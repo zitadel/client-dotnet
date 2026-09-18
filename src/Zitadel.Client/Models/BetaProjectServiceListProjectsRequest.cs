@@ -13,18 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaProjectServiceListProjectsRequest : IEquatable<BetaProjectServiceListProjectsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaProjectServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public BetaProjectServiceProjectFieldName? SortingColumn { get; set; }
 
     /// <summary>
     /// Define the criteria to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<BetaProjectServiceProjectSearchFilter>? Filters { get; set; }
 
@@ -35,7 +32,7 @@ public class BetaProjectServiceListProjectsRequest : IEquatable<BetaProjectServi
             && (ReferenceEquals(this, other)
                 || EqualityComparer<BetaProjectServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<BetaProjectServiceProjectFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<BetaProjectServiceProjectSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -48,7 +45,7 @@ public class BetaProjectServiceListProjectsRequest : IEquatable<BetaProjectServi
         HashCode hash = default;
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

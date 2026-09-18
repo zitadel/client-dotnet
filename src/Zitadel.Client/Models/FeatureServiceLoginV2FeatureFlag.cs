@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class FeatureServiceLoginV2FeatureFlag : IEquatable<FeatureServiceLoginV2FeatureFlag>
 {
-    /// <example>null</example>
     [JsonPropertyName("required")]
     public bool? Required { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("baseUri")]
     public string? BaseUri { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("source")]
     public FeatureServiceSource? Source { get; set; }
 

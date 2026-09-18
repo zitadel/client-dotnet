@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceApplicationNameQuery : IEquatable<BetaAppServiceApplicationNameQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaAppServiceTextFilterMethod? Method { get; set; }
 

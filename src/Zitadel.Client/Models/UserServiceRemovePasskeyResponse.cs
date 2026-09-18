@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceRemovePasskeyResponse : IEquatable<UserServiceRemovePasskeyResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 

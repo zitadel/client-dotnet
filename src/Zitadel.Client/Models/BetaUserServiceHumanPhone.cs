@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceHumanPhone : IEquatable<BetaUserServiceHumanPhone>
 {
-    /// <example>null</example>
     [JsonPropertyName("phone")]
     public string? Phone { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("isVerified")]
     public bool? IsVerified { get; set; }
 

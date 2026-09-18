@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceRegisterU2FRequest : IEquatable<UserServiceRegisterU2FRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 

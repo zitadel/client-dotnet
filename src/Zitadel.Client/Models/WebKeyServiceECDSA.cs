@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class WebKeyServiceECDSA : IEquatable<WebKeyServiceECDSA>
 {
-    /// <example>null</example>
     [JsonPropertyName("curve")]
     public WebKeyServiceECDSACurve? Curve { get; set; }
 

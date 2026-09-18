@@ -13,34 +13,27 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServiceBrandingSettings : IEquatable<BetaSettingsServiceBrandingSettings>
 {
-    /// <example>null</example>
     [JsonPropertyName("lightTheme")]
     public BetaSettingsServiceTheme? LightTheme { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("darkTheme")]
     public BetaSettingsServiceTheme? DarkTheme { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("fontUrl")]
     public string? FontUrl { get; set; }
 
     /// <summary>
-    /// hides the org suffix on the login form if the scope \\\"urn:zitadel:iam:org:domain:primary:{domainname}\\\" is set
+    /// hides the org suffix on the login form if the scope \"urn:zitadel:iam:org:domain:primary:{domainname}\" is set
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("hideLoginNameSuffix")]
     public bool? HideLoginNameSuffix { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("disableWatermark")]
     public bool? DisableWatermark { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public BetaSettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("themeMode")]
     public BetaSettingsServiceThemeMode? ThemeMode { get; set; }
 

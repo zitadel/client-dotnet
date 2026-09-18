@@ -16,14 +16,12 @@ public class UserServiceMachine : IEquatable<UserServiceMachine>
     /// <summary>
     /// The machine users name is a human readable field that helps identifying the user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
     /// <summary>
     /// The description is a field that helps to remember the purpose of the user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("description")]
     public string? Description { get; set; }
 

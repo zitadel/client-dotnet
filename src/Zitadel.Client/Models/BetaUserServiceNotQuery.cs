@@ -16,7 +16,6 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class BetaUserServiceNotQuery : IEquatable<BetaUserServiceNotQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("query")]
     public BetaUserServiceSearchQuery? Query { get; set; }
 

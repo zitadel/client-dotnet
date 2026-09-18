@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaWebKeyServiceDeleteWebKeyRequest : IEquatable<BetaWebKeyServiceDeleteWebKeyRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

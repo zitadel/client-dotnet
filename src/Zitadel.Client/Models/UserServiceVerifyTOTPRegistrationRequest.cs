@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceVerifyTOTPRegistrationRequest : IEquatable<UserServiceVerifyTOTPRegistrationRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("code")]
     public string? Code { get; set; }
 

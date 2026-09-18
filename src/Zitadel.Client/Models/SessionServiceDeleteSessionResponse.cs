@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class SessionServiceDeleteSessionResponse : IEquatable<SessionServiceDeleteSessionResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public SessionServiceDetails? Details { get; set; }
 

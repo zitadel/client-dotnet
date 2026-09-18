@@ -13,35 +13,27 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServiceLegalAndSupportSettings : IEquatable<BetaSettingsServiceLegalAndSupportSettings>
 {
-    /// <example>null</example>
     [JsonPropertyName("tosLink")]
     public string? TosLink { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("privacyPolicyLink")]
     public string? PrivacyPolicyLink { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("helpLink")]
     public string? HelpLink { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("supportEmail")]
     public string? SupportEmail { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public BetaSettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("docsLink")]
     public string? DocsLink { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("customLink")]
     public string? CustomLink { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("customLinkText")]
     public string? CustomLinkText { get; set; }
 

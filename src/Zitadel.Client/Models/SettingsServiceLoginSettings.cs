@@ -17,7 +17,6 @@ public class SettingsServiceLoginSettings : IEquatable<SettingsServiceLoginSetti
     /// <summary>
     /// If enabled, users can log in locally with their username and passkeys or password.  Disabling this option will require users to log in with an external identity provider.  Be sure to allow at least one external identity provider if this option is disabled.  Deprecated: check allow_local_authentication instead.
     /// </summary>
-    /// <example>null</example>
     /// <remarks>Deprecated.</remarks>
     [Obsolete("This property is deprecated.")]
     [JsonPropertyName("allowUsernamePassword")]
@@ -26,134 +25,114 @@ public class SettingsServiceLoginSettings : IEquatable<SettingsServiceLoginSetti
     /// <summary>
     /// If enabled, users can log in locally with their username and passkeys or password.  Disabling this option will require users to log in with an external identity provider.  Be sure to allow at least one external identity provider if this option is disabled.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("allowLocalAuthentication")]
     public bool? AllowLocalAuthentication { get; set; }
 
     /// <summary>
     /// If enabled, users can register a local account by themself.  This option does not effect external identity providers.  Each identity provider can be configured to allow or disallow registration.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("allowRegister")]
     public bool? AllowRegister { get; set; }
 
     /// <summary>
     /// If enabled, users will generally be allowed to use an external identity provider to log in.  Be sure to allow at least one external identity provider if this option is enabled.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("allowExternalIdp")]
     public bool? AllowExternalIdp { get; set; }
 
     /// <summary>
     /// If enabled, users will be forced to use a multi-factor to log in.  This also applies to federated logins through an external identity provider.  Users will be required to set up a second factor if they have not done so already.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("forceMfa")]
     public bool? ForceMfa { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("passkeysType")]
     public SettingsServicePasskeysType? PasskeysType { get; set; }
 
     /// <summary>
     /// If enabled, the password reset link will be hidden on the login screen.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("hidePasswordReset")]
     public bool? HidePasswordReset { get; set; }
 
     /// <summary>
     /// If enabled, an unknown username on the login screen will not return an error directly,  but will always display the password screen.  This prevents user enumeration attacks.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("ignoreUnknownUsernames")]
     public bool? IgnoreUnknownUsernames { get; set; }
 
     /// <summary>
     /// Defines where the user will be redirected to if the login is started without app context (e.g. from mail).
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("defaultRedirectUri")]
     public string? DefaultRedirectUri { get; set; }
 
     /// <summary>
-    /// <![CDATA[A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \"day\"  or \"month\". It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start = ...;      Timestamp end = ...;      Duration duration = ...;       duration.seconds = end.seconds - start.seconds;      duration.nanos = end.nanos - start.nanos;       if (duration.seconds < 0 && duration.nanos > 0) {        duration.seconds += 1;        duration.nanos -= 1000000000;      } else if (duration.seconds > 0 && duration.nanos < 0) {        duration.seconds -= 1;        duration.nanos += 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start = ...;      Duration duration = ...;      Timestamp end = ...;       end.seconds = start.seconds + duration.seconds;      end.nanos = start.nanos + duration.nanos;       if (end.nanos < 0) {        end.seconds -= 1;        end.nanos += 1000000000;      } else if (end.nanos >= 1000000000) {        end.seconds += 1;        end.nanos -= 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td = datetime.timedelta(days=3, minutes=10)      duration = Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \"s\" (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should  be expressed in JSON format as \"3.000000001s\", and 3 seconds and 1  microsecond should be expressed in JSON format as \"3.000001s\".]]>
+    /// <![CDATA[A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like "day"  or "month". It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start = ...;      Timestamp end = ...;      Duration duration = ...;       duration.seconds = end.seconds - start.seconds;      duration.nanos = end.nanos - start.nanos;       if (duration.seconds < 0 && duration.nanos > 0) {        duration.seconds += 1;        duration.nanos -= 1000000000;      } else if (duration.seconds > 0 && duration.nanos < 0) {        duration.seconds -= 1;        duration.nanos += 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start = ...;      Duration duration = ...;      Timestamp end = ...;       end.seconds = start.seconds + duration.seconds;      end.nanos = start.nanos + duration.nanos;       if (end.nanos < 0) {        end.seconds -= 1;        end.nanos += 1000000000;      } else if (end.nanos >= 1000000000) {        end.seconds += 1;        end.nanos -= 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td = datetime.timedelta(days=3, minutes=10)      duration = Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix "s" (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should  be expressed in JSON format as "3.000000001s", and 3 seconds and 1  microsecond should be expressed in JSON format as "3.000001s".]]>
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("passwordCheckLifetime")]
     public TimeSpan? PasswordCheckLifetime { get; set; }
 
     /// <summary>
-    /// <![CDATA[A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \"day\"  or \"month\". It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start = ...;      Timestamp end = ...;      Duration duration = ...;       duration.seconds = end.seconds - start.seconds;      duration.nanos = end.nanos - start.nanos;       if (duration.seconds < 0 && duration.nanos > 0) {        duration.seconds += 1;        duration.nanos -= 1000000000;      } else if (duration.seconds > 0 && duration.nanos < 0) {        duration.seconds -= 1;        duration.nanos += 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start = ...;      Duration duration = ...;      Timestamp end = ...;       end.seconds = start.seconds + duration.seconds;      end.nanos = start.nanos + duration.nanos;       if (end.nanos < 0) {        end.seconds -= 1;        end.nanos += 1000000000;      } else if (end.nanos >= 1000000000) {        end.seconds += 1;        end.nanos -= 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td = datetime.timedelta(days=3, minutes=10)      duration = Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \"s\" (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should  be expressed in JSON format as \"3.000000001s\", and 3 seconds and 1  microsecond should be expressed in JSON format as \"3.000001s\".]]>
+    /// <![CDATA[A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like "day"  or "month". It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start = ...;      Timestamp end = ...;      Duration duration = ...;       duration.seconds = end.seconds - start.seconds;      duration.nanos = end.nanos - start.nanos;       if (duration.seconds < 0 && duration.nanos > 0) {        duration.seconds += 1;        duration.nanos -= 1000000000;      } else if (duration.seconds > 0 && duration.nanos < 0) {        duration.seconds -= 1;        duration.nanos += 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start = ...;      Duration duration = ...;      Timestamp end = ...;       end.seconds = start.seconds + duration.seconds;      end.nanos = start.nanos + duration.nanos;       if (end.nanos < 0) {        end.seconds -= 1;        end.nanos += 1000000000;      } else if (end.nanos >= 1000000000) {        end.seconds += 1;        end.nanos -= 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td = datetime.timedelta(days=3, minutes=10)      duration = Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix "s" (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should  be expressed in JSON format as "3.000000001s", and 3 seconds and 1  microsecond should be expressed in JSON format as "3.000001s".]]>
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("externalLoginCheckLifetime")]
     public TimeSpan? ExternalLoginCheckLifetime { get; set; }
 
     /// <summary>
-    /// <![CDATA[A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \"day\"  or \"month\". It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start = ...;      Timestamp end = ...;      Duration duration = ...;       duration.seconds = end.seconds - start.seconds;      duration.nanos = end.nanos - start.nanos;       if (duration.seconds < 0 && duration.nanos > 0) {        duration.seconds += 1;        duration.nanos -= 1000000000;      } else if (duration.seconds > 0 && duration.nanos < 0) {        duration.seconds -= 1;        duration.nanos += 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start = ...;      Duration duration = ...;      Timestamp end = ...;       end.seconds = start.seconds + duration.seconds;      end.nanos = start.nanos + duration.nanos;       if (end.nanos < 0) {        end.seconds -= 1;        end.nanos += 1000000000;      } else if (end.nanos >= 1000000000) {        end.seconds += 1;        end.nanos -= 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td = datetime.timedelta(days=3, minutes=10)      duration = Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \"s\" (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should  be expressed in JSON format as \"3.000000001s\", and 3 seconds and 1  microsecond should be expressed in JSON format as \"3.000001s\".]]>
+    /// <![CDATA[A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like "day"  or "month". It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start = ...;      Timestamp end = ...;      Duration duration = ...;       duration.seconds = end.seconds - start.seconds;      duration.nanos = end.nanos - start.nanos;       if (duration.seconds < 0 && duration.nanos > 0) {        duration.seconds += 1;        duration.nanos -= 1000000000;      } else if (duration.seconds > 0 && duration.nanos < 0) {        duration.seconds -= 1;        duration.nanos += 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start = ...;      Duration duration = ...;      Timestamp end = ...;       end.seconds = start.seconds + duration.seconds;      end.nanos = start.nanos + duration.nanos;       if (end.nanos < 0) {        end.seconds -= 1;        end.nanos += 1000000000;      } else if (end.nanos >= 1000000000) {        end.seconds += 1;        end.nanos -= 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td = datetime.timedelta(days=3, minutes=10)      duration = Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix "s" (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should  be expressed in JSON format as "3.000000001s", and 3 seconds and 1  microsecond should be expressed in JSON format as "3.000001s".]]>
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("mfaInitSkipLifetime")]
     public TimeSpan? MfaInitSkipLifetime { get; set; }
 
     /// <summary>
-    /// <![CDATA[A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \"day\"  or \"month\". It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start = ...;      Timestamp end = ...;      Duration duration = ...;       duration.seconds = end.seconds - start.seconds;      duration.nanos = end.nanos - start.nanos;       if (duration.seconds < 0 && duration.nanos > 0) {        duration.seconds += 1;        duration.nanos -= 1000000000;      } else if (duration.seconds > 0 && duration.nanos < 0) {        duration.seconds -= 1;        duration.nanos += 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start = ...;      Duration duration = ...;      Timestamp end = ...;       end.seconds = start.seconds + duration.seconds;      end.nanos = start.nanos + duration.nanos;       if (end.nanos < 0) {        end.seconds -= 1;        end.nanos += 1000000000;      } else if (end.nanos >= 1000000000) {        end.seconds += 1;        end.nanos -= 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td = datetime.timedelta(days=3, minutes=10)      duration = Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \"s\" (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should  be expressed in JSON format as \"3.000000001s\", and 3 seconds and 1  microsecond should be expressed in JSON format as \"3.000001s\".]]>
+    /// <![CDATA[A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like "day"  or "month". It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start = ...;      Timestamp end = ...;      Duration duration = ...;       duration.seconds = end.seconds - start.seconds;      duration.nanos = end.nanos - start.nanos;       if (duration.seconds < 0 && duration.nanos > 0) {        duration.seconds += 1;        duration.nanos -= 1000000000;      } else if (duration.seconds > 0 && duration.nanos < 0) {        duration.seconds -= 1;        duration.nanos += 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start = ...;      Duration duration = ...;      Timestamp end = ...;       end.seconds = start.seconds + duration.seconds;      end.nanos = start.nanos + duration.nanos;       if (end.nanos < 0) {        end.seconds -= 1;        end.nanos += 1000000000;      } else if (end.nanos >= 1000000000) {        end.seconds += 1;        end.nanos -= 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td = datetime.timedelta(days=3, minutes=10)      duration = Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix "s" (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should  be expressed in JSON format as "3.000000001s", and 3 seconds and 1  microsecond should be expressed in JSON format as "3.000001s".]]>
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("secondFactorCheckLifetime")]
     public TimeSpan? SecondFactorCheckLifetime { get; set; }
 
     /// <summary>
-    /// <![CDATA[A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like \"day\"  or \"month\". It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start = ...;      Timestamp end = ...;      Duration duration = ...;       duration.seconds = end.seconds - start.seconds;      duration.nanos = end.nanos - start.nanos;       if (duration.seconds < 0 && duration.nanos > 0) {        duration.seconds += 1;        duration.nanos -= 1000000000;      } else if (duration.seconds > 0 && duration.nanos < 0) {        duration.seconds -= 1;        duration.nanos += 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start = ...;      Duration duration = ...;      Timestamp end = ...;       end.seconds = start.seconds + duration.seconds;      end.nanos = start.nanos + duration.nanos;       if (end.nanos < 0) {        end.seconds -= 1;        end.nanos += 1000000000;      } else if (end.nanos >= 1000000000) {        end.seconds += 1;        end.nanos -= 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td = datetime.timedelta(days=3, minutes=10)      duration = Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix \"s\" (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as \"3s\", while 3 seconds and 1 nanosecond should  be expressed in JSON format as \"3.000000001s\", and 3 seconds and 1  microsecond should be expressed in JSON format as \"3.000001s\".]]>
+    /// <![CDATA[A Duration represents a signed, fixed-length span of time represented  as a count of seconds and fractions of seconds at nanosecond  resolution. It is independent of any calendar and concepts like "day"  or "month". It is related to Timestamp in that the difference between  two Timestamp values is a Duration and it can be added or subtracted  from a Timestamp. Range is approximately +-10,000 years.   # Examples   Example 1: Compute Duration from two Timestamps in pseudo code.       Timestamp start = ...;      Timestamp end = ...;      Duration duration = ...;       duration.seconds = end.seconds - start.seconds;      duration.nanos = end.nanos - start.nanos;       if (duration.seconds < 0 && duration.nanos > 0) {        duration.seconds += 1;        duration.nanos -= 1000000000;      } else if (duration.seconds > 0 && duration.nanos < 0) {        duration.seconds -= 1;        duration.nanos += 1000000000;      }   Example 2: Compute Timestamp from Timestamp + Duration in pseudo code.       Timestamp start = ...;      Duration duration = ...;      Timestamp end = ...;       end.seconds = start.seconds + duration.seconds;      end.nanos = start.nanos + duration.nanos;       if (end.nanos < 0) {        end.seconds -= 1;        end.nanos += 1000000000;      } else if (end.nanos >= 1000000000) {        end.seconds += 1;        end.nanos -= 1000000000;      }   Example 3: Compute Duration from datetime.timedelta in Python.       td = datetime.timedelta(days=3, minutes=10)      duration = Duration()      duration.FromTimedelta(td)   # JSON Mapping   In JSON format, the Duration type is encoded as a string rather than an  object, where the string ends in the suffix "s" (indicating seconds) and  is preceded by the number of seconds, with nanoseconds expressed as  fractional seconds. For example, 3 seconds with 0 nanoseconds should be  encoded in JSON format as "3s", while 3 seconds and 1 nanosecond should  be expressed in JSON format as "3.000000001s", and 3 seconds and 1  microsecond should be expressed in JSON format as "3.000001s".]]>
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("multiFactorCheckLifetime")]
     public TimeSpan? MultiFactorCheckLifetime { get; set; }
 
     /// <summary>
     /// The list of allowed second factors.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("secondFactors")]
     public List<SettingsServiceSecondFactorType>? SecondFactors { get; set; }
 
     /// <summary>
     /// The list of allowed multi factors.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("multiFactors")]
     public List<SettingsServiceMultiFactorType>? MultiFactors { get; set; }
 
     /// <summary>
     /// Allow discovery of the organization and its authentication option by domain.  If set to true, the suffix (@domain.com) of an unknown username input on the login screen  will be matched against the organization domains and will redirect to the registration of that organization on success.  The registration can either be locally (requires allow_register to be true) or through an external identity provider.  In case only one identity provider is configured for the organization, the user will be redirected directly to the identity provider.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("allowDomainDiscovery")]
     public bool? AllowDomainDiscovery { get; set; }
 
     /// <summary>
     /// By default, users can login with their verified email address additionally to their login name.  Setting this to true disables the email login.  Note: If the email is set as the login name, this setting has no effect.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("disableLoginWithEmail")]
     public bool? DisableLoginWithEmail { get; set; }
 
     /// <summary>
     /// By default, users can login with their verified phone number additionally to their login name.  Setting this to true disables the phone number login.  Note: If the phone number is set as the login name, this setting has no effect.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("disableLoginWithPhone")]
     public bool? DisableLoginWithPhone { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public SettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 
     /// <summary>
     /// If enabled, users will be forced to use a multi-factor to log in if they authenticated locally.  This does not apply to federated logins through an external identity provider.  Users will be required to set up a second factor if they have not done so already.  If both force_mfa and force_mfa_local_only are enabled, force_mfa takes precedence and  all logins will require a second factor.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("forceMfaLocalOnly")]
     public bool? ForceMfaLocalOnly { get; set; }
 
@@ -176,8 +155,8 @@ public class SettingsServiceLoginSettings : IEquatable<SettingsServiceLoginSetti
                     && EqualityComparer<TimeSpan?>.Default.Equals(this.MfaInitSkipLifetime, other.MfaInitSkipLifetime)
                     && EqualityComparer<TimeSpan?>.Default.Equals(this.SecondFactorCheckLifetime, other.SecondFactorCheckLifetime)
                     && EqualityComparer<TimeSpan?>.Default.Equals(this.MultiFactorCheckLifetime, other.MultiFactorCheckLifetime)
-                    && EqualityComparer<List<SettingsServiceSecondFactorType>?>.Default.Equals(this.SecondFactors, other.SecondFactors)
-                    && EqualityComparer<List<SettingsServiceMultiFactorType>?>.Default.Equals(this.MultiFactors, other.MultiFactors)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.SecondFactors, other.SecondFactors)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.MultiFactors, other.MultiFactors)
                     && EqualityComparer<bool?>.Default.Equals(this.AllowDomainDiscovery, other.AllowDomainDiscovery)
                     && EqualityComparer<bool?>.Default.Equals(this.DisableLoginWithEmail, other.DisableLoginWithEmail)
                     && EqualityComparer<bool?>.Default.Equals(this.DisableLoginWithPhone, other.DisableLoginWithPhone)
@@ -207,8 +186,8 @@ public class SettingsServiceLoginSettings : IEquatable<SettingsServiceLoginSetti
         hash.Add(this.MfaInitSkipLifetime);
         hash.Add(this.SecondFactorCheckLifetime);
         hash.Add(this.MultiFactorCheckLifetime);
-        hash.Add(this.SecondFactors);
-        hash.Add(this.MultiFactors);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.SecondFactors));
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.MultiFactors));
         hash.Add(this.AllowDomainDiscovery);
         hash.Add(this.DisableLoginWithEmail);
         hash.Add(this.DisableLoginWithPhone);

@@ -16,7 +16,6 @@ public class BetaActionServiceTargetFilter : IEquatable<BetaActionServiceTargetF
     /// <summary>
     /// Defines the id to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("targetId")]
     public string? TargetId { get; set; }
 

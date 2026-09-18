@@ -13,27 +13,21 @@ namespace Zitadel.Client.Models;
 
 public class ApplicationServiceApplicationSearchFilter : IEquatable<ApplicationServiceApplicationSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("clientIdFilter")]
     public ApplicationServiceClientIDFilter? ClientIdFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("entityIdFilter")]
     public ApplicationServiceEntityIDFilter? EntityIdFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("nameFilter")]
     public ApplicationServiceApplicationNameFilter? NameFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectIdFilter")]
     public ApplicationServiceProjectIDFilter? ProjectIdFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("stateFilter")]
     public ApplicationServiceApplicationState? StateFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("typeFilter")]
     public ApplicationServiceApplicationType? TypeFilter { get; set; }
 

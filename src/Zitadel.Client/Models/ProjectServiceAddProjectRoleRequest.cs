@@ -16,28 +16,24 @@ public class ProjectServiceAddProjectRoleRequest : IEquatable<ProjectServiceAddP
     /// <summary>
     /// ProjectID is the unique identifier of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// RoleKey identifies the role. It's the only relevant attribute for ZITADEL and  will be used for authorization checks and as claim in tokens and user info responses.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roleKey")]
     public string? RoleKey { get; set; }
 
     /// <summary>
     /// DisplayName is a human readable name for the role, which might be displayed to users.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("displayName")]
     public string? DisplayName { get; set; }
 
     /// <summary>
     /// Group allows grouping roles for display purposes. Zitadel will not handle it in any way.  It can be used to group roles in a UI to allow easier management for administrators.  This attribute is not to be confused with groups as a collection of users.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("group")]
     public string? Group { get; set; }
 

@@ -74,6 +74,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the state of a project to active. Request returns no error if the project is already activated.   Required permission:    - `project.write`</remarks>
     /// <param name="projectServiceActivateProjectRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceActivateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceActivateProjectResponse> ActivateProjectAsync(ProjectServiceActivateProjectRequest projectServiceActivateProjectRequest)
@@ -84,13 +85,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -98,6 +106,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the state of a project to active. Request returns no error if the project is already activated.   Required permission:    - `project.write`</remarks>
     /// <param name="projectServiceActivateProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceActivateProjectResponse>> ActivateProjectWithHttpInfoAsync(ProjectServiceActivateProjectRequest projectServiceActivateProjectRequest)
@@ -125,6 +134,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the state of the project grant to activated.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="projectServiceActivateProjectGrantRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceActivateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceActivateProjectGrantResponse> ActivateProjectGrantAsync(ProjectServiceActivateProjectGrantRequest projectServiceActivateProjectGrantRequest)
@@ -135,13 +145,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -149,6 +166,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the state of the project grant to activated.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="projectServiceActivateProjectGrantRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceActivateProjectGrantResponse>> ActivateProjectGrantWithHttpInfoAsync(ProjectServiceActivateProjectGrantRequest projectServiceActivateProjectGrantRequest)
@@ -176,6 +194,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add a new project role to a project. The key must be unique within the project.   Required permission:    - `project.role.write`</remarks>
     /// <param name="projectServiceAddProjectRoleRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceAddProjectRoleResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceAddProjectRoleResponse> AddProjectRoleAsync(ProjectServiceAddProjectRoleRequest projectServiceAddProjectRoleRequest)
@@ -186,13 +205,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -200,6 +226,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add a new project role to a project. The key must be unique within the project.   Required permission:    - `project.role.write`</remarks>
     /// <param name="projectServiceAddProjectRoleRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceAddProjectRoleResponse>> AddProjectRoleWithHttpInfoAsync(ProjectServiceAddProjectRoleRequest projectServiceAddProjectRoleRequest)
@@ -227,6 +254,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new project. A project is a vessel to group applications, roles and  authorizations. Every project belongs to exactly one organization, but  can be granted to other organizations for self-management of their authorizations.   Required permission:    - `project.create`</remarks>
     /// <param name="projectServiceCreateProjectRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceCreateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceCreateProjectResponse> CreateProjectAsync(ProjectServiceCreateProjectRequest projectServiceCreateProjectRequest)
@@ -237,13 +265,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -251,6 +286,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new project. A project is a vessel to group applications, roles and  authorizations. Every project belongs to exactly one organization, but  can be granted to other organizations for self-management of their authorizations.   Required permission:    - `project.create`</remarks>
     /// <param name="projectServiceCreateProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceCreateProjectResponse>> CreateProjectWithHttpInfoAsync(ProjectServiceCreateProjectRequest projectServiceCreateProjectRequest)
@@ -278,6 +314,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Grant a project to another organization.  The project grant will allow the granted organization to access the project and manage  the authorizations for its users.   Required permission:    - `project.grant.create`</remarks>
     /// <param name="projectServiceCreateProjectGrantRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceCreateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceCreateProjectGrantResponse> CreateProjectGrantAsync(ProjectServiceCreateProjectGrantRequest projectServiceCreateProjectGrantRequest)
@@ -288,13 +325,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -302,6 +346,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Grant a project to another organization.  The project grant will allow the granted organization to access the project and manage  the authorizations for its users.   Required permission:    - `project.grant.create`</remarks>
     /// <param name="projectServiceCreateProjectGrantRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceCreateProjectGrantResponse>> CreateProjectGrantWithHttpInfoAsync(ProjectServiceCreateProjectGrantRequest projectServiceCreateProjectGrantRequest)
@@ -329,6 +374,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the state of a project to deactivated. Request returns no error if the project is already deactivated.  Applications under deactivated projects are not able to login anymore.   Required permission:    - `project.write`</remarks>
     /// <param name="projectServiceDeactivateProjectRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceDeactivateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceDeactivateProjectResponse> DeactivateProjectAsync(ProjectServiceDeactivateProjectRequest projectServiceDeactivateProjectRequest)
@@ -339,13 +385,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -353,6 +406,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the state of a project to deactivated. Request returns no error if the project is already deactivated.  Applications under deactivated projects are not able to login anymore.   Required permission:    - `project.write`</remarks>
     /// <param name="projectServiceDeactivateProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceDeactivateProjectResponse>> DeactivateProjectWithHttpInfoAsync(ProjectServiceDeactivateProjectRequest projectServiceDeactivateProjectRequest)
@@ -380,6 +434,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the state of the project grant to deactivated.  Applications under deactivated projects grants are not able to login anymore.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="projectServiceDeactivateProjectGrantRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceDeactivateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceDeactivateProjectGrantResponse> DeactivateProjectGrantAsync(ProjectServiceDeactivateProjectGrantRequest projectServiceDeactivateProjectGrantRequest)
@@ -390,13 +445,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -404,6 +466,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the state of the project grant to deactivated.  Applications under deactivated projects grants are not able to login anymore.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="projectServiceDeactivateProjectGrantRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceDeactivateProjectGrantResponse>> DeactivateProjectGrantWithHttpInfoAsync(ProjectServiceDeactivateProjectGrantRequest projectServiceDeactivateProjectGrantRequest)
@@ -431,6 +494,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete an existing project.  In case the project is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `project.delete`</remarks>
     /// <param name="projectServiceDeleteProjectRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceDeleteProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceDeleteProjectResponse> DeleteProjectAsync(ProjectServiceDeleteProjectRequest projectServiceDeleteProjectRequest)
@@ -441,13 +505,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -455,6 +526,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete an existing project.  In case the project is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `project.delete`</remarks>
     /// <param name="projectServiceDeleteProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceDeleteProjectResponse>> DeleteProjectWithHttpInfoAsync(ProjectServiceDeleteProjectRequest projectServiceDeleteProjectRequest)
@@ -482,6 +554,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete a project grant. All user grants for this project grant will also be removed.  A user will not have access to the project afterward (if permissions are checked).  In case the project grant is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `project.grant.delete`</remarks>
     /// <param name="projectServiceDeleteProjectGrantRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceDeleteProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceDeleteProjectGrantResponse> DeleteProjectGrantAsync(ProjectServiceDeleteProjectGrantRequest projectServiceDeleteProjectGrantRequest)
@@ -492,13 +565,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -506,6 +586,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete a project grant. All user grants for this project grant will also be removed.  A user will not have access to the project afterward (if permissions are checked).  In case the project grant is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `project.grant.delete`</remarks>
     /// <param name="projectServiceDeleteProjectGrantRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceDeleteProjectGrantResponse>> DeleteProjectGrantWithHttpInfoAsync(ProjectServiceDeleteProjectGrantRequest projectServiceDeleteProjectGrantRequest)
@@ -533,6 +614,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the project identified by the requested ID.   Required permission:    - `project.read`</remarks>
     /// <param name="projectServiceGetProjectRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceGetProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceGetProjectResponse> GetProjectAsync(ProjectServiceGetProjectRequest projectServiceGetProjectRequest)
@@ -543,13 +625,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -557,6 +646,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the project identified by the requested ID.   Required permission:    - `project.read`</remarks>
     /// <param name="projectServiceGetProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceGetProjectResponse>> GetProjectWithHttpInfoAsync(ProjectServiceGetProjectRequest projectServiceGetProjectRequest)
@@ -584,6 +674,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns a list of project grants. A project grant is when the organization grants its project  to another organization.   Required permission:    - `project.grant.read`</remarks>
     /// <param name="projectServiceListProjectGrantsRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceListProjectGrantsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceListProjectGrantsResponse> ListProjectGrantsAsync(ProjectServiceListProjectGrantsRequest projectServiceListProjectGrantsRequest)
@@ -594,13 +685,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -608,6 +706,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns a list of project grants. A project grant is when the organization grants its project  to another organization.   Required permission:    - `project.grant.read`</remarks>
     /// <param name="projectServiceListProjectGrantsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceListProjectGrantsResponse>> ListProjectGrantsWithHttpInfoAsync(ProjectServiceListProjectGrantsRequest projectServiceListProjectGrantsRequest)
@@ -635,6 +734,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns all roles of a project matching the search query.   Required permission:    - `project.role.read`</remarks>
     /// <param name="projectServiceListProjectRolesRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceListProjectRolesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceListProjectRolesResponse> ListProjectRolesAsync(ProjectServiceListProjectRolesRequest projectServiceListProjectRolesRequest)
@@ -645,13 +745,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -659,6 +766,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns all roles of a project matching the search query.   Required permission:    - `project.role.read`</remarks>
     /// <param name="projectServiceListProjectRolesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceListProjectRolesResponse>> ListProjectRolesWithHttpInfoAsync(ProjectServiceListProjectRolesRequest projectServiceListProjectRolesRequest)
@@ -686,6 +794,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all matching projects. By default all projects of the instance that the caller  has permission to read are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - `project.read`</remarks>
     /// <param name="projectServiceListProjectsRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceListProjectsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceListProjectsResponse> ListProjectsAsync(ProjectServiceListProjectsRequest projectServiceListProjectsRequest)
@@ -696,13 +805,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -710,6 +826,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all matching projects. By default all projects of the instance that the caller  has permission to read are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - `project.read`</remarks>
     /// <param name="projectServiceListProjectsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceListProjectsResponse>> ListProjectsWithHttpInfoAsync(ProjectServiceListProjectsRequest projectServiceListProjectsRequest)
@@ -737,6 +854,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Removes the role from the project and on every resource it has a dependency.  This includes project grants and user grants.   Required permission:    - `project.role.write`</remarks>
     /// <param name="projectServiceRemoveProjectRoleRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceRemoveProjectRoleResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceRemoveProjectRoleResponse> RemoveProjectRoleAsync(ProjectServiceRemoveProjectRoleRequest projectServiceRemoveProjectRoleRequest)
@@ -747,13 +865,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -761,6 +886,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Removes the role from the project and on every resource it has a dependency.  This includes project grants and user grants.   Required permission:    - `project.role.write`</remarks>
     /// <param name="projectServiceRemoveProjectRoleRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceRemoveProjectRoleResponse>> RemoveProjectRoleWithHttpInfoAsync(ProjectServiceRemoveProjectRoleRequest projectServiceRemoveProjectRoleRequest)
@@ -788,6 +914,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Update an existing project.   Required permission:    - `project.write`</remarks>
     /// <param name="projectServiceUpdateProjectRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceUpdateProjectResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceUpdateProjectResponse> UpdateProjectAsync(ProjectServiceUpdateProjectRequest projectServiceUpdateProjectRequest)
@@ -798,13 +925,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -812,6 +946,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Update an existing project.   Required permission:    - `project.write`</remarks>
     /// <param name="projectServiceUpdateProjectRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceUpdateProjectResponse>> UpdateProjectWithHttpInfoAsync(ProjectServiceUpdateProjectRequest projectServiceUpdateProjectRequest)
@@ -839,6 +974,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Change the roles of the project that is granted to another organization.  The project grant will allow the granted organization to access the project and manage  the authorizations for its users.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="projectServiceUpdateProjectGrantRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceUpdateProjectGrantResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceUpdateProjectGrantResponse> UpdateProjectGrantAsync(ProjectServiceUpdateProjectGrantRequest projectServiceUpdateProjectGrantRequest)
@@ -849,13 +985,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -863,6 +1006,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Change the roles of the project that is granted to another organization.  The project grant will allow the granted organization to access the project and manage  the authorizations for its users.   Required permission:    - `project.grant.write`</remarks>
     /// <param name="projectServiceUpdateProjectGrantRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceUpdateProjectGrantResponse>> UpdateProjectGrantWithHttpInfoAsync(ProjectServiceUpdateProjectGrantRequest projectServiceUpdateProjectGrantRequest)
@@ -890,6 +1034,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Change a project role. The key is not editable. If a key should change, remove the role and create a new one.   Required permission:    - `project.role.write`</remarks>
     /// <param name="projectServiceUpdateProjectRoleRequest"></param>
+
     /// <returns><![CDATA[ProjectServiceUpdateProjectRoleResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ProjectServiceUpdateProjectRoleResponse> UpdateProjectRoleAsync(ProjectServiceUpdateProjectRoleRequest projectServiceUpdateProjectRoleRequest)
@@ -900,13 +1045,20 @@ public class ProjectServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -914,6 +1066,7 @@ public class ProjectServiceApi : BaseApi
     /// </summary>
     /// <remarks>Change a project role. The key is not editable. If a key should change, remove the role and create a new one.   Required permission:    - `project.role.write`</remarks>
     /// <param name="projectServiceUpdateProjectRoleRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ProjectServiceUpdateProjectRoleResponse>> UpdateProjectRoleWithHttpInfoAsync(ProjectServiceUpdateProjectRoleRequest projectServiceUpdateProjectRoleRequest)

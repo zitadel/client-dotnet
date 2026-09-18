@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceOrganization : IEquatable<BetaUserServiceOrganization>
 {
-    /// <example>null</example>
     [JsonPropertyName("orgDomain")]
     public string? OrgDomain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("orgId")]
     public string? OrgId { get; set; }
 

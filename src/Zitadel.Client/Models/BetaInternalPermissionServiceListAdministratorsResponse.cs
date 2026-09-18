@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaInternalPermissionServiceListAdministratorsResponse : IEquatable<BetaInternalPermissionServiceListAdministratorsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaInternalPermissionServicePaginationResponse? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("administrators")]
     public List<BetaInternalPermissionServiceAdministrator>? Administrators { get; set; }
 
@@ -27,7 +25,7 @@ public class BetaInternalPermissionServiceListAdministratorsResponse : IEquatabl
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<BetaInternalPermissionServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<BetaInternalPermissionServiceAdministrator>?>.Default.Equals(this.Administrators, other.Administrators));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Administrators, other.Administrators));
     }
 
     public override bool Equals(object? obj)
@@ -39,7 +37,7 @@ public class BetaInternalPermissionServiceListAdministratorsResponse : IEquatabl
     {
         HashCode hash = default;
         hash.Add(this.Pagination);
-        hash.Add(this.Administrators);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Administrators));
         return hash.ToHashCode();
     }
 }

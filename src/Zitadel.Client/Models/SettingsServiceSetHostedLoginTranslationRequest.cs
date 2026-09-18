@@ -14,24 +14,20 @@ namespace Zitadel.Client.Models;
 public class SettingsServiceSetHostedLoginTranslationRequest : IEquatable<SettingsServiceSetHostedLoginTranslationRequest>
 {
     /// <summary>
-    /// The locale of the translations to be set.  Needs to be a BCP 47 language tag (e.g. \"en\", \"de\", \"fr-CH\").
+    /// The locale of the translations to be set.  Needs to be a BCP 47 language tag (e.g. "en", "de", "fr-CH").
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("locale")]
     public string? Locale { get; set; }
 
     /// <summary>
     /// `Struct` represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, `Struct`  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for `Struct` is JSON object.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("translations")]
-    public Dictionary<string, Object>? Translations { get; set; }
+    public Dictionary<string, object>? Translations { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("instance")]
     public bool? Instance { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
@@ -41,7 +37,7 @@ public class SettingsServiceSetHostedLoginTranslationRequest : IEquatable<Settin
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Locale, other.Locale)
-                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.Translations, other.Translations)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Translations, other.Translations)
                     && EqualityComparer<bool?>.Default.Equals(this.Instance, other.Instance)
                     && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId));
     }
@@ -55,7 +51,7 @@ public class SettingsServiceSetHostedLoginTranslationRequest : IEquatable<Settin
     {
         HashCode hash = default;
         hash.Add(this.Locale);
-        hash.Add(this.Translations);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Translations));
         hash.Add(this.Instance);
         hash.Add(this.OrganizationId);
         return hash.ToHashCode();

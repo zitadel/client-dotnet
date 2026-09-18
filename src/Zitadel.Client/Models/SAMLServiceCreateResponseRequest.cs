@@ -16,15 +16,12 @@ public class SAMLServiceCreateResponseRequest : IEquatable<SAMLServiceCreateResp
     /// <summary>
     /// ID of the SAML Request.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("samlRequestId")]
     public string? SamlRequestId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("error")]
     public SAMLServiceAuthorizationError? Error { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("session")]
     public SAMLServiceSession? Session { get; set; }
 

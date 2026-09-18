@@ -13,18 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class SessionServiceListSessionsRequest : IEquatable<SessionServiceListSessionsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("query")]
     public SessionServiceListQuery? Query { get; set; }
 
     /// <summary>
     /// The criteria to be used when searching for sessions.  Multiple queries will be combined with a logical AND.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("queries")]
     public List<SessionServiceSearchQuery>? Queries { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public SessionServiceSessionFieldName? SortingColumn { get; set; }
 
@@ -34,7 +31,7 @@ public class SessionServiceListSessionsRequest : IEquatable<SessionServiceListSe
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<SessionServiceListQuery?>.Default.Equals(this.Query, other.Query)
-                    && EqualityComparer<List<SessionServiceSearchQuery>?>.Default.Equals(this.Queries, other.Queries)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Queries, other.Queries)
                     && EqualityComparer<SessionServiceSessionFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn));
     }
 
@@ -47,7 +44,7 @@ public class SessionServiceListSessionsRequest : IEquatable<SessionServiceListSe
     {
         HashCode hash = default;
         hash.Add(this.Query);
-        hash.Add(this.Queries);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Queries));
         hash.Add(this.SortingColumn);
         return hash.ToHashCode();
     }

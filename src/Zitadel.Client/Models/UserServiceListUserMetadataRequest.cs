@@ -16,18 +16,15 @@ public class UserServiceListUserMetadataRequest : IEquatable<UserServiceListUser
     /// <summary>
     /// ID of the user under which the metadata is to be listed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public UserServicePaginationRequest? Pagination { get; set; }
 
     /// <summary>
     /// Define the criteria to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<UserServiceMetadataSearchFilter>? Filters { get; set; }
 
@@ -38,7 +35,7 @@ public class UserServiceListUserMetadataRequest : IEquatable<UserServiceListUser
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<UserServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<UserServiceMetadataSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -51,7 +48,7 @@ public class UserServiceListUserMetadataRequest : IEquatable<UserServiceListUser
         HashCode hash = default;
         hash.Add(this.UserId);
         hash.Add(this.Pagination);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

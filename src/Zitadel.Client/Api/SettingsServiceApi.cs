@@ -66,6 +66,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the current active identity providers for the requested context.  This can be the instance or an organization. In case of an organization,  the returned identity providers will fall back to the active instance identity providers  if not explicitly set on the organization.   Optionally, filter the identity providers by their allowed actions:    - creation_allowed: only return identity providers that are allowed for user creation    - linking_allowed: only return identity providers that are allowed for linking to existing users    - auto_creation: only return identity providers that are allowed for automatic user creation    - auto_linking: only return identity providers that are allowed for automatic linking to existing users   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetActiveIdentityProvidersRequest"></param>
+
     /// <returns><![CDATA[SettingsServiceGetActiveIdentityProvidersResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SettingsServiceGetActiveIdentityProvidersResponse> GetActiveIdentityProvidersAsync(SettingsServiceGetActiveIdentityProvidersRequest settingsServiceGetActiveIdentityProvidersRequest)
@@ -76,13 +77,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -90,6 +98,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the current active identity providers for the requested context.  This can be the instance or an organization. In case of an organization,  the returned identity providers will fall back to the active instance identity providers  if not explicitly set on the organization.   Optionally, filter the identity providers by their allowed actions:    - creation_allowed: only return identity providers that are allowed for user creation    - linking_allowed: only return identity providers that are allowed for linking to existing users    - auto_creation: only return identity providers that are allowed for automatic user creation    - auto_linking: only return identity providers that are allowed for automatic linking to existing users   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetActiveIdentityProvidersRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SettingsServiceGetActiveIdentityProvidersResponse>> GetActiveIdentityProvidersWithHttpInfoAsync(SettingsServiceGetActiveIdentityProvidersRequest settingsServiceGetActiveIdentityProvidersRequest)
@@ -117,6 +126,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the current active branding settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetBrandingSettingsRequest"></param>
+
     /// <returns><![CDATA[SettingsServiceGetBrandingSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SettingsServiceGetBrandingSettingsResponse> GetBrandingSettingsAsync(SettingsServiceGetBrandingSettingsRequest settingsServiceGetBrandingSettingsRequest)
@@ -127,13 +137,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -141,6 +158,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the current active branding settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetBrandingSettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SettingsServiceGetBrandingSettingsResponse>> GetBrandingSettingsWithHttpInfoAsync(SettingsServiceGetBrandingSettingsRequest settingsServiceGetBrandingSettingsRequest)
@@ -168,6 +186,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the domain settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetDomainSettingsRequest"></param>
+
     /// <returns><![CDATA[SettingsServiceGetDomainSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SettingsServiceGetDomainSettingsResponse> GetDomainSettingsAsync(SettingsServiceGetDomainSettingsRequest settingsServiceGetDomainSettingsRequest)
@@ -178,13 +197,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -192,6 +218,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the domain settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetDomainSettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SettingsServiceGetDomainSettingsResponse>> GetDomainSettingsWithHttpInfoAsync(SettingsServiceGetDomainSettingsRequest settingsServiceGetDomainSettingsRequest)
@@ -219,9 +246,10 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get basic information of the instance like the default organization, default language and supported languages.   Required permissions:    - `policy.read`</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[SettingsServiceGetGeneralSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<SettingsServiceGetGeneralSettingsResponse> GetGeneralSettingsAsync(Object body)
+    public async Task<SettingsServiceGetGeneralSettingsResponse> GetGeneralSettingsAsync(object body)
     {
         Task<ApiResult<SettingsServiceGetGeneralSettingsResponse>> task = GetGeneralSettingsWithHttpInfoAsync(body);
         ApiResult<SettingsServiceGetGeneralSettingsResponse> result = await task.ConfigureAwait(false);
@@ -229,13 +257,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -243,9 +278,10 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get basic information of the instance like the default organization, default language and supported languages.   Required permissions:    - `policy.read`</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<SettingsServiceGetGeneralSettingsResponse>> GetGeneralSettingsWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<SettingsServiceGetGeneralSettingsResponse>> GetGeneralSettingsWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.settings.v2.SettingsService/GetGeneralSettings";
 
@@ -270,6 +306,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the translations in the requested locale for the hosted login.  The translations returned are based on the input level specified (system, instance or organization).   If the requested level doesn't contain all translations, and ignore_inheritance is set to false,  a merging process fallbacks onto the higher levels ensuring all keys in the file have a translation,  which could be in the default language if the one of the locale is missing on all levels.   The etag returned in the response represents the hash of the translations as they are stored on DB  and its reliable only if ignore_inheritance = true.   Required permissions:    - `iam.policy.read`</remarks>
     /// <param name="settingsServiceGetHostedLoginTranslationRequest"></param>
+
     /// <returns><![CDATA[SettingsServiceGetHostedLoginTranslationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SettingsServiceGetHostedLoginTranslationResponse> GetHostedLoginTranslationAsync(SettingsServiceGetHostedLoginTranslationRequest settingsServiceGetHostedLoginTranslationRequest)
@@ -280,13 +317,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -294,6 +338,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the translations in the requested locale for the hosted login.  The translations returned are based on the input level specified (system, instance or organization).   If the requested level doesn't contain all translations, and ignore_inheritance is set to false,  a merging process fallbacks onto the higher levels ensuring all keys in the file have a translation,  which could be in the default language if the one of the locale is missing on all levels.   The etag returned in the response represents the hash of the translations as they are stored on DB  and its reliable only if ignore_inheritance = true.   Required permissions:    - `iam.policy.read`</remarks>
     /// <param name="settingsServiceGetHostedLoginTranslationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SettingsServiceGetHostedLoginTranslationResponse>> GetHostedLoginTranslationWithHttpInfoAsync(SettingsServiceGetHostedLoginTranslationRequest settingsServiceGetHostedLoginTranslationRequest)
@@ -321,6 +366,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the legal and support settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetLegalAndSupportSettingsRequest"></param>
+
     /// <returns><![CDATA[SettingsServiceGetLegalAndSupportSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SettingsServiceGetLegalAndSupportSettingsResponse> GetLegalAndSupportSettingsAsync(SettingsServiceGetLegalAndSupportSettingsRequest settingsServiceGetLegalAndSupportSettingsRequest)
@@ -331,13 +377,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -345,6 +398,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the legal and support settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetLegalAndSupportSettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SettingsServiceGetLegalAndSupportSettingsResponse>> GetLegalAndSupportSettingsWithHttpInfoAsync(SettingsServiceGetLegalAndSupportSettingsRequest settingsServiceGetLegalAndSupportSettingsRequest)
@@ -372,6 +426,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the lockout settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Lockout settings define how many failed attempts are allowed before a user is locked out.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetLockoutSettingsRequest"></param>
+
     /// <returns><![CDATA[SettingsServiceGetLockoutSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SettingsServiceGetLockoutSettingsResponse> GetLockoutSettingsAsync(SettingsServiceGetLockoutSettingsRequest settingsServiceGetLockoutSettingsRequest)
@@ -382,13 +437,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -396,6 +458,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the lockout settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Lockout settings define how many failed attempts are allowed before a user is locked out.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetLockoutSettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SettingsServiceGetLockoutSettingsResponse>> GetLockoutSettingsWithHttpInfoAsync(SettingsServiceGetLockoutSettingsRequest settingsServiceGetLockoutSettingsRequest)
@@ -423,6 +486,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the login settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetLoginSettingsRequest"></param>
+
     /// <returns><![CDATA[SettingsServiceGetLoginSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SettingsServiceGetLoginSettingsResponse> GetLoginSettingsAsync(SettingsServiceGetLoginSettingsRequest settingsServiceGetLoginSettingsRequest)
@@ -433,13 +497,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -447,6 +518,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the login settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetLoginSettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SettingsServiceGetLoginSettingsResponse>> GetLoginSettingsWithHttpInfoAsync(SettingsServiceGetLoginSettingsRequest settingsServiceGetLoginSettingsRequest)
@@ -474,6 +546,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the password complexity settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetPasswordComplexitySettingsRequest"></param>
+
     /// <returns><![CDATA[SettingsServiceGetPasswordComplexitySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SettingsServiceGetPasswordComplexitySettingsResponse> GetPasswordComplexitySettingsAsync(SettingsServiceGetPasswordComplexitySettingsRequest settingsServiceGetPasswordComplexitySettingsRequest)
@@ -484,13 +557,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -498,6 +578,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the password complexity settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetPasswordComplexitySettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SettingsServiceGetPasswordComplexitySettingsResponse>> GetPasswordComplexitySettingsWithHttpInfoAsync(SettingsServiceGetPasswordComplexitySettingsRequest settingsServiceGetPasswordComplexitySettingsRequest)
@@ -525,6 +606,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the password expiry settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetPasswordExpirySettingsRequest"></param>
+
     /// <returns><![CDATA[SettingsServiceGetPasswordExpirySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SettingsServiceGetPasswordExpirySettingsResponse> GetPasswordExpirySettingsAsync(SettingsServiceGetPasswordExpirySettingsRequest settingsServiceGetPasswordExpirySettingsRequest)
@@ -535,13 +617,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -549,6 +638,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the password expiry settings for the requested context.  This can be the instance or an organization. In case of an organization,  the returned settings will fall back to the instance settings if not explicitly set on the organization.   Required permissions:    - `policy.read`</remarks>
     /// <param name="settingsServiceGetPasswordExpirySettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SettingsServiceGetPasswordExpirySettingsResponse>> GetPasswordExpirySettingsWithHttpInfoAsync(SettingsServiceGetPasswordExpirySettingsRequest settingsServiceGetPasswordExpirySettingsRequest)
@@ -576,9 +666,10 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the security settings of the ZITADEL instance.  Security settings include settings like enabling impersonation and embedded iframe settings.   Required permissions:    - `iam.policy.read`</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[SettingsServiceGetSecuritySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<SettingsServiceGetSecuritySettingsResponse> GetSecuritySettingsAsync(Object body)
+    public async Task<SettingsServiceGetSecuritySettingsResponse> GetSecuritySettingsAsync(object body)
     {
         Task<ApiResult<SettingsServiceGetSecuritySettingsResponse>> task = GetSecuritySettingsWithHttpInfoAsync(body);
         ApiResult<SettingsServiceGetSecuritySettingsResponse> result = await task.ConfigureAwait(false);
@@ -586,13 +677,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -600,9 +698,10 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Get the security settings of the ZITADEL instance.  Security settings include settings like enabling impersonation and embedded iframe settings.   Required permissions:    - `iam.policy.read`</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<SettingsServiceGetSecuritySettingsResponse>> GetSecuritySettingsWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<SettingsServiceGetSecuritySettingsResponse>> GetSecuritySettingsWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.settings.v2.SettingsService/GetSecuritySettings";
 
@@ -627,6 +726,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Sets the input translations at the specified level (instance or organization) for the input language.   Required permissions:    - `iam.policy.write`</remarks>
     /// <param name="settingsServiceSetHostedLoginTranslationRequest"></param>
+
     /// <returns><![CDATA[SettingsServiceSetHostedLoginTranslationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SettingsServiceSetHostedLoginTranslationResponse> SetHostedLoginTranslationAsync(SettingsServiceSetHostedLoginTranslationRequest settingsServiceSetHostedLoginTranslationRequest)
@@ -637,13 +737,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -651,6 +758,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Sets the input translations at the specified level (instance or organization) for the input language.   Required permissions:    - `iam.policy.write`</remarks>
     /// <param name="settingsServiceSetHostedLoginTranslationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SettingsServiceSetHostedLoginTranslationResponse>> SetHostedLoginTranslationWithHttpInfoAsync(SettingsServiceSetHostedLoginTranslationRequest settingsServiceSetHostedLoginTranslationRequest)
@@ -678,6 +786,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the security settings of the instance.   Required permissions:    - `iam.policy.write`</remarks>
     /// <param name="settingsServiceSetSecuritySettingsRequest"></param>
+
     /// <returns><![CDATA[SettingsServiceSetSecuritySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SettingsServiceSetSecuritySettingsResponse> SetSecuritySettingsAsync(SettingsServiceSetSecuritySettingsRequest settingsServiceSetSecuritySettingsRequest)
@@ -688,13 +797,20 @@ public class SettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -702,6 +818,7 @@ public class SettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Set the security settings of the instance.   Required permissions:    - `iam.policy.write`</remarks>
     /// <param name="settingsServiceSetSecuritySettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SettingsServiceSetSecuritySettingsResponse>> SetSecuritySettingsWithHttpInfoAsync(SettingsServiceSetSecuritySettingsRequest settingsServiceSetSecuritySettingsRequest)

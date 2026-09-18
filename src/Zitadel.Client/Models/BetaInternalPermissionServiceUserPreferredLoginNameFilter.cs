@@ -16,11 +16,9 @@ public class BetaInternalPermissionServiceUserPreferredLoginNameFilter : IEquata
     /// <summary>
     /// Search for administrators by the preferred login name of the user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("preferredLoginName")]
     public string? PreferredLoginName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaInternalPermissionServiceTextFilterMethod? Method { get; set; }
 

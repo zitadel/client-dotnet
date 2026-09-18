@@ -13,17 +13,14 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceResendPhoneCodeRequest : IEquatable<BetaUserServiceResendPhoneCodeRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("returnCode")]
-    public Object? ReturnCode { get; set; }
+    public object? ReturnCode { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sendCode")]
-    public Object? SendCode { get; set; }
+    public object? SendCode { get; set; }
 
     /// <summary>Value-equality based on all declared fields.</summary>
     public bool Equals(BetaUserServiceResendPhoneCodeRequest? other)
@@ -31,8 +28,8 @@ public class BetaUserServiceResendPhoneCodeRequest : IEquatable<BetaUserServiceR
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<Object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
-                    && EqualityComparer<Object?>.Default.Equals(this.SendCode, other.SendCode));
+                    && EqualityComparer<object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
+                    && EqualityComparer<object?>.Default.Equals(this.SendCode, other.SendCode));
     }
 
     public override bool Equals(object? obj)

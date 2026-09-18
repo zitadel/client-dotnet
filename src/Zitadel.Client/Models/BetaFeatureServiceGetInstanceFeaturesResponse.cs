@@ -13,31 +13,24 @@ namespace Zitadel.Client.Models;
 
 public class BetaFeatureServiceGetInstanceFeaturesResponse : IEquatable<BetaFeatureServiceGetInstanceFeaturesResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaFeatureServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("loginDefaultOrg")]
     public BetaFeatureServiceFeatureFlag? LoginDefaultOrg { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userSchema")]
     public BetaFeatureServiceFeatureFlag? UserSchema { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oidcTokenExchange")]
     public BetaFeatureServiceFeatureFlag? OidcTokenExchange { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("improvedPerformance")]
     public BetaFeatureServiceImprovedPerformanceFeatureFlag? ImprovedPerformance { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("debugOidcParentError")]
     public BetaFeatureServiceFeatureFlag? DebugOidcParentError { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oidcSingleV1SessionTermination")]
     public BetaFeatureServiceFeatureFlag? OidcSingleV1SessionTermination { get; set; }
 

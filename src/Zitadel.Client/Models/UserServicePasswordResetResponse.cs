@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class UserServicePasswordResetResponse : IEquatable<UserServicePasswordResetResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 
     /// <summary>
     /// in case the medium was set to return_code, the code will be returned
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("verificationCode")]
     public string? VerificationCode { get; set; }
 

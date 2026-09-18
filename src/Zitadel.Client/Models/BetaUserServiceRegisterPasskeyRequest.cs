@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceRegisterPasskeyRequest : IEquatable<BetaUserServiceRegisterPasskeyRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("code")]
     public BetaUserServicePasskeyRegistrationCode? Code { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("authenticator")]
     public BetaUserServicePasskeyAuthenticator? Authenticator { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 

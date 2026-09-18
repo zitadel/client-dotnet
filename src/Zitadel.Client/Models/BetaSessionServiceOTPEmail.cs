@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceOTPEmail : IEquatable<BetaSessionServiceOTPEmail>
 {
-    /// <example>null</example>
     [JsonPropertyName("returnCode")]
-    public Object? ReturnCode { get; set; }
+    public object? ReturnCode { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sendCode")]
     public BetaSessionServiceSendCode? SendCode { get; set; }
 
@@ -26,7 +24,7 @@ public class BetaSessionServiceOTPEmail : IEquatable<BetaSessionServiceOTPEmail>
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
+                || EqualityComparer<object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
                     && EqualityComparer<BetaSessionServiceSendCode?>.Default.Equals(this.SendCode, other.SendCode));
     }
 

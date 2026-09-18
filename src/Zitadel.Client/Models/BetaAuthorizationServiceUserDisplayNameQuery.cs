@@ -16,11 +16,9 @@ public class BetaAuthorizationServiceUserDisplayNameQuery : IEquatable<BetaAutho
     /// <summary>
     /// Specify the public display name of the granted user to search for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("displayName")]
     public string? DisplayName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaAuthorizationServiceTextFilterMethod? Method { get; set; }
 

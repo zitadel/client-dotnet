@@ -16,33 +16,27 @@ public class ApplicationServiceUpdateApplicationRequest : IEquatable<Application
     /// <summary>
     /// The unique ID of the application to be updated.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("applicationId")]
     public string? ApplicationId { get; set; }
 
     /// <summary>
     /// The ID of the project the application belongs to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// Publicly visible name of the application. This might be presented to users if they sign in.  If not set, the name will not be changed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("apiConfiguration")]
     public ApplicationServiceUpdateAPIApplicationConfigurationRequest? ApiConfiguration { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oidcConfiguration")]
     public ApplicationServiceUpdateOIDCApplicationConfigurationRequest? OidcConfiguration { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("samlConfiguration")]
     public ApplicationServiceUpdateSAMLApplicationConfigurationRequest? SamlConfiguration { get; set; }
 

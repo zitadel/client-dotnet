@@ -16,35 +16,30 @@ public class SettingsServiceGetGeneralSettingsResponse : IEquatable<SettingsServ
     /// <summary>
     /// The unique identifier of the default organization.  The default organization is used to assign new users to an organization if no other organization is specified.  Deprecated: use default_organization_id instead.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("defaultOrgId")]
     public string? DefaultOrgId { get; set; }
 
     /// <summary>
-    /// The default language is use if no other language is specified or detected.  The format is a BCP 47 language tag (e.g. \"en\", \"de\", \"fr-CH\").
+    /// The default language is use if no other language is specified or detected.  The format is a BCP 47 language tag (e.g. "en", "de", "fr-CH").
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("defaultLanguage")]
     public string? DefaultLanguage { get; set; }
 
     /// <summary>
-    /// The list of supported languages.  Note that the instance might restrict the languages further  only allowing a subset of these languages to be used.  The format is a BCP 47 language tag (e.g. \"en\", \"de\", \"fr-CH\").
+    /// The list of supported languages.  Note that the instance might restrict the languages further  only allowing a subset of these languages to be used.  The format is a BCP 47 language tag (e.g. "en", "de", "fr-CH").
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("supportedLanguages")]
     public List<string>? SupportedLanguages { get; set; }
 
     /// <summary>
     /// The unique identifier of the default organization.  The default organization is used to assign new users to an organization if no other organization is specified.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("defaultOrganizationId")]
     public string? DefaultOrganizationId { get; set; }
 
     /// <summary>
-    /// The list of allowed languages for the instance.  This is a subset of the supported languages to be used in the instance  e.g. for user selection during registration or language detection in the UI.  The format is a BCP 47 language tag (e.g. \"en\", \"de\", \"fr-CH\").
+    /// The list of allowed languages for the instance.  This is a subset of the supported languages to be used in the instance  e.g. for user selection during registration or language detection in the UI.  The format is a BCP 47 language tag (e.g. "en", "de", "fr-CH").
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("allowedLanguages")]
     public List<string>? AllowedLanguages { get; set; }
 
@@ -55,9 +50,9 @@ public class SettingsServiceGetGeneralSettingsResponse : IEquatable<SettingsServ
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.DefaultOrgId, other.DefaultOrgId)
                     && EqualityComparer<string?>.Default.Equals(this.DefaultLanguage, other.DefaultLanguage)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.SupportedLanguages, other.SupportedLanguages)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.SupportedLanguages, other.SupportedLanguages)
                     && EqualityComparer<string?>.Default.Equals(this.DefaultOrganizationId, other.DefaultOrganizationId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.AllowedLanguages, other.AllowedLanguages));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.AllowedLanguages, other.AllowedLanguages));
     }
 
     public override bool Equals(object? obj)
@@ -70,9 +65,9 @@ public class SettingsServiceGetGeneralSettingsResponse : IEquatable<SettingsServ
         HashCode hash = default;
         hash.Add(this.DefaultOrgId);
         hash.Add(this.DefaultLanguage);
-        hash.Add(this.SupportedLanguages);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.SupportedLanguages));
         hash.Add(this.DefaultOrganizationId);
-        hash.Add(this.AllowedLanguages);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.AllowedLanguages));
         return hash.ToHashCode();
     }
 }

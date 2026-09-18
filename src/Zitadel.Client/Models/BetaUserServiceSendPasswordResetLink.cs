@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceSendPasswordResetLink : IEquatable<BetaUserServiceSendPasswordResetLink>
 {
-    /// <example>null</example>
     [JsonPropertyName("notificationType")]
     public BetaUserServiceNotificationType? NotificationType { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("urlTemplate")]
     public string? UrlTemplate { get; set; }
 

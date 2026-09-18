@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaInstanceServiceDomainGeneratedQuery : IEquatable<BetaInstanceServiceDomainGeneratedQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("generated")]
     public bool? Generated { get; set; }
 

@@ -16,22 +16,18 @@ public class ActionServiceListPublicKeysRequest : IEquatable<ActionServiceListPu
     /// <summary>
     /// TargetID is the unique identifier of the target to list the public keys for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("targetId")]
     public string? TargetId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public ActionServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public ActionServicePublicKeyFieldName? SortingColumn { get; set; }
 
     /// <summary>
     /// Define the criteria to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<ActionServicePublicKeySearchFilter>? Filters { get; set; }
 
@@ -43,7 +39,7 @@ public class ActionServiceListPublicKeysRequest : IEquatable<ActionServiceListPu
                 || EqualityComparer<string?>.Default.Equals(this.TargetId, other.TargetId)
                     && EqualityComparer<ActionServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<ActionServicePublicKeyFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<ActionServicePublicKeySearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -57,7 +53,7 @@ public class ActionServiceListPublicKeysRequest : IEquatable<ActionServiceListPu
         hash.Add(this.TargetId);
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class AuthorizationServiceStateQuery : IEquatable<AuthorizationServiceStateQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("state")]
     public AuthorizationServiceState? State { get; set; }
 

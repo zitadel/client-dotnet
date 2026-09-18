@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceGenerateRecoveryCodesRequest : IEquatable<UserServiceGenerateRecoveryCodesRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("count")]
     public int? Count { get; set; }
 

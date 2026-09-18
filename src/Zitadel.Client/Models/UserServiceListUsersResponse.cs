@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceListUsersResponse : IEquatable<UserServiceListUsersResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceListDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public UserServiceUserFieldName? SortingColumn { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("result")]
     public List<UserServiceUser>? Result { get; set; }
 
@@ -32,7 +29,7 @@ public class UserServiceListUsersResponse : IEquatable<UserServiceListUsersRespo
             && (ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceListDetails?>.Default.Equals(this.Details, other.Details)
                     && EqualityComparer<UserServiceUserFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<UserServiceUser>?>.Default.Equals(this.Result, other.Result));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Result, other.Result));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +42,7 @@ public class UserServiceListUsersResponse : IEquatable<UserServiceListUsersRespo
         HashCode hash = default;
         hash.Add(this.Details);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Result);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Result));
         return hash.ToHashCode();
     }
 }

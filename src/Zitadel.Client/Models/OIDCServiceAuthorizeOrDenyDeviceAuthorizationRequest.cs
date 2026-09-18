@@ -16,15 +16,12 @@ public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest : IEquatable<O
     /// <summary>
     /// The device authorization id returned when submitting the user code.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("deviceAuthorizationId")]
     public string? DeviceAuthorizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("deny")]
-    public Object? Deny { get; set; }
+    public object? Deny { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("session")]
     public OIDCServiceSession? Session { get; set; }
 
@@ -34,7 +31,7 @@ public class OIDCServiceAuthorizeOrDenyDeviceAuthorizationRequest : IEquatable<O
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.DeviceAuthorizationId, other.DeviceAuthorizationId)
-                    && EqualityComparer<Object?>.Default.Equals(this.Deny, other.Deny)
+                    && EqualityComparer<object?>.Default.Equals(this.Deny, other.Deny)
                     && EqualityComparer<OIDCServiceSession?>.Default.Equals(this.Session, other.Session));
     }
 

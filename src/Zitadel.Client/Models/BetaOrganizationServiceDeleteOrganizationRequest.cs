@@ -16,7 +16,6 @@ public class BetaOrganizationServiceDeleteOrganizationRequest : IEquatable<BetaO
     /// <summary>
     /// Organization Id for the Organization to be deleted
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

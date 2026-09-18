@@ -16,28 +16,24 @@ public class BetaProjectServiceAddProjectRoleRequest : IEquatable<BetaProjectSer
     /// <summary>
     /// ID of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// The key is the only relevant attribute for ZITADEL regarding the authorization checks.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roleKey")]
     public string? RoleKey { get; set; }
 
     /// <summary>
     /// Name displayed for the role.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("displayName")]
     public string? DisplayName { get; set; }
 
     /// <summary>
     /// The group is only used for display purposes. That you have better handling, like giving all the roles from a group to a user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("group")]
     public string? Group { get; set; }
 

@@ -16,7 +16,6 @@ public class BetaOrganizationServiceDeactivateOrganizationRequest : IEquatable<B
     /// <summary>
     /// Organization Id for the Organization to be deactivated
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

@@ -16,7 +16,6 @@ public class BetaInternalPermissionServiceIDFilter : IEquatable<BetaInternalPerm
     /// <summary>
     /// Only return resources that belong to this id.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

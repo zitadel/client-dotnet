@@ -16,7 +16,6 @@ public class ApplicationServiceEntityIDFilter : IEquatable<ApplicationServiceEnt
     /// <summary>
     /// The entityID to search for. The search is performed as an exact match.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("entityId")]
     public string? EntityId { get; set; }
 

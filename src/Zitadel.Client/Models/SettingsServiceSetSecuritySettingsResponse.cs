@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class SettingsServiceSetSecuritySettingsResponse : IEquatable<SettingsServiceSetSecuritySettingsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public SettingsServiceDetails? Details { get; set; }
 

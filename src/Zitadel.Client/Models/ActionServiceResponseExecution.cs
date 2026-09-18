@@ -16,21 +16,18 @@ public class ActionServiceResponseExecution : IEquatable<ActionServiceResponseEx
     /// <summary>
     /// Define all calls as condition.  Before a response is returned to the client from any available service,  the execution is triggered.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("all")]
     public bool? All { get; set; }
 
     /// <summary>
     /// Define a GRPC-method as condition.  Before a response is returned to the client from this method, the execution is triggered.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public string? Method { get; set; }
 
     /// <summary>
     /// Define a GRPC-service as condition.  Before a response is returned to the client from any method of this service, the execution is triggered.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("service")]
     public string? Service { get; set; }
 

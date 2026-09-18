@@ -16,25 +16,21 @@ public class IdentityProviderServiceAzureADConfig : IEquatable<IdentityProviderS
     /// <summary>
     /// Client id of the Azure AD application
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("clientId")]
     public string? ClientId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("tenant")]
     public IdentityProviderServiceAzureADTenant? Tenant { get; set; }
 
     /// <summary>
     /// Azure AD doesn't send if the email has been verified. Enable this if the  user email should always be added verified in ZITADEL (no verification  emails will be sent).
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("emailVerified")]
     public bool? EmailVerified { get; set; }
 
     /// <summary>
     /// The scopes requested by ZITADEL during the request to Azure AD.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("scopes")]
     public List<string>? Scopes { get; set; }
 
@@ -46,7 +42,7 @@ public class IdentityProviderServiceAzureADConfig : IEquatable<IdentityProviderS
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
                     && EqualityComparer<IdentityProviderServiceAzureADTenant?>.Default.Equals(this.Tenant, other.Tenant)
                     && EqualityComparer<bool?>.Default.Equals(this.EmailVerified, other.EmailVerified)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Scopes, other.Scopes));
     }
 
     public override bool Equals(object? obj)
@@ -60,7 +56,7 @@ public class IdentityProviderServiceAzureADConfig : IEquatable<IdentityProviderS
         hash.Add(this.ClientId);
         hash.Add(this.Tenant);
         hash.Add(this.EmailVerified);
-        hash.Add(this.Scopes);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Scopes));
         return hash.ToHashCode();
     }
 }

@@ -13,23 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class OrganizationServiceSearchQuery : IEquatable<OrganizationServiceSearchQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("defaultQuery")]
-    public Object? DefaultQuery { get; set; }
+    public object? DefaultQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("domainQuery")]
     public OrganizationServiceOrganizationDomainQuery? DomainQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idQuery")]
     public OrganizationServiceOrganizationIDQuery? IdQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("nameQuery")]
     public OrganizationServiceOrganizationNameQuery? NameQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("stateQuery")]
     public OrganizationServiceOrganizationStateQuery? StateQuery { get; set; }
 
@@ -38,7 +33,7 @@ public class OrganizationServiceSearchQuery : IEquatable<OrganizationServiceSear
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.DefaultQuery, other.DefaultQuery)
+                || EqualityComparer<object?>.Default.Equals(this.DefaultQuery, other.DefaultQuery)
                     && EqualityComparer<OrganizationServiceOrganizationDomainQuery?>.Default.Equals(this.DomainQuery, other.DomainQuery)
                     && EqualityComparer<OrganizationServiceOrganizationIDQuery?>.Default.Equals(this.IdQuery, other.IdQuery)
                     && EqualityComparer<OrganizationServiceOrganizationNameQuery?>.Default.Equals(this.NameQuery, other.NameQuery)

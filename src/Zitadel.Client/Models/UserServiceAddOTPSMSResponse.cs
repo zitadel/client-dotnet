@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceAddOTPSMSResponse : IEquatable<UserServiceAddOTPSMSResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 

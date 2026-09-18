@@ -13,27 +13,21 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServicePasswordComplexitySettings : IEquatable<BetaSettingsServicePasswordComplexitySettings>
 {
-    /// <example>null</example>
     [JsonPropertyName("minLength")]
-    public Object? MinLength { get; set; }
+    public object? MinLength { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("requiresUppercase")]
     public bool? RequiresUppercase { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("requiresLowercase")]
     public bool? RequiresLowercase { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("requiresNumber")]
     public bool? RequiresNumber { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("requiresSymbol")]
     public bool? RequiresSymbol { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public BetaSettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 
@@ -42,7 +36,7 @@ public class BetaSettingsServicePasswordComplexitySettings : IEquatable<BetaSett
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.MinLength, other.MinLength)
+                || EqualityComparer<object?>.Default.Equals(this.MinLength, other.MinLength)
                     && EqualityComparer<bool?>.Default.Equals(this.RequiresUppercase, other.RequiresUppercase)
                     && EqualityComparer<bool?>.Default.Equals(this.RequiresLowercase, other.RequiresLowercase)
                     && EqualityComparer<bool?>.Default.Equals(this.RequiresNumber, other.RequiresNumber)

@@ -64,6 +64,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create an application. The application can be OIDC, API or SAML type, based on the input.   Required permissions:    - project.app.write</remarks>
     /// <param name="applicationServiceCreateApplicationRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceCreateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceCreateApplicationResponse> CreateApplicationAsync(ApplicationServiceCreateApplicationRequest applicationServiceCreateApplicationRequest)
@@ -74,13 +75,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -88,6 +96,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create an application. The application can be OIDC, API or SAML type, based on the input.   Required permissions:    - project.app.write</remarks>
     /// <param name="applicationServiceCreateApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceCreateApplicationResponse>> CreateApplicationWithHttpInfoAsync(ApplicationServiceCreateApplicationRequest applicationServiceCreateApplicationRequest)
@@ -115,6 +124,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new application key, which is used to authorize an API application.   Key details are returned in the response. They must be stored safely, as it will not  be possible to retrieve them again.   Required permissions:    - `project.app.write`</remarks>
     /// <param name="applicationServiceCreateApplicationKeyRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceCreateApplicationKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceCreateApplicationKeyResponse> CreateApplicationKeyAsync(ApplicationServiceCreateApplicationKeyRequest applicationServiceCreateApplicationKeyRequest)
@@ -125,13 +135,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -139,6 +156,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new application key, which is used to authorize an API application.   Key details are returned in the response. They must be stored safely, as it will not  be possible to retrieve them again.   Required permissions:    - `project.app.write`</remarks>
     /// <param name="applicationServiceCreateApplicationKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceCreateApplicationKeyResponse>> CreateApplicationKeyWithHttpInfoAsync(ApplicationServiceCreateApplicationKeyRequest applicationServiceCreateApplicationKeyRequest)
@@ -166,6 +184,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write</remarks>
     /// <param name="applicationServiceDeactivateApplicationRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceDeactivateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceDeactivateApplicationResponse> DeactivateApplicationAsync(ApplicationServiceDeactivateApplicationRequest applicationServiceDeactivateApplicationRequest)
@@ -176,13 +195,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -190,6 +216,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write</remarks>
     /// <param name="applicationServiceDeactivateApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceDeactivateApplicationResponse>> DeactivateApplicationWithHttpInfoAsync(ApplicationServiceDeactivateApplicationRequest applicationServiceDeactivateApplicationRequest)
@@ -217,6 +244,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.delete</remarks>
     /// <param name="applicationServiceDeleteApplicationRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceDeleteApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceDeleteApplicationResponse> DeleteApplicationAsync(ApplicationServiceDeleteApplicationRequest applicationServiceDeleteApplicationRequest)
@@ -227,13 +255,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -241,6 +276,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.delete</remarks>
     /// <param name="applicationServiceDeleteApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceDeleteApplicationResponse>> DeleteApplicationWithHttpInfoAsync(ApplicationServiceDeleteApplicationRequest applicationServiceDeleteApplicationRequest)
@@ -268,6 +304,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes an application key matching the provided ID.   Organization ID is not mandatory, but helps with filtering/performance.   The deletion time is returned in response message.   Required permissions:    - `project.app.write`</remarks>
     /// <param name="applicationServiceDeleteApplicationKeyRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceDeleteApplicationKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceDeleteApplicationKeyResponse> DeleteApplicationKeyAsync(ApplicationServiceDeleteApplicationKeyRequest applicationServiceDeleteApplicationKeyRequest)
@@ -278,13 +315,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -292,6 +336,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deletes an application key matching the provided ID.   Organization ID is not mandatory, but helps with filtering/performance.   The deletion time is returned in response message.   Required permissions:    - `project.app.write`</remarks>
     /// <param name="applicationServiceDeleteApplicationKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceDeleteApplicationKeyResponse>> DeleteApplicationKeyWithHttpInfoAsync(ApplicationServiceDeleteApplicationKeyRequest applicationServiceDeleteApplicationKeyRequest)
@@ -319,6 +364,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Generates the client secret of an API or OIDC application that belongs to the input project.   Required permissions:    - project.app.write</remarks>
     /// <param name="applicationServiceGenerateClientSecretRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceGenerateClientSecretResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceGenerateClientSecretResponse> GenerateClientSecretAsync(ApplicationServiceGenerateClientSecretRequest applicationServiceGenerateClientSecretRequest)
@@ -329,13 +375,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -343,6 +396,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Generates the client secret of an API or OIDC application that belongs to the input project.   Required permissions:    - project.app.write</remarks>
     /// <param name="applicationServiceGenerateClientSecretRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceGenerateClientSecretResponse>> GenerateClientSecretWithHttpInfoAsync(ApplicationServiceGenerateClientSecretRequest applicationServiceGenerateClientSecretRequest)
@@ -370,6 +424,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Retrieves the application matching the provided ID.   Required permissions:    - project.app.read</remarks>
     /// <param name="applicationServiceGetApplicationRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceGetApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceGetApplicationResponse> GetApplicationAsync(ApplicationServiceGetApplicationRequest applicationServiceGetApplicationRequest)
@@ -380,13 +435,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -394,6 +456,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Retrieves the application matching the provided ID.   Required permissions:    - project.app.read</remarks>
     /// <param name="applicationServiceGetApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceGetApplicationResponse>> GetApplicationWithHttpInfoAsync(ApplicationServiceGetApplicationRequest applicationServiceGetApplicationRequest)
@@ -421,6 +484,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Retrieves the application key matching the provided ID.   Specifying a project, organization and application ID is optional but help with filtering/performance.   Required permissions:    - project.app.read</remarks>
     /// <param name="applicationServiceGetApplicationKeyRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceGetApplicationKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceGetApplicationKeyResponse> GetApplicationKeyAsync(ApplicationServiceGetApplicationKeyRequest applicationServiceGetApplicationKeyRequest)
@@ -431,13 +495,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -445,6 +516,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Retrieves the application key matching the provided ID.   Specifying a project, organization and application ID is optional but help with filtering/performance.   Required permissions:    - project.app.read</remarks>
     /// <param name="applicationServiceGetApplicationKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceGetApplicationKeyResponse>> GetApplicationKeyWithHttpInfoAsync(ApplicationServiceGetApplicationKeyRequest applicationServiceGetApplicationKeyRequest)
@@ -472,6 +544,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns a list of application keys matching the input parameters.   The result can be sorted by id, aggregate, creation date, expiration date, resource owner or type.  It can also be filtered by application, project or organization ID.   Required permissions:    - project.app.read</remarks>
     /// <param name="applicationServiceListApplicationKeysRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceListApplicationKeysResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceListApplicationKeysResponse> ListApplicationKeysAsync(ApplicationServiceListApplicationKeysRequest applicationServiceListApplicationKeysRequest)
@@ -482,13 +555,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -496,6 +576,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns a list of application keys matching the input parameters.   The result can be sorted by id, aggregate, creation date, expiration date, resource owner or type.  It can also be filtered by application, project or organization ID.   Required permissions:    - project.app.read</remarks>
     /// <param name="applicationServiceListApplicationKeysRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceListApplicationKeysResponse>> ListApplicationKeysWithHttpInfoAsync(ApplicationServiceListApplicationKeysRequest applicationServiceListApplicationKeysRequest)
@@ -523,6 +604,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns a list of applications matching the input parameters. The results can be filtered  by project, state, type and name. It can be sorted by id, name, creation date, change date or state.   Required permissions:    - project.app.read</remarks>
     /// <param name="applicationServiceListApplicationsRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceListApplicationsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceListApplicationsResponse> ListApplicationsAsync(ApplicationServiceListApplicationsRequest applicationServiceListApplicationsRequest)
@@ -533,13 +615,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -547,6 +636,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns a list of applications matching the input parameters. The results can be filtered  by project, state, type and name. It can be sorted by id, name, creation date, change date or state.   Required permissions:    - project.app.read</remarks>
     /// <param name="applicationServiceListApplicationsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceListApplicationsResponse>> ListApplicationsWithHttpInfoAsync(ApplicationServiceListApplicationsRequest applicationServiceListApplicationsRequest)
@@ -574,6 +664,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Reactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write</remarks>
     /// <param name="applicationServiceReactivateApplicationRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceReactivateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceReactivateApplicationResponse> ReactivateApplicationAsync(ApplicationServiceReactivateApplicationRequest applicationServiceReactivateApplicationRequest)
@@ -584,13 +675,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -598,6 +696,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Reactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write</remarks>
     /// <param name="applicationServiceReactivateApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceReactivateApplicationResponse>> ReactivateApplicationWithHttpInfoAsync(ApplicationServiceReactivateApplicationRequest applicationServiceReactivateApplicationRequest)
@@ -625,6 +724,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Changes the configuration of an OIDC, API or SAML type application, as well as  the application name, based on the input provided.   Required permissions:    - project.app.write</remarks>
     /// <param name="applicationServiceUpdateApplicationRequest"></param>
+
     /// <returns><![CDATA[ApplicationServiceUpdateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApplicationServiceUpdateApplicationResponse> UpdateApplicationAsync(ApplicationServiceUpdateApplicationRequest applicationServiceUpdateApplicationRequest)
@@ -635,13 +735,20 @@ public class ApplicationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -649,6 +756,7 @@ public class ApplicationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Changes the configuration of an OIDC, API or SAML type application, as well as  the application name, based on the input provided.   Required permissions:    - project.app.write</remarks>
     /// <param name="applicationServiceUpdateApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ApplicationServiceUpdateApplicationResponse>> UpdateApplicationWithHttpInfoAsync(ApplicationServiceUpdateApplicationRequest applicationServiceUpdateApplicationRequest)

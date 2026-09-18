@@ -16,21 +16,18 @@ public class ApplicationServiceDeleteApplicationKeyRequest : IEquatable<Applicat
     /// <summary>
     /// The unique ID of the application key to be deleted.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("keyId")]
     public string? KeyId { get; set; }
 
     /// <summary>
     /// The ID of the application the key belongs to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("applicationId")]
     public string? ApplicationId { get; set; }
 
     /// <summary>
     /// The ID of the project the application belongs to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 

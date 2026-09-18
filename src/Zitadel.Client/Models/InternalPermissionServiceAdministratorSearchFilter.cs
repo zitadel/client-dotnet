@@ -13,47 +13,36 @@ namespace Zitadel.Client.Models;
 
 public class InternalPermissionServiceAdministratorSearchFilter : IEquatable<InternalPermissionServiceAdministratorSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("and")]
     public InternalPermissionServiceAndFilter? And { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("changeDate")]
     public InternalPermissionServiceTimestampFilter? ChangeDate { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("creationDate")]
     public InternalPermissionServiceTimestampFilter? CreationDate { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("inUserIdsFilter")]
     public InternalPermissionServiceInIDsFilter? InUserIdsFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("not")]
     public InternalPermissionServiceNotFilter? Not { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("or")]
     public InternalPermissionServiceOrFilter? Or { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resource")]
     public InternalPermissionServiceResourceFilter? Resource { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("role")]
     public InternalPermissionServiceRoleFilter? Role { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userDisplayName")]
     public InternalPermissionServiceUserDisplayNameFilter? UserDisplayName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userOrganizationId")]
     public InternalPermissionServiceIDFilter? UserOrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userPreferredLoginName")]
     public InternalPermissionServiceUserPreferredLoginNameFilter? UserPreferredLoginName { get; set; }
 

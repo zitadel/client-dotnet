@@ -13,29 +13,24 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceStartIdentityProviderIntentResponse : IEquatable<BetaUserServiceStartIdentityProviderIntentResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaUserServiceDetails? Details { get; set; }
 
     /// <summary>
     /// URL to which the client should redirect
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("authUrl")]
     public string? AuthUrl { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("formData")]
     public BetaUserServiceFormData? FormData { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpIntent")]
     public BetaUserServiceIDPIntent? IdpIntent { get; set; }
 
     /// <summary>
     /// POST call information  Deprecated: Use form_data instead
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("postForm")]
     public byte[]? PostForm { get; set; }
 
@@ -48,7 +43,7 @@ public class BetaUserServiceStartIdentityProviderIntentResponse : IEquatable<Bet
                     && EqualityComparer<string?>.Default.Equals(this.AuthUrl, other.AuthUrl)
                     && EqualityComparer<BetaUserServiceFormData?>.Default.Equals(this.FormData, other.FormData)
                     && EqualityComparer<BetaUserServiceIDPIntent?>.Default.Equals(this.IdpIntent, other.IdpIntent)
-                    && EqualityComparer<byte[]?>.Default.Equals(this.PostForm, other.PostForm));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.PostForm, other.PostForm));
     }
 
     public override bool Equals(object? obj)
@@ -63,7 +58,7 @@ public class BetaUserServiceStartIdentityProviderIntentResponse : IEquatable<Bet
         hash.Add(this.AuthUrl);
         hash.Add(this.FormData);
         hash.Add(this.IdpIntent);
-        hash.Add(this.PostForm);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.PostForm));
         return hash.ToHashCode();
     }
 }

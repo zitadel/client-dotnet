@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class ApplicationServiceUpdateAPIApplicationConfigurationRequest : IEquatable<ApplicationServiceUpdateAPIApplicationConfigurationRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("authMethodType")]
     public ApplicationServiceAPIAuthMethodType? AuthMethodType { get; set; }
 

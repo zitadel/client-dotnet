@@ -16,7 +16,6 @@ public class SessionServiceCheckPassword : IEquatable<SessionServiceCheckPasswor
     /// <summary>
     /// The password of the user to be checked.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public string? Password { get; set; }
 

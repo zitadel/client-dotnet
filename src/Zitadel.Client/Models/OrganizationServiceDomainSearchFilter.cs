@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class OrganizationServiceDomainSearchFilter : IEquatable<OrganizationServiceDomainSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("domainFilter")]
     public OrganizationServiceOrganizationDomainQuery? DomainFilter { get; set; }
 

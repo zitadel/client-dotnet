@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceListAuthenticationFactorsRequest : IEquatable<UserServiceListAuthenticationFactorsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("authFactors")]
     public List<UserServiceAuthFactors>? AuthFactors { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("states")]
     public List<UserServiceAuthFactorState>? States { get; set; }
 
@@ -31,8 +28,8 @@ public class UserServiceListAuthenticationFactorsRequest : IEquatable<UserServic
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<List<UserServiceAuthFactors>?>.Default.Equals(this.AuthFactors, other.AuthFactors)
-                    && EqualityComparer<List<UserServiceAuthFactorState>?>.Default.Equals(this.States, other.States));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.AuthFactors, other.AuthFactors)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.States, other.States));
     }
 
     public override bool Equals(object? obj)
@@ -44,8 +41,8 @@ public class UserServiceListAuthenticationFactorsRequest : IEquatable<UserServic
     {
         HashCode hash = default;
         hash.Add(this.UserId);
-        hash.Add(this.AuthFactors);
-        hash.Add(this.States);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.AuthFactors));
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.States));
         return hash.ToHashCode();
     }
 }

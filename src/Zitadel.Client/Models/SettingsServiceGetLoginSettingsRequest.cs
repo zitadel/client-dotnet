@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class SettingsServiceGetLoginSettingsRequest : IEquatable<SettingsServiceGetLoginSettingsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("ctx")]
     public SettingsServiceRequestContext? Ctx { get; set; }
 

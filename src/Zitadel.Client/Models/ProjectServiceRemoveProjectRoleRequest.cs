@@ -16,14 +16,12 @@ public class ProjectServiceRemoveProjectRoleRequest : IEquatable<ProjectServiceR
     /// <summary>
     /// ProjectID is the unique identifier of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// RoleKey is the key of the role to be removed.  All dependencies of this role will be removed as well, including project grants and user grants.  If the role is not found, the request will return a successful response as the desired state is already achieved.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roleKey")]
     public string? RoleKey { get; set; }
 

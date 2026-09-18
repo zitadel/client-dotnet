@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaInstanceServiceTrustedDomainSearchQuery : IEquatable<BetaInstanceServiceTrustedDomainSearchQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("domainQuery")]
     public BetaInstanceServiceDomainQuery? DomainQuery { get; set; }
 

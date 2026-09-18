@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class ApplicationServiceOIDCLocalizedMessage : IEquatable<ApplicationServiceOIDCLocalizedMessage>
 {
-    /// <example>null</example>
     [JsonPropertyName("key")]
     public string? Key { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("localizedMessage")]
     public string? LocalizedMessage { get; set; }
 

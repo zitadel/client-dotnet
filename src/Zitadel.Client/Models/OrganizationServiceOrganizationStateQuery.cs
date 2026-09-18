@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class OrganizationServiceOrganizationStateQuery : IEquatable<OrganizationServiceOrganizationStateQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("state")]
     public OrganizationServiceOrganizationState? State { get; set; }
 

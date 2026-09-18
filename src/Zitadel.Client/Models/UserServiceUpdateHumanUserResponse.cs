@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceUpdateHumanUserResponse : IEquatable<UserServiceUpdateHumanUserResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("emailCode")]
     public string? EmailCode { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("phoneCode")]
     public string? PhoneCode { get; set; }
 

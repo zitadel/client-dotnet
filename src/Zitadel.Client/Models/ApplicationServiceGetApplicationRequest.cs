@@ -16,7 +16,6 @@ public class ApplicationServiceGetApplicationRequest : IEquatable<ApplicationSer
     /// <summary>
     /// The unique ID of the application to be retrieved.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("applicationId")]
     public string? ApplicationId { get; set; }
 

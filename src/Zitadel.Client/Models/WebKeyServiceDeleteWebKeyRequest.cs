@@ -16,7 +16,6 @@ public class WebKeyServiceDeleteWebKeyRequest : IEquatable<WebKeyServiceDeleteWe
     /// <summary>
     /// The unique identifier of the key to delete.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

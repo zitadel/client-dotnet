@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceCheckPassword : IEquatable<BetaSessionServiceCheckPassword>
 {
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public string? Password { get; set; }
 

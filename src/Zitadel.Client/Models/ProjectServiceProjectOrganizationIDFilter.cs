@@ -16,11 +16,9 @@ public class ProjectServiceProjectOrganizationIDFilter : IEquatable<ProjectServi
     /// <summary>
     /// OrganizationID Is the ID of the organization to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("type")]
     public ProjectServiceType? Type { get; set; }
 

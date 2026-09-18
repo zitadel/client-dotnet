@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaFeatureServiceGetInstanceFeaturesRequest : IEquatable<BetaFeatureServiceGetInstanceFeaturesRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("inheritance")]
     public bool? Inheritance { get; set; }
 

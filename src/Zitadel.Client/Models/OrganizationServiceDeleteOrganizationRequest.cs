@@ -16,7 +16,6 @@ public class OrganizationServiceDeleteOrganizationRequest : IEquatable<Organizat
     /// <summary>
     /// OrganizationID is the unique identifier of the organization to be deleted.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 

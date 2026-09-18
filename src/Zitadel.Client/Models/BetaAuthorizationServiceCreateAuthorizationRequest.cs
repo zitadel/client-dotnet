@@ -16,28 +16,24 @@ public class BetaAuthorizationServiceCreateAuthorizationRequest : IEquatable<Bet
     /// <summary>
     /// UserID is the ID of the user who should be granted the authorization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
     /// <summary>
     /// Project ID is the ID of the project the user should be authorized for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// OrganizationID is the ID of the organization on which the authorization should be created.  The organization must either own the project or have a grant for the project.  If omitted, the authorization is created on the projects organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// RoleKeys are the keys of the roles the user should be granted.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roleKeys")]
     public List<string>? RoleKeys { get; set; }
 
@@ -49,7 +45,7 @@ public class BetaAuthorizationServiceCreateAuthorizationRequest : IEquatable<Bet
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
                     && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.RoleKeys, other.RoleKeys));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.RoleKeys, other.RoleKeys));
     }
 
     public override bool Equals(object? obj)
@@ -63,7 +59,7 @@ public class BetaAuthorizationServiceCreateAuthorizationRequest : IEquatable<Bet
         hash.Add(this.UserId);
         hash.Add(this.ProjectId);
         hash.Add(this.OrganizationId);
-        hash.Add(this.RoleKeys);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.RoleKeys));
         return hash.ToHashCode();
     }
 }

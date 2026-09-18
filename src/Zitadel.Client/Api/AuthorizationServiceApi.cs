@@ -52,6 +52,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>ActivateAuthorization activates an existing but inactive authorization.   In case the authorization is already active, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was activated by the request.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="authorizationServiceActivateAuthorizationRequest"></param>
+
     /// <returns><![CDATA[AuthorizationServiceActivateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<AuthorizationServiceActivateAuthorizationResponse> ActivateAuthorizationAsync(AuthorizationServiceActivateAuthorizationRequest authorizationServiceActivateAuthorizationRequest)
@@ -62,13 +63,20 @@ public class AuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -76,6 +84,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>ActivateAuthorization activates an existing but inactive authorization.   In case the authorization is already active, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was activated by the request.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="authorizationServiceActivateAuthorizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<AuthorizationServiceActivateAuthorizationResponse>> ActivateAuthorizationWithHttpInfoAsync(AuthorizationServiceActivateAuthorizationRequest authorizationServiceActivateAuthorizationRequest)
@@ -103,6 +112,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>CreateAuthorization creates a new authorization for a user in an owned or granted project.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="authorizationServiceCreateAuthorizationRequest"></param>
+
     /// <returns><![CDATA[AuthorizationServiceCreateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<AuthorizationServiceCreateAuthorizationResponse> CreateAuthorizationAsync(AuthorizationServiceCreateAuthorizationRequest authorizationServiceCreateAuthorizationRequest)
@@ -113,13 +123,20 @@ public class AuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -127,6 +144,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>CreateAuthorization creates a new authorization for a user in an owned or granted project.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="authorizationServiceCreateAuthorizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<AuthorizationServiceCreateAuthorizationResponse>> CreateAuthorizationWithHttpInfoAsync(AuthorizationServiceCreateAuthorizationRequest authorizationServiceCreateAuthorizationRequest)
@@ -154,6 +172,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>DeactivateAuthorization deactivates an existing and active authorization.   In case the authorization is already inactive, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was deactivated by the request.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="authorizationServiceDeactivateAuthorizationRequest"></param>
+
     /// <returns><![CDATA[AuthorizationServiceDeactivateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<AuthorizationServiceDeactivateAuthorizationResponse> DeactivateAuthorizationAsync(AuthorizationServiceDeactivateAuthorizationRequest authorizationServiceDeactivateAuthorizationRequest)
@@ -164,13 +183,20 @@ public class AuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -178,6 +204,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>DeactivateAuthorization deactivates an existing and active authorization.   In case the authorization is already inactive, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was deactivated by the request.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="authorizationServiceDeactivateAuthorizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<AuthorizationServiceDeactivateAuthorizationResponse>> DeactivateAuthorizationWithHttpInfoAsync(AuthorizationServiceDeactivateAuthorizationRequest authorizationServiceDeactivateAuthorizationRequest)
@@ -205,6 +232,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>DeleteAuthorization deletes the authorization.   In case the authorization is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the authorization was deleted by the request.   Required permissions:    - \"user.grant.delete\"</remarks>
     /// <param name="authorizationServiceDeleteAuthorizationRequest"></param>
+
     /// <returns><![CDATA[AuthorizationServiceDeleteAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<AuthorizationServiceDeleteAuthorizationResponse> DeleteAuthorizationAsync(AuthorizationServiceDeleteAuthorizationRequest authorizationServiceDeleteAuthorizationRequest)
@@ -215,13 +243,20 @@ public class AuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -229,6 +264,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>DeleteAuthorization deletes the authorization.   In case the authorization is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the authorization was deleted by the request.   Required permissions:    - \"user.grant.delete\"</remarks>
     /// <param name="authorizationServiceDeleteAuthorizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<AuthorizationServiceDeleteAuthorizationResponse>> DeleteAuthorizationWithHttpInfoAsync(AuthorizationServiceDeleteAuthorizationRequest authorizationServiceDeleteAuthorizationRequest)
@@ -256,6 +292,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>ListAuthorizations returns all authorizations matching the request and necessary permissions.   Required permissions:    - \"user.grant.read\"    - no permissions required for listing own authorizations</remarks>
     /// <param name="authorizationServiceListAuthorizationsRequest"></param>
+
     /// <returns><![CDATA[AuthorizationServiceListAuthorizationsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<AuthorizationServiceListAuthorizationsResponse> ListAuthorizationsAsync(AuthorizationServiceListAuthorizationsRequest authorizationServiceListAuthorizationsRequest)
@@ -266,13 +303,20 @@ public class AuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -280,6 +324,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>ListAuthorizations returns all authorizations matching the request and necessary permissions.   Required permissions:    - \"user.grant.read\"    - no permissions required for listing own authorizations</remarks>
     /// <param name="authorizationServiceListAuthorizationsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<AuthorizationServiceListAuthorizationsResponse>> ListAuthorizationsWithHttpInfoAsync(AuthorizationServiceListAuthorizationsRequest authorizationServiceListAuthorizationsRequest)
@@ -307,6 +352,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>UpdateAuthorization updates the authorization.   Note that any role keys previously granted to the user and not present in the request will be revoked.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="authorizationServiceUpdateAuthorizationRequest"></param>
+
     /// <returns><![CDATA[AuthorizationServiceUpdateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<AuthorizationServiceUpdateAuthorizationResponse> UpdateAuthorizationAsync(AuthorizationServiceUpdateAuthorizationRequest authorizationServiceUpdateAuthorizationRequest)
@@ -317,13 +363,20 @@ public class AuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -331,6 +384,7 @@ public class AuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>UpdateAuthorization updates the authorization.   Note that any role keys previously granted to the user and not present in the request will be revoked.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="authorizationServiceUpdateAuthorizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<AuthorizationServiceUpdateAuthorizationResponse>> UpdateAuthorizationWithHttpInfoAsync(AuthorizationServiceUpdateAuthorizationRequest authorizationServiceUpdateAuthorizationRequest)

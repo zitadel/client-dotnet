@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServiceGetLegalAndSupportSettingsResponse : IEquatable<BetaSettingsServiceGetLegalAndSupportSettingsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaSettingsServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("settings")]
     public BetaSettingsServiceLegalAndSupportSettings? Settings { get; set; }
 

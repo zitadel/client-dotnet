@@ -13,23 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class BetaProjectServiceProjectGrantSearchFilter : IEquatable<BetaProjectServiceProjectGrantSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("inProjectIdsFilter")]
     public BetaProjectServiceInIDsFilter? InProjectIdsFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectGrantResourceOwnerFilter")]
     public BetaProjectServiceIDFilter? ProjectGrantResourceOwnerFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectNameFilter")]
     public BetaProjectServiceProjectNameFilter? ProjectNameFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectResourceOwnerFilter")]
     public BetaProjectServiceIDFilter? ProjectResourceOwnerFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("roleKeyFilter")]
     public BetaProjectServiceProjectRoleKeyFilter? RoleKeyFilter { get; set; }
 

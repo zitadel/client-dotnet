@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaActionServiceTargetSearchFilter : IEquatable<BetaActionServiceTargetSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("inTargetIdsFilter")]
     public BetaActionServiceInTargetIDsFilter? InTargetIdsFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("targetNameFilter")]
     public BetaActionServiceTargetNameFilter? TargetNameFilter { get; set; }
 

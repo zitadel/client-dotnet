@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceIDPSAMLAccessInformation : IEquatable<BetaUserServiceIDPSAMLAccessInformation>
 {
-    /// <example>null</example>
     [JsonPropertyName("assertion")]
     public byte[]? Assertion { get; set; }
 
@@ -22,7 +21,7 @@ public class BetaUserServiceIDPSAMLAccessInformation : IEquatable<BetaUserServic
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<byte[]?>.Default.Equals(this.Assertion, other.Assertion));
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Assertion, other.Assertion));
     }
 
     public override bool Equals(object? obj)
@@ -33,7 +32,7 @@ public class BetaUserServiceIDPSAMLAccessInformation : IEquatable<BetaUserServic
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Assertion);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Assertion));
         return hash.ToHashCode();
     }
 }

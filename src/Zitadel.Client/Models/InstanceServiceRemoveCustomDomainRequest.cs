@@ -16,14 +16,12 @@ public class InstanceServiceRemoveCustomDomainRequest : IEquatable<InstanceServi
     /// <summary>
     /// InstanceID is the unique ID of the instance from which the domain will be removed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("instanceId")]
     public string? InstanceId { get; set; }
 
     /// <summary>
     /// CustomDomain is the the domain to remove from the instance.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("customDomain")]
     public string? CustomDomain { get; set; }
 

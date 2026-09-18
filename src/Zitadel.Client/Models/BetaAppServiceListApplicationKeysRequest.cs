@@ -13,23 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceListApplicationKeysRequest : IEquatable<BetaAppServiceListApplicationKeysRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaAppServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public BetaAppServiceApplicationKeysSorting? SortingColumn { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("applicationId")]
     public string? ApplicationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 

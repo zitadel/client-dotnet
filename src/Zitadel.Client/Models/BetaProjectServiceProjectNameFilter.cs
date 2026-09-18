@@ -16,11 +16,9 @@ public class BetaProjectServiceProjectNameFilter : IEquatable<BetaProjectService
     /// <summary>
     /// Defines the name of the project to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectName")]
     public string? ProjectName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaProjectServiceTextFilterMethod? Method { get; set; }
 

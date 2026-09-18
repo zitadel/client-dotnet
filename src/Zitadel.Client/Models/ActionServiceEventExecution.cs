@@ -16,21 +16,18 @@ public class ActionServiceEventExecution : IEquatable<ActionServiceEventExecutio
     /// <summary>
     /// Define all events as condition.  After any event is created, the execution is triggered.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("all")]
     public bool? All { get; set; }
 
     /// <summary>
     /// Define a specific event as condition.  After this event is created, the execution is triggered.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("event")]
     public string? Event { get; set; }
 
     /// <summary>
     /// Define an event group as condition.  After any event under this group is created, the execution is triggered.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("group")]
     public string? Group { get; set; }
 

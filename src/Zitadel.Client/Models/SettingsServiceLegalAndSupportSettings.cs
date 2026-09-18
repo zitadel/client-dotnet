@@ -16,53 +16,45 @@ public class SettingsServiceLegalAndSupportSettings : IEquatable<SettingsService
     /// <summary>
     /// Link to the Terms of Service. Can be a relative or absolute URL.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("tosLink")]
     public string? TosLink { get; set; }
 
     /// <summary>
     /// Link to the Privacy Policy. Can be a relative or absolute URL.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("privacyPolicyLink")]
     public string? PrivacyPolicyLink { get; set; }
 
     /// <summary>
     /// Link to a help page. Can be a relative or absolute URL.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("helpLink")]
     public string? HelpLink { get; set; }
 
     /// <summary>
     /// Email address for support issues.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("supportEmail")]
     public string? SupportEmail { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public SettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 
     /// <summary>
     /// Link to documentation to be shown in the console.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("docsLink")]
     public string? DocsLink { get; set; }
 
     /// <summary>
     /// Link to an external resource that will be available to users in the console.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("customLink")]
     public string? CustomLink { get; set; }
 
     /// <summary>
     /// The button text that would be shown in console pointing to custom link.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("customLinkText")]
     public string? CustomLinkText { get; set; }
 

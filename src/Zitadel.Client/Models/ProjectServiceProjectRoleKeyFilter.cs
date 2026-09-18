@@ -16,11 +16,9 @@ public class ProjectServiceProjectRoleKeyFilter : IEquatable<ProjectServiceProje
     /// <summary>
     /// The key of the project role to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("key")]
     public string? Key { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public ProjectServiceTextFilterMethod? Method { get; set; }
 

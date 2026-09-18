@@ -13,35 +13,27 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceUser : IEquatable<UserServiceUser>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("state")]
     public UserServiceUserState? State { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("username")]
     public string? Username { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("loginNames")]
     public List<string>? LoginNames { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("preferredLoginName")]
     public string? PreferredLoginName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("human")]
     public UserServiceHumanUser? Human { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("machine")]
     public UserServiceMachineUser? Machine { get; set; }
 
@@ -54,7 +46,7 @@ public class UserServiceUser : IEquatable<UserServiceUser>
                     && EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
                     && EqualityComparer<UserServiceUserState?>.Default.Equals(this.State, other.State)
                     && EqualityComparer<string?>.Default.Equals(this.Username, other.Username)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.LoginNames, other.LoginNames)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.LoginNames, other.LoginNames)
                     && EqualityComparer<string?>.Default.Equals(this.PreferredLoginName, other.PreferredLoginName)
                     && EqualityComparer<UserServiceHumanUser?>.Default.Equals(this.Human, other.Human)
                     && EqualityComparer<UserServiceMachineUser?>.Default.Equals(this.Machine, other.Machine));
@@ -72,7 +64,7 @@ public class UserServiceUser : IEquatable<UserServiceUser>
         hash.Add(this.Details);
         hash.Add(this.State);
         hash.Add(this.Username);
-        hash.Add(this.LoginNames);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.LoginNames));
         hash.Add(this.PreferredLoginName);
         hash.Add(this.Human);
         hash.Add(this.Machine);

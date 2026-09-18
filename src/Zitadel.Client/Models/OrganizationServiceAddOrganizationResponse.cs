@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class OrganizationServiceAddOrganizationResponse : IEquatable<OrganizationServiceAddOrganizationResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public OrganizationServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("createdAdmins")]
     public List<OrganizationServiceCreatedAdmin>? CreatedAdmins { get; set; }
 
@@ -32,7 +29,7 @@ public class OrganizationServiceAddOrganizationResponse : IEquatable<Organizatio
             && (ReferenceEquals(this, other)
                 || EqualityComparer<OrganizationServiceDetails?>.Default.Equals(this.Details, other.Details)
                     && EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<List<OrganizationServiceCreatedAdmin>?>.Default.Equals(this.CreatedAdmins, other.CreatedAdmins));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.CreatedAdmins, other.CreatedAdmins));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +42,7 @@ public class OrganizationServiceAddOrganizationResponse : IEquatable<Organizatio
         HashCode hash = default;
         hash.Add(this.Details);
         hash.Add(this.OrganizationId);
-        hash.Add(this.CreatedAdmins);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.CreatedAdmins));
         return hash.ToHashCode();
     }
 }

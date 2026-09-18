@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceUserAgent : IEquatable<BetaSessionServiceUserAgent>
 {
-    /// <example>null</example>
     [JsonPropertyName("fingerprintId")]
     public string? FingerprintId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("ip")]
     public string? Ip { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("description")]
     public string? Description { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("header")]
     public Dictionary<string, BetaSessionServiceHeaderValues>? Header { get; set; }
 
@@ -37,7 +33,7 @@ public class BetaSessionServiceUserAgent : IEquatable<BetaSessionServiceUserAgen
                 || EqualityComparer<string?>.Default.Equals(this.FingerprintId, other.FingerprintId)
                     && EqualityComparer<string?>.Default.Equals(this.Ip, other.Ip)
                     && EqualityComparer<string?>.Default.Equals(this.Description, other.Description)
-                    && EqualityComparer<Dictionary<string, BetaSessionServiceHeaderValues>?>.Default.Equals(this.Header, other.Header));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Header, other.Header));
     }
 
     public override bool Equals(object? obj)
@@ -51,7 +47,7 @@ public class BetaSessionServiceUserAgent : IEquatable<BetaSessionServiceUserAgen
         hash.Add(this.FingerprintId);
         hash.Add(this.Ip);
         hash.Add(this.Description);
-        hash.Add(this.Header);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Header));
         return hash.ToHashCode();
     }
 }

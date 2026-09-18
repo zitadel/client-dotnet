@@ -16,14 +16,12 @@ public class OrganizationServiceSetOrganizationMetadataRequest : IEquatable<Orga
     /// <summary>
     /// Organization ID is the unique identifier of the organization whose metadata is to be set.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// Metadata is a list of metadata entries to set.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("metadata")]
     public List<OrganizationServiceMetadata>? Metadata { get; set; }
 
@@ -33,7 +31,7 @@ public class OrganizationServiceSetOrganizationMetadataRequest : IEquatable<Orga
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<List<OrganizationServiceMetadata>?>.Default.Equals(this.Metadata, other.Metadata));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Metadata, other.Metadata));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +43,7 @@ public class OrganizationServiceSetOrganizationMetadataRequest : IEquatable<Orga
     {
         HashCode hash = default;
         hash.Add(this.OrganizationId);
-        hash.Add(this.Metadata);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Metadata));
         return hash.ToHashCode();
     }
 }

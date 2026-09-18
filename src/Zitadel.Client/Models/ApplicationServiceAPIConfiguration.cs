@@ -16,11 +16,9 @@ public class ApplicationServiceAPIConfiguration : IEquatable<ApplicationServiceA
     /// <summary>
     /// The unique OAuth2 client_id used for authentication of the API,  e.g. at the introspection endpoint.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("clientId")]
     public string? ClientId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("authMethodType")]
     public ApplicationServiceAPIAuthMethodType? AuthMethodType { get; set; }
 

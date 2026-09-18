@@ -16,7 +16,6 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class UserServiceStateQuery : IEquatable<UserServiceStateQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("state")]
     public UserServiceUserState? State { get; set; }
 

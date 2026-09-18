@@ -16,42 +16,36 @@ public class BetaSettingsServiceTheme : IEquatable<BetaSettingsServiceTheme>
     /// <summary>
     /// hex value for primary color
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("primaryColor")]
     public string? PrimaryColor { get; set; }
 
     /// <summary>
     /// hex value for background color
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("backgroundColor")]
     public string? BackgroundColor { get; set; }
 
     /// <summary>
     /// hex value for warning color
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("warnColor")]
     public string? WarnColor { get; set; }
 
     /// <summary>
     /// hex value for font color
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("fontColor")]
     public string? FontColor { get; set; }
 
     /// <summary>
     /// url where the logo is served
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("logoUrl")]
     public string? LogoUrl { get; set; }
 
     /// <summary>
     /// url where the icon is served
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("iconUrl")]
     public string? IconUrl { get; set; }
 

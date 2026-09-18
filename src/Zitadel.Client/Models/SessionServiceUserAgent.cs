@@ -16,25 +16,21 @@ public class SessionServiceUserAgent : IEquatable<SessionServiceUserAgent>
     /// <summary>
     /// FingerprintID is a unique identifier for the user agent's fingerprint.  It can be used to group sessions by device or browser.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("fingerprintId")]
     public string? FingerprintId { get; set; }
 
     /// <summary>
     /// IP is the IP address from which the session was created.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("ip")]
     public string? Ip { get; set; }
 
     /// <summary>
     /// Description is a human-readable description of the user agent.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("description")]
     public string? Description { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("header")]
     public Dictionary<string, SessionServiceHeaderValues>? Header { get; set; }
 
@@ -46,7 +42,7 @@ public class SessionServiceUserAgent : IEquatable<SessionServiceUserAgent>
                 || EqualityComparer<string?>.Default.Equals(this.FingerprintId, other.FingerprintId)
                     && EqualityComparer<string?>.Default.Equals(this.Ip, other.Ip)
                     && EqualityComparer<string?>.Default.Equals(this.Description, other.Description)
-                    && EqualityComparer<Dictionary<string, SessionServiceHeaderValues>?>.Default.Equals(this.Header, other.Header));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Header, other.Header));
     }
 
     public override bool Equals(object? obj)
@@ -60,7 +56,7 @@ public class SessionServiceUserAgent : IEquatable<SessionServiceUserAgent>
         hash.Add(this.FingerprintId);
         hash.Add(this.Ip);
         hash.Add(this.Description);
-        hash.Add(this.Header);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Header));
         return hash.ToHashCode();
     }
 }

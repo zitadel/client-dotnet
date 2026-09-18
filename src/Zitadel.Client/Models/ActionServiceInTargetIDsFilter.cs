@@ -16,7 +16,6 @@ public class ActionServiceInTargetIDsFilter : IEquatable<ActionServiceInTargetID
     /// <summary>
     /// Defines the ids to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("targetIds")]
     public List<string>? TargetIds { get; set; }
 
@@ -25,7 +24,7 @@ public class ActionServiceInTargetIDsFilter : IEquatable<ActionServiceInTargetID
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<string>?>.Default.Equals(this.TargetIds, other.TargetIds));
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.TargetIds, other.TargetIds));
     }
 
     public override bool Equals(object? obj)
@@ -36,7 +35,7 @@ public class ActionServiceInTargetIDsFilter : IEquatable<ActionServiceInTargetID
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.TargetIds);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.TargetIds));
         return hash.ToHashCode();
     }
 }

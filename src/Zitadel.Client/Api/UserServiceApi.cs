@@ -160,6 +160,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: Use [CreateUser](apis/resources/user_service_v2/user-service-create-user.api.mdx) to create a new user of type human instead.   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.</remarks>
     /// <param name="userServiceAddHumanUserRequest"></param>
+
     /// <returns><![CDATA[UserServiceAddHumanUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceAddHumanUserResponse> AddHumanUserAsync(UserServiceAddHumanUserRequest userServiceAddHumanUserRequest)
@@ -170,13 +171,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -184,6 +192,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: Use [CreateUser](apis/resources/user_service_v2/user-service-create-user.api.mdx) to create a new user of type human instead.   Create/import a new user with the type human. The newly created user will get a verification email if either the email address is not marked as verified and you did not request the verification to be returned.</remarks>
     /// <param name="userServiceAddHumanUserRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceAddHumanUserResponse>> AddHumanUserWithHttpInfoAsync(UserServiceAddHumanUserRequest userServiceAddHumanUserRequest)
@@ -211,6 +220,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add link to an identity provider to an user..</remarks>
     /// <param name="userServiceAddIDPLinkRequest"></param>
+
     /// <returns><![CDATA[UserServiceAddIDPLinkResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceAddIDPLinkResponse> AddIDPLinkAsync(UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest)
@@ -221,13 +231,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -235,6 +252,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add link to an identity provider to an user..</remarks>
     /// <param name="userServiceAddIDPLinkRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceAddIDPLinkResponse>> AddIDPLinkWithHttpInfoAsync(UserServiceAddIDPLinkRequest userServiceAddIDPLinkRequest)
@@ -262,6 +280,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add a keys that can be used to securely authenticate at the Zitadel APIs using JWT profile authentication using short-lived tokens.  Make sure you store the returned key safely, as you won't be able to read it from the Zitadel API anymore.  Only users of type machine can have keys.   Required permission:    - user.write</remarks>
     /// <param name="userServiceAddKeyRequest"></param>
+
     /// <returns><![CDATA[UserServiceAddKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceAddKeyResponse> AddKeyAsync(UserServiceAddKeyRequest userServiceAddKeyRequest)
@@ -272,13 +291,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -286,6 +312,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add a keys that can be used to securely authenticate at the Zitadel APIs using JWT profile authentication using short-lived tokens.  Make sure you store the returned key safely, as you won't be able to read it from the Zitadel API anymore.  Only users of type machine can have keys.   Required permission:    - user.write</remarks>
     /// <param name="userServiceAddKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceAddKeyResponse>> AddKeyWithHttpInfoAsync(UserServiceAddKeyRequest userServiceAddKeyRequest)
@@ -313,6 +340,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor..</remarks>
     /// <param name="userServiceAddOTPEmailRequest"></param>
+
     /// <returns><![CDATA[UserServiceAddOTPEmailResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceAddOTPEmailResponse> AddOTPEmailAsync(UserServiceAddOTPEmailRequest userServiceAddOTPEmailRequest)
@@ -323,13 +351,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -337,6 +372,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add a new One-Time Password (OTP) Email factor to the authenticated user. OTP Email will enable the user to verify a OTP with the latest verified email. The email has to be verified to add the second factor..</remarks>
     /// <param name="userServiceAddOTPEmailRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceAddOTPEmailResponse>> AddOTPEmailWithHttpInfoAsync(UserServiceAddOTPEmailRequest userServiceAddOTPEmailRequest)
@@ -364,6 +400,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor..</remarks>
     /// <param name="userServiceAddOTPSMSRequest"></param>
+
     /// <returns><![CDATA[UserServiceAddOTPSMSResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceAddOTPSMSResponse> AddOTPSMSAsync(UserServiceAddOTPSMSRequest userServiceAddOTPSMSRequest)
@@ -374,13 +411,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -388,6 +432,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Add a new One-Time Password (OTP) SMS factor to the authenticated user. OTP SMS will enable the user to verify a OTP with the latest verified phone number. The phone number has to be verified to add the second factor..</remarks>
     /// <param name="userServiceAddOTPSMSRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceAddOTPSMSResponse>> AddOTPSMSWithHttpInfoAsync(UserServiceAddOTPSMSRequest userServiceAddOTPSMSRequest)
@@ -415,6 +460,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Personal access tokens (PAT) are the easiest way to authenticate to the Zitadel APIs.  Make sure you store the returned PAT safely, as you won't be able to read it from the Zitadel API anymore.  Only users of type machine can have personal access tokens.   Required permission:    - user.write</remarks>
     /// <param name="userServiceAddPersonalAccessTokenRequest"></param>
+
     /// <returns><![CDATA[UserServiceAddPersonalAccessTokenResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceAddPersonalAccessTokenResponse> AddPersonalAccessTokenAsync(UserServiceAddPersonalAccessTokenRequest userServiceAddPersonalAccessTokenRequest)
@@ -425,13 +471,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -439,6 +492,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Personal access tokens (PAT) are the easiest way to authenticate to the Zitadel APIs.  Make sure you store the returned PAT safely, as you won't be able to read it from the Zitadel API anymore.  Only users of type machine can have personal access tokens.   Required permission:    - user.write</remarks>
     /// <param name="userServiceAddPersonalAccessTokenRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceAddPersonalAccessTokenResponse>> AddPersonalAccessTokenWithHttpInfoAsync(UserServiceAddPersonalAccessTokenRequest userServiceAddPersonalAccessTokenRequest)
@@ -466,6 +520,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Generates a client secret for the user.  The client id is the users username.  If the user already has a secret, it is overwritten.  Only users of type machine can have a secret.   Required permission:    - user.write</remarks>
     /// <param name="userServiceAddSecretRequest"></param>
+
     /// <returns><![CDATA[UserServiceAddSecretResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceAddSecretResponse> AddSecretAsync(UserServiceAddSecretRequest userServiceAddSecretRequest)
@@ -476,13 +531,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -490,6 +552,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Generates a client secret for the user.  The client id is the users username.  If the user already has a secret, it is overwritten.  Only users of type machine can have a secret.   Required permission:    - user.write</remarks>
     /// <param name="userServiceAddSecretRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceAddSecretResponse>> AddSecretWithHttpInfoAsync(UserServiceAddSecretRequest userServiceAddSecretRequest)
@@ -517,6 +580,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization's available methods.  If an invite code has been created previously, it's url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.  Note: It is possible to reissue a new code only when the previous code has expired, or when the user provides a wrong code three or more times during verification.</remarks>
     /// <param name="userServiceCreateInviteCodeRequest"></param>
+
     /// <returns><![CDATA[UserServiceCreateInviteCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceCreateInviteCodeResponse> CreateInviteCodeAsync(UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest)
@@ -527,13 +591,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -541,6 +612,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization's available methods.  If an invite code has been created previously, it's url template and application name will be used as defaults for the new code.  The new code will overwrite the previous one and make it invalid.  Note: It is possible to reissue a new code only when the previous code has expired, or when the user provides a wrong code three or more times during verification.</remarks>
     /// <param name="userServiceCreateInviteCodeRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceCreateInviteCodeResponse>> CreateInviteCodeWithHttpInfoAsync(UserServiceCreateInviteCodeRequest userServiceCreateInviteCodeRequest)
@@ -568,6 +640,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a passkey registration link which includes a code and either return it or send it to the user..</remarks>
     /// <param name="userServiceCreatePasskeyRegistrationLinkRequest"></param>
+
     /// <returns><![CDATA[UserServiceCreatePasskeyRegistrationLinkResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceCreatePasskeyRegistrationLinkResponse> CreatePasskeyRegistrationLinkAsync(UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest)
@@ -578,13 +651,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -592,6 +672,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a passkey registration link which includes a code and either return it or send it to the user..</remarks>
     /// <param name="userServiceCreatePasskeyRegistrationLinkRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceCreatePasskeyRegistrationLinkResponse>> CreatePasskeyRegistrationLinkWithHttpInfoAsync(UserServiceCreatePasskeyRegistrationLinkRequest userServiceCreatePasskeyRegistrationLinkRequest)
@@ -619,6 +700,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new human or machine user in the specified organization.   Required permission:    - user.write</remarks>
     /// <param name="userServiceCreateUserRequest"></param>
+
     /// <returns><![CDATA[UserServiceCreateUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceCreateUserResponse> CreateUserAsync(UserServiceCreateUserRequest userServiceCreateUserRequest)
@@ -629,13 +711,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -643,6 +732,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new human or machine user in the specified organization.   Required permission:    - user.write</remarks>
     /// <param name="userServiceCreateUserRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceCreateUserResponse>> CreateUserWithHttpInfoAsync(UserServiceCreateUserRequest userServiceCreateUserRequest)
@@ -670,6 +760,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>The state of the user will be changed to 'deactivated'. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state 'deactivated'. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data..</remarks>
     /// <param name="userServiceDeactivateUserRequest"></param>
+
     /// <returns><![CDATA[UserServiceDeactivateUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceDeactivateUserResponse> DeactivateUserAsync(UserServiceDeactivateUserRequest userServiceDeactivateUserRequest)
@@ -680,13 +771,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -694,6 +792,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>The state of the user will be changed to 'deactivated'. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state 'deactivated'. Use deactivate user when the user should not be able to use the account anymore, but you still need access to the user data..</remarks>
     /// <param name="userServiceDeactivateUserRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceDeactivateUserResponse>> DeactivateUserWithHttpInfoAsync(UserServiceDeactivateUserRequest userServiceDeactivateUserRequest)
@@ -721,6 +820,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>The state of the user will be changed to 'deleted'. The user will not be able to log in anymore. Endpoints requesting this user will return an error 'User not found..</remarks>
     /// <param name="userServiceDeleteUserRequest"></param>
+
     /// <returns><![CDATA[UserServiceDeleteUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceDeleteUserResponse> DeleteUserAsync(UserServiceDeleteUserRequest userServiceDeleteUserRequest)
@@ -731,13 +831,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -745,6 +852,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>The state of the user will be changed to 'deleted'. The user will not be able to log in anymore. Endpoints requesting this user will return an error 'User not found..</remarks>
     /// <param name="userServiceDeleteUserRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceDeleteUserResponse>> DeleteUserWithHttpInfoAsync(UserServiceDeleteUserRequest userServiceDeleteUserRequest)
@@ -772,6 +880,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete metadata objects from an user with a specific key.   Required permission:   - `user.write`</remarks>
     /// <param name="userServiceDeleteUserMetadataRequest"></param>
+
     /// <returns><![CDATA[UserServiceDeleteUserMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceDeleteUserMetadataResponse> DeleteUserMetadataAsync(UserServiceDeleteUserMetadataRequest userServiceDeleteUserMetadataRequest)
@@ -782,13 +891,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -796,6 +912,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete metadata objects from an user with a specific key.   Required permission:   - `user.write`</remarks>
     /// <param name="userServiceDeleteUserMetadataRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceDeleteUserMetadataResponse>> DeleteUserMetadataWithHttpInfoAsync(UserServiceDeleteUserMetadataRequest userServiceDeleteUserMetadataRequest)
@@ -823,6 +940,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Generate new single-use recovery codes for the authenticated user. Recovery codes can be used to recover access to the account if other second factors are not available.</remarks>
     /// <param name="userServiceGenerateRecoveryCodesRequest"></param>
+
     /// <returns><![CDATA[UserServiceGenerateRecoveryCodesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceGenerateRecoveryCodesResponse> GenerateRecoveryCodesAsync(UserServiceGenerateRecoveryCodesRequest userServiceGenerateRecoveryCodesRequest)
@@ -833,13 +951,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -847,6 +972,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Generate new single-use recovery codes for the authenticated user. Recovery codes can be used to recover access to the account if other second factors are not available.</remarks>
     /// <param name="userServiceGenerateRecoveryCodesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceGenerateRecoveryCodesResponse>> GenerateRecoveryCodesWithHttpInfoAsync(UserServiceGenerateRecoveryCodesRequest userServiceGenerateRecoveryCodesRequest)
@@ -874,6 +1000,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the full user object (human or machine) including the profile, email, etc..</remarks>
     /// <param name="userServiceGetUserByIDRequest"></param>
+
     /// <returns><![CDATA[UserServiceGetUserByIDResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceGetUserByIDResponse> GetUserByIDAsync(UserServiceGetUserByIDRequest userServiceGetUserByIDRequest)
@@ -884,13 +1011,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -898,6 +1032,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the full user object (human or machine) including the profile, email, etc..</remarks>
     /// <param name="userServiceGetUserByIDRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceGetUserByIDResponse>> GetUserByIDWithHttpInfoAsync(UserServiceGetUserByIDRequest userServiceGetUserByIDRequest)
@@ -925,6 +1060,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Update the last time the user has skipped MFA initialization. The server timestamp is used.</remarks>
     /// <param name="userServiceHumanMFAInitSkippedRequest"></param>
+
     /// <returns><![CDATA[UserServiceHumanMFAInitSkippedResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceHumanMFAInitSkippedResponse> HumanMFAInitSkippedAsync(UserServiceHumanMFAInitSkippedRequest userServiceHumanMFAInitSkippedRequest)
@@ -935,13 +1071,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -949,6 +1092,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Update the last time the user has skipped MFA initialization. The server timestamp is used.</remarks>
     /// <param name="userServiceHumanMFAInitSkippedRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceHumanMFAInitSkippedResponse>> HumanMFAInitSkippedWithHttpInfoAsync(UserServiceHumanMFAInitSkippedRequest userServiceHumanMFAInitSkippedRequest)
@@ -975,6 +1119,7 @@ public class UserServiceApi : BaseApi
     /// ListAuthenticationFactors
     /// </summary>
     /// <param name="userServiceListAuthenticationFactorsRequest"></param>
+
     /// <returns><![CDATA[UserServiceListAuthenticationFactorsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceListAuthenticationFactorsResponse> ListAuthenticationFactorsAsync(UserServiceListAuthenticationFactorsRequest userServiceListAuthenticationFactorsRequest)
@@ -985,19 +1130,27 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
     /// ListAuthenticationFactors (with HTTP info)
     /// </summary>
     /// <param name="userServiceListAuthenticationFactorsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceListAuthenticationFactorsResponse>> ListAuthenticationFactorsWithHttpInfoAsync(UserServiceListAuthenticationFactorsRequest userServiceListAuthenticationFactorsRequest)
@@ -1025,6 +1178,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all possible authentication methods of a user like password, passwordless, (T)OTP and more..</remarks>
     /// <param name="userServiceListAuthenticationMethodTypesRequest"></param>
+
     /// <returns><![CDATA[UserServiceListAuthenticationMethodTypesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceListAuthenticationMethodTypesResponse> ListAuthenticationMethodTypesAsync(UserServiceListAuthenticationMethodTypesRequest userServiceListAuthenticationMethodTypesRequest)
@@ -1035,13 +1189,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1049,6 +1210,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all possible authentication methods of a user like password, passwordless, (T)OTP and more..</remarks>
     /// <param name="userServiceListAuthenticationMethodTypesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceListAuthenticationMethodTypesResponse>> ListAuthenticationMethodTypesWithHttpInfoAsync(UserServiceListAuthenticationMethodTypesRequest userServiceListAuthenticationMethodTypesRequest)
@@ -1076,6 +1238,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List links to an identity provider of an user.</remarks>
     /// <param name="userServiceListIDPLinksRequest"></param>
+
     /// <returns><![CDATA[UserServiceListIDPLinksResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceListIDPLinksResponse> ListIDPLinksAsync(UserServiceListIDPLinksRequest userServiceListIDPLinksRequest)
@@ -1086,13 +1249,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1100,6 +1270,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List links to an identity provider of an user.</remarks>
     /// <param name="userServiceListIDPLinksRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceListIDPLinksResponse>> ListIDPLinksWithHttpInfoAsync(UserServiceListIDPLinksRequest userServiceListIDPLinksRequest)
@@ -1127,6 +1298,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all matching keys. By default all keys of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read</remarks>
     /// <param name="userServiceListKeysRequest"></param>
+
     /// <returns><![CDATA[UserServiceListKeysResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceListKeysResponse> ListKeysAsync(UserServiceListKeysRequest userServiceListKeysRequest)
@@ -1137,13 +1309,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1151,6 +1330,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all matching keys. By default all keys of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read</remarks>
     /// <param name="userServiceListKeysRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceListKeysResponse>> ListKeysWithHttpInfoAsync(UserServiceListKeysRequest userServiceListKeysRequest)
@@ -1178,6 +1358,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List passkeys of an user</remarks>
     /// <param name="userServiceListPasskeysRequest"></param>
+
     /// <returns><![CDATA[UserServiceListPasskeysResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceListPasskeysResponse> ListPasskeysAsync(UserServiceListPasskeysRequest userServiceListPasskeysRequest)
@@ -1188,13 +1369,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1202,6 +1390,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List passkeys of an user</remarks>
     /// <param name="userServiceListPasskeysRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceListPasskeysResponse>> ListPasskeysWithHttpInfoAsync(UserServiceListPasskeysRequest userServiceListPasskeysRequest)
@@ -1229,6 +1418,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all personal access tokens. By default all personal access tokens of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read</remarks>
     /// <param name="userServiceListPersonalAccessTokensRequest"></param>
+
     /// <returns><![CDATA[UserServiceListPersonalAccessTokensResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceListPersonalAccessTokensResponse> ListPersonalAccessTokensAsync(UserServiceListPersonalAccessTokensRequest userServiceListPersonalAccessTokensRequest)
@@ -1239,13 +1429,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1253,6 +1450,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all personal access tokens. By default all personal access tokens of the instance on which the caller has permission to read the owning users are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - user.read</remarks>
     /// <param name="userServiceListPersonalAccessTokensRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceListPersonalAccessTokensResponse>> ListPersonalAccessTokensWithHttpInfoAsync(UserServiceListPersonalAccessTokensRequest userServiceListPersonalAccessTokensRequest)
@@ -1280,6 +1478,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List metadata of an user filtered by query.   Required permission:   - `user.read`</remarks>
     /// <param name="userServiceListUserMetadataRequest"></param>
+
     /// <returns><![CDATA[UserServiceListUserMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceListUserMetadataResponse> ListUserMetadataAsync(UserServiceListUserMetadataRequest userServiceListUserMetadataRequest)
@@ -1290,13 +1489,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1304,6 +1510,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>List metadata of an user filtered by query.   Required permission:   - `user.read`</remarks>
     /// <param name="userServiceListUserMetadataRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceListUserMetadataResponse>> ListUserMetadataWithHttpInfoAsync(UserServiceListUserMetadataRequest userServiceListUserMetadataRequest)
@@ -1331,6 +1538,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.</remarks>
     /// <param name="userServiceListUsersRequest"></param>
+
     /// <returns><![CDATA[UserServiceListUsersResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceListUsersResponse> ListUsersAsync(UserServiceListUsersRequest userServiceListUsersRequest)
@@ -1341,13 +1549,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1355,6 +1570,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Search for users. By default, we will return all users of your instance that you have permission to read. Make sure to include a limit and sorting for pagination.</remarks>
     /// <param name="userServiceListUsersRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceListUsersResponse>> ListUsersWithHttpInfoAsync(UserServiceListUsersRequest userServiceListUsersRequest)
@@ -1382,6 +1598,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>The state of the user will be changed to 'locked'. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state 'locked'. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..</remarks>
     /// <param name="userServiceLockUserRequest"></param>
+
     /// <returns><![CDATA[UserServiceLockUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceLockUserResponse> LockUserAsync(UserServiceLockUserRequest userServiceLockUserRequest)
@@ -1392,13 +1609,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1406,6 +1630,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>The state of the user will be changed to 'locked'. The user will not be able to log in anymore. The endpoint returns an error if the user is already in the state 'locked'. Use this endpoint if the user should not be able to log in temporarily because of an event that happened (wrong password, etc.)..</remarks>
     /// <param name="userServiceLockUserRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceLockUserResponse>> LockUserWithHttpInfoAsync(UserServiceLockUserRequest userServiceLockUserRequest)
@@ -1433,6 +1658,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Request a code to reset a password..</remarks>
     /// <param name="userServicePasswordResetRequest"></param>
+
     /// <returns><![CDATA[UserServicePasswordResetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServicePasswordResetResponse> PasswordResetAsync(UserServicePasswordResetRequest userServicePasswordResetRequest)
@@ -1443,13 +1669,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1457,6 +1690,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Request a code to reset a password..</remarks>
     /// <param name="userServicePasswordResetRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServicePasswordResetResponse>> PasswordResetWithHttpInfoAsync(UserServicePasswordResetRequest userServicePasswordResetRequest)
@@ -1484,6 +1718,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Reactivate a user with the state 'deactivated'. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state 'deactivated'..</remarks>
     /// <param name="userServiceReactivateUserRequest"></param>
+
     /// <returns><![CDATA[UserServiceReactivateUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceReactivateUserResponse> ReactivateUserAsync(UserServiceReactivateUserRequest userServiceReactivateUserRequest)
@@ -1494,13 +1729,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1508,6 +1750,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Reactivate a user with the state 'deactivated'. The user will be able to log in again afterward. The endpoint returns an error if the user is not in the state 'deactivated'..</remarks>
     /// <param name="userServiceReactivateUserRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceReactivateUserResponse>> ReactivateUserWithHttpInfoAsync(UserServiceReactivateUserRequest userServiceReactivateUserRequest)
@@ -1535,6 +1778,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey..</remarks>
     /// <param name="userServiceRegisterPasskeyRequest"></param>
+
     /// <returns><![CDATA[UserServiceRegisterPasskeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRegisterPasskeyResponse> RegisterPasskeyAsync(UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest)
@@ -1545,13 +1789,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1559,6 +1810,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Start the registration of a passkey for a user, as a response the public key credential creation options are returned, which are used to verify the passkey..</remarks>
     /// <param name="userServiceRegisterPasskeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRegisterPasskeyResponse>> RegisterPasskeyWithHttpInfoAsync(UserServiceRegisterPasskeyRequest userServiceRegisterPasskeyRequest)
@@ -1586,6 +1838,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device..</remarks>
     /// <param name="userServiceRegisterTOTPRequest"></param>
+
     /// <returns><![CDATA[UserServiceRegisterTOTPResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRegisterTOTPResponse> RegisterTOTPAsync(UserServiceRegisterTOTPRequest userServiceRegisterTOTPRequest)
@@ -1596,13 +1849,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1610,6 +1870,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Start the registration of a TOTP generator for a user, as a response a secret returned, which is used to initialize a TOTP app or device..</remarks>
     /// <param name="userServiceRegisterTOTPRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRegisterTOTPResponse>> RegisterTOTPWithHttpInfoAsync(UserServiceRegisterTOTPRequest userServiceRegisterTOTPRequest)
@@ -1637,6 +1898,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token..</remarks>
     /// <param name="userServiceRegisterU2FRequest"></param>
+
     /// <returns><![CDATA[UserServiceRegisterU2FResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRegisterU2FResponse> RegisterU2FAsync(UserServiceRegisterU2FRequest userServiceRegisterU2FRequest)
@@ -1647,13 +1909,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1661,6 +1930,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Start the registration of a u2f token for a user, as a response the public key credential creation options are returned, which are used to verify the u2f token..</remarks>
     /// <param name="userServiceRegisterU2FRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRegisterU2FResponse>> RegisterU2FWithHttpInfoAsync(UserServiceRegisterU2FRequest userServiceRegisterU2FRequest)
@@ -1688,6 +1958,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove link of an identity provider to an user.</remarks>
     /// <param name="userServiceRemoveIDPLinkRequest"></param>
+
     /// <returns><![CDATA[UserServiceRemoveIDPLinkResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRemoveIDPLinkResponse> RemoveIDPLinkAsync(UserServiceRemoveIDPLinkRequest userServiceRemoveIDPLinkRequest)
@@ -1698,13 +1969,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1712,6 +1990,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove link of an identity provider to an user.</remarks>
     /// <param name="userServiceRemoveIDPLinkRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRemoveIDPLinkResponse>> RemoveIDPLinkWithHttpInfoAsync(UserServiceRemoveIDPLinkRequest userServiceRemoveIDPLinkRequest)
@@ -1739,6 +2018,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove a machine users key by the given key ID and an optionally given user ID.   Required permission:    - user.write</remarks>
     /// <param name="userServiceRemoveKeyRequest"></param>
+
     /// <returns><![CDATA[UserServiceRemoveKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRemoveKeyResponse> RemoveKeyAsync(UserServiceRemoveKeyRequest userServiceRemoveKeyRequest)
@@ -1749,13 +2029,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1763,6 +2050,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove a machine users key by the given key ID and an optionally given user ID.   Required permission:    - user.write</remarks>
     /// <param name="userServiceRemoveKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRemoveKeyResponse>> RemoveKeyWithHttpInfoAsync(UserServiceRemoveKeyRequest userServiceRemoveKeyRequest)
@@ -1790,6 +2078,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.</remarks>
     /// <param name="userServiceRemoveOTPEmailRequest"></param>
+
     /// <returns><![CDATA[UserServiceRemoveOTPEmailResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRemoveOTPEmailResponse> RemoveOTPEmailAsync(UserServiceRemoveOTPEmailRequest userServiceRemoveOTPEmailRequest)
@@ -1800,13 +2089,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1814,6 +2110,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove the configured One-Time Password (OTP) Email factor of a user. As only one OTP Email per user is allowed, the user will not have OTP Email as a second factor afterward.</remarks>
     /// <param name="userServiceRemoveOTPEmailRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRemoveOTPEmailResponse>> RemoveOTPEmailWithHttpInfoAsync(UserServiceRemoveOTPEmailRequest userServiceRemoveOTPEmailRequest)
@@ -1841,6 +2138,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.</remarks>
     /// <param name="userServiceRemoveOTPSMSRequest"></param>
+
     /// <returns><![CDATA[UserServiceRemoveOTPSMSResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRemoveOTPSMSResponse> RemoveOTPSMSAsync(UserServiceRemoveOTPSMSRequest userServiceRemoveOTPSMSRequest)
@@ -1851,13 +2149,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1865,6 +2170,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove the configured One-Time Password (OTP) SMS factor of a user. As only one OTP SMS per user is allowed, the user will not have OTP SMS as a second factor afterward.</remarks>
     /// <param name="userServiceRemoveOTPSMSRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRemoveOTPSMSResponse>> RemoveOTPSMSWithHttpInfoAsync(UserServiceRemoveOTPSMSRequest userServiceRemoveOTPSMSRequest)
@@ -1892,6 +2198,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove passkey from a user.</remarks>
     /// <param name="userServiceRemovePasskeyRequest"></param>
+
     /// <returns><![CDATA[UserServiceRemovePasskeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRemovePasskeyResponse> RemovePasskeyAsync(UserServiceRemovePasskeyRequest userServiceRemovePasskeyRequest)
@@ -1902,13 +2209,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1916,6 +2230,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove passkey from a user.</remarks>
     /// <param name="userServiceRemovePasskeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRemovePasskeyResponse>> RemovePasskeyWithHttpInfoAsync(UserServiceRemovePasskeyRequest userServiceRemovePasskeyRequest)
@@ -1943,6 +2258,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Removes a machine users personal access token by the given token ID and an optionally given user ID.   Required permission:    - user.write</remarks>
     /// <param name="userServiceRemovePersonalAccessTokenRequest"></param>
+
     /// <returns><![CDATA[UserServiceRemovePersonalAccessTokenResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRemovePersonalAccessTokenResponse> RemovePersonalAccessTokenAsync(UserServiceRemovePersonalAccessTokenRequest userServiceRemovePersonalAccessTokenRequest)
@@ -1953,13 +2269,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -1967,6 +2290,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Removes a machine users personal access token by the given token ID and an optionally given user ID.   Required permission:    - user.write</remarks>
     /// <param name="userServiceRemovePersonalAccessTokenRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRemovePersonalAccessTokenResponse>> RemovePersonalAccessTokenWithHttpInfoAsync(UserServiceRemovePersonalAccessTokenRequest userServiceRemovePersonalAccessTokenRequest)
@@ -1994,6 +2318,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx) to remove the phone number.   Delete the phone number of a user.</remarks>
     /// <param name="userServiceRemovePhoneRequest"></param>
+
     /// <returns><![CDATA[UserServiceRemovePhoneResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRemovePhoneResponse> RemovePhoneAsync(UserServiceRemovePhoneRequest userServiceRemovePhoneRequest)
@@ -2004,13 +2329,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2018,6 +2350,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx) to remove the phone number.   Delete the phone number of a user.</remarks>
     /// <param name="userServiceRemovePhoneRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRemovePhoneResponse>> RemovePhoneWithHttpInfoAsync(UserServiceRemovePhoneRequest userServiceRemovePhoneRequest)
@@ -2045,6 +2378,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove all recovery codes from the authenticated user. This will disable the recovery code second factor.</remarks>
     /// <param name="userServiceRemoveRecoveryCodesRequest"></param>
+
     /// <returns><![CDATA[UserServiceRemoveRecoveryCodesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRemoveRecoveryCodesResponse> RemoveRecoveryCodesAsync(UserServiceRemoveRecoveryCodesRequest userServiceRemoveRecoveryCodesRequest)
@@ -2055,13 +2389,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2069,6 +2410,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove all recovery codes from the authenticated user. This will disable the recovery code second factor.</remarks>
     /// <param name="userServiceRemoveRecoveryCodesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRemoveRecoveryCodesResponse>> RemoveRecoveryCodesWithHttpInfoAsync(UserServiceRemoveRecoveryCodesRequest userServiceRemoveRecoveryCodesRequest)
@@ -2096,6 +2438,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove the current client ID and client secret from a machine user.   Required permission:    - user.write</remarks>
     /// <param name="userServiceRemoveSecretRequest"></param>
+
     /// <returns><![CDATA[UserServiceRemoveSecretResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRemoveSecretResponse> RemoveSecretAsync(UserServiceRemoveSecretRequest userServiceRemoveSecretRequest)
@@ -2106,13 +2449,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2120,6 +2470,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove the current client ID and client secret from a machine user.   Required permission:    - user.write</remarks>
     /// <param name="userServiceRemoveSecretRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRemoveSecretResponse>> RemoveSecretWithHttpInfoAsync(UserServiceRemoveSecretRequest userServiceRemoveSecretRequest)
@@ -2147,6 +2498,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.</remarks>
     /// <param name="userServiceRemoveTOTPRequest"></param>
+
     /// <returns><![CDATA[UserServiceRemoveTOTPResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRemoveTOTPResponse> RemoveTOTPAsync(UserServiceRemoveTOTPRequest userServiceRemoveTOTPRequest)
@@ -2157,13 +2509,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2171,6 +2530,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove the configured TOTP generator of a user. As only one TOTP generator per user is allowed, the user will not have TOTP as a second factor afterward.</remarks>
     /// <param name="userServiceRemoveTOTPRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRemoveTOTPResponse>> RemoveTOTPWithHttpInfoAsync(UserServiceRemoveTOTPRequest userServiceRemoveTOTPRequest)
@@ -2198,6 +2558,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove u2f token from a user.</remarks>
     /// <param name="userServiceRemoveU2FRequest"></param>
+
     /// <returns><![CDATA[UserServiceRemoveU2FResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRemoveU2FResponse> RemoveU2FAsync(UserServiceRemoveU2FRequest userServiceRemoveU2FRequest)
@@ -2208,13 +2569,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2222,6 +2590,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Remove u2f token from a user.</remarks>
     /// <param name="userServiceRemoveU2FRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRemoveU2FResponse>> RemoveU2FWithHttpInfoAsync(UserServiceRemoveU2FRequest userServiceRemoveU2FRequest)
@@ -2249,6 +2618,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Resend code to verify user email</remarks>
     /// <param name="userServiceResendEmailCodeRequest"></param>
+
     /// <returns><![CDATA[UserServiceResendEmailCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceResendEmailCodeResponse> ResendEmailCodeAsync(UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest)
@@ -2259,13 +2629,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2273,6 +2650,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Resend code to verify user email</remarks>
     /// <param name="userServiceResendEmailCodeRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceResendEmailCodeResponse>> ResendEmailCodeWithHttpInfoAsync(UserServiceResendEmailCodeRequest userServiceResendEmailCodeRequest)
@@ -2300,6 +2678,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: Use [CreateInviteCode](apis/resources/user_service_v2/user-service-create-invite-code.api.mdx) instead.   Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization's available methods.  A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.</remarks>
     /// <param name="userServiceResendInviteCodeRequest"></param>
+
     /// <returns><![CDATA[UserServiceResendInviteCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceResendInviteCodeResponse> ResendInviteCodeAsync(UserServiceResendInviteCodeRequest userServiceResendInviteCodeRequest)
@@ -2310,13 +2689,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2324,6 +2710,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: Use [CreateInviteCode](apis/resources/user_service_v2/user-service-create-invite-code.api.mdx) instead.   Resend an invite code for a user to initialize their first authentication method (password, passkeys, IdP) depending on the organization's available methods.  A resend is only possible if a code has been created previously and sent to the user. If there is no code or it was directly returned, an error will be returned.</remarks>
     /// <param name="userServiceResendInviteCodeRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceResendInviteCodeResponse>> ResendInviteCodeWithHttpInfoAsync(UserServiceResendInviteCodeRequest userServiceResendInviteCodeRequest)
@@ -2351,6 +2738,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Resend code to verify user phone number.</remarks>
     /// <param name="userServiceResendPhoneCodeRequest"></param>
+
     /// <returns><![CDATA[UserServiceResendPhoneCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceResendPhoneCodeResponse> ResendPhoneCodeAsync(UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest)
@@ -2361,13 +2749,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2375,6 +2770,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Resend code to verify user phone number.</remarks>
     /// <param name="userServiceResendPhoneCodeRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceResendPhoneCodeResponse>> ResendPhoneCodeWithHttpInfoAsync(UserServiceResendPhoneCodeRequest userServiceResendPhoneCodeRequest)
@@ -2402,6 +2798,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Retrieve the information returned by the identity provider for registration or updating an existing user with new information..</remarks>
     /// <param name="userServiceRetrieveIdentityProviderIntentRequest"></param>
+
     /// <returns><![CDATA[UserServiceRetrieveIdentityProviderIntentResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceRetrieveIdentityProviderIntentResponse> RetrieveIdentityProviderIntentAsync(UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest)
@@ -2412,13 +2809,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2426,6 +2830,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Retrieve the information returned by the identity provider for registration or updating an existing user with new information..</remarks>
     /// <param name="userServiceRetrieveIdentityProviderIntentRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceRetrieveIdentityProviderIntentResponse>> RetrieveIdentityProviderIntentWithHttpInfoAsync(UserServiceRetrieveIdentityProviderIntentRequest userServiceRetrieveIdentityProviderIntentRequest)
@@ -2453,6 +2858,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Send code to verify user email</remarks>
     /// <param name="userServiceSendEmailCodeRequest"></param>
+
     /// <returns><![CDATA[UserServiceSendEmailCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceSendEmailCodeResponse> SendEmailCodeAsync(UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest)
@@ -2463,13 +2869,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2477,6 +2890,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Send code to verify user email</remarks>
     /// <param name="userServiceSendEmailCodeRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceSendEmailCodeResponse>> SendEmailCodeWithHttpInfoAsync(UserServiceSendEmailCodeRequest userServiceSendEmailCodeRequest)
@@ -2504,6 +2918,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: [Update the users email field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..</remarks>
     /// <param name="userServiceSetEmailRequest"></param>
+
     /// <returns><![CDATA[UserServiceSetEmailResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceSetEmailResponse> SetEmailAsync(UserServiceSetEmailRequest userServiceSetEmailRequest)
@@ -2514,13 +2929,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2528,6 +2950,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: [Update the users email field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Change the email address of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by email..</remarks>
     /// <param name="userServiceSetEmailRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceSetEmailResponse>> SetEmailWithHttpInfoAsync(UserServiceSetEmailRequest userServiceSetEmailRequest)
@@ -2555,6 +2978,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: [Update the users password](apis/resources/user_service_v2/user-service-update-user.api.mdx) instead.   Change the password of a user with either a verification code or the current password..</remarks>
     /// <param name="userServiceSetPasswordRequest"></param>
+
     /// <returns><![CDATA[UserServiceSetPasswordResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceSetPasswordResponse> SetPasswordAsync(UserServiceSetPasswordRequest userServiceSetPasswordRequest)
@@ -2565,13 +2989,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2579,6 +3010,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: [Update the users password](apis/resources/user_service_v2/user-service-update-user.api.mdx) instead.   Change the password of a user with either a verification code or the current password..</remarks>
     /// <param name="userServiceSetPasswordRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceSetPasswordResponse>> SetPasswordWithHttpInfoAsync(UserServiceSetPasswordRequest userServiceSetPasswordRequest)
@@ -2606,6 +3038,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..</remarks>
     /// <param name="userServiceSetPhoneRequest"></param>
+
     /// <returns><![CDATA[UserServiceSetPhoneResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceSetPhoneResponse> SetPhoneAsync(UserServiceSetPhoneRequest userServiceSetPhoneRequest)
@@ -2616,13 +3049,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2630,6 +3070,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: [Update the users phone field](apis/resources/user_service_v2/user-service-update-user.api.mdx).   Set the phone number of a user. If the state is set to not verified, a verification code will be generated, which can be either returned or sent to the user by sms..</remarks>
     /// <param name="userServiceSetPhoneRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceSetPhoneResponse>> SetPhoneWithHttpInfoAsync(UserServiceSetPhoneRequest userServiceSetPhoneRequest)
@@ -2657,6 +3098,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Sets a list of key value pairs. Existing metadata entries with matching keys are overwritten. Existing metadata entries without matching keys are untouched. To remove metadata entries, use [DeleteUserMetadata](apis/resources/user_service_v2/user-service-delete-user-metadata.api.mdx). For HTTP requests, make sure the bytes array value is base64 encoded.   Required permission:   - `user.write`</remarks>
     /// <param name="userServiceSetUserMetadataRequest"></param>
+
     /// <returns><![CDATA[UserServiceSetUserMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceSetUserMetadataResponse> SetUserMetadataAsync(UserServiceSetUserMetadataRequest userServiceSetUserMetadataRequest)
@@ -2667,13 +3109,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2681,6 +3130,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Sets a list of key value pairs. Existing metadata entries with matching keys are overwritten. Existing metadata entries without matching keys are untouched. To remove metadata entries, use [DeleteUserMetadata](apis/resources/user_service_v2/user-service-delete-user-metadata.api.mdx). For HTTP requests, make sure the bytes array value is base64 encoded.   Required permission:   - `user.write`</remarks>
     /// <param name="userServiceSetUserMetadataRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceSetUserMetadataResponse>> SetUserMetadataWithHttpInfoAsync(UserServiceSetUserMetadataRequest userServiceSetUserMetadataRequest)
@@ -2708,6 +3158,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Start a flow with an identity provider, for external login, registration or linking..</remarks>
     /// <param name="userServiceStartIdentityProviderIntentRequest"></param>
+
     /// <returns><![CDATA[UserServiceStartIdentityProviderIntentResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceStartIdentityProviderIntentResponse> StartIdentityProviderIntentAsync(UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest)
@@ -2718,13 +3169,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2732,6 +3190,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Start a flow with an identity provider, for external login, registration or linking..</remarks>
     /// <param name="userServiceStartIdentityProviderIntentRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceStartIdentityProviderIntentResponse>> StartIdentityProviderIntentWithHttpInfoAsync(UserServiceStartIdentityProviderIntentRequest userServiceStartIdentityProviderIntentRequest)
@@ -2759,6 +3218,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>The state of the user will be changed to 'active'. The user will be able to log in again. The endpoint returns an error if the user is not in the state 'locked'.</remarks>
     /// <param name="userServiceUnlockUserRequest"></param>
+
     /// <returns><![CDATA[UserServiceUnlockUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceUnlockUserResponse> UnlockUserAsync(UserServiceUnlockUserRequest userServiceUnlockUserRequest)
@@ -2769,13 +3229,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2783,6 +3250,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>The state of the user will be changed to 'active'. The user will be able to log in again. The endpoint returns an error if the user is not in the state 'locked'.</remarks>
     /// <param name="userServiceUnlockUserRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceUnlockUserResponse>> UnlockUserWithHttpInfoAsync(UserServiceUnlockUserRequest userServiceUnlockUserRequest)
@@ -2810,6 +3278,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: Use [UpdateUser](apis/resources/user_service_v2/user-service-update-user.api.mdx) to update a user of type human instead.   Update all information from a user.</remarks>
     /// <param name="userServiceUpdateHumanUserRequest"></param>
+
     /// <returns><![CDATA[UserServiceUpdateHumanUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceUpdateHumanUserResponse> UpdateHumanUserAsync(UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest)
@@ -2820,13 +3289,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2834,6 +3310,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: Use [UpdateUser](apis/resources/user_service_v2/user-service-update-user.api.mdx) to update a user of type human instead.   Update all information from a user.</remarks>
     /// <param name="userServiceUpdateHumanUserRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceUpdateHumanUserResponse>> UpdateHumanUserWithHttpInfoAsync(UserServiceUpdateHumanUserRequest userServiceUpdateHumanUserRequest)
@@ -2861,6 +3338,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Partially update an existing user.  If you change the users email or phone, you can specify how the ownership should be verified.  If you change the users password, you can specify if the password should be changed again on the users next login.   Required permission:    - user.write</remarks>
     /// <param name="userServiceUpdateUserRequest"></param>
+
     /// <returns><![CDATA[UserServiceUpdateUserResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceUpdateUserResponse> UpdateUserAsync(UserServiceUpdateUserRequest userServiceUpdateUserRequest)
@@ -2871,13 +3349,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2885,6 +3370,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Partially update an existing user.  If you change the users email or phone, you can specify how the ownership should be verified.  If you change the users password, you can specify if the password should be changed again on the users next login.   Required permission:    - user.write</remarks>
     /// <param name="userServiceUpdateUserRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceUpdateUserResponse>> UpdateUserWithHttpInfoAsync(UserServiceUpdateUserRequest userServiceUpdateUserRequest)
@@ -2912,6 +3398,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the email with the generated code.</remarks>
     /// <param name="userServiceVerifyEmailRequest"></param>
+
     /// <returns><![CDATA[UserServiceVerifyEmailResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceVerifyEmailResponse> VerifyEmailAsync(UserServiceVerifyEmailRequest userServiceVerifyEmailRequest)
@@ -2922,13 +3409,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2936,6 +3430,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the email with the generated code.</remarks>
     /// <param name="userServiceVerifyEmailRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceVerifyEmailResponse>> VerifyEmailWithHttpInfoAsync(UserServiceVerifyEmailRequest userServiceVerifyEmailRequest)
@@ -2963,6 +3458,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the invite code of a user previously issued. This will set their email to a verified state and  allow the user to set up their first authentication method (password, passkeys, IdP) depending on the organization's available methods.</remarks>
     /// <param name="userServiceVerifyInviteCodeRequest"></param>
+
     /// <returns><![CDATA[UserServiceVerifyInviteCodeResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceVerifyInviteCodeResponse> VerifyInviteCodeAsync(UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest)
@@ -2973,13 +3469,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -2987,6 +3490,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the invite code of a user previously issued. This will set their email to a verified state and  allow the user to set up their first authentication method (password, passkeys, IdP) depending on the organization's available methods.</remarks>
     /// <param name="userServiceVerifyInviteCodeRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceVerifyInviteCodeResponse>> VerifyInviteCodeWithHttpInfoAsync(UserServiceVerifyInviteCodeRequest userServiceVerifyInviteCodeRequest)
@@ -3014,6 +3518,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the passkey registration with the public key credential..</remarks>
     /// <param name="userServiceVerifyPasskeyRegistrationRequest"></param>
+
     /// <returns><![CDATA[UserServiceVerifyPasskeyRegistrationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceVerifyPasskeyRegistrationResponse> VerifyPasskeyRegistrationAsync(UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest)
@@ -3024,13 +3529,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -3038,6 +3550,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the passkey registration with the public key credential..</remarks>
     /// <param name="userServiceVerifyPasskeyRegistrationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceVerifyPasskeyRegistrationResponse>> VerifyPasskeyRegistrationWithHttpInfoAsync(UserServiceVerifyPasskeyRegistrationRequest userServiceVerifyPasskeyRegistrationRequest)
@@ -3065,6 +3578,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the phone number with the generated code.</remarks>
     /// <param name="userServiceVerifyPhoneRequest"></param>
+
     /// <returns><![CDATA[UserServiceVerifyPhoneResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceVerifyPhoneResponse> VerifyPhoneAsync(UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest)
@@ -3075,13 +3589,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -3089,6 +3610,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the phone number with the generated code.</remarks>
     /// <param name="userServiceVerifyPhoneRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceVerifyPhoneResponse>> VerifyPhoneWithHttpInfoAsync(UserServiceVerifyPhoneRequest userServiceVerifyPhoneRequest)
@@ -3116,6 +3638,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the TOTP registration with a generated code..</remarks>
     /// <param name="userServiceVerifyTOTPRegistrationRequest"></param>
+
     /// <returns><![CDATA[UserServiceVerifyTOTPRegistrationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceVerifyTOTPRegistrationResponse> VerifyTOTPRegistrationAsync(UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest)
@@ -3126,13 +3649,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -3140,6 +3670,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the TOTP registration with a generated code..</remarks>
     /// <param name="userServiceVerifyTOTPRegistrationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceVerifyTOTPRegistrationResponse>> VerifyTOTPRegistrationWithHttpInfoAsync(UserServiceVerifyTOTPRegistrationRequest userServiceVerifyTOTPRegistrationRequest)
@@ -3167,6 +3698,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the u2f token registration with the public key credential..</remarks>
     /// <param name="userServiceVerifyU2FRegistrationRequest"></param>
+
     /// <returns><![CDATA[UserServiceVerifyU2FRegistrationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<UserServiceVerifyU2FRegistrationResponse> VerifyU2FRegistrationAsync(UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest)
@@ -3177,13 +3709,20 @@ public class UserServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -3191,6 +3730,7 @@ public class UserServiceApi : BaseApi
     /// </summary>
     /// <remarks>Verify the u2f token registration with the public key credential..</remarks>
     /// <param name="userServiceVerifyU2FRegistrationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<UserServiceVerifyU2FRegistrationResponse>> VerifyU2FRegistrationWithHttpInfoAsync(UserServiceVerifyU2FRegistrationRequest userServiceVerifyU2FRegistrationRequest)

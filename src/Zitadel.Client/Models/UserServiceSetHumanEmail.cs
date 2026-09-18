@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceSetHumanEmail : IEquatable<UserServiceSetHumanEmail>
 {
-    /// <example>null</example>
     [JsonPropertyName("email")]
     public string? Email { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("isVerified")]
     public bool? IsVerified { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("returnCode")]
-    public Object? ReturnCode { get; set; }
+    public object? ReturnCode { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sendCode")]
     public UserServiceSendEmailVerificationCode? SendCode { get; set; }
 
@@ -36,7 +32,7 @@ public class UserServiceSetHumanEmail : IEquatable<UserServiceSetHumanEmail>
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Email, other.Email)
                     && EqualityComparer<bool?>.Default.Equals(this.IsVerified, other.IsVerified)
-                    && EqualityComparer<Object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
+                    && EqualityComparer<object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
                     && EqualityComparer<UserServiceSendEmailVerificationCode?>.Default.Equals(this.SendCode, other.SendCode));
     }
 

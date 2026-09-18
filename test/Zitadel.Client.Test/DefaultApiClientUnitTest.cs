@@ -10,6 +10,7 @@
 using System.Net;
 using System.Text;
 using Zitadel.Client;
+using Zitadel.Client.Models;
 using Xunit;
 
 namespace Test;
@@ -374,6 +375,37 @@ public class DefaultApiClientUnitTest
     }
 
     [Fact]
+    public async Task MultipartRawBytesPartReusesFieldNameAsFilenameAndOctetStream()
+    {
+        // Cross-language contract: a raw-bytes part with NO explicit filename
+        // reuses the FIELD NAME as the filename and, since "file" has no
+        // extension, falls back to Content-Type application/octet-stream.
+        // Identical across go, node, java, and the rest of the 12 SDKs.
+        string? wireText = null;
+        string? contentTypeHeader = null;
+        var handler = new CapturingHandler(async req =>
+        {
+            Assert.NotNull(req.Content);
+            contentTypeHeader = req.Content!.Headers.ContentType?.ToString();
+            wireText = await req.Content.ReadAsStringAsync();
+        });
+        var client = new DefaultApiClient(new HttpClient(handler));
+        var formData = new Dictionary<string, object>
+        {
+            { "file", new byte[] { 0x00, 0x01, 0x02 } }
+        };
+        await client.SendRequestAsync(
+            "POST", new Uri("http://example.com/upload"),
+            new Dictionary<string, string>(), formData);
+
+        Assert.NotNull(wireText);
+        Assert.StartsWith("multipart/form-data", contentTypeHeader);
+        Assert.Contains("name=\"file\"", wireText);
+        Assert.Contains("filename=\"file\"", wireText);
+        Assert.Contains("Content-Type: application/octet-stream", wireText);
+    }
+
+    [Fact]
     public async Task MultipartFileWithPdfExtensionSetsApplicationPdfContentType()
     {
         string? wireText = null;
@@ -449,6 +481,43 @@ public class DefaultApiClientUnitTest
         Assert.NotNull(wireBytes);
         string wireText = Encoding.UTF8.GetString(wireBytes!);
         Assert.Contains("名前.png", wireText);
+    }
+
+    [Fact]
+    public async Task SetPetAvatarStreamsRawBytesWithDeclaredContentType()
+    {
+        // Canonical cross-SDK regression (finding C1): the setPetAvatar request
+        // body is type:string format:binary with a declared Content-Type of
+        // image/jpeg. It MUST go on the wire as the exact raw bytes, with the
+        // declared Content-Type preserved — NOT JSON-marshaled, NOT base64, NOT
+        // a JSON int-array like [255,216,...], and NOT overridden to
+        // application/octet-stream or application/json.
+        //
+        // This drives the REAL DefaultApiClient and inspects the actual
+        // HttpRequestMessage, because the bug lived here: StreamContent (like
+        // ByteArrayContent) defaults its Content-Type to null, so a guard of
+        // `request.Content.Headers.ContentType != null` silently dropped the
+        // declared image/jpeg, sending the binary body with no Content-Type.
+        byte[]? wireBytes = null;
+        string? contentTypeHeader = null;
+        var handler = new CapturingHandler(async req =>
+        {
+            Assert.NotNull(req.Content);
+            contentTypeHeader = req.Content!.Headers.ContentType?.ToString();
+            wireBytes = await req.Content.ReadAsByteArrayAsync();
+        });
+        var client = new DefaultApiClient(new HttpClient(handler));
+
+        // JPEG SOI marker — a known, non-trivial binary payload.
+        byte[] payload = { 0xFF, 0xD8, 0xFF, 0xE0 };
+        using var body = new MemoryStream(payload);
+        await client.SendRequestAsync(
+            "PUT", new Uri("http://example.com/pet/1/avatar"),
+            new Dictionary<string, string> { { "Content-Type", "image/jpeg" } }, body);
+
+        Assert.NotNull(wireBytes);
+        Assert.Equal(payload, wireBytes);
+        Assert.Equal("image/jpeg", contentTypeHeader);
     }
 
     // -- Gap BI: RFC 5987 filename* for non-ASCII multipart filenames --
@@ -534,6 +603,31 @@ public class DefaultApiClientUnitTest
             "GET", new Uri("http://example.com/unknown-charset"),
             new Dictionary<string, string>(), null);
         Assert.Equal("héllo", response.Body);
+    }
+
+    [Fact]
+    public async Task DecodesBomlessUtf16BodyAsBigEndian()
+    {
+        // RFC 2781: a UTF-16 stream with no BOM defaults to big-endian. A bare
+        // "charset=utf-16" (no endianness suffix, no BOM) must therefore decode
+        // big-endian, matching the other SDKs. .NET's Encoding.GetEncoding(
+        // "utf-16") is little-endian, so this would have decoded to garbage
+        // before the fix.
+        byte[] utf16BeBytes = { 0x00, 0x50, 0x00, 0x65, 0x00, 0x74 }; // "Pet" UTF-16BE
+        var handler = new RawByteHandler(
+            HttpStatusCode.OK,
+            utf16BeBytes,
+            "text/plain; charset=utf-16");
+        var client = new DefaultApiClient(new HttpClient(handler));
+        var response = await client.SendRequestAsync(
+            "GET", new Uri("http://example.com/utf16-no-bom"),
+            new Dictionary<string, string>(), null);
+        Assert.Equal("Pet", response.Body);
+
+        // Sanity check that the choice is load-bearing: interpreting the very
+        // same bytes little-endian yields a different (non-"Pet") string, so a
+        // passing assertion above can only mean big-endian decoding was used.
+        Assert.NotEqual("Pet", Encoding.Unicode.GetString(utf16BeBytes));
     }
 
     // ---- 3.1: SensitiveHeaderNames default contents ----
@@ -781,6 +875,35 @@ public class DefaultApiClientUnitTest
         Assert.True(causeChainHasIo, "Expected an IOException somewhere in the cause chain");
     }
 
+    // ---- Gap AL: Content-Encoding lie surfaces as ApiException ----
+
+    [Fact]
+    public async Task LyingGzipContentEncodingSurfacesApiException()
+    {
+        // Canonical scenario AL: the server sets Content-Encoding: gzip but the
+        // body is plain (non-gzip) bytes. The client MUST surface the SDK's
+        // ApiException — no crash, no corrupt passthrough of the undecoded
+        // bytes. Before the fix the plaintext was returned verbatim as if it
+        // were the decoded body; now the lying encoding is decoded explicitly
+        // and the InvalidDataException is wrapped as ApiException.
+        byte[] plaintext = Encoding.UTF8.GetBytes("this is not gzip");
+        var handler = new EncodedBodyHandler(
+            HttpStatusCode.OK,
+            plaintext,
+            contentEncoding: "gzip",
+            contentType: "application/json");
+        var client = new DefaultApiClient(new HttpClient(handler));
+
+        var ex = await Assert.ThrowsAsync<ApiException>(() => client.SendRequestAsync(
+            "GET",
+            new Uri("http://example.com/lying-gzip"),
+            new Dictionary<string, string>(),
+            null
+        ));
+
+        Assert.Contains("decode", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
     // ---- close-lifecycle-three-way: use-after-close throws SDK error ----
 
     [Fact]
@@ -817,6 +940,60 @@ public class DefaultApiClientUnitTest
     // real multipart/form-data operation to exercise BuildMultipartContent —
     // a plain Dictionary body routes through the JSON path, not multipart.
     // Deferred to the petstore-fixture wave (a multipart upload op).
+
+    // ---- H6 / cross-cutting: multipart MODEL part uses the configured serializer ----
+
+    [Fact]
+    public async Task MultipartModelPartUsesConfiguredSerializerWireKeysAndDateTimeFormat()
+    {
+        // Cross-language parity lock for the multipart MODEL-part path. A
+        // multipart/form-data body that carries a model object must
+        // serialize that part through the SDK's CONFIGURED
+        // ObjectSerializer — NOT a bare JsonSerializer.Serialize(value) call.
+        // The configured serializer applies the SDK JsonSerializerOptions:
+        // millisecond-precision DateTimeOffset, protobuf-duration, null-omission
+        // and relaxed escaping. A bare call drops those options, so the model
+        // part diverges from the body the same SDK emits on the JSON path.
+        //
+        // The wire property names come from each model's [JsonPropertyName]
+        // attribute, so the part MUST carry the WIRE keys "isPrimary"/"takenAt"
+        // (never snake_case "is_primary"/"taken_at"), and the date-time MUST be
+        // rendered in the SDK's millisecond ISO-8601 form.
+        string? wireText = null;
+        var handler = new CapturingHandler(async req =>
+        {
+            Assert.NotNull(req.Content);
+            wireText = await req.Content!.ReadAsStringAsync();
+        });
+        var client = new DefaultApiClient(new HttpClient(handler));
+        var metadata = new MultipartModelPart
+        {
+            IsPrimary = true,
+            TakenAt = new DateTimeOffset(2020, 1, 2, 3, 4, 5, 123, TimeSpan.Zero),
+        };
+        var formData = new Dictionary<string, object>
+        {
+            { "metadata", metadata },
+        };
+
+        await client.SendRequestAsync(
+            "POST", new Uri("http://example.com/pet/1/photos"),
+            new Dictionary<string, string>(), formData);
+
+        Assert.NotNull(wireText);
+        // Wire (camelCase) keys from [JsonPropertyName], never snake_case.
+        Assert.Contains("\"isPrimary\":true", wireText);
+        Assert.Contains("\"takenAt\":", wireText);
+        Assert.DoesNotContain("is_primary", wireText);
+        Assert.DoesNotContain("taken_at", wireText);
+        // The SDK DateTimeOffset converter emits yyyy-MM-dd'T'HH:mm:ss.fffzzz.
+        Assert.Contains("2020-01-02T03:04:05.123+00:00", wireText);
+        // Null-omission from the configured options: the unset "caption" and
+        // "location" fields are dropped rather than emitted as null — proof the
+        // SDK JsonSerializerOptions are applied, not the bare default.
+        Assert.DoesNotContain("\"caption\"", wireText);
+        Assert.DoesNotContain("\"location\"", wireText);
+    }
 
     /// <summary>
     /// First request returns <paramref name="firstStatus"/> with a Location
@@ -939,6 +1116,47 @@ public class DefaultApiClientUnitTest
         }
     }
 
+    /// <summary>
+    /// Returns a response whose raw bytes are emitted verbatim with a
+    /// declared <c>Content-Encoding</c> header — without actually compressing
+    /// them. Used to simulate a server that lies about its Content-Encoding
+    /// (Gap AL). Because the mock handler bypasses the real HttpClientHandler,
+    /// AutomaticDecompression never runs and the Content-Encoding header
+    /// survives, so the client's own decode guard is exercised.
+    /// </summary>
+    private sealed class EncodedBodyHandler : HttpMessageHandler
+    {
+        private readonly HttpStatusCode _statusCode;
+        private readonly byte[] _body;
+        private readonly string _contentEncoding;
+        private readonly string _contentType;
+
+        public EncodedBodyHandler(
+            HttpStatusCode statusCode,
+            byte[] body,
+            string contentEncoding,
+            string contentType)
+        {
+            _statusCode = statusCode;
+            _body = body;
+            _contentEncoding = contentEncoding;
+            _contentType = contentType;
+        }
+
+        protected override Task<HttpResponseMessage> SendAsync(
+            HttpRequestMessage request,
+            CancellationToken cancellationToken)
+        {
+            var response = new HttpResponseMessage(_statusCode)
+            {
+                Content = new ByteArrayContent(_body),
+            };
+            response.Content.Headers.TryAddWithoutValidation("Content-Type", _contentType);
+            response.Content.Headers.TryAddWithoutValidation("Content-Encoding", _contentEncoding);
+            return Task.FromResult(response);
+        }
+    }
+
     private sealed class RawByteHandler : HttpMessageHandler
     {
         private readonly HttpStatusCode _statusCode;
@@ -1048,4 +1266,21 @@ public class DefaultApiClientUnitTest
             return Task.FromResult(response);
         }
     }
+}
+
+/// <summary>
+/// A stand-in model part for the multipart serialization test above. It is
+/// declared here rather than taken from the generated models so the test holds
+/// for EVERY spec this SDK is generated from — no spec is guaranteed to contain
+/// a model with these properties. It mirrors how the generator emits models:
+/// the wire name lives in a [JsonPropertyName] attribute while the C# property
+/// keeps PascalCase.
+/// </summary>
+public sealed class MultipartModelPart
+{
+    [System.Text.Json.Serialization.JsonPropertyName("isPrimary")]
+    public bool? IsPrimary { get; set; }
+
+    [System.Text.Json.Serialization.JsonPropertyName("takenAt")]
+    public DateTimeOffset? TakenAt { get; set; }
 }

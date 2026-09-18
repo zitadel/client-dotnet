@@ -16,14 +16,12 @@ public class OIDCServiceSession : IEquatable<OIDCServiceSession>
     /// <summary>
     /// ID of the session, used to login the user. Connects the session to the Auth Request.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("sessionId")]
     public string? SessionId { get; set; }
 
     /// <summary>
     /// Token of the session used to login the user. This token verifies that the session is valid.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("sessionToken")]
     public string? SessionToken { get; set; }
 

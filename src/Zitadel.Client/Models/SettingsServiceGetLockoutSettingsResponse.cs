@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class SettingsServiceGetLockoutSettingsResponse : IEquatable<SettingsServiceGetLockoutSettingsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public SettingsServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("settings")]
     public SettingsServiceLockoutSettings? Settings { get; set; }
 

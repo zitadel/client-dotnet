@@ -16,14 +16,12 @@ public class SessionServiceCheckUser : IEquatable<SessionServiceCheckUser>
     /// <summary>
     /// The login name of the user to be checked. It will search case insensitive.  Note this only checks for the computed login name and not for any organization scoped usernames.  Also note that it will not check for emails or phone numbers, even if the corresponding  setting is enabled. Use the user service ListUsers method to find a user by email or phone number first  to obtain the user ID or login name.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("loginName")]
     public string? LoginName { get; set; }
 
     /// <summary>
     /// The unique identifier of the user to be checked.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 

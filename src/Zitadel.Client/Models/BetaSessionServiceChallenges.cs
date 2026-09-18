@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceChallenges : IEquatable<BetaSessionServiceChallenges>
 {
-    /// <example>null</example>
     [JsonPropertyName("webAuthN")]
     public BetaSessionServiceWebAuthN? WebAuthN { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpSms")]
     public string? OtpSms { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpEmail")]
     public string? OtpEmail { get; set; }
 

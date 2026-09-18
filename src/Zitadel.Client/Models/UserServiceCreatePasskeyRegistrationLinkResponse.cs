@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceCreatePasskeyRegistrationLinkResponse : IEquatable<UserServiceCreatePasskeyRegistrationLinkResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("code")]
     public UserServicePasskeyRegistrationCode? Code { get; set; }
 

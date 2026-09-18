@@ -16,53 +16,42 @@ public class OrganizationServiceAddHumanUserRequest : IEquatable<OrganizationSer
     /// <summary>
     /// optionally set your own id unique for the user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
     /// <summary>
     /// optionally set a unique username, if none is provided the email will be used.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("username")]
     public string? Username { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organization")]
     public OrganizationServiceOrganization? Organization { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("profile")]
     public OrganizationServiceSetHumanProfile? Profile { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("email")]
     public OrganizationServiceSetHumanEmail? Email { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("phone")]
     public OrganizationServiceSetHumanPhone? Phone { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("metadata")]
     public List<OrganizationServiceSetMetadataEntry>? Metadata { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpLinks")]
     public List<OrganizationServiceIDPLink>? IdpLinks { get; set; }
 
     /// <summary>
     /// An Implementation of RFC 6238 is used, with HMAC-SHA-1 and time-step of 30 seconds.  Currently no other options are supported, and if anything different is used the validation will fail.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("totpSecret")]
     public string? TotpSecret { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("hashedPassword")]
     public OrganizationServiceHashedPassword? HashedPassword { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public OrganizationServicePassword? Password { get; set; }
 
@@ -77,8 +66,8 @@ public class OrganizationServiceAddHumanUserRequest : IEquatable<OrganizationSer
                     && EqualityComparer<OrganizationServiceSetHumanProfile?>.Default.Equals(this.Profile, other.Profile)
                     && EqualityComparer<OrganizationServiceSetHumanEmail?>.Default.Equals(this.Email, other.Email)
                     && EqualityComparer<OrganizationServiceSetHumanPhone?>.Default.Equals(this.Phone, other.Phone)
-                    && EqualityComparer<List<OrganizationServiceSetMetadataEntry>?>.Default.Equals(this.Metadata, other.Metadata)
-                    && EqualityComparer<List<OrganizationServiceIDPLink>?>.Default.Equals(this.IdpLinks, other.IdpLinks)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Metadata, other.Metadata)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.IdpLinks, other.IdpLinks)
                     && EqualityComparer<string?>.Default.Equals(this.TotpSecret, other.TotpSecret)
                     && EqualityComparer<OrganizationServiceHashedPassword?>.Default.Equals(this.HashedPassword, other.HashedPassword)
                     && EqualityComparer<OrganizationServicePassword?>.Default.Equals(this.Password, other.Password));
@@ -98,8 +87,8 @@ public class OrganizationServiceAddHumanUserRequest : IEquatable<OrganizationSer
         hash.Add(this.Profile);
         hash.Add(this.Email);
         hash.Add(this.Phone);
-        hash.Add(this.Metadata);
-        hash.Add(this.IdpLinks);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Metadata));
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.IdpLinks));
         hash.Add(this.TotpSecret);
         hash.Add(this.HashedPassword);
         hash.Add(this.Password);

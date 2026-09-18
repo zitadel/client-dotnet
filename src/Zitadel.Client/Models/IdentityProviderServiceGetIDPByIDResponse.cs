@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class IdentityProviderServiceGetIDPByIDResponse : IEquatable<IdentityProviderServiceGetIDPByIDResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("idp")]
     public IdentityProviderServiceIDP? Idp { get; set; }
 

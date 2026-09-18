@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceListApplicationsResponse : IEquatable<BetaAppServiceListApplicationsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("applications")]
     public List<BetaAppServiceApplication>? Applications { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaAppServicePaginationResponse? Pagination { get; set; }
 
@@ -26,7 +24,7 @@ public class BetaAppServiceListApplicationsResponse : IEquatable<BetaAppServiceL
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<BetaAppServiceApplication>?>.Default.Equals(this.Applications, other.Applications)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Applications, other.Applications)
                     && EqualityComparer<BetaAppServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination));
     }
 
@@ -38,7 +36,7 @@ public class BetaAppServiceListApplicationsResponse : IEquatable<BetaAppServiceL
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Applications);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Applications));
         hash.Add(this.Pagination);
         return hash.ToHashCode();
     }

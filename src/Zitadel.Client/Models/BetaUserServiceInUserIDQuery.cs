@@ -16,7 +16,6 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class BetaUserServiceInUserIDQuery : IEquatable<BetaUserServiceInUserIDQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("userIds")]
     public List<string>? UserIds { get; set; }
 
@@ -25,7 +24,7 @@ public class BetaUserServiceInUserIDQuery : IEquatable<BetaUserServiceInUserIDQu
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<string>?>.Default.Equals(this.UserIds, other.UserIds));
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.UserIds, other.UserIds));
     }
 
     public override bool Equals(object? obj)
@@ -36,7 +35,7 @@ public class BetaUserServiceInUserIDQuery : IEquatable<BetaUserServiceInUserIDQu
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.UserIds);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.UserIds));
         return hash.ToHashCode();
     }
 }

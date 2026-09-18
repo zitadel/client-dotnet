@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceGenerateRecoveryCodesResponse : IEquatable<UserServiceGenerateRecoveryCodesResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("recoveryCodes")]
     public List<string>? RecoveryCodes { get; set; }
 
@@ -27,7 +25,7 @@ public class UserServiceGenerateRecoveryCodesResponse : IEquatable<UserServiceGe
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.RecoveryCodes, other.RecoveryCodes));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.RecoveryCodes, other.RecoveryCodes));
     }
 
     public override bool Equals(object? obj)
@@ -39,7 +37,7 @@ public class UserServiceGenerateRecoveryCodesResponse : IEquatable<UserServiceGe
     {
         HashCode hash = default;
         hash.Add(this.Details);
-        hash.Add(this.RecoveryCodes);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.RecoveryCodes));
         return hash.ToHashCode();
     }
 }

@@ -16,39 +16,33 @@ public class UserServiceProfile : IEquatable<UserServiceProfile>
     /// <summary>
     /// The given name is the first name of the user.  For example, it can be used to personalize notifications and login UIs.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("givenName")]
     public string? GivenName { get; set; }
 
     /// <summary>
     /// The family name is the last name of the user.  For example, it can be used to personalize user interfaces and notifications.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("familyName")]
     public string? FamilyName { get; set; }
 
     /// <summary>
     /// The nick name is the users short name.  For example, it can be used to personalize user interfaces and notifications.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("nickName")]
     public string? NickName { get; set; }
 
     /// <summary>
     /// The display name is how a user should primarily be displayed in lists.  It can also for example be used to personalize user interfaces and notifications.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("displayName")]
     public string? DisplayName { get; set; }
 
     /// <summary>
     /// The users preferred language is the language that systems should use to interact with the user.  It has the format of a [BCP-47 language tag](https://datatracker.ietf.org/doc/html/rfc3066).  It is used by Zitadel where no higher prioritized preferred language can be used.  For example, browser settings can overwrite a users preferred_language.  Notification messages and standard login UIs use the users preferred language if it is supported and allowed on the instance.  Else, the default language of the instance is used.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("preferredLanguage")]
     public string? PreferredLanguage { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("gender")]
     public UserServiceGender? Gender { get; set; }
 

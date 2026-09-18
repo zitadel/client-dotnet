@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class ProjectServiceProjectRoleSearchFilter : IEquatable<ProjectServiceProjectRoleSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("displayNameFilter")]
     public ProjectServiceProjectRoleDisplayNameFilter? DisplayNameFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("roleKeyFilter")]
     public ProjectServiceProjectRoleKeyFilter? RoleKeyFilter { get; set; }
 

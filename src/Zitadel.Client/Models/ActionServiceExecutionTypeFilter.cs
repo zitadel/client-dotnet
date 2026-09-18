@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class ActionServiceExecutionTypeFilter : IEquatable<ActionServiceExecutionTypeFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("executionType")]
     public ActionServiceExecutionType? ExecutionType { get; set; }
 

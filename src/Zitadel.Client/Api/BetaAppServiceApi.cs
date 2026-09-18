@@ -64,6 +64,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 CreateApplication](apis/resources/application_service_v2/application-service-create-application.api.mdx) instead.   Create an application. The application can be OIDC, API or SAML type, based on the input.   Required permissions:    - project.app.write</remarks>
     /// <param name="betaAppServiceCreateApplicationRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceCreateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceCreateApplicationResponse> CreateApplicationAsync(BetaAppServiceCreateApplicationRequest betaAppServiceCreateApplicationRequest)
@@ -74,13 +75,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -88,6 +96,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 CreateApplication](apis/resources/application_service_v2/application-service-create-application.api.mdx) instead.   Create an application. The application can be OIDC, API or SAML type, based on the input.   Required permissions:    - project.app.write</remarks>
     /// <param name="betaAppServiceCreateApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceCreateApplicationResponse>> CreateApplicationWithHttpInfoAsync(BetaAppServiceCreateApplicationRequest betaAppServiceCreateApplicationRequest)
@@ -115,6 +124,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 CreateApplicationKey](apis/resources/application_service_v2/application-service-create-application-key.api.mdx) instead.   Create a new application key, which is used to authorize an API application.   Key details are returned in the response. They must be stored safely, as it will not  be possible to retrieve them again.   Required permissions:    - `project.app.write`</remarks>
     /// <param name="betaAppServiceCreateApplicationKeyRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceCreateApplicationKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceCreateApplicationKeyResponse> CreateApplicationKeyAsync(BetaAppServiceCreateApplicationKeyRequest betaAppServiceCreateApplicationKeyRequest)
@@ -125,13 +135,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -139,6 +156,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 CreateApplicationKey](apis/resources/application_service_v2/application-service-create-application-key.api.mdx) instead.   Create a new application key, which is used to authorize an API application.   Key details are returned in the response. They must be stored safely, as it will not  be possible to retrieve them again.   Required permissions:    - `project.app.write`</remarks>
     /// <param name="betaAppServiceCreateApplicationKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceCreateApplicationKeyResponse>> CreateApplicationKeyWithHttpInfoAsync(BetaAppServiceCreateApplicationKeyRequest betaAppServiceCreateApplicationKeyRequest)
@@ -166,6 +184,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 DeactivateApplication](apis/resources/application_service_v2/application-service-deactivate-application.api.mdx) instead.   Deactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write</remarks>
     /// <param name="betaAppServiceDeactivateApplicationRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceDeactivateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceDeactivateApplicationResponse> DeactivateApplicationAsync(BetaAppServiceDeactivateApplicationRequest betaAppServiceDeactivateApplicationRequest)
@@ -176,13 +195,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -190,6 +216,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 DeactivateApplication](apis/resources/application_service_v2/application-service-deactivate-application.api.mdx) instead.   Deactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write</remarks>
     /// <param name="betaAppServiceDeactivateApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceDeactivateApplicationResponse>> DeactivateApplicationWithHttpInfoAsync(BetaAppServiceDeactivateApplicationRequest betaAppServiceDeactivateApplicationRequest)
@@ -217,6 +244,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 DeleteApplication](apis/resources/application_service_v2/application-service-delete-application.api.mdx) instead.   Deletes the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.delete</remarks>
     /// <param name="betaAppServiceDeleteApplicationRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceDeleteApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceDeleteApplicationResponse> DeleteApplicationAsync(BetaAppServiceDeleteApplicationRequest betaAppServiceDeleteApplicationRequest)
@@ -227,13 +255,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -241,6 +276,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 DeleteApplication](apis/resources/application_service_v2/application-service-delete-application.api.mdx) instead.   Deletes the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.delete</remarks>
     /// <param name="betaAppServiceDeleteApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceDeleteApplicationResponse>> DeleteApplicationWithHttpInfoAsync(BetaAppServiceDeleteApplicationRequest betaAppServiceDeleteApplicationRequest)
@@ -268,6 +304,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 DeleteApplicationKey](apis/resources/application_service_v2/application-service-delete-application-key.api.mdx) instead.   Deletes an application key matching the provided ID.   Organization ID is not mandatory, but helps with filtering/performance.   The deletion time is returned in response message.   Required permissions:    - `project.app.write`</remarks>
     /// <param name="betaAppServiceDeleteApplicationKeyRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceDeleteApplicationKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceDeleteApplicationKeyResponse> DeleteApplicationKeyAsync(BetaAppServiceDeleteApplicationKeyRequest betaAppServiceDeleteApplicationKeyRequest)
@@ -278,13 +315,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -292,6 +336,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 DeleteApplicationKey](apis/resources/application_service_v2/application-service-delete-application-key.api.mdx) instead.   Deletes an application key matching the provided ID.   Organization ID is not mandatory, but helps with filtering/performance.   The deletion time is returned in response message.   Required permissions:    - `project.app.write`</remarks>
     /// <param name="betaAppServiceDeleteApplicationKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceDeleteApplicationKeyResponse>> DeleteApplicationKeyWithHttpInfoAsync(BetaAppServiceDeleteApplicationKeyRequest betaAppServiceDeleteApplicationKeyRequest)
@@ -319,6 +364,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 GetApplication](apis/resources/application_service_v2/application-service-get-application.api.mdx) instead.   Retrieves the application matching the provided ID.   Required permissions:    - project.app.read</remarks>
     /// <param name="betaAppServiceGetApplicationRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceGetApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceGetApplicationResponse> GetApplicationAsync(BetaAppServiceGetApplicationRequest betaAppServiceGetApplicationRequest)
@@ -329,13 +375,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -343,6 +396,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 GetApplication](apis/resources/application_service_v2/application-service-get-application.api.mdx) instead.   Retrieves the application matching the provided ID.   Required permissions:    - project.app.read</remarks>
     /// <param name="betaAppServiceGetApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceGetApplicationResponse>> GetApplicationWithHttpInfoAsync(BetaAppServiceGetApplicationRequest betaAppServiceGetApplicationRequest)
@@ -370,6 +424,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 GetApplicationKey](apis/resources/application_service_v2/application-service-get-application-key.api.mdx) instead.   Retrieves the application key matching the provided ID.   Specifying a project, organization and app ID is optional but help with filtering/performance.   Required permissions:    - project.app.read</remarks>
     /// <param name="betaAppServiceGetApplicationKeyRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceGetApplicationKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceGetApplicationKeyResponse> GetApplicationKeyAsync(BetaAppServiceGetApplicationKeyRequest betaAppServiceGetApplicationKeyRequest)
@@ -380,13 +435,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -394,6 +456,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 GetApplicationKey](apis/resources/application_service_v2/application-service-get-application-key.api.mdx) instead.   Retrieves the application key matching the provided ID.   Specifying a project, organization and app ID is optional but help with filtering/performance.   Required permissions:    - project.app.read</remarks>
     /// <param name="betaAppServiceGetApplicationKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceGetApplicationKeyResponse>> GetApplicationKeyWithHttpInfoAsync(BetaAppServiceGetApplicationKeyRequest betaAppServiceGetApplicationKeyRequest)
@@ -421,6 +484,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 ListApplicationKeys](apis/resources/application_service_v2/application-service-list-application-keys.api.mdx) instead.   Returns a list of application keys matching the input parameters.   The result can be sorted by id, aggregate, creation date, expiration date, resource owner or type.  It can also be filtered by app, project or organization ID.   Required permissions:    - project.app.read</remarks>
     /// <param name="betaAppServiceListApplicationKeysRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceListApplicationKeysResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceListApplicationKeysResponse> ListApplicationKeysAsync(BetaAppServiceListApplicationKeysRequest betaAppServiceListApplicationKeysRequest)
@@ -431,13 +495,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -445,6 +516,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 ListApplicationKeys](apis/resources/application_service_v2/application-service-list-application-keys.api.mdx) instead.   Returns a list of application keys matching the input parameters.   The result can be sorted by id, aggregate, creation date, expiration date, resource owner or type.  It can also be filtered by app, project or organization ID.   Required permissions:    - project.app.read</remarks>
     /// <param name="betaAppServiceListApplicationKeysRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceListApplicationKeysResponse>> ListApplicationKeysWithHttpInfoAsync(BetaAppServiceListApplicationKeysRequest betaAppServiceListApplicationKeysRequest)
@@ -472,6 +544,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 ListApplications](apis/resources/application_service_v2/application-service-list-applications.api.mdx) instead.   Returns a list of applications matching the input parameters that belong to the provided  project.   The result can be sorted by app id, name, creation date, change date or state. It can also  be filtered by app state, app type and app name.   Required permissions:    - project.app.read</remarks>
     /// <param name="betaAppServiceListApplicationsRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceListApplicationsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceListApplicationsResponse> ListApplicationsAsync(BetaAppServiceListApplicationsRequest betaAppServiceListApplicationsRequest)
@@ -482,13 +555,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -496,6 +576,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 ListApplications](apis/resources/application_service_v2/application-service-list-applications.api.mdx) instead.   Returns a list of applications matching the input parameters that belong to the provided  project.   The result can be sorted by app id, name, creation date, change date or state. It can also  be filtered by app state, app type and app name.   Required permissions:    - project.app.read</remarks>
     /// <param name="betaAppServiceListApplicationsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceListApplicationsResponse>> ListApplicationsWithHttpInfoAsync(BetaAppServiceListApplicationsRequest betaAppServiceListApplicationsRequest)
@@ -523,6 +604,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 ReactivateApplication](apis/resources/application_service_v2/application-service-reactivate-application.api.mdx) instead.   Reactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write</remarks>
     /// <param name="betaAppServiceReactivateApplicationRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceReactivateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceReactivateApplicationResponse> ReactivateApplicationAsync(BetaAppServiceReactivateApplicationRequest betaAppServiceReactivateApplicationRequest)
@@ -533,13 +615,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -547,6 +636,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 ReactivateApplication](apis/resources/application_service_v2/application-service-reactivate-application.api.mdx) instead.   Reactivates the application belonging to the input project and matching the provided  application ID.   Required permissions:    - project.app.write</remarks>
     /// <param name="betaAppServiceReactivateApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceReactivateApplicationResponse>> ReactivateApplicationWithHttpInfoAsync(BetaAppServiceReactivateApplicationRequest betaAppServiceReactivateApplicationRequest)
@@ -574,6 +664,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 GenerateClientSecret](apis/resources/application_service_v2/application-service-generate-client-secret.api.mdx) instead.   Regenerates the client secret of an API or OIDC application that belongs to the input project.    Required permissions:    - project.app.write</remarks>
     /// <param name="betaAppServiceRegenerateClientSecretRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceRegenerateClientSecretResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceRegenerateClientSecretResponse> RegenerateClientSecretAsync(BetaAppServiceRegenerateClientSecretRequest betaAppServiceRegenerateClientSecretRequest)
@@ -584,13 +675,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -598,6 +696,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 GenerateClientSecret](apis/resources/application_service_v2/application-service-generate-client-secret.api.mdx) instead.   Regenerates the client secret of an API or OIDC application that belongs to the input project.    Required permissions:    - project.app.write</remarks>
     /// <param name="betaAppServiceRegenerateClientSecretRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceRegenerateClientSecretResponse>> RegenerateClientSecretWithHttpInfoAsync(BetaAppServiceRegenerateClientSecretRequest betaAppServiceRegenerateClientSecretRequest)
@@ -625,6 +724,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 UpdateApplication](apis/resources/application_service_v2/zitadel-app-v-2-application-service-update-application.api.mdx) instead.   Changes the configuration of an OIDC, API or SAML type application, as well as  the application name, based on the input provided.   Required permissions:    - project.app.write</remarks>
     /// <param name="betaAppServiceUpdateApplicationRequest"></param>
+
     /// <returns><![CDATA[BetaAppServiceUpdateApplicationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAppServiceUpdateApplicationResponse> UpdateApplicationAsync(BetaAppServiceUpdateApplicationRequest betaAppServiceUpdateApplicationRequest)
@@ -635,13 +735,20 @@ public class BetaAppServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -649,6 +756,7 @@ public class BetaAppServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: use [application service v2 UpdateApplication](apis/resources/application_service_v2/zitadel-app-v-2-application-service-update-application.api.mdx) instead.   Changes the configuration of an OIDC, API or SAML type application, as well as  the application name, based on the input provided.   Required permissions:    - project.app.write</remarks>
     /// <param name="betaAppServiceUpdateApplicationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAppServiceUpdateApplicationResponse>> UpdateApplicationWithHttpInfoAsync(BetaAppServiceUpdateApplicationRequest betaAppServiceUpdateApplicationRequest)

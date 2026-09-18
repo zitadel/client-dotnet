@@ -16,21 +16,18 @@ public class BetaTelemetryServiceReportBaseInformationRequest : IEquatable<BetaT
     /// <summary>
     /// The system ID is a unique identifier for the ZITADEL system.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("systemId")]
     public string? SystemId { get; set; }
 
     /// <summary>
     /// The current version of the ZITADEL system.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("version")]
     public string? Version { get; set; }
 
     /// <summary>
     /// A list of instances in the ZITADEL system and their information.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("instances")]
     public List<BetaTelemetryServiceInstanceInformation>? Instances { get; set; }
 
@@ -41,7 +38,7 @@ public class BetaTelemetryServiceReportBaseInformationRequest : IEquatable<BetaT
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.SystemId, other.SystemId)
                     && EqualityComparer<string?>.Default.Equals(this.Version, other.Version)
-                    && EqualityComparer<List<BetaTelemetryServiceInstanceInformation>?>.Default.Equals(this.Instances, other.Instances));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Instances, other.Instances));
     }
 
     public override bool Equals(object? obj)
@@ -54,7 +51,7 @@ public class BetaTelemetryServiceReportBaseInformationRequest : IEquatable<BetaT
         HashCode hash = default;
         hash.Add(this.SystemId);
         hash.Add(this.Version);
-        hash.Add(this.Instances);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Instances));
         return hash.ToHashCode();
     }
 }

@@ -16,14 +16,12 @@ public class ActionServiceDeactivatePublicKeyRequest : IEquatable<ActionServiceD
     /// <summary>
     /// TargetID is the unique identifier of the target to deactivate the public key for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("targetId")]
     public string? TargetId { get; set; }
 
     /// <summary>
     /// KeyID is the unique identifier of the public key to deactivate.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("keyId")]
     public string? KeyId { get; set; }
 

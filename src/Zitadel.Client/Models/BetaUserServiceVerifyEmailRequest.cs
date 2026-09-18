@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceVerifyEmailRequest : IEquatable<BetaUserServiceVerifyEmailRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("verificationCode")]
     public string? VerificationCode { get; set; }
 

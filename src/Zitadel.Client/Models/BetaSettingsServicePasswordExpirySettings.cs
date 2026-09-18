@@ -16,18 +16,15 @@ public class BetaSettingsServicePasswordExpirySettings : IEquatable<BetaSettings
     /// <summary>
     /// Amount of days after which a password will expire. The user will be forced to change the password on the following authentication.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("maxAgeDays")]
-    public Object? MaxAgeDays { get; set; }
+    public object? MaxAgeDays { get; set; }
 
     /// <summary>
     /// Amount of days after which the user should be notified of the upcoming expiry. ZITADEL will not notify the user.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("expireWarnDays")]
-    public Object? ExpireWarnDays { get; set; }
+    public object? ExpireWarnDays { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public BetaSettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 
@@ -36,8 +33,8 @@ public class BetaSettingsServicePasswordExpirySettings : IEquatable<BetaSettings
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.MaxAgeDays, other.MaxAgeDays)
-                    && EqualityComparer<Object?>.Default.Equals(this.ExpireWarnDays, other.ExpireWarnDays)
+                || EqualityComparer<object?>.Default.Equals(this.MaxAgeDays, other.MaxAgeDays)
+                    && EqualityComparer<object?>.Default.Equals(this.ExpireWarnDays, other.ExpireWarnDays)
                     && EqualityComparer<BetaSettingsServiceResourceOwnerType?>.Default.Equals(this.ResourceOwnerType, other.ResourceOwnerType));
     }
 

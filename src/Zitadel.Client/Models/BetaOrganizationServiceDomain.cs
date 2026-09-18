@@ -19,32 +19,27 @@ public class BetaOrganizationServiceDomain : IEquatable<BetaOrganizationServiceD
     /// <summary>
     /// The Organization id.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// The domain name.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domainName")]
     public string? DomainName { get; set; }
 
     /// <summary>
     /// Defines if the domain is verified.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("isVerified")]
     public bool? IsVerified { get; set; }
 
     /// <summary>
     /// Defines if the domain is the primary domain.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("isPrimary")]
     public bool? IsPrimary { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("validationType")]
     public BetaOrganizationServiceDomainValidationType? ValidationType { get; set; }
 

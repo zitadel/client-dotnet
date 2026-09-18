@@ -16,7 +16,6 @@ public class UserServiceAddSecretRequest : IEquatable<UserServiceAddSecretReques
     /// <summary>
     /// The users resource ID.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 

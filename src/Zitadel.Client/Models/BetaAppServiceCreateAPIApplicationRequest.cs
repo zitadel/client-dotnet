@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceCreateAPIApplicationRequest : IEquatable<BetaAppServiceCreateAPIApplicationRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("authMethodType")]
     public BetaAppServiceAPIAuthMethodType? AuthMethodType { get; set; }
 

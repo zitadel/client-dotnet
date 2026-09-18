@@ -16,11 +16,9 @@ public class BetaInternalPermissionServiceDeleteAdministratorRequest : IEquatabl
     /// <summary>
     /// UserID is the ID of the user who should have his administrator roles removed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resource")]
     public BetaInternalPermissionServiceResourceType? Resource { get; set; }
 

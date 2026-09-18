@@ -16,7 +16,6 @@ public class BetaActionServiceListExecutionServicesResponse : IEquatable<BetaAct
     /// <summary>
     /// All available methods
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("services")]
     public List<string>? Services { get; set; }
 
@@ -25,7 +24,7 @@ public class BetaActionServiceListExecutionServicesResponse : IEquatable<BetaAct
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<string>?>.Default.Equals(this.Services, other.Services));
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Services, other.Services));
     }
 
     public override bool Equals(object? obj)
@@ -36,7 +35,7 @@ public class BetaActionServiceListExecutionServicesResponse : IEquatable<BetaAct
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Services);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Services));
         return hash.ToHashCode();
     }
 }

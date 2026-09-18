@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceAuthFactorU2F : IEquatable<UserServiceAuthFactorU2F>
 {
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 

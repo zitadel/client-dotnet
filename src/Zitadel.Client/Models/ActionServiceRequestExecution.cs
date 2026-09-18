@@ -16,21 +16,18 @@ public class ActionServiceRequestExecution : IEquatable<ActionServiceRequestExec
     /// <summary>
     /// Define all calls as condition.  When a call to any available service happens, the execution is triggered.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("all")]
     public bool? All { get; set; }
 
     /// <summary>
     /// Define a GRPC-method as condition.  When a request to this method happens, the execution is triggered.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public string? Method { get; set; }
 
     /// <summary>
     /// Define a GRPC-service as condition.  When a request to any method of this service happens, the execution is triggered.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("service")]
     public string? Service { get; set; }
 

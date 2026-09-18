@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class ApplicationServiceGetApplicationResponse : IEquatable<ApplicationServiceGetApplicationResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("application")]
     public ApplicationServiceApplication? Application { get; set; }
 

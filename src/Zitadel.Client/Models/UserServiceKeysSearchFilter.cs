@@ -13,23 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceKeysSearchFilter : IEquatable<UserServiceKeysSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("createdDateFilter")]
     public UserServiceTimestampFilter? CreatedDateFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("expirationDateFilter")]
     public UserServiceTimestampFilter? ExpirationDateFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("keyIdFilter")]
     public UserServiceIDFilter? KeyIdFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organizationIdFilter")]
     public UserServiceIDFilter? OrganizationIdFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userIdFilter")]
     public UserServiceIDFilter? UserIdFilter { get; set; }
 

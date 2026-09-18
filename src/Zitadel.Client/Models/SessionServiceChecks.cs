@@ -13,35 +13,27 @@ namespace Zitadel.Client.Models;
 
 public class SessionServiceChecks : IEquatable<SessionServiceChecks>
 {
-    /// <example>null</example>
     [JsonPropertyName("user")]
     public SessionServiceCheckUser? User { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public SessionServiceCheckPassword? Password { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("webAuthN")]
     public SessionServiceCheckWebAuthN? WebAuthN { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpIntent")]
     public SessionServiceCheckIDPIntent? IdpIntent { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("totp")]
     public SessionServiceCheckTOTP? Totp { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpSms")]
     public SessionServiceCheckOTP? OtpSms { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpEmail")]
     public SessionServiceCheckOTP? OtpEmail { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("recoveryCode")]
     public SessionServiceCheckRecoveryCode? RecoveryCode { get; set; }
 

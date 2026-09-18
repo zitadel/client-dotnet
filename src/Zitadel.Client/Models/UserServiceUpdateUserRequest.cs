@@ -16,22 +16,18 @@ public class UserServiceUpdateUserRequest : IEquatable<UserServiceUpdateUserRequ
     /// <summary>
     /// The user id is the users unique identifier in the instance.  It can't be changed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
     /// <summary>
     /// Set a new username that is unique within the instance.  Beware that active tokens and sessions are invalidated when the username is changed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("username")]
     public string? Username { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("human")]
     public UserServiceHuman? Human { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("machine")]
     public UserServiceMachine? Machine { get; set; }
 

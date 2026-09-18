@@ -16,14 +16,12 @@ public class UserServiceRemovePersonalAccessTokenRequest : IEquatable<UserServic
     /// <summary>
     /// The users resource ID.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
     /// <summary>
     /// The tokens ID.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("tokenId")]
     public string? TokenId { get; set; }
 

@@ -13,51 +13,39 @@ namespace Zitadel.Client.Models;
 
 public class BetaAuthorizationServiceAuthorizationsSearchFilter : IEquatable<BetaAuthorizationServiceAuthorizationsSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("authorizationIds")]
     public BetaAuthorizationServiceInIDsFilter? AuthorizationIds { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("inUserIds")]
     public BetaAuthorizationServiceInIDsFilter? InUserIds { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public BetaAuthorizationServiceIDFilter? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectGrantId")]
     public BetaAuthorizationServiceIDFilter? ProjectGrantId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public BetaAuthorizationServiceIDFilter? ProjectId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectName")]
     public BetaAuthorizationServiceProjectNameQuery? ProjectName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("roleKey")]
     public BetaAuthorizationServiceRoleKeyQuery? RoleKey { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("state")]
     public BetaAuthorizationServiceStateQuery? State { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userDisplayName")]
     public BetaAuthorizationServiceUserDisplayNameQuery? UserDisplayName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public BetaAuthorizationServiceIDFilter? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userOrganizationId")]
     public BetaAuthorizationServiceIDFilter? UserOrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userPreferredLoginName")]
     public BetaAuthorizationServiceUserPreferredLoginNameQuery? UserPreferredLoginName { get; set; }
 

@@ -16,7 +16,6 @@ public class ProjectServiceGetProjectRequest : IEquatable<ProjectServiceGetProje
     /// <summary>
     /// ProjectID is the unique identifier of the project to be retrieved.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 

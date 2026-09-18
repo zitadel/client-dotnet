@@ -16,11 +16,9 @@ public class OrganizationServiceOrganizationDomainQuery : IEquatable<Organizatio
     /// <summary>
     /// Domain used in organization, not necessary primary domain.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public OrganizationServiceTextQueryMethod? Method { get; set; }
 

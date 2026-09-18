@@ -13,23 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceApplicationSearchFilter : IEquatable<BetaAppServiceApplicationSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("apiAppOnly")]
     public bool? ApiAppOnly { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("nameFilter")]
     public BetaAppServiceApplicationNameQuery? NameFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oidcAppOnly")]
     public bool? OidcAppOnly { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("samlAppOnly")]
     public bool? SamlAppOnly { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("stateFilter")]
     public BetaAppServiceAppState? StateFilter { get; set; }
 

@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaOrganizationServiceCreatedAdmin : IEquatable<BetaOrganizationServiceCreatedAdmin>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("emailCode")]
     public string? EmailCode { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("phoneCode")]
     public string? PhoneCode { get; set; }
 

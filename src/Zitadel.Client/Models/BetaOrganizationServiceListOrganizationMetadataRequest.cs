@@ -16,18 +16,15 @@ public class BetaOrganizationServiceListOrganizationMetadataRequest : IEquatable
     /// <summary>
     /// Organization ID of Orgalization which metadata is to be listed.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaOrganizationServicePaginationRequest? Pagination { get; set; }
 
     /// <summary>
     /// Define the criteria to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filter")]
     public List<BetaOrganizationServiceMetadataQuery>? Filter { get; set; }
 
@@ -38,7 +35,7 @@ public class BetaOrganizationServiceListOrganizationMetadataRequest : IEquatable
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
                     && EqualityComparer<BetaOrganizationServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<BetaOrganizationServiceMetadataQuery>?>.Default.Equals(this.Filter, other.Filter));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filter, other.Filter));
     }
 
     public override bool Equals(object? obj)
@@ -51,7 +48,7 @@ public class BetaOrganizationServiceListOrganizationMetadataRequest : IEquatable
         HashCode hash = default;
         hash.Add(this.OrganizationId);
         hash.Add(this.Pagination);
-        hash.Add(this.Filter);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filter));
         return hash.ToHashCode();
     }
 }

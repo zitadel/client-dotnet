@@ -16,7 +16,6 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class SessionServiceHeaderValues : IEquatable<SessionServiceHeaderValues>
 {
-    /// <example>null</example>
     [JsonPropertyName("values")]
     public List<string>? Values { get; set; }
 
@@ -25,7 +24,7 @@ public class SessionServiceHeaderValues : IEquatable<SessionServiceHeaderValues>
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<string>?>.Default.Equals(this.Values, other.Values));
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Values, other.Values));
     }
 
     public override bool Equals(object? obj)
@@ -36,7 +35,7 @@ public class SessionServiceHeaderValues : IEquatable<SessionServiceHeaderValues>
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Values);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Values));
         return hash.ToHashCode();
     }
 }

@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceAPIConfig : IEquatable<BetaAppServiceAPIConfig>
 {
-    /// <example>null</example>
     [JsonPropertyName("clientId")]
     public string? ClientId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("authMethodType")]
     public BetaAppServiceAPIAuthMethodType? AuthMethodType { get; set; }
 

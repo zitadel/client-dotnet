@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaOrganizationServiceOrganizationSearchFilter : IEquatable<BetaOrganizationServiceOrganizationSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("domainFilter")]
     public BetaOrganizationServiceOrgDomainFilter? DomainFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idFilter")]
     public BetaOrganizationServiceOrgIDFilter? IdFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("nameFilter")]
     public BetaOrganizationServiceOrgNameFilter? NameFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("stateFilter")]
     public BetaOrganizationServiceOrgStateFilter? StateFilter { get; set; }
 

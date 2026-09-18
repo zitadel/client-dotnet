@@ -16,11 +16,9 @@ public class ApplicationServiceApplicationNameFilter : IEquatable<ApplicationSer
     /// <summary>
     /// The name of the application to search for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public ApplicationServiceTextFilterMethod? Method { get; set; }
 

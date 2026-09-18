@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceUserIDQuery : IEquatable<BetaSessionServiceUserIDQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

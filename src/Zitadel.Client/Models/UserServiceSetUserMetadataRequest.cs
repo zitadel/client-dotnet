@@ -16,14 +16,12 @@ public class UserServiceSetUserMetadataRequest : IEquatable<UserServiceSetUserMe
     /// <summary>
     /// ID of the user under which the metadata gets set.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
     /// <summary>
     /// Metadata to bet set. The values have to be base64 encoded.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("metadata")]
     public List<UserServiceMetadata>? Metadata { get; set; }
 
@@ -33,7 +31,7 @@ public class UserServiceSetUserMetadataRequest : IEquatable<UserServiceSetUserMe
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
-                    && EqualityComparer<List<UserServiceMetadata>?>.Default.Equals(this.Metadata, other.Metadata));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Metadata, other.Metadata));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +43,7 @@ public class UserServiceSetUserMetadataRequest : IEquatable<UserServiceSetUserMe
     {
         HashCode hash = default;
         hash.Add(this.UserId);
-        hash.Add(this.Metadata);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Metadata));
         return hash.ToHashCode();
     }
 }

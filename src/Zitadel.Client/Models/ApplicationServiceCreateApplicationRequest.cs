@@ -16,33 +16,27 @@ public class ApplicationServiceCreateApplicationRequest : IEquatable<Application
     /// <summary>
     /// The ID of the project the application will be created in.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// Optionally, provide the unique ID of the new application. If omitted, the system will generate one for you,  which is the recommended way. The generated ID will be returned in the response.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("applicationId")]
     public string? ApplicationId { get; set; }
 
     /// <summary>
     /// Publicly visible name of the application. This might be presented to users if they sign in.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("apiConfiguration")]
     public ApplicationServiceCreateAPIApplicationRequest? ApiConfiguration { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oidcConfiguration")]
     public ApplicationServiceCreateOIDCApplicationRequest? OidcConfiguration { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("samlConfiguration")]
     public ApplicationServiceCreateSAMLApplicationRequest? SamlConfiguration { get; set; }
 

@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class OrganizationServiceListOrganizationMetadataResponse : IEquatable<OrganizationServiceListOrganizationMetadataResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public OrganizationServicePaginationResponse? Pagination { get; set; }
 
     /// <summary>
     /// Metadata is a list of organization metadata that matched the query.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("metadata")]
     public List<OrganizationServiceMetadata>? Metadata { get; set; }
 
@@ -30,7 +28,7 @@ public class OrganizationServiceListOrganizationMetadataResponse : IEquatable<Or
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<OrganizationServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<OrganizationServiceMetadata>?>.Default.Equals(this.Metadata, other.Metadata));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Metadata, other.Metadata));
     }
 
     public override bool Equals(object? obj)
@@ -42,7 +40,7 @@ public class OrganizationServiceListOrganizationMetadataResponse : IEquatable<Or
     {
         HashCode hash = default;
         hash.Add(this.Pagination);
-        hash.Add(this.Metadata);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Metadata));
         return hash.ToHashCode();
     }
 }

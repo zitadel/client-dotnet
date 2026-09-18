@@ -16,11 +16,9 @@ public class ProjectServiceProjectRoleDisplayNameFilter : IEquatable<ProjectServ
     /// <summary>
     /// The display name of the project role to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("displayName")]
     public string? DisplayName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public ProjectServiceTextFilterMethod? Method { get; set; }
 

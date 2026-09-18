@@ -16,11 +16,9 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class UserServiceLastNameQuery : IEquatable<UserServiceLastNameQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("lastName")]
     public string? LastName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public UserServiceTextQueryMethod? Method { get; set; }
 

@@ -16,25 +16,21 @@ public class SettingsServiceDomainSettings : IEquatable<SettingsServiceDomainSet
     /// <summary>
     /// If enabled, the login name will automatically be suffixed with the domain of the organization.  This ensures that the login name is unique across the instance.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("loginNameIncludesDomain")]
     public bool? LoginNameIncludesDomain { get; set; }
 
     /// <summary>
     /// If enabled, organization domains must be verified (through an DNS or HTTP challenge) upon creation.  If disabled, organization domains will be created as already verified automatically.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("requireOrgDomainVerification")]
     public bool? RequireOrgDomainVerification { get; set; }
 
     /// <summary>
     /// If enabled, the SMTP sender address domain must match custom domain on the instance.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("smtpSenderAddressMatchesInstanceDomain")]
     public bool? SmtpSenderAddressMatchesInstanceDomain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public SettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 

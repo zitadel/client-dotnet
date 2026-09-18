@@ -16,11 +16,9 @@ public class InstanceServiceListInstancesResponse : IEquatable<InstanceServiceLi
     /// <summary>
     /// The instances matching the query.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("instances")]
     public List<InstanceServiceInstance>? Instances { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public InstanceServicePaginationResponse? Pagination { get; set; }
 
@@ -29,7 +27,7 @@ public class InstanceServiceListInstancesResponse : IEquatable<InstanceServiceLi
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<InstanceServiceInstance>?>.Default.Equals(this.Instances, other.Instances)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Instances, other.Instances)
                     && EqualityComparer<InstanceServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination));
     }
 
@@ -41,7 +39,7 @@ public class InstanceServiceListInstancesResponse : IEquatable<InstanceServiceLi
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Instances);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Instances));
         hash.Add(this.Pagination);
         return hash.ToHashCode();
     }

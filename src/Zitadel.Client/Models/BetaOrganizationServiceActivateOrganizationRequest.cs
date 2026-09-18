@@ -16,7 +16,6 @@ public class BetaOrganizationServiceActivateOrganizationRequest : IEquatable<Bet
     /// <summary>
     /// Organization Id for the Organization to be activated
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

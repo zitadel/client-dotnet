@@ -16,14 +16,12 @@ public class InternalPermissionServiceProjectGrant : IEquatable<InternalPermissi
     /// <summary>
     /// ProjectID is the unique identifier of the project the project grant belongs to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// OrganizationID is the unique identifier of the organization the project was granted to  and on which the administrator role should be granted.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 

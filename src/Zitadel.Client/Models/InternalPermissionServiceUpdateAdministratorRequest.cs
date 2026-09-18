@@ -16,18 +16,15 @@ public class InternalPermissionServiceUpdateAdministratorRequest : IEquatable<In
     /// <summary>
     /// UserID is the ID of the user whose administrator roles should be updated.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resource")]
     public InternalPermissionServiceResourceType? Resource { get; set; }
 
     /// <summary>
     /// Roles are the roles that the user should be granted.  Note that any role previously granted to the user and not present in the list will be revoked.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roles")]
     public List<string>? Roles { get; set; }
 
@@ -38,7 +35,7 @@ public class InternalPermissionServiceUpdateAdministratorRequest : IEquatable<In
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<InternalPermissionServiceResourceType?>.Default.Equals(this.Resource, other.Resource)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Roles, other.Roles));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Roles, other.Roles));
     }
 
     public override bool Equals(object? obj)
@@ -51,7 +48,7 @@ public class InternalPermissionServiceUpdateAdministratorRequest : IEquatable<In
         HashCode hash = default;
         hash.Add(this.UserId);
         hash.Add(this.Resource);
-        hash.Add(this.Roles);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Roles));
         return hash.ToHashCode();
     }
 }

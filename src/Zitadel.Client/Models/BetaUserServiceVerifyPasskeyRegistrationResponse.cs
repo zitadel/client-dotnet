@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceVerifyPasskeyRegistrationResponse : IEquatable<BetaUserServiceVerifyPasskeyRegistrationResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaUserServiceDetails? Details { get; set; }
 

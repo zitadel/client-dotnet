@@ -50,6 +50,7 @@ public class SessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new session with initial checks, metadata and challenges for further verification.  A token will be returned, which is required for using the session as authentication, e.g.  when authenticating an OIDC auth request or SAML request.  Additionally, the session token can be used as OAuth2 access token to authenticate against  the ZITADEL APIs.   Required permissions:    - `session.write`</remarks>
     /// <param name="sessionServiceCreateSessionRequest"></param>
+
     /// <returns><![CDATA[SessionServiceCreateSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SessionServiceCreateSessionResponse> CreateSessionAsync(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest)
@@ -60,13 +61,20 @@ public class SessionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -74,6 +82,7 @@ public class SessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new session with initial checks, metadata and challenges for further verification.  A token will be returned, which is required for using the session as authentication, e.g.  when authenticating an OIDC auth request or SAML request.  Additionally, the session token can be used as OAuth2 access token to authenticate against  the ZITADEL APIs.   Required permissions:    - `session.write`</remarks>
     /// <param name="sessionServiceCreateSessionRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SessionServiceCreateSessionResponse>> CreateSessionWithHttpInfoAsync(SessionServiceCreateSessionRequest sessionServiceCreateSessionRequest)
@@ -101,6 +110,7 @@ public class SessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Terminate an existing session. This invalidates the session and its token.  The session can no longer be used for the authentication of other resources  or to authenticate against the ZITADEL APIs.   You can only terminate your own session, unless you are granted the `session.delete` permission.   Required permissions:    - `session.delete`    - no permission required for own sessions or when providing the current session token</remarks>
     /// <param name="sessionServiceDeleteSessionRequest"></param>
+
     /// <returns><![CDATA[SessionServiceDeleteSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SessionServiceDeleteSessionResponse> DeleteSessionAsync(SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest)
@@ -111,13 +121,20 @@ public class SessionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -125,6 +142,7 @@ public class SessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Terminate an existing session. This invalidates the session and its token.  The session can no longer be used for the authentication of other resources  or to authenticate against the ZITADEL APIs.   You can only terminate your own session, unless you are granted the `session.delete` permission.   Required permissions:    - `session.delete`    - no permission required for own sessions or when providing the current session token</remarks>
     /// <param name="sessionServiceDeleteSessionRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SessionServiceDeleteSessionResponse>> DeleteSessionWithHttpInfoAsync(SessionServiceDeleteSessionRequest sessionServiceDeleteSessionRequest)
@@ -152,6 +170,7 @@ public class SessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Retrieve a session by its ID. Returns all information about the session, including  the factors that were verified, the metadata, user agent information and possible expiration date.  The session token is required unless either of the following conditions is met:    - the caller created the session    - the authenticated user requests their own session (checked user)    - the security token provided in the authorization header has the same user agent as the session    - the caller is granted the permission session.read permission on either the instance or on the checked user's organization   Required permissions:    - `session.read`    - no permission required to get own sessions (see above) or when providing the current session token</remarks>
     /// <param name="sessionServiceGetSessionRequest"></param>
+
     /// <returns><![CDATA[SessionServiceGetSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SessionServiceGetSessionResponse> GetSessionAsync(SessionServiceGetSessionRequest sessionServiceGetSessionRequest)
@@ -162,13 +181,20 @@ public class SessionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -176,6 +202,7 @@ public class SessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Retrieve a session by its ID. Returns all information about the session, including  the factors that were verified, the metadata, user agent information and possible expiration date.  The session token is required unless either of the following conditions is met:    - the caller created the session    - the authenticated user requests their own session (checked user)    - the security token provided in the authorization header has the same user agent as the session    - the caller is granted the permission session.read permission on either the instance or on the checked user's organization   Required permissions:    - `session.read`    - no permission required to get own sessions (see above) or when providing the current session token</remarks>
     /// <param name="sessionServiceGetSessionRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SessionServiceGetSessionResponse>> GetSessionWithHttpInfoAsync(SessionServiceGetSessionRequest sessionServiceGetSessionRequest)
@@ -203,6 +230,7 @@ public class SessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Searches for sessions matching the given query. You can search by session ID, user ID,  creation date, creator, user agent or expiration date.   Required permissions:    - `session.read`    - no permission required to search for own sessions</remarks>
     /// <param name="sessionServiceListSessionsRequest"></param>
+
     /// <returns><![CDATA[SessionServiceListSessionsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SessionServiceListSessionsResponse> ListSessionsAsync(SessionServiceListSessionsRequest sessionServiceListSessionsRequest)
@@ -213,13 +241,20 @@ public class SessionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -227,6 +262,7 @@ public class SessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Searches for sessions matching the given query. You can search by session ID, user ID,  creation date, creator, user agent or expiration date.   Required permissions:    - `session.read`    - no permission required to search for own sessions</remarks>
     /// <param name="sessionServiceListSessionsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SessionServiceListSessionsResponse>> ListSessionsWithHttpInfoAsync(SessionServiceListSessionsRequest sessionServiceListSessionsRequest)
@@ -254,6 +290,7 @@ public class SessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Update an existing session with new information like additional checks or metadata  or request additional challenges.  A new session token will be returned. Note that the previous token will be invalidated.   Required permissions:    - `session.write`</remarks>
     /// <param name="sessionServiceSetSessionRequest"></param>
+
     /// <returns><![CDATA[SessionServiceSetSessionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<SessionServiceSetSessionResponse> SetSessionAsync(SessionServiceSetSessionRequest sessionServiceSetSessionRequest)
@@ -264,13 +301,20 @@ public class SessionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -278,6 +322,7 @@ public class SessionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Update an existing session with new information like additional checks or metadata  or request additional challenges.  A new session token will be returned. Note that the previous token will be invalidated.   Required permissions:    - `session.write`</remarks>
     /// <param name="sessionServiceSetSessionRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<SessionServiceSetSessionResponse>> SetSessionWithHttpInfoAsync(SessionServiceSetSessionRequest sessionServiceSetSessionRequest)

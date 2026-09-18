@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaOIDCServiceCreateCallbackResponse : IEquatable<BetaOIDCServiceCreateCallbackResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaOIDCServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("callbackUrl")]
     public string? CallbackUrl { get; set; }
 

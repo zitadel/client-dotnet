@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceSetMetadataEntry : IEquatable<UserServiceSetMetadataEntry>
 {
-    /// <example>null</example>
     [JsonPropertyName("key")]
     public string? Key { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("value")]
     public byte[]? Value { get; set; }
 
@@ -27,7 +25,7 @@ public class UserServiceSetMetadataEntry : IEquatable<UserServiceSetMetadataEntr
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Key, other.Key)
-                    && EqualityComparer<byte[]?>.Default.Equals(this.Value, other.Value));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Value, other.Value));
     }
 
     public override bool Equals(object? obj)
@@ -39,7 +37,7 @@ public class UserServiceSetMetadataEntry : IEquatable<UserServiceSetMetadataEntr
     {
         HashCode hash = default;
         hash.Add(this.Key);
-        hash.Add(this.Value);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Value));
         return hash.ToHashCode();
     }
 }

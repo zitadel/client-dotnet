@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceAddIDPLinkResponse : IEquatable<UserServiceAddIDPLinkResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 

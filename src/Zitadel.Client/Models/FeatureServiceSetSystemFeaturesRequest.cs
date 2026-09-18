@@ -14,45 +14,37 @@ namespace Zitadel.Client.Models;
 
 public class FeatureServiceSetSystemFeaturesRequest : IEquatable<FeatureServiceSetSystemFeaturesRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("loginDefaultOrg")]
     public bool? LoginDefaultOrg { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userSchema")]
     public bool? UserSchema { get; set; }
 
     /// <summary>
     /// Deprecated: the flag has been removed and `urn:ietf:params:oauth:grant-type:token-exchange`  grant type for the OIDC token endpoint is enabled by default.  Token exchange can be used to request tokens with a lesser scope or impersonate other users.  See the security policy to allow impersonation on an instance.  This field is only kept for backward compatibility and will be removed in the next major version of Zitadel.  Setting the field will have no effect.
     /// </summary>
-    /// <example>null</example>
     /// <remarks>Deprecated.</remarks>
     [Obsolete("This property is deprecated.")]
     [JsonPropertyName("oidcTokenExchange")]
     public bool? OidcTokenExchange { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("improvedPerformance")]
     public List<FeatureServiceImprovedPerformance>? ImprovedPerformance { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oidcSingleV1SessionTermination")]
     public bool? OidcSingleV1SessionTermination { get; set; }
 
     /// <summary>
     /// Deprecated: the flag has been removed and OIDC Back-Channel Logout is always enabled.  This field is only kept for backward compatibility and will be removed in the next major version of Zitadel.  Setting the field will have no effect.
     /// </summary>
-    /// <example>null</example>
     /// <remarks>Deprecated.</remarks>
     [Obsolete("This property is deprecated.")]
     [JsonPropertyName("enableBackChannelLogout")]
     public bool? EnableBackChannelLogout { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("loginV2")]
     public FeatureServiceLoginV2? LoginV2 { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("permissionCheckV2")]
     public bool? PermissionCheckV2 { get; set; }
 
@@ -64,7 +56,7 @@ public class FeatureServiceSetSystemFeaturesRequest : IEquatable<FeatureServiceS
                 || EqualityComparer<bool?>.Default.Equals(this.LoginDefaultOrg, other.LoginDefaultOrg)
                     && EqualityComparer<bool?>.Default.Equals(this.UserSchema, other.UserSchema)
                     && EqualityComparer<bool?>.Default.Equals(this.OidcTokenExchange, other.OidcTokenExchange)
-                    && EqualityComparer<List<FeatureServiceImprovedPerformance>?>.Default.Equals(this.ImprovedPerformance, other.ImprovedPerformance)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.ImprovedPerformance, other.ImprovedPerformance)
                     && EqualityComparer<bool?>.Default.Equals(this.OidcSingleV1SessionTermination, other.OidcSingleV1SessionTermination)
                     && EqualityComparer<bool?>.Default.Equals(this.EnableBackChannelLogout, other.EnableBackChannelLogout)
                     && EqualityComparer<FeatureServiceLoginV2?>.Default.Equals(this.LoginV2, other.LoginV2)
@@ -82,7 +74,7 @@ public class FeatureServiceSetSystemFeaturesRequest : IEquatable<FeatureServiceS
         hash.Add(this.LoginDefaultOrg);
         hash.Add(this.UserSchema);
         hash.Add(this.OidcTokenExchange);
-        hash.Add(this.ImprovedPerformance);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.ImprovedPerformance));
         hash.Add(this.OidcSingleV1SessionTermination);
         hash.Add(this.EnableBackChannelLogout);
         hash.Add(this.LoginV2);

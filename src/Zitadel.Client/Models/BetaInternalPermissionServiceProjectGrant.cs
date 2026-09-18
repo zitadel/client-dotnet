@@ -16,14 +16,12 @@ public class BetaInternalPermissionServiceProjectGrant : IEquatable<BetaInternal
     /// <summary>
     /// ProjectID is required to grant administrator privileges for a specific project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// OrganizationID is required to grant administrator privileges for a specific project grant.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 

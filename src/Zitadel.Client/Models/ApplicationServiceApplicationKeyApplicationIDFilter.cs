@@ -16,7 +16,6 @@ public class ApplicationServiceApplicationKeyApplicationIDFilter : IEquatable<Ap
     /// <summary>
     /// Search for application keys belonging to the application with this ID.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("applicationId")]
     public string? ApplicationId { get; set; }
 

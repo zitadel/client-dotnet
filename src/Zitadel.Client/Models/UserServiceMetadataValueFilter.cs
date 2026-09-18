@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceMetadataValueFilter : IEquatable<UserServiceMetadataValueFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("value")]
     public byte[]? Value { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public UserServiceByteFilterMethod? Method { get; set; }
 
@@ -26,7 +24,7 @@ public class UserServiceMetadataValueFilter : IEquatable<UserServiceMetadataValu
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<byte[]?>.Default.Equals(this.Value, other.Value)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Value, other.Value)
                     && EqualityComparer<UserServiceByteFilterMethod?>.Default.Equals(this.Method, other.Method));
     }
 
@@ -38,7 +36,7 @@ public class UserServiceMetadataValueFilter : IEquatable<UserServiceMetadataValu
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Value);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Value));
         hash.Add(this.Method);
         return hash.ToHashCode();
     }

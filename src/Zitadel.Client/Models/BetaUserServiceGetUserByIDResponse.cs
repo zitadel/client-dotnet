@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceGetUserByIDResponse : IEquatable<BetaUserServiceGetUserByIDResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaUserServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("user")]
     public BetaUserServiceUser? User { get; set; }
 

@@ -16,21 +16,18 @@ public class InternalPermissionServiceProject : IEquatable<InternalPermissionSer
     /// <summary>
     /// ID is the unique identifier of the project the user was granted the administrator role for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
     /// <summary>
     /// Name is the name of the project the user was granted the administrator role for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
     /// <summary>
     /// OrganizationID is the ID of the organization the project belongs to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 

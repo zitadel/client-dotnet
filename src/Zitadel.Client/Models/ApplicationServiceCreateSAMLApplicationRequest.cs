@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class ApplicationServiceCreateSAMLApplicationRequest : IEquatable<ApplicationServiceCreateSAMLApplicationRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("loginVersion")]
     public ApplicationServiceLoginVersion? LoginVersion { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("metadataUrl")]
     public string? MetadataUrl { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("metadataXml")]
     public byte[]? MetadataXml { get; set; }
 
@@ -32,7 +29,7 @@ public class ApplicationServiceCreateSAMLApplicationRequest : IEquatable<Applica
             && (ReferenceEquals(this, other)
                 || EqualityComparer<ApplicationServiceLoginVersion?>.Default.Equals(this.LoginVersion, other.LoginVersion)
                     && EqualityComparer<string?>.Default.Equals(this.MetadataUrl, other.MetadataUrl)
-                    && EqualityComparer<byte[]?>.Default.Equals(this.MetadataXml, other.MetadataXml));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.MetadataXml, other.MetadataXml));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +42,7 @@ public class ApplicationServiceCreateSAMLApplicationRequest : IEquatable<Applica
         HashCode hash = default;
         hash.Add(this.LoginVersion);
         hash.Add(this.MetadataUrl);
-        hash.Add(this.MetadataXml);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.MetadataXml));
         return hash.ToHashCode();
     }
 }

@@ -16,7 +16,6 @@ public class AuthorizationServiceInIDsFilter : IEquatable<AuthorizationServiceIn
     /// <summary>
     /// Defines the ids to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("ids")]
     public List<string>? Ids { get; set; }
 
@@ -25,7 +24,7 @@ public class AuthorizationServiceInIDsFilter : IEquatable<AuthorizationServiceIn
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<string>?>.Default.Equals(this.Ids, other.Ids));
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Ids, other.Ids));
     }
 
     public override bool Equals(object? obj)
@@ -36,7 +35,7 @@ public class AuthorizationServiceInIDsFilter : IEquatable<AuthorizationServiceIn
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Ids);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Ids));
         return hash.ToHashCode();
     }
 }

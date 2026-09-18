@@ -13,23 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceRetrieveIdentityProviderIntentResponse : IEquatable<UserServiceRetrieveIdentityProviderIntentResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpInformation")]
     public UserServiceIDPInformation? IdpInformation { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("addHumanUser")]
     public UserServiceAddHumanUserRequest? AddHumanUser { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("updateHumanUser")]
     public UserServiceUpdateHumanUserRequest? UpdateHumanUser { get; set; }
 

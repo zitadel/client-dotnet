@@ -42,6 +42,7 @@ public class IdentityProviderServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.</remarks>
     /// <param name="identityProviderServiceGetIDPByIDRequest"></param>
+
     /// <returns><![CDATA[IdentityProviderServiceGetIDPByIDResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<IdentityProviderServiceGetIDPByIDResponse> GetIDPByIDAsync(IdentityProviderServiceGetIDPByIDRequest identityProviderServiceGetIDPByIDRequest)
@@ -52,13 +53,20 @@ public class IdentityProviderServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -66,6 +74,7 @@ public class IdentityProviderServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns an identity provider (social/enterprise login) by its ID, which can be of the type Google, AzureAD, etc.</remarks>
     /// <param name="identityProviderServiceGetIDPByIDRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<IdentityProviderServiceGetIDPByIDResponse>> GetIDPByIDWithHttpInfoAsync(IdentityProviderServiceGetIDPByIDRequest identityProviderServiceGetIDPByIDRequest)

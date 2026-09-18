@@ -16,7 +16,6 @@ public class ActionServiceListExecutionFunctionsResponse : IEquatable<ActionServ
     /// <summary>
     /// All available functions to use in conditions.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("functions")]
     public List<string>? Functions { get; set; }
 
@@ -25,7 +24,7 @@ public class ActionServiceListExecutionFunctionsResponse : IEquatable<ActionServ
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<string>?>.Default.Equals(this.Functions, other.Functions));
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Functions, other.Functions));
     }
 
     public override bool Equals(object? obj)
@@ -36,7 +35,7 @@ public class ActionServiceListExecutionFunctionsResponse : IEquatable<ActionServ
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Functions);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Functions));
         return hash.ToHashCode();
     }
 }

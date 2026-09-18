@@ -16,21 +16,18 @@ public class ApplicationServicePaginationRequest : IEquatable<ApplicationService
     /// <summary>
     /// Starting point for retrieval, in combination of offset used to query a set list of objects.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("offset")]
-    public Object? Offset { get; set; }
+    public object? Offset { get; set; }
 
     /// <summary>
     /// limit is the maximum amount of objects returned. The default is set to 100  with a maximum of 1000 in the runtime configuration.  If the limit exceeds the maximum configured ZITADEL will throw an error.  If no limit is present the default is taken.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("limit")]
     public int? Limit { get; set; }
 
     /// <summary>
     /// Asc is the sorting order. If true the list is sorted ascending, if false  the list is sorted descending. The default is descending.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("asc")]
     public bool? Asc { get; set; }
 
@@ -39,7 +36,7 @@ public class ApplicationServicePaginationRequest : IEquatable<ApplicationService
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.Offset, other.Offset)
+                || EqualityComparer<object?>.Default.Equals(this.Offset, other.Offset)
                     && EqualityComparer<int?>.Default.Equals(this.Limit, other.Limit)
                     && EqualityComparer<bool?>.Default.Equals(this.Asc, other.Asc));
     }

@@ -16,7 +16,6 @@ public class OrganizationServiceDeactivateOrganizationRequest : IEquatable<Organ
     /// <summary>
     /// OrganizationID is the unique identifier of the organization to be deactivated.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 

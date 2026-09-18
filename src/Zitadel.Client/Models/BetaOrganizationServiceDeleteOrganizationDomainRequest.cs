@@ -16,11 +16,9 @@ public class BetaOrganizationServiceDeleteOrganizationDomainRequest : IEquatable
     /// <summary>
     /// Organization Id for the Organization which domain is to be deleted.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 

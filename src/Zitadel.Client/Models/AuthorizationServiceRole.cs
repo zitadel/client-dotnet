@@ -16,21 +16,18 @@ public class AuthorizationServiceRole : IEquatable<AuthorizationServiceRole>
     /// <summary>
     /// Key is the unique key of the role. It's the only relevant attribute for ZITADEL and  will be used for authorization checks and as claim in tokens and user info responses.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("key")]
     public string? Key { get; set; }
 
     /// <summary>
     /// Human readable name for the role, which might be displayed to users.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("displayName")]
     public string? DisplayName { get; set; }
 
     /// <summary>
     /// The group the role belongs to. This is used to group roles in the UI.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("group")]
     public string? Group { get; set; }
 

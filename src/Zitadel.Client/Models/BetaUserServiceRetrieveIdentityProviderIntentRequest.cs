@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceRetrieveIdentityProviderIntentRequest : IEquatable<BetaUserServiceRetrieveIdentityProviderIntentRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("idpIntentId")]
     public string? IdpIntentId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpIntentToken")]
     public string? IdpIntentToken { get; set; }
 

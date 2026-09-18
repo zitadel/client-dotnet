@@ -16,28 +16,24 @@ public class IdentityProviderServiceJWTConfig : IEquatable<IdentityProviderServi
     /// <summary>
     /// The endpoint where the JWT can be extracted.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("jwtEndpoint")]
     public string? JwtEndpoint { get; set; }
 
     /// <summary>
     /// The issuer of the JWT (for validation).
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("issuer")]
     public string? Issuer { get; set; }
 
     /// <summary>
     /// The endpoint to the key (JWK) which is used to sign the JWT with.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("keysEndpoint")]
     public string? KeysEndpoint { get; set; }
 
     /// <summary>
     /// The name of the header where the JWT is sent in, default is authorization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("headerName")]
     public string? HeaderName { get; set; }
 

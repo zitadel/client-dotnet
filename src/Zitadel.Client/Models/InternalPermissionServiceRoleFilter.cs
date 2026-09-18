@@ -16,7 +16,6 @@ public class InternalPermissionServiceRoleFilter : IEquatable<InternalPermission
     /// <summary>
     /// Search for administrators by the granted role.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roleKey")]
     public string? RoleKey { get; set; }
 

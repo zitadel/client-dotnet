@@ -60,6 +60,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Create a new target to your endpoint, which can be used in executions.   Required permission:    - `action.target.write`</remarks>
     /// <param name="betaActionServiceCreateTargetRequest"></param>
+
     /// <returns><![CDATA[BetaActionServiceCreateTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaActionServiceCreateTargetResponse> CreateTargetAsync(BetaActionServiceCreateTargetRequest betaActionServiceCreateTargetRequest)
@@ -70,13 +71,20 @@ public class BetaActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -84,6 +92,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Create a new target to your endpoint, which can be used in executions.   Required permission:    - `action.target.write`</remarks>
     /// <param name="betaActionServiceCreateTargetRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaActionServiceCreateTargetResponse>> CreateTargetWithHttpInfoAsync(BetaActionServiceCreateTargetRequest betaActionServiceCreateTargetRequest)
@@ -111,6 +120,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `action.target.delete`</remarks>
     /// <param name="betaActionServiceDeleteTargetRequest"></param>
+
     /// <returns><![CDATA[BetaActionServiceDeleteTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaActionServiceDeleteTargetResponse> DeleteTargetAsync(BetaActionServiceDeleteTargetRequest betaActionServiceDeleteTargetRequest)
@@ -121,13 +131,20 @@ public class BetaActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -135,6 +152,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `action.target.delete`</remarks>
     /// <param name="betaActionServiceDeleteTargetRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaActionServiceDeleteTargetResponse>> DeleteTargetWithHttpInfoAsync(BetaActionServiceDeleteTargetRequest betaActionServiceDeleteTargetRequest)
@@ -162,6 +180,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the target identified by the requested ID.   Required permission:    - `action.target.read`</remarks>
     /// <param name="betaActionServiceGetTargetRequest"></param>
+
     /// <returns><![CDATA[BetaActionServiceGetTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaActionServiceGetTargetResponse> GetTargetAsync(BetaActionServiceGetTargetRequest betaActionServiceGetTargetRequest)
@@ -172,13 +191,20 @@ public class BetaActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -186,6 +212,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the target identified by the requested ID.   Required permission:    - `action.target.read`</remarks>
     /// <param name="betaActionServiceGetTargetRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaActionServiceGetTargetResponse>> GetTargetWithHttpInfoAsync(BetaActionServiceGetTargetRequest betaActionServiceGetTargetRequest)
@@ -213,9 +240,10 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available functions which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[BetaActionServiceListExecutionFunctionsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceListExecutionFunctionsResponse> ListExecutionFunctionsAsync(Object body)
+    public async Task<BetaActionServiceListExecutionFunctionsResponse> ListExecutionFunctionsAsync(object body)
     {
         Task<ApiResult<BetaActionServiceListExecutionFunctionsResponse>> task = ListExecutionFunctionsWithHttpInfoAsync(body);
         ApiResult<BetaActionServiceListExecutionFunctionsResponse> result = await task.ConfigureAwait(false);
@@ -223,13 +251,20 @@ public class BetaActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -237,9 +272,10 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available functions which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceListExecutionFunctionsResponse>> ListExecutionFunctionsWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<BetaActionServiceListExecutionFunctionsResponse>> ListExecutionFunctionsWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.action.v2beta.ActionService/ListExecutionFunctions";
 
@@ -264,9 +300,10 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available methods which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[BetaActionServiceListExecutionMethodsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceListExecutionMethodsResponse> ListExecutionMethodsAsync(Object body)
+    public async Task<BetaActionServiceListExecutionMethodsResponse> ListExecutionMethodsAsync(object body)
     {
         Task<ApiResult<BetaActionServiceListExecutionMethodsResponse>> task = ListExecutionMethodsWithHttpInfoAsync(body);
         ApiResult<BetaActionServiceListExecutionMethodsResponse> result = await task.ConfigureAwait(false);
@@ -274,13 +311,20 @@ public class BetaActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -288,9 +332,10 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available methods which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceListExecutionMethodsResponse>> ListExecutionMethodsWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<BetaActionServiceListExecutionMethodsResponse>> ListExecutionMethodsWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.action.v2beta.ActionService/ListExecutionMethods";
 
@@ -315,9 +360,10 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available services which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[BetaActionServiceListExecutionServicesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaActionServiceListExecutionServicesResponse> ListExecutionServicesAsync(Object body)
+    public async Task<BetaActionServiceListExecutionServicesResponse> ListExecutionServicesAsync(object body)
     {
         Task<ApiResult<BetaActionServiceListExecutionServicesResponse>> task = ListExecutionServicesWithHttpInfoAsync(body);
         ApiResult<BetaActionServiceListExecutionServicesResponse> result = await task.ConfigureAwait(false);
@@ -325,13 +371,20 @@ public class BetaActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -339,9 +392,10 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all available services which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaActionServiceListExecutionServicesResponse>> ListExecutionServicesWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<BetaActionServiceListExecutionServicesResponse>> ListExecutionServicesWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.action.v2beta.ActionService/ListExecutionServices";
 
@@ -366,6 +420,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - `action.execution.read`</remarks>
     /// <param name="betaActionServiceListExecutionsRequest"></param>
+
     /// <returns><![CDATA[BetaActionServiceListExecutionsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaActionServiceListExecutionsResponse> ListExecutionsAsync(BetaActionServiceListExecutionsRequest betaActionServiceListExecutionsRequest)
@@ -376,13 +431,20 @@ public class BetaActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -390,6 +452,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - `action.execution.read`</remarks>
     /// <param name="betaActionServiceListExecutionsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaActionServiceListExecutionsResponse>> ListExecutionsWithHttpInfoAsync(BetaActionServiceListExecutionsRequest betaActionServiceListExecutionsRequest)
@@ -417,6 +480,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - `action.target.read`</remarks>
     /// <param name="betaActionServiceListTargetsRequest"></param>
+
     /// <returns><![CDATA[BetaActionServiceListTargetsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaActionServiceListTargetsResponse> ListTargetsAsync(BetaActionServiceListTargetsRequest betaActionServiceListTargetsRequest)
@@ -427,13 +491,20 @@ public class BetaActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -441,6 +512,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - `action.target.read`</remarks>
     /// <param name="betaActionServiceListTargetsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaActionServiceListTargetsResponse>> ListTargetsWithHttpInfoAsync(BetaActionServiceListTargetsRequest betaActionServiceListTargetsRequest)
@@ -468,6 +540,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - `action.execution.write`</remarks>
     /// <param name="betaActionServiceSetExecutionRequest"></param>
+
     /// <returns><![CDATA[BetaActionServiceSetExecutionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaActionServiceSetExecutionResponse> SetExecutionAsync(BetaActionServiceSetExecutionRequest betaActionServiceSetExecutionRequest)
@@ -478,13 +551,20 @@ public class BetaActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -492,6 +572,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - `action.execution.write`</remarks>
     /// <param name="betaActionServiceSetExecutionRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaActionServiceSetExecutionResponse>> SetExecutionWithHttpInfoAsync(BetaActionServiceSetExecutionRequest betaActionServiceSetExecutionRequest)
@@ -519,6 +600,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - `action.target.write`</remarks>
     /// <param name="betaActionServiceUpdateTargetRequest"></param>
+
     /// <returns><![CDATA[BetaActionServiceUpdateTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaActionServiceUpdateTargetResponse> UpdateTargetAsync(BetaActionServiceUpdateTargetRequest betaActionServiceUpdateTargetRequest)
@@ -529,13 +611,20 @@ public class BetaActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -543,6 +632,7 @@ public class BetaActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under action service v2. This endpoint will be removed with the next major version of ZITADEL.   Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - `action.target.write`</remarks>
     /// <param name="betaActionServiceUpdateTargetRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaActionServiceUpdateTargetResponse>> UpdateTargetWithHttpInfoAsync(BetaActionServiceUpdateTargetRequest betaActionServiceUpdateTargetRequest)

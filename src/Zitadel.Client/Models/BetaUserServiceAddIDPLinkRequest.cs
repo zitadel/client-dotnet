@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceAddIDPLinkRequest : IEquatable<BetaUserServiceAddIDPLinkRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpLink")]
     public BetaUserServiceIDPLink? IdpLink { get; set; }
 

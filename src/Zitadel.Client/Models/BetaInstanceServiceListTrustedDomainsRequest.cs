@@ -13,22 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class BetaInstanceServiceListTrustedDomainsRequest : IEquatable<BetaInstanceServiceListTrustedDomainsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("instanceId")]
     public string? InstanceId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaInstanceServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public BetaInstanceServiceTrustedDomainFieldName? SortingColumn { get; set; }
 
     /// <summary>
     /// Criterias the client is looking for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("queries")]
     public List<BetaInstanceServiceTrustedDomainSearchQuery>? Queries { get; set; }
 
@@ -40,7 +36,7 @@ public class BetaInstanceServiceListTrustedDomainsRequest : IEquatable<BetaInsta
                 || EqualityComparer<string?>.Default.Equals(this.InstanceId, other.InstanceId)
                     && EqualityComparer<BetaInstanceServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<BetaInstanceServiceTrustedDomainFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<BetaInstanceServiceTrustedDomainSearchQuery>?>.Default.Equals(this.Queries, other.Queries));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Queries, other.Queries));
     }
 
     public override bool Equals(object? obj)
@@ -54,7 +50,7 @@ public class BetaInstanceServiceListTrustedDomainsRequest : IEquatable<BetaInsta
         hash.Add(this.InstanceId);
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Queries);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Queries));
         return hash.ToHashCode();
     }
 }

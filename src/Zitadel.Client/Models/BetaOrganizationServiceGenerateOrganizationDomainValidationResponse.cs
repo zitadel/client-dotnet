@@ -16,14 +16,12 @@ public class BetaOrganizationServiceGenerateOrganizationDomainValidationResponse
     /// <summary>
     /// The token verify domain.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("token")]
     public string? Token { get; set; }
 
     /// <summary>
     /// URL used to verify the domain.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("url")]
     public string? Url { get; set; }
 

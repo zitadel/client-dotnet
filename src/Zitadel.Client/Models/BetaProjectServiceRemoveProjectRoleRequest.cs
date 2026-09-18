@@ -16,14 +16,12 @@ public class BetaProjectServiceRemoveProjectRoleRequest : IEquatable<BetaProject
     /// <summary>
     /// ID of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// The key is the only relevant attribute for ZITADEL regarding the authorization checks.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roleKey")]
     public string? RoleKey { get; set; }
 

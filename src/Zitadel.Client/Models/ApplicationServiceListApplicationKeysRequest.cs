@@ -13,18 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class ApplicationServiceListApplicationKeysRequest : IEquatable<ApplicationServiceListApplicationKeysRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public ApplicationServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public ApplicationServiceApplicationKeysSorting? SortingColumn { get; set; }
 
     /// <summary>
     /// Criteria to filter the application keys.  All provided filters are combined with a logical AND.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<ApplicationServiceApplicationKeySearchFilter>? Filters { get; set; }
 
@@ -35,7 +32,7 @@ public class ApplicationServiceListApplicationKeysRequest : IEquatable<Applicati
             && (ReferenceEquals(this, other)
                 || EqualityComparer<ApplicationServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<ApplicationServiceApplicationKeysSorting?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<ApplicationServiceApplicationKeySearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -48,7 +45,7 @@ public class ApplicationServiceListApplicationKeysRequest : IEquatable<Applicati
         HashCode hash = default;
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

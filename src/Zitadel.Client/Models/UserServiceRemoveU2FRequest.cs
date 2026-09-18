@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceRemoveU2FRequest : IEquatable<UserServiceRemoveU2FRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("u2fId")]
     public string? U2fId { get; set; }
 

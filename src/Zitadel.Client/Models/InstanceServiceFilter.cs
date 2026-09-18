@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class InstanceServiceFilter : IEquatable<InstanceServiceFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("customDomainsFilter")]
     public InstanceServiceCustomDomainsFilter? CustomDomainsFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("inIdsFilter")]
     public InstanceServiceInIDsFilter? InIdsFilter { get; set; }
 

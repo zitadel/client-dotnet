@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceSetPassword : IEquatable<BetaUserServiceSetPassword>
 {
-    /// <example>null</example>
     [JsonPropertyName("hashedPassword")]
     public BetaUserServiceHashedPassword? HashedPassword { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public BetaUserServicePassword? Password { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("currentPassword")]
     public string? CurrentPassword { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("verificationCode")]
     public string? VerificationCode { get; set; }
 

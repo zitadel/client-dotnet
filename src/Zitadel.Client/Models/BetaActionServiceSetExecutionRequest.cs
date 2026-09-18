@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaActionServiceSetExecutionRequest : IEquatable<BetaActionServiceSetExecutionRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("condition")]
     public BetaActionServiceCondition? Condition { get; set; }
 
     /// <summary>
     /// Ordered list of targets called during the execution.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("targets")]
     public List<string>? Targets { get; set; }
 
@@ -30,7 +28,7 @@ public class BetaActionServiceSetExecutionRequest : IEquatable<BetaActionService
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<BetaActionServiceCondition?>.Default.Equals(this.Condition, other.Condition)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Targets, other.Targets));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Targets, other.Targets));
     }
 
     public override bool Equals(object? obj)
@@ -42,7 +40,7 @@ public class BetaActionServiceSetExecutionRequest : IEquatable<BetaActionService
     {
         HashCode hash = default;
         hash.Add(this.Condition);
-        hash.Add(this.Targets);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Targets));
         return hash.ToHashCode();
     }
 }

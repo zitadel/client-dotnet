@@ -16,7 +16,6 @@ public class OrganizationServiceActivateOrganizationRequest : IEquatable<Organiz
     /// <summary>
     /// OrganizationID is the unique identifier of the organization to be activated.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 

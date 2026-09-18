@@ -13,39 +13,33 @@ namespace Zitadel.Client.Models;
 
 public class BetaProjectServiceUpdateProjectRequest : IEquatable<BetaProjectServiceUpdateProjectRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
     /// <summary>
     /// Name of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
     /// <summary>
     /// Enable this setting to have role information included in the user info endpoint. It is also dependent on your application settings to include it in tokens and other types.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectRoleAssertion")]
     public bool? ProjectRoleAssertion { get; set; }
 
     /// <summary>
     /// When enabled ZITADEL will check if a user has a role of this project assigned when login into an application of this project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectRoleCheck")]
     public bool? ProjectRoleCheck { get; set; }
 
     /// <summary>
     /// When enabled ZITADEL will check if the organization of the user, that is trying to log in, has a grant to this project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("hasProjectCheck")]
     public bool? HasProjectCheck { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("privateLabelingSetting")]
     public BetaProjectServicePrivateLabelingSetting? PrivateLabelingSetting { get; set; }
 

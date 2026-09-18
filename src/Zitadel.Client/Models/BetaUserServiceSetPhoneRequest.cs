@@ -13,25 +13,20 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceSetPhoneRequest : IEquatable<BetaUserServiceSetPhoneRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("phone")]
     public string? Phone { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("isVerified")]
     public bool? IsVerified { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("returnCode")]
-    public Object? ReturnCode { get; set; }
+    public object? ReturnCode { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sendCode")]
-    public Object? SendCode { get; set; }
+    public object? SendCode { get; set; }
 
     /// <summary>Value-equality based on all declared fields.</summary>
     public bool Equals(BetaUserServiceSetPhoneRequest? other)
@@ -41,8 +36,8 @@ public class BetaUserServiceSetPhoneRequest : IEquatable<BetaUserServiceSetPhone
                 || EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.Phone, other.Phone)
                     && EqualityComparer<bool?>.Default.Equals(this.IsVerified, other.IsVerified)
-                    && EqualityComparer<Object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
-                    && EqualityComparer<Object?>.Default.Equals(this.SendCode, other.SendCode));
+                    && EqualityComparer<object?>.Default.Equals(this.ReturnCode, other.ReturnCode)
+                    && EqualityComparer<object?>.Default.Equals(this.SendCode, other.SendCode));
     }
 
     public override bool Equals(object? obj)

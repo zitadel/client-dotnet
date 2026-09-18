@@ -13,21 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class InstanceServiceCustomDomainFilter : IEquatable<InstanceServiceCustomDomainFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("domainFilter")]
     public InstanceServiceDomainFilter? DomainFilter { get; set; }
 
     /// <summary>
     /// Filter whether the domain is auto-generated.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("generatedFilter")]
     public bool? GeneratedFilter { get; set; }
 
     /// <summary>
     /// Filter whether the domain is the primary domain of the instance.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("primaryFilter")]
     public bool? PrimaryFilter { get; set; }
 

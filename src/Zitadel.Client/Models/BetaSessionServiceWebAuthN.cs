@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceWebAuthN : IEquatable<BetaSessionServiceWebAuthN>
 {
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userVerificationRequirement")]
     public BetaSessionServiceUserVerificationRequirement? UserVerificationRequirement { get; set; }
 

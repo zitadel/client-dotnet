@@ -16,11 +16,9 @@ public class AuthorizationServiceUserPreferredLoginNameQuery : IEquatable<Author
     /// <summary>
     /// Specify the preferred login name of the granted user to search for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("loginName")]
     public string? LoginName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public AuthorizationServiceTextFilterMethod? Method { get; set; }
 

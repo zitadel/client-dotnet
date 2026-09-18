@@ -16,11 +16,9 @@ public class InstanceServiceListTrustedDomainsResponse : IEquatable<InstanceServ
     /// <summary>
     /// The list of trusted domains matching the query.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("trustedDomain")]
     public List<InstanceServiceTrustedDomain>? TrustedDomain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public InstanceServicePaginationResponse? Pagination { get; set; }
 
@@ -29,7 +27,7 @@ public class InstanceServiceListTrustedDomainsResponse : IEquatable<InstanceServ
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<InstanceServiceTrustedDomain>?>.Default.Equals(this.TrustedDomain, other.TrustedDomain)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.TrustedDomain, other.TrustedDomain)
                     && EqualityComparer<InstanceServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination));
     }
 
@@ -41,7 +39,7 @@ public class InstanceServiceListTrustedDomainsResponse : IEquatable<InstanceServ
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.TrustedDomain);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.TrustedDomain));
         hash.Add(this.Pagination);
         return hash.ToHashCode();
     }

@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceStartIdentityProviderIntentRequest : IEquatable<UserServiceStartIdentityProviderIntentRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("idpId")]
     public string? IdpId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("ldap")]
     public UserServiceLDAPCredentials? Ldap { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("urls")]
     public UserServiceRedirectURLs? Urls { get; set; }
 

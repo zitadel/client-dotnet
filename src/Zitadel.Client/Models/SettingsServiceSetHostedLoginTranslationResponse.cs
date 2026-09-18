@@ -16,7 +16,6 @@ public class SettingsServiceSetHostedLoginTranslationResponse : IEquatable<Setti
     /// <summary>
     /// hash of the saved translation. Valid only when ignore_inheritance = true
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("etag")]
     public string? Etag { get; set; }
 

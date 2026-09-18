@@ -16,11 +16,9 @@ public class AuthorizationServiceProjectNameQuery : IEquatable<AuthorizationServ
     /// <summary>
     /// Specify the name of the project the user was granted the authorization for to search for.  Note that this will also include authorizations granted for project grants of the same project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public AuthorizationServiceTextFilterMethod? Method { get; set; }
 

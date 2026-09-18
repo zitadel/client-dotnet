@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class SettingsServiceGetPasswordComplexitySettingsResponse : IEquatable<SettingsServiceGetPasswordComplexitySettingsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public SettingsServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("settings")]
     public SettingsServicePasswordComplexitySettings? Settings { get; set; }
 

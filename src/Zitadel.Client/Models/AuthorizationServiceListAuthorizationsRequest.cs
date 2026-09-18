@@ -13,18 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class AuthorizationServiceListAuthorizationsRequest : IEquatable<AuthorizationServiceListAuthorizationsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public AuthorizationServicePaginationRequest? Pagination { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public AuthorizationServiceAuthorizationFieldName? SortingColumn { get; set; }
 
     /// <summary>
     /// Define the criteria to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<AuthorizationServiceAuthorizationsSearchFilter>? Filters { get; set; }
 
@@ -35,7 +32,7 @@ public class AuthorizationServiceListAuthorizationsRequest : IEquatable<Authoriz
             && (ReferenceEquals(this, other)
                 || EqualityComparer<AuthorizationServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
                     && EqualityComparer<AuthorizationServiceAuthorizationFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn)
-                    && EqualityComparer<List<AuthorizationServiceAuthorizationsSearchFilter>?>.Default.Equals(this.Filters, other.Filters));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters));
     }
 
     public override bool Equals(object? obj)
@@ -48,7 +45,7 @@ public class AuthorizationServiceListAuthorizationsRequest : IEquatable<Authoriz
         HashCode hash = default;
         hash.Add(this.Pagination);
         hash.Add(this.SortingColumn);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         return hash.ToHashCode();
     }
 }

@@ -16,14 +16,12 @@ public class BetaOrganizationServiceUpdateOrganizationRequest : IEquatable<BetaO
     /// <summary>
     /// Organization Id for the Organization to be updated
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
     /// <summary>
     /// New Name for the Organization to be updated
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 

@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceCheckUser : IEquatable<BetaSessionServiceCheckUser>
 {
-    /// <example>null</example>
     [JsonPropertyName("loginName")]
     public string? LoginName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 

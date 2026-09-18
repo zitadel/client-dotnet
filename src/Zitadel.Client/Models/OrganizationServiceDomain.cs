@@ -16,32 +16,27 @@ public class OrganizationServiceDomain : IEquatable<OrganizationServiceDomain>
     /// <summary>
     /// OrganizationID is the unique identifier of the organization the domain belongs to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// Domain is the fully qualified domain name.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 
     /// <summary>
     /// IsVerified is a boolean flag indicating if the domain has been verified.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("isVerified")]
     public bool? IsVerified { get; set; }
 
     /// <summary>
     /// IsPrimary is a boolean flag indicating if the domain is the primary domain of the organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("isPrimary")]
     public bool? IsPrimary { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("validationType")]
     public OrganizationServiceDomainValidationType? ValidationType { get; set; }
 

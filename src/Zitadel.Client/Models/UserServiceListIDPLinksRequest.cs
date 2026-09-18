@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceListIDPLinksRequest : IEquatable<UserServiceListIDPLinksRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("query")]
     public UserServiceListQuery? Query { get; set; }
 

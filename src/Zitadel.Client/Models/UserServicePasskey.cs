@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class UserServicePasskey : IEquatable<UserServicePasskey>
 {
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("state")]
     public UserServiceAuthFactorState? State { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 

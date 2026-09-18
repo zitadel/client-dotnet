@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class InstanceServiceTrustedDomainFilter : IEquatable<InstanceServiceTrustedDomainFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("domainFilter")]
     public InstanceServiceDomainFilter? DomainFilter { get; set; }
 

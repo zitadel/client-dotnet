@@ -16,14 +16,12 @@ public class BetaProjectServiceDeactivateProjectGrantRequest : IEquatable<BetaPr
     /// <summary>
     /// ID of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// Organization the project is granted to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("grantedOrganizationId")]
     public string? GrantedOrganizationId { get; set; }
 

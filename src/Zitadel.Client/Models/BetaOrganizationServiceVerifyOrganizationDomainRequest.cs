@@ -16,14 +16,12 @@ public class BetaOrganizationServiceVerifyOrganizationDomainRequest : IEquatable
     /// <summary>
     /// Organization Id for the Organization doman to be verified.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// Organization Id for the Organization doman to be verified.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 

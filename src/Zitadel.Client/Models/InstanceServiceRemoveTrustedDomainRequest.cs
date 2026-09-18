@@ -16,14 +16,12 @@ public class InstanceServiceRemoveTrustedDomainRequest : IEquatable<InstanceServ
     /// <summary>
     /// InstanceID is the unique ID of the instance from which the trusted domain will be removed.  If not set, the instance in the current context (e.g. identified by the host header) will be used.  If an ID is set, the caller must have additional permissions.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("instanceId")]
     public string? InstanceId { get; set; }
 
     /// <summary>
     /// The trusted domain to remove from the instance.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("trustedDomain")]
     public string? TrustedDomain { get; set; }
 

@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaUserServiceRetrieveIdentityProviderIntentResponse : IEquatable<BetaUserServiceRetrieveIdentityProviderIntentResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaUserServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpInformation")]
     public BetaUserServiceIDPInformation? IdpInformation { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 

@@ -70,6 +70,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Activates the public key for payload encryption.  The public key is used to encrypt the payload sent to the target when the payload type is set to `PAYLOAD_TYPE_JWE`.  Activating a new key will deactivate the current active key. Only one key can be active at a time.  The active key is indicated in the `kid` header in the JWE token sent to the target.  Activating a key that is already active is a no-op.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceActivatePublicKeyRequest"></param>
+
     /// <returns><![CDATA[ActionServiceActivatePublicKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceActivatePublicKeyResponse> ActivatePublicKeyAsync(ActionServiceActivatePublicKeyRequest actionServiceActivatePublicKeyRequest)
@@ -80,13 +81,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -94,6 +102,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Activates the public key for payload encryption.  The public key is used to encrypt the payload sent to the target when the payload type is set to `PAYLOAD_TYPE_JWE`.  Activating a new key will deactivate the current active key. Only one key can be active at a time.  The active key is indicated in the `kid` header in the JWE token sent to the target.  Activating a key that is already active is a no-op.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceActivatePublicKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceActivatePublicKeyResponse>> ActivatePublicKeyWithHttpInfoAsync(ActionServiceActivatePublicKeyRequest actionServiceActivatePublicKeyRequest)
@@ -121,6 +130,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Adds a public key to the target for payload encryption.  The public key is used to encrypt the payload sent to the target when the payload type is set to `PAYLOAD_TYPE_JWE`.  The public key must be in PEM format and be either an RSA or an EC key.  On a successful addition, a key ID is returned which can not only be used to manage the key (activate, remove),  but also will be used as the `kid` header in the JWE token sent to the target to indicate which key was used for encryption.  Note that newly added keys are inactive by default. You must activate the key to use it for payload encryption.  Providing an optional expiration date allows you to set a validity period for the key.  After the expiration date, the key will be automatically deactivated and no longer used for payload encryption.  Be sure to activate a new key before the current active key expires to avoid interruptions in your target executions.  You can have multiple inactive keys for rotation purposes, but only one active key at a time.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceAddPublicKeyRequest"></param>
+
     /// <returns><![CDATA[ActionServiceAddPublicKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceAddPublicKeyResponse> AddPublicKeyAsync(ActionServiceAddPublicKeyRequest actionServiceAddPublicKeyRequest)
@@ -131,13 +141,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -145,6 +162,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Adds a public key to the target for payload encryption.  The public key is used to encrypt the payload sent to the target when the payload type is set to `PAYLOAD_TYPE_JWE`.  The public key must be in PEM format and be either an RSA or an EC key.  On a successful addition, a key ID is returned which can not only be used to manage the key (activate, remove),  but also will be used as the `kid` header in the JWE token sent to the target to indicate which key was used for encryption.  Note that newly added keys are inactive by default. You must activate the key to use it for payload encryption.  Providing an optional expiration date allows you to set a validity period for the key.  After the expiration date, the key will be automatically deactivated and no longer used for payload encryption.  Be sure to activate a new key before the current active key expires to avoid interruptions in your target executions.  You can have multiple inactive keys for rotation purposes, but only one active key at a time.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceAddPublicKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceAddPublicKeyResponse>> AddPublicKeyWithHttpInfoAsync(ActionServiceAddPublicKeyRequest actionServiceAddPublicKeyRequest)
@@ -172,6 +190,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new target to your endpoint, which can be used in executions.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceCreateTargetRequest"></param>
+
     /// <returns><![CDATA[ActionServiceCreateTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceCreateTargetResponse> CreateTargetAsync(ActionServiceCreateTargetRequest actionServiceCreateTargetRequest)
@@ -182,13 +201,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -196,6 +222,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new target to your endpoint, which can be used in executions.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceCreateTargetRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceCreateTargetResponse>> CreateTargetWithHttpInfoAsync(ActionServiceCreateTargetRequest actionServiceCreateTargetRequest)
@@ -223,6 +250,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deactivates the public key for payload encryption.  The public key will no longer be used to encrypt payloads sent to the target.  Be aware that deactivating the active key will leave the target without an active key.  Subsequent calls to the target with payload type `PAYLOAD_TYPE_JWE` will fail until a new key is activated.  This endpoint can be used in break glass scenarios to quickly disable a compromised key.  Deactivating a key that is already inactive is a no-op.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceDeactivatePublicKeyRequest"></param>
+
     /// <returns><![CDATA[ActionServiceDeactivatePublicKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceDeactivatePublicKeyResponse> DeactivatePublicKeyAsync(ActionServiceDeactivatePublicKeyRequest actionServiceDeactivatePublicKeyRequest)
@@ -233,13 +261,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -247,6 +282,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deactivates the public key for payload encryption.  The public key will no longer be used to encrypt payloads sent to the target.  Be aware that deactivating the active key will leave the target without an active key.  Subsequent calls to the target with payload type `PAYLOAD_TYPE_JWE` will fail until a new key is activated.  This endpoint can be used in break glass scenarios to quickly disable a compromised key.  Deactivating a key that is already inactive is a no-op.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceDeactivatePublicKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceDeactivatePublicKeyResponse>> DeactivatePublicKeyWithHttpInfoAsync(ActionServiceDeactivatePublicKeyRequest actionServiceDeactivatePublicKeyRequest)
@@ -274,6 +310,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `action.target.delete`</remarks>
     /// <param name="actionServiceDeleteTargetRequest"></param>
+
     /// <returns><![CDATA[ActionServiceDeleteTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceDeleteTargetResponse> DeleteTargetAsync(ActionServiceDeleteTargetRequest actionServiceDeleteTargetRequest)
@@ -284,13 +321,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -298,6 +342,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Delete an existing target. This will remove it from any configured execution as well.  In case the target is not found, the request will return a successful response as  the desired state is already achieved.   Required permission:    - `action.target.delete`</remarks>
     /// <param name="actionServiceDeleteTargetRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceDeleteTargetResponse>> DeleteTargetWithHttpInfoAsync(ActionServiceDeleteTargetRequest actionServiceDeleteTargetRequest)
@@ -325,6 +370,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the target identified by the requested ID.   Required permission:    - `action.target.read`</remarks>
     /// <param name="actionServiceGetTargetRequest"></param>
+
     /// <returns><![CDATA[ActionServiceGetTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceGetTargetResponse> GetTargetAsync(ActionServiceGetTargetRequest actionServiceGetTargetRequest)
@@ -335,13 +381,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -349,6 +402,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Returns the target identified by the requested ID.   Required permission:    - `action.target.read`</remarks>
     /// <param name="actionServiceGetTargetRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceGetTargetResponse>> GetTargetWithHttpInfoAsync(ActionServiceGetTargetRequest actionServiceGetTargetRequest)
@@ -376,9 +430,10 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all available functions which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[ActionServiceListExecutionFunctionsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceListExecutionFunctionsResponse> ListExecutionFunctionsAsync(Object body)
+    public async Task<ActionServiceListExecutionFunctionsResponse> ListExecutionFunctionsAsync(object body)
     {
         Task<ApiResult<ActionServiceListExecutionFunctionsResponse>> task = ListExecutionFunctionsWithHttpInfoAsync(body);
         ApiResult<ActionServiceListExecutionFunctionsResponse> result = await task.ConfigureAwait(false);
@@ -386,13 +441,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -400,9 +462,10 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all available functions which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceListExecutionFunctionsResponse>> ListExecutionFunctionsWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<ActionServiceListExecutionFunctionsResponse>> ListExecutionFunctionsWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.action.v2.ActionService/ListExecutionFunctions";
 
@@ -427,9 +490,10 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all available methods which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[ActionServiceListExecutionMethodsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceListExecutionMethodsResponse> ListExecutionMethodsAsync(Object body)
+    public async Task<ActionServiceListExecutionMethodsResponse> ListExecutionMethodsAsync(object body)
     {
         Task<ApiResult<ActionServiceListExecutionMethodsResponse>> task = ListExecutionMethodsWithHttpInfoAsync(body);
         ApiResult<ActionServiceListExecutionMethodsResponse> result = await task.ConfigureAwait(false);
@@ -437,13 +501,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -451,9 +522,10 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all available methods which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceListExecutionMethodsResponse>> ListExecutionMethodsWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<ActionServiceListExecutionMethodsResponse>> ListExecutionMethodsWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.action.v2.ActionService/ListExecutionMethods";
 
@@ -478,9 +550,10 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all available services which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[ActionServiceListExecutionServicesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ActionServiceListExecutionServicesResponse> ListExecutionServicesAsync(Object body)
+    public async Task<ActionServiceListExecutionServicesResponse> ListExecutionServicesAsync(object body)
     {
         Task<ApiResult<ActionServiceListExecutionServicesResponse>> task = ListExecutionServicesWithHttpInfoAsync(body);
         ApiResult<ActionServiceListExecutionServicesResponse> result = await task.ConfigureAwait(false);
@@ -488,13 +561,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -502,9 +582,10 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all available services which can be used as condition for executions.</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<ActionServiceListExecutionServicesResponse>> ListExecutionServicesWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<ActionServiceListExecutionServicesResponse>> ListExecutionServicesWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.action.v2.ActionService/ListExecutionServices";
 
@@ -529,6 +610,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - `action.execution.read`</remarks>
     /// <param name="actionServiceListExecutionsRequest"></param>
+
     /// <returns><![CDATA[ActionServiceListExecutionsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceListExecutionsResponse> ListExecutionsAsync(ActionServiceListExecutionsRequest actionServiceListExecutionsRequest)
@@ -539,13 +621,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -553,6 +642,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all matching executions. By default all executions of the instance are returned that have at least one execution target.  Make sure to include a limit and sorting for pagination.   Required permission:    - `action.execution.read`</remarks>
     /// <param name="actionServiceListExecutionsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceListExecutionsResponse>> ListExecutionsWithHttpInfoAsync(ActionServiceListExecutionsRequest actionServiceListExecutionsRequest)
@@ -580,6 +670,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Lists all public keys of a target.  The response includes which key is active and the key's expiration dates.  This allows you to manage key rotations and ensure that your target always has an active key for payload encryption.   Required permission:    - `action.target.read`</remarks>
     /// <param name="actionServiceListPublicKeysRequest"></param>
+
     /// <returns><![CDATA[ActionServiceListPublicKeysResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceListPublicKeysResponse> ListPublicKeysAsync(ActionServiceListPublicKeysRequest actionServiceListPublicKeysRequest)
@@ -590,13 +681,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -604,6 +702,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Lists all public keys of a target.  The response includes which key is active and the key's expiration dates.  This allows you to manage key rotations and ensure that your target always has an active key for payload encryption.   Required permission:    - `action.target.read`</remarks>
     /// <param name="actionServiceListPublicKeysRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceListPublicKeysResponse>> ListPublicKeysWithHttpInfoAsync(ActionServiceListPublicKeysRequest actionServiceListPublicKeysRequest)
@@ -631,6 +730,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - `action.target.read`</remarks>
     /// <param name="actionServiceListTargetsRequest"></param>
+
     /// <returns><![CDATA[ActionServiceListTargetsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceListTargetsResponse> ListTargetsAsync(ActionServiceListTargetsRequest actionServiceListTargetsRequest)
@@ -641,13 +741,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -655,6 +762,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>List all matching targets. By default all targets of the instance are returned.  Make sure to include a limit and sorting for pagination.   Required permission:    - `action.target.read`</remarks>
     /// <param name="actionServiceListTargetsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceListTargetsResponse>> ListTargetsWithHttpInfoAsync(ActionServiceListTargetsRequest actionServiceListTargetsRequest)
@@ -682,6 +790,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Removes the public key from the target. This is a permanent action and can not be undone.  Note that you can only remove inactive keys. Attempting to remove an active key will result in an error.  For break glass scenarios, deactivate the key first and then remove it.  Removing a non-existing key is a no-op.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceRemovePublicKeyRequest"></param>
+
     /// <returns><![CDATA[ActionServiceRemovePublicKeyResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceRemovePublicKeyResponse> RemovePublicKeyAsync(ActionServiceRemovePublicKeyRequest actionServiceRemovePublicKeyRequest)
@@ -692,13 +801,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -706,6 +822,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Removes the public key from the target. This is a permanent action and can not be undone.  Note that you can only remove inactive keys. Attempting to remove an active key will result in an error.  For break glass scenarios, deactivate the key first and then remove it.  Removing a non-existing key is a no-op.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceRemovePublicKeyRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceRemovePublicKeyResponse>> RemovePublicKeyWithHttpInfoAsync(ActionServiceRemovePublicKeyRequest actionServiceRemovePublicKeyRequest)
@@ -733,6 +850,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - `action.execution.write`</remarks>
     /// <param name="actionServiceSetExecutionRequest"></param>
+
     /// <returns><![CDATA[ActionServiceSetExecutionResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceSetExecutionResponse> SetExecutionAsync(ActionServiceSetExecutionRequest actionServiceSetExecutionRequest)
@@ -743,13 +861,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -757,6 +882,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Sets an execution to call a target or include the targets of another execution.  Setting an empty list of targets will remove all targets from the execution, making it a noop.   Required permission:    - `action.execution.write`</remarks>
     /// <param name="actionServiceSetExecutionRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceSetExecutionResponse>> SetExecutionWithHttpInfoAsync(ActionServiceSetExecutionRequest actionServiceSetExecutionRequest)
@@ -784,6 +910,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceUpdateTargetRequest"></param>
+
     /// <returns><![CDATA[ActionServiceUpdateTargetResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ActionServiceUpdateTargetResponse> UpdateTargetAsync(ActionServiceUpdateTargetRequest actionServiceUpdateTargetRequest)
@@ -794,13 +921,20 @@ public class ActionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -808,6 +942,7 @@ public class ActionServiceApi : BaseApi
     /// </summary>
     /// <remarks>Update an existing target.  To generate a new signing key set the optional expirationSigningKey.   Required permission:    - `action.target.write`</remarks>
     /// <param name="actionServiceUpdateTargetRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<ActionServiceUpdateTargetResponse>> UpdateTargetWithHttpInfoAsync(ActionServiceUpdateTargetRequest actionServiceUpdateTargetRequest)

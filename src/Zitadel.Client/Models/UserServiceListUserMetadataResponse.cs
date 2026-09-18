@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceListUserMetadataResponse : IEquatable<UserServiceListUserMetadataResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public UserServicePaginationResponse? Pagination { get; set; }
 
     /// <summary>
     /// The user metadata requested.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("metadata")]
     public List<UserServiceMetadata>? Metadata { get; set; }
 
@@ -30,7 +28,7 @@ public class UserServiceListUserMetadataResponse : IEquatable<UserServiceListUse
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<UserServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<UserServiceMetadata>?>.Default.Equals(this.Metadata, other.Metadata));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Metadata, other.Metadata));
     }
 
     public override bool Equals(object? obj)
@@ -42,7 +40,7 @@ public class UserServiceListUserMetadataResponse : IEquatable<UserServiceListUse
     {
         HashCode hash = default;
         hash.Add(this.Pagination);
-        hash.Add(this.Metadata);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Metadata));
         return hash.ToHashCode();
     }
 }

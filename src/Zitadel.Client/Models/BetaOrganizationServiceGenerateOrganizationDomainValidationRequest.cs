@@ -16,18 +16,15 @@ public class BetaOrganizationServiceGenerateOrganizationDomainValidationRequest 
     /// <summary>
     /// Organization Id for the Organization which doman to be validated.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// The domain which to be deleted.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("type")]
     public BetaOrganizationServiceDomainValidationType? Type { get; set; }
 

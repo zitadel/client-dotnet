@@ -13,40 +13,33 @@ namespace Zitadel.Client.Models;
 
 public class SettingsServiceBrandingSettings : IEquatable<SettingsServiceBrandingSettings>
 {
-    /// <example>null</example>
     [JsonPropertyName("lightTheme")]
     public SettingsServiceTheme? LightTheme { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("darkTheme")]
     public SettingsServiceTheme? DarkTheme { get; set; }
 
     /// <summary>
     /// The url where the font is served.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("fontUrl")]
     public string? FontUrl { get; set; }
 
     /// <summary>
-    /// If enabled, the organization suffix will be hidden on the login form if the scope \\\"urn:zitadel:iam:org:domain:primary:{domainname}\\\" is used.
+    /// If enabled, the organization suffix will be hidden on the login form if the scope \"urn:zitadel:iam:org:domain:primary:{domainname}\" is used.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("hideLoginNameSuffix")]
     public bool? HideLoginNameSuffix { get; set; }
 
     /// <summary>
     /// If enabled, the Zitadel logo will not be displayed on the login screen.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("disableWatermark")]
     public bool? DisableWatermark { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public SettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("themeMode")]
     public SettingsServiceThemeMode? ThemeMode { get; set; }
 

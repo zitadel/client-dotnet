@@ -16,7 +16,6 @@ public class ApplicationServiceClientIDFilter : IEquatable<ApplicationServiceCli
     /// <summary>
     /// The clientID to search for. The search is performed as an exact match.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("clientId")]
     public string? ClientId { get; set; }
 

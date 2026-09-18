@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaInstanceServiceDomainQuery : IEquatable<BetaInstanceServiceDomainQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaInstanceServiceTextQueryMethod? Method { get; set; }
 

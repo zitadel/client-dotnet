@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceListSessionsRequest : IEquatable<BetaSessionServiceListSessionsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("query")]
     public BetaSessionServiceListQuery? Query { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("queries")]
     public List<BetaSessionServiceSearchQuery>? Queries { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public BetaSessionServiceSessionFieldName? SortingColumn { get; set; }
 
@@ -31,7 +28,7 @@ public class BetaSessionServiceListSessionsRequest : IEquatable<BetaSessionServi
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<BetaSessionServiceListQuery?>.Default.Equals(this.Query, other.Query)
-                    && EqualityComparer<List<BetaSessionServiceSearchQuery>?>.Default.Equals(this.Queries, other.Queries)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Queries, other.Queries)
                     && EqualityComparer<BetaSessionServiceSessionFieldName?>.Default.Equals(this.SortingColumn, other.SortingColumn));
     }
 
@@ -44,7 +41,7 @@ public class BetaSessionServiceListSessionsRequest : IEquatable<BetaSessionServi
     {
         HashCode hash = default;
         hash.Add(this.Query);
-        hash.Add(this.Queries);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Queries));
         hash.Add(this.SortingColumn);
         return hash.ToHashCode();
     }

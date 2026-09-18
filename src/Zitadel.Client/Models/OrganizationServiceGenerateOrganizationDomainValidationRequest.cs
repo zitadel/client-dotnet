@@ -16,18 +16,15 @@ public class OrganizationServiceGenerateOrganizationDomainValidationRequest : IE
     /// <summary>
     /// OrganizationID is the unique identifier of the organization for which the domain validation is to be generated.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// Domain is the full qualified domain name for which the validation is to be generated.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("type")]
     public OrganizationServiceDomainValidationType? Type { get; set; }
 

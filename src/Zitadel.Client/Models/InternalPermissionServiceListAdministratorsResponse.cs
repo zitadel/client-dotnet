@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class InternalPermissionServiceListAdministratorsResponse : IEquatable<InternalPermissionServiceListAdministratorsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public InternalPermissionServicePaginationResponse? Pagination { get; set; }
 
     /// <summary>
     /// Administrators contains the list of administrators matching the request.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("administrators")]
     public List<InternalPermissionServiceAdministrator>? Administrators { get; set; }
 
@@ -30,7 +28,7 @@ public class InternalPermissionServiceListAdministratorsResponse : IEquatable<In
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<InternalPermissionServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<InternalPermissionServiceAdministrator>?>.Default.Equals(this.Administrators, other.Administrators));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Administrators, other.Administrators));
     }
 
     public override bool Equals(object? obj)
@@ -42,7 +40,7 @@ public class InternalPermissionServiceListAdministratorsResponse : IEquatable<In
     {
         HashCode hash = default;
         hash.Add(this.Pagination);
-        hash.Add(this.Administrators);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Administrators));
         return hash.ToHashCode();
     }
 }

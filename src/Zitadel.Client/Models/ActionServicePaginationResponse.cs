@@ -16,24 +16,22 @@ public class ActionServicePaginationResponse : IEquatable<ActionServicePaginatio
     /// <summary>
     /// Absolute number of objects matching the query, regardless of applied limit.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("totalResult")]
-    public Object? TotalResult { get; set; }
+    public object? TotalResult { get; set; }
 
     /// <summary>
     /// Applied limit from query, defines maximum amount of objects per request, to compare if all objects are returned.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("appliedLimit")]
-    public Object? AppliedLimit { get; set; }
+    public object? AppliedLimit { get; set; }
 
     /// <summary>Value-equality based on all declared fields.</summary>
     public bool Equals(ActionServicePaginationResponse? other)
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.TotalResult, other.TotalResult)
-                    && EqualityComparer<Object?>.Default.Equals(this.AppliedLimit, other.AppliedLimit));
+                || EqualityComparer<object?>.Default.Equals(this.TotalResult, other.TotalResult)
+                    && EqualityComparer<object?>.Default.Equals(this.AppliedLimit, other.AppliedLimit));
     }
 
     public override bool Equals(object? obj)

@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceResendInviteCodeRequest : IEquatable<UserServiceResendInviteCodeRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 

@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class ActionServiceExecutionSearchFilter : IEquatable<ActionServiceExecutionSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("executionTypeFilter")]
     public ActionServiceExecutionTypeFilter? ExecutionTypeFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("inConditionsFilter")]
     public ActionServiceInConditionsFilter? InConditionsFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("targetFilter")]
     public ActionServiceTargetFilter? TargetFilter { get; set; }
 

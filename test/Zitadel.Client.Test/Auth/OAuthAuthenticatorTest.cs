@@ -72,11 +72,14 @@ public class OAuthAuthenticatorTest
                 binder: null,
                 args: [accessToken, DateTime.UtcNow.AddHours(1)],
                 culture: null
-            ) ?? throw new InvalidOperationException("Unable to construct OAuthAuthenticator.Token.");
+            )
+            ?? throw new InvalidOperationException("Unable to construct OAuthAuthenticator.Token.");
 
         FieldInfo field =
-            typeof(OAuthAuthenticator).GetField("_token", BindingFlags.Instance | BindingFlags.NonPublic)
-            ?? throw new InvalidOperationException("OAuthAuthenticator._token field not found.");
+            typeof(OAuthAuthenticator).GetField(
+                "_token",
+                BindingFlags.Instance | BindingFlags.NonPublic
+            ) ?? throw new InvalidOperationException("OAuthAuthenticator._token field not found.");
 
         field.SetValue(authenticator, token);
     }

@@ -16,7 +16,6 @@ public class SessionServiceUserIDQuery : IEquatable<SessionServiceUserIDQuery>
     /// <summary>
     /// ID of the user whose sessions are being searched for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

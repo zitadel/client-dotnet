@@ -16,14 +16,12 @@ public class SettingsServiceEmbeddedIframeSettings : IEquatable<SettingsServiceE
     /// <summary>
     /// Enabled states if iframe embedding is enabled or disabled.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("enabled")]
     public bool? Enabled { get; set; }
 
     /// <summary>
     /// AllowedOrigins defines which origins are allowed to embed ZITADEL in an iframe.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("allowedOrigins")]
     public List<string>? AllowedOrigins { get; set; }
 
@@ -33,7 +31,7 @@ public class SettingsServiceEmbeddedIframeSettings : IEquatable<SettingsServiceE
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<bool?>.Default.Equals(this.Enabled, other.Enabled)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.AllowedOrigins, other.AllowedOrigins));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.AllowedOrigins, other.AllowedOrigins));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +43,7 @@ public class SettingsServiceEmbeddedIframeSettings : IEquatable<SettingsServiceE
     {
         HashCode hash = default;
         hash.Add(this.Enabled);
-        hash.Add(this.AllowedOrigins);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.AllowedOrigins));
         return hash.ToHashCode();
     }
 }

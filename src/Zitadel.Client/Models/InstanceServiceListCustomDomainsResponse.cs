@@ -16,11 +16,9 @@ public class InstanceServiceListCustomDomainsResponse : IEquatable<InstanceServi
     /// <summary>
     /// The list of custom domains matching the query.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domains")]
     public List<InstanceServiceCustomDomain>? Domains { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public InstanceServicePaginationResponse? Pagination { get; set; }
 
@@ -29,7 +27,7 @@ public class InstanceServiceListCustomDomainsResponse : IEquatable<InstanceServi
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<InstanceServiceCustomDomain>?>.Default.Equals(this.Domains, other.Domains)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Domains, other.Domains)
                     && EqualityComparer<InstanceServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination));
     }
 
@@ -41,7 +39,7 @@ public class InstanceServiceListCustomDomainsResponse : IEquatable<InstanceServi
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Domains);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Domains));
         hash.Add(this.Pagination);
         return hash.ToHashCode();
     }

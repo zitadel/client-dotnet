@@ -28,7 +28,11 @@ internal class ObjectSerializer
 
     /// <summary>
     /// Serialize an object to a JSON string.
-    /// Unwraps oneOf/anyOf wrapper objects by serializing their ActualInstance.
+    /// Unwraps a oneOf wrapper by serializing its single <c>ActualInstance</c>.
+    /// An anyOf wrapper (identified by a <c>MatchedInstances</c> property) is
+    /// serialized through its own converter instead, so the inclusive union of
+    /// every retained variant's fields is emitted and a co-satisfied payload
+    /// round-trips losslessly rather than collapsing to the first variant.
     /// </summary>
     /// <exception cref="SerializationException">
     /// Thrown when the value cannot be serialized to JSON. The underlying
@@ -40,12 +44,20 @@ internal class ObjectSerializer
     {
         if (value != null)
         {
-            System.Reflection.PropertyInfo? actualProp = value
-                .GetType()
-                .GetProperty("ActualInstance");
-            if (actualProp != null)
+            System.Type valueType = value.GetType();
+            /* An anyOf wrapper carries a MatchedInstances list and must be
+             * serialized through its own JsonConverter so the union of every
+             * retained variant's fields is emitted. Unwrapping it to a single
+             * ActualInstance here would drop the co-matched variants' data. */
+            bool isAnyOfWrapper = valueType.GetProperty("MatchedInstances") != null;
+            if (!isAnyOfWrapper)
             {
-                value = actualProp.GetValue(value);
+                System.Reflection.PropertyInfo? actualProp = valueType
+                    .GetProperty("ActualInstance");
+                if (actualProp != null)
+                {
+                    value = actualProp.GetValue(value);
+                }
             }
         }
         try
@@ -121,11 +133,28 @@ internal class ObjectSerializer
             DateOnly d => d.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture),
             TimeOnly t => t.ToString("HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture),
             TimeSpan ts => ProtobufDurationConverter.Format(ts),
-            DateTimeOffset dto => dto.ToString("yyyy-MM-dd'T'HH:mm:sszzz", System.Globalization.CultureInfo.InvariantCulture),
-            DateTime dt => new DateTimeOffset(dt.Kind == DateTimeKind.Unspecified ? DateTime.SpecifyKind(dt, DateTimeKind.Utc) : dt).ToString("yyyy-MM-dd'T'HH:mm:sszzz", System.Globalization.CultureInfo.InvariantCulture),
+            DateTimeOffset dto => dto.ToString("yyyy-MM-dd'T'HH:mm:ss.fffzzz", System.Globalization.CultureInfo.InvariantCulture),
+            DateTime dt => new DateTimeOffset(dt.Kind == DateTimeKind.Unspecified ? DateTime.SpecifyKind(dt, DateTimeKind.Utc) : dt).ToString("yyyy-MM-dd'T'HH:mm:ss.fffzzz", System.Globalization.CultureInfo.InvariantCulture),
+            Enum e => StringifyEnum(e),
             IFormattable f => f.ToString(null, System.Globalization.CultureInfo.InvariantCulture),
             _ => value.ToString() ?? "",
         };
+    }
+
+    /// <summary>
+    /// Stringifies an enum to its OpenAPI wire value (not the C# member name)
+    /// for use in query, path, and header parameters. The generated
+    /// <c>[JsonConverter]</c> on each enum maps members to their wire strings,
+    /// so the value is serialized through it and the surrounding JSON quotes
+    /// are stripped. Enums without a string converter (e.g. integer enums)
+    /// serialize to their numeric form, which is itself the wire value.
+    /// </summary>
+    private static string StringifyEnum(Enum value)
+    {
+        string json = JsonSerializer.Serialize(value, value.GetType());
+        return json.Length >= 2 && json[0] == '"' && json[^1] == '"'
+            ? json[1..^1]
+            : json;
     }
 
     /// <summary>
@@ -260,8 +289,23 @@ internal class ObjectSerializer
             DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
             WriteIndented = false,
             Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            /* Pin the reflection-based metadata resolver. When a consuming app
+             * is published with PublishTrimmed (Release Blazor WebAssembly,
+             * single-file, ...), the trimmer disables reflection serialization
+             * by default, which would make every Serialize/Deserialize throw
+             * "reflection-based serialization has been disabled". The model
+             * members themselves are preserved by the embedded
+             * ILLink.Descriptors.xml keep-list, so reflection is safe here. */
+            TypeInfoResolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver(),
         };
-        options.Converters.Add(new JsonStringEnumConverter());
+        /* No global JsonStringEnumConverter: every generated enum carries its
+         * own [JsonConverter(typeof(XxxConverter))] that maps to the exact
+         * OpenAPI wire value (e.g. "available"). System.Text.Json ranks an
+         * options-registered converter ABOVE a type-level [JsonConverter]
+         * attribute, so a global string-enum converter here would shadow those
+         * per-enum converters on the write path and emit the C# member name
+         * ("Available") instead of the wire value. The per-enum converters
+         * cover every enum, so no global fallback is needed. */
         options.Converters.Add(new DateTimeOffsetJsonConverter());
         /* 4.8: TimeSpan's default System.Text.Json form is the .NET
          * "[d.]hh:mm:ss[.fff]" string, which would not round-trip with
@@ -274,13 +318,15 @@ internal class ObjectSerializer
     }
 
     /// <summary>
-    /// Serializes DateTimeOffset values as ISO 8601 strings with second
-    /// precision (no subseconds), matching the format used by all other
-    /// language generators: yyyy-MM-dd'T'HH:mm:sszzz.
+    /// Serializes DateTimeOffset values as ISO 8601 strings with millisecond
+    /// precision, matching the format used by all other language generators:
+    /// yyyy-MM-dd'T'HH:mm:ss.fffzzz. Millisecond (3-digit) sub-second precision
+    /// is emitted so the fraction the reader accepts is also written, keeping
+    /// the round-trip lossless instead of truncating to whole seconds.
     /// </summary>
     private sealed class DateTimeOffsetJsonConverter : System.Text.Json.Serialization.JsonConverter<DateTimeOffset>
     {
-        private const string Format = "yyyy-MM-dd'T'HH:mm:sszzz";
+        private const string Format = "yyyy-MM-dd'T'HH:mm:ss.fffzzz";
 
         public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
@@ -291,6 +337,219 @@ internal class ObjectSerializer
         {
             writer.WriteStringValue(value.ToString(Format, System.Globalization.CultureInfo.InvariantCulture));
         }
+    }
+
+    /// <summary>
+    /// Structural value-equality for model fields. Scalars and model instances
+    /// compare via <see cref="object.Equals(object?)"/>; collections compare
+    /// element-wise (recursively), and <c>byte[]</c> compares by content, so two
+    /// instances deserialized from identical JSON are equal even when a field is
+    /// a list, set, map, or byte array. Used by generated model
+    /// <c>Equals</c>/<c>GetHashCode</c> so models work as HashSet/Dictionary keys.
+    /// </summary>
+    public static bool StructuralEquals(object? left, object? right)
+    {
+        if (ReferenceEquals(left, right))
+        {
+            return true;
+        }
+
+        if (left is null || right is null)
+        {
+            return false;
+        }
+
+        if (left is byte[] leftBytes && right is byte[] rightBytes)
+        {
+            return leftBytes.AsSpan().SequenceEqual(rightBytes);
+        }
+
+        if (left is IDictionary leftDict && right is IDictionary rightDict)
+        {
+            if (leftDict.Count != rightDict.Count)
+            {
+                return false;
+            }
+
+            foreach (DictionaryEntry entry in leftDict)
+            {
+                if (!rightDict.Contains(entry.Key)
+                    || !StructuralEquals(entry.Value, rightDict[entry.Key]))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /* Set-typed fields (e.g. HashSet<T>) have no defined enumeration
+           order, so element-wise comparison would report equal sets as unequal
+           when the same items were inserted in a different order. Compare them
+           by order-independent membership instead, mirroring the dictionary
+           path above. Both sides must be sets for set semantics to apply. */
+        if (IsSet(left) && IsSet(right))
+        {
+            return SetStructuralEquals((IEnumerable)left, (IEnumerable)right);
+        }
+
+        /* Strings are IEnumerable but must compare as scalars, so they fall
+           through to object.Equals below. */
+        if (left is IEnumerable leftSeq && right is IEnumerable rightSeq
+            && left is not string && right is not string)
+        {
+            IEnumerator leftEnum = leftSeq.GetEnumerator();
+            IEnumerator rightEnum = rightSeq.GetEnumerator();
+            try
+            {
+                while (true)
+                {
+                    bool leftHasNext = leftEnum.MoveNext();
+                    bool rightHasNext = rightEnum.MoveNext();
+                    if (leftHasNext != rightHasNext)
+                    {
+                        return false;
+                    }
+
+                    if (!leftHasNext)
+                    {
+                        return true;
+                    }
+
+                    if (!StructuralEquals(leftEnum.Current, rightEnum.Current))
+                    {
+                        return false;
+                    }
+                }
+            }
+            finally
+            {
+                (leftEnum as IDisposable)?.Dispose();
+                (rightEnum as IDisposable)?.Dispose();
+            }
+        }
+
+        return left.Equals(right);
+    }
+
+    /// <summary>
+    /// Content-based hash code matching <see cref="StructuralEquals"/>: equal
+    /// values (including equal collections and byte arrays) hash identically.
+    /// </summary>
+    public static int StructuralHashCode(object? value)
+    {
+        if (value is null)
+        {
+            return 0;
+        }
+
+        if (value is byte[] bytes)
+        {
+            HashCode byteHash = default;
+            byteHash.AddBytes(bytes);
+            return byteHash.ToHashCode();
+        }
+
+        if (value is IDictionary dict)
+        {
+            /* Order-independent so two equal maps hash identically regardless of
+               enumeration order. */
+            int dictHash = 0;
+            foreach (DictionaryEntry entry in dict)
+            {
+                dictHash ^= HashCode.Combine(
+                    StructuralHashCode(entry.Key), StructuralHashCode(entry.Value));
+            }
+
+            return dictHash;
+        }
+
+        if (IsSet(value))
+        {
+            /* Order-independent so two equal sets hash identically regardless of
+               enumeration order (HashSet<T> has no defined order). */
+            int setHash = 0;
+            foreach (object? item in (IEnumerable)value)
+            {
+                setHash ^= StructuralHashCode(item);
+            }
+
+            return setHash;
+        }
+
+        if (value is IEnumerable seq && value is not string)
+        {
+            HashCode seqHash = default;
+            foreach (object? item in seq)
+            {
+                seqHash.Add(StructuralHashCode(item));
+            }
+
+            return seqHash.ToHashCode();
+        }
+
+        return value.GetHashCode();
+    }
+
+    /// <summary>
+    /// True when <paramref name="value"/>'s runtime type implements
+    /// <see cref="ISet{T}"/> (e.g. <c>HashSet{T}</c>). Sets have no
+    /// defined enumeration order, so equality and hashing must be
+    /// order-independent.
+    /// </summary>
+    private static bool IsSet(object value)
+    {
+        foreach (Type iface in value.GetType().GetInterfaces())
+        {
+            if (iface.IsGenericType
+                && iface.GetGenericTypeDefinition() == typeof(ISet<>))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Order-independent structural equality for two sets: equal iff they have
+    /// the same number of elements and every element of <paramref name="left"/>
+    /// has a structurally-equal match in <paramref name="right"/> (matches are
+    /// consumed so duplicates, were they possible, are handled correctly).
+    /// </summary>
+    private static bool SetStructuralEquals(IEnumerable left, IEnumerable right)
+    {
+        List<object?> remaining = new List<object?>();
+        foreach (object? item in right)
+        {
+            remaining.Add(item);
+        }
+
+        foreach (object? leftItem in left)
+        {
+            int matchIndex = -1;
+            for (int i = 0; i < remaining.Count; i++)
+            {
+                if (StructuralEquals(leftItem, remaining[i]))
+                {
+                    matchIndex = i;
+                    break;
+                }
+            }
+
+            /* No match means an element of left is absent from right, or left
+               has more elements than right (right already exhausted). */
+            if (matchIndex < 0)
+            {
+                return false;
+            }
+
+            remaining.RemoveAt(matchIndex);
+        }
+
+        /* Every left element consumed one right element; equal sizes iff no
+           right elements are left over. */
+        return remaining.Count == 0;
     }
 
 }

@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaInternalPermissionServiceOrFilter : IEquatable<BetaInternalPermissionServiceOrFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("queries")]
     public List<BetaInternalPermissionServiceAdministratorSearchFilter>? Queries { get; set; }
 
@@ -22,7 +21,7 @@ public class BetaInternalPermissionServiceOrFilter : IEquatable<BetaInternalPerm
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<BetaInternalPermissionServiceAdministratorSearchFilter>?>.Default.Equals(this.Queries, other.Queries));
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Queries, other.Queries));
     }
 
     public override bool Equals(object? obj)
@@ -33,7 +32,7 @@ public class BetaInternalPermissionServiceOrFilter : IEquatable<BetaInternalPerm
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.Queries);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Queries));
         return hash.ToHashCode();
     }
 }

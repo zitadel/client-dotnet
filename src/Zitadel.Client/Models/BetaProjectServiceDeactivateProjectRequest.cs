@@ -16,7 +16,6 @@ public class BetaProjectServiceDeactivateProjectRequest : IEquatable<BetaProject
     /// <summary>
     /// The unique identifier of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

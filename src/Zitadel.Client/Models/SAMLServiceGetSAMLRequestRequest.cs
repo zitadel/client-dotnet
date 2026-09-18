@@ -16,7 +16,6 @@ public class SAMLServiceGetSAMLRequestRequest : IEquatable<SAMLServiceGetSAMLReq
     /// <summary>
     /// ID of the SAML Request, as obtained from the redirect URL.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("samlRequestId")]
     public string? SamlRequestId { get; set; }
 

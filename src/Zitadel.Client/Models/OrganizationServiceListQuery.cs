@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class OrganizationServiceListQuery : IEquatable<OrganizationServiceListQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("offset")]
-    public Object? Offset { get; set; }
+    public object? Offset { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("limit")]
     public int? Limit { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("asc")]
     public bool? Asc { get; set; }
 
@@ -30,7 +27,7 @@ public class OrganizationServiceListQuery : IEquatable<OrganizationServiceListQu
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.Offset, other.Offset)
+                || EqualityComparer<object?>.Default.Equals(this.Offset, other.Offset)
                     && EqualityComparer<int?>.Default.Equals(this.Limit, other.Limit)
                     && EqualityComparer<bool?>.Default.Equals(this.Asc, other.Asc));
     }

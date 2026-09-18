@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaOrganizationServiceMetadataKeyQuery : IEquatable<BetaOrganizationServiceMetadataKeyQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("key")]
     public string? Key { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaOrganizationServiceTextQueryMethod? Method { get; set; }
 

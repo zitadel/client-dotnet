@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaActionServiceExecutionTypeFilter : IEquatable<BetaActionServiceExecutionTypeFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("executionType")]
     public BetaActionServiceExecutionType? ExecutionType { get; set; }
 

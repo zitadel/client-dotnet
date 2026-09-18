@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaWebKeyServiceListWebKeysResponse : IEquatable<BetaWebKeyServiceListWebKeysResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("webKeys")]
     public List<BetaWebKeyServiceWebKey>? WebKeys { get; set; }
 
@@ -22,7 +21,7 @@ public class BetaWebKeyServiceListWebKeysResponse : IEquatable<BetaWebKeyService
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<BetaWebKeyServiceWebKey>?>.Default.Equals(this.WebKeys, other.WebKeys));
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.WebKeys, other.WebKeys));
     }
 
     public override bool Equals(object? obj)
@@ -33,7 +32,7 @@ public class BetaWebKeyServiceListWebKeysResponse : IEquatable<BetaWebKeyService
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.WebKeys);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.WebKeys));
         return hash.ToHashCode();
     }
 }

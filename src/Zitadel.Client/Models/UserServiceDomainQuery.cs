@@ -16,14 +16,12 @@ public class UserServiceDomainQuery : IEquatable<UserServiceDomainQuery>
     /// <summary>
     /// List also auth method types without domain information like passkey and U2F added through V1 APIs / Login UI.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("includeWithoutDomain")]
     public bool? IncludeWithoutDomain { get; set; }
 
     /// <summary>
     /// List only auth methods with specific domain.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 

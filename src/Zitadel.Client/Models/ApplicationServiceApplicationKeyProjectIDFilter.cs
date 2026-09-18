@@ -16,7 +16,6 @@ public class ApplicationServiceApplicationKeyProjectIDFilter : IEquatable<Applic
     /// <summary>
     /// Search for application keys belonging to applications in the project with this ID.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 

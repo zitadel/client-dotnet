@@ -13,20 +13,17 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceRegisterPasskeyResponse : IEquatable<UserServiceRegisterPasskeyResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("passkeyId")]
     public string? PasskeyId { get; set; }
 
     /// <summary>
     /// `Struct` represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, `Struct`  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for `Struct` is JSON object.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("publicKeyCredentialCreationOptions")]
-    public Dictionary<string, Object>? PublicKeyCredentialCreationOptions { get; set; }
+    public Dictionary<string, object>? PublicKeyCredentialCreationOptions { get; set; }
 
     /// <summary>Value-equality based on all declared fields.</summary>
     public bool Equals(UserServiceRegisterPasskeyResponse? other)
@@ -35,7 +32,7 @@ public class UserServiceRegisterPasskeyResponse : IEquatable<UserServiceRegister
             && (ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceDetails?>.Default.Equals(this.Details, other.Details)
                     && EqualityComparer<string?>.Default.Equals(this.PasskeyId, other.PasskeyId)
-                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.PublicKeyCredentialCreationOptions, other.PublicKeyCredentialCreationOptions));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.PublicKeyCredentialCreationOptions, other.PublicKeyCredentialCreationOptions));
     }
 
     public override bool Equals(object? obj)
@@ -48,7 +45,7 @@ public class UserServiceRegisterPasskeyResponse : IEquatable<UserServiceRegister
         HashCode hash = default;
         hash.Add(this.Details);
         hash.Add(this.PasskeyId);
-        hash.Add(this.PublicKeyCredentialCreationOptions);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.PublicKeyCredentialCreationOptions));
         return hash.ToHashCode();
     }
 }

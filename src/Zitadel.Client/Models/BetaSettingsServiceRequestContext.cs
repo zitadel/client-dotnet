@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServiceRequestContext : IEquatable<BetaSettingsServiceRequestContext>
 {
-    /// <example>null</example>
     [JsonPropertyName("instance")]
     public bool? Instance { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("orgId")]
     public string? OrgId { get; set; }
 

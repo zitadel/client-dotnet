@@ -16,7 +16,6 @@ public class ActionServiceTargetFilter : IEquatable<ActionServiceTargetFilter>
     /// <summary>
     /// Defines the id of the target that needs to be part of the execution.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("targetId")]
     public string? TargetId { get; set; }
 

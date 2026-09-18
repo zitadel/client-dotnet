@@ -19,11 +19,9 @@ public class BetaOrganizationServiceDomainNameFilter : IEquatable<BetaOrganizati
     /// <summary>
     /// The domain.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaOrganizationServiceTextQueryMethod? Method { get; set; }
 

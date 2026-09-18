@@ -13,18 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class SessionServiceSetSessionResponse : IEquatable<SessionServiceSetSessionResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public SessionServiceDetails? Details { get; set; }
 
     /// <summary>
     /// The current token of the session, which is required for using the session as authentication,  e.g.when authenticating an OIDC auth request or SAML request.  Additionally, the session token can be used as OAuth2 access token to authenticate against  the ZITADEL APIs.  The previous token was invalidated and can no longer be used.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("sessionToken")]
     public string? SessionToken { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("challenges")]
     public SessionServiceChallenges? Challenges { get; set; }
 

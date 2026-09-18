@@ -16,14 +16,12 @@ public class OrganizationServiceVerifyOrganizationDomainRequest : IEquatable<Org
     /// <summary>
     /// Organization ID is the unique identifier of the organization whose domain is to be verified.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// Domain is the full qualified domain name to be verified.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 

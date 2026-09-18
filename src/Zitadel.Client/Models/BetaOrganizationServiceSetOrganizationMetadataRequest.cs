@@ -16,14 +16,12 @@ public class BetaOrganizationServiceSetOrganizationMetadataRequest : IEquatable<
     /// <summary>
     /// Organization Id for the Organization doman to be verified.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// Metadata to set.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("metadata")]
     public List<BetaOrganizationServiceMetadata>? Metadata { get; set; }
 
@@ -33,7 +31,7 @@ public class BetaOrganizationServiceSetOrganizationMetadataRequest : IEquatable<
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.OrganizationId, other.OrganizationId)
-                    && EqualityComparer<List<BetaOrganizationServiceMetadata>?>.Default.Equals(this.Metadata, other.Metadata));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Metadata, other.Metadata));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +43,7 @@ public class BetaOrganizationServiceSetOrganizationMetadataRequest : IEquatable<
     {
         HashCode hash = default;
         hash.Add(this.OrganizationId);
-        hash.Add(this.Metadata);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Metadata));
         return hash.ToHashCode();
     }
 }

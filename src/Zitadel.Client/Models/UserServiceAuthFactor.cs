@@ -13,23 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceAuthFactor : IEquatable<UserServiceAuthFactor>
 {
-    /// <example>null</example>
     [JsonPropertyName("state")]
     public UserServiceAuthFactorState? State { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otp")]
-    public Object? Otp { get; set; }
+    public object? Otp { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpEmail")]
-    public Object? OtpEmail { get; set; }
+    public object? OtpEmail { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpSms")]
-    public Object? OtpSms { get; set; }
+    public object? OtpSms { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("u2f")]
     public UserServiceAuthFactorU2F? U2f { get; set; }
 
@@ -39,9 +34,9 @@ public class UserServiceAuthFactor : IEquatable<UserServiceAuthFactor>
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceAuthFactorState?>.Default.Equals(this.State, other.State)
-                    && EqualityComparer<Object?>.Default.Equals(this.Otp, other.Otp)
-                    && EqualityComparer<Object?>.Default.Equals(this.OtpEmail, other.OtpEmail)
-                    && EqualityComparer<Object?>.Default.Equals(this.OtpSms, other.OtpSms)
+                    && EqualityComparer<object?>.Default.Equals(this.Otp, other.Otp)
+                    && EqualityComparer<object?>.Default.Equals(this.OtpEmail, other.OtpEmail)
+                    && EqualityComparer<object?>.Default.Equals(this.OtpSms, other.OtpSms)
                     && EqualityComparer<UserServiceAuthFactorU2F?>.Default.Equals(this.U2f, other.U2f));
     }
 

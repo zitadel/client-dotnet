@@ -16,7 +16,6 @@ public class BetaOrganizationServiceOrgIDFilter : IEquatable<BetaOrganizationSer
     /// <summary>
     /// The Organization id.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

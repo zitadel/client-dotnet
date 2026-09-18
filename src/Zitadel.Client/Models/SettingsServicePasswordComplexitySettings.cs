@@ -16,39 +16,33 @@ public class SettingsServicePasswordComplexitySettings : IEquatable<SettingsServ
     /// <summary>
     /// The minimum length a password must have.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("minLength")]
-    public Object? MinLength { get; set; }
+    public object? MinLength { get; set; }
 
     /// <summary>
     /// Defines if the password MUST contain an upper case letter.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("requiresUppercase")]
     public bool? RequiresUppercase { get; set; }
 
     /// <summary>
     /// Defines if the password MUST contain a lowercase letter.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("requiresLowercase")]
     public bool? RequiresLowercase { get; set; }
 
     /// <summary>
     /// Defines if the password MUST contain a number.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("requiresNumber")]
     public bool? RequiresNumber { get; set; }
 
     /// <summary>
-    /// Defines if the password MUST contain a symbol or special character. E.g. \"$\"
+    /// Defines if the password MUST contain a symbol or special character. E.g. "$"
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("requiresSymbol")]
     public bool? RequiresSymbol { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("resourceOwnerType")]
     public SettingsServiceResourceOwnerType? ResourceOwnerType { get; set; }
 
@@ -57,7 +51,7 @@ public class SettingsServicePasswordComplexitySettings : IEquatable<SettingsServ
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<Object?>.Default.Equals(this.MinLength, other.MinLength)
+                || EqualityComparer<object?>.Default.Equals(this.MinLength, other.MinLength)
                     && EqualityComparer<bool?>.Default.Equals(this.RequiresUppercase, other.RequiresUppercase)
                     && EqualityComparer<bool?>.Default.Equals(this.RequiresLowercase, other.RequiresLowercase)
                     && EqualityComparer<bool?>.Default.Equals(this.RequiresNumber, other.RequiresNumber)

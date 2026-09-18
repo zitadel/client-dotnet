@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceCreateOIDCApplicationResponse : IEquatable<BetaAppServiceCreateOIDCApplicationResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("clientId")]
     public string? ClientId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("clientSecret")]
     public string? ClientSecret { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("noneCompliant")]
     public bool? NoneCompliant { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("complianceProblems")]
     public List<BetaAppServiceOIDCLocalizedMessage>? ComplianceProblems { get; set; }
 
@@ -37,7 +33,7 @@ public class BetaAppServiceCreateOIDCApplicationResponse : IEquatable<BetaAppSer
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
                     && EqualityComparer<string?>.Default.Equals(this.ClientSecret, other.ClientSecret)
                     && EqualityComparer<bool?>.Default.Equals(this.NoneCompliant, other.NoneCompliant)
-                    && EqualityComparer<List<BetaAppServiceOIDCLocalizedMessage>?>.Default.Equals(this.ComplianceProblems, other.ComplianceProblems));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.ComplianceProblems, other.ComplianceProblems));
     }
 
     public override bool Equals(object? obj)
@@ -51,7 +47,7 @@ public class BetaAppServiceCreateOIDCApplicationResponse : IEquatable<BetaAppSer
         hash.Add(this.ClientId);
         hash.Add(this.ClientSecret);
         hash.Add(this.NoneCompliant);
-        hash.Add(this.ComplianceProblems);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.ComplianceProblems));
         return hash.ToHashCode();
     }
 }

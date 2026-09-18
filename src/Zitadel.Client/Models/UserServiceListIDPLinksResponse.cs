@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceListIDPLinksResponse : IEquatable<UserServiceListIDPLinksResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceListDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("result")]
     public List<UserServiceIDPLink>? Result { get; set; }
 
@@ -27,7 +25,7 @@ public class UserServiceListIDPLinksResponse : IEquatable<UserServiceListIDPLink
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<UserServiceListDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<List<UserServiceIDPLink>?>.Default.Equals(this.Result, other.Result));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Result, other.Result));
     }
 
     public override bool Equals(object? obj)
@@ -39,7 +37,7 @@ public class UserServiceListIDPLinksResponse : IEquatable<UserServiceListIDPLink
     {
         HashCode hash = default;
         hash.Add(this.Details);
-        hash.Add(this.Result);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Result));
         return hash.ToHashCode();
     }
 }

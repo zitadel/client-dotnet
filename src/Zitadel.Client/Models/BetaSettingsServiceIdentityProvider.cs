@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServiceIdentityProvider : IEquatable<BetaSettingsServiceIdentityProvider>
 {
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("type")]
     public BetaSettingsServiceIdentityProviderType? Type { get; set; }
 

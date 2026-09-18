@@ -16,21 +16,18 @@ public class BetaOrganizationServiceCreateOrganizationRequest : IEquatable<BetaO
     /// <summary>
     /// name of the Organization to be created.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
     /// <summary>
     /// Optionally set your own id unique for the organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
     /// <summary>
     /// Additional Admins for the Organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("admins")]
     public List<BetaOrganizationServiceAdmin>? Admins { get; set; }
 
@@ -41,7 +38,7 @@ public class BetaOrganizationServiceCreateOrganizationRequest : IEquatable<BetaO
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Name, other.Name)
                     && EqualityComparer<string?>.Default.Equals(this.Id, other.Id)
-                    && EqualityComparer<List<BetaOrganizationServiceAdmin>?>.Default.Equals(this.Admins, other.Admins));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Admins, other.Admins));
     }
 
     public override bool Equals(object? obj)
@@ -54,7 +51,7 @@ public class BetaOrganizationServiceCreateOrganizationRequest : IEquatable<BetaO
         HashCode hash = default;
         hash.Add(this.Name);
         hash.Add(this.Id);
-        hash.Add(this.Admins);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Admins));
         return hash.ToHashCode();
     }
 }

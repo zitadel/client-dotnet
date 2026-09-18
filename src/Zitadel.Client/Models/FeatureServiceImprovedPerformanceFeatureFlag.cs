@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class FeatureServiceImprovedPerformanceFeatureFlag : IEquatable<FeatureServiceImprovedPerformanceFeatureFlag>
 {
-    /// <example>null</example>
     [JsonPropertyName("executionPaths")]
     public List<FeatureServiceImprovedPerformance>? ExecutionPaths { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("source")]
     public FeatureServiceSource? Source { get; set; }
 
@@ -26,7 +24,7 @@ public class FeatureServiceImprovedPerformanceFeatureFlag : IEquatable<FeatureSe
     {
         return other is not null
             && (ReferenceEquals(this, other)
-                || EqualityComparer<List<FeatureServiceImprovedPerformance>?>.Default.Equals(this.ExecutionPaths, other.ExecutionPaths)
+                || global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.ExecutionPaths, other.ExecutionPaths)
                     && EqualityComparer<FeatureServiceSource?>.Default.Equals(this.Source, other.Source));
     }
 
@@ -38,7 +36,7 @@ public class FeatureServiceImprovedPerformanceFeatureFlag : IEquatable<FeatureSe
     public override int GetHashCode()
     {
         HashCode hash = default;
-        hash.Add(this.ExecutionPaths);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.ExecutionPaths));
         hash.Add(this.Source);
         return hash.ToHashCode();
     }

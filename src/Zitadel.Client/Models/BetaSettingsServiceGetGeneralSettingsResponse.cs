@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaSettingsServiceGetGeneralSettingsResponse : IEquatable<BetaSettingsServiceGetGeneralSettingsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("defaultOrgId")]
     public string? DefaultOrgId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("defaultLanguage")]
     public string? DefaultLanguage { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("supportedLanguages")]
     public List<string>? SupportedLanguages { get; set; }
 
@@ -32,7 +29,7 @@ public class BetaSettingsServiceGetGeneralSettingsResponse : IEquatable<BetaSett
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.DefaultOrgId, other.DefaultOrgId)
                     && EqualityComparer<string?>.Default.Equals(this.DefaultLanguage, other.DefaultLanguage)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.SupportedLanguages, other.SupportedLanguages));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.SupportedLanguages, other.SupportedLanguages));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +42,7 @@ public class BetaSettingsServiceGetGeneralSettingsResponse : IEquatable<BetaSett
         HashCode hash = default;
         hash.Add(this.DefaultOrgId);
         hash.Add(this.DefaultLanguage);
-        hash.Add(this.SupportedLanguages);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.SupportedLanguages));
         return hash.ToHashCode();
     }
 }

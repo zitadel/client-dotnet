@@ -16,7 +16,6 @@ public class BetaInternalPermissionServiceRoleFilter : IEquatable<BetaInternalPe
     /// <summary>
     /// Search for administrators by the granted role.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roleKey")]
     public string? RoleKey { get; set; }
 

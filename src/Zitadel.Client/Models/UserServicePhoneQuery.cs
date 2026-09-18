@@ -16,11 +16,9 @@ namespace Zitadel.Client.Models;
 /// </summary>
 public class UserServicePhoneQuery : IEquatable<UserServicePhoneQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("number")]
     public string? Number { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public UserServiceTextQueryMethod? Method { get; set; }
 

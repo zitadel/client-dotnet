@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceVerifyU2FRegistrationResponse : IEquatable<UserServiceVerifyU2FRegistrationResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public UserServiceDetails? Details { get; set; }
 

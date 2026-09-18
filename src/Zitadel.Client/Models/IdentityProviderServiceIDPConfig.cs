@@ -13,55 +13,42 @@ namespace Zitadel.Client.Models;
 
 public class IdentityProviderServiceIDPConfig : IEquatable<IdentityProviderServiceIDPConfig>
 {
-    /// <example>null</example>
     [JsonPropertyName("options")]
     public IdentityProviderServiceOptions? Options { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("apple")]
     public IdentityProviderServiceAppleConfig? Apple { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("azureAd")]
     public IdentityProviderServiceAzureADConfig? AzureAd { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("github")]
     public IdentityProviderServiceGitHubConfig? Github { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("githubEs")]
     public IdentityProviderServiceGitHubEnterpriseServerConfig? GithubEs { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("gitlab")]
     public IdentityProviderServiceGitLabConfig? Gitlab { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("gitlabSelfHosted")]
     public IdentityProviderServiceGitLabSelfHostedConfig? GitlabSelfHosted { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("google")]
     public IdentityProviderServiceGoogleConfig? Google { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("jwt")]
     public IdentityProviderServiceJWTConfig? Jwt { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("ldap")]
     public IdentityProviderServiceLDAPConfig? Ldap { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oauth")]
     public IdentityProviderServiceOAuthConfig? Oauth { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oidc")]
     public IdentityProviderServiceGenericOIDCConfig? Oidc { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("saml")]
     public IdentityProviderServiceSAMLConfig? Saml { get; set; }
 

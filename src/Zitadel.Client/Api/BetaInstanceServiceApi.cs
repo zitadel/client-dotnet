@@ -60,6 +60,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds a custom domain to the instance in context.   The instance_id in the input message will be used in the future   Required permissions:    - `system.domain.write`</remarks>
     /// <param name="betaInstanceServiceAddCustomDomainRequest"></param>
+
     /// <returns><![CDATA[BetaInstanceServiceAddCustomDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaInstanceServiceAddCustomDomainResponse> AddCustomDomainAsync(BetaInstanceServiceAddCustomDomainRequest betaInstanceServiceAddCustomDomainRequest)
@@ -70,13 +71,20 @@ public class BetaInstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -84,6 +92,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds a custom domain to the instance in context.   The instance_id in the input message will be used in the future   Required permissions:    - `system.domain.write`</remarks>
     /// <param name="betaInstanceServiceAddCustomDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaInstanceServiceAddCustomDomainResponse>> AddCustomDomainWithHttpInfoAsync(BetaInstanceServiceAddCustomDomainRequest betaInstanceServiceAddCustomDomainRequest)
@@ -111,6 +120,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds a trusted domain to the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - `iam.write`</remarks>
     /// <param name="betaInstanceServiceAddTrustedDomainRequest"></param>
+
     /// <returns><![CDATA[BetaInstanceServiceAddTrustedDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaInstanceServiceAddTrustedDomainResponse> AddTrustedDomainAsync(BetaInstanceServiceAddTrustedDomainRequest betaInstanceServiceAddTrustedDomainRequest)
@@ -121,13 +131,20 @@ public class BetaInstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -135,6 +152,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds a trusted domain to the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - `iam.write`</remarks>
     /// <param name="betaInstanceServiceAddTrustedDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaInstanceServiceAddTrustedDomainResponse>> AddTrustedDomainWithHttpInfoAsync(BetaInstanceServiceAddTrustedDomainRequest betaInstanceServiceAddTrustedDomainRequest)
@@ -162,6 +180,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Deletes an instance with the given ID.   Required permissions:    - `system.instance.delete`</remarks>
     /// <param name="betaInstanceServiceDeleteInstanceRequest"></param>
+
     /// <returns><![CDATA[BetaInstanceServiceDeleteInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaInstanceServiceDeleteInstanceResponse> DeleteInstanceAsync(BetaInstanceServiceDeleteInstanceRequest betaInstanceServiceDeleteInstanceRequest)
@@ -172,13 +191,20 @@ public class BetaInstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -186,6 +212,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Deletes an instance with the given ID.   Required permissions:    - `system.instance.delete`</remarks>
     /// <param name="betaInstanceServiceDeleteInstanceRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaInstanceServiceDeleteInstanceResponse>> DeleteInstanceWithHttpInfoAsync(BetaInstanceServiceDeleteInstanceRequest betaInstanceServiceDeleteInstanceRequest)
@@ -213,6 +240,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the instance in the current context.   The instance_id in the input message will be used in the future.   Required permissions:    - `iam.read`</remarks>
     /// <param name="betaInstanceServiceGetInstanceRequest"></param>
+
     /// <returns><![CDATA[BetaInstanceServiceGetInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaInstanceServiceGetInstanceResponse> GetInstanceAsync(BetaInstanceServiceGetInstanceRequest betaInstanceServiceGetInstanceRequest)
@@ -223,13 +251,20 @@ public class BetaInstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -237,6 +272,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the instance in the current context.   The instance_id in the input message will be used in the future.   Required permissions:    - `iam.read`</remarks>
     /// <param name="betaInstanceServiceGetInstanceRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaInstanceServiceGetInstanceResponse>> GetInstanceWithHttpInfoAsync(BetaInstanceServiceGetInstanceRequest betaInstanceServiceGetInstanceRequest)
@@ -264,6 +300,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists custom domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - `iam.read`</remarks>
     /// <param name="betaInstanceServiceListCustomDomainsRequest"></param>
+
     /// <returns><![CDATA[BetaInstanceServiceListCustomDomainsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaInstanceServiceListCustomDomainsResponse> ListCustomDomainsAsync(BetaInstanceServiceListCustomDomainsRequest betaInstanceServiceListCustomDomainsRequest)
@@ -274,13 +311,20 @@ public class BetaInstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -288,6 +332,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists custom domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - `iam.read`</remarks>
     /// <param name="betaInstanceServiceListCustomDomainsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaInstanceServiceListCustomDomainsResponse>> ListCustomDomainsWithHttpInfoAsync(BetaInstanceServiceListCustomDomainsRequest betaInstanceServiceListCustomDomainsRequest)
@@ -315,6 +360,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists instances matching the given query.  The query can be used to filter either by instance ID or domain.  The request is paginated and returns 100 results by default.   Required permissions:   - `system.instance.read`</remarks>
     /// <param name="betaInstanceServiceListInstancesRequest"></param>
+
     /// <returns><![CDATA[BetaInstanceServiceListInstancesResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaInstanceServiceListInstancesResponse> ListInstancesAsync(BetaInstanceServiceListInstancesRequest betaInstanceServiceListInstancesRequest)
@@ -325,13 +371,20 @@ public class BetaInstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -339,6 +392,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists instances matching the given query.  The query can be used to filter either by instance ID or domain.  The request is paginated and returns 100 results by default.   Required permissions:   - `system.instance.read`</remarks>
     /// <param name="betaInstanceServiceListInstancesRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaInstanceServiceListInstancesResponse>> ListInstancesWithHttpInfoAsync(BetaInstanceServiceListInstancesRequest betaInstanceServiceListInstancesRequest)
@@ -366,6 +420,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists trusted domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:    - `iam.read`</remarks>
     /// <param name="betaInstanceServiceListTrustedDomainsRequest"></param>
+
     /// <returns><![CDATA[BetaInstanceServiceListTrustedDomainsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaInstanceServiceListTrustedDomainsResponse> ListTrustedDomainsAsync(BetaInstanceServiceListTrustedDomainsRequest betaInstanceServiceListTrustedDomainsRequest)
@@ -376,13 +431,20 @@ public class BetaInstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -390,6 +452,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Lists trusted domains of the instance.   The instance_id in the input message will be used in the future.   Required permissions:    - `iam.read`</remarks>
     /// <param name="betaInstanceServiceListTrustedDomainsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaInstanceServiceListTrustedDomainsResponse>> ListTrustedDomainsWithHttpInfoAsync(BetaInstanceServiceListTrustedDomainsRequest betaInstanceServiceListTrustedDomainsRequest)
@@ -417,6 +480,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes a custom domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - `system.domain.write`</remarks>
     /// <param name="betaInstanceServiceRemoveCustomDomainRequest"></param>
+
     /// <returns><![CDATA[BetaInstanceServiceRemoveCustomDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaInstanceServiceRemoveCustomDomainResponse> RemoveCustomDomainAsync(BetaInstanceServiceRemoveCustomDomainRequest betaInstanceServiceRemoveCustomDomainRequest)
@@ -427,13 +491,20 @@ public class BetaInstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -441,6 +512,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes a custom domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - `system.domain.write`</remarks>
     /// <param name="betaInstanceServiceRemoveCustomDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaInstanceServiceRemoveCustomDomainResponse>> RemoveCustomDomainWithHttpInfoAsync(BetaInstanceServiceRemoveCustomDomainRequest betaInstanceServiceRemoveCustomDomainRequest)
@@ -468,6 +540,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes a trusted domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - `iam.write`</remarks>
     /// <param name="betaInstanceServiceRemoveTrustedDomainRequest"></param>
+
     /// <returns><![CDATA[BetaInstanceServiceRemoveTrustedDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaInstanceServiceRemoveTrustedDomainResponse> RemoveTrustedDomainAsync(BetaInstanceServiceRemoveTrustedDomainRequest betaInstanceServiceRemoveTrustedDomainRequest)
@@ -478,13 +551,20 @@ public class BetaInstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -492,6 +572,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Removes a trusted domain from the instance.   The instance_id in the input message will be used in the future.   Required permissions:   - `iam.write`</remarks>
     /// <param name="betaInstanceServiceRemoveTrustedDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaInstanceServiceRemoveTrustedDomainResponse>> RemoveTrustedDomainWithHttpInfoAsync(BetaInstanceServiceRemoveTrustedDomainRequest betaInstanceServiceRemoveTrustedDomainRequest)
@@ -519,6 +600,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Updates instance in context with the given name.   The instance_id in the input message will be used in the future.   Required permissions:    - `iam.write`</remarks>
     /// <param name="betaInstanceServiceUpdateInstanceRequest"></param>
+
     /// <returns><![CDATA[BetaInstanceServiceUpdateInstanceResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaInstanceServiceUpdateInstanceResponse> UpdateInstanceAsync(BetaInstanceServiceUpdateInstanceRequest betaInstanceServiceUpdateInstanceRequest)
@@ -529,13 +611,20 @@ public class BetaInstanceServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -543,6 +632,7 @@ public class BetaInstanceServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under instance service v2. This endpoint will be removed with the next major version of ZITADEL.   Updates instance in context with the given name.   The instance_id in the input message will be used in the future.   Required permissions:    - `iam.write`</remarks>
     /// <param name="betaInstanceServiceUpdateInstanceRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaInstanceServiceUpdateInstanceResponse>> UpdateInstanceWithHttpInfoAsync(BetaInstanceServiceUpdateInstanceRequest betaInstanceServiceUpdateInstanceRequest)

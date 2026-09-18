@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class SettingsServiceIdentityProvider : IEquatable<SettingsServiceIdentityProvider>
 {
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("type")]
     public SettingsServiceIdentityProviderType? Type { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("options")]
     public SettingsServiceOptions? Options { get; set; }
 

@@ -16,25 +16,21 @@ public class InternalPermissionServiceResourceFilter : IEquatable<InternalPermis
     /// <summary>
     /// Search for administrators granted on the instance level.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("instance")]
     public bool? Instance { get; set; }
 
     /// <summary>
     /// Search for administrators granted on a specific organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectGrant")]
     public InternalPermissionServiceProjectGrant? ProjectGrant { get; set; }
 
     /// <summary>
     /// Search for administrators granted on a specific project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 

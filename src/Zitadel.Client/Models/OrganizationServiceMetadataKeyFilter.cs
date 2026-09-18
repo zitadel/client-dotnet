@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class OrganizationServiceMetadataKeyFilter : IEquatable<OrganizationServiceMetadataKeyFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("key")]
     public string? Key { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public OrganizationServiceTextFilterMethod? Method { get; set; }
 

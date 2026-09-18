@@ -16,14 +16,12 @@ public class BetaOrganizationServiceAddOrganizationDomainRequest : IEquatable<Be
     /// <summary>
     /// Organization Id for the Organization for which the domain is to be added to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("organizationId")]
     public string? OrganizationId { get; set; }
 
     /// <summary>
     /// The domain you want to add to the organization.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("domain")]
     public string? Domain { get; set; }
 

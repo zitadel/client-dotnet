@@ -13,75 +13,57 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceSearchQuery : IEquatable<UserServiceSearchQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("andQuery")]
     public UserServiceAndQuery? AndQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("displayNameQuery")]
     public UserServiceDisplayNameQuery? DisplayNameQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("emailQuery")]
     public UserServiceEmailQuery? EmailQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("firstNameQuery")]
     public UserServiceFirstNameQuery? FirstNameQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("inUserEmailsQuery")]
     public UserServiceInUserEmailsQuery? InUserEmailsQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("inUserIdsQuery")]
     public UserServiceInUserIDQuery? InUserIdsQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("lastNameQuery")]
     public UserServiceLastNameQuery? LastNameQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("loginNameQuery")]
     public UserServiceLoginNameQuery? LoginNameQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("metadataKeyFilter")]
     public UserServiceMetadataKeyFilter? MetadataKeyFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("metadataValueFilter")]
     public UserServiceMetadataValueFilter? MetadataValueFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("nickNameQuery")]
     public UserServiceNickNameQuery? NickNameQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("notQuery")]
     public UserServiceNotQuery? NotQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("orQuery")]
     public UserServiceOrQuery? OrQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organizationIdQuery")]
     public UserServiceOrganizationIdQuery? OrganizationIdQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("phoneQuery")]
     public UserServicePhoneQuery? PhoneQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("stateQuery")]
     public UserServiceStateQuery? StateQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("typeQuery")]
     public UserServiceTypeQuery? TypeQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userNameQuery")]
     public UserServiceUserNameQuery? UserNameQuery { get; set; }
 

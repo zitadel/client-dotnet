@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class SettingsServiceGetActiveIdentityProvidersResponse : IEquatable<SettingsServiceGetActiveIdentityProvidersResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public SettingsServiceListDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("identityProviders")]
     public List<SettingsServiceIdentityProvider>? IdentityProviders { get; set; }
 
@@ -27,7 +25,7 @@ public class SettingsServiceGetActiveIdentityProvidersResponse : IEquatable<Sett
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<SettingsServiceListDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<List<SettingsServiceIdentityProvider>?>.Default.Equals(this.IdentityProviders, other.IdentityProviders));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.IdentityProviders, other.IdentityProviders));
     }
 
     public override bool Equals(object? obj)
@@ -39,7 +37,7 @@ public class SettingsServiceGetActiveIdentityProvidersResponse : IEquatable<Sett
     {
         HashCode hash = default;
         hash.Add(this.Details);
-        hash.Add(this.IdentityProviders);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.IdentityProviders));
         return hash.ToHashCode();
     }
 }

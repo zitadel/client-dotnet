@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class ActionServiceListPublicKeysResponse : IEquatable<ActionServiceListPublicKeysResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public ActionServicePaginationResponse? Pagination { get; set; }
 
     /// <summary>
     /// List of all public keys for the target.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("publicKeys")]
     public List<ActionServicePublicKey>? PublicKeys { get; set; }
 
@@ -30,7 +28,7 @@ public class ActionServiceListPublicKeysResponse : IEquatable<ActionServiceListP
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<ActionServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<ActionServicePublicKey>?>.Default.Equals(this.PublicKeys, other.PublicKeys));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.PublicKeys, other.PublicKeys));
     }
 
     public override bool Equals(object? obj)
@@ -42,7 +40,7 @@ public class ActionServiceListPublicKeysResponse : IEquatable<ActionServiceListP
     {
         HashCode hash = default;
         hash.Add(this.Pagination);
-        hash.Add(this.PublicKeys);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.PublicKeys));
         return hash.ToHashCode();
     }
 }

@@ -48,6 +48,7 @@ public class InternalPermissionServiceApi : BaseApi
     /// </summary>
     /// <remarks>CreateAdministrator grants an administrator role to a user for a specific resource.   Note that the roles are specific to the resource type.  This means that if you want to grant a user the administrator role for an organization and a project,  you need to create two administrator roles.   Required permissions depend on the resource type:    - \"iam.member.write\" for instance administrators    - \"org.member.write\" for organization administrators    - \"project.member.write\" for project administrators    - \"project.grant.member.write\" for project grant administrators</remarks>
     /// <param name="internalPermissionServiceCreateAdministratorRequest"></param>
+
     /// <returns><![CDATA[InternalPermissionServiceCreateAdministratorResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InternalPermissionServiceCreateAdministratorResponse> CreateAdministratorAsync(InternalPermissionServiceCreateAdministratorRequest internalPermissionServiceCreateAdministratorRequest)
@@ -58,13 +59,20 @@ public class InternalPermissionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -72,6 +80,7 @@ public class InternalPermissionServiceApi : BaseApi
     /// </summary>
     /// <remarks>CreateAdministrator grants an administrator role to a user for a specific resource.   Note that the roles are specific to the resource type.  This means that if you want to grant a user the administrator role for an organization and a project,  you need to create two administrator roles.   Required permissions depend on the resource type:    - \"iam.member.write\" for instance administrators    - \"org.member.write\" for organization administrators    - \"project.member.write\" for project administrators    - \"project.grant.member.write\" for project grant administrators</remarks>
     /// <param name="internalPermissionServiceCreateAdministratorRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InternalPermissionServiceCreateAdministratorResponse>> CreateAdministratorWithHttpInfoAsync(InternalPermissionServiceCreateAdministratorRequest internalPermissionServiceCreateAdministratorRequest)
@@ -99,6 +108,7 @@ public class InternalPermissionServiceApi : BaseApi
     /// </summary>
     /// <remarks>DeleteAdministrator revokes an administrator role from a user.   In case the administrator role is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the administrator role was deleted during the request.   Required permissions depend on the resource type:    - \"iam.member.delete\" for instance administrators    - \"org.member.delete\" for organization administrators    - \"project.member.delete\" for project administrators    - \"project.grant.member.delete\" for project grant administrators</remarks>
     /// <param name="internalPermissionServiceDeleteAdministratorRequest"></param>
+
     /// <returns><![CDATA[InternalPermissionServiceDeleteAdministratorResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InternalPermissionServiceDeleteAdministratorResponse> DeleteAdministratorAsync(InternalPermissionServiceDeleteAdministratorRequest internalPermissionServiceDeleteAdministratorRequest)
@@ -109,13 +119,20 @@ public class InternalPermissionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -123,6 +140,7 @@ public class InternalPermissionServiceApi : BaseApi
     /// </summary>
     /// <remarks>DeleteAdministrator revokes an administrator role from a user.   In case the administrator role is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the administrator role was deleted during the request.   Required permissions depend on the resource type:    - \"iam.member.delete\" for instance administrators    - \"org.member.delete\" for organization administrators    - \"project.member.delete\" for project administrators    - \"project.grant.member.delete\" for project grant administrators</remarks>
     /// <param name="internalPermissionServiceDeleteAdministratorRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InternalPermissionServiceDeleteAdministratorResponse>> DeleteAdministratorWithHttpInfoAsync(InternalPermissionServiceDeleteAdministratorRequest internalPermissionServiceDeleteAdministratorRequest)
@@ -150,6 +168,7 @@ public class InternalPermissionServiceApi : BaseApi
     /// </summary>
     /// <remarks>ListAdministrators returns all administrators and their roles matching the request and the caller's permissions to retrieve.   Required permissions depend on the resource type:    - \"iam.member.read\" for instance administrators    - \"org.member.read\" for organization administrators    - \"project.member.read\" for project administrators    - \"project.grant.member.read\" for project grant administrators    - no permissions required for listing own administrator roles</remarks>
     /// <param name="internalPermissionServiceListAdministratorsRequest"></param>
+
     /// <returns><![CDATA[InternalPermissionServiceListAdministratorsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InternalPermissionServiceListAdministratorsResponse> ListAdministratorsAsync(InternalPermissionServiceListAdministratorsRequest internalPermissionServiceListAdministratorsRequest)
@@ -160,13 +179,20 @@ public class InternalPermissionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -174,6 +200,7 @@ public class InternalPermissionServiceApi : BaseApi
     /// </summary>
     /// <remarks>ListAdministrators returns all administrators and their roles matching the request and the caller's permissions to retrieve.   Required permissions depend on the resource type:    - \"iam.member.read\" for instance administrators    - \"org.member.read\" for organization administrators    - \"project.member.read\" for project administrators    - \"project.grant.member.read\" for project grant administrators    - no permissions required for listing own administrator roles</remarks>
     /// <param name="internalPermissionServiceListAdministratorsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InternalPermissionServiceListAdministratorsResponse>> ListAdministratorsWithHttpInfoAsync(InternalPermissionServiceListAdministratorsRequest internalPermissionServiceListAdministratorsRequest)
@@ -201,6 +228,7 @@ public class InternalPermissionServiceApi : BaseApi
     /// </summary>
     /// <remarks>UpdateAdministrator updates the specific administrator role.   Note that any role previously granted to the user and not present in the request will be revoked.   Required permissions depend on the resource type:    - \"iam.member.write\" for instance administrators    - \"org.member.write\" for organization administrators    - \"project.member.write\" for project administrators    - \"project.grant.member.write\" for project grant administrators</remarks>
     /// <param name="internalPermissionServiceUpdateAdministratorRequest"></param>
+
     /// <returns><![CDATA[InternalPermissionServiceUpdateAdministratorResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<InternalPermissionServiceUpdateAdministratorResponse> UpdateAdministratorAsync(InternalPermissionServiceUpdateAdministratorRequest internalPermissionServiceUpdateAdministratorRequest)
@@ -211,13 +239,20 @@ public class InternalPermissionServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -225,6 +260,7 @@ public class InternalPermissionServiceApi : BaseApi
     /// </summary>
     /// <remarks>UpdateAdministrator updates the specific administrator role.   Note that any role previously granted to the user and not present in the request will be revoked.   Required permissions depend on the resource type:    - \"iam.member.write\" for instance administrators    - \"org.member.write\" for organization administrators    - \"project.member.write\" for project administrators    - \"project.grant.member.write\" for project grant administrators</remarks>
     /// <param name="internalPermissionServiceUpdateAdministratorRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<InternalPermissionServiceUpdateAdministratorResponse>> UpdateAdministratorWithHttpInfoAsync(InternalPermissionServiceUpdateAdministratorRequest internalPermissionServiceUpdateAdministratorRequest)

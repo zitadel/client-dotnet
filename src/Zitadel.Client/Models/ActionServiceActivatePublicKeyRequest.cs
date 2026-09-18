@@ -16,14 +16,12 @@ public class ActionServiceActivatePublicKeyRequest : IEquatable<ActionServiceAct
     /// <summary>
     /// TargetID is the unique identifier of the target to activate the public key for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("targetId")]
     public string? TargetId { get; set; }
 
     /// <summary>
     /// KeyID is the unique identifier of the public key to activate.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("keyId")]
     public string? KeyId { get; set; }
 

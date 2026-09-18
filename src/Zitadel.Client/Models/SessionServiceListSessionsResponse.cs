@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class SessionServiceListSessionsResponse : IEquatable<SessionServiceListSessionsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public SessionServiceListDetails? Details { get; set; }
 
     /// <summary>
     /// The sessions matching the search query. There might be more sessions available  than returned in this response. Use the details field to see if there are more sessions  available and to get the total count of sessions matching the query.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("sessions")]
     public List<SessionServiceSession>? Sessions { get; set; }
 
@@ -30,7 +28,7 @@ public class SessionServiceListSessionsResponse : IEquatable<SessionServiceListS
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<SessionServiceListDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<List<SessionServiceSession>?>.Default.Equals(this.Sessions, other.Sessions));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Sessions, other.Sessions));
     }
 
     public override bool Equals(object? obj)
@@ -42,7 +40,7 @@ public class SessionServiceListSessionsResponse : IEquatable<SessionServiceListS
     {
         HashCode hash = default;
         hash.Add(this.Details);
-        hash.Add(this.Sessions);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Sessions));
         return hash.ToHashCode();
     }
 }

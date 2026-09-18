@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class SessionServiceRequestChallenges : IEquatable<SessionServiceRequestChallenges>
 {
-    /// <example>null</example>
     [JsonPropertyName("webAuthN")]
     public SessionServiceWebAuthN? WebAuthN { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpSms")]
     public SessionServiceOTPSMS? OtpSms { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpEmail")]
     public SessionServiceOTPEmail? OtpEmail { get; set; }
 

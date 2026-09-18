@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class ProjectServiceProjectSearchFilter : IEquatable<ProjectServiceProjectSearchFilter>
 {
-    /// <example>null</example>
     [JsonPropertyName("inProjectIdsFilter")]
     public ProjectServiceInIDsFilter? InProjectIdsFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("organizationIdFilter")]
     public ProjectServiceProjectOrganizationIDFilter? OrganizationIdFilter { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("projectNameFilter")]
     public ProjectServiceProjectNameFilter? ProjectNameFilter { get; set; }
 

@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceOTPSMS : IEquatable<BetaSessionServiceOTPSMS>
 {
-    /// <example>null</example>
     [JsonPropertyName("returnCode")]
     public bool? ReturnCode { get; set; }
 

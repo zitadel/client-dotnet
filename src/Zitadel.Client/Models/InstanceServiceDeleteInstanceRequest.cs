@@ -16,7 +16,6 @@ public class InstanceServiceDeleteInstanceRequest : IEquatable<InstanceServiceDe
     /// <summary>
     /// InstanceID is the unique ID of the instance to be deleted.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("instanceId")]
     public string? InstanceId { get; set; }
 

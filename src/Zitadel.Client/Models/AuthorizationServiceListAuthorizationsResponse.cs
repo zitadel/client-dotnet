@@ -13,14 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class AuthorizationServiceListAuthorizationsResponse : IEquatable<AuthorizationServiceListAuthorizationsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public AuthorizationServicePaginationResponse? Pagination { get; set; }
 
     /// <summary>
     /// Authorizations contains the list of authorizations matching the request.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("authorizations")]
     public List<AuthorizationServiceAuthorization>? Authorizations { get; set; }
 
@@ -30,7 +28,7 @@ public class AuthorizationServiceListAuthorizationsResponse : IEquatable<Authori
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<AuthorizationServicePaginationResponse?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<AuthorizationServiceAuthorization>?>.Default.Equals(this.Authorizations, other.Authorizations));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Authorizations, other.Authorizations));
     }
 
     public override bool Equals(object? obj)
@@ -42,7 +40,7 @@ public class AuthorizationServiceListAuthorizationsResponse : IEquatable<Authori
     {
         HashCode hash = default;
         hash.Add(this.Pagination);
-        hash.Add(this.Authorizations);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Authorizations));
         return hash.ToHashCode();
     }
 }

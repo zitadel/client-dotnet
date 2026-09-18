@@ -13,34 +13,27 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceIDPInformation : IEquatable<UserServiceIDPInformation>
 {
-    /// <example>null</example>
     [JsonPropertyName("idpId")]
     public string? IdpId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userName")]
     public string? UserName { get; set; }
 
     /// <summary>
     /// `Struct` represents a structured data value, consisting of fields  which map to dynamically typed values. In some languages, `Struct`  might be supported by a native representation. For example, in  scripting languages like JS a struct is represented as an  object. The details of that representation are described together  with the proto support for the language.   The JSON representation for `Struct` is JSON object.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("rawInformation")]
-    public Dictionary<string, Object>? RawInformation { get; set; }
+    public Dictionary<string, object>? RawInformation { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("ldap")]
     public UserServiceIDPLDAPAccessInformation? Ldap { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("oauth")]
     public UserServiceIDPOAuthAccessInformation? Oauth { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("saml")]
     public UserServiceIDPSAMLAccessInformation? Saml { get; set; }
 
@@ -52,7 +45,7 @@ public class UserServiceIDPInformation : IEquatable<UserServiceIDPInformation>
                 || EqualityComparer<string?>.Default.Equals(this.IdpId, other.IdpId)
                     && EqualityComparer<string?>.Default.Equals(this.UserId, other.UserId)
                     && EqualityComparer<string?>.Default.Equals(this.UserName, other.UserName)
-                    && EqualityComparer<Dictionary<string, Object>?>.Default.Equals(this.RawInformation, other.RawInformation)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.RawInformation, other.RawInformation)
                     && EqualityComparer<UserServiceIDPLDAPAccessInformation?>.Default.Equals(this.Ldap, other.Ldap)
                     && EqualityComparer<UserServiceIDPOAuthAccessInformation?>.Default.Equals(this.Oauth, other.Oauth)
                     && EqualityComparer<UserServiceIDPSAMLAccessInformation?>.Default.Equals(this.Saml, other.Saml));
@@ -69,7 +62,7 @@ public class UserServiceIDPInformation : IEquatable<UserServiceIDPInformation>
         hash.Add(this.IdpId);
         hash.Add(this.UserId);
         hash.Add(this.UserName);
-        hash.Add(this.RawInformation);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.RawInformation));
         hash.Add(this.Ldap);
         hash.Add(this.Oauth);
         hash.Add(this.Saml);

@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class UserServiceIDPIntent : IEquatable<UserServiceIDPIntent>
 {
-    /// <example>null</example>
     [JsonPropertyName("idpIntentId")]
     public string? IdpIntentId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpIntentToken")]
     public string? IdpIntentToken { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userId")]
     public string? UserId { get; set; }
 

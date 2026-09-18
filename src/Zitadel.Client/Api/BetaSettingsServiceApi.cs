@@ -62,6 +62,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetActiveIdentityProvidersRequest"></param>
+
     /// <returns><![CDATA[BetaSettingsServiceGetActiveIdentityProvidersResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSettingsServiceGetActiveIdentityProvidersResponse> GetActiveIdentityProvidersAsync(BetaSettingsServiceGetActiveIdentityProvidersRequest betaSettingsServiceGetActiveIdentityProvidersRequest)
@@ -72,13 +73,20 @@ public class BetaSettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -86,6 +94,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetActiveIdentityProvidersRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSettingsServiceGetActiveIdentityProvidersResponse>> GetActiveIdentityProvidersWithHttpInfoAsync(BetaSettingsServiceGetActiveIdentityProvidersRequest betaSettingsServiceGetActiveIdentityProvidersRequest)
@@ -113,6 +122,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetBrandingSettingsRequest"></param>
+
     /// <returns><![CDATA[BetaSettingsServiceGetBrandingSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSettingsServiceGetBrandingSettingsResponse> GetBrandingSettingsAsync(BetaSettingsServiceGetBrandingSettingsRequest betaSettingsServiceGetBrandingSettingsRequest)
@@ -123,13 +133,20 @@ public class BetaSettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -137,6 +154,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetBrandingSettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSettingsServiceGetBrandingSettingsResponse>> GetBrandingSettingsWithHttpInfoAsync(BetaSettingsServiceGetBrandingSettingsRequest betaSettingsServiceGetBrandingSettingsRequest)
@@ -164,6 +182,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetDomainSettingsRequest"></param>
+
     /// <returns><![CDATA[BetaSettingsServiceGetDomainSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSettingsServiceGetDomainSettingsResponse> GetDomainSettingsAsync(BetaSettingsServiceGetDomainSettingsRequest betaSettingsServiceGetDomainSettingsRequest)
@@ -174,13 +193,20 @@ public class BetaSettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -188,6 +214,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetDomainSettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSettingsServiceGetDomainSettingsResponse>> GetDomainSettingsWithHttpInfoAsync(BetaSettingsServiceGetDomainSettingsRequest betaSettingsServiceGetDomainSettingsRequest)
@@ -215,9 +242,10 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[BetaSettingsServiceGetGeneralSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetGeneralSettingsResponse> GetGeneralSettingsAsync(Object body)
+    public async Task<BetaSettingsServiceGetGeneralSettingsResponse> GetGeneralSettingsAsync(object body)
     {
         Task<ApiResult<BetaSettingsServiceGetGeneralSettingsResponse>> task = GetGeneralSettingsWithHttpInfoAsync(body);
         ApiResult<BetaSettingsServiceGetGeneralSettingsResponse> result = await task.ConfigureAwait(false);
@@ -225,13 +253,20 @@ public class BetaSettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -239,9 +274,10 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetGeneralSettingsResponse>> GetGeneralSettingsWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<BetaSettingsServiceGetGeneralSettingsResponse>> GetGeneralSettingsWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetGeneralSettings";
 
@@ -266,6 +302,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetLegalAndSupportSettingsRequest"></param>
+
     /// <returns><![CDATA[BetaSettingsServiceGetLegalAndSupportSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSettingsServiceGetLegalAndSupportSettingsResponse> GetLegalAndSupportSettingsAsync(BetaSettingsServiceGetLegalAndSupportSettingsRequest betaSettingsServiceGetLegalAndSupportSettingsRequest)
@@ -276,13 +313,20 @@ public class BetaSettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -290,6 +334,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetLegalAndSupportSettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSettingsServiceGetLegalAndSupportSettingsResponse>> GetLegalAndSupportSettingsWithHttpInfoAsync(BetaSettingsServiceGetLegalAndSupportSettingsRequest betaSettingsServiceGetLegalAndSupportSettingsRequest)
@@ -317,6 +362,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetLockoutSettingsRequest"></param>
+
     /// <returns><![CDATA[BetaSettingsServiceGetLockoutSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSettingsServiceGetLockoutSettingsResponse> GetLockoutSettingsAsync(BetaSettingsServiceGetLockoutSettingsRequest betaSettingsServiceGetLockoutSettingsRequest)
@@ -327,13 +373,20 @@ public class BetaSettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -341,6 +394,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetLockoutSettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSettingsServiceGetLockoutSettingsResponse>> GetLockoutSettingsWithHttpInfoAsync(BetaSettingsServiceGetLockoutSettingsRequest betaSettingsServiceGetLockoutSettingsRequest)
@@ -368,6 +422,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetLoginSettingsRequest"></param>
+
     /// <returns><![CDATA[BetaSettingsServiceGetLoginSettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSettingsServiceGetLoginSettingsResponse> GetLoginSettingsAsync(BetaSettingsServiceGetLoginSettingsRequest betaSettingsServiceGetLoginSettingsRequest)
@@ -378,13 +433,20 @@ public class BetaSettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -392,6 +454,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetLoginSettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSettingsServiceGetLoginSettingsResponse>> GetLoginSettingsWithHttpInfoAsync(BetaSettingsServiceGetLoginSettingsRequest betaSettingsServiceGetLoginSettingsRequest)
@@ -419,6 +482,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetPasswordComplexitySettingsRequest"></param>
+
     /// <returns><![CDATA[BetaSettingsServiceGetPasswordComplexitySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSettingsServiceGetPasswordComplexitySettingsResponse> GetPasswordComplexitySettingsAsync(BetaSettingsServiceGetPasswordComplexitySettingsRequest betaSettingsServiceGetPasswordComplexitySettingsRequest)
@@ -429,13 +493,20 @@ public class BetaSettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -443,6 +514,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetPasswordComplexitySettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSettingsServiceGetPasswordComplexitySettingsResponse>> GetPasswordComplexitySettingsWithHttpInfoAsync(BetaSettingsServiceGetPasswordComplexitySettingsRequest betaSettingsServiceGetPasswordComplexitySettingsRequest)
@@ -470,6 +542,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetPasswordExpirySettingsRequest"></param>
+
     /// <returns><![CDATA[BetaSettingsServiceGetPasswordExpirySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSettingsServiceGetPasswordExpirySettingsResponse> GetPasswordExpirySettingsAsync(BetaSettingsServiceGetPasswordExpirySettingsRequest betaSettingsServiceGetPasswordExpirySettingsRequest)
@@ -480,13 +553,20 @@ public class BetaSettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -494,6 +574,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceGetPasswordExpirySettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSettingsServiceGetPasswordExpirySettingsResponse>> GetPasswordExpirySettingsWithHttpInfoAsync(BetaSettingsServiceGetPasswordExpirySettingsRequest betaSettingsServiceGetPasswordExpirySettingsRequest)
@@ -521,9 +602,10 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="body"></param>
+
     /// <returns><![CDATA[BetaSettingsServiceGetSecuritySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<BetaSettingsServiceGetSecuritySettingsResponse> GetSecuritySettingsAsync(Object body)
+    public async Task<BetaSettingsServiceGetSecuritySettingsResponse> GetSecuritySettingsAsync(object body)
     {
         Task<ApiResult<BetaSettingsServiceGetSecuritySettingsResponse>> task = GetSecuritySettingsWithHttpInfoAsync(body);
         ApiResult<BetaSettingsServiceGetSecuritySettingsResponse> result = await task.ConfigureAwait(false);
@@ -531,13 +613,20 @@ public class BetaSettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -545,9 +634,10 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="body"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
-    public async Task<ApiResult<BetaSettingsServiceGetSecuritySettingsResponse>> GetSecuritySettingsWithHttpInfoAsync(Object body)
+    public async Task<ApiResult<BetaSettingsServiceGetSecuritySettingsResponse>> GetSecuritySettingsWithHttpInfoAsync(object body)
     {
         string path = "/zitadel.settings.v2beta.SettingsService/GetSecuritySettings";
 
@@ -572,6 +662,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceSetSecuritySettingsRequest"></param>
+
     /// <returns><![CDATA[BetaSettingsServiceSetSecuritySettingsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaSettingsServiceSetSecuritySettingsResponse> SetSecuritySettingsAsync(BetaSettingsServiceSetSecuritySettingsRequest betaSettingsServiceSetSecuritySettingsRequest)
@@ -582,13 +673,20 @@ public class BetaSettingsServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -596,6 +694,7 @@ public class BetaSettingsServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under settings service v2. This endpoint will be removed with the next major version of ZITADEL.</remarks>
     /// <param name="betaSettingsServiceSetSecuritySettingsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaSettingsServiceSetSecuritySettingsResponse>> SetSecuritySettingsWithHttpInfoAsync(BetaSettingsServiceSetSecuritySettingsRequest betaSettingsServiceSetSecuritySettingsRequest)

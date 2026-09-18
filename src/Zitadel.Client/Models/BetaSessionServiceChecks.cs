@@ -13,31 +13,24 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceChecks : IEquatable<BetaSessionServiceChecks>
 {
-    /// <example>null</example>
     [JsonPropertyName("user")]
     public BetaSessionServiceCheckUser? User { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("password")]
     public BetaSessionServiceCheckPassword? Password { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("webAuthN")]
     public BetaSessionServiceCheckWebAuthN? WebAuthN { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idpIntent")]
     public BetaSessionServiceCheckIDPIntent? IdpIntent { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("totp")]
     public BetaSessionServiceCheckTOTP? Totp { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpSms")]
     public BetaSessionServiceCheckOTP? OtpSms { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("otpEmail")]
     public BetaSessionServiceCheckOTP? OtpEmail { get; set; }
 

@@ -16,7 +16,6 @@ public class AuthorizationServiceDeleteAuthorizationRequest : IEquatable<Authori
     /// <summary>
     /// ID is the unique identifier of the authorization that should be deleted.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("id")]
     public string? Id { get; set; }
 

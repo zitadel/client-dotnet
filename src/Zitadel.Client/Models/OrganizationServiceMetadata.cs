@@ -16,14 +16,12 @@ public class OrganizationServiceMetadata : IEquatable<OrganizationServiceMetadat
     /// <summary>
     /// Key is identifier of the metadata entry.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("key")]
     public string? Key { get; set; }
 
     /// <summary>
     /// Value is the values of the metadata entry.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("value")]
     public byte[]? Value { get; set; }
 
@@ -33,7 +31,7 @@ public class OrganizationServiceMetadata : IEquatable<OrganizationServiceMetadat
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.Key, other.Key)
-                    && EqualityComparer<byte[]?>.Default.Equals(this.Value, other.Value));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Value, other.Value));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +43,7 @@ public class OrganizationServiceMetadata : IEquatable<OrganizationServiceMetadat
     {
         HashCode hash = default;
         hash.Add(this.Key);
-        hash.Add(this.Value);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Value));
         return hash.ToHashCode();
     }
 }

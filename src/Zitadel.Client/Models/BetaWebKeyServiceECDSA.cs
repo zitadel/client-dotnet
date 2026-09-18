@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class BetaWebKeyServiceECDSA : IEquatable<BetaWebKeyServiceECDSA>
 {
-    /// <example>null</example>
     [JsonPropertyName("curve")]
     public BetaWebKeyServiceECDSACurve? Curve { get; set; }
 

@@ -13,15 +13,12 @@ namespace Zitadel.Client.Models;
 
 public class BetaWebKeyServiceCreateWebKeyRequest : IEquatable<BetaWebKeyServiceCreateWebKeyRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("ecdsa")]
     public BetaWebKeyServiceECDSA? Ecdsa { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("ed25519")]
-    public Object? Ed25519 { get; set; }
+    public object? Ed25519 { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("rsa")]
     public BetaWebKeyServiceRSA? Rsa { get; set; }
 
@@ -31,7 +28,7 @@ public class BetaWebKeyServiceCreateWebKeyRequest : IEquatable<BetaWebKeyService
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<BetaWebKeyServiceECDSA?>.Default.Equals(this.Ecdsa, other.Ecdsa)
-                    && EqualityComparer<Object?>.Default.Equals(this.Ed25519, other.Ed25519)
+                    && EqualityComparer<object?>.Default.Equals(this.Ed25519, other.Ed25519)
                     && EqualityComparer<BetaWebKeyServiceRSA?>.Default.Equals(this.Rsa, other.Rsa));
     }
 

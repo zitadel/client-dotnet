@@ -13,27 +13,21 @@ namespace Zitadel.Client.Models;
 
 public class SessionServiceSearchQuery : IEquatable<SessionServiceSearchQuery>
 {
-    /// <example>null</example>
     [JsonPropertyName("creationDateQuery")]
     public SessionServiceCreationDateQuery? CreationDateQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("creatorQuery")]
     public SessionServiceCreatorQuery? CreatorQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("expirationDateQuery")]
     public SessionServiceExpirationDateQuery? ExpirationDateQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("idsQuery")]
     public SessionServiceIDsQuery? IdsQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userAgentQuery")]
     public SessionServiceUserAgentQuery? UserAgentQuery { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("userIdQuery")]
     public SessionServiceUserIDQuery? UserIdQuery { get; set; }
 

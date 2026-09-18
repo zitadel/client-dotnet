@@ -68,6 +68,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of my organization to active. The state of the organization has to be deactivated to perform the request. Users of this organization will be able to log in again.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceActivateOrganizationRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceActivateOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceActivateOrganizationResponse> ActivateOrganizationAsync(BetaOrganizationServiceActivateOrganizationRequest betaOrganizationServiceActivateOrganizationRequest)
@@ -78,13 +79,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -92,6 +100,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Set the state of my organization to active. The state of the organization has to be deactivated to perform the request. Users of this organization will be able to log in again.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceActivateOrganizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceActivateOrganizationResponse>> ActivateOrganizationWithHttpInfoAsync(BetaOrganizationServiceActivateOrganizationRequest betaOrganizationServiceActivateOrganizationRequest)
@@ -119,6 +128,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Add a new domain to an organization. The domains are used to identify to which organization a user belongs.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceAddOrganizationDomainRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceAddOrganizationDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceAddOrganizationDomainResponse> AddOrganizationDomainAsync(BetaOrganizationServiceAddOrganizationDomainRequest betaOrganizationServiceAddOrganizationDomainRequest)
@@ -129,13 +139,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -143,6 +160,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Add a new domain to an organization. The domains are used to identify to which organization a user belongs.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceAddOrganizationDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceAddOrganizationDomainResponse>> AddOrganizationDomainWithHttpInfoAsync(BetaOrganizationServiceAddOrganizationDomainRequest betaOrganizationServiceAddOrganizationDomainRequest)
@@ -170,6 +188,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.   Required permission:   - `org.create`   Deprecated: Use [AddOrganization](/apis/resources/org_service_v2/organization-service-add-organization.api.mdx) instead to create an organization.</remarks>
     /// <param name="betaOrganizationServiceCreateOrganizationRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceCreateOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceCreateOrganizationResponse> CreateOrganizationAsync(BetaOrganizationServiceCreateOrganizationRequest betaOrganizationServiceCreateOrganizationRequest)
@@ -180,13 +199,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -194,6 +220,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Create a new organization with an administrative user. If no specific roles are sent for the users, they will be granted the role ORG_OWNER.   Required permission:   - `org.create`   Deprecated: Use [AddOrganization](/apis/resources/org_service_v2/organization-service-add-organization.api.mdx) instead to create an organization.</remarks>
     /// <param name="betaOrganizationServiceCreateOrganizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceCreateOrganizationResponse>> CreateOrganizationWithHttpInfoAsync(BetaOrganizationServiceCreateOrganizationRequest betaOrganizationServiceCreateOrganizationRequest)
@@ -221,6 +248,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Sets the state of my organization to deactivated. Users of this organization will not be able to log in.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceDeactivateOrganizationRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceDeactivateOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceDeactivateOrganizationResponse> DeactivateOrganizationAsync(BetaOrganizationServiceDeactivateOrganizationRequest betaOrganizationServiceDeactivateOrganizationRequest)
@@ -231,13 +259,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -245,6 +280,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Sets the state of my organization to deactivated. Users of this organization will not be able to log in.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceDeactivateOrganizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceDeactivateOrganizationResponse>> DeactivateOrganizationWithHttpInfoAsync(BetaOrganizationServiceDeactivateOrganizationRequest betaOrganizationServiceDeactivateOrganizationRequest)
@@ -272,6 +308,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Deletes the organization and all its resources (Users, Projects, Grants to and from the org). Users of this organization will not be able to log in.   Required permission:   - `org.delete`</remarks>
     /// <param name="betaOrganizationServiceDeleteOrganizationRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceDeleteOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceDeleteOrganizationResponse> DeleteOrganizationAsync(BetaOrganizationServiceDeleteOrganizationRequest betaOrganizationServiceDeleteOrganizationRequest)
@@ -282,13 +319,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -296,6 +340,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Deletes the organization and all its resources (Users, Projects, Grants to and from the org). Users of this organization will not be able to log in.   Required permission:   - `org.delete`</remarks>
     /// <param name="betaOrganizationServiceDeleteOrganizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceDeleteOrganizationResponse>> DeleteOrganizationWithHttpInfoAsync(BetaOrganizationServiceDeleteOrganizationRequest betaOrganizationServiceDeleteOrganizationRequest)
@@ -323,6 +368,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete a new domain from an organization. The domains are used to identify to which organization a user belongs. If the uses use the domain for login, this will not be possible afterwards. They have to use another domain instead.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceDeleteOrganizationDomainRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceDeleteOrganizationDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceDeleteOrganizationDomainResponse> DeleteOrganizationDomainAsync(BetaOrganizationServiceDeleteOrganizationDomainRequest betaOrganizationServiceDeleteOrganizationDomainRequest)
@@ -333,13 +379,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -347,6 +400,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete a new domain from an organization. The domains are used to identify to which organization a user belongs. If the uses use the domain for login, this will not be possible afterwards. They have to use another domain instead.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceDeleteOrganizationDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceDeleteOrganizationDomainResponse>> DeleteOrganizationDomainWithHttpInfoAsync(BetaOrganizationServiceDeleteOrganizationDomainRequest betaOrganizationServiceDeleteOrganizationDomainRequest)
@@ -374,6 +428,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete metadata objects from an organization with a specific key.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceDeleteOrganizationMetadataRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceDeleteOrganizationMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceDeleteOrganizationMetadataResponse> DeleteOrganizationMetadataAsync(BetaOrganizationServiceDeleteOrganizationMetadataRequest betaOrganizationServiceDeleteOrganizationMetadataRequest)
@@ -384,13 +439,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -398,6 +460,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Delete metadata objects from an organization with a specific key.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceDeleteOrganizationMetadataRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceDeleteOrganizationMetadataResponse>> DeleteOrganizationMetadataWithHttpInfoAsync(BetaOrganizationServiceDeleteOrganizationMetadataRequest betaOrganizationServiceDeleteOrganizationMetadataRequest)
@@ -425,6 +488,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Generate a new file to be able to verify your domain with DNS or HTTP challenge.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceGenerateOrganizationDomainValidationRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceGenerateOrganizationDomainValidationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse> GenerateOrganizationDomainValidationAsync(BetaOrganizationServiceGenerateOrganizationDomainValidationRequest betaOrganizationServiceGenerateOrganizationDomainValidationRequest)
@@ -435,13 +499,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -449,6 +520,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Generate a new file to be able to verify your domain with DNS or HTTP challenge.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceGenerateOrganizationDomainValidationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceGenerateOrganizationDomainValidationResponse>> GenerateOrganizationDomainValidationWithHttpInfoAsync(BetaOrganizationServiceGenerateOrganizationDomainValidationRequest betaOrganizationServiceGenerateOrganizationDomainValidationRequest)
@@ -476,6 +548,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the list of registered domains of an organization. The domains are used to identify to which organization a user belongs.    Required permission:   - `org.read`</remarks>
     /// <param name="betaOrganizationServiceListOrganizationDomainsRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceListOrganizationDomainsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceListOrganizationDomainsResponse> ListOrganizationDomainsAsync(BetaOrganizationServiceListOrganizationDomainsRequest betaOrganizationServiceListOrganizationDomainsRequest)
@@ -486,13 +559,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -500,6 +580,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns the list of registered domains of an organization. The domains are used to identify to which organization a user belongs.    Required permission:   - `org.read`</remarks>
     /// <param name="betaOrganizationServiceListOrganizationDomainsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceListOrganizationDomainsResponse>> ListOrganizationDomainsWithHttpInfoAsync(BetaOrganizationServiceListOrganizationDomainsRequest betaOrganizationServiceListOrganizationDomainsRequest)
@@ -527,6 +608,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   List metadata of an organization filtered by query.   Required permission:   - `org.read`</remarks>
     /// <param name="betaOrganizationServiceListOrganizationMetadataRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceListOrganizationMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceListOrganizationMetadataResponse> ListOrganizationMetadataAsync(BetaOrganizationServiceListOrganizationMetadataRequest betaOrganizationServiceListOrganizationMetadataRequest)
@@ -537,13 +619,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -551,6 +640,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   List metadata of an organization filtered by query.   Required permission:   - `org.read`</remarks>
     /// <param name="betaOrganizationServiceListOrganizationMetadataRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceListOrganizationMetadataResponse>> ListOrganizationMetadataWithHttpInfoAsync(BetaOrganizationServiceListOrganizationMetadataRequest betaOrganizationServiceListOrganizationMetadataRequest)
@@ -578,6 +668,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns a list of organizations that match the requesting filters. All filters are applied with an AND condition.   Required permission:   - `org.read`   Deprecated: Use [ListOrganizations](/apis/resources/org_service_v2/organization-service-list-organizations.api.mdx) instead to list organizations.</remarks>
     /// <param name="betaOrganizationServiceListOrganizationsRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceListOrganizationsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceListOrganizationsResponse> ListOrganizationsAsync(BetaOrganizationServiceListOrganizationsRequest betaOrganizationServiceListOrganizationsRequest)
@@ -588,13 +679,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -602,6 +700,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Returns a list of organizations that match the requesting filters. All filters are applied with an AND condition.   Required permission:   - `org.read`   Deprecated: Use [ListOrganizations](/apis/resources/org_service_v2/organization-service-list-organizations.api.mdx) instead to list organizations.</remarks>
     /// <param name="betaOrganizationServiceListOrganizationsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceListOrganizationsResponse>> ListOrganizationsWithHttpInfoAsync(BetaOrganizationServiceListOrganizationsRequest betaOrganizationServiceListOrganizationsRequest)
@@ -629,6 +728,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds or updates a metadata value for the requested key. Make sure the value is base64 encoded.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceSetOrganizationMetadataRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceSetOrganizationMetadataResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceSetOrganizationMetadataResponse> SetOrganizationMetadataAsync(BetaOrganizationServiceSetOrganizationMetadataRequest betaOrganizationServiceSetOrganizationMetadataRequest)
@@ -639,13 +739,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -653,6 +760,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Adds or updates a metadata value for the requested key. Make sure the value is base64 encoded.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceSetOrganizationMetadataRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceSetOrganizationMetadataResponse>> SetOrganizationMetadataWithHttpInfoAsync(BetaOrganizationServiceSetOrganizationMetadataRequest betaOrganizationServiceSetOrganizationMetadataRequest)
@@ -680,6 +788,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Change the name of the organization.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceUpdateOrganizationRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceUpdateOrganizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceUpdateOrganizationResponse> UpdateOrganizationAsync(BetaOrganizationServiceUpdateOrganizationRequest betaOrganizationServiceUpdateOrganizationRequest)
@@ -690,13 +799,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -704,6 +820,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Change the name of the organization.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceUpdateOrganizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceUpdateOrganizationResponse>> UpdateOrganizationWithHttpInfoAsync(BetaOrganizationServiceUpdateOrganizationRequest betaOrganizationServiceUpdateOrganizationRequest)
@@ -731,6 +848,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Make sure you have added the required verification to your domain, depending on the method you have chosen (HTTP or DNS challenge). ZITADEL will check it and set the domain as verified if it was successful. A verify domain has to be unique.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceVerifyOrganizationDomainRequest"></param>
+
     /// <returns><![CDATA[BetaOrganizationServiceVerifyOrganizationDomainResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaOrganizationServiceVerifyOrganizationDomainResponse> VerifyOrganizationDomainAsync(BetaOrganizationServiceVerifyOrganizationDomainRequest betaOrganizationServiceVerifyOrganizationDomainRequest)
@@ -741,13 +859,20 @@ public class BetaOrganizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -755,6 +880,7 @@ public class BetaOrganizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under organization service v2. This endpoint will be removed with the next major version of ZITADEL.   Make sure you have added the required verification to your domain, depending on the method you have chosen (HTTP or DNS challenge). ZITADEL will check it and set the domain as verified if it was successful. A verify domain has to be unique.   Required permission:   - `org.write`</remarks>
     /// <param name="betaOrganizationServiceVerifyOrganizationDomainRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaOrganizationServiceVerifyOrganizationDomainResponse>> VerifyOrganizationDomainWithHttpInfoAsync(BetaOrganizationServiceVerifyOrganizationDomainRequest betaOrganizationServiceVerifyOrganizationDomainRequest)

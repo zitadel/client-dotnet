@@ -13,22 +13,18 @@ namespace Zitadel.Client.Models;
 
 public class BetaAppServiceListApplicationsRequest : IEquatable<BetaAppServiceListApplicationsRequest>
 {
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("pagination")]
     public BetaAppServicePaginationRequest? Pagination { get; set; }
 
     /// <summary>
     /// criteria the client is looking for
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("filters")]
     public List<BetaAppServiceApplicationSearchFilter>? Filters { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sortingColumn")]
     public BetaAppServiceAppSorting? SortingColumn { get; set; }
 
@@ -39,7 +35,7 @@ public class BetaAppServiceListApplicationsRequest : IEquatable<BetaAppServiceLi
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
                     && EqualityComparer<BetaAppServicePaginationRequest?>.Default.Equals(this.Pagination, other.Pagination)
-                    && EqualityComparer<List<BetaAppServiceApplicationSearchFilter>?>.Default.Equals(this.Filters, other.Filters)
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Filters, other.Filters)
                     && EqualityComparer<BetaAppServiceAppSorting?>.Default.Equals(this.SortingColumn, other.SortingColumn));
     }
 
@@ -53,7 +49,7 @@ public class BetaAppServiceListApplicationsRequest : IEquatable<BetaAppServiceLi
         HashCode hash = default;
         hash.Add(this.ProjectId);
         hash.Add(this.Pagination);
-        hash.Add(this.Filters);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Filters));
         hash.Add(this.SortingColumn);
         return hash.ToHashCode();
     }

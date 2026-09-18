@@ -13,11 +13,9 @@ namespace Zitadel.Client.Models;
 
 public class BetaSessionServiceListSessionsResponse : IEquatable<BetaSessionServiceListSessionsResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("details")]
     public BetaSessionServiceListDetails? Details { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("sessions")]
     public List<BetaSessionServiceSession>? Sessions { get; set; }
 
@@ -27,7 +25,7 @@ public class BetaSessionServiceListSessionsResponse : IEquatable<BetaSessionServ
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<BetaSessionServiceListDetails?>.Default.Equals(this.Details, other.Details)
-                    && EqualityComparer<List<BetaSessionServiceSession>?>.Default.Equals(this.Sessions, other.Sessions));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Sessions, other.Sessions));
     }
 
     public override bool Equals(object? obj)
@@ -39,7 +37,7 @@ public class BetaSessionServiceListSessionsResponse : IEquatable<BetaSessionServ
     {
         HashCode hash = default;
         hash.Add(this.Details);
-        hash.Add(this.Sessions);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Sessions));
         return hash.ToHashCode();
     }
 }

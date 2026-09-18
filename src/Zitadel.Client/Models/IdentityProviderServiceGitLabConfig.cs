@@ -16,14 +16,12 @@ public class IdentityProviderServiceGitLabConfig : IEquatable<IdentityProviderSe
     /// <summary>
     /// Client id of the GitLab application.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("clientId")]
     public string? ClientId { get; set; }
 
     /// <summary>
     /// The scopes requested by ZITADEL during the request to GitLab.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("scopes")]
     public List<string>? Scopes { get; set; }
 
@@ -33,7 +31,7 @@ public class IdentityProviderServiceGitLabConfig : IEquatable<IdentityProviderSe
         return other is not null
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ClientId, other.ClientId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.Scopes, other.Scopes));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.Scopes, other.Scopes));
     }
 
     public override bool Equals(object? obj)
@@ -45,7 +43,7 @@ public class IdentityProviderServiceGitLabConfig : IEquatable<IdentityProviderSe
     {
         HashCode hash = default;
         hash.Add(this.ClientId);
-        hash.Add(this.Scopes);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.Scopes));
         return hash.ToHashCode();
     }
 }

@@ -13,7 +13,6 @@ namespace Zitadel.Client.Models;
 
 public class ActionServiceGetTargetResponse : IEquatable<ActionServiceGetTargetResponse>
 {
-    /// <example>null</example>
     [JsonPropertyName("target")]
     public ActionServiceTarget? Target { get; set; }
 

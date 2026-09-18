@@ -16,15 +16,12 @@ public class OIDCServiceCreateCallbackRequest : IEquatable<OIDCServiceCreateCall
     /// <summary>
     /// The ID of the Auth Request to finalize.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("authRequestId")]
     public string? AuthRequestId { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("error")]
     public OIDCServiceAuthorizationError? Error { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("session")]
     public OIDCServiceSession? Session { get; set; }
 

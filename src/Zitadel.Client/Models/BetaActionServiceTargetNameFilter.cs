@@ -16,11 +16,9 @@ public class BetaActionServiceTargetNameFilter : IEquatable<BetaActionServiceTar
     /// <summary>
     /// Defines the name of the target to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("targetName")]
     public string? TargetName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public BetaActionServiceTextFilterMethod? Method { get; set; }
 

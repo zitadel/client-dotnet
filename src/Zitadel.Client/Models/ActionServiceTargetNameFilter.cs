@@ -16,11 +16,9 @@ public class ActionServiceTargetNameFilter : IEquatable<ActionServiceTargetNameF
     /// <summary>
     /// Defines the name of the target to query for.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("targetName")]
     public string? TargetName { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("method")]
     public ActionServiceTextFilterMethod? Method { get; set; }
 

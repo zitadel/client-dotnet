@@ -16,21 +16,18 @@ public class ProjectServiceUpdateProjectGrantRequest : IEquatable<ProjectService
     /// <summary>
     /// ProjectID is the unique identifier of the project.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("projectId")]
     public string? ProjectId { get; set; }
 
     /// <summary>
     /// GrantedOrganizationID is the unique identifier of the organization the project was granted to.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("grantedOrganizationId")]
     public string? GrantedOrganizationId { get; set; }
 
     /// <summary>
     /// RoleKeys is a list of roles to be granted to the organization for self management.  The roles are identified by their keys.  Any roles not included in this list will be removed from the project grant.  If you want to add a role, make sure to include all other existing roles as well.  If any previous role is removed, all user grants for this project grant with this role will be removed as well.
     /// </summary>
-    /// <example>null</example>
     [JsonPropertyName("roleKeys")]
     public List<string>? RoleKeys { get; set; }
 
@@ -41,7 +38,7 @@ public class ProjectServiceUpdateProjectGrantRequest : IEquatable<ProjectService
             && (ReferenceEquals(this, other)
                 || EqualityComparer<string?>.Default.Equals(this.ProjectId, other.ProjectId)
                     && EqualityComparer<string?>.Default.Equals(this.GrantedOrganizationId, other.GrantedOrganizationId)
-                    && EqualityComparer<List<string>?>.Default.Equals(this.RoleKeys, other.RoleKeys));
+                    && global::Zitadel.Client.ObjectSerializer.StructuralEquals(this.RoleKeys, other.RoleKeys));
     }
 
     public override bool Equals(object? obj)
@@ -54,7 +51,7 @@ public class ProjectServiceUpdateProjectGrantRequest : IEquatable<ProjectService
         HashCode hash = default;
         hash.Add(this.ProjectId);
         hash.Add(this.GrantedOrganizationId);
-        hash.Add(this.RoleKeys);
+        hash.Add(global::Zitadel.Client.ObjectSerializer.StructuralHashCode(this.RoleKeys));
         return hash.ToHashCode();
     }
 }

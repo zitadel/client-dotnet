@@ -52,6 +52,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   ActivateAuthorization activates an existing but inactive authorization.   In case the authorization is already active, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was activated by the request.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="betaAuthorizationServiceActivateAuthorizationRequest"></param>
+
     /// <returns><![CDATA[BetaAuthorizationServiceActivateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAuthorizationServiceActivateAuthorizationResponse> ActivateAuthorizationAsync(BetaAuthorizationServiceActivateAuthorizationRequest betaAuthorizationServiceActivateAuthorizationRequest)
@@ -62,13 +63,20 @@ public class BetaAuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -76,6 +84,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   ActivateAuthorization activates an existing but inactive authorization.   In case the authorization is already active, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was activated by the request.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="betaAuthorizationServiceActivateAuthorizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAuthorizationServiceActivateAuthorizationResponse>> ActivateAuthorizationWithHttpInfoAsync(BetaAuthorizationServiceActivateAuthorizationRequest betaAuthorizationServiceActivateAuthorizationRequest)
@@ -103,6 +112,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   CreateAuthorization creates a new authorization for a user in an owned or granted project.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="betaAuthorizationServiceCreateAuthorizationRequest"></param>
+
     /// <returns><![CDATA[BetaAuthorizationServiceCreateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAuthorizationServiceCreateAuthorizationResponse> CreateAuthorizationAsync(BetaAuthorizationServiceCreateAuthorizationRequest betaAuthorizationServiceCreateAuthorizationRequest)
@@ -113,13 +123,20 @@ public class BetaAuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -127,6 +144,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   CreateAuthorization creates a new authorization for a user in an owned or granted project.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="betaAuthorizationServiceCreateAuthorizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAuthorizationServiceCreateAuthorizationResponse>> CreateAuthorizationWithHttpInfoAsync(BetaAuthorizationServiceCreateAuthorizationRequest betaAuthorizationServiceCreateAuthorizationRequest)
@@ -154,6 +172,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   DeactivateAuthorization deactivates an existing and active authorization.   In case the authorization is already inactive, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was deactivated by the request.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="betaAuthorizationServiceDeactivateAuthorizationRequest"></param>
+
     /// <returns><![CDATA[BetaAuthorizationServiceDeactivateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAuthorizationServiceDeactivateAuthorizationResponse> DeactivateAuthorizationAsync(BetaAuthorizationServiceDeactivateAuthorizationRequest betaAuthorizationServiceDeactivateAuthorizationRequest)
@@ -164,13 +183,20 @@ public class BetaAuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -178,6 +204,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   DeactivateAuthorization deactivates an existing and active authorization.   In case the authorization is already inactive, the request will return a successful response as  the desired state is already achieved.  You can check the change date in the response to verify if the authorization was deactivated by the request.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="betaAuthorizationServiceDeactivateAuthorizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAuthorizationServiceDeactivateAuthorizationResponse>> DeactivateAuthorizationWithHttpInfoAsync(BetaAuthorizationServiceDeactivateAuthorizationRequest betaAuthorizationServiceDeactivateAuthorizationRequest)
@@ -205,6 +232,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   DeleteAuthorization deletes the authorization.   In case the authorization is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the authorization was deleted by the request.   Required permissions:    - \"user.grant.delete\"</remarks>
     /// <param name="betaAuthorizationServiceDeleteAuthorizationRequest"></param>
+
     /// <returns><![CDATA[BetaAuthorizationServiceDeleteAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAuthorizationServiceDeleteAuthorizationResponse> DeleteAuthorizationAsync(BetaAuthorizationServiceDeleteAuthorizationRequest betaAuthorizationServiceDeleteAuthorizationRequest)
@@ -215,13 +243,20 @@ public class BetaAuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -229,6 +264,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   DeleteAuthorization deletes the authorization.   In case the authorization is not found, the request will return a successful response as  the desired state is already achieved.  You can check the deletion date in the response to verify if the authorization was deleted by the request.   Required permissions:    - \"user.grant.delete\"</remarks>
     /// <param name="betaAuthorizationServiceDeleteAuthorizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAuthorizationServiceDeleteAuthorizationResponse>> DeleteAuthorizationWithHttpInfoAsync(BetaAuthorizationServiceDeleteAuthorizationRequest betaAuthorizationServiceDeleteAuthorizationRequest)
@@ -256,6 +292,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   ListAuthorizations returns all authorizations matching the request and necessary permissions.   Required permissions:    - \"user.grant.read\"    - no permissions required for listing own authorizations</remarks>
     /// <param name="betaAuthorizationServiceListAuthorizationsRequest"></param>
+
     /// <returns><![CDATA[BetaAuthorizationServiceListAuthorizationsResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAuthorizationServiceListAuthorizationsResponse> ListAuthorizationsAsync(BetaAuthorizationServiceListAuthorizationsRequest betaAuthorizationServiceListAuthorizationsRequest)
@@ -266,13 +303,20 @@ public class BetaAuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -280,6 +324,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   ListAuthorizations returns all authorizations matching the request and necessary permissions.   Required permissions:    - \"user.grant.read\"    - no permissions required for listing own authorizations</remarks>
     /// <param name="betaAuthorizationServiceListAuthorizationsRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAuthorizationServiceListAuthorizationsResponse>> ListAuthorizationsWithHttpInfoAsync(BetaAuthorizationServiceListAuthorizationsRequest betaAuthorizationServiceListAuthorizationsRequest)
@@ -307,6 +352,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   UpdateAuthorization updates the authorization.   Note that any role keys previously granted to the user and not present in the request will be revoked.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="betaAuthorizationServiceUpdateAuthorizationRequest"></param>
+
     /// <returns><![CDATA[BetaAuthorizationServiceUpdateAuthorizationResponse]]></returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<BetaAuthorizationServiceUpdateAuthorizationResponse> UpdateAuthorizationAsync(BetaAuthorizationServiceUpdateAuthorizationRequest betaAuthorizationServiceUpdateAuthorizationRequest)
@@ -317,13 +363,20 @@ public class BetaAuthorizationServiceApi : BaseApi
          * receives no decodable body surfaces the same typed, catchable
          * ApiException as any other API failure (carrying the status code,
          * headers and raw body) — never a silent null or a non-SDK
-         * exception type. Matches the harmonised cross-SDK canonical. */
-        return result.Data
-            ?? throw new ApiException(
+         * exception type. Matches the harmonised cross-SDK canonical. The
+         * presence of a body is gated on the raw payload rather than on
+         * `Data`: for a value-type return (e.g. a bare enum), `default(T)`
+         * is the zero member — never null — so a `Data`-based null check
+         * would silently return the zero value for a 204/empty body. */
+        if (string.IsNullOrEmpty(result.RawBody))
+        {
+            throw new ApiException(
                 result.StatusCode,
                 "Expected a non-empty response body but none was returned",
                 new Dictionary<string, string>(result.Headers),
                 result.RawBody);
+        }
+        return result.Data!;
     }
 
     /// <summary>
@@ -331,6 +384,7 @@ public class BetaAuthorizationServiceApi : BaseApi
     /// </summary>
     /// <remarks>Deprecated: please move to the corresponding endpoint under authorization service v2. This endpoint will be removed with the next major version of ZITADEL.   UpdateAuthorization updates the authorization.   Note that any role keys previously granted to the user and not present in the request will be revoked.   Required permissions:    - \"user.grant.write\"</remarks>
     /// <param name="betaAuthorizationServiceUpdateAuthorizationRequest"></param>
+
     /// <returns>ApiResult containing the response data, status code, raw body, and headers.</returns>
     /// <exception cref="ApiException">Thrown when the API call fails.</exception>
     public async Task<ApiResult<BetaAuthorizationServiceUpdateAuthorizationResponse>> UpdateAuthorizationWithHttpInfoAsync(BetaAuthorizationServiceUpdateAuthorizationRequest betaAuthorizationServiceUpdateAuthorizationRequest)

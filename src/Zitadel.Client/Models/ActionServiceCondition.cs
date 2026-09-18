@@ -13,19 +13,15 @@ namespace Zitadel.Client.Models;
 
 public class ActionServiceCondition : IEquatable<ActionServiceCondition>
 {
-    /// <example>null</example>
     [JsonPropertyName("event")]
     public ActionServiceEventExecution? Event { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("function")]
     public ActionServiceFunctionExecution? Function { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("request")]
     public ActionServiceRequestExecution? Request { get; set; }
 
-    /// <example>null</example>
     [JsonPropertyName("response")]
     public ActionServiceResponseExecution? Response { get; set; }
 
