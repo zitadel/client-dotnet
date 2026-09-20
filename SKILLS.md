@@ -58,7 +58,7 @@ var client = new global::Zitadel.Client.Zitadel(new FakeAuthenticator());
 
 ## Error Handling
 
-All API errors inherit from `ApiException`. The exception hierarchy is:
+All API errors derive from `ApiException`. The error hierarchy is:
 
 - `ApiException` (base)
   - `ClientException` (4xx)
@@ -114,9 +114,9 @@ The client implements `IDisposable`. Use `using` statements or call `Dispose()` 
 
 ## API Methods
 
-Each API group is exposed as a typed property on the client (e.g., `client.ActionService`). API classes have async methods that correspond to OpenAPI operations, accepting typed request parameters and returning typed response models.
+Each API group is exposed as a typed property on the client (e.g., `client.ActionService`). API classes have methods that correspond to OpenAPI operations, accepting typed request parameters and returning typed response models.
 
-All API methods are async and return `Task<T>`. Use `await` to invoke them.
+All API methods are asynchronous; invoke them with `await`.
 
 ## Models
 
@@ -134,7 +134,7 @@ File upload parameters are typed as `Stream`. Binary response bodies are returne
 
 ## Comment Style
 
-Never use inline comments (`//`). Always use block comments (`/* ... */`). XML doc comments (`///`) are allowed.
+Never place a comment on the same line as code. Use block comments (`/* ... */`); XML doc comments (`///`) are fine.
 
 ```good
 /* This explains the logic */
