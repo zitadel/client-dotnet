@@ -1,4 +1,4 @@
-# Zitadel SDK SDK - AI Agent Reference
+# Zitadel SDK - AI Agent Reference
 
 ## Installation
 
@@ -12,7 +12,7 @@ dotnet add package Zitadel.Client
 using Zitadel.Client;
 using Zitadel.Client.Auth;
 
-var client = Zitadel.WithToken("https://api.example.com", "your-token");
+var client = global::Zitadel.Client.Zitadel.WithToken("https://api.example.com", "your-token");
 ```
 
 ## Authentication
@@ -25,17 +25,17 @@ All authentication is handled via `IAuthenticator` implementations passed to the
 using Zitadel.Client.Auth;
 
 var authenticator = new BearerAuthenticator("https://api.example.com", "your-token");
-var client = new Zitadel(authenticator);
+var client = new global::Zitadel.Client.Zitadel(authenticator);
 ```
 
 ## Servers
 
-If the OpenAPI spec defines multiple servers, the generated `Servers` class exposes each as a `ServerConfiguration` constant (e.g., `Servers.Server0`, `Servers.Server1`, ...) plus a `Servers.All` collection. Pass the desired server's URL to the client:
+If the OpenAPI spec defines multiple servers, the generated `Servers` class exposes each as a `ServerConfiguration` field (e.g., `Servers.Server0`, `Servers.Server1`, ...) plus a `Servers.All` collection. Pass the desired server's URL to the client:
 
 ```csharp
 using Zitadel.Client;
 
-var client = Zitadel.WithToken(Servers.Server0.Url(), "your-token");
+var client = global::Zitadel.Client.Zitadel.WithToken(Servers.Server0.GetUrl(), "your-token");
 ```
 
 ## Testing
@@ -43,15 +43,17 @@ var client = Zitadel.WithToken(Servers.Server0.Url(), "your-token");
 The `IAuthenticator` interface is the seam for tests: substitute a fake authenticator that returns a known header map, and assert your code calls the API the way you expect.
 
 ```csharp
+using Zitadel.Client.Auth;
+
 public sealed class FakeAuthenticator : IAuthenticator
 {
-    public Task<IDictionary<string, string>> GetAuthHeadersAsync(RequestContext request, CancellationToken token = default)
-        => Task.FromResult<IDictionary<string, string>>(new Dictionary<string, string> { ["Authorization"] = "Bearer test-token" });
+    public string GetHost() => "https://api.example.com";
 
-    public string Host => "https://api.example.com";
+    public Dictionary<string, string> GetAuthHeaders() =>
+        new() { ["Authorization"] = "Bearer test-token" };
 }
 
-var client = new Zitadel(new FakeAuthenticator());
+var client = new global::Zitadel.Client.Zitadel(new FakeAuthenticator());
 ```
 
 ## Error Handling
@@ -70,6 +72,7 @@ All API errors inherit from `ApiException`. The exception hierarchy is:
     - `InternalServerErrorException` (500)
 
 ```csharp
+using Zitadel.Client;
 using Zitadel.Client.Errors;
 
 try
@@ -104,7 +107,7 @@ var transport = TransportOptions.Builder()
     .Timeout(5000)
     .Build();
 
-var client = new Zitadel(authenticator, transport);
+var client = new global::Zitadel.Client.Zitadel(authenticator, transport);
 ```
 
 The client implements `IDisposable`. Use `using` statements or call `Dispose()` when done.
