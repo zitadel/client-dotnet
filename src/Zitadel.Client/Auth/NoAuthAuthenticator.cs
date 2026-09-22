@@ -14,18 +14,18 @@ public class NoAuthAuthenticator : BaseAuthenticator
     /// <summary>
     /// Constructs a NoAuthAuthenticator.
     /// </summary>
-    /// <param name="host">The base URL for authentication endpoints.</param>
+    /// <param name="host">The base URL for the API endpoints.</param>
+    /// <exception cref="ArgumentException">If the host is not a valid http or https URL.</exception>
     public NoAuthAuthenticator(string host)
     {
-        ArgumentNullException.ThrowIfNull(host);
-        _host = OpenId.BuildHostname(host).ToString();
+        _host = new OpenId(host).HostEndpoint;
     }
 
     /// <summary>
-    /// Constructs a NoAuthAuthenticator targeting <c>localhost</c>.
+    /// Constructs a NoAuthAuthenticator for <c>http://localhost</c>.
     /// </summary>
     public NoAuthAuthenticator()
-        : this("localhost") { }
+        : this("http://localhost") { }
 
     /// <inheritdoc/>
     public override string GetHost()

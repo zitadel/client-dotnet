@@ -1,6 +1,8 @@
 // Zitadel SDK
 // SettingsService auth check via personal access token, ported from the other SDKs.
 
+using Zitadel.Client.Errors;
+
 namespace Zitadel.Client.Test.Integration.Auth;
 
 /// <summary>
@@ -10,7 +12,7 @@ namespace Zitadel.Client.Test.Integration.Auth;
 /// personal access token:</para>
 /// <list type="number">
 ///   <item><description>Retrieve general settings successfully with a valid token.</description></item>
-///   <item><description>Raise an <see cref="ApiException"/> when using an invalid token.</description></item>
+///   <item><description>Raise an <see cref="UnauthorizedException"/> when using an invalid token.</description></item>
 /// </list>
 ///
 /// <para>Each test instantiates a new client to ensure a clean, stateless call.</para>
@@ -38,7 +40,7 @@ public sealed class UseAccessTokenSpec
     {
         using var client = ZitadelClients.WithAccessToken(_stack.BaseUrl, "invalid");
 
-        _ = await Assert.ThrowsAnyAsync<ApiException>(() =>
+        _ = await Assert.ThrowsAsync<UnauthorizedException>(() =>
             client.SettingsService.GetGeneralSettingsAsync(new object())
         );
     }

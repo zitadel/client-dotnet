@@ -4,12 +4,23 @@
 namespace Zitadel.Client.Auth;
 
 /// <summary>
-/// Base builder shared by the concrete OAuth authenticators.
+/// Abstract builder for OAuth authenticators.
+/// <para>Holds the OpenID discovery helper for the host and the requested scopes.</para>
 /// </summary>
-/// <typeparam name="T">The concrete builder type for fluent chaining.</typeparam>
+/// <typeparam name="T">The concrete builder type.</typeparam>
 public abstract class OAuthAuthenticatorBuilder<T>
     where T : OAuthAuthenticatorBuilder<T>
 {
+    /// <summary>
+    /// Initialises the builder for the given host.
+    /// </summary>
+    /// <param name="host">The base URL for the OAuth provider.</param>
+    /// <exception cref="ArgumentException">If the host is not a valid http or https URL.</exception>
+    protected OAuthAuthenticatorBuilder(string host)
+    {
+        OpenId = new OpenId(host);
+    }
+
     /// <summary>The OpenID discovery helper for the target host.</summary>
     protected OpenId OpenId { get; }
 
@@ -17,22 +28,29 @@ public abstract class OAuthAuthenticatorBuilder<T>
     protected string Scope { get; private set; } = OAuthAuthenticator.DefaultScope;
 
     /// <summary>
-    /// Constructs an OAuthAuthenticatorBuilder.
+    /// Overrides the default scopes. Duplicates are dropped; order is kept.
     /// </summary>
-    /// <param name="host">The base URL for the API endpoints.</param>
-    protected OAuthAuthenticatorBuilder(string host)
+    /// <param name="authScopes">The scopes for the token request.</param>
+    /// <returns>The builder instance.</returns>
+    /// <exception cref="ArgumentException">If no scope is given, or a scope is empty
+    /// or contains whitespace.</exception>
+    public T Scopes(params string[] authScopes)
     {
-        OpenId = new OpenId(host);
-    }
-
-    /// <summary>
-    /// Overrides the default scopes.
-    /// </summary>
-    /// <param name="authScopes">A set of scopes for the token request.</param>
-    /// <returns>This builder.</returns>
-    public T Scopes(HashSet<string> authScopes)
-    {
-        Scope = string.Join(' ', authScopes);
+        if (authScopes == null || authScopes.Length == 0)
+        {
+            throw new ArgumentException("At least one scope is required.", nameof(authScopes));
+        }
+        foreach (string authScope in authScopes)
+        {
+            if (string.IsNullOrEmpty(authScope) || authScope.Any(char.IsWhiteSpace))
+            {
+                throw new ArgumentException(
+                    $"Scope must be a non-empty string without whitespace: '{authScope}'",
+                    nameof(authScopes)
+                );
+            }
+        }
+        Scope = string.Join(' ', authScopes.Distinct(StringComparer.Ordinal));
         return (T)this;
     }
 }

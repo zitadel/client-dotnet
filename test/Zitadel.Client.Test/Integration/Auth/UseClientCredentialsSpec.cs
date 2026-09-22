@@ -5,6 +5,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 
+using Zitadel.Client.Errors;
+
 namespace Zitadel.Client.Test.Integration.Auth;
 
 /// <summary>
@@ -14,7 +16,7 @@ namespace Zitadel.Client.Test.Integration.Auth;
 /// OAuth2 client-credentials grant:</para>
 /// <list type="number">
 ///   <item><description>Retrieve general settings successfully with valid credentials.</description></item>
-///   <item><description>Raise an <see cref="ApiException"/> when using invalid credentials.</description></item>
+///   <item><description>Raise an <see cref="OAuth2ServerException"/> when using invalid credentials.</description></item>
 /// </list>
 ///
 /// <para>Valid credentials are minted on the fly by asking the Zitadel
@@ -58,7 +60,7 @@ public sealed class UseClientCredentialsSpec
             "invalid"
         );
 
-        _ = await Assert.ThrowsAnyAsync<ApiException>(() =>
+        _ = await Assert.ThrowsAsync<OAuth2ServerException>(() =>
             client.SettingsService.GetGeneralSettingsAsync(new object())
         );
     }

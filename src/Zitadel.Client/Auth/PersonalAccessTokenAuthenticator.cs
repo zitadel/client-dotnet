@@ -17,12 +17,12 @@ public class PersonalAccessTokenAuthenticator : BaseAuthenticator
     /// </summary>
     /// <param name="host">The base URL for the API endpoints.</param>
     /// <param name="token">The personal access token.</param>
+    /// <exception cref="ArgumentException">If the host is not a valid http or https URL
+    /// or the token is empty.</exception>
     public PersonalAccessTokenAuthenticator(string host, string token)
     {
-        ArgumentNullException.ThrowIfNull(host);
-        ArgumentNullException.ThrowIfNull(token);
-        _host = OpenId.BuildHostname(host).ToString();
-        _token = token;
+        _host = new OpenId(host).HostEndpoint;
+        _token = OAuthAuthenticator.RequireText(token, "Token");
     }
 
     /// <inheritdoc/>
@@ -38,10 +38,9 @@ public class PersonalAccessTokenAuthenticator : BaseAuthenticator
     }
 
     /// <summary>
-    /// Returns a string representation of this authenticator with the personal
-    /// access token redacted (rendered as <c>***</c>), so the credential is
-    /// never leaked through logging or diagnostics.
+    /// Returns a string representation with the token redacted.
     /// </summary>
+    /// <returns>A string representation with the token redacted.</returns>
     public override string ToString()
     {
         return $"{nameof(PersonalAccessTokenAuthenticator)}(host={_host}, token=***)";

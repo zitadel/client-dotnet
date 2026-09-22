@@ -34,4 +34,17 @@ public class ClientCredentialsAuthenticatorTest
         Assert.Contains("***", rendered);
         Assert.Contains("my-client-id", rendered);
     }
+
+    /// <summary>
+    /// An empty client identifier or secret is a caller mistake.
+    /// </summary>
+    [Theory]
+    [InlineData("", "client-secret")]
+    [InlineData("client-id", " ")]
+    public void RejectsEmptyCredentials(string clientId, string clientSecret)
+    {
+        Assert.Throws<ArgumentException>(() =>
+            ClientCredentialsAuthenticator.CreateBuilder("https://example.com", clientId, clientSecret)
+        );
+    }
 }

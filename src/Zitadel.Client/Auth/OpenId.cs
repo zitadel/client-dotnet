@@ -2,129 +2,173 @@
 // Bespoke authentication helper aligned with the generated IApiClient transport.
 
 using System.Text.Json;
+using Zitadel.Client.Errors;
 
 namespace Zitadel.Client.Auth;
 
 /// <summary>
 /// Resolves the OpenID Connect discovery document for a Zitadel host.
-///
-/// <para>Discovery is performed lazily through the shared <see cref="IApiClient"/>
-/// (so it inherits the SDK's proxy / TLS / timeout configuration) rather than
-/// eagerly in the constructor. The host is captured at construction time; the
-/// <c>token_endpoint</c> is fetched the first time
-/// <see cref="GetTokenEndpoint"/> is called.</para>
+/// <para>The constructor only validates and normalises the host; it performs no
+/// I/O. The <c>token_endpoint</c> is fetched through the shared
+/// <see cref="IApiClient"/> the first time <see cref="GetTokenEndpointAsync"/>
+/// is called, so discovery honours the SDK's proxy, TLS and timeout settings and
+/// fails with the same error types as any other request:</para>
+/// <list type="bullet">
+///   <item><description>no HTTP response: <see cref="NetworkException"/> or
+///   <see cref="NetworkTimeoutException"/>;</description></item>
+///   <item><description>a non-2xx status: the <see cref="ApiException"/>
+///   subclass for that status;</description></item>
+///   <item><description>a body that is not a JSON object with a
+///   <c>token_endpoint</c>: <see cref="SerializationException"/>.</description></item>
+/// </list>
 /// </summary>
 public class OpenId
 {
-    private readonly string _hostname;
-    private readonly object _lock = new();
-    private volatile Uri? _tokenEndpoint;
+    private const string WellKnownPath = "/.well-known/openid-configuration";
+
+    private readonly Uri _wellKnownUrl;
+    private readonly object _gate = new();
+    private Task<string>? _tokenEndpoint;
 
     /// <summary>
-    /// Constructs an OpenId discovery helper for the given hostname.
+    /// Validates and normalises the host. A host without a scheme gets <c>https://</c>.
     /// </summary>
-    /// <param name="hostname">The hostname of the OpenID provider.</param>
-    public OpenId(string hostname)
+    /// <param name="host">The Zitadel instance host name or URL.</param>
+    /// <exception cref="ArgumentException">If the host is empty, uses a scheme other
+    /// than http or https, or is not a valid URL.</exception>
+    public OpenId(string host)
     {
-        if (string.IsNullOrWhiteSpace(hostname))
-        {
-            throw new ArgumentException("Hostname cannot be empty.", nameof(hostname));
-        }
-
-        _hostname = hostname;
-        HostEndpoint = BuildHostname(hostname);
+        HostEndpoint = NormaliseHost(host);
+        _wellKnownUrl = new Uri(new Uri(HostEndpoint), WellKnownPath);
     }
 
-    /// <summary>
-    /// The base host endpoint URL.
-    /// </summary>
-    public Uri HostEndpoint { get; }
+    /// <summary>The normalised host endpoint.</summary>
+    public string HostEndpoint { get; }
 
-    /// <summary>
-    /// Returns the OAuth2 token endpoint, resolving the discovery document via
-    /// the shared API client on first access.
-    /// </summary>
-    /// <param name="apiClient">The shared API client used for the discovery request.</param>
-    /// <returns>The resolved token endpoint URL.</returns>
-    public Uri GetTokenEndpoint(IApiClient apiClient)
+    private static string NormaliseHost(string? host)
     {
-        Uri? resolved = _tokenEndpoint;
-        if (resolved == null)
+        string trimmed = (host ?? string.Empty).Trim();
+        if (trimmed.Length == 0)
         {
-            lock (_lock)
-            {
-                resolved = _tokenEndpoint;
-                if (resolved == null)
-                {
-                    resolved = Resolve(apiClient);
-                    _tokenEndpoint = resolved;
-                }
-            }
+            throw new ArgumentException("Host cannot be empty.", nameof(host));
         }
-
-        return resolved;
-    }
-
-    private Uri Resolve(IApiClient apiClient)
-    {
-        ArgumentNullException.ThrowIfNull(apiClient);
-
-        try
-        {
-            Uri wellKnown = BuildWellKnownUrl(_hostname);
-            ApiHttpResponse response = apiClient
-                .SendRequestAsync(
-                    "GET",
-                    wellKnown,
-                    new Dictionary<string, string> { ["Accept"] = "application/json" },
-                    null
-                )
-                .GetAwaiter()
-                .GetResult();
-
-            if (response.StatusCode is < 200 or >= 300)
-            {
-                throw new ApiException(
-                    $"Failed to fetch OpenID configuration: HTTP {response.StatusCode}"
-                );
-            }
-
-            using JsonDocument doc = JsonDocument.Parse(response.Body);
-            if (!doc.RootElement.TryGetProperty("token_endpoint", out JsonElement element))
-            {
-                throw new ApiException("OpenID configuration did not contain a token_endpoint.");
-            }
-
-            string? endpoint = element.GetString();
-            if (string.IsNullOrEmpty(endpoint))
-            {
-                throw new ApiException("OpenID configuration did not contain a token_endpoint.");
-            }
-
-            return new Uri(endpoint);
-        }
-        catch (Exception e) when (e is not ApiException)
-        {
-            throw new ApiException($"Failed to resolve OpenID configuration: {e.Message}", e);
-        }
-    }
-
-    internal static Uri BuildHostname(string hostname)
-    {
-        string normalized = hostname.Trim();
         if (
-            !normalized.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
-            && !normalized.StartsWith("https://", StringComparison.OrdinalIgnoreCase)
+            !trimmed.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
+            && !trimmed.StartsWith("https://", StringComparison.OrdinalIgnoreCase)
         )
         {
-            normalized = "https://" + normalized;
+            if (trimmed.Contains("://", StringComparison.Ordinal))
+            {
+                throw new ArgumentException(
+                    $"Host must use the http or https scheme: {trimmed}",
+                    nameof(host)
+                );
+            }
+            trimmed = "https://" + trimmed;
         }
-
-        return new Uri(normalized);
+        if (
+            !Uri.TryCreate(trimmed, UriKind.Absolute, out Uri? parsed)
+            || string.IsNullOrEmpty(parsed.Host)
+        )
+        {
+            throw new ArgumentException($"Host is not a valid URL: {trimmed}", nameof(host));
+        }
+        return trimmed;
     }
 
-    private static Uri BuildWellKnownUrl(string hostname)
+    /// <summary>
+    /// Returns the OAuth2 token endpoint, fetching the discovery document through
+    /// the given API client on first access and caching the result.
+    /// </summary>
+    /// <param name="apiClient">The shared API client used for the discovery request.</param>
+    /// <returns>The token endpoint URL.</returns>
+    /// <exception cref="ApiException">If discovery fails at the transport or HTTP level.</exception>
+    /// <exception cref="SerializationException">If the discovery document is unusable.</exception>
+    public Task<string> GetTokenEndpointAsync(IApiClient apiClient)
     {
-        return new Uri(BuildHostname(hostname), "/.well-known/openid-configuration");
+        ArgumentNullException.ThrowIfNull(apiClient);
+        lock (_gate)
+        {
+            if (_tokenEndpoint == null || _tokenEndpoint.IsFaulted || _tokenEndpoint.IsCanceled)
+            {
+                _tokenEndpoint = DiscoverAsync(apiClient);
+            }
+            return _tokenEndpoint;
+        }
+    }
+
+    private async Task<string> DiscoverAsync(IApiClient apiClient)
+    {
+        Uri url = _wellKnownUrl;
+        ApiHttpResponse response = await apiClient
+            .SendRequestAsync(
+                "GET",
+                url,
+                new Dictionary<string, string> { ["Accept"] = "application/json" },
+                null
+            )
+            .ConfigureAwait(false);
+        int status = response.StatusCode;
+        if (status is < 200 or >= 300)
+        {
+            throw StatusException(
+                status,
+                $"OpenID discovery at {url} failed with status {status}",
+                new Dictionary<string, string>(response.Headers),
+                response.Body
+            );
+        }
+        JsonElement root;
+        try
+        {
+            using JsonDocument document = JsonDocument.Parse(response.Body);
+            root = document.RootElement.Clone();
+        }
+        catch (JsonException e)
+        {
+            throw new SerializationException(
+                $"OpenID configuration at {url} is not a JSON object",
+                e
+            );
+        }
+        if (root.ValueKind != JsonValueKind.Object)
+        {
+            throw new SerializationException(
+                $"OpenID configuration at {url} is not a JSON object"
+            );
+        }
+        if (
+            !root.TryGetProperty("token_endpoint", out JsonElement endpoint)
+            || endpoint.ValueKind != JsonValueKind.String
+            || string.IsNullOrEmpty(endpoint.GetString())
+        )
+        {
+            throw new SerializationException(
+                $"OpenID configuration at {url} has no valid token_endpoint"
+            );
+        }
+        return endpoint.GetString()!;
+    }
+
+    private static ApiException StatusException(
+        int status,
+        string message,
+        Dictionary<string, string> headers,
+        string body
+    )
+    {
+        return status switch
+        {
+            400 => new BadRequestException(message, headers, body),
+            401 => new UnauthorizedException(message, headers, body),
+            403 => new ForbiddenException(message, headers, body),
+            404 => new NotFoundException(message, headers, body),
+            409 => new ConflictException(message, headers, body),
+            422 => new UnprocessableEntityException(message, headers, body),
+            500 => new InternalServerErrorException(message, headers, body),
+            >= 400 and < 500 => new ClientException(status, message, headers, body),
+            >= 500 => new ServerException(status, message, headers, body),
+            _ => new ApiException(status, message, headers, body),
+        };
     }
 }

@@ -11,6 +11,7 @@ using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Containers;
 using DotNet.Testcontainers.Networks;
 using Zitadel.Client.Auth;
+using Zitadel.Client.Errors;
 using ZitadelClient = Zitadel.Client.Zitadel;
 
 namespace Zitadel.Client.Test.Transport;
@@ -159,7 +160,7 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
             .Proxy($"http://{Host}:{ProxyPort}")
             .Build();
         using var client = ZitadelClient.WithAuthenticator(
-            new BearerAuthenticator("http://wiremock:8080", "test-token"),
+            new PersonalAccessTokenAuthenticator("http://wiremock:8080", "test-token"),
             transport
         );
 
@@ -178,7 +179,7 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
                 .Build()
         );
 
-        _ = await Assert.ThrowsAnyAsync<Exception>(() =>
+        _ = await Assert.ThrowsAsync<NetworkException>(() =>
             client.SettingsService.GetGeneralSettingsAsync(new object())
         );
     }

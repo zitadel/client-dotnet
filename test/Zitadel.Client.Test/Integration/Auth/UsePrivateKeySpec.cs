@@ -1,6 +1,11 @@
 // Zitadel SDK
 // SettingsService auth check via private-key assertion, ported from the other SDKs.
 
+using System.Security.Cryptography;
+using Zitadel.Client.Auth;
+using Zitadel.Client.Errors;
+using ZitadelClient = Zitadel.Client.Zitadel;
+
 namespace Zitadel.Client.Test.Integration.Auth;
 
 /// <summary>
@@ -10,7 +15,7 @@ namespace Zitadel.Client.Test.Integration.Auth;
 /// private-key (JWT bearer) assertion:</para>
 /// <list type="number">
 ///   <item><description>Retrieve general settings successfully with a valid private key.</description></item>
-///   <item><description>Raise an <see cref="ApiException"/> when the key is presented to a host that rejects it.</description></item>
+///   <item><description>Raise an <see cref="OAuth2ServerException"/> when signing with a key the instance does not know.</description></item>
 /// </list>
 ///
 /// <para>Each test instantiates a new client to ensure a clean, stateless call.</para>
@@ -36,12 +41,12 @@ public sealed class UsePrivateKeySpec
     [Fact]
     public async Task RaisesApiExceptionWithInvalidPrivateKey()
     {
-        using var client = ZitadelClients.WithPrivateKey(
-            "https://zitadel.cloud",
-            _stack.JwtKeyPath
+        using RSA key = RSA.Create(2048);
+        using var client = ZitadelClient.WithAuthenticator(
+            WebTokenAuthenticator.CreateBuilder(_stack.BaseUrl, "invalid", key).KeyId("invalid").Build()
         );
 
-        _ = await Assert.ThrowsAnyAsync<ApiException>(() =>
+        _ = await Assert.ThrowsAsync<OAuth2ServerException>(() =>
             client.SettingsService.GetGeneralSettingsAsync(new object())
         );
     }

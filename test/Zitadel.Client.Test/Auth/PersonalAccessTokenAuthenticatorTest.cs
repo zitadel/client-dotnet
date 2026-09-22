@@ -29,4 +29,27 @@ public class PersonalAccessTokenAuthenticatorTest
         Assert.DoesNotContain(Secret, rendered);
         Assert.Contains("***", rendered);
     }
+
+    /// <summary>
+    /// The token is sent as a bearer credential and a schemeless host defaults to https.
+    /// </summary>
+    [Fact]
+    public void ReturnsHeadersAndHost()
+    {
+        var authenticator = new PersonalAccessTokenAuthenticator("example.com", Secret);
+
+        Assert.Equal("Bearer " + Secret, authenticator.GetAuthHeaders()["Authorization"]);
+        Assert.Equal("https://example.com", authenticator.GetHost());
+    }
+
+    /// <summary>
+    /// An empty token or an invalid host is a caller mistake.
+    /// </summary>
+    [Theory]
+    [InlineData("https://example.com", "")]
+    [InlineData("ftp://example.com", Secret)]
+    public void RejectsBadArguments(string host, string token)
+    {
+        Assert.Throws<ArgumentException>(() => new PersonalAccessTokenAuthenticator(host, token));
+    }
 }
