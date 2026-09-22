@@ -312,7 +312,7 @@ internal class ObjectSerializer
          * any other language SDK. Register the protobuf-JSON duration
          * converter so format:duration values are emitted as
          * "3600s"-style strings matching protobuf's canonical JSON
-         * mapping (the wire format Zitadel's gRPC-gateway expects). */
+         * mapping (the wire format a gRPC-gateway expects). */
         options.Converters.Add(new ProtobufDurationConverter());
         return options;
     }
@@ -591,7 +591,7 @@ public class SerializationException : ZitadelException
 /// Serializes <see cref="TimeSpan"/> values as protobuf-JSON duration strings
 /// (the canonical JSON mapping of <c>google.protobuf.Duration</c>) so that
 /// <c>format:duration</c> schema values are accepted by protobuf/gRPC-gateway
-/// backends such as Zitadel. The wire form is a decimal number of seconds
+/// backends. The wire form is a decimal number of seconds
 /// suffixed with <c>s</c> — e.g. <c>"3600s"</c> or <c>"3600.000000001s"</c> —
 /// NOT the ISO-8601 <c>PT1H</c> form (which such servers reject with 400).
 ///
@@ -604,8 +604,9 @@ internal sealed partial class ProtobufDurationConverter : JsonConverter<TimeSpan
 {
     /* protobuf-JSON Duration: optional sign, integer seconds, optional
      * fractional part of 1..9 digits, mandatory 's' suffix. Anything else
-     * (ISO-8601 "PT1H", a bare number, a trailing-dot form) is rejected. */
-    [System.Text.RegularExpressions.GeneratedRegex(@"^-?\d+(\.\d{1,9})?s$")]
+     * (ISO-8601 "PT1H", a bare number, a trailing-dot form) is rejected.
+     * [0-9], not \d: in .NET \d also matches non-ASCII digits. */
+    [System.Text.RegularExpressions.GeneratedRegex(@"^-?[0-9]+(\.[0-9]{1,9})?s$")]
     private static partial System.Text.RegularExpressions.Regex DurationPattern();
 
     private const long TicksPerSecond = 10_000_000L;
@@ -660,7 +661,10 @@ internal sealed partial class ProtobufDurationConverter : JsonConverter<TimeSpan
     /// <summary>
     /// Parses a protobuf-JSON duration string into a <see cref="TimeSpan"/>.
     /// Throws <see cref="JsonException"/> on anything not matching
-    /// <c>^-?\d+(\.\d{1,9})?s$</c> (e.g. ISO-8601 or unsuffixed numbers).
+    /// <c>^-?[0-9]+(\.[0-9]{1,9})?s$</c> (e.g. ISO-8601 or unsuffixed numbers)
+    /// and on a value too large for <see cref="TimeSpan"/>;
+    /// <see cref="ObjectSerializer"/> surfaces it as a
+    /// <see cref="SerializationException"/>.
     /// </summary>
     public static TimeSpan Parse(string text)
     {
@@ -679,18 +683,26 @@ internal sealed partial class ProtobufDurationConverter : JsonConverter<TimeSpan
 
         int dot = body.IndexOf('.', StringComparison.Ordinal);
         string secsText = dot < 0 ? body : body[..dot];
-        long secs = long.Parse(secsText, System.Globalization.CultureInfo.InvariantCulture);
-
-        long nanos = 0L;
-        if (dot >= 0)
+        try
         {
-            /* Right-pad the fractional part to 9 digits so each position keeps
-             * its nanosecond weight (".5" → 500_000_000ns). */
-            string fracText = body[(dot + 1)..].PadRight(9, '0');
-            nanos = long.Parse(fracText, System.Globalization.CultureInfo.InvariantCulture);
-        }
+            long secs = long.Parse(secsText, System.Globalization.CultureInfo.InvariantCulture);
 
-        long ticks = (secs * TicksPerSecond) + (nanos / NanosPerTick);
-        return TimeSpan.FromTicks(negative ? -ticks : ticks);
+            long nanos = 0L;
+            if (dot >= 0)
+            {
+                /* Right-pad the fractional part to 9 digits so each position keeps
+                 * its nanosecond weight (".5" → 500_000_000ns). */
+                string fracText = body[(dot + 1)..].PadRight(9, '0');
+                nanos = long.Parse(fracText, System.Globalization.CultureInfo.InvariantCulture);
+            }
+
+            /* checked: a second count past TimeSpan's range must fail, not wrap. */
+            long ticks = checked((secs * TicksPerSecond) + (nanos / NanosPerTick));
+            return TimeSpan.FromTicks(negative ? -ticks : ticks);
+        }
+        catch (Exception e) when (e is FormatException or OverflowException)
+        {
+            throw new JsonException($"Invalid protobuf duration: {text}", e);
+        }
     }
 }

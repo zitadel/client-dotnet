@@ -56,6 +56,8 @@ src/Zitadel.Client/Errors/ClientException.cs
 src/Zitadel.Client/Errors/ConflictException.cs
 src/Zitadel.Client/Errors/ForbiddenException.cs
 src/Zitadel.Client/Errors/InternalServerErrorException.cs
+src/Zitadel.Client/Errors/NetworkException.cs
+src/Zitadel.Client/Errors/NetworkTimeoutException.cs
 src/Zitadel.Client/Errors/NotFoundException.cs
 src/Zitadel.Client/Errors/ServerException.cs
 src/Zitadel.Client/Errors/UnauthorizedException.cs
