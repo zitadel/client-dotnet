@@ -42,8 +42,7 @@ public class OAuthAuthenticatorTest
             string method,
             Uri url,
             Dictionary<string, string> headers,
-            object? body,
-            bool noRedirect = false
+            object? body
         )
         {
             if (
