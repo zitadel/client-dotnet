@@ -13,10 +13,6 @@ src/Zitadel.Client/Auth/OAuthAuthenticatorBuilder.cs
 src/Zitadel.Client/Auth/OpenId.cs
 src/Zitadel.Client/Auth/PersonalAccessTokenAuthenticator.cs
 src/Zitadel.Client/Auth/WebTokenAuthenticator.cs
-# The OAuth2 error types the authenticators raise. The generator only emits
-# them inside its own OAuth2 token manager, which this spec does not use.
-src/Zitadel.Client/Errors/OAuth2ServerException.cs
-src/Zitadel.Client/Errors/OAuth2TokenException.cs
 
 # --- bespoke tests + fixtures the generator does not emit (the integration
 #     specs + Zitadel server fixtures; the spec-independent unit tests are

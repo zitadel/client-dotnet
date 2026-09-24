@@ -45,6 +45,8 @@ The `IAuthenticator` interface is the seam for tests: substitute a fake authenti
 ```csharp
 using Zitadel.Client.Auth;
 
+var client = new global::Zitadel.Client.Zitadel(new FakeAuthenticator());
+
 public sealed class FakeAuthenticator : IAuthenticator
 {
     public string GetHost() => "https://api.example.com";
@@ -52,8 +54,6 @@ public sealed class FakeAuthenticator : IAuthenticator
     public Dictionary<string, string> GetAuthHeaders() =>
         new() { ["Authorization"] = "Bearer test-token" };
 }
-
-var client = new global::Zitadel.Client.Zitadel(new FakeAuthenticator());
 ```
 
 ## Error Handling
@@ -76,26 +76,30 @@ All API errors derive from `ApiException`. The error hierarchy is:
 ```csharp
 using Zitadel.Client;
 using Zitadel.Client.Errors;
+using Zitadel.Client.Models;
 
-try
+async Task ActivatePublicKeyOrReportAsync(global::Zitadel.Client.Zitadel client, ActionServiceActivatePublicKeyRequest actionServiceActivatePublicKeyRequest)
 {
-    var result = await client.ActionService.ActivatePublicKeyAsync(/* parameters */);
-}
-catch (NotFoundException e)
-{
-    Console.WriteLine($"Not found: {e.Message}");
-}
-catch (ClientException e)
-{
-    Console.WriteLine($"Client error {e.StatusCode}: {e.Message}");
-}
-catch (ServerException e)
-{
-    Console.WriteLine($"Server error: {e.Message}");
-}
-catch (ApiException e)
-{
-    Console.WriteLine($"API error: {e.Message}");
+    try
+    {
+        await client.ActionService.ActivatePublicKeyAsync(actionServiceActivatePublicKeyRequest);
+    }
+    catch (NotFoundException e)
+    {
+        Console.WriteLine($"Not found: {e.Message}");
+    }
+    catch (ClientException e)
+    {
+        Console.WriteLine($"Client error {e.StatusCode}: {e.Message}");
+    }
+    catch (ServerException e)
+    {
+        Console.WriteLine($"Server error: {e.Message}");
+    }
+    catch (ApiException e)
+    {
+        Console.WriteLine($"API error: {e.Message}");
+    }
 }
 ```
 
@@ -104,6 +108,8 @@ catch (ApiException e)
 ### Custom Transport Options
 
 ```csharp
+using Zitadel.Client;
+
 var transport = TransportOptions.Builder()
     .Proxy("http://proxy:3128")
     .Timeout(5000)

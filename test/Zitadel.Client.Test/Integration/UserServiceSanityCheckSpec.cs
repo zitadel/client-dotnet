@@ -1,6 +1,7 @@
 // Zitadel SDK
 // UserService integration sanity checks, ported from the other Zitadel SDKs.
 
+using Zitadel.Client.Errors;
 using Zitadel.Client.Models;
 
 namespace Zitadel.Client.Test.Integration;

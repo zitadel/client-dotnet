@@ -111,12 +111,7 @@ public class OpenId
         int status = response.StatusCode;
         if (status is < 200 or >= 300)
         {
-            throw StatusException(
-                status,
-                $"OpenID discovery at {url} failed with status {status}",
-                new Dictionary<string, string>(response.Headers),
-                response.Body
-            );
+            throw ApiException.FromResponse(status, response.Headers, response.Body);
         }
         JsonElement root;
         try
@@ -133,9 +128,7 @@ public class OpenId
         }
         if (root.ValueKind != JsonValueKind.Object)
         {
-            throw new SerializationException(
-                $"OpenID configuration at {url} is not a JSON object"
-            );
+            throw new SerializationException($"OpenID configuration at {url} is not a JSON object");
         }
         if (
             !root.TryGetProperty("token_endpoint", out JsonElement endpoint)
@@ -148,27 +141,5 @@ public class OpenId
             );
         }
         return endpoint.GetString()!;
-    }
-
-    private static ApiException StatusException(
-        int status,
-        string message,
-        Dictionary<string, string> headers,
-        string body
-    )
-    {
-        return status switch
-        {
-            400 => new BadRequestException(message, headers, body),
-            401 => new UnauthorizedException(message, headers, body),
-            403 => new ForbiddenException(message, headers, body),
-            404 => new NotFoundException(message, headers, body),
-            409 => new ConflictException(message, headers, body),
-            422 => new UnprocessableEntityException(message, headers, body),
-            500 => new InternalServerErrorException(message, headers, body),
-            >= 400 and < 500 => new ClientException(status, message, headers, body),
-            >= 500 => new ServerException(status, message, headers, body),
-            _ => new ApiException(status, message, headers, body),
-        };
     }
 }

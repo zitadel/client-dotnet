@@ -44,7 +44,11 @@ public class ClientCredentialsAuthenticatorTest
     public void RejectsEmptyCredentials(string clientId, string clientSecret)
     {
         Assert.Throws<ArgumentException>(() =>
-            ClientCredentialsAuthenticator.CreateBuilder("https://example.com", clientId, clientSecret)
+            ClientCredentialsAuthenticator.CreateBuilder(
+                "https://example.com",
+                clientId,
+                clientSecret
+            )
         );
     }
 }

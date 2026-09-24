@@ -46,7 +46,12 @@ public class OAuthAuthenticatorTest
             bool noRedirect = false
         )
         {
-            if (url.AbsolutePath.EndsWith("/.well-known/openid-configuration", StringComparison.Ordinal))
+            if (
+                url.AbsolutePath.EndsWith(
+                    "/.well-known/openid-configuration",
+                    StringComparison.Ordinal
+                )
+            )
             {
                 return Task.FromResult(discovery);
             }
@@ -109,7 +114,11 @@ public class OAuthAuthenticatorTest
         Assert.Equal("t0k3n", authenticator.GetAuthToken());
         Assert.Equal("Bearer t0k3n", authenticator.GetAuthHeaders()["Authorization"]);
         Assert.Single(apiClient.Bodies);
-        Assert.StartsWith("grant_type=client_credentials&scope=openid", apiClient.Bodies[0], StringComparison.Ordinal);
+        Assert.StartsWith(
+            "grant_type=client_credentials&scope=openid",
+            apiClient.Bodies[0],
+            StringComparison.Ordinal
+        );
     }
 
     [Theory]
@@ -139,7 +148,9 @@ public class OAuthAuthenticatorTest
         using DefaultApiClient apiClient = new(TransportOptions.Builder().Build());
         ClientCredentialsAuthenticator authenticator = Stubbed(apiClient, "http://127.0.0.1:1");
 
-        NetworkException error = Assert.Throws<NetworkException>(() => authenticator.GetAuthToken());
+        NetworkException error = Assert.Throws<NetworkException>(() =>
+            authenticator.GetAuthToken()
+        );
         Assert.IsAssignableFrom<ApiException>(error);
         Assert.Equal(0, error.StatusCode);
     }
@@ -204,11 +215,8 @@ public class OAuthAuthenticatorTest
     [Fact]
     public void RejectsBadScopes()
     {
-        ClientCredentialsAuthenticatorBuilder builder = ClientCredentialsAuthenticator.CreateBuilder(
-            Host,
-            "client-1",
-            "client-secret"
-        );
+        ClientCredentialsAuthenticatorBuilder builder =
+            ClientCredentialsAuthenticator.CreateBuilder(Host, "client-1", "client-secret");
 
         Assert.Throws<ArgumentException>(() => builder.Scopes());
         Assert.Throws<ArgumentException>(() => builder.Scopes("open id"));
@@ -218,7 +226,10 @@ public class OAuthAuthenticatorTest
     [Fact]
     public void JoinsScopes()
     {
-        StubApiClient apiClient = new(Response(200, Discovery), Response(200, "{\"access_token\":\"t\"}"));
+        StubApiClient apiClient = new(
+            Response(200, Discovery),
+            Response(200, "{\"access_token\":\"t\"}")
+        );
         ClientCredentialsAuthenticator authenticator = ClientCredentialsAuthenticator
             .CreateBuilder(Host, "client-1", "client-secret")
             .Scopes("openid", "profile", "openid")

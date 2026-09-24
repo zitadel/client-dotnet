@@ -41,7 +41,6 @@ src/Zitadel.Client/Api/SettingsServiceApi.cs
 src/Zitadel.Client/Api/UserServiceApi.cs
 src/Zitadel.Client/Api/WebKeyServiceApi.cs
 src/Zitadel.Client/ApiClient.cs
-src/Zitadel.Client/ApiException.cs
 src/Zitadel.Client/ApiHttpResponse.cs
 src/Zitadel.Client/ApiResult.cs
 src/Zitadel.Client/Auth/BaseAuthenticator.cs
@@ -51,6 +50,7 @@ src/Zitadel.Client/Auth/IHttpAwareAuthenticator.cs
 src/Zitadel.Client/Auth/ZitadelAccessTokenAuthenticator.cs
 src/Zitadel.Client/Configuration.cs
 src/Zitadel.Client/DefaultApiClient.cs
+src/Zitadel.Client/Errors/ApiException.cs
 src/Zitadel.Client/Errors/BadRequestException.cs
 src/Zitadel.Client/Errors/ClientException.cs
 src/Zitadel.Client/Errors/ConflictException.cs
@@ -59,9 +59,13 @@ src/Zitadel.Client/Errors/InternalServerErrorException.cs
 src/Zitadel.Client/Errors/NetworkException.cs
 src/Zitadel.Client/Errors/NetworkTimeoutException.cs
 src/Zitadel.Client/Errors/NotFoundException.cs
+src/Zitadel.Client/Errors/OAuth2ServerException.cs
+src/Zitadel.Client/Errors/OAuth2TokenException.cs
+src/Zitadel.Client/Errors/SerializationException.cs
 src/Zitadel.Client/Errors/ServerException.cs
 src/Zitadel.Client/Errors/UnauthorizedException.cs
 src/Zitadel.Client/Errors/UnprocessableEntityException.cs
+src/Zitadel.Client/Errors/ZitadelException.cs
 src/Zitadel.Client/HeaderSelector.cs
 src/Zitadel.Client/ILLink.Descriptors.xml
 src/Zitadel.Client/Models/ActionServiceActivatePublicKeyRequest.cs
@@ -1422,6 +1426,5 @@ src/Zitadel.Client/TraceContextUtil.cs
 src/Zitadel.Client/TransportOptions.cs
 src/Zitadel.Client/ValueSerializer.cs
 src/Zitadel.Client/Zitadel.cs
-src/Zitadel.Client/ZitadelException.cs
 toc.yml
 test/Zitadel.Client.Test/xunit.runner.json

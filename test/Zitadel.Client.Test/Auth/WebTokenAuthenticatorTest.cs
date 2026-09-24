@@ -111,7 +111,11 @@ public sealed class WebTokenAuthenticatorTest : IDisposable
         using RSA key = RSA.Create(2048);
         using RSA publicOnly = RSA.Create();
         publicOnly.ImportRSAPublicKey(key.ExportRSAPublicKey(), out _);
-        WebTokenAuthenticatorBuilder builder = WebTokenAuthenticator.CreateBuilder(Host, "user-1", key);
+        WebTokenAuthenticatorBuilder builder = WebTokenAuthenticator.CreateBuilder(
+            Host,
+            "user-1",
+            key
+        );
 
         Assert.Throws<ArgumentException>(() => WebTokenAuthenticator.CreateBuilder(Host, "", key));
         Assert.Throws<ArgumentException>(() =>

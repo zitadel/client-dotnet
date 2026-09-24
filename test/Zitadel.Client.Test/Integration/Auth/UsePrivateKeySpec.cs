@@ -43,7 +43,10 @@ public sealed class UsePrivateKeySpec
     {
         using RSA key = RSA.Create(2048);
         using var client = ZitadelClient.WithAuthenticator(
-            WebTokenAuthenticator.CreateBuilder(_stack.BaseUrl, "invalid", key).KeyId("invalid").Build()
+            WebTokenAuthenticator
+                .CreateBuilder(_stack.BaseUrl, "invalid", key)
+                .KeyId("invalid")
+                .Build()
         );
 
         _ = await Assert.ThrowsAsync<OAuth2ServerException>(() =>
