@@ -11,6 +11,8 @@ namespace Zitadel.Client.Auth;
 /// <summary>
 /// Scheme-specific authenticator for the <c>zitadelAccessToken</c> security scheme.
 /// </summary>
-public sealed class ZitadelAccessTokenAuthenticator(string host, string token)
-    : BearerAuthenticator(host, token)
-{ }
+public sealed class ZitadelAccessTokenAuthenticator : BearerAuthenticator
+{
+    public ZitadelAccessTokenAuthenticator(string host, string token)
+        : base(host, token) { }
+}
