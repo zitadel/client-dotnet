@@ -7,6 +7,6 @@ COPY . .
 RUN dotnet tool install -g csharprepl
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
-RUN dotnet build
+RUN dotnet build src/Zitadel.Client/Zitadel.Client.csproj
 
 CMD ["csharprepl", "-r", "src/Zitadel.Client/bin/Debug/net10.0/Zitadel.Client.dll"]

@@ -1,10 +1,7 @@
-ExternalSecure: true
+ExternalSecure: false
 ExternalDomain: localhost
-ExternalPort: 8099
-TLS:
-  Enabled: true
-  KeyPath: /etc/zitadel/certs/key.pem
-  CertPath: /etc/zitadel/certs/cert.pem
+ExternalPort: 8080
+TLS.Enabled: false
 Database:
   postgres:
     Host: 'db'
@@ -18,4 +15,3 @@ OIDC:
 SAML.DefaultLoginURLV2: "/ui/v2/login/login?authRequest="
 LogStore.Access.Stdout.Enabled: true
 DefaultInstance.LoginPolicy.MfaInitSkipLifetime: "0s"
-                                                   rm
