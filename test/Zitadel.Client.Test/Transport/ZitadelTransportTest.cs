@@ -3,9 +3,10 @@
 //
 // A WireMock container stubs the OAuth discovery, token, and GetGeneralSettings
 // endpoints over both HTTP and HTTPS (with a self-signed cert chained to the
-// fixture CA), and a Squid container provides a forward proxy. The tests assert
+// fixture CA), and a Squid container provides a forward proxy on two ports:
+// 3128 is open, and 3129 requires Basic proxy credentials. The tests assert
 // that TransportOptions correctly drive TLS verification, custom CA trust,
-// default headers, and proxy routing.
+// default headers, and proxy routing (including proxy authentication).
 
 using DotNet.Testcontainers.Builders;
 using DotNet.Testcontainers.Containers;
@@ -39,6 +40,7 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
     private ushort HttpPort => _wiremock.GetMappedPublicPort(8080);
     private ushort HttpsPort => _wiremock.GetMappedPublicPort(8443);
     private ushort ProxyPort => _proxy.GetMappedPublicPort(3128);
+    private ushort ProxyAuthPort => _proxy.GetMappedPublicPort(3129);
 
     /// <inheritdoc/>
     public async ValueTask InitializeAsync()
@@ -78,11 +80,23 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
         _proxy = new ContainerBuilder("ubuntu/squid:6.10-24.10_beta")
             .WithNetwork(_network)
             .WithPortBinding(3128, true)
+            .WithPortBinding(3129, true)
             .WithResourceMapping(
                 new FileInfo(Path.Combine(FixturesDir, "squid.conf")),
                 new FileInfo("/etc/squid/squid.conf")
             )
-            .WithWaitStrategy(Wait.ForUnixContainer().UntilInternalTcpPortIsAvailable(3128))
+            .WithCreateParameterModifier(parameterModifier =>
+                parameterModifier.HostConfig!.Tmpfs = new Dictionary<string, string>
+                {
+                    ["/var/log/squid"] = "rw,mode=1777",
+                    ["/var/spool/squid"] = "rw,mode=1777",
+                }
+            )
+            .WithWaitStrategy(
+                Wait.ForUnixContainer()
+                    .UntilInternalTcpPortIsAvailable(3128)
+                    .UntilInternalTcpPortIsAvailable(3129)
+            )
             .Build();
 
         await _wiremock.StartAsync();
@@ -158,6 +172,42 @@ public sealed class ZitadelTransportTest : IAsyncLifetime
         TransportOptions transport = TransportOptions
             .Builder()
             .Proxy($"http://{Host}:{ProxyPort}")
+            .Build();
+        using var client = ZitadelClient.WithAuthenticator(
+            new PersonalAccessTokenAuthenticator("http://wiremock:8080", "test-token"),
+            transport
+        );
+
+        Models.SettingsServiceGetGeneralSettingsResponse response =
+            await client.SettingsService.GetGeneralSettingsAsync(new object());
+
+        Assert.Equal("http", response.DefaultLanguage);
+    }
+
+    [Fact]
+    public async Task ProxyWithoutCredentialsFails()
+    {
+        TransportOptions transport = TransportOptions
+            .Builder()
+            .Proxy($"http://{Host}:{ProxyAuthPort}")
+            .Build();
+        using var client = ZitadelClient.WithAuthenticator(
+            new PersonalAccessTokenAuthenticator("http://wiremock:8080", "test-token"),
+            transport
+        );
+
+        ClientException exception = await Assert.ThrowsAsync<ClientException>(() =>
+            client.SettingsService.GetGeneralSettingsAsync(new object())
+        );
+        Assert.Equal(407, exception.StatusCode);
+    }
+
+    [Fact]
+    public async Task ProxyWithCredentialsRoutesRequest()
+    {
+        TransportOptions transport = TransportOptions
+            .Builder()
+            .Proxy($"http://user:pass@{Host}:{ProxyAuthPort}")
             .Build();
         using var client = ZitadelClient.WithAuthenticator(
             new PersonalAccessTokenAuthenticator("http://wiremock:8080", "test-token"),
