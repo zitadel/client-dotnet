@@ -4,7 +4,7 @@
 using Zitadel.Client.Errors;
 using Zitadel.Client.Models;
 
-namespace Zitadel.Client.Test.Integration;
+namespace Zitadel.Client.Test.Spec;
 
 /// <summary>
 /// SessionService Integration Tests.

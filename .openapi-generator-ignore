@@ -24,11 +24,12 @@ test/Zitadel.Client.Test/Auth/ClientCredentialsAuthenticatorTest.cs
 test/Zitadel.Client.Test/Auth/OAuthAuthenticatorTest.cs
 test/Zitadel.Client.Test/Auth/PersonalAccessTokenAuthenticatorTest.cs
 test/Zitadel.Client.Test/Auth/WebTokenAuthenticatorTest.cs
-test/Zitadel.Client.Test/Integration/
+test/Zitadel.Client.Test/Spec/
 test/Zitadel.Client.Test/Transport/
 test/Zitadel.Client.Test/fixtures/
 
 # --- repo identity + docs (team-owned) ---
+AGENTS.md
 LICENSE
 README.md
 SECURITY.md
@@ -57,7 +58,6 @@ qodana.yaml
 Zitadel.Client.sln
 src/Zitadel.Client/Zitadel.Client.csproj
 test/Zitadel.Client.Test/Zitadel.Client.Test.csproj
-coverlet.runsettings
 Directory.Build.props
 src/Zitadel.Client/packages.lock.json
 test/Zitadel.Client.Test/packages.lock.json

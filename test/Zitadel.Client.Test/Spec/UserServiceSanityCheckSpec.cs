@@ -4,7 +4,7 @@
 using Zitadel.Client.Errors;
 using Zitadel.Client.Models;
 
-namespace Zitadel.Client.Test.Integration;
+namespace Zitadel.Client.Test.Spec;
 
 /// <summary>
 /// UserService Integration Tests.
@@ -84,7 +84,8 @@ public sealed class UserServiceSanityCheckSpec : IAsyncLifetime
         );
 
         Assert.NotNull(response.Result);
-        Assert.Contains(_user.UserId, response.Result.Select(u => u.UserId));
+        List<string?> ids = response.Result.Select(u => u.UserId).ToList();
+        Assert.Contains(_user.UserId, ids);
     }
 
     [Fact]

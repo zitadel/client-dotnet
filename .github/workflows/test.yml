@@ -36,16 +36,23 @@ jobs:
         run: dotnet restore
 
       - name: Run Tests
-        # --logger trx: Outputs native .NET test results
-        # --collect:"XPlat Code Coverage": Outputs coverage.cobertura.xml
-        # --results-directory: Collects all outputs under a known directory
-        # --settings: coverlet.runsettings excludes the ~1,380 OpenAPI-generated
-        #   source files from coverage. Without it the Cobertura report is ~6.8 MB
-        #   and the reporter's Markdown summary exceeds GitHub's 1 MB
-        #   $GITHUB_STEP_SUMMARY limit, failing the step.
-        # LogFileName pins the trx to a deterministic path (.out/results.trx) so
-        # the upload and reporters reference it exactly instead of globbing.
-        run: dotnet test --no-restore --collect:"XPlat Code Coverage" --logger "trx;LogFileName=results.trx" --results-directory .out --settings coverlet.runsettings
+        # Microsoft Testing Platform (MTP): xunit.v3 builds a self-contained
+        # test executable and runs EVERY test — including the container-backed
+        # collection specs that the legacy VSTest `dotnet test` host silently
+        # skipped. `-trx .out/results.trx` writes the report dorny consumes;
+        # dotnet-coverage collects Cobertura around the run and excludes the
+        # ~1,380 OpenAPI-generated source files (coverage.settings.xml) so the
+        # report stays under GitHub's 1 MB $GITHUB_STEP_SUMMARY cap.
+        run: |
+          dotnet build test/Zitadel.Client.Test/Zitadel.Client.Test.csproj -c Release --no-restore
+          dotnet tool install --global dotnet-coverage
+          export PATH="$HOME/.dotnet/tools:$PATH"
+          mkdir -p .out
+          dotnet-coverage collect \
+            --output .out/coverage.cobertura.xml \
+            --output-format cobertura \
+            --settings coverage.settings.xml \
+            -- ./test/Zitadel.Client.Test/bin/Release/net10.0/Zitadel.Client.Test -trx .out/results.trx
 
       - name: Upload Results
         # Uploaded immediately after the test run, before the coverage reporter
@@ -67,18 +74,6 @@ jobs:
           path: .out/results.trx
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Consolidate coverage file
-        # The XPlat collector writes coverage.cobertura.xml into a random GUID
-        # subdirectory, so copy it to a deterministic path that the reporter and
-        # the coverage artifact upload can reference directly.
-        if: always()
-        run: |
-          src="$(find .out -name 'coverage.cobertura.xml' | head -n 1)"
-          if [ -z "$src" ]; then
-            echo "No coverage.cobertura.xml produced" >&2
-            exit 1
-          fi
-          cp "$src" .out/coverage.cobertura.xml
 
       - name: Generate coverage report
         # Uploads the coverage as the "test-coverage" artifact the Qodana job consumes.

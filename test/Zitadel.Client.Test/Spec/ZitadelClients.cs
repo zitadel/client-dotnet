@@ -12,7 +12,7 @@
 using Zitadel.Client.Auth;
 using ZitadelClient = Zitadel.Client.Zitadel;
 
-namespace Zitadel.Client.Test.Integration;
+namespace Zitadel.Client.Test.Spec;
 
 /// <summary>
 /// Factory helpers mirroring the <c>withAccessToken</c> /

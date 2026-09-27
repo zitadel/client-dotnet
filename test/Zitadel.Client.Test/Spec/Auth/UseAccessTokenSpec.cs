@@ -3,7 +3,7 @@
 
 using Zitadel.Client.Errors;
 
-namespace Zitadel.Client.Test.Integration.Auth;
+namespace Zitadel.Client.Test.Spec.Auth;
 
 /// <summary>
 /// SettingsService Integration Tests (Personal Access Token).

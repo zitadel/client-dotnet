@@ -4,7 +4,7 @@
 
 using System.Diagnostics;
 
-namespace Zitadel.Client.Test.Integration;
+namespace Zitadel.Client.Test.Spec;
 
 /// <summary>
 /// Brings a Docker Compose Zitadel stack up before the integration tests run

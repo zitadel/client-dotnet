@@ -6,7 +6,7 @@ using Zitadel.Client.Auth;
 using Zitadel.Client.Errors;
 using ZitadelClient = Zitadel.Client.Zitadel;
 
-namespace Zitadel.Client.Test.Integration.Auth;
+namespace Zitadel.Client.Test.Spec.Auth;
 
 /// <summary>
 /// SettingsService Integration Tests (Private Key Assertion).

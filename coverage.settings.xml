@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Code-coverage settings for `dotnet-coverage` (Microsoft Testing Platform).
+
+    The SDK is overwhelmingly OpenAPI-generated source: the `Models/` and `Api/`
+    trees alone are ~1,380 generated files. Including them produced a 6.8 MB
+    Cobertura report and a rendered Markdown summary above GitHub's 1 MB
+    `$GITHUB_STEP_SUMMARY` cap, which failed the reporter step. Generated code is
+    not meaningfully unit-testable, so it is excluded by source path here (it is
+    compiled into the same assembly as the hand-written code, so module-level
+    exclusion cannot separate it). Coverage then reflects the hand-written
+    transport, auth and serialization code the tests actually exercise.
+-->
+<Configuration>
+  <CodeCoverage>
+    <Sources>
+      <Exclude>
+        <Source>.*[\\/]Models[\\/].*</Source>
+        <Source>.*[\\/]Api[\\/].*</Source>
+      </Exclude>
+    </Sources>
+    <Attributes>
+      <Exclude>
+        <Attribute>^System\.CodeDom\.Compiler\.GeneratedCodeAttribute$</Attribute>
+        <Attribute>^System\.Runtime\.CompilerServices\.CompilerGeneratedAttribute$</Attribute>
+        <Attribute>^System\.Diagnostics\.CodeAnalysis\.ExcludeFromCodeCoverageAttribute$</Attribute>
+      </Exclude>
+    </Attributes>
+  </CodeCoverage>
+</Configuration>
