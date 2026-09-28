@@ -38,6 +38,7 @@ VERSIONING.md
 # --- house tooling (team-owned) ---
 .commitlintrc.json
 .config/
+coverage.settings.xml
 .dockerignore
 .dotnet/
 # .editorconfig is generator-owned: it carries the analyzer settings the

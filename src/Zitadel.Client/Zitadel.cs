@@ -127,7 +127,7 @@ public sealed class Zitadel : IDisposable
     /// <summary>
     /// Creates a new client with the given authenticator and default transport settings.
     /// </summary>
-    /// <param name="authenticator">Provides host URL and auth credentials.</param>
+    /// <param name="authenticator">Provides host URL and auth headers.</param>
     public Zitadel(IAuthenticator authenticator)
         : this(authenticator, TransportOptions.Builder().Build()) { }
 
@@ -138,7 +138,7 @@ public sealed class Zitadel : IDisposable
     /// shared <see cref="IApiClient"/> is injected so that token exchange and
     /// discovery requests use the same proxy, TLS, and timeout settings.
     /// </summary>
-    /// <param name="authenticator">Provides host URL and auth credentials.</param>
+    /// <param name="authenticator">Provides host URL and auth headers.</param>
     /// <param name="transportOptions">HTTP transport configuration (proxy, TLS, timeouts, etc.).</param>
     public Zitadel(IAuthenticator authenticator, TransportOptions? transportOptions)
     {
@@ -201,7 +201,7 @@ public sealed class Zitadel : IDisposable
     /// </summary>
     /// <param name="host">API base URL.</param>
     /// <param name="accessToken">Bearer token.</param>
-    /// <param name="transportOptions">Optional HTTP transport configuration.</param>
+    /// <param name="transportOptions">Optional HTTP transport configuration (proxy, TLS, timeouts, etc.).</param>
     /// <returns>Configured client instance.</returns>
     public static Zitadel WithToken(
         string host,
@@ -218,11 +218,15 @@ public sealed class Zitadel : IDisposable
     /// <summary>
     /// Creates a client from a ready-made <see cref="IAuthenticator"/>.
     ///
-    /// This is the generic entry point for bespoke authenticators, such as
-    /// client credentials, JWT private key, or personal access token (PAT) flows.
+    /// This is the generic entry point for bespoke authentication strategies such as
+    /// OAuth2 client credentials, JWT private-key (service account), or a personal
+    /// access token (PAT). Supply any <see cref="IAuthenticator"/> implementation; if
+    /// it also implements <see cref="IHttpAwareAuthenticator"/>, the shared
+    /// <see cref="IApiClient"/> is injected so its HTTP calls reuse the same transport
+    /// configuration.
     /// </summary>
-    /// <param name="authenticator">Provides host URL and auth credentials.</param>
-    /// <param name="transportOptions">Optional HTTP transport configuration.</param>
+    /// <param name="authenticator">Provides host URL and auth headers.</param>
+    /// <param name="transportOptions">Optional HTTP transport configuration (proxy, TLS, timeouts, etc.).</param>
     /// <returns>Configured client instance.</returns>
     public static Zitadel WithAuthenticator(
         IAuthenticator authenticator,

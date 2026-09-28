@@ -14,9 +14,10 @@ namespace Zitadel.Client.Errors;
 /// Every error the SDK raises ultimately derives from this single base, so a
 /// caller can write one <c>catch (Zitadel.Client.Errors.ZitadelException)</c> and be
 /// certain it covers all SDK-originated failures: API/HTTP errors
-/// (<see cref="ApiException"/> and its typed subclasses) and serialization
-/// failures (<see cref="SerializationException"/>). This gives C# the same
-/// one-root design the other language clients expose. The chain for a typed
+/// (<see cref="ApiException"/> and its typed subclasses), serialization
+/// failures (<see cref="SerializationException"/>), and OAuth2 token/server
+/// errors raised during authentication. This gives C# the same one-root
+/// design the other language clients expose. The chain for a typed
 /// HTTP error is, for example:
 /// UnauthorizedException → ClientException → ApiException → ZitadelException
 /// → Exception.
