@@ -1,28 +1,44 @@
 <Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <LangVersion>13</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+        <OutputType>Exe</OutputType>
+        <!-- xunit.v3 runs natively on Microsoft Testing Platform (MTP). Opt in
+             so `dotnet test` dispatches to MTP instead of the legacy VSTest
+             host, which silently skips container-backed collection specs. -->
+        <UseMicrosoftTestingPlatform>true</UseMicrosoftTestingPlatform>
+        <TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+    </PropertyGroup>
 
-    <IsPackable>false</IsPackable>
-    <IsTestProject>true</IsTestProject>
-  </PropertyGroup>
+    <ItemGroup>
+        <!-- Pure Microsoft Testing Platform: xunit.v3 carries the MTP runner;
+             the extensions add trx reporting and code coverage. No VSTest
+             packages (Microsoft.NET.Test.Sdk / xunit.runner.visualstudio),
+             which route `dotnet test` through VSTest and do not run the
+             container collection specs. -->
+        <PackageReference Include="xunit.v3" Version="3.2.2" />
+        <PackageReference Include="Microsoft.Testing.Extensions.TrxReport" Version="1.7.3" />
+        <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.0.4" />
+        <PackageReference Include="Testcontainers" Version="4.12.0" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="6.0.0"/>
-    <PackageReference Include="JunitXml.TestLogger" Version="7.0.2"/>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
-    <PackageReference Include="xunit" Version="2.5.3"/>
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3"/>
-  </ItemGroup>
+    <ItemGroup>
+        <Using Include="Xunit" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Using Include="Xunit"/>
-  </ItemGroup>
+    <ItemGroup>
+        <None Update="xunit.runner.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="fixtures/**/*" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Zitadel.Client\Zitadel.Client.csproj"/>
-  </ItemGroup>
-
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Zitadel.Client\Zitadel.Client.csproj" />
+    </ItemGroup>
 </Project>

@@ -28,7 +28,7 @@ jobs:
           ref: ${{ inputs.ref }}
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@3951f0dfe7a07e2313ec93c75700083e2005cb85 # v4.3.0
+        uses: actions/setup-dotnet@3951f0dfe7a07e2313ec93c75700083e2005cbab # v4.3.0
         with:
           dotnet-version: '10.0.x'
 
@@ -36,23 +36,34 @@ jobs:
         run: dotnet restore
 
       - name: Run Tests
-        # --logger trx: Outputs native .NET test results
-        # --collect:"XPlat Code Coverage": Outputs coverage.cobertura.xml
-        run: dotnet test --no-restore --collect:"XPlat Code Coverage" --logger trx
-
-      - name: Generate coverage report
-        uses: mridang/action-test-reporter@v1
-        if: always()
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          coverage-file: '**/coverage.cobertura.xml'
+        # Microsoft Testing Platform (MTP): xunit.v3 builds a self-contained
+        # test executable and runs EVERY test — including the container-backed
+        # collection specs that the legacy VSTest `dotnet test` host silently
+        # skipped. `-trx .out/results.trx` writes the report dorny consumes;
+        # dotnet-coverage collects Cobertura around the run and excludes the
+        # ~1,380 OpenAPI-generated source files (coverage.settings.xml) so the
+        # report stays under GitHub's 1 MB $GITHUB_STEP_SUMMARY cap.
+        run: |
+          dotnet build test/Zitadel.Client.Test/Zitadel.Client.Test.csproj -c Release --no-restore
+          dotnet tool install --global dotnet-coverage
+          export PATH="$HOME/.dotnet/tools:$PATH"
+          mkdir -p .out
+          dotnet-coverage collect \
+            --output .out/coverage.cobertura.xml \
+            --output-format cobertura \
+            --settings coverage.settings.xml \
+            -- ./test/Zitadel.Client.Test/bin/Release/net10.0/Zitadel.Client.Test -trx .out/results.trx
 
       - name: Upload Results
+        # Uploaded immediately after the test run, before the coverage reporter
+        # below, which rewrites .out while building its summary and would
+        # otherwise remove the trx that the Qodana job downloads as test-results.
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
         with:
           name: test-results
-          path: '**/*.trx'
+          path: .out/results.trx
+          if-no-files-found: error
 
       - name: Generate Report
         if: ${{ always() && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false) }}
@@ -60,5 +71,14 @@ jobs:
         with:
           name: Tests
           reporter: dotnet-trx
-          path: '**/*.trx'
+          path: .out/results.trx
           token: ${{ secrets.GITHUB_TOKEN }}
+
+
+      - name: Generate coverage report
+        # Uploads the coverage as the "test-coverage" artifact the Qodana job consumes.
+        uses: mridang/action-test-reporter@v1
+        if: always()
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coverage-file: '.out/coverage.cobertura.xml'

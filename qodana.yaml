@@ -8,5 +8,13 @@ exclude:
     paths:
       - src/Zitadel.Client/Api
       - src/Zitadel.Client/Model
+      # Test code legitimately uses fixture classes, descriptive names and
+      # reaches into internals; production-grade IDE inspections are noise here.
+      - test
+  # Code coverage is not a metric we gate on, and the bulk of the SDK is
+  # generated code that is untested by design. Qodana does not support
+  # path-scoped coverage exclusion (only full-inspection / .NET attribute
+  # excludes), so the coverage inspection is disabled outright.
+  - name: NetCoverageInspection
 
-linter: jetbrains/qodana-dotnet:latest
+linter: jetbrains/qodana-dotnet:2026.1
