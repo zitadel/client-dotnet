@@ -12,19 +12,19 @@
     transport, auth and serialization code the tests actually exercise.
 -->
 <Configuration>
-  <CodeCoverage>
-    <Sources>
-      <Exclude>
-        <Source>.*[\\/]Models[\\/].*</Source>
-        <Source>.*[\\/]Api[\\/].*</Source>
-      </Exclude>
-    </Sources>
-    <Attributes>
-      <Exclude>
-        <Attribute>^System\.CodeDom\.Compiler\.GeneratedCodeAttribute$</Attribute>
-        <Attribute>^System\.Runtime\.CompilerServices\.CompilerGeneratedAttribute$</Attribute>
-        <Attribute>^System\.Diagnostics\.CodeAnalysis\.ExcludeFromCodeCoverageAttribute$</Attribute>
-      </Exclude>
-    </Attributes>
-  </CodeCoverage>
+    <CodeCoverage>
+        <Sources>
+            <Exclude>
+                <Source>.*[\\/]Models[\\/].*</Source>
+                <Source>.*[\\/]Api[\\/].*</Source>
+            </Exclude>
+        </Sources>
+        <Attributes>
+            <Exclude>
+                <Attribute>^System\.CodeDom\.Compiler\.GeneratedCodeAttribute$</Attribute>
+                <Attribute>^System\.Runtime\.CompilerServices\.CompilerGeneratedAttribute$</Attribute>
+                <Attribute>^System\.Diagnostics\.CodeAnalysis\.ExcludeFromCodeCoverageAttribute$</Attribute>
+            </Exclude>
+        </Attributes>
+    </CodeCoverage>
 </Configuration>
